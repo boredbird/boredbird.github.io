@@ -8,8 +8,8 @@ description: django处理HTTP请求流程
 ---
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/django/django_flow_en.png" width="80%">
-  <img src="/assets/django/django_flow_cn.png" width="80%" style="border-left: 1px solid black;">
+  <img src="/assets/django/django_flow_en.png" width="60%">
+  <img src="/assets/django/django_flow_cn.png" width="60%" style="border-left: 1px solid black;">
   <div class="figcaption">Based on @FULLSTACKCTO's understanding of Django, this is how a user request is responded to.</div>
 </div>
 
