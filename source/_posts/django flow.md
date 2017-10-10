@@ -8,7 +8,7 @@ description: django处理HTTP请求流程
 ---
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/django/django-flow-en.png" width="49%">
-  <img src="/assets/django/django-flow-cn.png" width="49%" style="border-left: 1px solid black;">
+  <img src="/assets/django/django_flow_en.png" width="49%">
+  <img src="/assets/django/django_flow_cn.png" width="49%" style="border-left: 1px solid black;">
   <div class="figcaption">A cartoon drawing of a biological neuron (left) and its mathematical model (right).</div>
 </div>
