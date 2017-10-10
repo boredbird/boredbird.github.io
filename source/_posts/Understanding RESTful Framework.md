@@ -9,7 +9,7 @@ description: 理解RESTful架构-来自阮一峰
 最近在研究Python开发接口微服务，以便用Python开发出来的模型与服务能对接上，提供复杂模型上线的方案。看到了阮一峰的[《理解RESTful架构》](http://www.ruanyifeng.com/blog/2011/09/restful)这篇文章，写的真好，虽然我是还没入门的外外行。
 
 # 什么是RESTful架构
-## 起源
+## 一、起源
 REST这个词，是[Roy Thomas Fielding](http://en.wikipedia.org/wiki/Roy_Fielding)在他2000年的博士论文中提出的。
 
 文中写到：
@@ -26,6 +26,8 @@ Fielding将他对互联网软件的架构原则，定名为REST，即Representat
 如果一个架构符合REST原则，就称它为RESTful架构。
 
 要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义。如果你把这个名称搞懂了，也就不难体会REST是一种什么样的设计。
+
+<!--more-->
 
 ## 三、资源（Resources）
 REST的名称"表现层状态转化"中，省略了主语。"表现层"其实指的是"资源"（Resources）的"表现层"。
