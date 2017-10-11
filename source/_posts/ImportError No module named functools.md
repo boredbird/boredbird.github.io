@@ -42,6 +42,8 @@ description: ImportError: No module named functools
 
 **再次启动，works!问题解决了**
 
+<!--more-->
+
 ```
 
 	(myenvs) E:\Code\virtualenvs\myenvs\src>python .\manage.py runserver
@@ -55,13 +57,14 @@ description: ImportError: No module named functools
 ```
 
 # 如何避免
+
 在`E:\Code\virtualenvs\`下添加`.gitignore`文件，把环境配置文件给过滤掉，两边环境不一样省得冲突。
 
 ```
 
 	*.pyc
 
-	myenvs/Lib/orig-prefix.txt
+	/myenvs/Lib/orig-prefix.txt
 ```
 
 参考：

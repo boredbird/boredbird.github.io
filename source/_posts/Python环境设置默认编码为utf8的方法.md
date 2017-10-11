@@ -34,6 +34,8 @@ description: Python环境设置默认编码为utf8的方法
 
 **设置之后：**
 
+<!--more-->
+
 ```
 
 	D:\ProgramData\Anaconda2\python.exe "D:\Program Files (x86)\JetBrains\PyCharm 2016.3.3\helpers\pydev\pydevconsole.py" 55595 55596
