@@ -74,7 +74,7 @@ ALLOWED_HOSTS = [‘*’] ＃在这里请求的host添加了＊
 
 这尼玛，这是什么鬼，我的引号呢？？？终端上为什么没有引号，于是我有尝试了`"*"`双引号，依然不行。然后无穷的百度（动词），居然没一个类似我的问题。老天干嘛要为难我这个小白啊。
 
-![](/assets/django/xinsaisaide.png)
+![](/assets/xinsaisaide.png)
 
 ## 解决方法
 一不做，二不休：
@@ -87,6 +87,12 @@ ALLOWED_HOSTS = [‘*’] ＃在这里请求的host添加了＊
 
 居然works！
 
+加逗号也是可以的：
+
+``` python
+
+	ALLOWED_HOSTS = ['*',]
+```
 
 # 效果
 
