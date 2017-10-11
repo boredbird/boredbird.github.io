@@ -4,6 +4,7 @@ date: 2017-10-07 22:47:02
 categories: "django" 
 tags: 
      - django
+     - virtualenv
 description: Django[01]Virtualenv&Django
 ---
 # 配置虚拟环境
