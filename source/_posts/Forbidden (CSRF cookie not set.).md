@@ -5,6 +5,8 @@ categories: "django"
 tags: 
      - django
      - CSRF
+     - get
+     - post
 description: Forbidden (CSRF cookie not set.)
 ---
 # 问题描述
@@ -29,6 +31,8 @@ description: Forbidden (CSRF cookie not set.)
 # 解决方法
 
 **修改settings.py文件，注释掉**
+
+<!--more-->
 
 `django.middleware.csrf.CsrfViewMiddleware',`
 
