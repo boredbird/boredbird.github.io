@@ -71,3 +71,4 @@ description: Python环境设置默认编码为utf8的方法
 参考：
 
 * [Python设置默认编码为utf8的方法](http://www.jb51.net/article/87785.htm)
+* [python错误：AttributeError: 'module' object has no attribute 'setdefaultencoding'问题的解决方法](http://www.jb51.net/article/54159.htm)
