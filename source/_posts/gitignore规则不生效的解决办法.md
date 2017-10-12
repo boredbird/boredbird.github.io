@@ -1,9 +1,9 @@
 ---
 title: gitignore规则不生效的解决办法
 date: 2017-10-11 11:50:02 
-categories: "python" 
+categories: "Python" 
 tags: 
-     - python
+     - Python
      - git
 description: gitignore规则不生效的解决办法
 ---
