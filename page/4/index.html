@@ -177,6 +177,486 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Django[12]Queryset介绍以及Template context补充" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/08/Django[12]Queryset介绍以及Template context补充/">Django[12]Queryset介绍以及Template context补充</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/Django[12]Queryset介绍以及Template context补充/" class="archive-article-date">
+  	<time datetime="2017-10-08T08:12:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Django-shell"><a href="#Django-shell" class="headerlink" title="Django shell"></a>Django shell</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">python</span> manage.<span class="keyword">py</span> <span class="keyword">shell</span></div></pre></td></tr></table></figure>
+<p>进入django shell,可以在命令行做一些操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#查询出所有的post对象，for循环遍历</span></div><div class="line">queryset = models.Post.objects.all()</div><div class="line"><span class="keyword">for</span> obj <span class="keyword">in</span> queryset:</div><div class="line">    print(obj.title)</div><div class="line">    print(obj.content)</div><div class="line">    print(obj.update)</div><div class="line">    print(obj.timestamp)</div><div class="line">    print(obj.id)</div><div class="line">    print(obj.pk)</div><div class="line"></div><div class="line"><span class="comment">#创建一条新的post记录</span></div><div class="line">models.Post.objects.create(title=<span class="string">"abc"</span>, content=<span class="string">"abc abc abc"</span>)</div><div class="line"></div><div class="line"><span class="comment">#获取所有的记录条数</span></div><div class="line">models.Post.objects.all().count()</div></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/Jk5HHJB.png" alt=""></p>
+<h1 id="queryset介绍"><a href="#queryset介绍" class="headerlink" title="queryset介绍"></a>queryset介绍</h1><p>queryset 是一个可以遍历取值的结果集</p>
+<p>queryset 里面都是 对象，可以通过对象.字段名的形式取值</p>
+<p>一个对象就对应了数据库里面的一条记录</p>
+<p><strong>数据库里面的一条记录  &lt;- ORM -&gt; Python中的对象</strong></p>
+<h1 id="如何在前端使用queryset"><a href="#如何在前端使用queryset" class="headerlink" title="如何在前端使用queryset"></a>如何在前端使用queryset</h1><h2 id="1-从数据库里取出数据"><a href="#1-从数据库里取出数据" class="headerlink" title="1. 从数据库里取出数据"></a>1. 从数据库里取出数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">queryset = models.Post.objects.all()</div></pre></td></tr></table></figure>
+<h2 id="2-把渠道的数据塞进-data"><a href="#2-把渠道的数据塞进-data" class="headerlink" title="2. 把渠道的数据塞进 data"></a>2. 把渠道的数据塞进 data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">data = &#123;<span class="string">"queryset"</span>: queryset&#125;</div></pre></td></tr></table></figure>
+<p>即，修改views.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> . <span class="keyword">import</span> models</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	queryset = models.Post.objects.all()</div><div class="line">	data = &#123;</div><div class="line">		<span class="string">"queryset"</span>: queryset,</div><div class="line">		<span class="string">"name"</span>: <span class="string">"home"</span>,</div><div class="line">		<span class="string">"age"</span>: <span class="string">"18"</span>,</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"base.html"</span>,data)</div></pre></td></tr></table></figure>
+<h2 id="3-用data去填充前端的页面"><a href="#3-用data去填充前端的页面" class="headerlink" title="3. 用data去填充前端的页面"></a>3. 用data去填充前端的页面</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">render(request, <span class="string">"xxx.html"</span>, data)</div></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> obj <span class="keyword">in</span> queryset %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"blog-post"</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"blog-post-title"</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.title &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"blog-post-meta"</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.timestamp &#125;&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Mark<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line"><span class="xml"></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.content &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line"><span class="xml"></span></div><div class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.blog-post --&gt;</span></span></div><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/5E6Nuje.png" alt=""></p>
+<h1 id="补充-Django的模板语言语法"><a href="#补充-Django的模板语言语法" class="headerlink" title="补充 Django的模板语言语法"></a>补充 Django的模板语言语法</h1><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span></div><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> x <span class="keyword">in</span> xx %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml"></span></div><div class="line"><span class="xml"></span><span class="template-variable">&#123;&#123; val &#125;&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
+<p>via <a href="http://v.youku.com/v_show/id_XMjUzMTM0MjQwOA==.html?spm=a2h0j.8191423.playlist_content.5!15~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.15" target="_blank" rel="external">Django1.10教程 -12 -Queryset介绍以及Template context补充</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/08/Django[12]Queryset介绍以及Template context补充/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Django[11]模板Template context和Bootstrap使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/08/Django[11]模板Template context和Bootstrap使用/">Django[11]模板Template context和Bootstrap使用</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/Django[11]模板Template context和Bootstrap使用/" class="archive-article-date">
+  	<time datetime="2017-10-08T07:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Template-context"><a href="#Template-context" class="headerlink" title="Template context"></a>Template context</h1><h2 id="视图views-py中："><a href="#视图views-py中：" class="headerlink" title="视图views.py中："></a><strong>视图views.py中</strong>：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</div><div class="line"></div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div><div class="line"></div><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	context = &#123;</div><div class="line">		<span class="string">"title"</span>： <span class="string">"home"</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>,context)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_create</span><span class="params">(request)</span>:</span></div><div class="line">	context = &#123;</div><div class="line">		<span class="string">"title"</span>： <span class="string">"create"</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>,context)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></div><div class="line">	context = &#123;</div><div class="line">		<span class="string">"title"</span>： <span class="string">"detail"</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>,context)</div></pre></td></tr></table></figure>
+<h2 id="index-html中"><a href="#index-html中" class="headerlink" title="index.html中"></a><strong>index.html中</strong></h2><p>用 <strong>context</strong>去填充模板 index.html，然后再返回</p>
+<p>index.html中添加如下代码：<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello </span><span class="template-variable">&#123;&#123; title &#125;&#125;</span><span class="xml">&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p><strong>context</strong>是一个字典,存放要渲染到页面的数据</p>
+<h1 id="Bootstrap模板使用"><a href="#Bootstrap模板使用" class="headerlink" title="Bootstrap模板使用"></a>Bootstrap模板使用</h1><h2 id="1-下载模板文件"><a href="#1-下载模板文件" class="headerlink" title="1. 下载模板文件"></a>1. 下载模板文件</h2><p><a href="http://v3.bootcss.com/examples/blog/" target="_blank" rel="external">模板文件链接</a></p>
+<h2 id="2-把html文件拷贝到了templates文件夹下面"><a href="#2-把html文件拷贝到了templates文件夹下面" class="headerlink" title="2. 把html文件拷贝到了templates文件夹下面"></a>2. 把html文件拷贝到了templates文件夹下面</h2><h2 id="3-新建一个statics文件夹，用于存放css文件和js文件"><a href="#3-新建一个statics文件夹，用于存放css文件和js文件" class="headerlink" title="3. 新建一个statics文件夹，用于存放css文件和js文件"></a>3. 新建一个statics文件夹，用于存放css文件和js文件</h2><h2 id="4-把css和js文件拷贝到statics文件夹下"><a href="#4-把css和js文件拷贝到statics文件夹下" class="headerlink" title="4. 把css和js文件拷贝到statics文件夹下"></a>4. 把css和js文件拷贝到statics文件夹下</h2><h2 id="5-在settings-py中配置statics文件夹"><a href="#5-在settings-py中配置statics文件夹" class="headerlink" title="5. 在settings.py中配置statics文件夹"></a>5. 在settings.py中配置statics文件夹</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">STATICFILES_DIRS = [</div><div class="line">    os<span class="selector-class">.path</span><span class="selector-class">.join</span>(BASE_DIR, <span class="string">"statics"</span>)</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="6-将html文件中指定位置的css和js文件的路径修改为-static-…"><a href="#6-将html文件中指定位置的css和js文件的路径修改为-static-…" class="headerlink" title="6. 将html文件中指定位置的css和js文件的路径修改为/static/…"></a>6. 将html文件中指定位置的css和js文件的路径修改为/static/…</h2><p><strong>文档结构如下：</strong></p>
+<p><img src="https://i.imgur.com/AGdigpr.png" alt=""></p>
+<p><strong>效果如图：</strong><br><img src="https://i.imgur.com/d85xmJA.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjUyMDA4Mzk4NA==.html?spm=a2h0j.8191423.playlist_content.5!14~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.14" target="_blank" rel="external">Django1.10教程 -11 -模板Template context和Bootstrap使用</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/08/Django[11]模板Template context和Bootstrap使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Django[10]模板Template的配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/08/Django[10]模板Template的配置/">Django[10]模板Template的配置</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/Django[10]模板Template的配置/" class="archive-article-date">
+  	<time datetime="2017-10-08T01:49:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="BASE-DIR-和-os-path-join-xx-xxx"><a href="#BASE-DIR-和-os-path-join-xx-xxx" class="headerlink" title="BASE_DIR 和 os.path.join(xx, xxx)"></a>BASE_DIR 和 os.path.join(xx, xxx)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="comment"># Build paths inside the project like this: os.path.join(BASE_DIR, ...)</span></div><div class="line">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))</div></pre></td></tr></table></figure>
+<h1 id="创建一个templates目录"><a href="#创建一个templates目录" class="headerlink" title="创建一个templates目录"></a>创建一个templates目录</h1><p><img src="https://i.imgur.com/8SnMh2q.png" alt=""></p>
+<h1 id="在settings-py中配置templates路径"><a href="#在settings-py中配置templates路径" class="headerlink" title="在settings.py中配置templates路径"></a>在settings.py中配置templates路径</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">TEMPLATES = [</div><div class="line">    &#123;</div><div class="line">        <span class="string">'BACKEND'</span>: <span class="string">'django.template.backends.django.DjangoTemplates'</span>,</div><div class="line">        <span class="string">'DIRS'</span>: [os.path.join(BASE_DIR,<span class="string">"templates"</span>)],</div><div class="line">        <span class="string">'APP_DIRS'</span>: <span class="keyword">True</span>,</div><div class="line">        <span class="string">'OPTIONS'</span>: &#123;</div><div class="line">            <span class="string">'context_processors'</span>: [</div><div class="line">                <span class="string">'django.template.context_processors.debug'</span>,</div><div class="line">                <span class="string">'django.template.context_processors.request'</span>,</div><div class="line">                <span class="string">'django.contrib.auth.context_processors.auth'</span>,</div><div class="line">                <span class="string">'django.contrib.messages.context_processors.messages'</span>,</div><div class="line">            ],</div><div class="line">        &#125;,</div><div class="line">    &#125;,</div><div class="line">]</div></pre></td></tr></table></figure>
+<h1 id="在templates文件夹下创建html文件"><a href="#在templates文件夹下创建html文件" class="headerlink" title="在templates文件夹下创建html文件"></a>在templates文件夹下创建html文件</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>try django<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World! Django!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="在views-py中使用templates目录下的html文件"><a href="#在views-py中使用templates目录下的html文件" class="headerlink" title="在views.py中使用templates目录下的html文件"></a>在views.py中使用templates目录下的html文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</div><div class="line"></div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div><div class="line"></div><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>)</div></pre></td></tr></table></figure>
+<h1 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h1><p><img src="https://i.imgur.com/2o9FySq.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjUyMDA3MDQ3Ng==.html?spm=a2h0j.8191423.playlist_content.5!13~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.13" target="_blank" rel="external">Django1.10教程 -10 -模板Template的配置</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/08/Django[10]模板Template的配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Django[09]配置URL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/08/Django[09]配置URL/">Django[09]配置URL</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/Django[09]配置URL/" class="archive-article-date">
+  	<time datetime="2017-10-08T00:57:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="bbs-URL-Configuration"><a href="#bbs-URL-Configuration" class="headerlink" title="bbs URL Configuration"></a>bbs URL Configuration</h1><p>The <code>urlpatterns</code> list routes URLs to views. For more information please see:<br>    <a href="https://docs.djangoproject.com/en/1.11/topics/http/urls/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.11/topics/http/urls/</a></p>
+<h1 id="Examples"><a href="#Examples" class="headerlink" title="Examples:"></a>Examples:</h1><h2 id="Function-views"><a href="#Function-views" class="headerlink" title="Function views"></a>Function views</h2><pre><code>1. Add an import:  from my_app import views
+2. Add a URL to urlpatterns:  url(r&apos;^$&apos;, views.home, name=&apos;home&apos;)
+</code></pre><h2 id="Class-based-views"><a href="#Class-based-views" class="headerlink" title="Class-based views"></a>Class-based views</h2><pre><code>1. Add an import:  from other_app.views import Home
+2. Add a URL to urlpatterns:  url(r&apos;^$&apos;, Home.as_view(), name=&apos;home&apos;)
+</code></pre><h2 id="Including-another-URLconf"><a href="#Including-another-URLconf" class="headerlink" title="Including another URLconf"></a>Including another URLconf</h2><pre><code>1. Import the include() function: from django.conf.urls import url, include
+2. Add a URL to urlpatterns:  url(r&apos;^blog/&apos;, include(&apos;blog.urls&apos;))
+</code></pre><h1 id="project-project-urls-py-中的urls-py常见的几种写法"><a href="#project-project-urls-py-中的urls-py常见的几种写法" class="headerlink" title="project(project/urls.py)中的urls.py常见的几种写法"></a>project(project/urls.py)中的urls.py常见的几种写法</h1><h2 id="1、基于function的view"><a href="#1、基于function的view" class="headerlink" title="1、基于function的view"></a>1、基于function的view</h2><p><a href="https://boredbird.github.io/2017/10/08/Django[08]%E7%AC%AC%E4%B8%80%E4%B8%AAview%EF%BC%88%E8%A7%86%E5%9B%BE%EF%BC%89/" target="_blank" rel="external">详见上回</a></p>
+<h2 id="2、基于class的view"><a href="#2、基于class的view" class="headerlink" title="2、基于class的view"></a>2、基于class的view</h2><h3 id="1、修改posts-app-下views-py"><a href="#1、修改posts-app-下views-py" class="headerlink" title="1、修改posts[app]下views.py"></a>1、修改posts[app]下views.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.views.generic <span class="keyword">import</span> ListView</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostList</span><span class="params">(ListView)</span>:</span></div><div class="line">	<span class="string">"""post的视图类"""</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></div><div class="line">		<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;post的视图类&lt;/h1&gt;"</span>)</div></pre></td></tr></table></figure>
+<h3 id="2、修改bbs-project-下urls-py"><a href="#2、修改bbs-project-下urls-py" class="headerlink" title="2、修改bbs[project]下urls.py"></a>2、修改bbs[project]下urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    <span class="comment"># url(r'^home/', views.posts_home),</span></div><div class="line">    url(<span class="string">r'^home/'</span>, views.PostList.as_view()),</div><div class="line">]</div></pre></td></tr></table></figure>
+<h3 id="3、效果"><a href="#3、效果" class="headerlink" title="3、效果"></a>3、效果</h3><p><img src="https://i.imgur.com/kgAiXW3.png" alt=""></p>
+<h2 id="3、view别名"><a href="#3、view别名" class="headerlink" title="3、view别名"></a>3、view别名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> app01 <span class="keyword">import</span> views <span class="keyword">as</span> app01_views</div><div class="line"><span class="keyword">from</span> app02 <span class="keyword">import</span> views <span class="keyword">as</span> app02_views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^home/'</span>, app01_views.posts_home),</div><div class="line">    url(<span class="string">r'^home/'</span>, app02_views.PostList.as_view()),</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="4、在app中的urls-py的使用"><a href="#4、在app中的urls-py的使用" class="headerlink" title="4、在app中的urls.py的使用"></a>4、在app中的urls.py的使用</h2><h3 id="1、posts-app-下增加urls-py："><a href="#1、posts-app-下增加urls-py：" class="headerlink" title="1、posts[app]下增加urls.py："></a>1、posts[app]下增加urls.py：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</div><div class="line">]</div></pre></td></tr></table></figure>
+<h3 id="2、在project下的urls-py-中设置第一级的路由："><a href="#2、在project下的urls-py-中设置第一级的路由：" class="headerlink" title="2、在project下的urls.py 中设置第一级的路由："></a>2、在project下的urls.py 中设置第一级的路由：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url,include</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</div><div class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> urls <span class="keyword">as</span> posts_urls</div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    <span class="comment"># url(r'^home/', views.posts_home),</span></div><div class="line">    <span class="comment"># url(r'^home/', views.PostList.as_view()),</span></div><div class="line">    url(<span class="string">r'^post/'</span>,include(posts_urls))</div><div class="line">]</div></pre></td></tr></table></figure>
+<h3 id="3、在app下的urls-py中设置第二级路由，同第一步："><a href="#3、在app下的urls-py中设置第二级路由，同第一步：" class="headerlink" title="3、在app下的urls.py中设置第二级路由，同第一步："></a>3、在app下的urls.py中设置第二级路由，同第一步：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</div><div class="line">]</div></pre></td></tr></table></figure>
+<h1 id="多视图示例"><a href="#多视图示例" class="headerlink" title="多视图示例"></a>多视图示例</h1><h2 id="1、app下的urls-py"><a href="#1、app下的urls-py" class="headerlink" title="1、app下的urls.py"></a>1、app下的urls.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^$'</span>, views.posts_home),</div><div class="line">    url(<span class="string">r'^create/$'</span>, views.posts_create),</div><div class="line">    url(<span class="string">r'^update/$'</span>, views.posts_update),</div><div class="line">    url(<span class="string">r'^detail/$'</span>, views.posts_detail),</div><div class="line">    url(<span class="string">r'^delete/$'</span>, views.posts_delete),</div><div class="line">    url(<span class="string">r'^'</span>, views.posts_home),</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="2、app下的view-py"><a href="#2、app下的view-py" class="headerlink" title="2、app下的view.py"></a>2、app下的view.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</div><div class="line"></div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div><div class="line"></div><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"Hello World!"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_create</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_create&lt;/h1&gt;"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_update</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_update&lt;/h1&gt;"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_detail&lt;/h1&gt;"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_delete</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_delete&lt;/h1&gt;"</span>)</div></pre></td></tr></table></figure>
+<p>注：</p>
+<p>1、如果匹配到排在上面的正则表达式那么就不会适配下面的正则表达式了</p>
+<p>2、不要忘记加’^’和’$’</p>
+<p>via <a href="https://docs.djangoproject.com/en/1.9/topics/class-based-views/" target="_blank" rel="external">Class-based views</a></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjQ4Mzc0NjkxNg==.html?spm=a2h0j.8191423.playlist_content.5!12~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.12" target="_blank" rel="external">Django1.10教程 -09 -配置URL</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/08/Django[09]配置URL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Django[08]第一个view（视图）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/08/Django[08]第一个view（视图）/">Django[08]第一个view（视图）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/Django[08]第一个view（视图）/" class="archive-article-date">
+  	<time datetime="2017-10-08T00:43:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="定义我们第一个视图"><a href="#定义我们第一个视图" class="headerlink" title="定义我们第一个视图"></a>定义我们第一个视图</h1><p>修改posts[app]下views.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"Hello World!"</span>)</div></pre></td></tr></table></figure></p>
+<h1 id="url建立映射到view"><a href="#url建立映射到view" class="headerlink" title="url建立映射到view"></a>url建立映射到view</h1><p>修改bbs[project]下urls.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/9QePi8q.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjQ3MzA0NzAxNg==.html?spm=a2h0j.8191423.playlist_content.5!11~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.11" target="_blank" rel="external">Django1.10教程 -08 -第一个view（视图）</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/08/Django[08]第一个view（视图）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Django[07]增删改查（CRUD）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -638,197 +1118,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Django[03]DjangoAdmin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/07/Django[03]DjangoAdmin/">Django[03]DjangoAdmin</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/07/Django[03]DjangoAdmin/" class="archive-article-date">
-  	<time datetime="2017-10-07T14:47:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="WSGI"><a href="#WSGI" class="headerlink" title="WSGI"></a>WSGI</h1><p>WSGI(Web  server gateway interface)：Web服务器网关接口是为Python语言定义的Web服务器和Web应用程序或框架之间的一种简单而通用的接口。自从WSGI被开发出来以后，许多其它语言中也出现了类似接口。</p>
-<p>web app &lt;-WSGI-&gt;web server(nginx/tomcat)</p>
-<h1 id="createsuperuser注意事项"><a href="#createsuperuser注意事项" class="headerlink" title="createsuperuser注意事项"></a>createsuperuser注意事项</h1><p>注：至少八个字符，不能是简单的数字</p>
-<h1 id="Django-admin使用的介绍"><a href="#Django-admin使用的介绍" class="headerlink" title="Django admin使用的介绍"></a>Django admin使用的介绍</h1><ul>
-<li>python manage.py runserver 127.0.0.1:8000</li>
-<li>浏览器里面输入：<a href="http://127.0.0.1:8000/admin/" target="_blank" rel="external">http://127.0.0.1:8000/admin/</a></li>
-<li>输入用户名、密码登录即可。</li>
-</ul>
-<h1 id="urls-py使用的介绍"><a href="#urls-py使用的介绍" class="headerlink" title="urls.py使用的介绍"></a>urls.py使用的介绍</h1><p>django的路由是通过正则表达式来匹配的。</p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg4NDk0NzA3Mg==.html?spm=a2h0j.8191423.playlist_content.5!4~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.4" target="_blank" rel="external">Django1.10教程[03]之DjangoAdmin</a></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg5Nzk3NTczNg==.html?spm=a2h0j.8191423.playlist_content.5!5~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.5" target="_blank" rel="external">Django1.10教程[03]之DjangoAdmin</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/07/Django[03]DjangoAdmin/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django[02]第一个django程序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/07/Django[02]第一个django程序/">Django[02]第一个django程序</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/07/Django[02]第一个django程序/" class="archive-article-date">
-  	<time datetime="2017-10-07T14:47:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>创建一个bbs项目</strong></p>
-<p><img src="https://i.imgur.com/2KEqYgu.png" alt=""></p>
-<p><strong>bbs可以作为一个独立的app部署，重命名文件名为src</strong></p>
-<p><img src="https://i.imgur.com/1hJclPe.png" alt=""></p>
-<p><strong>同步数据表：python .\manage.py migrate</strong></p>
-<p><img src="https://i.imgur.com/jxOPiG9.png" alt=""></p>
-<p><strong>修改setting.py配置文件</strong></p>
-<p><img src="https://i.imgur.com/Z75TCOq.png" alt=""></p>
-<p><strong>创建超级用户：python .\manage.py createsuperuser</strong><br><img src="https://i.imgur.com/XSlVyFQ.png" alt=""></p>
-<p><strong>启动服务：python .\manage.py runserver</strong></p>
-<p>浏览器中输入<a href="http://127.0.0.1:8000/admin/进入django的管理后台" target="_blank" rel="external">http://127.0.0.1:8000/admin/进入django的管理后台</a><br><img src="https://i.imgur.com/DjTCMZc.png" alt=""><br><img src="https://i.imgur.com/XQF0M6q.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg3NDg4MDEzMg==.html?spm=a2h0j.8191423.playlist_content.5!3~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.3" target="_blank" rel="external">Django1.10教程[02]之第一个Django程序</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/07/Django[02]第一个django程序/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Django[01]Virtualenv&amp;Django" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -887,6 +1176,10 @@ var _hmt = _hmt || [];
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">virtualenv</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -936,290 +1229,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Error Analysis (Post-Modeling)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/07/Error Analysis (Post-Modeling)/">Error Analysis (Post-Modeling)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/07/Error Analysis (Post-Modeling)/" class="archive-article-date">
-  	<time datetime="2017-10-07T06:44:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Error analysis</strong> is a broad term that refers to analyzing the misclassified or high error observations from your model and deciding on your next steps for improvement. This is performed after training your first model.</p>
-<p>Possible next steps include collecting more data, splitting the problem apart, or engineering new features that address the errors. To use error analysis for feature engineering, you’ll need to understand why your model missed its mark.</p>
-<p>Here’s how:</p>
-<ul>
-<li><strong>Start with larger errors:</strong> Error analysis is typically a manual process. You won’t have time to scrutinize every observation. We recommend starting with those that had higher error scores. Look for patterns that you can formalize into new features.</li>
-<li><strong>Segment by classes:</strong> Another technique is to segment your observations and compare the average error within each segment. You can try creating indicator variables for the segments with the highest errors.</li>
-<li><strong>Unsupervised clustering:</strong> If you have trouble spotting patterns, you can run an unsupervised clustering algorithm on the misclassified observations. We don’t recommend blindly using those clusters as a new feature, but they can make it easier to spot patterns. Remember, the goal is to understand why observations were misclassified.</li>
-<li><strong>Ask colleagues or domain experts:</strong> This is a great complement to any of the other three techniques. Asking a domain expert is especially useful if you’ve identified a pattern of poor performance (e.g. through segmentations) but don’t yet understand why.</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">特征工程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/07/Error Analysis (Post-Modeling)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-5 Tips for Writing Better Python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/07/5 Tips for Writing Better Python/">5 Tips for Writing Better Python</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/07/5 Tips for Writing Better Python/" class="archive-article-date">
-  	<time datetime="2017-10-07T04:53:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-Make-your-code-a-PIP-installable-Package"><a href="#1-Make-your-code-a-PIP-installable-Package" class="headerlink" title="1. Make your code a PIP-installable Package"></a>1. Make your code a PIP-installable Package</h1><p>When you come across a new Python package, it’s always easier to start using it if all you have to do is run “pip install” followed by the package name or location.</p>
-<p>There are a number of ways to do this, my “go to” being to create a setup.py file for my project.</p>
-<p>Assume we have a simple Flask program in “flask_example.py”:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="meta">@app.route('/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></div><div class="line">	<span class="keyword">return</span> <span class="string">'Hello, World!'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">	app.run()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == ‘__main__’:</div><div class="line">	main()</div></pre></td></tr></table></figure>
-<p>We can turn this into an installable Python package by first moving it into a separate folder (let’s call this “flask_example/”. Then, we can make a setup.py file in the root project folder that looks like this:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</div><div class="line"></div><div class="line">setup(</div><div class="line">    name=<span class="string">'flask_example'</span>,</div><div class="line">    version=<span class="string">'1.0'</span>,</div><div class="line">    description=<span class="string">'Hello, World! in flask.'</span>,</div><div class="line">    packages=[<span class="string">'flask_example'</span>],</div><div class="line">    install_requires=[</div><div class="line">        <span class="string">'Flask==0.12.2'</span></div><div class="line">    ],</div><div class="line">    entry_points = &#123;</div><div class="line">        <span class="string">'console_scripts'</span>: <span class="string">'runserver=flask_example.flask_example:main'</span></div><div class="line">    &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
-<p>This has a few advantages that comes with it. First, you can now install your app locally using “pip install -e .” This makes it easier for developers to clone and install your project because the setup.py file will take care of all the heavy lifting.</p>
-<p>Second, with the setup.py file comes dependency management. The install_requires variable allows you to define packages and specific versions to use. If you’re not sure what packages and versions you are using, run “pip freeze” to view them.</p>
-        
-          <a class="article-more-a" href="/2017/10/07/5 Tips for Writing Better Python/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/07/5 Tips for Writing Better Python/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-逻辑回归评分卡调优（五）之增加高阶特征" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/">逻辑回归评分卡调优（五）之增加高阶特征</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/" class="archive-article-date">
-  	<time datetime="2017-10-06T02:55:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B/" target="_blank" rel="external">上回</a>的基础上，我们可以看到根据业务理解<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B/" target="_blank" rel="external">分割模型</a>带来了模型效果的提升。这节我们尝试通过增加高阶特征来增强模型的表达能力。由于备选变量比较多，盲目的全部生成高阶特征会造成特征数量指数级的爆炸式增长，这个不是我想要的，所以先根据IV值进行单变量特征选择，筛选比较重要的变量，然后再次基础上才生成高阶特征。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">   __author__ = <span class="string">'boredbird'</span></div><div class="line">   <span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line">   <span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">   <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">   <span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line">   <span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line">   <span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</div><div class="line">   <span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> l1_min_c</div><div class="line">   <span class="keyword">from</span> scipy.stats <span class="keyword">import</span> ks_2samp</div><div class="line">   <span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</div><div class="line">   </div><div class="line">   get_ks = <span class="keyword">lambda</span> y_pred,y_true: ks_2samp(y_pred[y_true==<span class="number">1</span>], y_pred[y_true!=<span class="number">1</span>]).statistic</div><div class="line">   </div><div class="line">   dataset_train = pd.read_csv(<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_woe_trans.csv'</span>)</div><div class="line">   cfg = pd.read_csv(<span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span>)</div><div class="line">   </div><div class="line">   poly_features = [</div><div class="line"></div><div class="line">]</div><div class="line">   </div><div class="line">   y_train = dataset_train[<span class="string">'target'</span>]</div><div class="line">   poly = PolynomialFeatures(<span class="number">2</span>)</div><div class="line">   X_train = poly.fit_transform(dataset_train[poly_features])</div><div class="line">   </div><div class="line">   <span class="keyword">del</span> dataset_train</div><div class="line">   <span class="keyword">import</span> gc</div><div class="line">   gc.collect()</div><div class="line"></div><div class="line">   <span class="comment"># init a LogisticRegression model</span></div><div class="line">   clf_l1_LR = LogisticRegression(C=<span class="number">0.1</span>, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>)</div><div class="line">   cs = l1_min_c(X_train, y_train, loss=<span class="string">'log'</span>) * np.logspace(<span class="number">0</span>, <span class="number">3</span>)</div><div class="line">   </div><div class="line">   print(<span class="string">"Computing regularization path ..."</span>)</div><div class="line">   start = datetime.now()</div><div class="line">   <span class="keyword">print</span> start</div><div class="line">   coefs_ = []</div><div class="line">   ks = []</div><div class="line">   <span class="keyword">for</span> c <span class="keyword">in</span> cs:</div><div class="line">   clf_l1_LR.set_params(C=c)</div><div class="line">   clf_l1_LR.fit(X_train, y_train)</div><div class="line">   coefs_.append(clf_l1_LR.coef_.ravel().copy())</div><div class="line">   </div><div class="line">   proba = clf_l1_LR.predict_proba(X_train)[:,<span class="number">1</span>]</div><div class="line">   ks.append(get_ks(proba,y_train))</div><div class="line">   </div><div class="line">   end = datetime.now()</div><div class="line">   <span class="keyword">print</span> end</div><div class="line">   print(<span class="string">"This took "</span>, end - start)</div><div class="line">   </div><div class="line">   coef_cv_df = pd.DataFrame(coefs_)</div><div class="line">   coef_cv_df.to_csv(<span class="string">'E:\\Code\\ScoreCard\\agr_coef_cv_df_poly.csv'</span>)</div><div class="line">   </div><div class="line">   coefs_ = np.array(coefs_)</div><div class="line">   </div><div class="line">   fig1 = plt.figure(<span class="string">'fig1'</span>)</div><div class="line">   plt.plot(np.log10(cs), coefs_)</div><div class="line">   ymin, ymax = plt.ylim()</div><div class="line">   plt.xlabel(<span class="string">'log(C)'</span>)</div><div class="line">   plt.ylabel(<span class="string">'Coefficients'</span>)</div><div class="line">   plt.title(<span class="string">'Logistic Regression Path Poly'</span>)</div><div class="line">   plt.axis(<span class="string">'tight'</span>)</div><div class="line">   plt.show()</div><div class="line">   </div><div class="line">   fig2 = plt.figure(<span class="string">'fig2'</span>)</div><div class="line">   plt.plot(np.log10(cs), ks)</div><div class="line">   plt.xlabel(<span class="string">'log(C)'</span>)</div><div class="line">   plt.ylabel(<span class="string">'ks score'</span>)</div><div class="line">   plt.title(<span class="string">'Logistic Regression Performance Poly'</span>)</div><div class="line">   plt.axis(<span class="string">'tight'</span>)</div><div class="line">   plt.show()</div><div class="line">   </div><div class="line">   fig2.show()</div><div class="line">   fig1.show()</div></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/t4Z4KC8.png" alt=""></p>
-<p><img src="https://i.imgur.com/7gkS2nc.png" alt=""></p>
-<p>注：X_train第一列是常数项，就是系数图中的那条蓝色线。</p>
-<p>从模型的表现来看，模型效果并没有显著提升，根据奥卡姆剃刀原理，放弃采用高阶特征。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">评分卡</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">逻辑回归</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -1354,7 +1366,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color1">virtualenv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1362,7 +1374,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1382,10 +1414,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">NN</a>
               </li>
              
@@ -1395,6 +1423,42 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">dropout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">data augmentation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ensembles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">transfer learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,22 +1482,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dropout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">data augmentation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ensembles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">transfer learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SVM</a>
               </li>
              
@@ -1442,19 +1490,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+                <a href="javascript:void(0)" class="js-tag color3">ConvNet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1462,15 +1498,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ConvNet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hive</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1491,6 +1519,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模块</a>
               </li>
             
             <div class="clearfix"></div>

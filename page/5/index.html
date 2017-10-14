@@ -177,6 +177,384 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Django[03]DjangoAdmin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/07/Django[03]DjangoAdmin/">Django[03]DjangoAdmin</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/07/Django[03]DjangoAdmin/" class="archive-article-date">
+  	<time datetime="2017-10-07T14:47:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="WSGI"><a href="#WSGI" class="headerlink" title="WSGI"></a>WSGI</h1><p>WSGI(Web  server gateway interface)：Web服务器网关接口是为Python语言定义的Web服务器和Web应用程序或框架之间的一种简单而通用的接口。自从WSGI被开发出来以后，许多其它语言中也出现了类似接口。</p>
+<p>web app &lt;-WSGI-&gt;web server(nginx/tomcat)</p>
+<h1 id="createsuperuser注意事项"><a href="#createsuperuser注意事项" class="headerlink" title="createsuperuser注意事项"></a>createsuperuser注意事项</h1><p>注：至少八个字符，不能是简单的数字</p>
+<h1 id="Django-admin使用的介绍"><a href="#Django-admin使用的介绍" class="headerlink" title="Django admin使用的介绍"></a>Django admin使用的介绍</h1><ul>
+<li>python manage.py runserver 127.0.0.1:8000</li>
+<li>浏览器里面输入：<a href="http://127.0.0.1:8000/admin/" target="_blank" rel="external">http://127.0.0.1:8000/admin/</a></li>
+<li>输入用户名、密码登录即可。</li>
+</ul>
+<h1 id="urls-py使用的介绍"><a href="#urls-py使用的介绍" class="headerlink" title="urls.py使用的介绍"></a>urls.py使用的介绍</h1><p>django的路由是通过正则表达式来匹配的。</p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg4NDk0NzA3Mg==.html?spm=a2h0j.8191423.playlist_content.5!4~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.4" target="_blank" rel="external">Django1.10教程[03]之DjangoAdmin</a></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg5Nzk3NTczNg==.html?spm=a2h0j.8191423.playlist_content.5!5~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.5" target="_blank" rel="external">Django1.10教程[03]之DjangoAdmin</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/07/Django[03]DjangoAdmin/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Django[02]第一个django程序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/07/Django[02]第一个django程序/">Django[02]第一个django程序</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/07/Django[02]第一个django程序/" class="archive-article-date">
+  	<time datetime="2017-10-07T14:47:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>创建一个bbs项目</strong></p>
+<p><img src="https://i.imgur.com/2KEqYgu.png" alt=""></p>
+<p><strong>bbs可以作为一个独立的app部署，重命名文件名为src</strong></p>
+<p><img src="https://i.imgur.com/1hJclPe.png" alt=""></p>
+<p><strong>同步数据表：python .\manage.py migrate</strong></p>
+<p><img src="https://i.imgur.com/jxOPiG9.png" alt=""></p>
+<p><strong>修改setting.py配置文件</strong></p>
+<p><img src="https://i.imgur.com/Z75TCOq.png" alt=""></p>
+<p><strong>创建超级用户：python .\manage.py createsuperuser</strong><br><img src="https://i.imgur.com/XSlVyFQ.png" alt=""></p>
+<p><strong>启动服务：python .\manage.py runserver</strong></p>
+<p>浏览器中输入<a href="http://127.0.0.1:8000/admin/进入django的管理后台" target="_blank" rel="external">http://127.0.0.1:8000/admin/进入django的管理后台</a><br><img src="https://i.imgur.com/DjTCMZc.png" alt=""><br><img src="https://i.imgur.com/XQF0M6q.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg3NDg4MDEzMg==.html?spm=a2h0j.8191423.playlist_content.5!3~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.3" target="_blank" rel="external">Django1.10教程[02]之第一个Django程序</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/07/Django[02]第一个django程序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Error Analysis (Post-Modeling)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/07/Error Analysis (Post-Modeling)/">Error Analysis (Post-Modeling)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/07/Error Analysis (Post-Modeling)/" class="archive-article-date">
+  	<time datetime="2017-10-07T06:44:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Error analysis</strong> is a broad term that refers to analyzing the misclassified or high error observations from your model and deciding on your next steps for improvement. This is performed after training your first model.</p>
+<p>Possible next steps include collecting more data, splitting the problem apart, or engineering new features that address the errors. To use error analysis for feature engineering, you’ll need to understand why your model missed its mark.</p>
+<p>Here’s how:</p>
+<ul>
+<li><strong>Start with larger errors:</strong> Error analysis is typically a manual process. You won’t have time to scrutinize every observation. We recommend starting with those that had higher error scores. Look for patterns that you can formalize into new features.</li>
+<li><strong>Segment by classes:</strong> Another technique is to segment your observations and compare the average error within each segment. You can try creating indicator variables for the segments with the highest errors.</li>
+<li><strong>Unsupervised clustering:</strong> If you have trouble spotting patterns, you can run an unsupervised clustering algorithm on the misclassified observations. We don’t recommend blindly using those clusters as a new feature, but they can make it easier to spot patterns. Remember, the goal is to understand why observations were misclassified.</li>
+<li><strong>Ask colleagues or domain experts:</strong> This is a great complement to any of the other three techniques. Asking a domain expert is especially useful if you’ve identified a pattern of poor performance (e.g. through segmentations) but don’t yet understand why.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">特征工程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/07/Error Analysis (Post-Modeling)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-5 Tips for Writing Better Python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/07/5 Tips for Writing Better Python/">5 Tips for Writing Better Python</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/07/5 Tips for Writing Better Python/" class="archive-article-date">
+  	<time datetime="2017-10-07T04:53:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-Make-your-code-a-PIP-installable-Package"><a href="#1-Make-your-code-a-PIP-installable-Package" class="headerlink" title="1. Make your code a PIP-installable Package"></a>1. Make your code a PIP-installable Package</h1><p>When you come across a new Python package, it’s always easier to start using it if all you have to do is run “pip install” followed by the package name or location.</p>
+<p>There are a number of ways to do this, my “go to” being to create a setup.py file for my project.</p>
+<p>Assume we have a simple Flask program in “flask_example.py”:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line"><span class="meta">@app.route('/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></div><div class="line">	<span class="keyword">return</span> <span class="string">'Hello, World!'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">	app.run()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == ‘__main__’:</div><div class="line">	main()</div></pre></td></tr></table></figure>
+<p>We can turn this into an installable Python package by first moving it into a separate folder (let’s call this “flask_example/”. Then, we can make a setup.py file in the root project folder that looks like this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</div><div class="line"></div><div class="line">setup(</div><div class="line">    name=<span class="string">'flask_example'</span>,</div><div class="line">    version=<span class="string">'1.0'</span>,</div><div class="line">    description=<span class="string">'Hello, World! in flask.'</span>,</div><div class="line">    packages=[<span class="string">'flask_example'</span>],</div><div class="line">    install_requires=[</div><div class="line">        <span class="string">'Flask==0.12.2'</span></div><div class="line">    ],</div><div class="line">    entry_points = &#123;</div><div class="line">        <span class="string">'console_scripts'</span>: <span class="string">'runserver=flask_example.flask_example:main'</span></div><div class="line">    &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>This has a few advantages that comes with it. First, you can now install your app locally using “pip install -e .” This makes it easier for developers to clone and install your project because the setup.py file will take care of all the heavy lifting.</p>
+<p>Second, with the setup.py file comes dependency management. The install_requires variable allows you to define packages and specific versions to use. If you’re not sure what packages and versions you are using, run “pip freeze” to view them.</p>
+        
+          <a class="article-more-a" href="/2017/10/07/5 Tips for Writing Better Python/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/07/5 Tips for Writing Better Python/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-逻辑回归评分卡调优（六）之模型融合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -242,6 +620,100 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/06/逻辑回归评分卡调优（六）之模型融合/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-逻辑回归评分卡调优（五）之增加高阶特征" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/">逻辑回归评分卡调优（五）之增加高阶特征</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/" class="archive-article-date">
+  	<time datetime="2017-10-06T02:55:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B/" target="_blank" rel="external">上回</a>的基础上，我们可以看到根据业务理解<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B/" target="_blank" rel="external">分割模型</a>带来了模型效果的提升。这节我们尝试通过增加高阶特征来增强模型的表达能力。由于备选变量比较多，盲目的全部生成高阶特征会造成特征数量指数级的爆炸式增长，这个不是我想要的，所以先根据IV值进行单变量特征选择，筛选比较重要的变量，然后再次基础上才生成高阶特征。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">   __author__ = <span class="string">'boredbird'</span></div><div class="line">   <span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line">   <span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">   <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">   <span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line">   <span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line">   <span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</div><div class="line">   <span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> l1_min_c</div><div class="line">   <span class="keyword">from</span> scipy.stats <span class="keyword">import</span> ks_2samp</div><div class="line">   <span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</div><div class="line">   </div><div class="line">   get_ks = <span class="keyword">lambda</span> y_pred,y_true: ks_2samp(y_pred[y_true==<span class="number">1</span>], y_pred[y_true!=<span class="number">1</span>]).statistic</div><div class="line">   </div><div class="line">   dataset_train = pd.read_csv(<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_woe_trans.csv'</span>)</div><div class="line">   cfg = pd.read_csv(<span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span>)</div><div class="line">   </div><div class="line">   poly_features = [</div><div class="line"></div><div class="line">]</div><div class="line">   </div><div class="line">   y_train = dataset_train[<span class="string">'target'</span>]</div><div class="line">   poly = PolynomialFeatures(<span class="number">2</span>)</div><div class="line">   X_train = poly.fit_transform(dataset_train[poly_features])</div><div class="line">   </div><div class="line">   <span class="keyword">del</span> dataset_train</div><div class="line">   <span class="keyword">import</span> gc</div><div class="line">   gc.collect()</div><div class="line"></div><div class="line">   <span class="comment"># init a LogisticRegression model</span></div><div class="line">   clf_l1_LR = LogisticRegression(C=<span class="number">0.1</span>, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>)</div><div class="line">   cs = l1_min_c(X_train, y_train, loss=<span class="string">'log'</span>) * np.logspace(<span class="number">0</span>, <span class="number">3</span>)</div><div class="line">   </div><div class="line">   print(<span class="string">"Computing regularization path ..."</span>)</div><div class="line">   start = datetime.now()</div><div class="line">   <span class="keyword">print</span> start</div><div class="line">   coefs_ = []</div><div class="line">   ks = []</div><div class="line">   <span class="keyword">for</span> c <span class="keyword">in</span> cs:</div><div class="line">   clf_l1_LR.set_params(C=c)</div><div class="line">   clf_l1_LR.fit(X_train, y_train)</div><div class="line">   coefs_.append(clf_l1_LR.coef_.ravel().copy())</div><div class="line">   </div><div class="line">   proba = clf_l1_LR.predict_proba(X_train)[:,<span class="number">1</span>]</div><div class="line">   ks.append(get_ks(proba,y_train))</div><div class="line">   </div><div class="line">   end = datetime.now()</div><div class="line">   <span class="keyword">print</span> end</div><div class="line">   print(<span class="string">"This took "</span>, end - start)</div><div class="line">   </div><div class="line">   coef_cv_df = pd.DataFrame(coefs_)</div><div class="line">   coef_cv_df.to_csv(<span class="string">'E:\\Code\\ScoreCard\\agr_coef_cv_df_poly.csv'</span>)</div><div class="line">   </div><div class="line">   coefs_ = np.array(coefs_)</div><div class="line">   </div><div class="line">   fig1 = plt.figure(<span class="string">'fig1'</span>)</div><div class="line">   plt.plot(np.log10(cs), coefs_)</div><div class="line">   ymin, ymax = plt.ylim()</div><div class="line">   plt.xlabel(<span class="string">'log(C)'</span>)</div><div class="line">   plt.ylabel(<span class="string">'Coefficients'</span>)</div><div class="line">   plt.title(<span class="string">'Logistic Regression Path Poly'</span>)</div><div class="line">   plt.axis(<span class="string">'tight'</span>)</div><div class="line">   plt.show()</div><div class="line">   </div><div class="line">   fig2 = plt.figure(<span class="string">'fig2'</span>)</div><div class="line">   plt.plot(np.log10(cs), ks)</div><div class="line">   plt.xlabel(<span class="string">'log(C)'</span>)</div><div class="line">   plt.ylabel(<span class="string">'ks score'</span>)</div><div class="line">   plt.title(<span class="string">'Logistic Regression Performance Poly'</span>)</div><div class="line">   plt.axis(<span class="string">'tight'</span>)</div><div class="line">   plt.show()</div><div class="line">   </div><div class="line">   fig2.show()</div><div class="line">   fig1.show()</div></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/t4Z4KC8.png" alt=""></p>
+<p><img src="https://i.imgur.com/7gkS2nc.png" alt=""></p>
+<p>注：X_train第一列是常数项，就是系数图中的那条蓝色线。</p>
+<p>从模型的表现来看，模型效果并没有显著提升，根据奥卡姆剃刀原理，放弃采用高阶特征。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">评分卡</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">逻辑回归</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/">展开全文 >></a>
         </p>
       
 
@@ -710,533 +1182,9 @@ fig1.show()
 
 
   
-    <article id="post-逻辑回归评分卡调优（一）之数据集初探" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/04/逻辑回归评分卡调优（一）之数据集初探/">逻辑回归评分卡调优（一）之数据集初探</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/04/逻辑回归评分卡调优（一）之数据集初探/" class="archive-article-date">
-  	<time datetime="2017-10-04T03:38:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本系列记录我在工作中针对同一个数据集，运用逻辑回归（评分卡）模型不断尝试去提升模型ks值表现的过程。并不是范例，更谈不上指导意义。主要是为了记录自己的思考与验证过程，怕随便零散的写在代码注释里过后就忘了。</p>
-<p>评分卡模型在数据处理过程中常用到woe转换，这部分的工作我采用了Python的包<a href="https://github.com/boredbird/woe" target="_blank" rel="external">woe</a>来完成。</p>
-<p><a href="https://github.com/boredbird/woe" target="_blank" rel="external">Woe</a> is a python package containing useful tools for WoE Transformation mostly used in ScoreCard Model for Credit Rating.</p>
-<p><a href="https://github.com/boredbird/woe" target="_blank" rel="external">woe</a>包中树节点的分裂方法，是一种Local近似算法。对于每个特征，只考察分位点，减少计算复杂度；每次分裂前，重新提出候选切分点。</p>
-<p>关于树节点分裂方法，<a href="https://boredbird.github.io/2017/10/02/GBDT%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%AE%80%E4%BB%8B-%E6%9D%A5%E8%87%AAwepon%E7%9A%84%E5%88%86%E4%BA%AB/" target="_blank" rel="external">这里</a>有简单的介绍。</p>
-<p>#数据初步处理</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div></pre></td><td class="code"><pre><div class="line">    <span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line">    __author__ = <span class="string">'boredbird'</span></div><div class="line">    <span class="keyword">import</span> os</div><div class="line">    <span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line">    <span class="keyword">import</span> woe.config <span class="keyword">as</span> config</div><div class="line">    <span class="keyword">import</span> woe.feature_process <span class="keyword">as</span> fp</div><div class="line">    <span class="keyword">import</span> woe.eval <span class="keyword">as</span> eval</div><div class="line">    <span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">    <span class="keyword">import</span> copy</div><div class="line">    </div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    导入数据集与配置文件</span></div><div class="line"><span class="string">    '''</span></div><div class="line">    config_path = <span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span></div><div class="line">    data_path = <span class="string">'E:\\ScoreCard\\rawdata\\whitelist\\pos_model_var_tbl_train_20160206.csv'</span></div><div class="line">    cfg = config.config()</div><div class="line">    cfg.load_file(config_path,data_path)</div><div class="line">    </div><div class="line">	<span class="string">'''</span></div><div class="line"><span class="string">    填充空值</span></div><div class="line"><span class="string">    '''</span></div><div class="line">    <span class="keyword">for</span> var <span class="keyword">in</span> cfg.bin_var_list:</div><div class="line">    <span class="comment"># fill null</span></div><div class="line">    cfg.dataset_train.loc[cfg.dataset_train[var].isnull(), (var)] = <span class="number">-1</span></div><div class="line">    </div><div class="line">    <span class="comment"># change feature dtypes</span></div><div class="line">    fp.change_feature_dtype(cfg.dataset_train, cfg.variable_type)</div><div class="line">    </div><div class="line">    rst = []</div><div class="line">    </div><div class="line">    columns = [<span class="string">'cus_id'</span>]</div><div class="line">    columns.extend(cfg.candidate_var_list)</div><div class="line">    columns.append(<span class="string">'target'</span>)</div><div class="line">    </div><div class="line">    dataset_train = cfg.dataset_train[columns]</div><div class="line">    </div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    删除不用的变量，导出数据集，减少内存占用</span></div><div class="line"><span class="string">    '''</span></div><div class="line">    dataset_train.to_csv(<span class="string">'E:\\ScoreCard\\pos_model_var_eliminated_train_20160206.csv'</span>)</div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    重新导入数据集</span></div><div class="line"><span class="string">    并指定变量类型</span></div><div class="line"><span class="string">    '''</span></div><div class="line">    config_path = <span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span></div><div class="line">    data_path = <span class="string">'E:\\ScoreCard\\pos_model_var_eliminated_train_20160206.csv'</span></div><div class="line">    cfg = config.config()</div><div class="line">    cfg.load_file(config_path,data_path)</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.bin_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(cfg.dataset_train.columns)]:</div><div class="line">    	<span class="comment"># fill null</span></div><div class="line">    	cfg.dataset_train.loc[cfg.dataset_train[var].isnull(), (var)] = <span class="number">-1</span></div><div class="line"></div><div class="line">    <span class="comment"># change feature dtypes</span></div><div class="line">    fp.change_feature_dtype(cfg.dataset_train, cfg.variable_type)</div><div class="line">    </div><div class="line">    rst = []</div><div class="line">    </div><div class="line">    <span class="comment"># process woe transformation of continuous variables</span></div><div class="line">    <span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.bin_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(cfg.dataset_train.columns)]:</div><div class="line">    	rst.append(fp.proc_woe_continuous(cfg.dataset_train,var,cfg.global_bt,cfg.global_gt,cfg.min_sample,alpha=<span class="number">0.05</span>))</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    保存rst至文件</span></div><div class="line"><span class="string">	'''</span></div><div class="line">    <span class="keyword">import</span> pickle</div><div class="line">    output = open(<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list.pkl'</span>, <span class="string">'wb'</span>)</div><div class="line">    pickle.dump(rst,output)</div><div class="line">    output.close()</div><div class="line">    </div><div class="line">	<span class="string">'''</span></div><div class="line"><span class="string">    格式化输出feature_detail，查看每个变量的iV值</span></div><div class="line"><span class="string">    '''</span></div><div class="line">    feature_detail = eval.eval_feature_detail(rst,<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_feature_detail.csv'</span>)</div><div class="line">```    </div><div class="line"></div><div class="line"><span class="comment">#Woe 转换  </span></div><div class="line"></div><div class="line">``` python</div><div class="line">  </div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    Woe Transformation</span></div><div class="line"><span class="string">    '''</span></div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    加载用于存储分割点信息的列表rst</span></div><div class="line"><span class="string">    '''</span></div><div class="line">    <span class="keyword">import</span> pickle</div><div class="line">    output = open(<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list.pkl'</span>, <span class="string">'rb'</span>)</div><div class="line">    rst = pickle.load(output)</div><div class="line">    output.close()</div><div class="line"></div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    FILL NULL</span></div><div class="line"><span class="string">    因为在生成rst之前做了空值填充处理，</span></div><div class="line"><span class="string">    所以在利用rst进行woe转换之前，也要分别对连续变量和离散变量做同样的空值填充。</span></div><div class="line"><span class="string">    '''</span></div><div class="line">    <span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.bin_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(cfg.dataset_train.columns)]:</div><div class="line">    	<span class="comment"># fill null</span></div><div class="line">    	cfg.dataset_train.loc[cfg.dataset_train[var].isnull(), (var)] = <span class="number">-1</span></div><div class="line">    </div><div class="line">    <span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.discrete_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(cfg.dataset_train.columns)]:</div><div class="line">    	<span class="comment"># fill null</span></div><div class="line">    	cfg.dataset_train.loc[cfg.dataset_train[var].isnull(), (var)] = <span class="string">'missing'</span></div><div class="line">    </div><div class="line">    <span class="comment">#Training dataset Woe Transformation</span></div><div class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> rst:</div><div class="line">    	cfg.dataset_train[r.var_name] = fp.woe_trans(cfg.dataset_train[r.var_name],r)</div><div class="line">    </div><div class="line">    cfg.dataset_train.to_csv(<span class="string">'E:\\ScoreCard\\pos_model_woe_transformated_train_20160206.csv'</span>)</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="string">'''</span></div><div class="line"><span class="string">    Validation Dataset Transformation</span></div><div class="line"><span class="string">    '''</span></div><div class="line">    <span class="comment">#load dataset and eliminate variables</span></div><div class="line">    dataset_validation = pd.read_csv(<span class="string">'E:\\ScoreCard\\rawdata\\whitelist\\pos_model_var_tbl_validation_20160806.csv'</span>)</div><div class="line">    var_exists_list = [rst[i].var_name <span class="keyword">for</span> i <span class="keyword">in</span> range(len(rst))]</div><div class="line">    var_exists_list.extend([<span class="string">'cus_id'</span>,<span class="string">'target'</span>,])</div><div class="line">    columns_to_drop = [var <span class="keyword">for</span> var <span class="keyword">in</span> dataset_validation.columns <span class="keyword">if</span> var <span class="keyword">not</span> <span class="keyword">in</span> var_exists_list]</div><div class="line">    dataset_validation = dataset_validation.drop(columns_to_drop,axis=<span class="number">1</span>)</div><div class="line">    </div><div class="line">    <span class="comment">#change variable dtypes before woe transformation</span></div><div class="line">    <span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.bin_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(dataset_validation.columns)]:</div><div class="line">    	<span class="comment"># fill null</span></div><div class="line">    	dataset_validation.loc[dataset_validation[var].isnull(), (var)] = <span class="number">-1</span></div><div class="line">    </div><div class="line">    <span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.discrete_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(dataset_validation.columns)]:</div><div class="line">    	<span class="comment"># fill null</span></div><div class="line">    	dataset_validation.loc[dataset_validation[var].isnull(), (var)] = <span class="string">'missing'</span></div><div class="line">    </div><div class="line">    <span class="comment">#Validation dataset Woe Transformation</span></div><div class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> rst:</div><div class="line">		<span class="keyword">if</span> r.var_name <span class="keyword">in</span> dataset_validation.columns:</div><div class="line">    		dataset_validation[r.var_name] = woe_trans(dataset_validation[r.var_name],r)</div><div class="line">    </div><div class="line">    dataset_validation.to_csv(<span class="string">'E:\\ScoreCard\\pos_model_woe_transformated_validation_20160806.csv'</span>)</div><div class="line">```    </div><div class="line">    </div><div class="line"><span class="comment">#跑Logit Regression  </span></div><div class="line"></div><div class="line">基于woe替换后的变量，删除iV值比较低的（删除了iv小于<span class="number">0.01</span>的变量），调用statsmodels跑逻辑回归。</div><div class="line"></div><div class="line">``` python</div><div class="line">    <span class="keyword">import</span> os</div><div class="line">    <span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line">    <span class="keyword">import</span> woe.config <span class="keyword">as</span> config</div><div class="line">    <span class="keyword">import</span> woe.feature_process <span class="keyword">as</span> fp</div><div class="line">    <span class="keyword">import</span> woe.eval <span class="keyword">as</span> eval</div><div class="line">    <span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">    </div><div class="line">    </div><div class="line">    dataset_train = pd.read_csv(<span class="string">'E:\\ScoreCard\\pos_model_woe_transformated_train_20160206_new.csv'</span>)</div><div class="line">    cfg = pd.read_csv(<span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span>)</div><div class="line">    candidate_var_list = cfg[cfg[<span class="string">'is_modelfeature'</span>] == <span class="number">1</span>][<span class="string">'var_name'</span>]</div><div class="line">    </div><div class="line">    <span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">    <span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line">    </div><div class="line">    X = dataset_train[candidate_var_list]</div><div class="line">    y = dataset_train[<span class="string">'target'</span>]</div><div class="line">    </div><div class="line">    X_train, X_test, y_train, y_test = train_test_split(</div><div class="line">    X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">32</span>)</div><div class="line">    </div><div class="line">    <span class="keyword">import</span> statsmodels.api <span class="keyword">as</span> sm</div><div class="line">    logit_mod = sm.Logit(y_train,X_train)</div><div class="line">    logit_res = logit_mod.fit(disp=<span class="number">0</span>)</div><div class="line">    <span class="comment"># print('Parameters: ', logit_res.params)</span></div><div class="line">    <span class="keyword">print</span> logit_res.summary()</div></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/6WYDulm.png" alt="">  </p>
-<p>由上表可以看出当前这个模型存在两个问题：</p>
-<p>1、存在变量系数显著性检验p值不通过的变量；</p>
-<p>2、存在coef系数为负的情况，本身经过了woe转换后的变量的woe值与LR的概率值是正相关关系，系数应该为正，这种情况应该是变量之间的多重共线性导致的。</p>
-<p>#模型评价，K-S</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> ks_2samp</div><div class="line">get_ks = <span class="keyword">lambda</span> y_pred,y_true: ks_2samp(y_pred[y_true==<span class="number">1</span>], y_pred[y_true!=<span class="number">1</span>]).statistic</div><div class="line">proba = logit_res.predict(X_train)</div><div class="line">get_ks(proba,y_train)</div><div class="line"><span class="comment"># 0.35121344450518605</span></div><div class="line"></div><div class="line">proba = logit_res.predict(X_test)</div><div class="line">get_ks(proba,y_test)</div><div class="line"><span class="comment"># 0.34393694879059489</span></div><div class="line"></div><div class="line">proba = logit_res.predict(dataset_validation[features_list])</div><div class="line">get_ks(proba,dataset_validation[<span class="string">'target'</span>])</div><div class="line"><span class="comment"># 0.35956755211806057</span></div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">评分卡</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">逻辑回归</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/04/逻辑回归评分卡调优（一）之数据集初探/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LightGBM与XGBoost对比" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/02/LightGBM与XGBoost对比/">LightGBM与XGBoost对比</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/02/LightGBM与XGBoost对比/" class="archive-article-date">
-  	<time datetime="2017-10-02T09:47:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="XGBoost的系统设计"><a href="#XGBoost的系统设计" class="headerlink" title="XGBoost的系统设计"></a>XGBoost的系统设计</h1><p><img src="https://i.imgur.com/sLs0PPZ.png" alt=""></p>
-<h1 id="更高效的工具包LightGBM"><a href="#更高效的工具包LightGBM" class="headerlink" title="更高效的工具包LightGBM"></a>更高效的工具包LightGBM</h1><p><img src="https://i.imgur.com/xfWtQBO.png" alt=""></p>
-<h1 id="LightGBM的改进"><a href="#LightGBM的改进" class="headerlink" title="LightGBM的改进"></a>LightGBM的改进</h1><h2 id="直方图算法"><a href="#直方图算法" class="headerlink" title="直方图算法"></a>直方图算法</h2><p><img src="https://i.imgur.com/XBl65sA.png" alt=""></p>
-<h2 id="直方图加速"><a href="#直方图加速" class="headerlink" title="直方图加速"></a>直方图加速</h2><p><img src="https://i.imgur.com/W6FqpZs.png" alt=""></p>
-<h2 id="建树过程的两种方法：Level-wise和Leaf-wise"><a href="#建树过程的两种方法：Level-wise和Leaf-wise" class="headerlink" title="建树过程的两种方法：Level-wise和Leaf-wise"></a>建树过程的两种方法：Level-wise和Leaf-wise</h2><p><img src="https://i.imgur.com/4mPJwPo.png" alt=""></p>
-<h1 id="并行优化（Optimization-in-parallel-learning）"><a href="#并行优化（Optimization-in-parallel-learning）" class="headerlink" title="并行优化（Optimization in parallel learning）"></a>并行优化（Optimization in parallel learning）</h1><h2 id="特征并行"><a href="#特征并行" class="headerlink" title="特征并行"></a>特征并行</h2><p><img src="https://i.imgur.com/vKs8rii.png" alt=""><br><img src="https://i.imgur.com/9Va1E0U.png" alt=""></p>
-<h2 id="数据并行"><a href="#数据并行" class="headerlink" title="数据并行"></a>数据并行</h2><p><img src="https://i.imgur.com/X3rDw6X.png" alt=""><br><img src="https://i.imgur.com/xwZRzb1.png" alt=""></p>
-<h1 id="GOSS"><a href="#GOSS" class="headerlink" title="GOSS"></a>GOSS</h1><p><img src="https://i.imgur.com/l88Ro02.png" alt=""></p>
-<h1 id="EFB"><a href="#EFB" class="headerlink" title="EFB"></a>EFB</h1><p><img src="https://i.imgur.com/O1UNAhI.png" alt=""></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><img src="https://i.imgur.com/qKRFJ3c.png" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LightGBM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">XGBoost</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/02/LightGBM与XGBoost对比/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GBDT算法原理与系统设计简介-来自wepon的分享" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/">GBDT算法原理与系统设计简介-来自wepon的分享</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/" class="archive-article-date">
-  	<time datetime="2017-10-02T09:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一、泰勒公式"><a href="#一、泰勒公式" class="headerlink" title="一、泰勒公式"></a>一、泰勒公式</h1><ul>
-<li>定义：泰勒公式是一个用函数在某点的信息描述其附近取值的公式。局部有效性<br><img src="https://i.imgur.com/nIrdPkM.png" alt=""><h1 id="二、最优化方法"><a href="#二、最优化方法" class="headerlink" title="二、最优化方法"></a>二、最优化方法</h1><h2 id="2-1-梯度下降法（Gradient-descend-method）"><a href="#2-1-梯度下降法（Gradient-descend-method）" class="headerlink" title="2.1 梯度下降法（Gradient descend method）"></a>2.1 梯度下降法（Gradient descend method）</h2><img src="https://i.imgur.com/OtJtsoy.png" alt=""><h2 id="2-2-牛顿法（Newton’s-method）"><a href="#2-2-牛顿法（Newton’s-method）" class="headerlink" title="2.2 牛顿法（Newton’s method）"></a>2.2 牛顿法（Newton’s method）</h2><img src="https://i.imgur.com/8zoVsFG.png" alt=""><h1 id="三、从参数空间到函数空间"><a href="#三、从参数空间到函数空间" class="headerlink" title="三、从参数空间到函数空间"></a>三、从参数空间到函数空间</h1><h2 id="3-1-从Gradient-descend-到-Gradient-Boosting"><a href="#3-1-从Gradient-descend-到-Gradient-Boosting" class="headerlink" title="3.1 从Gradient descend 到 Gradient Boosting"></a>3.1 从Gradient descend 到 Gradient Boosting</h2><img src="https://i.imgur.com/4TRkwMS.png" alt=""><br><img src="https://i.imgur.com/Jj8rUYo.png" alt=""><h2 id="3-2-从Newton’s-method-到-Newton-Boosting"><a href="#3-2-从Newton’s-method-到-Newton-Boosting" class="headerlink" title="3.2 从Newton’s method 到 Newton Boosting"></a>3.2 从Newton’s method 到 Newton Boosting</h2><img src="https://i.imgur.com/hJRvJer.png" alt=""><br><img src="https://i.imgur.com/lO7KTEr.png" alt=""><h1 id="四、Gradient-Boosting-Tree算法原理"><a href="#四、Gradient-Boosting-Tree算法原理" class="headerlink" title="四、Gradient Boosting Tree算法原理"></a>四、Gradient Boosting Tree算法原理</h1><img src="https://i.imgur.com/KclXmop.png" alt=""><br><img src="https://i.imgur.com/SISeq7n.png" alt=""><h1 id="五、Newton-Boosting-Tree算法原理：详解XGBoost"><a href="#五、Newton-Boosting-Tree算法原理：详解XGBoost" class="headerlink" title="五、Newton Boosting Tree算法原理：详解XGBoost"></a>五、Newton Boosting Tree算法原理：详解XGBoost</h1><h2 id="5-1-模型函数形式"><a href="#5-1-模型函数形式" class="headerlink" title="5.1 模型函数形式"></a>5.1 模型函数形式</h2><img src="https://i.imgur.com/SGENIVu.png" alt=""><br><img src="https://i.imgur.com/bEdk0hq.png" alt=""><h2 id="5-2-目标函数"><a href="#5-2-目标函数" class="headerlink" title="5.2 目标函数"></a>5.2 目标函数</h2><img src="https://i.imgur.com/TlInpcp.png" alt=""><h3 id="5-2-1-正则项"><a href="#5-2-1-正则项" class="headerlink" title="5.2.1 正则项"></a>5.2.1 正则项</h3><img src="https://i.imgur.com/fMlDTe1.png" alt=""><br><img src="https://i.imgur.com/uArASZT.png" alt=""><h3 id="5-2-2-误差函数的二阶泰勒展开"><a href="#5-2-2-误差函数的二阶泰勒展开" class="headerlink" title="5.2.2 误差函数的二阶泰勒展开"></a>5.2.2 误差函数的二阶泰勒展开</h3><img src="https://i.imgur.com/zpVimRg.png" alt=""><br><img src="https://i.imgur.com/dMkJkKI.png" alt=""><br><img src="https://i.imgur.com/9AQxjbh.png" alt=""><br><img src="https://i.imgur.com/omqUwQk.png" alt=""><h2 id="5-3-回归树的学习策略"><a href="#5-3-回归树的学习策略" class="headerlink" title="5.3 回归树的学习策略"></a>5.3 回归树的学习策略</h2><img src="https://i.imgur.com/RHJtO8t.png" alt=""><h3 id="5-3-1-打分函数"><a href="#5-3-1-打分函数" class="headerlink" title="5.3.1 打分函数"></a>5.3.1 打分函数</h3><img src="https://i.imgur.com/kFwfgpE.png" alt=""><h3 id="5-3-2-树节点分裂方法"><a href="#5-3-2-树节点分裂方法" class="headerlink" title="5.3.2 树节点分裂方法"></a>5.3.2 树节点分裂方法</h3><img src="https://i.imgur.com/nQDZs8n.png" alt=""><br><img src="https://i.imgur.com/vbKq7gi.png" alt=""><br><img src="https://i.imgur.com/zRVBwsj.png" alt=""><br><img src="https://i.imgur.com/WPdpamn.png" alt=""><h3 id="5-3-3-缺失值的处理"><a href="#5-3-3-缺失值的处理" class="headerlink" title="5.3.3 缺失值的处理"></a>5.3.3 缺失值的处理</h3><img src="https://i.imgur.com/TzC0Jgx.png" alt=""><h2 id="5-4-其它特性"><a href="#5-4-其它特性" class="headerlink" title="5.4 其它特性"></a>5.4 其它特性</h2><img src="https://i.imgur.com/6y8fXhr.png" alt=""></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">GBDT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-天池老司机天音的经验分享" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/02/天池老司机天音的经验分享/">天池老司机天音的经验分享</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/02/天池老司机天音的经验分享/" class="archive-article-date">
-  	<time datetime="2017-10-02T08:47:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>化繁为简，各个突破</p>
-<h1 id="一、数据处理-25"><a href="#一、数据处理-25" class="headerlink" title="一、数据处理 25%"></a>一、数据处理 25%</h1><h2 id="1-1-缺失值填充"><a href="#1-1-缺失值填充" class="headerlink" title="1.1 缺失值填充"></a>1.1 缺失值填充</h2><p>某些场景中缺失值也是一个重要特征，如金融信贷，资料完善度不高的用户是潜在的违约对象</p>
-<ul>
-<li>数值型：均值，中位数</li>
-<li>类别型：众数</li>
-<li>通过关联信息补全<h2 id="1-2-数据清洗"><a href="#1-2-数据清洗" class="headerlink" title="1.2 数据清洗"></a>1.2 数据清洗</h2></li>
-<li>剔除缺失值比率大的字段</li>
-<li>离群点剔除<h2 id="1-3-数据处理"><a href="#1-3-数据处理" class="headerlink" title="1.3 数据处理"></a>1.3 数据处理</h2><h3 id="1-3-1-异常数据的处理"><a href="#1-3-1-异常数据的处理" class="headerlink" title="1.3.1 异常数据的处理"></a>1.3.1 异常数据的处理</h3></li>
-<li>log平滑</li>
-<li>局部加权<h3 id="1-3-2-数据划分，样本构造"><a href="#1-3-2-数据划分，样本构造" class="headerlink" title="1.3.2 数据划分，样本构造"></a>1.3.2 数据划分，样本构造</h3></li>
-<li>增：增加样本，滑窗采样</li>
-<li>减：去掉异常样本，可以借助模型判断</li>
-<li>采样：效率和效果的平衡</li>
-<li>根据需求构建可靠的验证集</li>
-</ul>
-<p>注：线上线下Label窗口大小要一致；<br>滑窗是为了增加样本量，一般把多个窗口的数据集合在一起训练；<br>各窗口构成的数据集Label Window无重叠，特征窗口可以重叠；</p>
-<p><img src="https://i.imgur.com/Rotp1qh.png" alt=""></p>
-<h3 id="1-3-3-噪声样本剔除"><a href="#1-3-3-噪声样本剔除" class="headerlink" title="1.3.3 噪声样本剔除"></a>1.3.3 噪声样本剔除</h3><p>用一个树模型去训练你的数据，然后用得到的模型去预测数据，同一个叶子节点下偏离叶子节点均值最大的认为它是一个噪声，然后对它的差值进行排序取出前top多少个，把它去掉，然后重新训练一个比较干净的模型</p>
-<p><img src="https://i.imgur.com/x73Fccz.png" alt=""></p>
-<h1 id="二、特征工程-50"><a href="#二、特征工程-50" class="headerlink" title="二、特征工程 50%"></a>二、特征工程 50%</h1><p>特征没做好，参数调到老</p>
-<h2 id="2-1-特征提取"><a href="#2-1-特征提取" class="headerlink" title="2.1 特征提取"></a>2.1 特征提取</h2><p>结合具体的业务场景思考问题</p>
-<ul>
-<li>特征统计：key拆分，组合（按照提供的数据集粒度，不同的维度去交叉组合出更多的指标）</li>
-<li>时间窗口统计：3/5/7/15/30</li>
-</ul>
-<p><img src="https://i.imgur.com/VsnzLxO.png" alt=""></p>
-<h2 id="2-2-特征处理"><a href="#2-2-特征处理" class="headerlink" title="2.2 特征处理"></a>2.2 特征处理</h2><ul>
-<li>归一化（加快训练速度并且更可能达到最优解，线性模型，对数值大小敏感的模型）</li>
-<li>onehot编码（增加哑变量）</li>
-<li>排序</li>
-</ul>
-<p><img src="https://i.imgur.com/XA0iZiX.png" alt=""></p>
-<h2 id="2-3-特征选择"><a href="#2-3-特征选择" class="headerlink" title="2.3 特征选择"></a>2.3 特征选择</h2><ul>
-<li>计算特征与标签相关度（按照相关性大小排序筛选特征）</li>
-<li>LR+L1正则</li>
-<li>树模型对特征打分（用的最多的是XGBoost，RF去对特征打分，然后筛选重要的变量再放到线性模型里面）<h2 id="2-4-特征组合"><a href="#2-4-特征组合" class="headerlink" title="2.4 特征组合"></a>2.4 特征组合</h2></li>
-<li>任意两两组合：维度大</li>
-<li>特征选择再组合<br><img src="https://i.imgur.com/ljfajAc.png" alt=""></li>
-<li>GBDT+LR（GBDT每棵树从根节点到叶子节点的路径是一种最优组合）<br><img src="https://i.imgur.com/6GYh4FX.png" alt=""></li>
-</ul>
-<h1 id="三、模型设计-20"><a href="#三、模型设计-20" class="headerlink" title="三、模型设计 20%"></a>三、模型设计 20%</h1><h2 id="3-1-分类-回归问题"><a href="#3-1-分类-回归问题" class="headerlink" title="3.1 分类-回归问题"></a>3.1 分类-回归问题</h2><ul>
-<li>Xgboost：速度快，效果好</li>
-<li>GBDT：拟合能力强，有过拟合风险</li>
-<li>RF：不容易过拟合</li>
-<li>LR：对稀疏特征效果较好；常用来做stacker<h2 id="3-2-Factorization-Machine"><a href="#3-2-Factorization-Machine" class="headerlink" title="3.2 Factorization Machine"></a>3.2 Factorization Machine</h2><img src="https://i.imgur.com/joZrTya.png" alt=""><br><img src="https://i.imgur.com/EZ4UBYE.png" alt=""><h2 id="3-3-基于统计的方法（规则）"><a href="#3-3-基于统计的方法（规则）" class="headerlink" title="3.3 基于统计的方法（规则）"></a>3.3 基于统计的方法（规则）</h2><img src="https://i.imgur.com/GKExOPP.png" alt=""><h2 id="3-4-时序问题"><a href="#3-4-时序问题" class="headerlink" title="3.4 时序问题"></a>3.4 时序问题</h2></li>
-<li>回归类模型</li>
-<li>规则函数<br><img src="https://i.imgur.com/yZHle8t.png" alt=""><h2 id="3-5-规则函数"><a href="#3-5-规则函数" class="headerlink" title="3.5 规则函数"></a>3.5 规则函数</h2><img src="https://i.imgur.com/Sz6n3Q6.png" alt=""></li>
-</ul>
-<h1 id="四、模型融合-5"><a href="#四、模型融合-5" class="headerlink" title="四、模型融合 5%"></a>四、模型融合 5%</h1><p><img src="https://i.imgur.com/t12qj2u.png" alt=""><br><img src="https://i.imgur.com/9nMKhTt.png" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">特征工程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">FM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">模型融合</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/02/天池老司机天音的经验分享/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用python连接hive" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/19/使用python连接hive/">使用python连接hive</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/19/使用python连接hive/" class="archive-article-date">
-  	<time datetime="2017-09-19T13:10:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Python连接hive的包有很多，我没有一一尝试，只是演示了工作当中用到的方法。<br>本文主要采用<a href="https://github.com/dropbox/PyHive" target="_blank" rel="external">PyHive</a>来进行对hive的增删改查。<br>PyHive is a collection of Python DB-API and SQLAlchemy interfaces for Presto and Hive.</p>
-<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><h3 id="install-using"><a href="#install-using" class="headerlink" title="install using"></a>install using</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip <span class="keyword">install</span> SQLALchemy</div></pre></td></tr></table></figure>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pyhive<span class="string">[presto]</span></div></pre></td></tr></table></figure>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pyhive<span class="string">[hive]</span></div></pre></td></tr></table></figure>
-<h2 id="Presto-engine"><a href="#Presto-engine" class="headerlink" title="Presto engine"></a>Presto engine</h2><h3 id="Create-engine"><a href="#Create-engine" class="headerlink" title="Create engine"></a>Create engine</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">### Presto Select</div><div class="line">```df = pd.read_sql(sql=(r&apos;select * from &apos;+ &apos;schema.tablename&apos;) , con=engine)</div></pre></td></tr></table></figure>
-<h3 id="Presto-Insert"><a href="#Presto-Insert" class="headerlink" title="Presto Insert"></a>Presto Insert</h3><figure class="highlight plain"><figcaption><span>con</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">### Presto Update</div><div class="line">Hive does not support update.</div><div class="line">### Presto Delete</div></pre></td></tr></table></figure>
-<p>engine.execute(“drop table schema.tablename”)<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## Hive engine</div><div class="line"></div><div class="line">### Create engine</div><div class="line"></div><div class="line">``` engine = create_engine(<span class="string">'hive://url:port/hive/schema'</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="Hive-Select"><a href="#Hive-Select" class="headerlink" title="Hive Select"></a>Hive Select</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">### Hive Insert</div><div class="line">```df.to_sql(tablename, con=engine, flavor=None, if_exists=&apos;append&apos;, index=False, chunksize=2000000)</div></pre></td></tr></table></figure>
-<h3 id="Hive-Update"><a href="#Hive-Update" class="headerlink" title="Hive Update"></a>Hive Update</h3><p>Hive does not support update.</p>
-<h3 id="Hive-Delete"><a href="#Hive-Delete" class="headerlink" title="Hive Delete"></a>Hive Delete</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">engine.<span class="built_in">execute</span>(<span class="string">"drop table schema.tablename"</span>)</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/19/使用python连接hive/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
@@ -1371,7 +1319,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color1">virtualenv</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1379,7 +1327,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1399,10 +1367,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">NN</a>
               </li>
              
@@ -1412,6 +1376,42 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">dropout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">data augmentation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ensembles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">transfer learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1435,22 +1435,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dropout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">data augmentation</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ensembles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">transfer learning</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SVM</a>
               </li>
              
@@ -1459,19 +1443,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+                <a href="javascript:void(0)" class="js-tag color3">ConvNet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1479,15 +1451,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ConvNet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hive</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1508,6 +1472,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模块</a>
               </li>
             
             <div class="clearfix"></div>
