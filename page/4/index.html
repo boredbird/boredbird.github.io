@@ -177,19 +177,19 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Linear Classification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Neural Networks[3]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Linear Classification/">linear-classify</a>
+      <a class="article-title" href="/2017/10/08/Neural Networks[3]/">Neural Networks[3]</a>
     </h1>
   
 
         
-        <a href="/2017/10/08/Linear Classification/" class="archive-article-date">
+        <a href="/2017/10/08/Neural Networks[3]/" class="archive-article-date">
   	<time datetime="2017-10-08T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
 </a>
         
@@ -199,133 +199,35 @@ var _hmt = _hmt || [];
       
         <p>Table of Contents:</p>
 <ul>
-<li><a href="#intro">Intro to Linear classification</a></li>
-<li><a href="#score">Linear score function</a></li>
-<li><a href="#interpret">Interpreting a linear classifier</a></li>
-<li><a href="#loss">Loss function</a><ul>
-<li><a href="#svm">Multiclass SVM</a></li>
-<li><a href="#softmax">Softmax classifier</a></li>
-<li><a href="#svmvssoftmax">SVM vs Softmax</a></li>
+<li><a href="#gradcheck">Gradient checks</a></li>
+<li><a href="#sanitycheck">Sanity checks</a></li>
+<li><a href="#baby">Babysitting the learning process</a><ul>
+<li><a href="#loss">Loss function</a></li>
+<li><a href="#accuracy">Train/val accuracy</a></li>
+<li><a href="#ratio">Weights:Updates ratio</a></li>
+<li><a href="#distr">Activation/Gradient distributions per layer</a></li>
+<li><a href="#vis">Visualization</a></li>
 </ul>
 </li>
-<li><a href="#webdemo">Interactive Web Demo of Linear Classification</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>In the last section we introduced the problem of Image Classification, which is the task of assigning a single label to an image from a fixed set of categories. Morever, we described the k-Nearest Neighbor (kNN) classifier which labels images by comparing them to (annotated) images from the training set. As we saw, kNN has a number of disadvantages:</p>
-        
-          <a class="article-more-a" href="/2017/10/08/Linear Classification/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">linear</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">classification</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Linear Classification/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Neural Networks[1]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Neural Networks[1]/">Neural Networks[1]</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/Neural Networks[1]/" class="archive-article-date">
-  	<time datetime="2017-10-08T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Table of Contents:</p>
-<ul>
-<li><a href="#quick">Quick intro without brain analogies</a></li>
-<li><a href="#intro">Modeling one neuron</a><ul>
-<li><a href="#bio">Biological motivation and connections</a></li>
-<li><a href="#classifier">Single neuron as a linear classifier</a></li>
-<li><a href="#actfun">Commonly used activation functions</a></li>
+<li><a href="#update">Parameter updates</a><ul>
+<li><a href="#sgd">First-order (SGD), momentum, Nesterov momentum</a></li>
+<li><a href="#anneal">Annealing the learning rate</a></li>
+<li><a href="#second">Second-order methods</a></li>
+<li><a href="#ada">Per-parameter adaptive learning rates (Adagrad, RMSProp)</a></li>
 </ul>
 </li>
-<li><a href="#nn">Neural Network architectures</a><ul>
-<li><a href="#layers">Layer-wise organization</a></li>
-<li><a href="#feedforward">Example feed-forward computation</a></li>
-<li><a href="#power">Representational power</a></li>
-<li><a href="#arch">Setting number of layers and their sizes</a></li>
+<li><a href="#hyper">Hyperparameter Optimization</a></li>
+<li><a href="#eval">Evaluation</a><ul>
+<li><a href="#ensemble">Model Ensembles</a></li>
 </ul>
 </li>
 <li><a href="#summary">Summary</a></li>
-<li><a href="#add">Additional references</a></li>
+<li><a href="#add">Additional References</a></li>
 </ul>
-<p><a name="quick"></a></p>
-<h2 id="Quick-intro"><a href="#Quick-intro" class="headerlink" title="Quick intro"></a>Quick intro</h2><p>It is possible to introduce neural networks without appealing to brain analogies. In the section on linear classification we computed scores for different visual categories given the image using the formula \( s = W x \), where \(W\) was a matrix and \(x\) was an input column vector containing all pixel data of the image. In the case of CIFAR-10, \(x\) is a [3072x1] column vector, and \(W\) is a [10x3072] matrix, so that the output scores is a vector of 10 class scores. </p>
+<h2 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h2><p>In the previous sections we’ve discussed the static parts of a Neural Networks: how we can set up the network connectivity, the data, and the loss function. This section is devoted to the dynamics, or in other words, the process of learning the parameters and finding good hyperparameters.</p>
+<p><a name="gradcheck"></a></p>
         
-          <a class="article-more-a" href="/2017/10/08/Neural Networks[1]/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/10/08/Neural Networks[3]/#more">查看更多 >></a>
         
       
 
@@ -360,100 +262,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Neural Networks[1]/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ConvNet Tips" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/ConvNet Tips/">convnet-tips</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/ConvNet Tips/" class="archive-article-date">
-  	<time datetime="2017-10-08T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a name="overfitting"></a></p>
-<h3 id="Addressing-Overfitting"><a href="#Addressing-Overfitting" class="headerlink" title="Addressing Overfitting"></a>Addressing Overfitting</h3><h4 id="Data-Augmentation"><a href="#Data-Augmentation" class="headerlink" title="Data Augmentation"></a>Data Augmentation</h4><ul>
-<li>Flip the training images over x-axis</li>
-<li>Sample random crops / scales in the original image</li>
-<li>Jitter the colors</li>
-</ul>
-<h4 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h4><ul>
-<li>Dropout is just as effective for Conv layers. Usually people apply less dropout right before early conv layers since there are not that many parameters there compared to later stages of the network (e.g. the fully connected layers).</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">convnet</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/ConvNet Tips/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/08/Neural Networks[3]/">展开全文 >></a>
         </p>
       
 
@@ -593,19 +402,112 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Neural Networks[3]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ConvNet Tips" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Neural Networks[3]/">Neural Networks[3]</a>
+      <a class="article-title" href="/2017/10/08/ConvNet Tips/">convnet-tips</a>
     </h1>
   
 
         
-        <a href="/2017/10/08/Neural Networks[3]/" class="archive-article-date">
+        <a href="/2017/10/08/ConvNet Tips/" class="archive-article-date">
+  	<time datetime="2017-10-08T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a name="overfitting"></a></p>
+<h3 id="Addressing-Overfitting"><a href="#Addressing-Overfitting" class="headerlink" title="Addressing Overfitting"></a>Addressing Overfitting</h3><h4 id="Data-Augmentation"><a href="#Data-Augmentation" class="headerlink" title="Data Augmentation"></a>Data Augmentation</h4><ul>
+<li>Flip the training images over x-axis</li>
+<li>Sample random crops / scales in the original image</li>
+<li>Jitter the colors</li>
+</ul>
+<h4 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h4><ul>
+<li>Dropout is just as effective for Conv layers. Usually people apply less dropout right before early conv layers since there are not that many parameters there compared to later stages of the network (e.g. the fully connected layers).</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">convnet</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/08/ConvNet Tips/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Neural Networks[1]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/08/Neural Networks[1]/">Neural Networks[1]</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/Neural Networks[1]/" class="archive-article-date">
   	<time datetime="2017-10-08T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
 </a>
         
@@ -615,35 +517,27 @@ var _hmt = _hmt || [];
       
         <p>Table of Contents:</p>
 <ul>
-<li><a href="#gradcheck">Gradient checks</a></li>
-<li><a href="#sanitycheck">Sanity checks</a></li>
-<li><a href="#baby">Babysitting the learning process</a><ul>
-<li><a href="#loss">Loss function</a></li>
-<li><a href="#accuracy">Train/val accuracy</a></li>
-<li><a href="#ratio">Weights:Updates ratio</a></li>
-<li><a href="#distr">Activation/Gradient distributions per layer</a></li>
-<li><a href="#vis">Visualization</a></li>
+<li><a href="#quick">Quick intro without brain analogies</a></li>
+<li><a href="#intro">Modeling one neuron</a><ul>
+<li><a href="#bio">Biological motivation and connections</a></li>
+<li><a href="#classifier">Single neuron as a linear classifier</a></li>
+<li><a href="#actfun">Commonly used activation functions</a></li>
 </ul>
 </li>
-<li><a href="#update">Parameter updates</a><ul>
-<li><a href="#sgd">First-order (SGD), momentum, Nesterov momentum</a></li>
-<li><a href="#anneal">Annealing the learning rate</a></li>
-<li><a href="#second">Second-order methods</a></li>
-<li><a href="#ada">Per-parameter adaptive learning rates (Adagrad, RMSProp)</a></li>
-</ul>
-</li>
-<li><a href="#hyper">Hyperparameter Optimization</a></li>
-<li><a href="#eval">Evaluation</a><ul>
-<li><a href="#ensemble">Model Ensembles</a></li>
+<li><a href="#nn">Neural Network architectures</a><ul>
+<li><a href="#layers">Layer-wise organization</a></li>
+<li><a href="#feedforward">Example feed-forward computation</a></li>
+<li><a href="#power">Representational power</a></li>
+<li><a href="#arch">Setting number of layers and their sizes</a></li>
 </ul>
 </li>
 <li><a href="#summary">Summary</a></li>
-<li><a href="#add">Additional References</a></li>
+<li><a href="#add">Additional references</a></li>
 </ul>
-<h2 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h2><p>In the previous sections we’ve discussed the static parts of a Neural Networks: how we can set up the network connectivity, the data, and the loss function. This section is devoted to the dynamics, or in other words, the process of learning the parameters and finding good hyperparameters.</p>
-<p><a name="gradcheck"></a></p>
+<p><a name="quick"></a></p>
+<h2 id="Quick-intro"><a href="#Quick-intro" class="headerlink" title="Quick intro"></a>Quick intro</h2><p>It is possible to introduce neural networks without appealing to brain analogies. In the section on linear classification we computed scores for different visual categories given the image using the formula \( s = W x \), where \(W\) was a matrix and \(x\) was an input column vector containing all pixel data of the image. In the case of CIFAR-10, \(x\) is a [3072x1] column vector, and \(W\) is a [10x3072] matrix, so that the output scores is a vector of 10 class scores. </p>
         
-          <a class="article-more-a" href="/2017/10/08/Neural Networks[3]/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/10/08/Neural Networks[1]/#more">查看更多 >></a>
         
       
 
@@ -678,7 +572,117 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Neural Networks[3]/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/08/Neural Networks[1]/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Neural Networks Case Study" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/08/Neural Networks Case Study/">neural-networks-case-study</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/Neural Networks Case Study/" class="archive-article-date">
+  	<time datetime="2017-10-08T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Table of Contents:</p>
+<ul>
+<li><a href="#data">Generating some data</a></li>
+<li><a href="#linear">Training a Softmax Linear Classifier</a><ul>
+<li><a href="#init">Initialize the parameters</a></li>
+<li><a href="#scores">Compute the class scores</a></li>
+<li><a href="#loss">Compute the loss</a></li>
+<li><a href="#grad">Computing the analytic gradient with backpropagation</a></li>
+<li><a href="#update">Performing a parameter update</a></li>
+<li><a href="#together">Putting it all together: Training a Softmax Classifier</a></li>
+</ul>
+</li>
+<li><a href="#net">Training a Neural Network</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+<p>In this section we’ll walk through a complete implementation of a toy Neural Network in 2 dimensions. We’ll first implement a simple linear classifier and then extend the code to a 2-layer Neural Network. As we’ll see, this extension is surprisingly simple and very few changes are necessary.</p>
+<p><a name="data"></a></p>
+<h2 id="Generating-some-data"><a href="#Generating-some-data" class="headerlink" title="Generating some data"></a>Generating some data</h2><p>Lets generate a classification dataset that is not easily linearly separable. Our favorite example is the spiral dataset, which can be generated as follows:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">N = <span class="number">100</span> <span class="comment"># number of points per class</span></div><div class="line">D = <span class="number">2</span> <span class="comment"># dimensionality</span></div><div class="line">K = <span class="number">3</span> <span class="comment"># number of classes</span></div><div class="line">X = np.zeros((N*K,D)) <span class="comment"># data matrix (each row = single example)</span></div><div class="line">y = np.zeros(N*K, dtype=<span class="string">'uint8'</span>) <span class="comment"># class labels</span></div><div class="line"><span class="keyword">for</span> j <span class="keyword">in</span> xrange(K):</div><div class="line">  ix = range(N*j,N*(j+<span class="number">1</span>))</div><div class="line">  r = np.linspace(<span class="number">0.0</span>,<span class="number">1</span>,N) <span class="comment"># radius</span></div><div class="line">  t = np.linspace(j*<span class="number">4</span>,(j+<span class="number">1</span>)*<span class="number">4</span>,N) + np.random.randn(N)*<span class="number">0.2</span> <span class="comment"># theta</span></div><div class="line">  X[ix] = np.c_[r*np.sin(t), r*np.cos(t)]</div><div class="line">  y[ix] = j</div><div class="line"><span class="comment"># lets visualize the data:</span></div><div class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, s=<span class="number">40</span>, cmap=plt.cm.Spectral)</div></pre></td></tr></table></figure>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/eg/spiral_raw.png"><br>  <div class="figcaption"><br>    The toy spiral data consists of three classes (blue, red, yellow) that are not linearly separable.<br>  </div><br></div>
+
+<p>Normally we would want to preprocess the dataset so that each feature has zero mean and unit standard deviation, but in this case the features are already in a nice range from -1 to 1, so we skip this step.</p>
+<p><a name="linear"></a></p>
+<h2 id="Training-a-Softmax-Linear-Classifier"><a href="#Training-a-Softmax-Linear-Classifier" class="headerlink" title="Training a Softmax Linear Classifier"></a>Training a Softmax Linear Classifier</h2><p><a name="init"></a></p>
+        
+          <a class="article-more-a" href="/2017/10/08/Neural Networks Case Study/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">NN</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/08/Neural Networks Case Study/">展开全文 >></a>
         </p>
       
 
@@ -784,101 +788,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/08/Image Classification With KNN/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ipython-tutorial" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/ipython-tutorial/">IPython Tutorial</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/ipython-tutorial/" class="archive-article-date">
-  	<time datetime="2017-10-08T10:53:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>In this class, we will use <a href="http://ipython.org/" target="_blank" rel="external">IPython notebooks</a> for the<br>programming assignments. An IPython notebook lets you write and execute Python<br>code in your web browser. IPython notebooks make it very easy to tinker with<br>code and execute it in bits and pieces; for this reason IPython notebooks are<br>widely used in scientific computing.</p>
-<p>Installing and running IPython is easy. From the command line, the following<br>will install IPython:</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip <span class="keyword">install</span> <span class="string">"ipython[notebook]"</span></div></pre></td></tr></table></figure>
-<p>Once you have IPython installed, start it with this command:</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ipython notebook</span></div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/10/08/ipython-tutorial/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IPython</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/ipython-tutorial/">展开全文 >></a>
         </p>
       
 
@@ -1037,6 +946,101 @@ Numpy
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/08/python-numpy-tutorial/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ipython-tutorial" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/08/ipython-tutorial/">IPython Tutorial</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/ipython-tutorial/" class="archive-article-date">
+  	<time datetime="2017-10-08T10:53:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In this class, we will use <a href="http://ipython.org/" target="_blank" rel="external">IPython notebooks</a> for the<br>programming assignments. An IPython notebook lets you write and execute Python<br>code in your web browser. IPython notebooks make it very easy to tinker with<br>code and execute it in bits and pieces; for this reason IPython notebooks are<br>widely used in scientific computing.</p>
+<p>Installing and running IPython is easy. From the command line, the following<br>will install IPython:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip <span class="keyword">install</span> <span class="string">"ipython[notebook]"</span></div></pre></td></tr></table></figure>
+<p>Once you have IPython installed, start it with this command:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ipython notebook</span></div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/10/08/ipython-tutorial/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IPython</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/08/ipython-tutorial/">展开全文 >></a>
         </p>
       
 
@@ -1390,14 +1394,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">django</a>
               </li>
              
@@ -1406,15 +1402,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1430,7 +1426,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">XGBoost</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1443,6 +1455,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1459,18 +1475,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LightGBM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">XGBoost</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1494,30 +1498,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">dropout</a>
               </li>
              
@@ -1534,6 +1514,26 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ConvNet</a>
               </li>
              
@@ -1542,11 +1542,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">决策树</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hive</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+                <a href="javascript:void(0)" class="js-tag color4">决策树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1558,15 +1558,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hive</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">REST</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1595,6 +1595,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
               </li>
             
             <div class="clearfix"></div>
