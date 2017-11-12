@@ -29,18 +29,21 @@ toc: true
 
 ## 线性支持向量机
 软间隔最大化soft margin maximization;软间隔支持向量机
+
 ### 线性分类问题
 <div class="fig figcenter fighighlight">
   <img src="/assets/chinahadoop/SVM/TIM截图20171112150039.png" width="80%">
   <div class="figcaption">
   </div>
 </div>
+
 ### 输入数据
 <div class="fig figcenter fighighlight">
   <img src="/assets/chinahadoop/SVM/TIM截图20171112150123.png" width="80%">
   <div class="figcaption">
   </div>
 </div>
+
 ### 线性可分支持向量机
 <div class="fig figcenter fighighlight">
   <img src="/assets/chinahadoop/SVM/TIM截图20171112150230.png" width="80%">
