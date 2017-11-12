@@ -177,6 +177,482 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-随机森林" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/11/随机森林/">随机森林</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/11/随机森林/" class="archive-article-date">
+  	<time datetime="2017-11-11T06:25:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Bootstraping"><a href="#Bootstraping" class="headerlink" title="Bootstraping"></a>Bootstraping</h1><p>Bootstraping的名称来自成语“pull up by your own bootstraps”,意思是依靠你自己的资源，称为自助法，它是一种有放回的抽样方法。本意是通过拉靴子让自己上升，不可能发生的事情。后来意思发生了转变，隐喻不需要外界帮助，仅依靠自身力量让自己变得更好。</p>
+<h1 id="Bagging的策略"><a href="#Bagging的策略" class="headerlink" title="Bagging的策略"></a>Bagging的策略</h1><ul>
+<li>bootstrap aggregation</li>
+<li>从样本集中重采样（有重复的）选出n个样本</li>
+<li>在所有属性上，对这n个样本建立分类器（ID3，C4.5，CART,SVM,Logistic回归等）</li>
+<li>重复以上两部m次，即获得了m个分类器</li>
+<li>将数据放在这m个分类器上，最后根据这m个分类器的投票结果，决定数据属于哪一类</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/11/11/随机森林/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">随机森林</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/11/随机森林/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-决策树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/11/决策树/">决策树</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/11/决策树/" class="archive-article-date">
+  	<time datetime="2017-11-11T05:25:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="决策树的概念"><a href="#决策树的概念" class="headerlink" title="决策树的概念"></a>决策树的概念</h2><p>决策树是一种树型结构，其中每个内部结点表示在一个属性上的测试，每个分支代表一个测试输出，每个叶节点代表一种类别。<br>决策树学习是以实例为基础的归纳学习。<br>决策树学习采用的是自顶向下的递归方法，其基本思想是以信息熵为度量构造一棵熵值下降最快的树，到叶子节点处的熵值为零，此时每个叶节点中的实例都属于同一类。</p>
+<h2 id="决策树学习的生成算法"><a href="#决策树学习的生成算法" class="headerlink" title="决策树学习的生成算法"></a>决策树学习的生成算法</h2><p>建立决策树的关键，即在当前状态下选择哪个属性作为分类依据。根据不同的目标函数，建立决策树主要有以下三种算法：</p>
+<ul>
+<li>ID3(Iterative Dichotomiser)</li>
+<li>C4.5</li>
+<li>CART(Classification And Regression Tree)</li>
+</ul>
+<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵和条件熵分别称为经验熵和经验条件熵。</p>
+<p>信息增益表示得知特征A的信息而使得类X的信息的不确定性减少的程度。</p>
+        
+          <a class="article-more-a" href="/2017/11/11/决策树/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/11/决策树/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Logistic回归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/11/Logistic回归/">Logistic回归</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/11/Logistic回归/" class="archive-article-date">
+  	<time datetime="2017-11-11T03:25:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Logistic回归"><a href="#Logistic回归" class="headerlink" title="Logistic回归"></a>Logistic回归</h1><p>分类问题的首选算法;</p>
+<p>线性回归：最大似然估计+高斯分布；</p>
+<p>Logistic回归：最大似然估计+伯努利分布；</p>
+<p>Logistic回归是事件发生几率取对数下的线性回归。高斯分布和伯努利分布都是属于指数族分布，所以说逻辑回归是广义线性模型GLM回归。</p>
+<h2 id="Logistic-Sigmoid函数"><a href="#Logistic-Sigmoid函数" class="headerlink" title="Logistic/Sigmoid函数"></a>Logistic/Sigmoid函数</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111113157.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="Logistic回归参数估计"><a href="#Logistic回归参数估计" class="headerlink" title="Logistic回归参数估计"></a>Logistic回归参数估计</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111114625.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+        
+          <a class="article-more-a" href="/2017/11/11/Logistic回归/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回归</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Logistic</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/11/Logistic回归/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-回归与特征选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/11/回归与特征选择/">回归与特征选择</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/11/回归与特征选择/" class="archive-article-date">
+  	<time datetime="2017-11-11T01:20:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><p>可以对样本是非线性的，只要对参数线性。</p>
+<h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>在做特征选择的时候，可以看回归的残差图，真正理想状态下，经过模型回归后的残差应该是服从正态分布的，而不是均匀的随机分布；此时可以画个单变量与残差的关系图，直观的看一下是不是有什么明显的一阶、高阶趋势在里面，则需要进一步特征加工。</p>
+<p>大数定理指的是事件发生的概率在N取无穷大的时候趋近于事件发生的概率。频率的极限是概率。</p>
+<h3 id="使用极大似然估计解释最小二乘"><a href="#使用极大似然估计解释最小二乘" class="headerlink" title="使用极大似然估计解释最小二乘"></a>使用极大似然估计解释最小二乘</h3><p><img src="https://i.imgur.com/BLDhXge.png" alt=""></p>
+<h2 id="最大似然估计MLE"><a href="#最大似然估计MLE" class="headerlink" title="最大似然估计MLE"></a>最大似然估计MLE</h2><h3 id="最大似然函数的假设"><a href="#最大似然函数的假设" class="headerlink" title="最大似然函数的假设"></a>最大似然函数的假设</h3><p>似然函数假设每个样本出现的概率是独立的，因此整体出现的概率就是各个样本出现的概率的累计。</p>
+        
+          <a class="article-more-a" href="/2017/11/11/回归与特征选择/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回归</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">特征选择</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/11/回归与特征选择/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/08/Python基础/">Python基础</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/08/Python基础/" class="archive-article-date">
+  	<time datetime="2017-11-08T13:15:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h1>
+        
+          <a class="article-more-a" href="/2017/11/08/Python基础/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/08/Python基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-凸优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -571,99 +1047,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Visual Studio 无法编译新打开的C文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/17/Visual Studio 无法编译新打开的C文件/">Visual Studio 无法编译新打开的C文件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/17/Visual Studio 无法编译新打开的C文件/" class="archive-article-date">
-  	<time datetime="2017-10-17T05:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>用 Visual Studio打开有c文件的文件夹，发现里面的c文件都无法编译，导航栏里面连<code>生成</code>按钮都没有，调试按钮也是灰色的。</p>
-<p><img src="assets/C/Visual Studio 1.png" alt=""></p>
-<p><img src="assets/C/Visual Studio 2.png" alt=""></p>
-<p><img src="assets/C/Visual Studio 3.png" alt=""></p>
-<p>需在项目中单个添加c文件。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Visual Studio</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/17/Visual Studio 无法编译新打开的C文件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-使用pydotplus绘决策树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -761,471 +1144,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Visual Studio Code工具上手体验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/17/Visual Studio Code工具上手体验/">Visual Studio Code工具上手体验</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/17/Visual Studio Code工具上手体验/" class="archive-article-date">
-  	<time datetime="2017-10-17T05:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>下载安装Visual Studio Code,地址：<a href="https://code.visualstudio.com/Download" target="_blank" rel="external">https://code.visualstudio.com/Download</a></p>
-<p>在VSCode内安装c++插件：<br>打开vscode，Ctrl+P之后输入<code>ext install c++</code></p>
-<p><img src="assets/C/vscode1.png" alt=""></p>
-<p>弹出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">扩展：商店   错误</div></pre></td></tr></table></figure>
-<p>不用管它，重新再来一次，Ctrl+P之后输入<code>ext install c++</code></p>
-<p>安装第一个官方的。</p>
-<p><img src="assets/C/vscode2.png" alt=""></p>
-<p>重启vscode。然后发现重新启动，vscode开始自动下载插件依赖。<br>依赖自动下载安装完成。</p>
-        
-          <a class="article-more-a" href="/2017/10/17/Visual Studio Code工具上手体验/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/17/Visual Studio Code工具上手体验/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-记录一次诡异的Python中文乱码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/17/记录一次诡异的Python中文乱码/">记录一次诡异的Python中文乱码</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/17/记录一次诡异的Python中文乱码/" class="archive-article-date">
-  	<time datetime="2017-10-17T03:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有一天突然出现了这样的中文乱码：</p>
-<p><img src="assets/Python/luanma1.png" alt=""></p>
-<p>我的第一反应就是检查：<br><code># -*- coding:utf-8 -*-</code></p>
-<p>然后检查：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line">sys.getdefaultencoding()</div><div class="line">Out[<span class="number">5</span>]: </div><div class="line"><span class="string">'utf-8'</span></div></pre></td></tr></table></figure>
-<p>这，，是中文编码的啊，再检查：</p>
-        
-          <a class="article-more-a" href="/2017/10/17/记录一次诡异的Python中文乱码/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/17/记录一次诡异的Python中文乱码/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-基于Django REST Framework创建API服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/15/基于Django REST Framework创建API服务/">基于Django REST Framework创建API服务</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/15/基于Django REST Framework创建API服务/" class="archive-article-date">
-  	<time datetime="2017-10-15T02:06:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Django REST Framework 安装</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pip <span class="keyword">install</span> djangorestframework</div><div class="line">pip <span class="keyword">install</span> markdown       <span class="comment"># Markdown support for the browsable API.</span></div><div class="line">pip <span class="keyword">install</span> django-filter  <span class="comment"># Filtering support</span></div></pre></td></tr></table></figure>
-<p>看下我的环境：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(myenvs) E:\Code\virtualenvs\myenvs\django_rest&gt;pip freeze</div><div class="line"><span class="attribute">Django</span>==1.11.6</div><div class="line"><span class="attribute">django-bootstrap3</span>==9.0.0</div><div class="line"><span class="attribute">django-filter</span>==1.0.4</div><div class="line"><span class="attribute">djangorestframework</span>==3.7.0</div><div class="line"><span class="attribute">Markdown</span>==2.6.9</div><div class="line"><span class="attribute">pytz</span>==2017.2</div></pre></td></tr></table></figure></p>
-<p>创建一个新的项目django_rest，在项目下创建名为api的应用。</p>
-<blockquote>
-<p>cmd.exe</p>
-</blockquote>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">E:<span class="tag">\<span class="name">Code</span></span><span class="tag">\<span class="name">virtualenvs</span></span><span class="tag">\<span class="name">myenvs</span></span>&gt;.<span class="tag">\<span class="name">Scripts</span></span><span class="tag">\<span class="name">activate</span></span>.bat</div><div class="line"></div><div class="line">(myenvs) E:<span class="tag">\<span class="name">Code</span></span><span class="tag">\<span class="name">virtualenvs</span></span><span class="tag">\<span class="name">myenvs</span></span>&gt;python .<span class="tag">\<span class="name">Scripts</span></span><span class="tag">\<span class="name">django</span></span>-admin.py startproject django_rest</div><div class="line"></div><div class="line">(myenvs) E:<span class="tag">\<span class="name">Code</span></span><span class="tag">\<span class="name">virtualenvs</span></span><span class="tag">\<span class="name">myenvs</span></span>&gt;cd django_rest<span class="tag">\</span></div><div class="line"></div><div class="line">(myenvs) E:<span class="tag">\<span class="name">Code</span></span><span class="tag">\<span class="name">virtualenvs</span></span><span class="tag">\<span class="name">myenvs</span></span><span class="tag">\<span class="name">django</span></span>_rest&gt;python .<span class="tag">\<span class="name">manage</span></span>.py startapp api</div><div class="line"></div><div class="line">(myenvs) E:<span class="tag">\<span class="name">Code</span></span><span class="tag">\<span class="name">virtualenvs</span></span><span class="tag">\<span class="name">myenvs</span></span><span class="tag">\<span class="name">django</span></span>_rest&gt;</div></pre></td></tr></table></figure>
-<p>打开settings.py文件，添加应用。</p>
-<blockquote>
-<p>settings.py</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># Application definition</span></div><div class="line"></div><div class="line">INSTALLED_APPS = [</div><div class="line">    <span class="string">'django.contrib.admin'</span>,</div><div class="line">    <span class="string">'django.contrib.auth'</span>,</div><div class="line">    <span class="string">'django.contrib.contenttypes'</span>,</div><div class="line">    <span class="string">'django.contrib.sessions'</span>,</div><div class="line">    <span class="string">'django.contrib.messages'</span>,</div><div class="line">    <span class="string">'django.contrib.staticfiles'</span>,</div><div class="line">    <span class="string">'rest_framework'</span>,</div><div class="line">    <span class="string">'api'</span>,</div><div class="line">]</div><div class="line"></div><div class="line">......</div><div class="line"></div><div class="line"><span class="comment"># 在文件末尾添加</span></div><div class="line">REST_FRAMEWORK = &#123;</div><div class="line">    <span class="string">'DEFAULT_PERMISSION_CLASSES'</span>:(</div><div class="line">        <span class="string">'rest_framework.permissions.IsAuthenticated'</span>,</div><div class="line">        )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>“rest_framework”为Django REST Framework应用，”api”为我们自己创建的应用。默认的权限策略可以设置在全局范围内，通过DEFAULT_PERMISSION_CLASSES设置。</p>
-<p>通过<code>migrate</code>命令执行数据库迁移。</p>
-<blockquote>
-<p>cmd.exe</p>
-</blockquote>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">(myenvs) E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\d</span>jango_rest&gt;python .<span class="symbol">\m</span>anage.py makemigrations</div><div class="line"></div><div class="line">(myenvs) E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\d</span>jango_rest&gt;python .<span class="symbol">\m</span>anage.py migrate</div></pre></td></tr></table></figure>
-<p>通过<code>createsuperuser</code>命令创建超级管理员账户admin/admin123456。</p>
-<blockquote>
-<p>cmd.exe</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(myenvs) E:\Code\virtualenvs\myenvs\django_rest&gt;python manage<span class="selector-class">.py</span> createsuperuser</div><div class="line">Username (leave blank to use <span class="string">'maomaochong'</span>): admin</div><div class="line">Email <span class="selector-tag">address</span>: admin@email.com</div><div class="line">Password:</div><div class="line">Password (again):</div><div class="line">Superuser created successfully.</div></pre></td></tr></table></figure>
-<p>创建数据序列化，在api应用下创建serializers.py文件。</p>
-<blockquote>
-<p>serializers.py</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User,Group</div><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> serializers</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserSerializer</span><span class="params">(serializers.HyperlinkedModelSerializer)</span>:</span></div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">		model = User</div><div class="line">		fields = (<span class="string">'url'</span>,<span class="string">'username'</span>,<span class="string">'email'</span>,<span class="string">'groups'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GroupSerializer</span><span class="params">(serializers.HyperlinkedModelSerializer)</span>:</span></div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">		model = Group</div><div class="line">		fields = (<span class="string">'url'</span>,<span class="string">'name'</span>)</div></pre></td></tr></table></figure>
-<p>Serializers用于定义API的表现形式，如返回哪些字段、返回怎样的格式等。这里序列化Django自带的User和Group。</p>
-<p>编写视图文件，打开api应用下的views.py文件，编写如下代码。</p>
-<blockquote>
-<p>views.py</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</div><div class="line"></div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div><div class="line"></div><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User,Group</div><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> viewsets</div><div class="line"><span class="keyword">from</span> api.serializers <span class="keyword">import</span> UserSerializer,GroupSerializer</div><div class="line"></div><div class="line"><span class="comment"># ViewSets 定义视图的展现形式</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserViewSet</span><span class="params">(viewsets.ModelViewSet)</span>:</span></div><div class="line">	<span class="string">"""</span></div><div class="line"><span class="string">	API endpoint that allows users to be viewed or edited.</span></div><div class="line"><span class="string">	"""</span></div><div class="line">	queryset = User.objects.all().order_by(<span class="string">'-date_joined'</span>)</div><div class="line">	serializer_class = UserSerializer</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GroupViewSet</span><span class="params">(viewsets.ModelViewSet)</span>:</span></div><div class="line">	<span class="string">"""</span></div><div class="line"><span class="string">	API endpoint that allows users to be viewed or edited.</span></div><div class="line"><span class="string">	"""</span></div><div class="line">	queryset = Group.objects.all().order_by(<span class="string">'-date_joined'</span>)</div><div class="line">	serializer_class = GroupSerializer</div></pre></td></tr></table></figure>
-<p>在Django REST framework 中，ViewSets用于定义视图的展现形式，例如返回哪些内容，需要做哪些权限处理。</p>
-<p>在URL中会定义相应的规则到ViewSet。ViewSet则通过serializer_class 找到对应的Serializers。这里讲User和Group的所有对象赋予queryset，并返回这些值。在UserSerializer和GroupSerializer中定义要返回的字段。</p>
-<p>打开…/django_rest/urls.py文件，添加api的路由配置。</p>
-<blockquote>
-<p>urls.py</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url, include</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> rest_framework <span class="keyword">import</span> routers</div><div class="line"><span class="keyword">from</span> api <span class="keyword">import</span> views</div><div class="line"></div><div class="line"><span class="comment"># Routers provide an easy way of automatically determining the URL conf.</span></div><div class="line">router = routers.DefaultRouter()</div><div class="line">router.register(<span class="string">r'users'</span>,views.UserViewSet)</div><div class="line">router.register(<span class="string">r'groups'</span>,views.GroupViewSet)</div><div class="line"></div><div class="line"><span class="comment"># Wire up out API using automatic URL routing.</span></div><div class="line"><span class="comment"># Additionally,we include login URLs for the browsable API.</span></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^'</span>,include(router.urls)),</div><div class="line">    url(<span class="string">r'^api-auth/'</span>,include(<span class="string">'rest_framework.urls'</span>,</div><div class="line">    							namespace=<span class="string">'rest_framework'</span>))</div><div class="line">]</div></pre></td></tr></table></figure>
-<p>因为使用的是ViewSets,所以可以使用routers类自动生成URL conf。</p>
-<p>通过<code>runserver</code>命令启动服务。</p>
-<blockquote>
-<p>cmd.exe</p>
-</blockquote>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(myenvs) E:\Code\virtualenvs\myenvs\django_rest&gt;python manage.py runserver</div><div class="line">Performing<span class="keyword"> system</span> checks...</div><div class="line"></div><div class="line">System<span class="built_in"> check </span>identified no issues (0 silenced).</div><div class="line">October 15, 2017 - 12:32:14</div><div class="line">Django version 1.11.6, using settings 'django_rest.settings'</div><div class="line">Starting development server at http://127.0.0.1:8000/</div><div class="line">Quit the server with CTRL-BREAK.</div></pre></td></tr></table></figure>
-<p><img src="/assets/django/django_rest_api_root.png" alt=""></p>
-<p>用超级管理员admin/admin123456登录。</p>
-<p><img src="/assets/django/django_rest_api_root_login.png" alt=""></p>
-<p>接下来在django_rest项目的基础上，创建模型，打开api应用下的models.py文件。</p>
-<blockquote>
-<p>models.py</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</div><div class="line"></div><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"></div><div class="line"><span class="comment"># Create your models here.</span></div><div class="line"><span class="comment"># 发布会</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Event</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name = models.CharField(max_length=<span class="number">100</span>)            <span class="comment"># 发布会标题</span></div><div class="line">    limit = models.IntegerField()                      <span class="comment"># 限制人数</span></div><div class="line">    status = models.BooleanField()                     <span class="comment"># 状态</span></div><div class="line">    address = models.CharField(max_length=<span class="number">200</span>)         <span class="comment"># 地址</span></div><div class="line">    start_time = models.DateTimeField(<span class="string">'events time'</span>)   <span class="comment"># 发布会时间</span></div><div class="line">    create_time = models.DateTimeField(auto_now=<span class="keyword">True</span>)  <span class="comment"># 创建时间（自动获取当前时间）</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.name</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 嘉宾</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Guest</span><span class="params">(models.Model)</span>:</span></div><div class="line">    event = models.ForeignKey(Event)            <span class="comment"># 关联发布会id</span></div><div class="line">    realname = models.CharField(max_length=<span class="number">64</span>)  <span class="comment"># 姓名</span></div><div class="line">    phone = models.CharField(max_length=<span class="number">16</span>)     <span class="comment"># 手机号</span></div><div class="line">    email = models.EmailField()                 <span class="comment"># 邮箱</span></div><div class="line">    sign = models.BooleanField()                <span class="comment"># 签到状态</span></div><div class="line">    create_time = models.DateTimeField(auto_now=<span class="keyword">True</span>)  <span class="comment"># 创建时间（自动获取当前时间）</span></div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">        unique_together = (<span class="string">'phone'</span>, <span class="string">'event'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.realname</div></pre></td></tr></table></figure>
-<p>然后执行数据库迁移。</p>
-<blockquote>
-<p>cmd.exe</p>
-</blockquote>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">(myenvs) E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\d</span>jango_rest&gt;python manage.py makemigrations api</div><div class="line">Migrations for 'api':</div><div class="line">  api<span class="symbol">\m</span>igrations<span class="symbol">\0</span>001_initial.py</div><div class="line">    - Create model Event</div><div class="line">    - Create model Guest</div><div class="line">    - Alter unique_together for guest (1 constraint(s))</div><div class="line"></div><div class="line">(myenvs) E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\d</span>jango_rest&gt;python manage.py migrate</div></pre></td></tr></table></figure>
-<p>添加发布会数据序列化，打开api应用下的serializers.py文件（上面创建的）。</p>
-<blockquote>
-<p>serializers.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">	</div><div class="line">	<span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User,Group</div><div class="line">	<span class="keyword">from</span> rest_framework <span class="keyword">import</span> serializers</div><div class="line">	<span class="keyword">from</span> api.models <span class="keyword">import</span> Event,Guest</div><div class="line">	</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">UserSerializer</span><span class="params">(serializers.HyperlinkedModelSerializer)</span>:</span></div><div class="line">		<span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">			model = User</div><div class="line">			fields = (<span class="string">'url'</span>,<span class="string">'username'</span>,<span class="string">'email'</span>,<span class="string">'groups'</span>)</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">GroupSerializer</span><span class="params">(serializers.HyperlinkedModelSerializer)</span>:</span></div><div class="line">		<span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">			model = Group</div><div class="line">			fields = (<span class="string">'url'</span>,<span class="string">'name'</span>)</div><div class="line">	</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">EventSerializer</span><span class="params">(serializers.HyperlinkedModelSerializer)</span>:</span></div><div class="line">		<span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">			model = Event</div><div class="line">			fields = (<span class="string">'url'</span>,<span class="string">'name'</span>,<span class="string">'address'</span>,<span class="string">'start_time'</span>,<span class="string">'limit'</span>,<span class="string">'status'</span>)</div><div class="line">	</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">GuestSerializer</span><span class="params">(serializers.HyperlinkedModelSerializer)</span>:</span></div><div class="line">		<span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></div><div class="line">			model = Guest</div><div class="line">			fields = (<span class="string">'url'</span>,<span class="string">'realname'</span>,<span class="string">'phone'</span>,<span class="string">'email'</span>,<span class="string">'sign'</span>,<span class="string">'event'</span>)</div><div class="line">```	</div><div class="line"></div><div class="line">打开api应用下的views.py文件，定义发布会和嘉宾视图类。</div><div class="line">&gt; views.py</div><div class="line"></div><div class="line">``` python</div><div class="line">	</div><div class="line">	<span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line">	<span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</div><div class="line">	</div><div class="line">	<span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div><div class="line">	</div><div class="line">	<span class="comment"># Create your views here.</span></div><div class="line">	<span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User,Group</div><div class="line">	<span class="keyword">from</span> rest_framework <span class="keyword">import</span> viewsets</div><div class="line">	<span class="keyword">from</span> api.serializers <span class="keyword">import</span> UserSerializer,GroupSerializer, EventSerializer, GuestSerializer</div><div class="line">	<span class="keyword">from</span> api.models <span class="keyword">import</span> Event, Guest </div><div class="line">	</div><div class="line">	<span class="comment"># ViewSets 定义视图的展现形式</span></div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">UserViewSet</span><span class="params">(viewsets.ModelViewSet)</span>:</span></div><div class="line">		<span class="string">"""</span></div><div class="line"><span class="string">		API endpoint that allows users to be viewed or edited.</span></div><div class="line"><span class="string">		"""</span></div><div class="line">		queryset = User.objects.all().order_by(<span class="string">'-date_joined'</span>)</div><div class="line">		serializer_class = UserSerializer</div><div class="line">	</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">GroupViewSet</span><span class="params">(viewsets.ModelViewSet)</span>:</span></div><div class="line">		<span class="string">"""</span></div><div class="line"><span class="string">		API endpoint that allows users to be viewed or edited.</span></div><div class="line"><span class="string">		"""</span></div><div class="line">		queryset = Group.objects.all()</div><div class="line">		serializer_class = GroupSerializer</div><div class="line">	</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">EventViewSet</span><span class="params">(viewsets.ModelViewSet)</span>:</span></div><div class="line">		<span class="string">"""</span></div><div class="line"><span class="string">		API endpoint that allows users to be viewed or edited.</span></div><div class="line"><span class="string">		"""</span></div><div class="line">		queryset = Event.objects.all()</div><div class="line">		serializer_class = EventSerializer</div><div class="line">	</div><div class="line">	<span class="class"><span class="keyword">class</span> <span class="title">GuestViewSet</span><span class="params">(viewsets.ModelViewSet)</span>:</span></div><div class="line">		<span class="string">"""</span></div><div class="line"><span class="string">		API endpoint that allows users to be viewed or edited.</span></div><div class="line"><span class="string">		"""</span></div><div class="line">		queryset = Guest.objects.all()</div><div class="line">		serializer_class = GuestSerializer</div><div class="line"></div><div class="line">```	</div><div class="line"></div><div class="line">打开.../django_rest/urls.py文件，添加URL配置。</div><div class="line">&gt; urls.py</div><div class="line"></div><div class="line">``` python</div><div class="line"></div><div class="line">	<span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url, include</div><div class="line">	<span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line">	<span class="keyword">from</span> rest_framework <span class="keyword">import</span> routers</div><div class="line">	<span class="keyword">from</span> api <span class="keyword">import</span> views</div><div class="line">	</div><div class="line">	<span class="comment"># Routers provide an easy way of automatically determining the URL conf.</span></div><div class="line">	router = routers.DefaultRouter()</div><div class="line">	router.register(<span class="string">r'users'</span>,views.UserViewSet)</div><div class="line">	router.register(<span class="string">r'groups'</span>,views.GroupViewSet)</div><div class="line">	router.register(<span class="string">r'events'</span>,views.EventViewSet)</div><div class="line">	router.register(<span class="string">r'guests'</span>,views.GuestViewSet)</div><div class="line">	</div><div class="line">	<span class="comment"># Wire up out API using automatic URL routing.</span></div><div class="line">	<span class="comment"># Additionally,we include login URLs for the browsable API.</span></div><div class="line">	urlpatterns = [</div><div class="line">	    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">	    url(<span class="string">r'^'</span>,include(router.urls)),</div><div class="line">	    url(<span class="string">r'^api-auth/'</span>,include(<span class="string">'rest_framework.urls'</span>,</div><div class="line">	    							namespace=<span class="string">'rest_framework'</span>))</div><div class="line">	]</div></pre></td></tr></table></figure></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">REST</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">API</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/15/基于Django REST Framework创建API服务/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python类属性和方法的封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/14/python类属性和方法的封装/">python类属性和方法的封装</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/14/python类属性和方法的封装/" class="archive-article-date">
-  	<time datetime="2017-10-14T07:00:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>封装是一种限制直接访问目标属性和方法的机制，但同时它又有利于对数据（对象的方法）进行操作。</p>
-<p>封装是一种将抽象性函数接口的实现细节部分包装、隐藏起来的方法。同时，它也是一种防止外界调用端，去访问对象内部实现细节的手段，这个手段是由编程语言本身来提供的。</p>
-<p>对象所有的内部表征对于外部来说都是隐藏的，只有对象能直接与内部数据交互。首先，我们需要理解公开（public）和私有（non-public）实例变量和方法。</p>
-<h1 id="公开实例变量"><a href="#公开实例变量" class="headerlink" title="公开实例变量"></a>公开实例变量</h1><p>对于 Python 的类，我们可以使用 constructor 方法初始化公开实例变量：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,first_name)</span>:</span></div><div class="line">		self.first_name = first_name</div></pre></td></tr></table></figure>
-<p>下面我们应用 first_name 的值作为公开实例变量的变元。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = Person(<span class="string">'zhang'</span>)</div><div class="line"><span class="keyword">print</span> a.first_name  <span class="comment"># -&gt; zhang</span></div></pre></td></tr></table></figure>
-<p>在类别内：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></div><div class="line">	first_name = <span class="string">'zhang'</span></div></pre></td></tr></table></figure>
-<p>现在我们不需要再对 first_name 赋值，所有赋值到 a 的目标都将有类的属性：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = Person()</div><div class="line"><span class="keyword">print</span> a.first_name <span class="comment"># -&gt; zhang</span></div></pre></td></tr></table></figure>
-<p>现在我们已经学会如何使用公开实例变量和类属性。除此之外，我们还能管理公开部分的变量值，即对象可以管理其变量的值：Get 和 Set 变量值。保留 Person 类，我们希望能给 first_name 变量赋另外一个值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = Person(<span class="string">'zhang'</span>)</div><div class="line">a.first_name = <span class="string">'Z'</span></div><div class="line"><span class="keyword">print</span> a.first_name <span class="comment"># -&gt; Z</span></div></pre></td></tr></table></figure>
-<p>如上我们将另外一个值赋予了 first_name 实例变量，因为它又是一个公开变量，所以会更新变量值。</p>
-<h1 id="私有实例变量"><a href="#私有实例变量" class="headerlink" title="私有实例变量"></a>私有实例变量</h1><p>和公开实例变量一样，我们可以使用 constructor 方法或在类的内部声明而定义一个私有实例变量。语法上的不同在于私有实例变量在变量名前面加一个下划线：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,first_name,email)</span>:</span></div><div class="line">		self.first_name = first_name</div><div class="line">		self._email = email</div></pre></td></tr></table></figure>
-<p>上述定义的 email 变量就是私有变量。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = Person(<span class="string">'zhang'</span>,<span class="string">'zhang@mail.com'</span>)</div><div class="line"><span class="keyword">print</span> a._email <span class="comment"># -&gt; zhang@mail.com</span></div></pre></td></tr></table></figure></p>
-<p>我们可以访问并且更新它，私有变量仅是一个约定，即他们需要被视为 API 非公开的部分。所以我们可以使用方法在类的定义中完成操作，例如使用两种方法展示私有实例的值与更新实例的值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,first_name,email)</span>:</span></div><div class="line">		self.first_name = first_name</div><div class="line">		self.__email = email</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">update_email</span><span class="params">(self,new_email)</span>:</span></div><div class="line">		self.__email = new_email</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">email</span><span class="params">(self)</span>:</span></div><div class="line">		<span class="keyword">return</span> self.__email</div></pre></td></tr></table></figure>
-<p>现在我们可以使用方法更新或访问私有变量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">a = Person(<span class="string">'zhang'</span>,<span class="string">'zhang@mail.com'</span>)</div><div class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; zhang@mail.com</span></div><div class="line"></div><div class="line">a.__email = <span class="string">'new_email@mail.com'</span></div><div class="line"><span class="keyword">print</span> a.__email <span class="comment"># -&gt; new_email@mail.com</span></div><div class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; zhang@mail.com</span></div><div class="line"></div><div class="line">a.update_email(<span class="string">'update_email@mail.com'</span>)</div><div class="line"><span class="keyword">print</span> a.__email <span class="comment"># -&gt; new_email@mail.com</span></div><div class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; update_email@mail.com</span></div></pre></td></tr></table></figure>
-<p><img src="/assets/python/private1.png" alt=""></p>
-<p>从上面可见，以双下划线打头的名称会导致出现名称重整的行为。具体来说就是上面的这个类中的私有属性会被分别重命名为_C<strong>private 和 _C</strong>private_name。<br>但是为啥两个值不一样？？</p>
-<p><img src="/assets/python/private3.png" alt=""></p>
-<p><img src="/assets/python/private4.png" alt=""></p>
-<p><img src="/assets/python/private5.png" alt=""></p>
-<p><img src="/assets/python/private6.png" alt=""></p>
-<p>豁然开朗！</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">a = Person(<span class="string">'zhang'</span>,<span class="string">'zhang@mail.com'</span>)</div><div class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; zhang@mail.com</span></div><div class="line"></div><div class="line">a._email = <span class="string">'new_email@mail.com'</span></div><div class="line"><span class="keyword">print</span> a._email <span class="comment"># -&gt; new_email@mail.com</span></div><div class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; new_email@mail.com</span></div><div class="line"></div><div class="line">a.update_email(<span class="string">'update_email@mail.com'</span>)</div><div class="line"><span class="keyword">print</span> a._email <span class="comment"># -&gt; update_email@mail.com</span></div><div class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; update_email@mail.com</span></div></pre></td></tr></table></figure>
-<p><img src="/assets/python/private2.png" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/14/python类属性和方法的封装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1352,10 +1273,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">提升</a>
               </li>
              
@@ -1368,7 +1285,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1380,7 +1301,51 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">EM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">主题模型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">HMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">贝叶斯网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Baum-Welch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Viterbi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1408,27 +1373,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">get</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">post</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">NN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1440,7 +1385,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">PLSA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1449,10 +1402,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Visual Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1496,11 +1445,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1520,15 +1469,51 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Beta分布</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">先验分布</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">共轭先验分布</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">二项分布</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Dirichlet分布</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">多项分布</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Gibbs采样</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1540,7 +1525,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">REST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1600,14 +1597,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">偏度</a>
               </li>
              
@@ -1616,7 +1605,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模块</a>
+                <a href="javascript:void(0)" class="js-tag color1">朴素贝叶斯</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">马尔科夫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">D-separation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Markov Blanket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Chou-Liu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MSWT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">转移概率矩阵</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1625,10 +1638,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
               </li>
              
               <li class="article-tag-list-item">
