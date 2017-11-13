@@ -1,5 +1,5 @@
 ---
-title: 主题模型
+title: HMM
 date: 2017-11-12 22:06:12 
 categories: "机器学习" 
 tags: 
