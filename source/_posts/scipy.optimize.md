@@ -64,7 +64,7 @@ toc: true
 
 ## 利用scipy.optimize求解线性回归1输出图例
 <div class="fig figcenter fighighlight">
-  <img src="/assets/chinahadoop/ML/optimize/QQ截图20171113123110.png" width="80%">
+  <img src="/assets/ML/optimize/QQ截图20171113123110.png" width="80%">
   <div class="figcaption">
   </div>
 </div>
@@ -93,7 +93,7 @@ toc: true
 
 ## 利用scipy.optimize求解非线性回归输出图例
 <div class="fig figcenter fighighlight">
-  <img src="/assets/chinahadoop/ML/optimize/QQ截图20171113123423.png" width="80%">
+  <img src="/assets/ML/optimize/QQ截图20171113123423.png" width="80%">
   <div class="figcaption">
   </div>
 </div>

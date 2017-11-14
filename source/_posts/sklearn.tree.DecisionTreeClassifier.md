@@ -109,14 +109,14 @@ toc: true
 ```
 #### 决策树树状图
 <div class="fig figcenter fighighlight">
-  <img src="/assets/chinahadoop/ML/tree/QQ截图20171113174937.png" width="80%">
+  <img src="/assets/ML/tree/QQ截图20171113174937.png" width="80%">
   <div class="figcaption">
   </div>
 </div>
 
 #### 决策分割面
 <div class="fig figcenter fighighlight">
-  <img src="/assets/chinahadoop/ML/tree/QQ截图20171113175055.png" width="80%">
+  <img src="/assets/ML/tree/QQ截图20171113175055.png" width="80%">
   <div class="figcaption">
   </div>
 </div>
@@ -158,7 +158,7 @@ toc: true
 
 #### 输出
 <div class="fig figcenter fighighlight">
-  <img src="/assets/chinahadoop/ML/tree/QQ截图20171113175110.png" width="80%">
+  <img src="/assets/ML/tree/QQ截图20171113175110.png" width="80%">
   <div class="figcaption">
   </div>
 </div>

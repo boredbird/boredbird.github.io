@@ -93,7 +93,7 @@ toc: true
 ```
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/chinahadoop/ML/linear_model/Figure_1.png" width="80%">
+  <img src="/assets/ML/linear_model/Figure_1.png" width="80%">
   <div class="figcaption">
   </div>
 </div>

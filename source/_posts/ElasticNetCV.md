@@ -105,7 +105,7 @@ toc: true
 ```
 
 <div class="fig figcenter fighighlight">
-  <img src="/assets/chinahadoop/ML/linear_model/QQ截图20171113171456.png" width="80%">
+  <img src="/assets/ML/linear_model/QQ截图20171113171456.png" width="80%">
   <div class="figcaption">
   </div>
 </div>
