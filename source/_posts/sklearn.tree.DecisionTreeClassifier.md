@@ -107,6 +107,7 @@ toc: true
 	plt.title(u'鸢尾花数据的决策树分类', fontsize=17)
 	plt.show()
 ```
+
 #### 决策树树状图
 <div class="fig figcenter fighighlight">
   <img src="/assets/ML/tree/QQ截图20171113174937.png" width="80%">
