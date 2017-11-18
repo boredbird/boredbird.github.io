@@ -177,36 +177,30 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-随机森林" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-sklearn.tree.DecisionTreeClassifier" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/11/随机森林/">随机森林</a>
+      <a class="article-title" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/">sklearn.tree.DecisionTreeClassifier</a>
     </h1>
   
 
         
-        <a href="/2017/11/11/随机森林/" class="archive-article-date">
-  	<time datetime="2017-11-11T06:25:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+        <a href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" class="archive-article-date">
+  	<time datetime="2017-11-13T14:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Bootstraping"><a href="#Bootstraping" class="headerlink" title="Bootstraping"></a>Bootstraping</h1><p>Bootstraping的名称来自成语“pull up by your own bootstraps”,意思是依靠你自己的资源，称为自助法，它是一种有放回的抽样方法。本意是通过拉靴子让自己上升，不可能发生的事情。后来意思发生了转变，隐喻不需要外界帮助，仅依靠自身力量让自己变得更好。</p>
-<h1 id="Bagging的策略"><a href="#Bagging的策略" class="headerlink" title="Bagging的策略"></a>Bagging的策略</h1><ul>
-<li>bootstrap aggregation</li>
-<li>从样本集中重采样（有重复的）选出n个样本</li>
-<li>在所有属性上，对这n个样本建立分类器（ID3，C4.5，CART,SVM,Logistic回归等）</li>
-<li>重复以上两部m次，即获得了m个分类器</li>
-<li>将数据放在这m个分类器上，最后根据这m个分类器的投票结果，决定数据属于哪一类</li>
-</ul>
+        <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</div><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</div><div class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</div><div class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line"><span class="keyword">import</span> pydotplus</div></pre></td></tr></table></figure>
+<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></div><div class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</div><div class="line">    <span class="keyword">return</span> it[s]</div><div class="line"></div><div class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</div><div class="line">iris=load_iris()</div><div class="line">X = iris.data[:, :<span class="number">2</span>]</div><div class="line">y = iris.target</div><div class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</div><div class="line"></div><div class="line">iris_feature_E = <span class="string">'sepal length'</span>, <span class="string">'sepal width'</span>, <span class="string">'petal length'</span>, <span class="string">'petal width'</span></div><div class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></div><div class="line">iris_class = <span class="string">'Iris-setosa'</span>, <span class="string">'Iris-versicolor'</span>, <span class="string">'Iris-virginica'</span></div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2017/11/11/随机森林/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/#more">查看更多 >></a>
         
       
 
@@ -220,15 +214,27 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sklearn</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">随机森林</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tree</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RF</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">train_test_split</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DecisionTreeClassifier</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">pydotplus</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">matplotlib</a>
         		</li>
       		
 		</ul>
@@ -249,7 +255,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/11/随机森林/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/">展开全文 >></a>
         </p>
       
 
@@ -279,37 +285,30 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-决策树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ElasticNetCV" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/11/决策树/">决策树</a>
+      <a class="article-title" href="/2017/11/13/ElasticNetCV/">ElasticNetCV</a>
     </h1>
   
 
         
-        <a href="/2017/11/11/决策树/" class="archive-article-date">
-  	<time datetime="2017-11-11T05:25:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+        <a href="/2017/11/13/ElasticNetCV/" class="archive-article-date">
+  	<time datetime="2017-11-13T14:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="决策树的概念"><a href="#决策树的概念" class="headerlink" title="决策树的概念"></a>决策树的概念</h2><p>决策树是一种树型结构，其中每个内部结点表示在一个属性上的测试，每个分支代表一个测试输出，每个叶节点代表一种类别。<br>决策树学习是以实例为基础的归纳学习。<br>决策树学习采用的是自顶向下的递归方法，其基本思想是以信息熵为度量构造一棵熵值下降最快的树，到叶子节点处的熵值为零，此时每个叶节点中的实例都属于同一类。</p>
-<h2 id="决策树学习的生成算法"><a href="#决策树学习的生成算法" class="headerlink" title="决策树学习的生成算法"></a>决策树学习的生成算法</h2><p>建立决策树的关键，即在当前状态下选择哪个属性作为分类依据。根据不同的目标函数，建立决策树主要有以下三种算法：</p>
-<ul>
-<li>ID3(Iterative Dichotomiser)</li>
-<li>C4.5</li>
-<li>CART(Classification And Regression Tree)</li>
-</ul>
-<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵和条件熵分别称为经验熵和经验条件熵。</p>
-<p>信息增益表示得知特征A的信息而使得类X的信息的不确定性减少的程度。</p>
+        <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> ElasticNetCV</div><div class="line"><span class="keyword">import</span> sklearn.datasets</div><div class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures, StandardScaler</div><div class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</div><div class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</div></pre></td></tr></table></figure>
+<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_empty</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">return</span> s != <span class="string">''</span></div><div class="line"></div><div class="line">data = sklearn.datasets.load_boston()</div><div class="line">x = np.array(data.data)</div><div class="line">y = np.array(data.target)</div><div class="line"><span class="keyword">print</span> x.shape</div><div class="line"><span class="keyword">print</span> y.shape</div><div class="line"></div><div class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">0</span>)</div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2017/11/11/决策树/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/13/ElasticNetCV/#more">查看更多 >></a>
         
       
 
@@ -323,104 +322,35 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/11/决策树/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Logistic回归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/11/Logistic回归/">Logistic回归</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/11/Logistic回归/" class="archive-article-date">
-  	<time datetime="2017-11-11T03:25:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Logistic回归"><a href="#Logistic回归" class="headerlink" title="Logistic回归"></a>Logistic回归</h1><p>分类问题的首选算法;</p>
-<p>线性回归：最大似然估计+高斯分布；</p>
-<p>Logistic回归：最大似然估计+伯努利分布；</p>
-<p>Logistic回归是事件发生几率取对数下的线性回归。高斯分布和伯努利分布都是属于指数族分布，所以说逻辑回归是广义线性模型GLM回归。</p>
-<h2 id="Logistic-Sigmoid函数"><a href="#Logistic-Sigmoid函数" class="headerlink" title="Logistic/Sigmoid函数"></a>Logistic/Sigmoid函数</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111113157.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-
-<h2 id="Logistic回归参数估计"><a href="#Logistic回归参数估计" class="headerlink" title="Logistic回归参数估计"></a>Logistic回归参数估计</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111114625.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-        
-          <a class="article-more-a" href="/2017/11/11/Logistic回归/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回归</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sklearn</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Logistic</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PolynomialFeatures</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linear_model</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ElasticNetCV</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ElasticNet</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">StandardScaler</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">train_test_split</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Pipeline</a>
         		</li>
       		
 		</ul>
@@ -441,7 +371,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/11/Logistic回归/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/13/ElasticNetCV/">展开全文 >></a>
         </p>
       
 
@@ -471,33 +401,30 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-回归与特征选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-sklearn.linear_model.LogisticRegression" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/11/回归与特征选择/">回归与特征选择</a>
+      <a class="article-title" href="/2017/11/13/sklearn.linear_model.LogisticRegression/">sklearn.linear_model.LogisticRegression</a>
     </h1>
   
 
         
-        <a href="/2017/11/11/回归与特征选择/" class="archive-article-date">
-  	<time datetime="2017-11-11T01:20:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+        <a href="/2017/11/13/sklearn.linear_model.LogisticRegression/" class="archive-article-date">
+  	<time datetime="2017-11-13T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><p>可以对样本是非线性的，只要对参数线性。</p>
-<h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>在做特征选择的时候，可以看回归的残差图，真正理想状态下，经过模型回归后的残差应该是服从正态分布的，而不是均匀的随机分布；此时可以画个单变量与残差的关系图，直观的看一下是不是有什么明显的一阶、高阶趋势在里面，则需要进一步特征加工。</p>
-<p>大数定理指的是事件发生的概率在N取无穷大的时候趋近于事件发生的概率。频率的极限是概率。</p>
-<h3 id="使用极大似然估计解释最小二乘"><a href="#使用极大似然估计解释最小二乘" class="headerlink" title="使用极大似然估计解释最小二乘"></a>使用极大似然估计解释最小二乘</h3><p><img src="https://i.imgur.com/BLDhXge.png" alt=""></p>
-<h2 id="最大似然估计MLE"><a href="#最大似然估计MLE" class="headerlink" title="最大似然估计MLE"></a>最大似然估计MLE</h2><h3 id="最大似然函数的假设"><a href="#最大似然函数的假设" class="headerlink" title="最大似然函数的假设"></a>最大似然函数的假设</h3><p>似然函数假设每个样本出现的概率是独立的，因此整体出现的概率就是各个样本出现的概率的累计。</p>
+        <h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</div><div class="line">iris = datasets.load_iris()</div><div class="line">X = iris.data[:, :<span class="number">2</span>]</div><div class="line">y = iris.target</div></pre></td></tr></table></figure>
+<h1 id="数据处理与模型拟合Pipeline"><a href="#数据处理与模型拟合Pipeline" class="headerlink" title="数据处理与模型拟合Pipeline"></a>数据处理与模型拟合Pipeline</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</div><div class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</div><div class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</div><div class="line">lr = Pipeline([(<span class="string">'sc'</span>, StandardScaler()),</div><div class="line">               (<span class="string">'clf'</span>, LogisticRegression()) ])</div><div class="line">lr.fit(X, y.ravel())</div><div class="line">y_hat = lr.predict(X)</div><div class="line">y_hat_prob = lr.predict_proba(X)</div><div class="line">np.set_printoptions(suppress=<span class="keyword">True</span>)</div><div class="line"><span class="keyword">print</span> <span class="string">'y_hat = \n'</span>, y_hat</div><div class="line"><span class="keyword">print</span> <span class="string">'y_hat_prob = \n'</span>, y_hat_prob</div><div class="line"><span class="keyword">print</span> <span class="string">u'准确度：%.2f%%'</span> % (<span class="number">100</span>*np.mean(y_hat == y.ravel()))</div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2017/11/11/回归与特征选择/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/13/sklearn.linear_model.LogisticRegression/#more">查看更多 >></a>
         
       
 
@@ -511,11 +438,23 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回归</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sklearn</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">特征选择</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linear_model</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Pipeline</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LogisticRegression</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分割面</a>
         		</li>
       		
 		</ul>
@@ -536,7 +475,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/11/回归与特征选择/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/13/sklearn.linear_model.LogisticRegression/">展开全文 >></a>
         </p>
       
 
@@ -566,30 +505,342 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Python基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Ridge_Lasso_ElasticNet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/08/Python基础/">Python基础</a>
+      <a class="article-title" href="/2017/11/13/Ridge_Lasso_ElasticNet/">sklearn.linear_model中的Ridge、Lasso、ElasticNet回归</a>
     </h1>
   
 
         
-        <a href="/2017/11/08/Python基础/" class="archive-article-date">
-  	<time datetime="2017-11-08T13:15:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
+        <a href="/2017/11/13/Ridge_Lasso_ElasticNet/" class="archive-article-date">
+  	<time datetime="2017-11-13T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h1>
+        <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression, RidgeCV, LassoCV, ElasticNetCV</div><div class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</div><div class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</div><div class="line"><span class="keyword">import</span> warnings</div></pre></td></tr></table></figure>
+<h1 id="定义模型评价函数："><a href="#定义模型评价函数：" class="headerlink" title="定义模型评价函数："></a>定义模型评价函数：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">xss</span><span class="params">(y, y_hat)</span>:</span></div><div class="line">    y = y.ravel()</div><div class="line">    y_hat = y_hat.ravel()</div><div class="line">    tss = np.var(y)</div><div class="line">    rss = np.average((y_hat - y) ** <span class="number">2</span>)</div><div class="line">    r2 = <span class="number">1</span> - rss / tss</div><div class="line">    corr_coef = np.corrcoef(y, y_hat)[<span class="number">0</span>, <span class="number">1</span>]</div><div class="line">    <span class="keyword">return</span> r2, corr_coef</div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2017/11/08/Python基础/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/13/Ridge_Lasso_ElasticNet/#more">查看更多 >></a>
         
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sklearn</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linear_model</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">ElasticNet</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Pipeline</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Ridge</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Lasso</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/13/Ridge_Lasso_ElasticNet/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-sklearn.linear_model" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/13/sklearn.linear_model/">sklearn.linear_model</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/13/sklearn.linear_model/" class="archive-article-date">
+  	<time datetime="2017-11-13T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</div><div class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line">boston = datasets.load_boston()</div><div class="line">X = boston.data</div><div class="line">y = boston.target</div><div class="line"><span class="string">"""</span></div><div class="line"><span class="string">划分数据集</span></div><div class="line"><span class="string">"""</span></div><div class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h1 id="GridSearchCV寻参"><a href="#GridSearchCV寻参" class="headerlink" title="GridSearchCV寻参"></a>GridSearchCV寻参</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">lr = linear_model.LinearRegression()</div><div class="line">model = Lasso()</div><div class="line"><span class="comment"># model = Ridge()</span></div><div class="line"></div><div class="line">alpha_can = np.logspace(<span class="number">-3</span>, <span class="number">2</span>, <span class="number">10</span>)</div><div class="line">lasso_model = GridSearchCV(model, param_grid=&#123;<span class="string">'alpha'</span>: alpha_can&#125;, cv=<span class="number">5</span>)</div><div class="line">lasso_model.fit(x_train, y_train)</div><div class="line"><span class="keyword">print</span> <span class="string">'超参数：\n'</span>, lasso_model.best_params_</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/11/13/sklearn.linear_model/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sklearn</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linear_model</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">scipy</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GridSearchCV</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MSE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">RMSE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cross_val_predict</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/13/sklearn.linear_model/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-scipy.optimize" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/13/scipy.optimize/">scipy.optimize使用</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/13/scipy.optimize/" class="archive-article-date">
+  	<time datetime="2017-11-13T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="定义损失函数"><a href="#定义损失函数" class="headerlink" title="定义损失函数"></a>定义损失函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="comment"># 导入NumPy函数库，一般都是用这样的形式(包括别名np，几乎是约定俗成的)</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> leastsq</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">residual</span><span class="params">(t, x, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> y - (t[<span class="number">0</span>] * x ** <span class="number">2</span> + t[<span class="number">1</span>] * x + t[<span class="number">2</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">residual2</span><span class="params">(t, x, y)</span>:</span></div><div class="line">    <span class="keyword">print</span> t[<span class="number">0</span>], t[<span class="number">1</span>]</div><div class="line">    <span class="keyword">return</span> y - t[<span class="number">0</span>]*np.sin(t[<span class="number">1</span>]*x)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># x ** x        x &gt; 0</span></div><div class="line"><span class="comment"># (-x) ** (-x)  x &lt; 0</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></div><div class="line">    y = np.ones_like(x)</div><div class="line">    i = x &gt; <span class="number">0</span></div><div class="line">    y[i] = np.power(x[i], x[i])</div><div class="line">    i = x &lt; <span class="number">0</span></div><div class="line">    y[i] = np.power(-x[i], -x[i])</div><div class="line">    <span class="keyword">return</span> y</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/11/13/scipy.optimize/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">optimize</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">scipy</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/13/scipy.optimize/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python读取文件数据的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/13/python读取文件数据的几种方式/">python读取文件数据的几种方式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/13/python读取文件数据的几种方式/" class="archive-article-date">
+  	<time datetime="2017-11-13T06:53:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="方式一：f-file-path"><a href="#方式一：f-file-path" class="headerlink" title="方式一：f = file(path)"></a>方式一：f = file(path)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">f = file(path)</div><div class="line">x = []</div><div class="line">y = []</div><div class="line"><span class="keyword">for</span> i, d <span class="keyword">in</span> enumerate(f):</div><div class="line">    <span class="keyword">if</span> i == <span class="number">0</span>:</div><div class="line">        <span class="keyword">continue</span></div><div class="line">    d = d.strip()</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> d:</div><div class="line">        <span class="keyword">continue</span></div><div class="line">    d = map(float, d.split(<span class="string">','</span>))</div><div class="line">    x.append(d[<span class="number">1</span>:<span class="number">-1</span>])</div><div class="line">    y.append(d[<span class="number">-1</span>])</div><div class="line">pprint(x)</div><div class="line">pprint(y)</div><div class="line">x = np.array(x)</div><div class="line">y = np.array(y)</div></pre></td></tr></table></figure>
+<h1 id="方式二：Python自带库csv"><a href="#方式二：Python自带库csv" class="headerlink" title="方式二：Python自带库csv"></a>方式二：Python自带库csv</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> csv</div><div class="line">   f = file(path, <span class="string">'rb'</span>)</div><div class="line">   <span class="keyword">print</span> f</div><div class="line">   d = csv.reader(f)</div><div class="line">   <span class="keyword">for</span> line <span class="keyword">in</span> d:</div><div class="line">       <span class="keyword">print</span> line</div><div class="line">   f.close()</div></pre></td></tr></table></figure>
+<h1 id="方式三：Python自带库numpy"><a href="#方式三：Python自带库numpy" class="headerlink" title="方式三：Python自带库numpy"></a>方式三：Python自带库numpy</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">p = np.loadtxt(path, delimiter=<span class="string">','</span>, skiprows=<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<h1 id="方式四：Python自带库pandas"><a href="#方式四：Python自带库pandas" class="headerlink" title="方式四：Python自带库pandas"></a>方式四：Python自带库pandas</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line">data = pd.read_csv(path)</div></pre></td></tr></table></figure>
+
       
 
       
@@ -603,6 +854,22 @@ var _hmt = _hmt || [];
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">file</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">csv</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">loadtxt</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">read_csv</a>
         		</li>
       		
 		</ul>
@@ -623,7 +890,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/08/Python基础/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/13/python读取文件数据的几种方式/">展开全文 >></a>
         </p>
       
 
@@ -653,35 +920,31 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-凸优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-主题模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/08/凸优化/">凸优化</a>
+      <a class="article-title" href="/2017/11/12/主题模型/">主题模型</a>
     </h1>
   
 
         
-        <a href="/2017/11/08/凸优化/" class="archive-article-date">
-  	<time datetime="2017-11-08T11:42:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
+        <a href="/2017/11/12/主题模型/" class="archive-article-date">
+  	<time datetime="2017-11-12T14:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="凸集基本概念"><a href="#凸集基本概念" class="headerlink" title="凸集基本概念"></a>凸集基本概念</h1><h2 id="凸集保凸运算"><a href="#凸集保凸运算" class="headerlink" title="凸集保凸运算"></a>凸集保凸运算</h2><h3 id="凸集和凸函数"><a href="#凸集和凸函数" class="headerlink" title="凸集和凸函数"></a>凸集和凸函数</h3><p>凸函数图像的上方区域，一定是凸集；<br>一个函数图像的上方区域为凸集，则该函数是凸函数。</p>
-<h4 id="仿射集（Affine-Set）"><a href="#仿射集（Affine-Set）" class="headerlink" title="仿射集（Affine Set）"></a>仿射集（Affine Set）</h4><p>定义：通过集合C中任意两个不同点的直线仍然在集合C内，则称集合C为仿射集。</p>
-<p><img src="https://i.imgur.com/Ik2mJaU.png" alt=""></p>
-<h4 id="仿射集的例子："><a href="#仿射集的例子：" class="headerlink" title="仿射集的例子："></a>仿射集的例子：</h4><p>直线、平面、超平面</p>
-<h4 id="凸集"><a href="#凸集" class="headerlink" title="凸集"></a>凸集</h4><p>集合C内任意两点间的线段均在集合C内，则称集合C为凸集。<br><img src="https://i.imgur.com/Q6GhpAw.png" alt=""></p>
-<p>两个点和k个点的表达版本内涵是一样的。</p>
-<h4 id="仿射集和凸集的关系"><a href="#仿射集和凸集的关系" class="headerlink" title="仿射集和凸集的关系"></a>仿射集和凸集的关系</h4><p>因为仿射集的条件比凸集的条件强，所以，仿射集必然是凸集。</p>
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/主题模型/TIM截图20171112220821.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/主题模型/TIM截图20171112221007.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
         
-          <a class="article-more-a" href="/2017/11/08/凸优化/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/12/主题模型/#more">查看更多 >></a>
         
       
 
@@ -695,7 +958,35 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">凸优化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Beta分布</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">先验分布</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">共轭先验分布</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二项分布</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Dirichlet分布</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">多项分布</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Gibbs采样</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LDA</a>
         		</li>
       		
 		</ul>
@@ -716,7 +1007,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/08/凸优化/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/12/主题模型/">展开全文 >></a>
         </p>
       
 
@@ -746,28 +1037,32 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-vscode 调试适配器进程已意外终止" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-HMM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/vscode 调试适配器进程已意外终止/">vscode 调试适配器进程已意外终止</a>
+      <a class="article-title" href="/2017/11/12/HMM/">HMM</a>
     </h1>
   
 
         
-        <a href="/2017/10/24/vscode 调试适配器进程已意外终止/" class="archive-article-date">
-  	<time datetime="2017-10-24T03:35:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
+        <a href="/2017/11/12/HMM/" class="archive-article-date">
+  	<time datetime="2017-11-12T14:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>隔了N天以后，重新打开，一进来就重新下载C依赖，然后提示reload。<br>然后莫名的就可以用了。我晕。</p>
+        <h2 id="HMM定义"><a href="#HMM定义" class="headerlink" title="HMM定义"></a>HMM定义</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225447.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
 
+<h2 id="隐马尔科夫模型的贝叶斯网络"><a href="#隐马尔科夫模型的贝叶斯网络" class="headerlink" title="隐马尔科夫模型的贝叶斯网络"></a>隐马尔科夫模型的贝叶斯网络</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225714.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+        
+          <a class="article-more-a" href="/2017/11/12/HMM/#more">查看更多 >></a>
+        
       
 
       
@@ -780,123 +1075,23 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/C//" class="article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/24/vscode 调试适配器进程已意外终止/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-李德荃关于偏度与峰度的讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/李德荃关于偏度与峰度的讲解/">李德荃关于偏度与峰度的讲解</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/24/李德荃关于偏度与峰度的讲解/" class="archive-article-date">
-  	<time datetime="2017-10-24T02:39:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>偏度这一指标，又称偏斜系数、偏态系数，是用来帮助判断数据序列的分布规律性的指标。</p>
-<p>在数据序列呈对称分布（正态分布）的状态下，其均值、中位数和众数重合。且在这三个数的两侧，其它所有的数据完全以对称的方式左右分布。</p>
-<p>如果数据序列的分布不对称，则均值、中位数和众数必定分处不同的位置。这时，若以均值为参照点，则要么位于均值左侧的数据较多，称之为右偏；要么位于均值右侧的数据较多，称之为左偏；除此无它。<br>考虑到所有数据与均值之间的离差之和应为零这一约束，则当均值左侧数据较多的时候，均值的右侧必定存在数值较大的“离群”数据；同理，当均值右侧数据较多的时候，均值的左侧必定存在数值较小的“离群”数据。</p>
-<p>一般将偏度定义为三阶中心矩与标准差的三次幂之比。</p>
-<p>在上述定义下，偏度系数的取值无非三种情景：</p>
-<ul>
-<li><p>1.当数据序列呈正态分布的时候，由于均值两侧的数据完全对称分布，其三阶中心矩必定为零，于是满足正态分布的数据序列的偏度系数必定等于零。</p>
-</li>
-<li><p>2.当数据序列非对称分布的时候，如果均值的左侧数据较多，则其右侧的“离群”数据对三阶中心矩的计算结果影响至巨，乃至于三阶中心矩取正值。因此，当数据的分布呈右偏的时候，其偏度系数将大于零。</p>
-</li>
-<li><p>3.当数据序列非对称分布的时候，如果均值的右侧数据较多，则其左侧的“离群”数据对三阶中心矩的计算结果影响至巨，乃至于三阶中心矩取负值。因此，当数据的分布呈左偏的时候，偏度系数将小于零。<br>在右偏的分布中，由于大部分数据都在均值的左侧，且均值的右侧存在“离群”数据，这就使得分布曲线的右侧出现一个长长的拖尾；而在左偏的分布中，由于大部分数据都在均值的右侧，且均值的左侧存在“离群”数据，从而造成分布曲线的左侧出现一个长长的拖尾。</p>
-</li>
-</ul>
-<p>可见，在偏度系数的绝对值较大的时候，最有可能的含义是“离群”数据离群的程度很高（很大或很小），亦即分布曲线某侧的拖尾很长。</p>
-<p>但“拖尾很长”与“分布曲线很偏斜”不完全等价。例如，也不能排除在数据较少的那一侧，只是多数数据的离差相对于另一侧较大，但不存在明显“离群”数据的情景。所以，为准确判断分布函数的偏斜程度，最好的办法是直接观察分布曲线的几何图形。</p>
-<p>与偏度（系数）一样，峰度（系数）也是一个用于评价数据系列分布特征的指标。根据这两个指标，我们可以判断数据系列的分布是否满足正态性，进而评价平均数指标的使用价值。一般地，对于一个偏态分布、肥尾分布特征很明显的数据序列来说，平均数这个指标极易令人误解数据序列分布的集中位置及其集中程度，故此使用起来要极其谨慎。 </p>
-<p>峰度（系数）等于数据序列的四阶中心矩与标准差的四次幂之比。设若先将数据标准化，则峰度（系数）相当于标准化数据序列的四阶中心矩。</p>
-<p>显然，一个数据距离均值越远，其对四阶中心矩计算结果的影响越大。是故，峰度（系数）是一个用于衡量离群数据离群度的指标。峰度（系数）越大，说明该数据系列中的极端值越多。这在数据序列的分布曲线图中来看，体现为存在明显的“肥尾”。当然，峰度（系数）较大也可能说明离群数据取值的极端性很严重，或者各数据距离均值的距离普遍较远。可见，峰度（系数）的大小到底能说明什么问题，最好还是看图确定。</p>
-<p>根据Jensen不等式，可以确定出峰度（系数）的取值范围：它的下限不会低于1，上限不会高于数据的个数。</p>
-<p>有一些典型分布的峰度（系数）值得特别关注。例如，正态分布的峰度（系数）为常数3，均匀分布的峰度（系数）为常数1.6。在统计实践中，我们经常把这两个典型的分布曲线作为评价样本数据序列分布性态的参照。</p>
-<p>在金融学中，峰度这个指标具有一定的意义。一项金融资产，设若其预期收益率的峰度较高，则说明该项资产的预期收益率有相对较高的概率取极端值。换句话说，该项资产未来行市发生剧烈波动的概率相对较高。</p>
-<p>这个讲解从实用角度解释了偏度与峰度，即这两个指标侧重于对图形的描述，在计算出具体的偏度与峰度后，更主要是要参考图形来分类分析，而不是单纯依照数值简单判断。</p>
-<p>其二，根据这两个指标的分类，使用者可以按照自己的需求在原公式的基础上编程时再细化，即把图形数据化（因为如果数据量很大的话每个都要附上图形，计算机能受得了，但分析者还不得累死），这样得出的结果更有助于分析归纳，否则单单依靠原公式，分析归纳的难度有些大。</p>
-<p>第三，这两个指标都是基于均值、标准差而来的，所以分析时可以根据均值与标准差来判别长尾属于哪种类型，从而确定其影响。</p>
-<p>via</p>
-<ul>
-<li><a href="http://bbs.pinggu.org/thread-3417092-1-1.html" target="_blank" rel="external">http://bbs.pinggu.org/thread-3417092-1-1.html</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">偏度</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">EM</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">峰度</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HMM</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">贝叶斯网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Baum-Welch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Viterbi</a>
         		</li>
       		
 		</ul>
@@ -917,7 +1112,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/24/李德荃关于偏度与峰度的讲解/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/12/HMM/">展开全文 >></a>
         </p>
       
 
@@ -947,135 +1142,29 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-记一次python数据处理性能调优" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-贝叶斯网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/21/记一次python数据处理性能调优/">记一次python数据处理性能调优</a>
+      <a class="article-title" href="/2017/11/12/贝叶斯网络/">贝叶斯网络</a>
     </h1>
   
 
         
-        <a href="/2017/10/21/记一次python数据处理性能调优/" class="archive-article-date">
-  	<time datetime="2017-10-21T03:24:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
+        <a href="/2017/11/12/贝叶斯网络/" class="archive-article-date">
+  	<time datetime="2017-11-12T13:56:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Python垃圾回收机制<br>根据官方的描叙，Python中，有2中方式将会触发垃圾回收：<br>1、用户显示调用gc.collect()<br>2、每次Python为新对象分配内存时，检查threshold阀值，当对象数量超过threshold设置的阀值就开始进行垃圾回收。</p>
-<p>因为数据量太大，处理过程中留下太多暂时不能清除的变量，而python的垃圾回收却在一遍一遍地扫这些不断在增长的列表，导致程序受到的影响越来越大。赶紧证实一下，import gc，然后在数据载入模块前gc.disable（）,结束后再gc.enable()。结果原来要跑将近两个小时的程序，这下不用5分钟就跑完了。cool~！用gc.get_count()也证明了之前的猜想，在第一次运行之后临时变量数目就从几百上升到百万，并一直在涨。</p>
-<p>如果你的python程序在处理大数据量的问题，并且出现某个子程序在做同样量的工作，却越跑越慢的情况。</p>
-<p>程序代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">series_trans</span><span class="params">(dataset)</span>:</span></div><div class="line">    <span class="comment"># 一行转多行</span></div><div class="line">    dataset_trans = pd.DataFrame(&#123;<span class="string">'user_id'</span>:dataset[<span class="string">'user_id'</span>],</div><div class="line">                                   <span class="string">'shop_id'</span>:dataset[<span class="string">'shop_id'</span>],</div><div class="line">                                   <span class="string">'time_stamp'</span>:dataset[<span class="string">'time_stamp'</span>],</div><div class="line">                                   <span class="string">'longitude'</span>:dataset[<span class="string">'longitude'</span>],</div><div class="line">                                   <span class="string">'latitude'</span>:dataset[<span class="string">'latitude'</span>],</div><div class="line">                                   <span class="string">'wifi_infos'</span>:dataset[<span class="string">'wifi_splits'</span>]&#125;)</div><div class="line"></div><div class="line">    <span class="keyword">return</span>  dataset_trans</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</div><div class="line">dataset_trans = series_trans(dataset.loc[<span class="number">0</span>,:])</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>,dataset.shape[<span class="number">0</span>]):</div><div class="line">    <span class="keyword">if</span> i % <span class="number">10000</span> == <span class="number">0</span>:</div><div class="line">        <span class="keyword">print</span> i</div><div class="line">        <span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</div><div class="line"></div><div class="line">    dataset_trans = dataset_trans.append(series_trans(dataset.loc[i,:]))</div></pre></td></tr></table></figure>
-<p>程序的性能表现如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:01</span><span class="selector-pseudo">:30</span> 2017</div><div class="line">10000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:02</span><span class="selector-pseudo">:07</span> 2017</div><div class="line">20000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:03</span><span class="selector-pseudo">:41</span> 2017</div><div class="line">30000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:06</span><span class="selector-pseudo">:12</span> 2017</div><div class="line">40000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:09</span><span class="selector-pseudo">:37</span> 2017</div><div class="line">50000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:13</span><span class="selector-pseudo">:55</span> 2017</div><div class="line">60000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:19</span><span class="selector-pseudo">:10</span> 2017</div><div class="line">70000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:25</span><span class="selector-pseudo">:26</span> 2017</div><div class="line">80000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:33</span><span class="selector-pseudo">:03</span> 2017</div><div class="line">90000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:41</span><span class="selector-pseudo">:21</span> 2017</div><div class="line">100000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:50</span><span class="selector-pseudo">:33</span> 2017</div><div class="line">110000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:00</span><span class="selector-pseudo">:41</span> 2017</div><div class="line">120000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:11</span><span class="selector-pseudo">:45</span> 2017</div><div class="line">130000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:23</span><span class="selector-pseudo">:43</span> 2017</div><div class="line">140000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:36</span><span class="selector-pseudo">:37</span> 2017</div><div class="line">150000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:50</span><span class="selector-pseudo">:25</span> 2017</div><div class="line">160000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:05</span><span class="selector-pseudo">:10</span> 2017</div><div class="line">170000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:20</span><span class="selector-pseudo">:46</span> 2017</div><div class="line">180000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:37</span><span class="selector-pseudo">:18</span> 2017</div></pre></td></tr></table></figure>
-<p>采用：dataset_trans.loc[10:19,] = dataset_trans<br>会提示错误：<br>info_idx = indexer[info_axis]<br>IndexError: tuple index out of range</p>
-<p>DataFrame is a 2-dimensional labeled data structure with columns of potentially different types.所以一般说来dataframe就是a set of columns, each column is an array of values. In pandas, the array is one way or another a (maybe variant of) numpy ndarray. 而ndarray本身不存在一种in place append的操作。。。因为它实际上是一段连续内存。。。任何需要改变ndarray长度的操作都涉及分配一段长度合适的新的内存，然后copy。。。这是这类操作慢的原因。。。如果pandas dataframe没有用其他设计减少copy的话，我相信Bren说的”That’s probably as efficient as any”是很对的。。。所以in general, 正如Bren说的。。。Pandas/numpy structures are fundamentally not suited for efficiently growing.Matti 和 arynaq说的是两种常见的对付这个问题的方法。。。我想Matti实际的意思是把要加的rows收集成起来然后concatenate, 这样只copy一次。arynaq的方法就是预先分配内存比较好理解。。。如果你真的需要incrementally build a dataframe的话，估计你需要实际测试一下两种方法。。。我的建议是，如有可能，尽力避免incrementally build a dataframe, 比如用其他data structure 收集齐所有data然后转变成dataframe做分析。。。</p>
-<p>via</p>
-<ul>
-<li><p><a href="http://blog.csdn.net/overstack/article/details/11603893" target="_blank" rel="external">Python垃圾回收(gc)拖累了程序执行性能？</a></p>
-</li>
-<li><p><a href="https://www.zhihu.com/question/36170252?sort=created" target="_blank" rel="external">python pandas 怎样高效地添加一行数据？</a></p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/21/记一次python数据处理性能调优/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
+        <h1 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h1>
         
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用pydotplus绘决策树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/17/使用pydotplus绘决策树/">使用pydotplus绘决策树</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/17/使用pydotplus绘决策树/" class="archive-article-date">
-  	<time datetime="2017-10-17T05:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先安装<code>pydotplus</code></p>
-<p><code>pip install pydotplus</code></p>
-<p>然后打印训练好的<code>clf</code>:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> pydotplus</div><div class="line">dot_data = tree.export_graphviz(clf, out_file=<span class="keyword">None</span>,</div><div class="line">                                feature_names=X_dummy.columns,</div><div class="line">                                class_names=<span class="string">'target'</span>,</div><div class="line">                                filled=<span class="keyword">True</span>, rounded=<span class="keyword">True</span>,</div><div class="line">                                special_characters=<span class="keyword">True</span>)</div><div class="line">graph = pydotplus.graph_from_dot_data(dot_data)</div><div class="line">graph.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</div></pre></td></tr></table></figure>
-<p>发现报错：</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Traceback (most recent call last):</div><div class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\IPython\core\interactiveshell.py"</span>, <span class="keyword">line</span> 2881, <span class="keyword">in</span> run_code</div><div class="line">    exec(code_obj, self.user_global_ns, self.user_ns)</div><div class="line">  <span class="keyword">File</span> <span class="string">"&lt;ipython-input-27-2c78351c7fea&gt;"</span>, <span class="keyword">line</span> 7, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    <span class="keyword">graph</span>.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</div><div class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1810, <span class="keyword">in</span> &lt;lambda&gt;</div><div class="line">    <span class="keyword">prog</span>=self.<span class="keyword">prog</span>: self.write(path, <span class="keyword">format</span>=f, <span class="keyword">prog</span>=<span class="keyword">prog</span>)</div><div class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1918, <span class="keyword">in</span> write</div><div class="line">    fobj.write(self.create(<span class="keyword">prog</span>, <span class="keyword">format</span>))</div><div class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1960, <span class="keyword">in</span> create</div><div class="line">    'GraphViz\'s executables not found')</div><div class="line">InvocationException: GraphViz's executables not found</div></pre></td></tr></table></figure>
-<p>提示没有找到<code>&#39;GraphViz\&#39;s executables&#39;</code>:</p>
-        
-          <a class="article-more-a" href="/2017/10/17/使用pydotplus绘决策树/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/12/贝叶斯网络/#more">查看更多 >></a>
         
       
 
@@ -1089,11 +1178,39 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HMM</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">贝叶斯网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">朴素贝叶斯</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">马尔科夫</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">D-separation</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Markov Blanket</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Chou-Liu</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MSWT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">转移概率矩阵</a>
         		</li>
       		
 		</ul>
@@ -1105,7 +1222,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
         		</li>
       		
 		</ul>
@@ -1114,7 +1231,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/17/使用pydotplus绘决策树/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/12/贝叶斯网络/">展开全文 >></a>
         </p>
       
 
@@ -1146,7 +1263,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1273,6 +1390,86 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">sklearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Bagging</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">BaggingRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">reduce</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DecisionTreeRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RidgeCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PolynomialFeatures</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">make_blobs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">euclidean_distances</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">KMeans</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KMeans++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">homogeneity_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">completeness_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v_measure_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">adjusted_rand_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AffinityPropagation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MeanShift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">spectral_clustering</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">提升</a>
               </li>
              
@@ -1285,11 +1482,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1301,7 +1494,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
+                <a href="javascript:void(0)" class="js-tag color3">linear_model</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ElasticNetCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ElasticNet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">StandardScaler</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">train_test_split</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1310,26 +1531,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">主题模型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">get</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">post</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1349,11 +1550,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
+                <a href="javascript:void(0)" class="js-tag color4">get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1373,15 +1582,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">NN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linear</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1393,7 +1602,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1405,7 +1618,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Ridge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lasso</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1422,6 +1643,62 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">transfer learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">分割面</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">optimize</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">scipy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GridSearchCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">RMSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cross_val_predict</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1445,23 +1722,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTreeClassifier</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+                <a href="javascript:void(0)" class="js-tag color5">pydotplus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+                <a href="javascript:void(0)" class="js-tag color1">matplotlib</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1469,7 +1742,39 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
+                <a href="javascript:void(0)" class="js-tag color4">svm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">precision_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">recall_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">f1_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">fbeta_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">precision_recall_fscore_support</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">classification_report</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1505,15 +1810,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hive</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">loadtxt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">read_csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">NumPy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1522,18 +1855,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">模型融合</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1597,11 +1918,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">偏度</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">峰度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1633,11 +1966,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+                <a href="javascript:void(0)" class="js-tag color3">插值</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
+                <a href="javascript:void(0)" class="js-tag color5">重心插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">三次样条插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">临近点插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Newton插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lagrange插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">REST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">

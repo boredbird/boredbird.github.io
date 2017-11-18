@@ -177,96 +177,790 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-python-numpy-tutorial" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-assignment1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/python-numpy-tutorial/">Python Numpy Tutorial</a>
+      <a class="article-title" href="/2017/10/10/assignment1/">assignment1</a>
     </h1>
   
 
         
-        <a href="/2017/10/08/python-numpy-tutorial/" class="archive-article-date">
-  	<time datetime="2017-10-08T10:53:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+        <a href="/2017/10/10/assignment1/" class="archive-article-date">
+  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!--
-Python:
-  Simple data types
-    integer, float, string
-  Compound data types
-    tuple, list, dictionary, set
-  Flow control
-    if, while, for, try, with
-  Comprehensions, generators
-  Functions
-  Classes
-  Standard library
-    json, collections, itertools
-
-Numpy
--->
-<p>This tutorial was contributed by <a href="http://cs.stanford.edu/people/jcjohns/" target="_blank" rel="external">Justin Johnson</a>.</p>
-<p>We will use the Python programming language for all assignments in this course.<br>Python is a great general-purpose programming language on its own, but with the<br>help of a few popular libraries (numpy, scipy, matplotlib) it becomes a powerful<br>environment for scientific computing.</p>
-<p>We expect that many of you will have some experience with Python and numpy;<br>for the rest of you, this section will serve as a quick crash course both on<br>the Python programming language and on the use of Python for scientific<br>computing.</p>
-<p>Some of you may have previous knowledge in Matlab, in which case we also recommend the <a href="http://wiki.scipy.org/NumPy_for_Matlab_Users" target="_blank" rel="external">numpy for Matlab users</a> page.</p>
-<p>You can also find an <a href="https://github.com/kuleshov/cs228-material/blob/master/tutorials/python/cs228-python-tutorial.ipynb" target="_blank" rel="external">IPython notebook version of this tutorial here</a> created by <a href="http://web.stanford.edu/~kuleshov/" target="_blank" rel="external">Volodymyr Kuleshov</a> and <a href="https://symsys.stanford.edu/viewing/symsysaffiliate/21335" target="_blank" rel="external">Isaac Caswell</a> for <a href="http://cs.stanford.edu/~ermon/cs228/index.html" target="_blank" rel="external">CS 228</a>.</p>
-<p>Table of contents:</p>
+        <p>In this assignment you will practice putting together a simple image classification pipeline, based on the k-Nearest Neighbor or the SVM/Softmax classifier. The goals of this assignment are as follows:</p>
 <ul>
-<li><a href="#python">Python</a><ul>
-<li><a href="#python-basic">Basic data types</a></li>
-<li><a href="#python-containers">Containers</a><ul>
-<li><a href="#python-lists">Lists</a></li>
-<li><a href="#python-dicts">Dictionaries</a></li>
-<li><a href="#python-sets">Sets</a></li>
-<li><a href="#python-tuples">Tuples</a></li>
+<li>understand the basic <strong>Image Classification pipeline</strong> and the data-driven approach (train/predict stages)</li>
+<li>understand the train/val/test <strong>splits</strong> and the use of validation data for <strong>hyperparameter tuning</strong>.</li>
+<li>develop proficiency in writing efficient <strong>vectorized</strong> code with numpy</li>
+<li>implement and apply a k-Nearest Neighbor (<strong>kNN</strong>) classifier</li>
+<li>implement and apply a Multiclass Support Vector Machine (<strong>SVM</strong>) classifier</li>
+<li>implement and apply a <strong>Softmax</strong> classifier</li>
+<li>understand the differences and tradeoffs between these classifiers</li>
+<li>get a basic understanding of performance improvements from using <strong>higher-level representations</strong> than raw pixels (e.g. color histograms, Histogram of Gradient (HOG) features)</li>
 </ul>
-</li>
-<li><a href="#python-functions">Functions</a></li>
-<li><a href="#python-classes">Classes</a></li>
-</ul>
-</li>
-<li><a href="#numpy">Numpy</a><ul>
-<li><a href="#numpy-arrays">Arrays</a></li>
-<li><a href="#numpy-array-indexing">Array indexing</a></li>
-<li><a href="#numpy-datatypes">Datatypes</a></li>
-<li><a href="#numpy-math">Array math</a></li>
-<li><a href="#numpy-broadcasting">Broadcasting</a></li>
-</ul>
-</li>
-<li><a href="#scipy">SciPy</a><ul>
-<li><a href="#scipy-image">Image operations</a></li>
-<li><a href="#scipy-matlab">MATLAB files</a></li>
-<li><a href="#scipy-dist">Distance between points</a></li>
-</ul>
-</li>
-<li><a href="#matplotlib">Matplotlib</a><ul>
-<li><a href="#matplotlib-plotting">Plotting</a></li>
-<li><a href="#matplotlib-subplots">Subplots</a></li>
-<li><a href="#matplotlib-images">Images</a></li>
-</ul>
-</li>
-</ul>
-<p><a name="python"></a></p>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>Python is a high-level, dynamically typed multiparadigm programming language.<br>Python code is often said to be almost like pseudocode, since it allows you<br>to express very powerful ideas in very few lines of code while being very<br>readable. As an example, here is an implementation of the classic quicksort<br>algorithm in Python:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(arr)</span>:</span></div><div class="line">    <span class="keyword">if</span> len(arr) &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> arr</div><div class="line">    pivot = arr[len(arr) / <span class="number">2</span>]</div><div class="line">    left = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &lt; pivot]</div><div class="line">    middle = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x == pivot]</div><div class="line">    right = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &gt; pivot]</div><div class="line">    <span class="keyword">return</span> quicksort(left) + middle + quicksort(right)</div><div class="line">    </div><div class="line"><span class="keyword">print</span> quicksort([<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>])</div><div class="line"><span class="comment"># Prints "[1, 1, 2, 3, 6, 8, 10]"</span></div></pre></td></tr></table></figure>
-<h3 id="Python-versions"><a href="#Python-versions" class="headerlink" title="Python versions"></a>Python versions</h3><p>There are currently two different supported versions of Python, 2.7 and 3.4.<br>Somewhat confusingly, Python 3.0 introduced many backwards-incompatible changes<br>to the language, so code written for 2.7 may not work under 3.4 and vice versa.<br>For this class all code will use Python 2.7.</p>
-<p>You can check your Python version at the command line by running<br><code>python --version</code>.</p>
-<p><a name="python-basic"></a></p>
-<h3 id="Basic-data-types"><a href="#Basic-data-types" class="headerlink" title="Basic data types"></a>Basic data types</h3><p>Like most languages, Python has a number of basic types including integers,<br>floats, booleans, and strings. These data types behave in ways that are<br>familiar from other programming languages.</p>
-<p><strong>Numbers:</strong> Integers and floats work as you would expect from other languages:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">3</span></div><div class="line"><span class="keyword">print</span> type(x) <span class="comment"># Prints "&lt;type 'int'&gt;"</span></div><div class="line"><span class="keyword">print</span> x       <span class="comment"># Prints "3"</span></div><div class="line"><span class="keyword">print</span> x + <span class="number">1</span>   <span class="comment"># Addition; prints "4"</span></div><div class="line"><span class="keyword">print</span> x - <span class="number">1</span>   <span class="comment"># Subtraction; prints "2"</span></div><div class="line"><span class="keyword">print</span> x * <span class="number">2</span>   <span class="comment"># Multiplication; prints "6"</span></div><div class="line"><span class="keyword">print</span> x ** <span class="number">2</span>  <span class="comment"># Exponentiation; prints "9"</span></div><div class="line">x += <span class="number">1</span></div><div class="line"><span class="keyword">print</span> x  <span class="comment"># Prints "4"</span></div><div class="line">x *= <span class="number">2</span></div><div class="line"><span class="keyword">print</span> x  <span class="comment"># Prints "8"</span></div><div class="line">y = <span class="number">2.5</span></div><div class="line"><span class="keyword">print</span> type(y) <span class="comment"># Prints "&lt;type 'float'&gt;"</span></div><div class="line"><span class="keyword">print</span> y, y + <span class="number">1</span>, y * <span class="number">2</span>, y ** <span class="number">2</span> <span class="comment"># Prints "2.5 3.5 5.0 6.25"</span></div></pre></td></tr></table></figure>
-<p>Note that unlike many languages, Python does not have unary increment (<code>x++</code>)<br>or decrement (<code>x--</code>) operators.</p>
-<p>Python also has built-in types for long integers and complex numbers;<br>you can find all of the details<br><a href="https://docs.python.org/2/library/stdtypes.html#numeric-types-int-float-long-complex" target="_blank" rel="external">in the documentation</a>.</p>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>You can work on the assignment in one of two ways: locally on your own machine, or on a virtual machine<br>through <a href="https://www.terminal.com/" target="_blank" rel="external">Terminal</a>.</p>
+<h3 id="Working-locally"><a href="#Working-locally" class="headerlink" title="Working locally"></a>Working locally</h3><p><strong>Get the code:</strong><br><a href="http://vision.stanford.edu/teaching/cs231n/assignment1.zip" target="_blank" rel="external">Download the starter code here</a>.</p>
         
-          <a class="article-more-a" href="/2017/10/08/python-numpy-tutorial/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/10/10/assignment1/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SVM</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">KNN</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Softmax</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/assignment1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-assignment2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/assignment2/">assignment2</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/assignment2/" class="archive-article-date">
+  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In this assignment you will practice writing backpropagation code, and training Neural Networks and Convolutional Neural Networks. The goals of this assignment are as follows:</p>
+<ul>
+<li>understand <strong>Neural Networks</strong> and how they are arranged in layered architectures</li>
+<li>understand and be able to implement (vectorized) <strong>backpropagation</strong></li>
+<li>implement the core parameter update loop of <strong>mini-batch gradient descent</strong></li>
+<li>effectively <strong>cross-validate</strong> and find the best hyperparameters for Neural Network architecture</li>
+<li>understand the architecture of <strong>Convolutional Neural Networks</strong> and train gain experience with training these models on data</li>
+</ul>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>You can work on the assignment in one of two ways: locally on your own machine, or on a virtual machine through <a href="https://www.terminal.com/" target="_blank" rel="external">Terminal</a>.</p>
+<h3 id="Working-locally"><a href="#Working-locally" class="headerlink" title="Working locally"></a>Working locally</h3><p><strong>Get the code:</strong><br><a href="http://vision.stanford.edu/teaching/cs231n/assignment2.zip" target="_blank" rel="external">Download the starter code here</a>.</p>
+        
+          <a class="article-more-a" href="/2017/10/10/assignment2/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Neural Networks</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">backpropagation</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mini-batch gradient descent</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">cross-validate</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Convolutional Neural Networks</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/assignment2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-understanding-cnn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/understanding-cnn/">understanding-cnn</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/understanding-cnn/" class="archive-article-date">
+  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a name="vis"></a></p>
+<p>(this page is currently in draft form)</p>
+<h2 id="Visualizing-what-ConvNets-learn"><a href="#Visualizing-what-ConvNets-learn" class="headerlink" title="Visualizing what ConvNets learn"></a>Visualizing what ConvNets learn</h2><p>Several approaches for understanding and visualizing Convolutional Networks have been developed in the literature, partly as a response the common criticism that the learned features in a Neural Network are not interpretable. In this section we briefly survey some of these approaches and related work.</p>
+<h3 id="Visualizing-the-activations-and-first-layer-weights"><a href="#Visualizing-the-activations-and-first-layer-weights" class="headerlink" title="Visualizing the activations and first-layer weights"></a>Visualizing the activations and first-layer weights</h3><p><strong>Layer Activations</strong>. The most straight-forward visualization technique is to show the activations of the network during the forward pass. For ReLU networks, the activations usually start out looking relatively blobby and dense, but as the training progresses the activations usually become more sparse and localized. One dangerous pitfall that can be easily noticed with this visualization is that some activation maps may be all zero for many different inputs, which can indicate <em>dead</em> filters, and can be a symptom of high learning rates.</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/act1.jpeg" width="49%"><br>  <img src="/assets/cnnvis/act2.jpeg" width="49%"><br>  <div class="figcaption"><br>    Typical-looking activations on the first CONV layer (left), and the 5th CONV layer (right) of a trained AlexNet looking at a picture of a cat. Every box shows an activation map corresponding to some filter. Notice that the activations are sparse (most values are zero, in this visualization shown in black) and mostly local.<br>  </div><br></div>
+        
+          <a class="article-more-a" href="/2017/10/10/understanding-cnn/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CNN</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ConvNet</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ReLU</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/understanding-cnn/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-transfer-learning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/transfer-learning/">transfer-learning</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/transfer-learning/" class="archive-article-date">
+  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>(These notes are currently in draft form and under development)</p>
+<p>Table of Contents:</p>
+<ul>
+<li><a href="#tf">Transfer Learning</a></li>
+<li><a href="#add">Additional References</a></li>
+</ul>
+<p><a name="tf"></a></p>
+<h2 id="Transfer-Learning"><a href="#Transfer-Learning" class="headerlink" title="Transfer Learning"></a>Transfer Learning</h2><p>In practice, very few people train an entire Convolutional Network from scratch (with random initialization), because it is relatively rare to have a dataset of sufficient size. Instead, it is common to pretrain a ConvNet on a very large dataset (e.g. ImageNet, which contains 1.2 million images with 1000 categories), and then use the ConvNet either as an initialization or a fixed feature extractor for the task of interest. The three major Transfer Learning scenarios look as follows:</p>
+<ul>
+<li><strong>ConvNet as fixed feature extractor</strong>. Take a ConvNet pretrained on ImageNet, remove the last fully-connected layer (this layer’s outputs are the 1000 class scores for a different task like ImageNet), then treat the rest of the ConvNet as a fixed feature extractor for the new dataset. In an AlexNet, this would compute a 4096-D vector for every image that contains the activations of the hidden layer immediately before the classifier. We call these features <strong>CNN codes</strong>. It is important for performance that these codes are ReLUd (i.e. thresholded at zero) if they were also thresholded during the training of the ConvNet on ImageNet (as is usually the case). Once you extract the 4096-D codes for all images, train a linear classifier (e.g. Linear SVM or Softmax classifier) for the new dataset.</li>
+<li><strong>Fine-tuning the ConvNet</strong>. The second strategy is to not only replace and retrain the classifier on top of the ConvNet on the new dataset, but to also fine-tune the weights of the pretrained network by continuing the backpropagation. It is possible to fine-tune all the layers of the ConvNet, or it’s possible to keep some of the earlier layers fixed (due to overfitting concerns) and only fine-tune some higher-level portion of the network. This is motivated by the observation that the earlier features of a ConvNet contain more generic features (e.g. edge detectors or color blob detectors) that should be useful to many tasks, but later layers of the ConvNet becomes progressively more specific to the details of the classes contained in the original dataset. In case of ImageNet for example, which contains many dog breeds, a significant portion of the representational power of the ConvNet may be devoted to features that are specific to differentiating between dog breeds.</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/10/10/transfer-learning/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CNN</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">transfer learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ConvNet</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/transfer-learning/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-assignment3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/assignment3/">assignment3</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/assignment3/" class="archive-article-date">
+  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In the previous assignment, you implemented and trained your own ConvNets.<br>In this assignment, we will explore many of the ideas we have discussed in<br>lectures. Specifically, you will:</p>
+<ul>
+<li>Reduce overfitting using <strong>dropout</strong> and <strong>data augmentation</strong></li>
+<li>Combine models into <strong>ensembles</strong> to boost performance</li>
+<li>Use <strong>transfer learning</strong> to adapt a pretrained model to a new dataset</li>
+<li>Use data gradients to visualize <strong>saliency maps</strong> and create <strong>fooling images</strong></li>
+</ul>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>You can work on the assignment in one of two ways: locally on your own machine, or on a virtual machine through <a href="https://www.terminal.com/" target="_blank" rel="external">Terminal</a>.</p>
+<h3 id="Working-locally"><a href="#Working-locally" class="headerlink" title="Working locally"></a>Working locally</h3><p><strong>Get the code:</strong><br>Download the starter code <a href="http://cs231n.stanford.edu/assignment3.zip" target="_blank" rel="external">here</a>.</p>
+        
+          <a class="article-more-a" href="/2017/10/10/assignment3/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dropout</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">data augmentation</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ensembles</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">transfer learning</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/assignment3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-optimization-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/optimization-1/">optimization-1</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/optimization-1/" class="archive-article-date">
+  	<time datetime="2017-10-10T06:13:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Table of Contents:</p>
+<ul>
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#vis">Visualizing the loss function</a></li>
+<li><a href="#optimization">Optimization</a><ul>
+<li><a href="#opt1">Strategy #1: Random Search</a></li>
+<li><a href="#opt2">Strategy #2: Random Local Search</a></li>
+<li><a href="#opt3">Strategy #3: Following the gradient</a></li>
+</ul>
+</li>
+<li><a href="#gradcompute">Computing the gradient</a><ul>
+<li><a href="#numerical">Numerically with finite differences</a></li>
+<li><a href="#analytic">Analytically with calculus</a></li>
+</ul>
+</li>
+<li><a href="#gd">Gradient descent</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+<p><a name="intro"></a></p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>In the previous section we introduced two key components in context of the image classification task:</p>
+<ol>
+<li>A (parameterized) <strong>score function</strong> mapping the raw image pixels to class scores (e.g. a linear function)</li>
+<li>A <strong>loss function</strong> that measured the quality of a particular set of parameters based on how well the induced scores agreed with the ground truth labels in the training data. We saw that there are many ways and versions of this (e.g. Softmax/SVM).</li>
+</ol>
+        
+          <a class="article-more-a" href="/2017/10/10/optimization-1/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">optimization</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Random Search</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gradient</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/optimization-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-optimization-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/optimization-2/">optimization-2</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/optimization-2/" class="archive-article-date">
+  	<time datetime="2017-10-10T06:13:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Table of Contents:</p>
+<ul>
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#grad">Simple expressions, interpreting the gradient</a></li>
+<li><a href="#backprop">Compound expressions, chain rule, backpropagation</a></li>
+<li><a href="#intuitive">Intuitive understanding of backpropagation</a></li>
+<li><a href="#sigmoid">Modularity: Sigmoid example</a></li>
+<li><a href="#staged">Backprop in practice: Staged computation</a></li>
+<li><a href="#patters">Patterns in backward flow</a></li>
+<li><a href="#mat">Gradients for vectorized operations</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+<p><a name="intro"></a></p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>Motivation</strong>. In this section we will develop expertise with an intuitive understanding of <strong>backpropagation</strong>, which is a way of computing gradients of expressions through recursive application of <strong>chain rule</strong>. Understanding of this process and its subtleties is critical for you to understand, and effectively develop, design and debug Neural Networks.</p>
+        
+          <a class="article-more-a" href="/2017/10/10/optimization-2/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">optimization</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Random Search</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gradient</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/optimization-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python的-m参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/09/python的-m参数/">python的-m参数</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/09/python的-m参数/" class="archive-article-date">
+  	<time datetime="2017-10-09T06:53:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="单个文件"><a href="#单个文件" class="headerlink" title="单个文件"></a>单个文件</h1><h2 id="创建测试文件："><a href="#创建测试文件：" class="headerlink" title="创建测试文件："></a>创建测试文件：</h2><p><code>E:\Code\ScoreCard&gt;</code>路径下创建<code>testm.py</code>文件，内容如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line">print(sys.path)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    <span class="keyword">print</span> (<span class="string">'This is main of module '</span>)</div></pre></td></tr></table></figure></p>
+<h2 id="在终端上运行："><a href="#在终端上运行：" class="headerlink" title="在终端上运行："></a>在终端上运行：</h2><p><img src="https://i.imgur.com/UGJcAPs.png" alt=""></p>
+<h2 id="查看帮助文档："><a href="#查看帮助文档：" class="headerlink" title="查看帮助文档："></a>查看帮助文档：</h2><p><img src="https://i.imgur.com/GXYAjii.png" alt=""></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-m mod : <span class="builtin-name">run</span> library module as a<span class="built_in"> script </span>(terminates option list)</div></pre></td></tr></table></figure>
+<h1 id="创建模块测试-m作用"><a href="#创建模块测试-m作用" class="headerlink" title="创建模块测试-m作用"></a>创建模块测试-m作用</h1><h2 id="文档目录结构："><a href="#文档目录结构：" class="headerlink" title="文档目录结构："></a>文档目录结构：</h2><p><img src="https://i.imgur.com/z84nr20.png" alt=""></p>
+        
+          <a class="article-more-a" href="/2017/10/09/python的-m参数/#more">查看更多 >></a>
         
       
 
@@ -281,10 +975,6 @@ Numpy
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Numpy</a>
         		</li>
       		
 		</ul>
@@ -305,7 +995,7 @@ Numpy
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/python-numpy-tutorial/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/09/python的-m参数/">展开全文 >></a>
         </p>
       
 
@@ -335,42 +1025,159 @@ Numpy
 
 
   
-    <article id="post-Django[15]反向解析路由" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linear Classification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Django[15]反向解析路由/">Django[15]反向解析路由</a>
+      <a class="article-title" href="/2017/10/08/Linear Classification/">linear-classify</a>
     </h1>
   
 
         
-        <a href="/2017/10/08/Django[15]反向解析路由/" class="archive-article-date">
-  	<time datetime="2017-10-08T10:15:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+        <a href="/2017/10/08/Linear Classification/" class="archive-article-date">
+  	<time datetime="2017-10-08T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="给url起一个名字"><a href="#给url起一个名字" class="headerlink" title="给url起一个名字"></a>给url起一个名字</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^(?P&lt;id&gt;\d+)/$'</span>, views.posts_detail, name=<span class="string">"detail"</span>),</div></pre></td></tr></table></figure>
-<ol>
-<li><p>Template中</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"</span></span></span><span class="template-tag">&#123;% <span class="name"><span class="name">url</span></span> 'detail' id=obj.id %&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.title &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></div></pre></td></tr></table></figure>
+        <p>Table of Contents:</p>
+<ul>
+<li><a href="#intro">Intro to Linear classification</a></li>
+<li><a href="#score">Linear score function</a></li>
+<li><a href="#interpret">Interpreting a linear classifier</a></li>
+<li><a href="#loss">Loss function</a><ul>
+<li><a href="#svm">Multiclass SVM</a></li>
+<li><a href="#softmax">Softmax classifier</a></li>
+<li><a href="#svmvssoftmax">SVM vs Softmax</a></li>
+</ul>
 </li>
-<li><p>Python代码中</p>
+<li><a href="#webdemo">Interactive Web Demo of Linear Classification</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+<p><a name="intro"></a></p>
+<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>In the last section we introduced the problem of Image Classification, which is the task of assigning a single label to an image from a fixed set of categories. Morever, we described the k-Nearest Neighbor (kNN) classifier which labels images by comparing them to (annotated) images from the training set. As we saw, kNN has a number of disadvantages:</p>
+        
+          <a class="article-more-a" href="/2017/10/08/Linear Classification/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">linear</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">classification</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/08/Linear Classification/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Convolutional Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/08/Convolutional Networks/">Convolutional Networks</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/Convolutional Networks/" class="archive-article-date">
+  	<time datetime="2017-10-08T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Table of Contents:</p>
+<ul>
+<li><a href="#overview">Architecture Overview</a></li>
+<li><a href="#layers">ConvNet Layers</a><ul>
+<li><a href="#conv">Convolutional Layer</a></li>
+<li><a href="#pool">Pooling Layer</a></li>
+<li><a href="#norm">Normalization Layer</a></li>
+<li><a href="#fc">Fully-Connected Layer</a></li>
+<li><a href="#convert">Converting Fully-Connected Layers to Convolutional Layers</a></li>
+</ul>
 </li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> redirect  <span class="comment"># 调转请求</span></div><div class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse  <span class="comment"># 反向解析url的</span></div><div class="line"></div><div class="line">...</div><div class="line"><span class="keyword">return</span> redirect(reverse(<span class="string">"detail"</span>, kwargs=&#123;<span class="string">"id"</span>: <span class="number">3</span>&#125;))</div></pre></td></tr></table></figure>
-<ol>
-<li>Model中 get_absolute_url()</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">return</span> reverse(<span class="string">"detail"</span>, kwargs=&#123;<span class="string">"id"</span>: self.id&#125;)</div><div class="line">    <span class="comment"># return "/post/&#123;&#125;/".format(self.id)</span></div><div class="line">    <span class="comment"># return "/post/%s/" % (self.id)</span></div></pre></td></tr></table></figure>
-<h1 id="url的命令空间-namespace"><a href="#url的命令空间-namespace" class="headerlink" title="url的命令空间 namespace"></a>url的命令空间 namespace</h1><p>在一级的url设置的，用于区分不用的app，因为不同的app下面可能存在同名的 url<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">url(<span class="string">r'^post/'</span>, include(posts_urls, namespace=<span class="string">"post"</span>)),</div><div class="line"></div><div class="line">&lt;a href=<span class="string">"&#123;% url 'post:detail' id=obj.id %&#125;"</span>&gt;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">return</span> reverse(<span class="string">"post:detail"</span>, kwargs=&#123;<span class="string">"id"</span>: self.id&#125;)</div></pre></td></tr></table></figure></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMjYxMzI1ODE4MA==.html?spm=a2h0j.8191423.playlist_content.5!18~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.18" target="_blank" rel="external">Django1.10教程 -15 -反向解析路由</a></p>
-
+<li><a href="#architectures">ConvNet Architectures</a><ul>
+<li><a href="#layerpat">Layer Patterns</a></li>
+<li><a href="#layersizepat">Layer Sizing Patterns</a></li>
+<li><a href="#case">Case Studies</a> (LeNet / AlexNet / ZFNet / GoogLeNet / VGGNet)</li>
+<li><a href="#comp">Computational Considerations</a></li>
+</ul>
+</li>
+<li><a href="#add">Additional References</a></li>
+</ul>
+<h2 id="Convolutional-Neural-Networks-CNNs-ConvNets"><a href="#Convolutional-Neural-Networks-CNNs-ConvNets" class="headerlink" title="Convolutional Neural Networks (CNNs / ConvNets)"></a>Convolutional Neural Networks (CNNs / ConvNets)</h2><p>Convolutional Neural Networks are very similar to ordinary Neural Networks from the previous chapter: they are made up of neurons that have learnable weights and biases. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function: from the raw image pixels on one end to class scores at the other. And they still have a loss function (e.g. SVM/Softmax) on the last (fully-connected) layer and all the tips/tricks we developed for learning regular Neural Networks still apply.</p>
+<p>So what does change? ConvNet architectures make the explicit assumption that the inputs are images, which allows us to encode certain properties into the architecture. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.</p>
+<p><a name="overview"></a></p>
+<h3 id="Architecture-Overview"><a href="#Architecture-Overview" class="headerlink" title="Architecture Overview"></a>Architecture Overview</h3><p><em>Recall: Regular Neural Nets.</em> As we saw in the previous chapter, Neural Networks receive an input (a single vector), and transform it through a series of <em>hidden layers</em>. Each hidden layer is made up of a set of neurons, where each neuron is fully connected to all neurons in the previous layer, and where neurons in a single layer function completely independently and do not share any connections. The last fully-connected layer is called the “output layer” and in classification settings it represents the class scores.</p>
+        
+          <a class="article-more-a" href="/2017/10/08/Convolutional Networks/#more">查看更多 >></a>
+        
       
 
       
@@ -383,7 +1190,7 @@ Numpy
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CNN</a>
         		</li>
       		
 		</ul>
@@ -395,7 +1202,7 @@ Numpy
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
+        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
         		</li>
       		
 		</ul>
@@ -404,848 +1211,7 @@ Numpy
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Django[15]反向解析路由/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django[14]动态路由" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Django[14]动态路由/">Django[14]动态路由</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/Django[14]动态路由/" class="archive-article-date">
-  	<time datetime="2017-10-08T09:35:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Django中的URL介绍"><a href="#Django中的URL介绍" class="headerlink" title="Django中的URL介绍"></a>Django中的URL介绍</h1><p><strong>/bbs/urls.py</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> urls <span class="keyword">as</span> posts_urls</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^post/'</span>, include(posts_urls)),</div><div class="line">]</div></pre></td></tr></table></figure>
-<p><strong>/posts/urls.py</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^$'</span>, views.posts_home),</div><div class="line">    url(<span class="string">r'^detail/$'</span>, views.posts_detail),</div><div class="line">    ...</div></pre></td></tr></table></figure>
-<p><a href="http://127.0.0.1:8000/post/detail/" target="_blank" rel="external">http://127.0.0.1:8000/post/detail/</a></p>
-<h1 id="动态路由和参数传递"><a href="#动态路由和参数传递" class="headerlink" title="动态路由和参数传递"></a>动态路由和参数传递</h1><h2 id="页面点击是通过设置a标签来调转的"><a href="#页面点击是通过设置a标签来调转的" class="headerlink" title="页面点击是通过设置a标签来调转的 "></a>页面点击是通过设置a标签来调转的 <a href="/post/detail/id.../"></a></h2><h2 id="后端view中通过id来查询不同的帖子对象"><a href="#后端view中通过id来查询不同的帖子对象" class="headerlink" title="后端view中通过id来查询不同的帖子对象"></a>后端view中通过id来查询不同的帖子对象</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^detail/(?P&lt;id&gt;\d+)/$'</span>, views.posts_detail,),</div></pre></td></tr></table></figure>
-<h2 id="在模板中组合起来"><a href="#在模板中组合起来" class="headerlink" title="在模板中组合起来"></a>在模板中组合起来</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;h2 <span class="class"><span class="keyword">class</span></span>=<span class="string">"blog-post-title"</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/post/detail/&#123;&#123;obj.id&#125;&#125;/"</span>&gt;</span>&#123;&#123; obj.title &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>via <a href="http://v.youku.com/v_show/id_XMjYwNDA0MzIzNg==.html?spm=a2h0j.8191423.playlist_content.5!17~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.17" target="_blank" rel="external">Django1.10教程 -14 -动态路由</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Django[14]动态路由/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django[13]从数据库中获取某个对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Django[13]从数据库中获取某个对象/">Django[13]从数据库中获取某个对象</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/Django[13]从数据库中获取某个对象/" class="archive-article-date">
-  	<time datetime="2017-10-08T09:08:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="获取对象"><a href="#获取对象" class="headerlink" title="获取对象"></a>获取对象</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">models.Post.objects.get(id=<span class="number">3</span>)</div><div class="line"></div><div class="line">models.Post.objects.get(title=<span class="string">"隔壁老王是谁？"</span>)  <span class="comment"># 获取 标题是隔壁老王是谁？的帖子</span></div><div class="line"></div><div class="line">models.Post.objects.get(title__icontains=<span class="string">"隔壁"</span>)  <span class="comment"># 获取 标题中包含隔壁两个字 的帖子</span></div></pre></td></tr></table></figure>
-<h1 id="404页面，get-object-or-404"><a href="#404页面，get-object-or-404" class="headerlink" title="404页面，get_object_or_404"></a>404页面，get_object_or_404</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> get_object_or_404</div><div class="line"></div><div class="line">get_object_or_404(models.Post, id=<span class="number">3</span>)</div></pre></td></tr></table></figure>
-<h1 id="新建了一个detail-html页面"><a href="#新建了一个detail-html页面" class="headerlink" title="新建了一个detail.html页面"></a>新建了一个detail.html页面</h1><p>用于展示的是帖子详情</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><span class="template-variable">&#123;&#123;obj.title&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span>&gt;</span></div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><span class="template-variable">&#123;&#123;obj.content&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.row --&gt;</span></span></div></pre></td></tr></table></figure>
-<h1 id="修改views-py"><a href="#修改views-py" class="headerlink" title="修改views.py"></a>修改views.py</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="comment"># obj = models.Post.objects.get(id=3)</span></div><div class="line">	obj = get_object_or_404(models.Post,id=<span class="number">1</span>)</div><div class="line">	data = &#123;</div><div class="line">		<span class="string">"obj"</span>:obj</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"detail.html"</span>,data)</div></pre></td></tr></table></figure>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/F2lHBVY.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMjUzMTM1NDM2MA==.html?spm=a2h0j.8191423.playlist_content.5!16~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.16" target="_blank" rel="external">Django1.10教程 -13 -从数据库中获取某个对象</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Django[13]从数据库中获取某个对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django[12]Queryset介绍以及Template context补充" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Django[12]Queryset介绍以及Template context补充/">Django[12]Queryset介绍以及Template context补充</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/Django[12]Queryset介绍以及Template context补充/" class="archive-article-date">
-  	<time datetime="2017-10-08T08:12:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Django-shell"><a href="#Django-shell" class="headerlink" title="Django shell"></a>Django shell</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">python</span> manage.<span class="keyword">py</span> <span class="keyword">shell</span></div></pre></td></tr></table></figure>
-<p>进入django shell,可以在命令行做一些操作。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#查询出所有的post对象，for循环遍历</span></div><div class="line">queryset = models.Post.objects.all()</div><div class="line"><span class="keyword">for</span> obj <span class="keyword">in</span> queryset:</div><div class="line">    print(obj.title)</div><div class="line">    print(obj.content)</div><div class="line">    print(obj.update)</div><div class="line">    print(obj.timestamp)</div><div class="line">    print(obj.id)</div><div class="line">    print(obj.pk)</div><div class="line"></div><div class="line"><span class="comment">#创建一条新的post记录</span></div><div class="line">models.Post.objects.create(title=<span class="string">"abc"</span>, content=<span class="string">"abc abc abc"</span>)</div><div class="line"></div><div class="line"><span class="comment">#获取所有的记录条数</span></div><div class="line">models.Post.objects.all().count()</div></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/Jk5HHJB.png" alt=""></p>
-<h1 id="queryset介绍"><a href="#queryset介绍" class="headerlink" title="queryset介绍"></a>queryset介绍</h1><p>queryset 是一个可以遍历取值的结果集</p>
-<p>queryset 里面都是 对象，可以通过对象.字段名的形式取值</p>
-<p>一个对象就对应了数据库里面的一条记录</p>
-<p><strong>数据库里面的一条记录  &lt;- ORM -&gt; Python中的对象</strong></p>
-<h1 id="如何在前端使用queryset"><a href="#如何在前端使用queryset" class="headerlink" title="如何在前端使用queryset"></a>如何在前端使用queryset</h1><h2 id="1-从数据库里取出数据"><a href="#1-从数据库里取出数据" class="headerlink" title="1. 从数据库里取出数据"></a>1. 从数据库里取出数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">queryset = models.Post.objects.all()</div></pre></td></tr></table></figure>
-<h2 id="2-把渠道的数据塞进-data"><a href="#2-把渠道的数据塞进-data" class="headerlink" title="2. 把渠道的数据塞进 data"></a>2. 把渠道的数据塞进 data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">data = &#123;<span class="string">"queryset"</span>: queryset&#125;</div></pre></td></tr></table></figure>
-<p>即，修改views.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> . <span class="keyword">import</span> models</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	queryset = models.Post.objects.all()</div><div class="line">	data = &#123;</div><div class="line">		<span class="string">"queryset"</span>: queryset,</div><div class="line">		<span class="string">"name"</span>: <span class="string">"home"</span>,</div><div class="line">		<span class="string">"age"</span>: <span class="string">"18"</span>,</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"base.html"</span>,data)</div></pre></td></tr></table></figure>
-<h2 id="3-用data去填充前端的页面"><a href="#3-用data去填充前端的页面" class="headerlink" title="3. 用data去填充前端的页面"></a>3. 用data去填充前端的页面</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">render(request, <span class="string">"xxx.html"</span>, data)</div></pre></td></tr></table></figure>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> obj <span class="keyword">in</span> queryset %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"blog-post"</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"blog-post-title"</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.title &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"blog-post-meta"</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.timestamp &#125;&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Mark<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line"><span class="xml"></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.content &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line"><span class="xml"></span></div><div class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.blog-post --&gt;</span></span></div><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/5E6Nuje.png" alt=""></p>
-<h1 id="补充-Django的模板语言语法"><a href="#补充-Django的模板语言语法" class="headerlink" title="补充 Django的模板语言语法"></a>补充 Django的模板语言语法</h1><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span></div><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> x <span class="keyword">in</span> xx %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"></span></div><div class="line"><span class="xml"></span></div><div class="line"><span class="xml"></span><span class="template-variable">&#123;&#123; val &#125;&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure>
-<p>via <a href="http://v.youku.com/v_show/id_XMjUzMTM0MjQwOA==.html?spm=a2h0j.8191423.playlist_content.5!15~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.15" target="_blank" rel="external">Django1.10教程 -12 -Queryset介绍以及Template context补充</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Django[12]Queryset介绍以及Template context补充/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django[11]模板Template context和Bootstrap使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Django[11]模板Template context和Bootstrap使用/">Django[11]模板Template context和Bootstrap使用</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/Django[11]模板Template context和Bootstrap使用/" class="archive-article-date">
-  	<time datetime="2017-10-08T07:01:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Template-context"><a href="#Template-context" class="headerlink" title="Template context"></a>Template context</h1><h2 id="视图views-py中："><a href="#视图views-py中：" class="headerlink" title="视图views.py中："></a><strong>视图views.py中</strong>：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</div><div class="line"></div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div><div class="line"></div><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	context = &#123;</div><div class="line">		<span class="string">"title"</span>： <span class="string">"home"</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>,context)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_create</span><span class="params">(request)</span>:</span></div><div class="line">	context = &#123;</div><div class="line">		<span class="string">"title"</span>： <span class="string">"create"</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>,context)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></div><div class="line">	context = &#123;</div><div class="line">		<span class="string">"title"</span>： <span class="string">"detail"</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>,context)</div></pre></td></tr></table></figure>
-<h2 id="index-html中"><a href="#index-html中" class="headerlink" title="index.html中"></a><strong>index.html中</strong></h2><p>用 <strong>context</strong>去填充模板 index.html，然后再返回</p>
-<p>index.html中添加如下代码：<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello </span><span class="template-variable">&#123;&#123; title &#125;&#125;</span><span class="xml">&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p><strong>context</strong>是一个字典,存放要渲染到页面的数据</p>
-<h1 id="Bootstrap模板使用"><a href="#Bootstrap模板使用" class="headerlink" title="Bootstrap模板使用"></a>Bootstrap模板使用</h1><h2 id="1-下载模板文件"><a href="#1-下载模板文件" class="headerlink" title="1. 下载模板文件"></a>1. 下载模板文件</h2><p><a href="http://v3.bootcss.com/examples/blog/" target="_blank" rel="external">模板文件链接</a></p>
-<h2 id="2-把html文件拷贝到了templates文件夹下面"><a href="#2-把html文件拷贝到了templates文件夹下面" class="headerlink" title="2. 把html文件拷贝到了templates文件夹下面"></a>2. 把html文件拷贝到了templates文件夹下面</h2><h2 id="3-新建一个statics文件夹，用于存放css文件和js文件"><a href="#3-新建一个statics文件夹，用于存放css文件和js文件" class="headerlink" title="3. 新建一个statics文件夹，用于存放css文件和js文件"></a>3. 新建一个statics文件夹，用于存放css文件和js文件</h2><h2 id="4-把css和js文件拷贝到statics文件夹下"><a href="#4-把css和js文件拷贝到statics文件夹下" class="headerlink" title="4. 把css和js文件拷贝到statics文件夹下"></a>4. 把css和js文件拷贝到statics文件夹下</h2><h2 id="5-在settings-py中配置statics文件夹"><a href="#5-在settings-py中配置statics文件夹" class="headerlink" title="5. 在settings.py中配置statics文件夹"></a>5. 在settings.py中配置statics文件夹</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">STATICFILES_DIRS = [</div><div class="line">    os<span class="selector-class">.path</span><span class="selector-class">.join</span>(BASE_DIR, <span class="string">"statics"</span>)</div><div class="line">]</div></pre></td></tr></table></figure>
-<h2 id="6-将html文件中指定位置的css和js文件的路径修改为-static-…"><a href="#6-将html文件中指定位置的css和js文件的路径修改为-static-…" class="headerlink" title="6. 将html文件中指定位置的css和js文件的路径修改为/static/…"></a>6. 将html文件中指定位置的css和js文件的路径修改为/static/…</h2><p><strong>文档结构如下：</strong></p>
-<p><img src="https://i.imgur.com/AGdigpr.png" alt=""></p>
-<p><strong>效果如图：</strong><br><img src="https://i.imgur.com/d85xmJA.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMjUyMDA4Mzk4NA==.html?spm=a2h0j.8191423.playlist_content.5!14~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.14" target="_blank" rel="external">Django1.10教程 -11 -模板Template context和Bootstrap使用</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Django[11]模板Template context和Bootstrap使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django[10]模板Template的配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Django[10]模板Template的配置/">Django[10]模板Template的配置</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/Django[10]模板Template的配置/" class="archive-article-date">
-  	<time datetime="2017-10-08T01:49:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="BASE-DIR-和-os-path-join-xx-xxx"><a href="#BASE-DIR-和-os-path-join-xx-xxx" class="headerlink" title="BASE_DIR 和 os.path.join(xx, xxx)"></a>BASE_DIR 和 os.path.join(xx, xxx)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="comment"># Build paths inside the project like this: os.path.join(BASE_DIR, ...)</span></div><div class="line">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))</div></pre></td></tr></table></figure>
-<h1 id="创建一个templates目录"><a href="#创建一个templates目录" class="headerlink" title="创建一个templates目录"></a>创建一个templates目录</h1><p><img src="https://i.imgur.com/8SnMh2q.png" alt=""></p>
-<h1 id="在settings-py中配置templates路径"><a href="#在settings-py中配置templates路径" class="headerlink" title="在settings.py中配置templates路径"></a>在settings.py中配置templates路径</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">TEMPLATES = [</div><div class="line">    &#123;</div><div class="line">        <span class="string">'BACKEND'</span>: <span class="string">'django.template.backends.django.DjangoTemplates'</span>,</div><div class="line">        <span class="string">'DIRS'</span>: [os.path.join(BASE_DIR,<span class="string">"templates"</span>)],</div><div class="line">        <span class="string">'APP_DIRS'</span>: <span class="keyword">True</span>,</div><div class="line">        <span class="string">'OPTIONS'</span>: &#123;</div><div class="line">            <span class="string">'context_processors'</span>: [</div><div class="line">                <span class="string">'django.template.context_processors.debug'</span>,</div><div class="line">                <span class="string">'django.template.context_processors.request'</span>,</div><div class="line">                <span class="string">'django.contrib.auth.context_processors.auth'</span>,</div><div class="line">                <span class="string">'django.contrib.messages.context_processors.messages'</span>,</div><div class="line">            ],</div><div class="line">        &#125;,</div><div class="line">    &#125;,</div><div class="line">]</div></pre></td></tr></table></figure>
-<h1 id="在templates文件夹下创建html文件"><a href="#在templates文件夹下创建html文件" class="headerlink" title="在templates文件夹下创建html文件"></a>在templates文件夹下创建html文件</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>try django<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World! Django!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<h1 id="在views-py中使用templates目录下的html文件"><a href="#在views-py中使用templates目录下的html文件" class="headerlink" title="在views.py中使用templates目录下的html文件"></a>在views.py中使用templates目录下的html文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</div><div class="line"></div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div><div class="line"></div><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>)</div></pre></td></tr></table></figure>
-<h1 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h1><p><img src="https://i.imgur.com/2o9FySq.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMjUyMDA3MDQ3Ng==.html?spm=a2h0j.8191423.playlist_content.5!13~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.13" target="_blank" rel="external">Django1.10教程 -10 -模板Template的配置</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Django[10]模板Template的配置/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django[09]配置URL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Django[09]配置URL/">Django[09]配置URL</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/Django[09]配置URL/" class="archive-article-date">
-  	<time datetime="2017-10-08T00:57:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="bbs-URL-Configuration"><a href="#bbs-URL-Configuration" class="headerlink" title="bbs URL Configuration"></a>bbs URL Configuration</h1><p>The <code>urlpatterns</code> list routes URLs to views. For more information please see:<br>    <a href="https://docs.djangoproject.com/en/1.11/topics/http/urls/" target="_blank" rel="external">https://docs.djangoproject.com/en/1.11/topics/http/urls/</a></p>
-<h1 id="Examples"><a href="#Examples" class="headerlink" title="Examples:"></a>Examples:</h1><h2 id="Function-views"><a href="#Function-views" class="headerlink" title="Function views"></a>Function views</h2><pre><code>1. Add an import:  from my_app import views
-2. Add a URL to urlpatterns:  url(r&apos;^$&apos;, views.home, name=&apos;home&apos;)
-</code></pre><h2 id="Class-based-views"><a href="#Class-based-views" class="headerlink" title="Class-based views"></a>Class-based views</h2><pre><code>1. Add an import:  from other_app.views import Home
-2. Add a URL to urlpatterns:  url(r&apos;^$&apos;, Home.as_view(), name=&apos;home&apos;)
-</code></pre><h2 id="Including-another-URLconf"><a href="#Including-another-URLconf" class="headerlink" title="Including another URLconf"></a>Including another URLconf</h2><pre><code>1. Import the include() function: from django.conf.urls import url, include
-2. Add a URL to urlpatterns:  url(r&apos;^blog/&apos;, include(&apos;blog.urls&apos;))
-</code></pre><h1 id="project-project-urls-py-中的urls-py常见的几种写法"><a href="#project-project-urls-py-中的urls-py常见的几种写法" class="headerlink" title="project(project/urls.py)中的urls.py常见的几种写法"></a>project(project/urls.py)中的urls.py常见的几种写法</h1><h2 id="1、基于function的view"><a href="#1、基于function的view" class="headerlink" title="1、基于function的view"></a>1、基于function的view</h2><p><a href="https://boredbird.github.io/2017/10/08/Django[08]%E7%AC%AC%E4%B8%80%E4%B8%AAview%EF%BC%88%E8%A7%86%E5%9B%BE%EF%BC%89/" target="_blank" rel="external">详见上回</a></p>
-<h2 id="2、基于class的view"><a href="#2、基于class的view" class="headerlink" title="2、基于class的view"></a>2、基于class的view</h2><h3 id="1、修改posts-app-下views-py"><a href="#1、修改posts-app-下views-py" class="headerlink" title="1、修改posts[app]下views.py"></a>1、修改posts[app]下views.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.views.generic <span class="keyword">import</span> ListView</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostList</span><span class="params">(ListView)</span>:</span></div><div class="line">	<span class="string">"""post的视图类"""</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></div><div class="line">		<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;post的视图类&lt;/h1&gt;"</span>)</div></pre></td></tr></table></figure>
-<h3 id="2、修改bbs-project-下urls-py"><a href="#2、修改bbs-project-下urls-py" class="headerlink" title="2、修改bbs[project]下urls.py"></a>2、修改bbs[project]下urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    <span class="comment"># url(r'^home/', views.posts_home),</span></div><div class="line">    url(<span class="string">r'^home/'</span>, views.PostList.as_view()),</div><div class="line">]</div></pre></td></tr></table></figure>
-<h3 id="3、效果"><a href="#3、效果" class="headerlink" title="3、效果"></a>3、效果</h3><p><img src="https://i.imgur.com/kgAiXW3.png" alt=""></p>
-<h2 id="3、view别名"><a href="#3、view别名" class="headerlink" title="3、view别名"></a>3、view别名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> app01 <span class="keyword">import</span> views <span class="keyword">as</span> app01_views</div><div class="line"><span class="keyword">from</span> app02 <span class="keyword">import</span> views <span class="keyword">as</span> app02_views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^home/'</span>, app01_views.posts_home),</div><div class="line">    url(<span class="string">r'^home/'</span>, app02_views.PostList.as_view()),</div><div class="line">]</div></pre></td></tr></table></figure>
-<h2 id="4、在app中的urls-py的使用"><a href="#4、在app中的urls-py的使用" class="headerlink" title="4、在app中的urls.py的使用"></a>4、在app中的urls.py的使用</h2><h3 id="1、posts-app-下增加urls-py："><a href="#1、posts-app-下增加urls-py：" class="headerlink" title="1、posts[app]下增加urls.py："></a>1、posts[app]下增加urls.py：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</div><div class="line">]</div></pre></td></tr></table></figure>
-<h3 id="2、在project下的urls-py-中设置第一级的路由："><a href="#2、在project下的urls-py-中设置第一级的路由：" class="headerlink" title="2、在project下的urls.py 中设置第一级的路由："></a>2、在project下的urls.py 中设置第一级的路由：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url,include</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</div><div class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> urls <span class="keyword">as</span> posts_urls</div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    <span class="comment"># url(r'^home/', views.posts_home),</span></div><div class="line">    <span class="comment"># url(r'^home/', views.PostList.as_view()),</span></div><div class="line">    url(<span class="string">r'^post/'</span>,include(posts_urls))</div><div class="line">]</div></pre></td></tr></table></figure>
-<h3 id="3、在app下的urls-py中设置第二级路由，同第一步："><a href="#3、在app下的urls-py中设置第二级路由，同第一步：" class="headerlink" title="3、在app下的urls.py中设置第二级路由，同第一步："></a>3、在app下的urls.py中设置第二级路由，同第一步：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</div><div class="line">]</div></pre></td></tr></table></figure>
-<h1 id="多视图示例"><a href="#多视图示例" class="headerlink" title="多视图示例"></a>多视图示例</h1><h2 id="1、app下的urls-py"><a href="#1、app下的urls-py" class="headerlink" title="1、app下的urls.py"></a>1、app下的urls.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^$'</span>, views.posts_home),</div><div class="line">    url(<span class="string">r'^create/$'</span>, views.posts_create),</div><div class="line">    url(<span class="string">r'^update/$'</span>, views.posts_update),</div><div class="line">    url(<span class="string">r'^detail/$'</span>, views.posts_detail),</div><div class="line">    url(<span class="string">r'^delete/$'</span>, views.posts_delete),</div><div class="line">    url(<span class="string">r'^'</span>, views.posts_home),</div><div class="line">]</div></pre></td></tr></table></figure>
-<h2 id="2、app下的view-py"><a href="#2、app下的view-py" class="headerlink" title="2、app下的view.py"></a>2、app下的view.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</div><div class="line"></div><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</div><div class="line"></div><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"Hello World!"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_create</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_create&lt;/h1&gt;"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_update</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_update&lt;/h1&gt;"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_detail&lt;/h1&gt;"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_delete</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_delete&lt;/h1&gt;"</span>)</div></pre></td></tr></table></figure>
-<p>注：</p>
-<p>1、如果匹配到排在上面的正则表达式那么就不会适配下面的正则表达式了</p>
-<p>2、不要忘记加’^’和’$’</p>
-<p>via <a href="https://docs.djangoproject.com/en/1.9/topics/class-based-views/" target="_blank" rel="external">Class-based views</a></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMjQ4Mzc0NjkxNg==.html?spm=a2h0j.8191423.playlist_content.5!12~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.12" target="_blank" rel="external">Django1.10教程 -09 -配置URL</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Django[09]配置URL/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django[08]第一个view（视图）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Django[08]第一个view（视图）/">Django[08]第一个view（视图）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/Django[08]第一个view（视图）/" class="archive-article-date">
-  	<time datetime="2017-10-08T00:43:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="定义我们第一个视图"><a href="#定义我们第一个视图" class="headerlink" title="定义我们第一个视图"></a>定义我们第一个视图</h1><p>修改posts[app]下views.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Create your views here.</span></div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></div><div class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"Hello World!"</span>)</div></pre></td></tr></table></figure></p>
-<h1 id="url建立映射到view"><a href="#url建立映射到view" class="headerlink" title="url建立映射到view"></a>url建立映射到view</h1><p>修改bbs[project]下urls.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/9QePi8q.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMjQ3MzA0NzAxNg==.html?spm=a2h0j.8191423.playlist_content.5!11~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.11" target="_blank" rel="external">Django1.10教程 -08 -第一个view（视图）</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Django[08]第一个view（视图）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Django[07]增删改查（CRUD）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/08/Django[07]增删改查（CRUD）/">Django[07]增删改查（CRUD）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/08/Django[07]增删改查（CRUD）/" class="archive-article-date">
-  	<time datetime="2017-10-08T00:27:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h1><table>
-<thead>
-<tr>
-<th>缩写</th>
-<th style="text-align:center">动作名称</th>
-<th style="text-align:center">SQL</th>
-<th style="text-align:center">HTTP</th>
-<th style="text-align:right">实际动作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C</td>
-<td style="text-align:center">Create</td>
-<td style="text-align:center">INSERT</td>
-<td style="text-align:center">PUT/POST</td>
-<td style="text-align:right">增加</td>
-</tr>
-<tr>
-<td>R</td>
-<td style="text-align:center">Retrieve</td>
-<td style="text-align:center">SELECT</td>
-<td style="text-align:center">GET</td>
-<td style="text-align:right">查询</td>
-</tr>
-<tr>
-<td>U</td>
-<td style="text-align:center">Update</td>
-<td style="text-align:center">UPDATE</td>
-<td style="text-align:center">POST/PUT/PATCH</td>
-<td style="text-align:right">更新</td>
-</tr>
-<tr>
-<td>D</td>
-<td style="text-align:center">Delete</td>
-<td style="text-align:center">DELETE</td>
-<td style="text-align:center">DELETE</td>
-<td style="text-align:right">删除</td>
-</tr>
-</tbody>
-</table>
-<h1 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h1><table>
-<thead>
-<tr>
-<th>序号</th>
-<th style="text-align:center">方法</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td style="text-align:center">GET</td>
-<td style="text-align:right">请求指定的页面信息，并返回实体主体。</td>
-</tr>
-<tr>
-<td>2</td>
-<td style="text-align:center">HEAD</td>
-<td style="text-align:right">类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
-</tr>
-<tr>
-<td>3</td>
-<td style="text-align:center">POST</td>
-<td style="text-align:right">向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</td>
-</tr>
-<tr>
-<td>4</td>
-<td style="text-align:center">PUT</td>
-<td style="text-align:right">从客户端向服务器传送的数据取代指定的文档的内容。</td>
-</tr>
-<tr>
-<td>5</td>
-<td style="text-align:center">DELETE</td>
-<td style="text-align:right">请求服务器删除指定的页面。</td>
-</tr>
-<tr>
-<td>6</td>
-<td style="text-align:center">CONNECT</td>
-<td style="text-align:right">HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</td>
-</tr>
-<tr>
-<td>7</td>
-<td style="text-align:center">OPTIONS</td>
-<td style="text-align:right">允许客户端查看服务器的性能。</td>
-</tr>
-<tr>
-<td>8</td>
-<td style="text-align:center">TRACE</td>
-<td style="text-align:right">回显服务器收到的请求，主要用于测试或诊断。</td>
-</tr>
-</tbody>
-</table>
-<p>via <a href="http://v.youku.com/v_show/id_XMjQ3MzA0NDY5Mg==.html?spm=a2h0j.8191423.playlist_content.5!10~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.10" target="_blank" rel="external">Django1.10教程 -07 -增删改查（CRUD）</a></p>
-<p>via <a href="http://www.runoob.com/http/http-methods.html" target="_blank" rel="external">HTTP请求方法</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/08/Django[07]增删改查（CRUD）/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/08/Convolutional Networks/">展开全文 >></a>
         </p>
       
 
@@ -1277,7 +1243,7 @@ Numpy
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 
@@ -1404,6 +1370,86 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">sklearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Bagging</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">BaggingRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">reduce</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DecisionTreeRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RidgeCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PolynomialFeatures</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">make_blobs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">euclidean_distances</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">KMeans</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KMeans++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">homogeneity_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">completeness_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v_measure_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">adjusted_rand_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AffinityPropagation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MeanShift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">spectral_clustering</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">提升</a>
               </li>
              
@@ -1416,11 +1462,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1432,7 +1474,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
+                <a href="javascript:void(0)" class="js-tag color3">linear_model</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ElasticNetCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ElasticNet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">StandardScaler</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">train_test_split</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1441,26 +1511,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">主题模型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">get</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">post</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1480,11 +1530,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
+                <a href="javascript:void(0)" class="js-tag color4">get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1504,15 +1562,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">NN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linear</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1524,7 +1582,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1536,7 +1598,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Ridge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lasso</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1553,6 +1623,62 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">transfer learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">分割面</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">optimize</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">scipy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GridSearchCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">RMSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cross_val_predict</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1576,23 +1702,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTreeClassifier</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+                <a href="javascript:void(0)" class="js-tag color5">pydotplus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+                <a href="javascript:void(0)" class="js-tag color1">matplotlib</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1600,7 +1722,39 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
+                <a href="javascript:void(0)" class="js-tag color4">svm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">precision_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">recall_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">f1_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">fbeta_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">precision_recall_fscore_support</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">classification_report</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1636,15 +1790,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hive</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">loadtxt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">read_csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">NumPy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1653,18 +1835,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">模型融合</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1728,11 +1898,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">偏度</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">峰度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1764,11 +1946,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+                <a href="javascript:void(0)" class="js-tag color3">插值</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
+                <a href="javascript:void(0)" class="js-tag color5">重心插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">三次样条插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">临近点插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Newton插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lagrange插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">REST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">

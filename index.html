@@ -177,32 +177,35 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-HMM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-手撸AdaBoost" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/HMM/">主题模型</a>
+      <a class="article-title" href="/2017/11/17/手撸AdaBoost/">手撸AdaBoost</a>
     </h1>
   
 
         
-        <a href="/2017/11/12/HMM/" class="archive-article-date">
-  	<time datetime="2017-11-12T14:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
+        <a href="/2017/11/17/手撸AdaBoost/" class="archive-article-date">
+  	<time datetime="2017-11-17T12:26:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="HMM定义"><a href="#HMM定义" class="headerlink" title="HMM定义"></a>HMM定义</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225447.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+        <h2 id="AdaBoost算法概述："><a href="#AdaBoost算法概述：" class="headerlink" title="AdaBoost算法概述："></a>AdaBoost算法概述：</h2><ul>
+<li>优点：泛化错误率低，易编码，可以应用在大部分分类器上，无参数调整。</li>
+<li>缺点：对离群点敏感。</li>
+<li>适用数据类型：数值型和标称型数据。</li>
+</ul>
+<p>将不同的分类器组合起来，成为集成方法（ensemble method）或者元算法（meta-algorithm)。使用集成方法时会有多种形式：可以是不同算法的集成，也可以是同一算法在不同设置下的集成，还可以是数据集不同部分分配给不同分类器之后的集成。</p>
+<p>bagging(bootstrap aggregating)，是在从原始数据集选择s次后得到s个新的数据集的一种技术，新数据集和原始数据集大小相等。有放回的抽样，所以允许新数据集中可以有重复的值，而原始数据集的某些值在新集合中则不再出现。在s个数据集建好之后，将某个学习算法分别作用于每个数据集就得到了s个分类器。当我们要对新数据进行分类时，就可以应用这s个分类器进行分类。选择分类器投票结果中最多的类别作为最后的分类结果。</p>
+<p>boosting和bagging类似，所使用的多个分类器类型都是一致的，但是boosting是通过串行训练而获得，每个新分类器都是根据已训练出的分类器的性能来进行训练。</p>
 
-<h2 id="隐马尔科夫模型的贝叶斯网络"><a href="#隐马尔科夫模型的贝叶斯网络" class="headerlink" title="隐马尔科夫模型的贝叶斯网络"></a>隐马尔科夫模型的贝叶斯网络</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225714.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-        
-          <a class="article-more-a" href="/2017/11/12/HMM/#more">查看更多 >></a>
-        
       
 
       
@@ -215,23 +218,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">EM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HMM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">贝叶斯网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Baum-Welch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Viterbi</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AdaBoost</a>
         		</li>
       		
 		</ul>
@@ -252,7 +239,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/12/HMM/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/17/手撸AdaBoost/">展开全文 >></a>
         </p>
       
 
@@ -282,601 +269,32 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-主题模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-手撸SVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/主题模型/">主题模型</a>
+      <a class="article-title" href="/2017/11/16/手撸SVM/">手撸SVM</a>
     </h1>
   
 
         
-        <a href="/2017/11/12/主题模型/" class="archive-article-date">
-  	<time datetime="2017-11-12T14:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
+        <a href="/2017/11/16/手撸SVM/" class="archive-article-date">
+  	<time datetime="2017-11-16T12:26:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/主题模型/TIM截图20171112220821.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+        <h2 id="基于最大间隔分隔数据"><a href="#基于最大间隔分隔数据" class="headerlink" title="基于最大间隔分隔数据"></a>基于最大间隔分隔数据</h2><ul>
+<li>优点：泛化错误率低，计算开销不大，结果易解释。</li>
+<li>缺点：对参数调节和核函数的选择敏感，原始分类器不加修改仅适用于处理二类问题。</li>
+<li>适用数据类型：数值型和标称型数据。</li>
+</ul>
 
-<h1 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/主题模型/TIM截图20171112221007.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-        
-          <a class="article-more-a" href="/2017/11/12/主题模型/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Beta分布</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">先验分布</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">共轭先验分布</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二项分布</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Dirichlet分布</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">多项分布</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Gibbs采样</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LDA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/12/主题模型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-贝叶斯网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/贝叶斯网络/">贝叶斯网络</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/12/贝叶斯网络/" class="archive-article-date">
-  	<time datetime="2017-11-12T13:56:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h1>
-        
-          <a class="article-more-a" href="/2017/11/12/贝叶斯网络/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">HMM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">贝叶斯网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">朴素贝叶斯</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">马尔科夫</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">D-separation</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Markov Blanket</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Chou-Liu</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MSWT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">转移概率矩阵</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/12/贝叶斯网络/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PLSA" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/PLSA/">PLSA</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/12/PLSA/" class="archive-article-date">
-  	<time datetime="2017-11-12T12:56:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="PLSA模型"><a href="#PLSA模型" class="headerlink" title="PLSA模型"></a>PLSA模型</h1><h2 id="PLSA模型概述"><a href="#PLSA模型概述" class="headerlink" title="PLSA模型概述"></a>PLSA模型概述</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/PLSA/TIM截图20171112205947.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-
-<h2 id="PLSA模型过程"><a href="#PLSA模型过程" class="headerlink" title="PLSA模型过程"></a>PLSA模型过程</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/PLSA/TIM截图20171112210114.png" width="80%"><br>  <img src="/assets/chinahadoop/PLSA/TIM截图20171112210128.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-        
-          <a class="article-more-a" href="/2017/11/12/PLSA/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">EM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">主题模型</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">PLSA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/12/PLSA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-EM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/EM/">EM</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/12/EM/" class="archive-article-date">
-  	<time datetime="2017-11-12T11:15:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><h2 id="k-Means算法"><a href="#k-Means算法" class="headerlink" title="k-Means算法"></a>k-Means算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/EM/TIM截图20171112192635.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-
-<h2 id="对K-Means的思考"><a href="#对K-Means的思考" class="headerlink" title="对K-Means的思考"></a>对K-Means的思考</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/EM/TIM截图20171112192704.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-        
-          <a class="article-more-a" href="/2017/11/12/EM/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">EM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">主题模型</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/12/EM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-聚类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/聚类/">聚类</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/12/聚类/" class="archive-article-date">
-  	<time datetime="2017-11-12T08:15:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="聚类的定义"><a href="#聚类的定义" class="headerlink" title="聚类的定义"></a>聚类的定义</h2><p>聚类就是对大量未知标注的数据集，按数据的内在相似性将数据集划分为多个类别，使类别内的数据相似度较大而类别间的数据相似度较小。</p>
-<h2 id="相似度-距离计算方法总结"><a href="#相似度-距离计算方法总结" class="headerlink" title="相似度/距离计算方法总结"></a>相似度/距离计算方法总结</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112160705.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-
-<h3 id="Hellinger-distance"><a href="#Hellinger-distance" class="headerlink" title="Hellinger distance"></a>Hellinger distance</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112165344.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-        
-          <a class="article-more-a" href="/2017/11/12/聚类/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">聚类</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">k-Means</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Canopy</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">AGNES</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DIANA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">DBSCAN</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">谱聚类</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">层次聚类</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">密度最大值聚类</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">拉普拉斯</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">边界</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">噪声</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">标签传递</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/12/聚类/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/SVM/">SVM</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/12/SVM/" class="archive-article-date">
-  	<time datetime="2017-11-12T06:15:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="支持向量机SVM的原理和目标"><a href="#支持向量机SVM的原理和目标" class="headerlink" title="支持向量机SVM的原理和目标"></a>支持向量机SVM的原理和目标</h1><h2 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h2><p>硬间隔最大化hard margin maximization;硬间隔支持向量机</p>
-<h3 id="分割超平面"><a href="#分割超平面" class="headerlink" title="分割超平面"></a>分割超平面</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/SVM/TIM截图20171112145917.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-
-<h3 id="分割超平面的思考"><a href="#分割超平面的思考" class="headerlink" title="分割超平面的思考"></a>分割超平面的思考</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/SVM/TIM截图20171112145956.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-        
-          <a class="article-more-a" href="/2017/11/12/SVM/#more">查看更多 >></a>
-        
       
 
       
@@ -910,7 +328,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/12/SVM/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/16/手撸SVM/">展开全文 >></a>
         </p>
       
 
@@ -940,31 +358,43 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-AdaBoost" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-手撸LogisticRegression" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/AdaBoost/">AdaBoost</a>
+      <a class="article-title" href="/2017/11/16/手撸LogisticRegression/">手撸LogisticRegression</a>
     </h1>
   
 
         
-        <a href="/2017/11/12/AdaBoost/" class="archive-article-date">
-  	<time datetime="2017-11-12T06:15:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
+        <a href="/2017/11/16/手撸LogisticRegression/" class="archive-article-date">
+  	<time datetime="2017-11-16T12:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Boosting的思想"><a href="#Boosting的思想" class="headerlink" title="Boosting的思想"></a>Boosting的思想</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142536.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
-
-<h1 id="AdaBoost算法"><a href="#AdaBoost算法" class="headerlink" title="AdaBoost算法"></a>AdaBoost算法</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142651.png" width="80%"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142718.png" width="80%"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142731.png" width="80%"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142745.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+        <h2 id="LogisticRegression算法概述："><a href="#LogisticRegression算法概述：" class="headerlink" title="LogisticRegression算法概述："></a>LogisticRegression算法概述：</h2><p>利用Logistic回归进行分类的主要思想是：根据现有数据对分类边界线建立回归公式，以此进行分类。</p>
+<ul>
+<li>优点：计算代价不高，易于理解和实现。</li>
+<li>缺点：容易欠拟合，分类精度可能不高。</li>
+<li>适用数据类型：数值型和标称型数据。</li>
+</ul>
+<h2 id="梯度下降法求最佳参数伪代码："><a href="#梯度下降法求最佳参数伪代码：" class="headerlink" title="梯度下降法求最佳参数伪代码："></a>梯度下降法求最佳参数伪代码：</h2><ol>
+<li>每个回归系数初始化为1</li>
+<li>重复R次：</li>
+</ol>
+<ul>
+<li>a.计算整个数据集的梯度</li>
+<li>b.使用alpha*gradient更新回归系数的向量</li>
+<li>c.返回回归系数</li>
+</ul>
         
-          <a class="article-more-a" href="/2017/11/12/AdaBoost/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/16/手撸LogisticRegression/#more">查看更多 >></a>
         
       
 
@@ -978,15 +408,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">提升</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AdaBoost</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LogisticRegression</a>
         		</li>
       		
 		</ul>
@@ -1007,7 +429,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/12/AdaBoost/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/16/手撸LogisticRegression/">展开全文 >></a>
         </p>
       
 
@@ -1037,31 +459,37 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-XGBoost" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-手撸DecisionTree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/12/XGBoost/">XGBoost</a>
+      <a class="article-title" href="/2017/11/16/手撸DecisionTree/">手撸DecisionTree</a>
     </h1>
   
 
         
-        <a href="/2017/11/12/XGBoost/" class="archive-article-date">
-  	<time datetime="2017-11-12T05:20:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-12</time>
+        <a href="/2017/11/16/手撸DecisionTree/" class="archive-article-date">
+  	<time datetime="2017-11-16T11:26:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="考虑使用二阶导信息"><a href="#考虑使用二阶导信息" class="headerlink" title="考虑使用二阶导信息"></a>考虑使用二阶导信息</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/XGBoost/TIM截图20171112115502.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+        <h2 id="DecisionTree算法概述："><a href="#DecisionTree算法概述：" class="headerlink" title="DecisionTree算法概述："></a>DecisionTree算法概述：</h2><ul>
+<li>优点：计算复杂度不高，输出结果易于理解，对中间值的缺失不敏感，可以处理不相关特征数据。</li>
+<li>缺点：可能会产生过度匹配问题。</li>
+<li>适用数据范围：数值型和标称型</li>
+</ul>
+<h2 id="DecisionTree伪代码："><a href="#DecisionTree伪代码：" class="headerlink" title="DecisionTree伪代码："></a>DecisionTree伪代码：</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/tree/QQ截图20171116135703.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
 
-<h1 id="决策树的描述"><a href="#决策树的描述" class="headerlink" title="决策树的描述"></a>决策树的描述</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/XGBoost/TIM截图20171112125849.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+<h2 id="DecisionTree代码实现："><a href="#DecisionTree代码实现：" class="headerlink" title="DecisionTree代码实现："></a>DecisionTree代码实现：</h2><h3 id="创建数据集"><a href="#创建数据集" class="headerlink" title="创建数据集"></a>创建数据集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</div><div class="line"><span class="keyword">import</span> operator</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">createDataSet</span><span class="params">()</span>:</span></div><div class="line">    dataSet = [[<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</div><div class="line">               [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</div><div class="line">               [<span class="number">1</span>, <span class="number">0</span>, <span class="string">'no'</span>],</div><div class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>],</div><div class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>]]</div><div class="line">    labels = [<span class="string">'no surfacing'</span>, <span class="string">'flippers'</span>]</div><div class="line">    <span class="comment"># change to discrete values</span></div><div class="line">    <span class="keyword">return</span> dataSet, labels</div></pre></td></tr></table></figure>
+<h3 id="计算给定数据集的香农熵"><a href="#计算给定数据集的香农熵" class="headerlink" title="计算给定数据集的香农熵"></a>计算给定数据集的香农熵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcShannonEnt</span><span class="params">(dataSet)</span>:</span></div><div class="line">    numEntries = len(dataSet)</div><div class="line">    labelCounts = &#123;&#125; <span class="comment"># 为所有可能分类创建字典</span></div><div class="line">    <span class="comment"># 循环遍历数据集的每一行</span></div><div class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:  <span class="comment"># the the number of unique elements and their occurance</span></div><div class="line">        currentLabel = featVec[<span class="number">-1</span>] <span class="comment"># 假设最后一列是label</span></div><div class="line">        <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</div><div class="line">            labelCounts[currentLabel] = <span class="number">0</span></div><div class="line">        labelCounts[currentLabel] += <span class="number">1</span></div><div class="line">    shannonEnt = <span class="number">0.0</span></div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</div><div class="line">        prob = float(labelCounts[key]) / numEntries</div><div class="line">        shannonEnt -= prob * log(prob, <span class="number">2</span>)  <span class="comment"># log base 2</span></div><div class="line">    <span class="keyword">return</span> shannonEnt</div></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2017/11/12/XGBoost/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/16/手撸DecisionTree/#more">查看更多 >></a>
         
       
 
@@ -1075,15 +503,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">提升</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">XGBoost</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DecisionTree</a>
         		</li>
       		
 		</ul>
@@ -1104,7 +524,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/12/XGBoost/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/16/手撸DecisionTree/">展开全文 >></a>
         </p>
       
 
@@ -1134,45 +554,43 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-提升GBDT" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-手撸kNN" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/11/提升GBDT/">提升GBDT</a>
+      <a class="article-title" href="/2017/11/16/手撸kNN/">手撸kNN</a>
     </h1>
   
 
         
-        <a href="/2017/11/11/提升GBDT/" class="archive-article-date">
-  	<time datetime="2017-11-11T08:15:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+        <a href="/2017/11/16/手撸kNN/" class="archive-article-date">
+  	<time datetime="2017-11-16T11:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="由决策树和随机森林的关系的思考"><a href="#由决策树和随机森林的关系的思考" class="headerlink" title="由决策树和随机森林的关系的思考"></a>由决策树和随机森林的关系的思考</h1><ul>
-<li>随机森林的决策树分别采样建立，相对独立。</li>
-<li>思考：</li>
-<li><ul>
-<li>假定当前已经得到了m-1棵决策树，是否可以通过现有样本和决策树的信息，对第m棵决策树的建立产生有益的影响呢？</li>
+        <h2 id="k近邻算法概述："><a href="#k近邻算法概述：" class="headerlink" title="k近邻算法概述："></a>k近邻算法概述：</h2><p>k-近邻算法采用测量不同特征值之间的距离方法进行分类。</p>
+<ul>
+<li>优点：精度高、对异常值不敏感、无数据输入假定</li>
+<li>缺点：计算复杂度高、空间复杂度高</li>
+<li>适用数据范围：数值型和标称型</li>
 </ul>
-</li>
-<li><ul>
-<li>各个决策树组成随机森林后，最后的投票过程可否在建立决策树时即确定呢？</li>
-</ul>
-</li>
-</ul>
-<h1 id="提升的概念"><a href="#提升的概念" class="headerlink" title="提升的概念"></a>提升的概念</h1><ul>
-<li>提升是一个机器学习技术，可以用于回归和分类问题，它每一步产生一个弱预测模型（如决策树），并加权累加到总模型中；如果每一步的弱预测模型生成都是依据损失函数的梯度方向，则称之为梯度提升（Gradient Boosting）</li>
-<li>梯度提升算法首先给定一个目标损失函数，它的定义域是所有可行的弱函数集合（基函数）；提升算法通过迭代的选择一个负梯度方向上的基函数来逐渐逼近局部极小值。这种在函数域的梯度提升观点对机器学习的很多领域有深刻影响。</li>
-<li>提升的理论意义：如果一个问题存在弱分类器，则可以通过提升的办法得到强分类器。</li>
-</ul>
+<h2 id="kNN伪代码："><a href="#kNN伪代码：" class="headerlink" title="kNN伪代码："></a>kNN伪代码：</h2><p>对未知类别属性的数据集中的每个点依次执行以下操作：</p>
+<ol>
+<li>计算已知类别数据集中的点与当前点之间的距离；</li>
+<li>按照距离递增次序排序；</li>
+<li>选取与当前点距离最小的k个点；</li>
+<li>确定前k个点所在类别的出现频率；</li>
+<li>返回前k个点出现频率最高的类别作为当前点的预测分类。</li>
+</ol>
+<h2 id="kNN代码实现："><a href="#kNN代码实现：" class="headerlink" title="kNN代码实现："></a>kNN代码实现：</h2>
         
-          <a class="article-more-a" href="/2017/11/11/提升GBDT/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/16/手撸kNN/#more">查看更多 >></a>
         
       
 
@@ -1186,15 +604,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">提升</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NumPy</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">GBDT</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kNN</a>
         		</li>
       		
 		</ul>
@@ -1215,7 +629,611 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/11/提升GBDT/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/16/手撸kNN/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Clustering with sklearn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/15/Clustering with sklearn/">Clustering with sklearn</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/15/Clustering with sklearn/" class="archive-article-date">
+  	<time datetime="2017-11-15T11:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="生成聚类数据集的方法"><a href="#生成聚类数据集的方法" class="headerlink" title="生成聚类数据集的方法"></a>生成聚类数据集的方法</h1><p><code>生成数据集方法</code>：sklearn.datasets.make_blobs(n_samples,n_featurs,centers)可以生成数据集,n_samples表示个数，n_features表示特征个数，centers表示y的种类数:</p>
+<ul>
+<li>make_blobs函数是为聚类产生数据集产生一个数据集和相应的标签</li>
+<li>n_samples:表示数据样本点个数,默认值100</li>
+<li>n_features:表示数据的维度，默认值是2</li>
+<li>centers:产生数据的中心点，默认值3</li>
+<li>cluster_std：数据集的标准差，浮点数或者浮点数序列，默认值1.0</li>
+<li>center_box：中心确定之后的数据边界，默认值(-10.0, 10.0)</li>
+<li>shuffle ：洗乱，默认值是True</li>
+<li>random_state:官网解释是随机生成器的种子</li>
+</ul>
+<p>y3 = np.array([0]<em>100 + [1]</em>50 + [2]<em>20 + [3]</em>5)可以这样建立array数组</p>
+<p>k-means对于方差不相等和数据与坐标轴不平行时效果不理想；对于数据大小量纲敏感。</p>
+        
+          <a class="article-more-a" href="/2017/11/15/Clustering with sklearn/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sklearn</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">make_blobs</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">euclidean_distances</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">KMeans</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">KMeans++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">homogeneity_score</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">completeness_score</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">v_measure_score</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">adjusted_rand_score</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AffinityPropagation</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MeanShift</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">spectral_clustering</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/15/Clustering with sklearn/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-sklearn.svm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/14/sklearn.svm/">sklearn.svm</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/14/sklearn.svm/" class="archive-article-date">
+  	<time datetime="2017-11-14T14:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SVC-ovr"><a href="#SVC-ovr" class="headerlink" title="SVC:ovr"></a>SVC:ovr</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</div><div class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</div><div class="line">iris = load_iris()</div><div class="line">X = iris.data[:, :<span class="number">2</span>]</div><div class="line">y = iris.target</div><div class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># 'sepal length', 'sepal width', 'petal length', 'petal width'</span></div><div class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></div><div class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</div><div class="line">    <span class="keyword">return</span> it[s]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_accuracy</span><span class="params">(a, b, tip)</span>:</span></div><div class="line">    acc = a.ravel() == b.ravel()</div><div class="line">    <span class="keyword">print</span> tip + <span class="string">'正确率：'</span>, np.mean(acc)</div><div class="line"></div><div class="line"><span class="comment"># 分类器</span></div><div class="line"><span class="comment"># clf = svm.SVC(C=0.1, kernel='linear', decision_function_shape='ovr')</span></div><div class="line"><span class="comment"># ‘ovo’ 一对一, ‘ovr’ 多对多  or None 无, default=None</span></div><div class="line">clf = svm.SVC(C=<span class="number">0.8</span>, kernel=<span class="string">'rbf'</span>, gamma=<span class="number">20</span>, decision_function_shape=<span class="string">'ovr'</span>)</div><div class="line">clf.fit(x_train, y_train.ravel())</div><div class="line"></div><div class="line"><span class="comment"># 准确率</span></div><div class="line"><span class="comment"># score(X, y, sample_weight=None) ：Returns the mean accuracy on the given test data and labels.</span></div><div class="line"><span class="keyword">print</span> clf.score(x_train, y_train)  <span class="comment"># 精度</span></div><div class="line">y_hat = clf.predict(x_train)</div><div class="line">show_accuracy(y_hat, y_train, <span class="string">'训练集'</span>)</div><div class="line"><span class="keyword">print</span> clf.score(x_test, y_test)</div><div class="line">y_hat = clf.predict(x_test)</div><div class="line">show_accuracy(y_hat, y_test, <span class="string">'测试集'</span>)</div><div class="line"></div><div class="line"><span class="comment"># decision_function</span></div><div class="line"><span class="keyword">print</span> <span class="string">'decision_function:\n'</span>, clf.decision_function(x_train)</div><div class="line"><span class="keyword">print</span> <span class="string">'\npredict:\n'</span>, clf.predict(x_train)</div><div class="line"><span class="string">"""</span></div><div class="line"><span class="string"># decision_function(): Distance of the samples X to the separating hyperplane.</span></div><div class="line"><span class="string"># 分类归属于距离数值最小的类别，距离有正有负只是平面的两侧而已</span></div><div class="line"><span class="string">decision_function:</span></div><div class="line"><span class="string">[[-0.25631211  0.80529378  2.45101833]</span></div><div class="line"><span class="string"> [ 2.35232967  0.82494155 -0.17727121]</span></div><div class="line"><span class="string"> [ 2.45418203  0.77495649 -0.22913852]</span></div><div class="line"><span class="string"> [ 2.45421283  0.77518383 -0.22939666]</span></div><div class="line"><span class="string"> [-0.24854074  2.39614366  0.85239708]</span></div><div class="line"><span class="string"> [ 2.46621083  0.76927647 -0.23548729]</span></div><div class="line"><span class="string"> [ 2.45410944  0.77775367 -0.2318631 ]</span></div><div class="line"><span class="string"> [-0.24677667  0.84905678  2.39771989]</span></div><div class="line"><span class="string"> [-0.46050688  1.21154683  2.24896005]</span></div><div class="line"><span class="string"> [-0.26893412  0.80449581  2.46443831]</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">predict:</span></div><div class="line"><span class="string">[2 0 0 0 1 0 0 2 2 2</span></div><div class="line"><span class="string">"""</span></div><div class="line"></div><div class="line"><span class="comment"># 画图</span></div><div class="line">x1_min, x1_max = X[:, <span class="number">0</span>].min(), X[:, <span class="number">0</span>].max()  <span class="comment"># 第0列的范围</span></div><div class="line">x2_min, x2_max = X[:, <span class="number">1</span>].min(), X[:, <span class="number">1</span>].max()  <span class="comment"># 第1列的范围</span></div><div class="line">x1, x2 = np.mgrid[x1_min:x1_max:<span class="number">200j</span>, x2_min:x2_max:<span class="number">200j</span>]  <span class="comment"># 生成网格采样点</span></div><div class="line"><span class="comment"># numpy.ndarray.flat : A 1-D iterator over the array.</span></div><div class="line"><span class="comment"># This is a numpy.flatiter instance, which acts similarly to,</span></div><div class="line"><span class="comment"># but is not a subclass of, Python’s built-in iterator object.</span></div><div class="line">grid_test = np.stack((x1.flat, x2.flat), axis=<span class="number">1</span>)  <span class="comment"># 测试点</span></div><div class="line"><span class="comment"># print 'grid_test = \n', grid_test</span></div><div class="line"><span class="comment"># Z = clf.decision_function(grid_test)    # 样本到决策面的距离</span></div><div class="line"><span class="comment"># print Z</span></div><div class="line">grid_hat = clf.predict(grid_test)       <span class="comment"># 预测分类值</span></div><div class="line"><span class="keyword">print</span> grid_hat</div><div class="line">grid_hat = grid_hat.reshape(x1.shape)  <span class="comment"># 使之与输入的形状相同</span></div><div class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">u'SimHei'</span>]</div><div class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></div><div class="line"></div><div class="line">cm_light = mpl.colors.ListedColormap([<span class="string">'#A0FFA0'</span>, <span class="string">'#FFA0A0'</span>, <span class="string">'#A0A0FF'</span>])</div><div class="line">cm_dark = mpl.colors.ListedColormap([<span class="string">'g'</span>, <span class="string">'r'</span>, <span class="string">'b'</span>])</div><div class="line">plt.pcolormesh(x1, x2, grid_hat, cmap=cm_light)</div><div class="line"></div><div class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, edgecolors=<span class="string">'k'</span>, s=<span class="number">50</span>, cmap=cm_dark)      <span class="comment"># 样本</span></div><div class="line">plt.scatter(x_test[:, <span class="number">0</span>], x_test[:, <span class="number">1</span>], s=<span class="number">120</span>, facecolors=<span class="string">'none'</span>, zorder=<span class="number">10</span>)     <span class="comment"># 圈中测试集样本</span></div><div class="line">plt.xlabel(iris_feature[<span class="number">0</span>], fontsize=<span class="number">13</span>)</div><div class="line">plt.ylabel(iris_feature[<span class="number">1</span>], fontsize=<span class="number">13</span>)</div><div class="line">plt.xlim(x1_min, x1_max)</div><div class="line">plt.ylim(x2_min, x2_max)</div><div class="line">plt.title(<span class="string">u'鸢尾花SVM二特征分类'</span>, fontsize=<span class="number">15</span>)</div><div class="line">plt.grid()</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/Figure_1.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+        
+          <a class="article-more-a" href="/2017/11/14/sklearn.svm/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sklearn</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">train_test_split</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GridSearchCV</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">svm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SVR</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">precision_score</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">recall_score</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">f1_score</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">fbeta_score</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">precision_recall_fscore_support</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">classification_report</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/14/sklearn.svm/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Bagging" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/14/Bagging/">Bagging</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/14/Bagging/" class="archive-article-date">
+  	<time datetime="2017-11-14T13:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>假设一个分类器分类正确的概率为0.6，如果有n个独立的分类器，选择其中的k个采用投票的方式，作为预测结果，则预测正确的概率为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> operator</div><div class="line"><span class="comment"># operator.__mul__(a, b)</span></div><div class="line"><span class="comment"># Return a * b, for a and b numbers.</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">c</span><span class="params">(n, k)</span>:</span></div><div class="line">    <span class="comment"># 求组合数</span></div><div class="line">    <span class="keyword">return</span> reduce(operator.mul, range(n-k+<span class="number">1</span>, n+<span class="number">1</span>)) / reduce(operator.mul, range(<span class="number">1</span>, k+<span class="number">1</span>))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bagging</span><span class="params">(n, p)</span>:</span></div><div class="line">    s = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n / <span class="number">2</span> + <span class="number">1</span>, n + <span class="number">1</span>):</div><div class="line">        s += c(n, i) * p ** i * (<span class="number">1</span> - p) ** (n - i)</div><div class="line">    <span class="keyword">return</span> s</div><div class="line"></div><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">9</span>, <span class="number">100</span>, <span class="number">10</span>):</div><div class="line">    <span class="comment"># 假设事件发生的概率为0.6</span></div><div class="line">    <span class="keyword">print</span> t, <span class="string">'次采样正确率：'</span>, bagging(t, <span class="number">0.6</span>)</div></pre></td></tr></table></figure>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="symbol">9 </span>次采样正确率： <span class="number">0.73343232</span></div><div class="line"><span class="symbol">19 </span>次采样正确率： <span class="number">0.813907978585</span></div><div class="line"><span class="symbol">29 </span>次采样正确率： <span class="number">0.863787051336</span></div><div class="line"><span class="symbol">39 </span>次采样正确率： <span class="number">0.897941368711</span></div><div class="line"><span class="symbol">49 </span>次采样正确率： <span class="number">0.922424437652</span></div><div class="line"><span class="symbol">59 </span>次采样正确率： <span class="number">0.940447995732</span></div><div class="line"><span class="symbol">69 </span>次采样正确率： <span class="number">0.953949756505</span></div><div class="line"><span class="symbol">79 </span>次采样正确率： <span class="number">0.964189692839</span></div><div class="line"><span class="symbol">89 </span>次采样正确率： <span class="number">0.972027516007</span></div><div class="line"><span class="symbol">99 </span>次采样正确率： <span class="number">0.97806955787</span></div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/11/14/Bagging/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sklearn</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tree</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Bagging</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">BaggingRegressor</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">reduce</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">DecisionTreeRegressor</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RidgeCV</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PolynomialFeatures</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/14/Bagging/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-sklearn.tree.DecisionTreeRegressor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/">sklearn.tree.DecisionTreeRegressor</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" class="archive-article-date">
+  	<time datetime="2017-11-14T12:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</div></pre></td></tr></table></figure>
+<h3 id="生成数据集："><a href="#生成数据集：" class="headerlink" title="生成数据集："></a>生成数据集：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">N = <span class="number">100</span></div><div class="line">x = np.random.rand(N) * <span class="number">6</span> - <span class="number">3</span>     <span class="comment"># [-3,3)</span></div><div class="line">x.sort()</div><div class="line">y = np.sin(x) + np.random.randn(N) * <span class="number">0.05</span></div><div class="line"><span class="keyword">print</span> y</div><div class="line">x = x.reshape(<span class="number">-1</span>, <span class="number">1</span>)  <span class="comment"># 转置后，得到N个样本，每个样本都是1维的</span></div><div class="line"><span class="keyword">print</span> x</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">sklearn</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tree</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">DecisionTreeRegressor</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-插值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/13/插值/">插值</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/13/插值/" class="archive-article-date">
+  	<time datetime="2017-11-13T14:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="插值的定义"><a href="#插值的定义" class="headerlink" title="插值的定义"></a>插值的定义</h1><p>插值法又称“内插法”，是利用函数f(x)在某区间中已知的若干点的函数值，作出适当的特定函数，在区间的其他点上用这特定函数的值作为函数f(x)的近似值，这种方法称为插值法。如果这特定函数是多项式，就称它为插值多项式。</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/interpolation/QQ截图20171113112144.png" width="50%"><br>  <div class="figcaption"><br>  </div><br></div>
+        
+          <a class="article-more-a" href="/2017/11/13/插值/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">插值</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">重心插值</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">三次样条插值</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hermite插值</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">临近点插值</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">线性插值</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Newton插值</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Lagrange插值</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/13/插值/">展开全文 >></a>
         </p>
       
 
@@ -1247,7 +1265,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1374,6 +1392,86 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">sklearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Bagging</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">BaggingRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">reduce</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DecisionTreeRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RidgeCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PolynomialFeatures</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">make_blobs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">euclidean_distances</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">KMeans</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KMeans++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">homogeneity_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">completeness_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v_measure_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">adjusted_rand_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AffinityPropagation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MeanShift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">spectral_clustering</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">提升</a>
               </li>
              
@@ -1386,11 +1484,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1402,7 +1496,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
+                <a href="javascript:void(0)" class="js-tag color3">linear_model</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ElasticNetCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ElasticNet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">StandardScaler</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">train_test_split</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1411,26 +1533,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">主题模型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">get</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">post</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1450,11 +1552,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
+                <a href="javascript:void(0)" class="js-tag color4">get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1474,15 +1584,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">NN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linear</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1494,7 +1604,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1506,7 +1620,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Ridge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lasso</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1523,6 +1645,62 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">transfer learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">分割面</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">optimize</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">scipy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GridSearchCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">RMSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cross_val_predict</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1546,23 +1724,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTreeClassifier</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+                <a href="javascript:void(0)" class="js-tag color5">pydotplus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+                <a href="javascript:void(0)" class="js-tag color1">matplotlib</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1570,7 +1744,39 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
+                <a href="javascript:void(0)" class="js-tag color4">svm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">precision_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">recall_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">f1_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">fbeta_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">precision_recall_fscore_support</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">classification_report</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1606,15 +1812,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hive</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">loadtxt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">read_csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">NumPy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1623,18 +1857,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">模型融合</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1698,11 +1920,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">偏度</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">峰度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1734,11 +1968,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+                <a href="javascript:void(0)" class="js-tag color3">插值</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
+                <a href="javascript:void(0)" class="js-tag color5">重心插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">三次样条插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">临近点插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Newton插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lagrange插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">REST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">

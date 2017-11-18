@@ -45,6 +45,8 @@
 <meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173620.png">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173717.png">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173730.png">
+<meta property="og:image" content="https://i.imgur.com/SUIggzc.png">
+<meta property="og:image" content="https://i.imgur.com/eXxCpLx.png">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173925.png">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174328.png">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174408.png">
@@ -60,7 +62,7 @@
 <meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174932.png">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112175026.png">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112175101.png">
-<meta property="og:updated_time" content="2017-11-12T11:11:58.918Z">
+<meta property="og:updated_time" content="2017-11-18T04:03:04.900Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="聚类">
 <meta name="twitter:description" content="聚类">
@@ -278,7 +280,9 @@ var _hmt = _hmt || [];
 
 <h1 id="Canopy"><a href="#Canopy" class="headerlink" title="Canopy"></a>Canopy</h1><h2 id="Canopy算法"><a href="#Canopy算法" class="headerlink" title="Canopy算法"></a>Canopy算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112171730.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
 
-<h1 id="层次聚类方法"><a href="#层次聚类方法" class="headerlink" title="层次聚类方法"></a>层次聚类方法</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172418.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div><br>## AGNES和DIANA算法<br><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172514.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+<h1 id="层次聚类方法"><a href="#层次聚类方法" class="headerlink" title="层次聚类方法"></a>层次聚类方法</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172418.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="AGNES和DIANA算法"><a href="#AGNES和DIANA算法" class="headerlink" title="AGNES和DIANA算法"></a>AGNES和DIANA算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172514.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
 
 <h1 id="密度聚类方法"><a href="#密度聚类方法" class="headerlink" title="密度聚类方法"></a>密度聚类方法</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172835.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
 
@@ -298,7 +302,58 @@ var _hmt = _hmt || [];
 
 <h2 id="边界和噪声的重新认识"><a href="#边界和噪声的重新认识" class="headerlink" title="边界和噪声的重新认识"></a>边界和噪声的重新认识</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173717.png" width="80%"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173730.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
 
-<h1 id="Affinity-Propagation"><a href="#Affinity-Propagation" class="headerlink" title="Affinity Propagation"></a>Affinity Propagation</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173925.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+<h1 id="Affinity-Propagation"><a href="#Affinity-Propagation" class="headerlink" title="Affinity Propagation"></a>Affinity Propagation</h1><h2 id="算法概述"><a href="#算法概述" class="headerlink" title="算法概述"></a>算法概述</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>Exemplar范例：即聚类族中心点；</li>
+<li>s(i,j)：数据点i与数据点j的相似度值，一般使用欧氏距离的的负值表示，即s(i,j)值越大表示点i与j的距离越近，AP算法中理解为数据点j作为数据点i的聚类中心的能力；</li>
+<li>相似度矩阵：作为算法的初始化矩阵，n个点就有由n乘n个相似度值组成的矩阵；</li>
+<li>Preference参考度或称为偏好参数：是相似度矩阵中横轴纵轴索引相同的点，如s(i,i)，若按欧氏距离计算其值应为0，但在AP聚类中其表示数据点i作为聚类中心的程度，因此不能为0。迭代开始前假设所有点成为聚类中心的能力相同，因此参考度一般设为相似度矩阵中所有值得最小值或者中位数，但是参考度越大则说明个数据点成为聚类中心的能力越强，则最终聚类中心的个数则越多； </li>
+<li>Responsibility，r(i,k)：吸引度信息，表示数据点k适合作为数据点i的聚类中心的程度；公式如下： <img src="https://i.imgur.com/SUIggzc.png" alt=""></li>
+<li><ul>
+<li>其中a(i,k’)表示除k外其他点对i点的归属度值，初始为0；s(i,k’)表示除k外其他点对i的吸引度，即i外其他点都在争夺i点的 所有权；r(i,k)表示数据点k成为数据点i的聚类中心的累积证明，r(i,k)值大于0，则表示数据点k成为聚类中心的能力强。说明：此时只考虑哪个点k成为点i的聚类中心的可能性最大，但是没考虑这个吸引度最大的k是否也经常成为其他点的聚类中心（即归属度），若点k只是点i的聚类中心，不是其他任何点的聚类中心，则会造成最终聚类中心个数大于实际的中心个数。 </li>
+</ul>
+</li>
+<li>Availability，a(i,k)：归属度信息，表示数据点i选择数据点k作为其聚类中心的合适程度，公式如下： <img src="https://i.imgur.com/eXxCpLx.png" alt=""></li>
+<li><ul>
+<li>其中r(i’,k)表示点k作为除i外其他点的聚类中心的相似度值，取所有大于等于0的吸引度值，加上k作为聚类中心的可能程。即点k在这些吸引度值大于0的数据点的支持下，数据点i选择k作为其聚类中心的累积证明。 </li>
+</ul>
+</li>
+<li>Damping factor阻尼系数：为防止数据震荡，引入地衰减系数，每个信息值等于前一次迭代更新的信息值的λ倍加上此轮更新值得1-λ倍，其中λ在0-1之间，默认为0.5。</li>
+</ul>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><ul>
+<li><ol>
+<li>更新相似度矩阵中每个点的吸引度信息，计算归属度信息；</li>
+</ol>
+</li>
+<li><ol>
+<li>更新归属度信息，计算吸引度信息；</li>
+</ol>
+</li>
+<li><ol>
+<li>对样本点的吸引度信息和归属度信息求和，检测其选择聚类中心的决策；若经过若干次迭代之后其聚类中心不变、或者迭代次数超过既定的次数、又或者一个子区域内的关于样本点的决策经过数次迭代后保持不变，则算法结束。</li>
+</ol>
+</li>
+</ul>
+<p>关于其算法流程，知乎上kael 用户将AP聚类过程比喻为选举过程： </p>
+<ul>
+<li>所有人都参加选举（大家都是选民也都是参选人），要选出几个作为代表 </li>
+<li>s(i,k)就相当于i对选k这个人的一个固有的偏好程度 </li>
+<li>r(i,k)表示用s(i,k)减去最强竞争者的评分，可以理解为k在对i这个选民的竞争中的优势程度 </li>
+<li>r(i,k)的更新过程对应选民i对各个参选人的挑选（越出众越有吸引力） </li>
+<li>a(i,k)：从公式里可以看到，所有r(i’,k)&gt;0的值都对a有正的加成。对应到我们这个比喻中，就相当于选民i通过网上关于k的民意调查看到：有很多人（即i’们）都觉得k不错（r(i’,k)&gt;0），那么选民i也就会相应地觉得k不错，是个可以相信的选择 </li>
+<li>a(i,k)的更新过程对应关于参选人k的民意调查对于选民i的影响（已经有了很多跟随者的人更有吸引力） </li>
+<li>两者交替的过程也就可以理解为选民在各个参选人之间不断地比较和不断地参考各个参选人给出的民意调查。 </li>
+<li>r(i,k)的思想反映的是竞争，a(i,k)则是为了让聚类更成功。 <h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3></li>
+</ul>
+<ol>
+<li>不需要制定最终聚类族的个数 </li>
+<li>已有的数据点作为最终的聚类中心，而不是新生成一个族中心。 </li>
+<li>模型对数据的初始值不敏感。 </li>
+<li>对初始相似度矩阵数据的对称性没有要求。 </li>
+<li>相比与k-centers聚类方法，其结果的平方差误差较小。<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3></li>
+<li>虽然AP算法不用提前设置聚类中心的个数，但是需要事先设置参考度，而参考度的大小与聚类中心的个数正相关； </li>
+<li>由于AP算法每次迭代都需要更新每个数据点的吸引度值和归属度值，算法复杂度较高，在大数据量下运行时间较长。</li>
+</ol>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173925.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
 
 <h1 id="谱和谱聚类"><a href="#谱和谱聚类" class="headerlink" title="谱和谱聚类"></a>谱和谱聚类</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174328.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
 
@@ -325,6 +380,12 @@ var _hmt = _hmt || [];
 <h2 id="随机游走和拉普拉斯矩阵的关系"><a href="#随机游走和拉普拉斯矩阵的关系" class="headerlink" title="随机游走和拉普拉斯矩阵的关系"></a>随机游走和拉普拉斯矩阵的关系</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112175026.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
 
 <h2 id="标签传递算法"><a href="#标签传递算法" class="headerlink" title="标签传递算法"></a>标签传递算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112175101.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<p>via</p>
+<ul>
+<li><a href="http://blog.csdn.net/u010161379/article/details/51636926" target="_blank" rel="external">Affinity Propagation: AP聚类算法</a></li>
+</ul>
+
       
 
       
@@ -508,7 +569,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一些概念"><span class="toc-number">1.</span> <span class="toc-text">一些概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#聚类的定义"><span class="toc-number">1.1.</span> <span class="toc-text">聚类的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相似度-距离计算方法总结"><span class="toc-number">1.2.</span> <span class="toc-text">相似度/距离计算方法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hellinger-distance"><span class="toc-number">1.2.1.</span> <span class="toc-text">Hellinger distance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#余弦相似度与Pearson相似系数"><span class="toc-number">1.2.2.</span> <span class="toc-text">余弦相似度与Pearson相似系数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚类的基本思想"><span class="toc-number">1.3.</span> <span class="toc-text">聚类的基本思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚类的衡量指标"><span class="toc-number">1.4.</span> <span class="toc-text">聚类的衡量指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ARI"><span class="toc-number">1.4.1.</span> <span class="toc-text">ARI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMI"><span class="toc-number">1.4.2.</span> <span class="toc-text">AMI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#轮廓系数-Silhouette"><span class="toc-number">1.4.3.</span> <span class="toc-text">轮廓系数(Silhouette)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#k-Means"><span class="toc-number">2.</span> <span class="toc-text">k-Means</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#k-Means算法"><span class="toc-number">2.1.</span> <span class="toc-text">k-Means算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对k-Means的思考"><span class="toc-number">2.1.1.</span> <span class="toc-text">对k-Means的思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k-Means的公式化解释"><span class="toc-number">2.1.2.</span> <span class="toc-text">k-Means的公式化解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果使用其他相似度-距离度量"><span class="toc-number">2.1.3.</span> <span class="toc-text">如果使用其他相似度/距离度量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mini-batch-k-Means算法描述"><span class="toc-number">2.1.4.</span> <span class="toc-text">Mini-batch k-Means算法描述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k-Means聚类总结"><span class="toc-number">2.2.</span> <span class="toc-text">k-Means聚类总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Canopy"><span class="toc-number">3.</span> <span class="toc-text">Canopy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canopy算法"><span class="toc-number">3.1.</span> <span class="toc-text">Canopy算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#层次聚类方法"><span class="toc-number">4.</span> <span class="toc-text">层次聚类方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#密度聚类方法"><span class="toc-number">5.</span> <span class="toc-text">密度聚类方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DBSCAN算法"><span class="toc-number">6.</span> <span class="toc-text">DBSCAN算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DBSCAN算法的若干概念"><span class="toc-number">6.1.</span> <span class="toc-text">DBSCAN算法的若干概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBSCAN算法流程"><span class="toc-number">6.2.</span> <span class="toc-text">DBSCAN算法流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#密度最大值聚类"><span class="toc-number">7.</span> <span class="toc-text">密度最大值聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#高局部密度点距离"><span class="toc-number">7.1.</span> <span class="toc-text">高局部密度点距离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#簇中心的识别"><span class="toc-number">7.2.</span> <span class="toc-text">簇中心的识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#密度最大值聚类过程"><span class="toc-number">7.3.</span> <span class="toc-text">密度最大值聚类过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#边界和噪声的重新认识"><span class="toc-number">7.4.</span> <span class="toc-text">边界和噪声的重新认识</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Affinity-Propagation"><span class="toc-number">8.</span> <span class="toc-text">Affinity Propagation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#谱和谱聚类"><span class="toc-number">9.</span> <span class="toc-text">谱和谱聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#谱分析的整体过程"><span class="toc-number">9.1.</span> <span class="toc-text">谱分析的整体过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些概念-1"><span class="toc-number">9.2.</span> <span class="toc-text">一些概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相似度图G的建立方法"><span class="toc-number">9.3.</span> <span class="toc-text">相似度图G的建立方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权值比较"><span class="toc-number">9.4.</span> <span class="toc-text">权值比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉普拉斯矩阵的定义"><span class="toc-number">9.5.</span> <span class="toc-text">拉普拉斯矩阵的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉普拉斯矩阵及其性质"><span class="toc-number">9.6.</span> <span class="toc-text">拉普拉斯矩阵及其性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谱聚类算法：未正则拉普拉斯矩阵"><span class="toc-number">9.7.</span> <span class="toc-text">谱聚类算法：未正则拉普拉斯矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谱聚类算法：随机游走拉普拉斯矩阵"><span class="toc-number">9.8.</span> <span class="toc-text">谱聚类算法：随机游走拉普拉斯矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谱聚类算法：对称拉普拉斯矩阵"><span class="toc-number">9.9.</span> <span class="toc-text">谱聚类算法：对称拉普拉斯矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进一步思考"><span class="toc-number">9.10.</span> <span class="toc-text">进一步思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机游走和拉普拉斯矩阵的关系"><span class="toc-number">9.11.</span> <span class="toc-text">随机游走和拉普拉斯矩阵的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签传递算法"><span class="toc-number">9.12.</span> <span class="toc-text">标签传递算法</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一些概念"><span class="toc-number">1.</span> <span class="toc-text">一些概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#聚类的定义"><span class="toc-number">1.1.</span> <span class="toc-text">聚类的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相似度-距离计算方法总结"><span class="toc-number">1.2.</span> <span class="toc-text">相似度/距离计算方法总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hellinger-distance"><span class="toc-number">1.2.1.</span> <span class="toc-text">Hellinger distance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#余弦相似度与Pearson相似系数"><span class="toc-number">1.2.2.</span> <span class="toc-text">余弦相似度与Pearson相似系数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚类的基本思想"><span class="toc-number">1.3.</span> <span class="toc-text">聚类的基本思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#聚类的衡量指标"><span class="toc-number">1.4.</span> <span class="toc-text">聚类的衡量指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ARI"><span class="toc-number">1.4.1.</span> <span class="toc-text">ARI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMI"><span class="toc-number">1.4.2.</span> <span class="toc-text">AMI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#轮廓系数-Silhouette"><span class="toc-number">1.4.3.</span> <span class="toc-text">轮廓系数(Silhouette)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#k-Means"><span class="toc-number">2.</span> <span class="toc-text">k-Means</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#k-Means算法"><span class="toc-number">2.1.</span> <span class="toc-text">k-Means算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对k-Means的思考"><span class="toc-number">2.1.1.</span> <span class="toc-text">对k-Means的思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k-Means的公式化解释"><span class="toc-number">2.1.2.</span> <span class="toc-text">k-Means的公式化解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果使用其他相似度-距离度量"><span class="toc-number">2.1.3.</span> <span class="toc-text">如果使用其他相似度/距离度量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mini-batch-k-Means算法描述"><span class="toc-number">2.1.4.</span> <span class="toc-text">Mini-batch k-Means算法描述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k-Means聚类总结"><span class="toc-number">2.2.</span> <span class="toc-text">k-Means聚类总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Canopy"><span class="toc-number">3.</span> <span class="toc-text">Canopy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canopy算法"><span class="toc-number">3.1.</span> <span class="toc-text">Canopy算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#层次聚类方法"><span class="toc-number">4.</span> <span class="toc-text">层次聚类方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AGNES和DIANA算法"><span class="toc-number">4.1.</span> <span class="toc-text">AGNES和DIANA算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#密度聚类方法"><span class="toc-number">5.</span> <span class="toc-text">密度聚类方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DBSCAN算法"><span class="toc-number">6.</span> <span class="toc-text">DBSCAN算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DBSCAN算法的若干概念"><span class="toc-number">6.1.</span> <span class="toc-text">DBSCAN算法的若干概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBSCAN算法流程"><span class="toc-number">6.2.</span> <span class="toc-text">DBSCAN算法流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#密度最大值聚类"><span class="toc-number">7.</span> <span class="toc-text">密度最大值聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#高局部密度点距离"><span class="toc-number">7.1.</span> <span class="toc-text">高局部密度点距离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#簇中心的识别"><span class="toc-number">7.2.</span> <span class="toc-text">簇中心的识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#密度最大值聚类过程"><span class="toc-number">7.3.</span> <span class="toc-text">密度最大值聚类过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#边界和噪声的重新认识"><span class="toc-number">7.4.</span> <span class="toc-text">边界和噪声的重新认识</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Affinity-Propagation"><span class="toc-number">8.</span> <span class="toc-text">Affinity Propagation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#算法概述"><span class="toc-number">8.1.</span> <span class="toc-text">算法概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概念"><span class="toc-number">8.1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法流程"><span class="toc-number">8.1.2.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">8.1.3.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">8.1.4.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#谱和谱聚类"><span class="toc-number">9.</span> <span class="toc-text">谱和谱聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#谱分析的整体过程"><span class="toc-number">9.1.</span> <span class="toc-text">谱分析的整体过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些概念-1"><span class="toc-number">9.2.</span> <span class="toc-text">一些概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相似度图G的建立方法"><span class="toc-number">9.3.</span> <span class="toc-text">相似度图G的建立方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权值比较"><span class="toc-number">9.4.</span> <span class="toc-text">权值比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉普拉斯矩阵的定义"><span class="toc-number">9.5.</span> <span class="toc-text">拉普拉斯矩阵的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉普拉斯矩阵及其性质"><span class="toc-number">9.6.</span> <span class="toc-text">拉普拉斯矩阵及其性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谱聚类算法：未正则拉普拉斯矩阵"><span class="toc-number">9.7.</span> <span class="toc-text">谱聚类算法：未正则拉普拉斯矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谱聚类算法：随机游走拉普拉斯矩阵"><span class="toc-number">9.8.</span> <span class="toc-text">谱聚类算法：随机游走拉普拉斯矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谱聚类算法：对称拉普拉斯矩阵"><span class="toc-number">9.9.</span> <span class="toc-text">谱聚类算法：对称拉普拉斯矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进一步思考"><span class="toc-number">9.10.</span> <span class="toc-text">进一步思考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机游走和拉普拉斯矩阵的关系"><span class="toc-number">9.11.</span> <span class="toc-text">随机游走和拉普拉斯矩阵的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标签传递算法"><span class="toc-number">9.12.</span> <span class="toc-text">标签传递算法</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -663,6 +724,86 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">sklearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Bagging</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">BaggingRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">reduce</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DecisionTreeRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RidgeCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PolynomialFeatures</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">make_blobs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">euclidean_distances</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">KMeans</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KMeans++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">homogeneity_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">completeness_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v_measure_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">adjusted_rand_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AffinityPropagation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MeanShift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">spectral_clustering</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">提升</a>
               </li>
              
@@ -675,11 +816,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,7 +828,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
+                <a href="javascript:void(0)" class="js-tag color3">linear_model</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ElasticNetCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ElasticNet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">StandardScaler</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">train_test_split</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,26 +865,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">主题模型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">get</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">post</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,11 +884,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
+                <a href="javascript:void(0)" class="js-tag color4">get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -763,15 +916,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">NN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linear</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -783,7 +936,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -795,7 +952,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Ridge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lasso</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -812,6 +977,62 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">transfer learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">分割面</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">optimize</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">scipy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GridSearchCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">RMSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cross_val_predict</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -835,23 +1056,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTreeClassifier</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+                <a href="javascript:void(0)" class="js-tag color5">pydotplus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+                <a href="javascript:void(0)" class="js-tag color1">matplotlib</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -859,7 +1076,39 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
+                <a href="javascript:void(0)" class="js-tag color4">svm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">precision_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">recall_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">f1_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">fbeta_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">precision_recall_fscore_support</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">classification_report</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -895,15 +1144,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hive</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">loadtxt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">read_csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">NumPy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -912,18 +1189,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">模型融合</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -987,11 +1252,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">偏度</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">峰度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,11 +1300,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+                <a href="javascript:void(0)" class="js-tag color3">插值</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
+                <a href="javascript:void(0)" class="js-tag color5">重心插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">三次样条插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">临近点插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Newton插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lagrange插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">REST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">

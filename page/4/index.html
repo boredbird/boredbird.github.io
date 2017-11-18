@@ -177,35 +177,33 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Understanding RESTful Framework" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-回归与特征选择" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/Understanding RESTful Framework/">理解RESTful架构-来自阮一峰</a>
+      <a class="article-title" href="/2017/11/11/回归与特征选择/">回归与特征选择</a>
     </h1>
   
 
         
-        <a href="/2017/10/10/Understanding RESTful Framework/" class="archive-article-date">
-  	<time datetime="2017-10-10T09:21:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+        <a href="/2017/11/11/回归与特征选择/" class="archive-article-date">
+  	<time datetime="2017-11-11T01:20:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近在研究Python开发接口微服务，以便用Python开发出来的模型与服务能对接上，提供复杂模型上线的方案。看到了阮一峰的<a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="external">《理解RESTful架构》</a>这篇文章，写的真好，虽然我是还没入门的外外行。</p>
-<h1 id="什么是RESTful架构"><a href="#什么是RESTful架构" class="headerlink" title="什么是RESTful架构"></a>什么是RESTful架构</h1><h2 id="一、起源"><a href="#一、起源" class="headerlink" title="一、起源"></a>一、起源</h2><p>REST这个词，是<a href="http://en.wikipedia.org/wiki/Roy_Fielding" target="_blank" rel="external">Roy Thomas Fielding</a>在他2000年的博士论文中提出的。</p>
-<p>文中写到：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">"本文研究计算机科学两大前沿----软件和网络----的交叉点。长期以来，软件研究主要关注软件设计的分类、设计方法的演化，很少客观地评估不同的设计选择对系统行为的影响。而相反地，网络研究主要关注系统之间通信行为的细节、如何改进特定通信机制的表现，常常忽视了一个事实，那就是改变应用程序的互动风格比改变互动协议，对整体表现有更大的影响。我这篇文章的写作目的，就是想在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。"</span></div><div class="line">(This dissertation explores a junction <span class="keyword">on</span> <span class="keyword">the</span> frontiers <span class="keyword">of</span> two research disciplines <span class="keyword">in</span> computer science: software <span class="keyword">and</span> networking. Software research has long been concerned <span class="keyword">with</span> <span class="keyword">the</span> categorization <span class="keyword">of</span> software designs <span class="keyword">and</span> <span class="keyword">the</span> development <span class="keyword">of</span> design methodologies, <span class="keyword">but</span> has rarely been able <span class="keyword">to</span> objectively evaluate <span class="keyword">the</span> impact <span class="keyword">of</span> various design choices <span class="keyword">on</span> system behavior. Networking research, <span class="keyword">in</span> contrast, <span class="keyword">is</span> focused <span class="keyword">on</span> <span class="keyword">the</span> details <span class="keyword">of</span> generic communication behavior <span class="keyword">between</span> systems <span class="keyword">and</span> improving <span class="keyword">the</span> performance <span class="keyword">of</span> particular communication techniques, often <span class="keyword">ignoring</span> <span class="keyword">the</span> fact <span class="keyword">that</span> changing <span class="keyword">the</span> interaction style <span class="keyword">of</span> an <span class="built_in">application</span> can have more impact <span class="keyword">on</span> performance than <span class="keyword">the</span> communication protocols used <span class="keyword">for</span> <span class="keyword">that</span> interaction. My work <span class="keyword">is</span> motivated <span class="keyword">by</span> <span class="keyword">the</span> desire <span class="keyword">to</span> understand <span class="keyword">and</span> evaluate <span class="keyword">the</span> architectural design <span class="keyword">of</span> network-based <span class="built_in">application</span> software <span class="keyword">through</span> principled use <span class="keyword">of</span> architectural constraints, thereby obtaining <span class="keyword">the</span> functional, performance, <span class="keyword">and</span> social properties desired <span class="keyword">of</span> an architecture. )</div></pre></td></tr></table></figure>
-<h2 id="二、名称"><a href="#二、名称" class="headerlink" title="二、名称"></a>二、名称</h2><p>Fielding将他对互联网软件的架构原则，定名为REST，即Representational State Transfer的缩写。我对这个词组的翻译是”表现层状态转化”。</p>
-<p>如果一个架构符合REST原则，就称它为RESTful架构。</p>
-<p>要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义。如果你把这个名称搞懂了，也就不难体会REST是一种什么样的设计。</p>
+        <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><p>可以对样本是非线性的，只要对参数线性。</p>
+<h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>在做特征选择的时候，可以看回归的残差图，真正理想状态下，经过模型回归后的残差应该是服从正态分布的，而不是均匀的随机分布；此时可以画个单变量与残差的关系图，直观的看一下是不是有什么明显的一阶、高阶趋势在里面，则需要进一步特征加工。</p>
+<p>大数定理指的是事件发生的概率在N取无穷大的时候趋近于事件发生的概率。频率的极限是概率。</p>
+<h3 id="使用极大似然估计解释最小二乘"><a href="#使用极大似然估计解释最小二乘" class="headerlink" title="使用极大似然估计解释最小二乘"></a>使用极大似然估计解释最小二乘</h3><p><img src="https://i.imgur.com/BLDhXge.png" alt=""></p>
+<h2 id="最大似然估计MLE"><a href="#最大似然估计MLE" class="headerlink" title="最大似然估计MLE"></a>最大似然估计MLE</h2><h3 id="最大似然函数的假设"><a href="#最大似然函数的假设" class="headerlink" title="最大似然函数的假设"></a>最大似然函数的假设</h3><p>似然函数假设每个样本出现的概率是独立的，因此整体出现的概率就是各个样本出现的概率的累计。</p>
         
-          <a class="article-more-a" href="/2017/10/10/Understanding RESTful Framework/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/11/回归与特征选择/#more">查看更多 >></a>
         
       
 
@@ -219,850 +217,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/Understanding RESTful Framework/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-django flow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/django flow/">django处理HTTP请求流程</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/django flow/" class="archive-article-date">
-  	<time datetime="2017-10-10T08:29:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <div class="fig figcenter fighighlight"><br>  <img src="/assets/django/django_flow_en.png" width="60%"><br>  <img src="/assets/django/django_flow_cn.png" width="60%" style="border-left: 1px solid black;"><br>  <div class="figcaption">Based on @FULLSTACKCTO’s understanding of Django, this is how a user request is responded to.</div><br></div>
-
-
-<ul>
-<li><strong>1:</strong> User requests a page</li>
-<li><strong>2:</strong> Request reaches Request Middlewares, which could manipulate or answer the request</li>
-<li><strong>3:</strong> The URLConffinds the related View using urls.py</li>
-<li><strong>4:</strong> View Middlewares are called, which could manipulate or answer the request</li>
-<li><strong>5:</strong> The view function is invoked</li>
-<li><strong>6:</strong> The view could optionally access data through models</li>
-<li><strong>7:</strong> All model-to-DB interactions are done via a manager</li>
-<li><strong>8:</strong> Views could use a special context if needed</li>
-<li><strong>9:</strong> The context is passed to the Template for rendering</li>
-<li><strong>a:</strong> Template uses Filters and Tags to render the output</li>
-<li><strong>b:</strong> Output is returned to the view</li>
-<li><strong>c:</strong> HTTPResponse is sent to the Response Middlerwares</li>
-<li><strong>d:</strong> Any of the response middlewares can enrich the response or return a completely new response</li>
-<li><strong>e:</strong> The response is sent to the user’s browser.</li>
-</ul>
-<p>via </p>
-<ul>
-<li><a href="http://www.jianshu.com/p/a2bf34b89d01" target="_blank" rel="external">here</a></li>
-<li><a href="http://hitesh.in/2009/django-flow/" target="_blank" rel="external">Django Flowchart</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/django flow/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-get or post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/get or post/">POST和GET区别</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/get or post/" class="archive-article-date">
-  	<time datetime="2017-10-10T08:04:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>HTTP协议定义了很多与服务器交互的方法，最基本的有4种，分别是GET,POST,PUT,DELETE. 一个URL地址用于描述一个网络上的资源，而HTTP中的GET, POST, PUT, DELETE就对应着对这个资源的查，改，增，删4个操作，其中最常见请求方式是GET和POST，并且现在浏览器一般只支持GET和POST方法。</p>
-<p><strong>GET一般用于获取/查询资源信息，而POST一般用于更新资源信息，他们之间主要区别如下：</strong></p>
-<p>1）根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的，这里安全是指该操作用于获取信息而非修改信息，幂等是指对同一URL的多个请求应该返回同样的结果（这一点在实质实现时，可能并不满足）；POST表示可能修改变服务器上的资源的请求。</p>
-<p>2）GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，参数之间以&amp;相连，如果数据是英文字母/数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，<br>则直接把字符串用BASE64编码；POST把提交的数据则放置在是HTTP包的包体中。</p>
-<p>3）因为GET是通过URL提交数据，那么GET可提交的数据量就跟URL的长度有直接关系，理论上URL长度是没有限制的，即HTTP协议没有规定URL的长度，但在实质中，特定的浏览器可能对这个长度做了限制；理论上POST也是没有大小限制的，HTTP协议规范也没有进行大小限制，但在服务端通常会对这个大小做一个限制，当然这个限制比GET宽松的多，即使用POST可以提交的数据量比GET大得多。</p>
-<p>最后，网上有人说，POST的安全性要比GET的安全性高，实质上POST跟GET都是明文传输，这可以通过类似WireShark工具看到。总之，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求。</p>
-<p>via </p>
-<ul>
-<li><a href="http://blog.csdn.net/kevin_darkelf/article/details/40979333" target="_blank" rel="external">浅析HTTP中POST和GET区别并用Python模拟其响应和请求</a></li>
-<li><a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="external">浅谈HTTP中Get与Post的区别</a></li>
-<li><a href="http://www.cnblogs.com/wswang/p/6054619.html" target="_blank" rel="external">GET和POST的区别</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/django//" class="article-tag-list-link color2">django</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/get or post/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-assignment2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/assignment2/">assignment2</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/assignment2/" class="archive-article-date">
-  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>In this assignment you will practice writing backpropagation code, and training Neural Networks and Convolutional Neural Networks. The goals of this assignment are as follows:</p>
-<ul>
-<li>understand <strong>Neural Networks</strong> and how they are arranged in layered architectures</li>
-<li>understand and be able to implement (vectorized) <strong>backpropagation</strong></li>
-<li>implement the core parameter update loop of <strong>mini-batch gradient descent</strong></li>
-<li>effectively <strong>cross-validate</strong> and find the best hyperparameters for Neural Network architecture</li>
-<li>understand the architecture of <strong>Convolutional Neural Networks</strong> and train gain experience with training these models on data</li>
-</ul>
-<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>You can work on the assignment in one of two ways: locally on your own machine, or on a virtual machine through <a href="https://www.terminal.com/" target="_blank" rel="external">Terminal</a>.</p>
-<h3 id="Working-locally"><a href="#Working-locally" class="headerlink" title="Working locally"></a>Working locally</h3><p><strong>Get the code:</strong><br><a href="http://vision.stanford.edu/teaching/cs231n/assignment2.zip" target="_blank" rel="external">Download the starter code here</a>.</p>
-        
-          <a class="article-more-a" href="/2017/10/10/assignment2/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Neural Networks</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回归</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">backpropagation</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mini-batch gradient descent</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">cross-validate</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Convolutional Neural Networks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/assignment2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-understanding-cnn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/understanding-cnn/">understanding-cnn</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/understanding-cnn/" class="archive-article-date">
-  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a name="vis"></a></p>
-<p>(this page is currently in draft form)</p>
-<h2 id="Visualizing-what-ConvNets-learn"><a href="#Visualizing-what-ConvNets-learn" class="headerlink" title="Visualizing what ConvNets learn"></a>Visualizing what ConvNets learn</h2><p>Several approaches for understanding and visualizing Convolutional Networks have been developed in the literature, partly as a response the common criticism that the learned features in a Neural Network are not interpretable. In this section we briefly survey some of these approaches and related work.</p>
-<h3 id="Visualizing-the-activations-and-first-layer-weights"><a href="#Visualizing-the-activations-and-first-layer-weights" class="headerlink" title="Visualizing the activations and first-layer weights"></a>Visualizing the activations and first-layer weights</h3><p><strong>Layer Activations</strong>. The most straight-forward visualization technique is to show the activations of the network during the forward pass. For ReLU networks, the activations usually start out looking relatively blobby and dense, but as the training progresses the activations usually become more sparse and localized. One dangerous pitfall that can be easily noticed with this visualization is that some activation maps may be all zero for many different inputs, which can indicate <em>dead</em> filters, and can be a symptom of high learning rates.</p>
-<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/act1.jpeg" width="49%"><br>  <img src="/assets/cnnvis/act2.jpeg" width="49%"><br>  <div class="figcaption"><br>    Typical-looking activations on the first CONV layer (left), and the 5th CONV layer (right) of a trained AlexNet looking at a picture of a cat. Every box shows an activation map corresponding to some filter. Notice that the activations are sparse (most values are zero, in this visualization shown in black) and mostly local.<br>  </div><br></div>
-        
-          <a class="article-more-a" href="/2017/10/10/understanding-cnn/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CNN</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ConvNet</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ReLU</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/understanding-cnn/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-assignment1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/assignment1/">assignment1</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/assignment1/" class="archive-article-date">
-  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>In this assignment you will practice putting together a simple image classification pipeline, based on the k-Nearest Neighbor or the SVM/Softmax classifier. The goals of this assignment are as follows:</p>
-<ul>
-<li>understand the basic <strong>Image Classification pipeline</strong> and the data-driven approach (train/predict stages)</li>
-<li>understand the train/val/test <strong>splits</strong> and the use of validation data for <strong>hyperparameter tuning</strong>.</li>
-<li>develop proficiency in writing efficient <strong>vectorized</strong> code with numpy</li>
-<li>implement and apply a k-Nearest Neighbor (<strong>kNN</strong>) classifier</li>
-<li>implement and apply a Multiclass Support Vector Machine (<strong>SVM</strong>) classifier</li>
-<li>implement and apply a <strong>Softmax</strong> classifier</li>
-<li>understand the differences and tradeoffs between these classifiers</li>
-<li>get a basic understanding of performance improvements from using <strong>higher-level representations</strong> than raw pixels (e.g. color histograms, Histogram of Gradient (HOG) features)</li>
-</ul>
-<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>You can work on the assignment in one of two ways: locally on your own machine, or on a virtual machine<br>through <a href="https://www.terminal.com/" target="_blank" rel="external">Terminal</a>.</p>
-<h3 id="Working-locally"><a href="#Working-locally" class="headerlink" title="Working locally"></a>Working locally</h3><p><strong>Get the code:</strong><br><a href="http://vision.stanford.edu/teaching/cs231n/assignment1.zip" target="_blank" rel="external">Download the starter code here</a>.</p>
-        
-          <a class="article-more-a" href="/2017/10/10/assignment1/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">KNN</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SVM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Softmax</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/assignment1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-assignment3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/assignment3/">assignment3</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/assignment3/" class="archive-article-date">
-  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>In the previous assignment, you implemented and trained your own ConvNets.<br>In this assignment, we will explore many of the ideas we have discussed in<br>lectures. Specifically, you will:</p>
-<ul>
-<li>Reduce overfitting using <strong>dropout</strong> and <strong>data augmentation</strong></li>
-<li>Combine models into <strong>ensembles</strong> to boost performance</li>
-<li>Use <strong>transfer learning</strong> to adapt a pretrained model to a new dataset</li>
-<li>Use data gradients to visualize <strong>saliency maps</strong> and create <strong>fooling images</strong></li>
-</ul>
-<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>You can work on the assignment in one of two ways: locally on your own machine, or on a virtual machine through <a href="https://www.terminal.com/" target="_blank" rel="external">Terminal</a>.</p>
-<h3 id="Working-locally"><a href="#Working-locally" class="headerlink" title="Working locally"></a>Working locally</h3><p><strong>Get the code:</strong><br>Download the starter code <a href="http://cs231n.stanford.edu/assignment3.zip" target="_blank" rel="external">here</a>.</p>
-        
-          <a class="article-more-a" href="/2017/10/10/assignment3/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dropout</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">data augmentation</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ensembles</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">transfer learning</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/assignment3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-transfer-learning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/transfer-learning/">transfer-learning</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/transfer-learning/" class="archive-article-date">
-  	<time datetime="2017-10-10T06:28:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>(These notes are currently in draft form and under development)</p>
-<p>Table of Contents:</p>
-<ul>
-<li><a href="#tf">Transfer Learning</a></li>
-<li><a href="#add">Additional References</a></li>
-</ul>
-<p><a name="tf"></a></p>
-<h2 id="Transfer-Learning"><a href="#Transfer-Learning" class="headerlink" title="Transfer Learning"></a>Transfer Learning</h2><p>In practice, very few people train an entire Convolutional Network from scratch (with random initialization), because it is relatively rare to have a dataset of sufficient size. Instead, it is common to pretrain a ConvNet on a very large dataset (e.g. ImageNet, which contains 1.2 million images with 1000 categories), and then use the ConvNet either as an initialization or a fixed feature extractor for the task of interest. The three major Transfer Learning scenarios look as follows:</p>
-<ul>
-<li><strong>ConvNet as fixed feature extractor</strong>. Take a ConvNet pretrained on ImageNet, remove the last fully-connected layer (this layer’s outputs are the 1000 class scores for a different task like ImageNet), then treat the rest of the ConvNet as a fixed feature extractor for the new dataset. In an AlexNet, this would compute a 4096-D vector for every image that contains the activations of the hidden layer immediately before the classifier. We call these features <strong>CNN codes</strong>. It is important for performance that these codes are ReLUd (i.e. thresholded at zero) if they were also thresholded during the training of the ConvNet on ImageNet (as is usually the case). Once you extract the 4096-D codes for all images, train a linear classifier (e.g. Linear SVM or Softmax classifier) for the new dataset.</li>
-<li><strong>Fine-tuning the ConvNet</strong>. The second strategy is to not only replace and retrain the classifier on top of the ConvNet on the new dataset, but to also fine-tune the weights of the pretrained network by continuing the backpropagation. It is possible to fine-tune all the layers of the ConvNet, or it’s possible to keep some of the earlier layers fixed (due to overfitting concerns) and only fine-tune some higher-level portion of the network. This is motivated by the observation that the earlier features of a ConvNet contain more generic features (e.g. edge detectors or color blob detectors) that should be useful to many tasks, but later layers of the ConvNet becomes progressively more specific to the details of the classes contained in the original dataset. In case of ImageNet for example, which contains many dog breeds, a significant portion of the representational power of the ConvNet may be devoted to features that are specific to differentiating between dog breeds.</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/10/10/transfer-learning/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CNN</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">transfer learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ConvNet</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/深度学习//" class="article-tag-list-link color5">深度学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/transfer-learning/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-optimization-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/optimization-2/">optimization-2</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/optimization-2/" class="archive-article-date">
-  	<time datetime="2017-10-10T06:13:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Table of Contents:</p>
-<ul>
-<li><a href="#intro">Introduction</a></li>
-<li><a href="#grad">Simple expressions, interpreting the gradient</a></li>
-<li><a href="#backprop">Compound expressions, chain rule, backpropagation</a></li>
-<li><a href="#intuitive">Intuitive understanding of backpropagation</a></li>
-<li><a href="#sigmoid">Modularity: Sigmoid example</a></li>
-<li><a href="#staged">Backprop in practice: Staged computation</a></li>
-<li><a href="#patters">Patterns in backward flow</a></li>
-<li><a href="#mat">Gradients for vectorized operations</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>Motivation</strong>. In this section we will develop expertise with an intuitive understanding of <strong>backpropagation</strong>, which is a way of computing gradients of expressions through recursive application of <strong>chain rule</strong>. Understanding of this process and its subtleties is critical for you to understand, and effectively develop, design and debug Neural Networks.</p>
-        
-          <a class="article-more-a" href="/2017/10/10/optimization-2/#more">查看更多 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">optimization</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Random Search</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gradient</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">特征选择</a>
         		</li>
       		
 		</ul>
@@ -1083,7 +242,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/optimization-2/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/11/回归与特征选择/">展开全文 >></a>
         </p>
       
 
@@ -1113,52 +272,29 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-optimization-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Python基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/optimization-1/">optimization-1</a>
+      <a class="article-title" href="/2017/11/08/Python基础/">Python基础</a>
     </h1>
   
 
         
-        <a href="/2017/10/10/optimization-1/" class="archive-article-date">
-  	<time datetime="2017-10-10T06:13:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+        <a href="/2017/11/08/Python基础/" class="archive-article-date">
+  	<time datetime="2017-11-08T13:15:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Table of Contents:</p>
-<ul>
-<li><a href="#intro">Introduction</a></li>
-<li><a href="#vis">Visualizing the loss function</a></li>
-<li><a href="#optimization">Optimization</a><ul>
-<li><a href="#opt1">Strategy #1: Random Search</a></li>
-<li><a href="#opt2">Strategy #2: Random Local Search</a></li>
-<li><a href="#opt3">Strategy #3: Following the gradient</a></li>
-</ul>
-</li>
-<li><a href="#gradcompute">Computing the gradient</a><ul>
-<li><a href="#numerical">Numerically with finite differences</a></li>
-<li><a href="#analytic">Analytically with calculus</a></li>
-</ul>
-</li>
-<li><a href="#gd">Gradient descent</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>In the previous section we introduced two key components in context of the image classification task:</p>
-<ol>
-<li>A (parameterized) <strong>score function</strong> mapping the raw image pixels to class scores (e.g. a linear function)</li>
-<li>A <strong>loss function</strong> that measured the quality of a particular set of parameters based on how well the induced scores agreed with the ground truth labels in the training data. We saw that there are many ways and versions of this (e.g. Softmax/SVM).</li>
-</ol>
+        <h1 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h1>
         
-          <a class="article-more-a" href="/2017/10/10/optimization-1/#more">查看更多 >></a>
+          <a class="article-more-a" href="/2017/11/08/Python基础/#more">查看更多 >></a>
         
       
 
@@ -1172,15 +308,100 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">optimization</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
-      		 
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Random Search</a>
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
         		</li>
-      		 
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/08/Python基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-凸优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/08/凸优化/">凸优化</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/08/凸优化/" class="archive-article-date">
+  	<time datetime="2017-11-08T11:42:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="凸集基本概念"><a href="#凸集基本概念" class="headerlink" title="凸集基本概念"></a>凸集基本概念</h1><h2 id="凸集保凸运算"><a href="#凸集保凸运算" class="headerlink" title="凸集保凸运算"></a>凸集保凸运算</h2><h3 id="凸集和凸函数"><a href="#凸集和凸函数" class="headerlink" title="凸集和凸函数"></a>凸集和凸函数</h3><p>凸函数图像的上方区域，一定是凸集；<br>一个函数图像的上方区域为凸集，则该函数是凸函数。</p>
+<h4 id="仿射集（Affine-Set）"><a href="#仿射集（Affine-Set）" class="headerlink" title="仿射集（Affine Set）"></a>仿射集（Affine Set）</h4><p>定义：通过集合C中任意两个不同点的直线仍然在集合C内，则称集合C为仿射集。</p>
+<p><img src="https://i.imgur.com/Ik2mJaU.png" alt=""></p>
+<h4 id="仿射集的例子："><a href="#仿射集的例子：" class="headerlink" title="仿射集的例子："></a>仿射集的例子：</h4><p>直线、平面、超平面</p>
+<h4 id="凸集"><a href="#凸集" class="headerlink" title="凸集"></a>凸集</h4><p>集合C内任意两点间的线段均在集合C内，则称集合C为凸集。<br><img src="https://i.imgur.com/Q6GhpAw.png" alt=""></p>
+<p>两个点和k个点的表达版本内涵是一样的。</p>
+<h4 id="仿射集和凸集的关系"><a href="#仿射集和凸集的关系" class="headerlink" title="仿射集和凸集的关系"></a>仿射集和凸集的关系</h4><p>因为仿射集的条件比凸集的条件强，所以，仿射集必然是凸集。</p>
+        
+          <a class="article-more-a" href="/2017/11/08/凸优化/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gradient</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">凸优化</a>
         		</li>
       		
 		</ul>
@@ -1201,7 +422,666 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/optimization-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/08/凸优化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vscode 调试适配器进程已意外终止" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/24/vscode 调试适配器进程已意外终止/">vscode 调试适配器进程已意外终止</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/24/vscode 调试适配器进程已意外终止/" class="archive-article-date">
+  	<time datetime="2017-10-24T03:35:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>隔了N天以后，重新打开，一进来就重新下载C依赖，然后提示reload。<br>然后莫名的就可以用了。我晕。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C//" class="article-tag-list-link color2">C</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/24/vscode 调试适配器进程已意外终止/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-李德荃关于偏度与峰度的讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/24/李德荃关于偏度与峰度的讲解/">李德荃关于偏度与峰度的讲解</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/24/李德荃关于偏度与峰度的讲解/" class="archive-article-date">
+  	<time datetime="2017-10-24T02:39:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>偏度这一指标，又称偏斜系数、偏态系数，是用来帮助判断数据序列的分布规律性的指标。</p>
+<p>在数据序列呈对称分布（正态分布）的状态下，其均值、中位数和众数重合。且在这三个数的两侧，其它所有的数据完全以对称的方式左右分布。</p>
+<p>如果数据序列的分布不对称，则均值、中位数和众数必定分处不同的位置。这时，若以均值为参照点，则要么位于均值左侧的数据较多，称之为右偏；要么位于均值右侧的数据较多，称之为左偏；除此无它。<br>考虑到所有数据与均值之间的离差之和应为零这一约束，则当均值左侧数据较多的时候，均值的右侧必定存在数值较大的“离群”数据；同理，当均值右侧数据较多的时候，均值的左侧必定存在数值较小的“离群”数据。</p>
+        
+          <a class="article-more-a" href="/2017/10/24/李德荃关于偏度与峰度的讲解/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">偏度</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">峰度</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/24/李德荃关于偏度与峰度的讲解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-记一次python数据处理性能调优" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/21/记一次python数据处理性能调优/">记一次python数据处理性能调优</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/21/记一次python数据处理性能调优/" class="archive-article-date">
+  	<time datetime="2017-10-21T03:24:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python垃圾回收机制<br>根据官方的描叙，Python中，有2中方式将会触发垃圾回收：<br>1、用户显示调用gc.collect()<br>2、每次Python为新对象分配内存时，检查threshold阀值，当对象数量超过threshold设置的阀值就开始进行垃圾回收。</p>
+<p>因为数据量太大，处理过程中留下太多暂时不能清除的变量，而python的垃圾回收却在一遍一遍地扫这些不断在增长的列表，导致程序受到的影响越来越大。赶紧证实一下，import gc，然后在数据载入模块前gc.disable（）,结束后再gc.enable()。结果原来要跑将近两个小时的程序，这下不用5分钟就跑完了。cool~！用gc.get_count()也证明了之前的猜想，在第一次运行之后临时变量数目就从几百上升到百万，并一直在涨。</p>
+<p>如果你的python程序在处理大数据量的问题，并且出现某个子程序在做同样量的工作，却越跑越慢的情况。</p>
+<p>程序代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">series_trans</span><span class="params">(dataset)</span>:</span></div><div class="line">    <span class="comment"># 一行转多行</span></div><div class="line">    dataset_trans = pd.DataFrame(&#123;<span class="string">'user_id'</span>:dataset[<span class="string">'user_id'</span>],</div><div class="line">                                   <span class="string">'shop_id'</span>:dataset[<span class="string">'shop_id'</span>],</div><div class="line">                                   <span class="string">'time_stamp'</span>:dataset[<span class="string">'time_stamp'</span>],</div><div class="line">                                   <span class="string">'longitude'</span>:dataset[<span class="string">'longitude'</span>],</div><div class="line">                                   <span class="string">'latitude'</span>:dataset[<span class="string">'latitude'</span>],</div><div class="line">                                   <span class="string">'wifi_infos'</span>:dataset[<span class="string">'wifi_splits'</span>]&#125;)</div><div class="line"></div><div class="line">    <span class="keyword">return</span>  dataset_trans</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</div><div class="line">dataset_trans = series_trans(dataset.loc[<span class="number">0</span>,:])</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>,dataset.shape[<span class="number">0</span>]):</div><div class="line">    <span class="keyword">if</span> i % <span class="number">10000</span> == <span class="number">0</span>:</div><div class="line">        <span class="keyword">print</span> i</div><div class="line">        <span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</div><div class="line"></div><div class="line">    dataset_trans = dataset_trans.append(series_trans(dataset.loc[i,:]))</div></pre></td></tr></table></figure>
+<p>程序的性能表现如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:01</span><span class="selector-pseudo">:30</span> 2017</div><div class="line">10000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:02</span><span class="selector-pseudo">:07</span> 2017</div><div class="line">20000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:03</span><span class="selector-pseudo">:41</span> 2017</div><div class="line">30000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:06</span><span class="selector-pseudo">:12</span> 2017</div><div class="line">40000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:09</span><span class="selector-pseudo">:37</span> 2017</div><div class="line">50000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:13</span><span class="selector-pseudo">:55</span> 2017</div><div class="line">60000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:19</span><span class="selector-pseudo">:10</span> 2017</div><div class="line">70000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:25</span><span class="selector-pseudo">:26</span> 2017</div><div class="line">80000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:33</span><span class="selector-pseudo">:03</span> 2017</div><div class="line">90000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:41</span><span class="selector-pseudo">:21</span> 2017</div><div class="line">100000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:50</span><span class="selector-pseudo">:33</span> 2017</div><div class="line">110000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:00</span><span class="selector-pseudo">:41</span> 2017</div><div class="line">120000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:11</span><span class="selector-pseudo">:45</span> 2017</div><div class="line">130000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:23</span><span class="selector-pseudo">:43</span> 2017</div><div class="line">140000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:36</span><span class="selector-pseudo">:37</span> 2017</div><div class="line">150000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:50</span><span class="selector-pseudo">:25</span> 2017</div><div class="line">160000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:05</span><span class="selector-pseudo">:10</span> 2017</div><div class="line">170000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:20</span><span class="selector-pseudo">:46</span> 2017</div><div class="line">180000</div><div class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:37</span><span class="selector-pseudo">:18</span> 2017</div></pre></td></tr></table></figure>
+<p>采用：dataset_trans.loc[10:19,] = dataset_trans<br>会提示错误：<br>info_idx = indexer[info_axis]<br>IndexError: tuple index out of range</p>
+<p>DataFrame is a 2-dimensional labeled data structure with columns of potentially different types.所以一般说来dataframe就是a set of columns, each column is an array of values. In pandas, the array is one way or another a (maybe variant of) numpy ndarray. 而ndarray本身不存在一种in place append的操作。。。因为它实际上是一段连续内存。。。任何需要改变ndarray长度的操作都涉及分配一段长度合适的新的内存，然后copy。。。这是这类操作慢的原因。。。如果pandas dataframe没有用其他设计减少copy的话，我相信Bren说的”That’s probably as efficient as any”是很对的。。。所以in general, 正如Bren说的。。。Pandas/numpy structures are fundamentally not suited for efficiently growing.Matti 和 arynaq说的是两种常见的对付这个问题的方法。。。我想Matti实际的意思是把要加的rows收集成起来然后concatenate, 这样只copy一次。arynaq的方法就是预先分配内存比较好理解。。。如果你真的需要incrementally build a dataframe的话，估计你需要实际测试一下两种方法。。。我的建议是，如有可能，尽力避免incrementally build a dataframe, 比如用其他data structure 收集齐所有data然后转变成dataframe做分析。。。</p>
+<p>via</p>
+<ul>
+<li><p><a href="http://blog.csdn.net/overstack/article/details/11603893" target="_blank" rel="external">Python垃圾回收(gc)拖累了程序执行性能？</a></p>
+</li>
+<li><p><a href="https://www.zhihu.com/question/36170252?sort=created" target="_blank" rel="external">python pandas 怎样高效地添加一行数据？</a></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/21/记一次python数据处理性能调优/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-使用pydotplus绘决策树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/使用pydotplus绘决策树/">使用pydotplus绘决策树</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/17/使用pydotplus绘决策树/" class="archive-article-date">
+  	<time datetime="2017-10-17T05:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先安装<code>pydotplus</code></p>
+<p><code>pip install pydotplus</code></p>
+<p>然后打印训练好的<code>clf</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> pydotplus</div><div class="line">dot_data = tree.export_graphviz(clf, out_file=<span class="keyword">None</span>,</div><div class="line">                                feature_names=X_dummy.columns,</div><div class="line">                                class_names=<span class="string">'target'</span>,</div><div class="line">                                filled=<span class="keyword">True</span>, rounded=<span class="keyword">True</span>,</div><div class="line">                                special_characters=<span class="keyword">True</span>)</div><div class="line">graph = pydotplus.graph_from_dot_data(dot_data)</div><div class="line">graph.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</div></pre></td></tr></table></figure>
+<p>发现报错：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Traceback (most recent call last):</div><div class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\IPython\core\interactiveshell.py"</span>, <span class="keyword">line</span> 2881, <span class="keyword">in</span> run_code</div><div class="line">    exec(code_obj, self.user_global_ns, self.user_ns)</div><div class="line">  <span class="keyword">File</span> <span class="string">"&lt;ipython-input-27-2c78351c7fea&gt;"</span>, <span class="keyword">line</span> 7, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    <span class="keyword">graph</span>.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</div><div class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1810, <span class="keyword">in</span> &lt;lambda&gt;</div><div class="line">    <span class="keyword">prog</span>=self.<span class="keyword">prog</span>: self.write(path, <span class="keyword">format</span>=f, <span class="keyword">prog</span>=<span class="keyword">prog</span>)</div><div class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1918, <span class="keyword">in</span> write</div><div class="line">    fobj.write(self.create(<span class="keyword">prog</span>, <span class="keyword">format</span>))</div><div class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1960, <span class="keyword">in</span> create</div><div class="line">    'GraphViz\'s executables not found')</div><div class="line">InvocationException: GraphViz's executables not found</div></pre></td></tr></table></figure>
+<p>提示没有找到<code>&#39;GraphViz\&#39;s executables&#39;</code>:</p>
+        
+          <a class="article-more-a" href="/2017/10/17/使用pydotplus绘决策树/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/17/使用pydotplus绘决策树/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Visual Studio Code工具上手体验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/Visual Studio Code工具上手体验/">Visual Studio Code工具上手体验</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/17/Visual Studio Code工具上手体验/" class="archive-article-date">
+  	<time datetime="2017-10-17T05:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>下载安装Visual Studio Code,地址：<a href="https://code.visualstudio.com/Download" target="_blank" rel="external">https://code.visualstudio.com/Download</a></p>
+<p>在VSCode内安装c++插件：<br>打开vscode，Ctrl+P之后输入<code>ext install c++</code></p>
+<p><img src="assets/C/vscode1.png" alt=""></p>
+<p>弹出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">扩展：商店   错误</div></pre></td></tr></table></figure>
+<p>不用管它，重新再来一次，Ctrl+P之后输入<code>ext install c++</code></p>
+<p>安装第一个官方的。</p>
+<p><img src="assets/C/vscode2.png" alt=""></p>
+<p>重启vscode。然后发现重新启动，vscode开始自动下载插件依赖。<br>依赖自动下载安装完成。</p>
+        
+          <a class="article-more-a" href="/2017/10/17/Visual Studio Code工具上手体验/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/17/Visual Studio Code工具上手体验/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Visual Studio 无法编译新打开的C文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/Visual Studio 无法编译新打开的C文件/">Visual Studio 无法编译新打开的C文件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/17/Visual Studio 无法编译新打开的C文件/" class="archive-article-date">
+  	<time datetime="2017-10-17T05:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用 Visual Studio打开有c文件的文件夹，发现里面的c文件都无法编译，导航栏里面连<code>生成</code>按钮都没有，调试按钮也是灰色的。</p>
+<p><img src="assets/C/Visual Studio 1.png" alt=""></p>
+<p><img src="assets/C/Visual Studio 2.png" alt=""></p>
+<p><img src="assets/C/Visual Studio 3.png" alt=""></p>
+<p>需在项目中单个添加c文件。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Visual Studio</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/17/Visual Studio 无法编译新打开的C文件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-记录一次诡异的Python中文乱码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/记录一次诡异的Python中文乱码/">记录一次诡异的Python中文乱码</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/17/记录一次诡异的Python中文乱码/" class="archive-article-date">
+  	<time datetime="2017-10-17T03:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有一天突然出现了这样的中文乱码：</p>
+<p><img src="assets/Python/luanma1.png" alt=""></p>
+<p>我的第一反应就是检查：<br><code># -*- coding:utf-8 -*-</code></p>
+<p>然后检查：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line">sys.getdefaultencoding()</div><div class="line">Out[<span class="number">5</span>]: </div><div class="line"><span class="string">'utf-8'</span></div></pre></td></tr></table></figure>
+<p>这，，是中文编码的啊，再检查：</p>
+        
+          <a class="article-more-a" href="/2017/10/17/记录一次诡异的Python中文乱码/#more">查看更多 >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/17/记录一次诡异的Python中文乱码/">展开全文 >></a>
         </p>
       
 
@@ -1233,7 +1113,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -1360,6 +1240,86 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">sklearn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Bagging</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">BaggingRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">reduce</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DecisionTreeRegressor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RidgeCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PolynomialFeatures</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">make_blobs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">euclidean_distances</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">KMeans</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KMeans++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">homogeneity_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">completeness_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">v_measure_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">adjusted_rand_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AffinityPropagation</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MeanShift</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">spectral_clustering</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">提升</a>
               </li>
              
@@ -1372,11 +1332,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">convnet</a>
+                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1388,7 +1344,35 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CNN</a>
+                <a href="javascript:void(0)" class="js-tag color3">linear_model</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ElasticNetCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ElasticNet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">StandardScaler</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">train_test_split</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1397,26 +1381,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">主题模型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征工程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">get</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">post</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1436,11 +1400,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSRF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
+                <a href="javascript:void(0)" class="js-tag color4">get</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">post</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GBDT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1460,15 +1432,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">NN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linear</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1480,7 +1452,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color1">Image Classification</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1492,7 +1468,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Ridge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lasso</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1509,6 +1493,62 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">transfer learning</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Softmax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogisticRegression</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">分割面</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">optimize</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">scipy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GridSearchCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">RMSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">cross_val_predict</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1532,23 +1572,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IPython</a>
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTreeClassifier</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">optimization</a>
+                <a href="javascript:void(0)" class="js-tag color5">pydotplus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Random Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">gradient</a>
+                <a href="javascript:void(0)" class="js-tag color1">matplotlib</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1556,7 +1592,39 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Numpy</a>
+                <a href="javascript:void(0)" class="js-tag color4">svm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SVR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">precision_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">recall_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">f1_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">fbeta_score</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">precision_recall_fscore_support</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">classification_report</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1592,15 +1660,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hive</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+                <a href="javascript:void(0)" class="js-tag color5">ReLU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">loadtxt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">read_csv</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DecisionTree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">NumPy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kNN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1609,18 +1705,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">模型融合</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">REST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">特征选择</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1684,11 +1768,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">凸优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">偏度</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">峰度</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1720,11 +1816,43 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">评分卡</a>
+                <a href="javascript:void(0)" class="js-tag color3">插值</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">逻辑回归</a>
+                <a href="javascript:void(0)" class="js-tag color5">重心插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">三次样条插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hermite插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">临近点插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Newton插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Lagrange插值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">REST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">API</a>
               </li>
              
               <li class="article-tag-list-item">
