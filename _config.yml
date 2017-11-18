@@ -81,9 +81,13 @@ deploy:
   # repository: https://github.com/boredbird/boredbird.github.io.git
   repository: git@github.com:boredbird/boredbird.github.io.git
   branch: master
-
   
-    
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+  
 jsonContent:
     meta: false
     pages: false
