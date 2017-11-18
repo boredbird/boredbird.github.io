@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="回归,Logistic," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Logistic回归">
+<meta name="keywords" content="回归,Logistic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Logistic回归">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/11/11/Logistic回归/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="Logistic回归">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111113157.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111114625.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111114737.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111114828.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111115107.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111115122.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111120722.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111121449.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111120827.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111121645.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111121724.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111121859.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111121951.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111122343.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111122430.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111122559.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111123042.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111123141.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111123335.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111123431.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.503Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Logistic回归">
+<meta name="twitter:description" content="Logistic回归">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/chinahadoop/Logistic回归/TIM截图20171111113157.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/11/11/Logistic回归/"/>
+
+
+
+
+
+  <title>Logistic回归 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/Logistic回归/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Logistic回归</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T11:25:12+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Logistic回归
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Logistic回归"><a href="#Logistic回归" class="headerlink" title="Logistic回归"></a>Logistic回归</h1><p>分类问题的首选算法;</p>
+<p>线性回归：最大似然估计+高斯分布；</p>
+<p>Logistic回归：最大似然估计+伯努利分布；</p>
+<p>Logistic回归是事件发生几率取对数下的线性回归。高斯分布和伯努利分布都是属于指数族分布，所以说逻辑回归是广义线性模型GLM回归。</p>
+<h2 id="Logistic-Sigmoid函数"><a href="#Logistic-Sigmoid函数" class="headerlink" title="Logistic/Sigmoid函数"></a>Logistic/Sigmoid函数</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111113157.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="Logistic回归参数估计"><a href="#Logistic回归参数估计" class="headerlink" title="Logistic回归参数估计"></a>Logistic回归参数估计</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111114625.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<a id="more"></a>
+<h3 id="对数似然函数"><a href="#对数似然函数" class="headerlink" title="对数似然函数"></a>对数似然函数</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111114737.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="参数的迭代"><a href="#参数的迭代" class="headerlink" title="参数的迭代"></a>参数的迭代</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111114828.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Logistic回归的损失函数A："><a href="#Logistic回归的损失函数A：" class="headerlink" title="Logistic回归的损失函数A："></a>Logistic回归的损失函数A：</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111115107.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div><br>### Logistic回归的损失函数B：<br><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111115122.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="广义线性模型GLM"><a href="#广义线性模型GLM" class="headerlink" title="广义线性模型GLM"></a>广义线性模型GLM</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111120722.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="多分类：Softmax回归"><a href="#多分类：Softmax回归" class="headerlink" title="多分类：Softmax回归"></a>多分类：Softmax回归</h1><h2 id="Softmax名字由来"><a href="#Softmax名字由来" class="headerlink" title="Softmax名字由来"></a>Softmax名字由来</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111121449.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div><br>## Softmax回归<br><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111120827.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h1><h2 id="定义信息量"><a href="#定义信息量" class="headerlink" title="定义信息量"></a>定义信息量</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111121645.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h2><p>熵是随机变量不确定性的度量，不确定性越大，熵值越大。<br>若随机变量退化成定值，熵最小，为0；若随机分布为均匀分布，熵最大。</p>
+<h2 id="熵的定义"><a href="#熵的定义" class="headerlink" title="熵的定义"></a>熵的定义</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111121724.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="熵的公式推导"><a href="#熵的公式推导" class="headerlink" title="熵的公式推导"></a>熵的公式推导</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111121859.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="均匀分布的信息熵"><a href="#均匀分布的信息熵" class="headerlink" title="均匀分布的信息熵"></a>均匀分布的信息熵</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111121951.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="联合熵、条件熵、相对熵"><a href="#联合熵、条件熵、相对熵" class="headerlink" title="联合熵、条件熵、相对熵"></a>联合熵、条件熵、相对熵</h2><h3 id="联合熵、条件熵"><a href="#联合熵、条件熵" class="headerlink" title="联合熵、条件熵"></a>联合熵、条件熵</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111122343.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="推导条件熵的定义公式"><a href="#推导条件熵的定义公式" class="headerlink" title="推导条件熵的定义公式"></a>推导条件熵的定义公式</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111122430.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="相对熵、KL散度"><a href="#相对熵、KL散度" class="headerlink" title="相对熵、KL散度"></a>相对熵、KL散度</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111122559.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="互信息"><a href="#互信息" class="headerlink" title="互信息"></a>互信息</h2><h3 id="互信息的定义"><a href="#互信息的定义" class="headerlink" title="互信息的定义"></a>互信息的定义</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111123042.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="互信息与条件熵的关系"><a href="#互信息与条件熵的关系" class="headerlink" title="互信息与条件熵的关系"></a>互信息与条件熵的关系</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111123141.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111123335.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div><br><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111123431.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/回归/" rel="tag"># 回归</a>
+          
+            <a href="/tags/Logistic/" rel="tag"># Logistic</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/11/回归与特征选择/" rel="next" title="回归与特征选择">
+                <i class="fa fa-chevron-left"></i> 回归与特征选择
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/11/决策树/" rel="prev" title="决策树">
+                决策树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic回归"><span class="nav-number">1.</span> <span class="nav-text">Logistic回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic-Sigmoid函数"><span class="nav-number">1.1.</span> <span class="nav-text">Logistic/Sigmoid函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic回归参数估计"><span class="nav-number">1.2.</span> <span class="nav-text">Logistic回归参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对数似然函数"><span class="nav-number">1.2.1.</span> <span class="nav-text">对数似然函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数的迭代"><span class="nav-number">1.2.2.</span> <span class="nav-text">参数的迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logistic回归的损失函数A："><span class="nav-number">1.2.3.</span> <span class="nav-text">Logistic回归的损失函数A：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广义线性模型GLM"><span class="nav-number">1.3.</span> <span class="nav-text">广义线性模型GLM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多分类：Softmax回归"><span class="nav-number">2.</span> <span class="nav-text">多分类：Softmax回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax名字由来"><span class="nav-number">2.1.</span> <span class="nav-text">Softmax名字由来</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信息熵"><span class="nav-number">3.</span> <span class="nav-text">信息熵</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义信息量"><span class="nav-number">3.1.</span> <span class="nav-text">定义信息量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#熵"><span class="nav-number">3.2.</span> <span class="nav-text">熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#熵的定义"><span class="nav-number">3.3.</span> <span class="nav-text">熵的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#熵的公式推导"><span class="nav-number">3.4.</span> <span class="nav-text">熵的公式推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#均匀分布的信息熵"><span class="nav-number">3.5.</span> <span class="nav-text">均匀分布的信息熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合熵、条件熵、相对熵"><span class="nav-number">3.6.</span> <span class="nav-text">联合熵、条件熵、相对熵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#联合熵、条件熵"><span class="nav-number">3.6.1.</span> <span class="nav-text">联合熵、条件熵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推导条件熵的定义公式"><span class="nav-number">3.6.2.</span> <span class="nav-text">推导条件熵的定义公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相对熵、KL散度"><span class="nav-number">3.6.3.</span> <span class="nav-text">相对熵、KL散度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#互信息"><span class="nav-number">3.7.</span> <span class="nav-text">互信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#互信息的定义"><span class="nav-number">3.7.1.</span> <span class="nav-text">互信息的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#互信息与条件熵的关系"><span class="nav-number">3.7.2.</span> <span class="nav-text">互信息与条件熵的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公式"><span class="nav-number">3.8.</span> <span class="nav-text">公式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

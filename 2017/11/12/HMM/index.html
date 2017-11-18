@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="EM,HMM,贝叶斯网络,Baum-Welch,Viterbi," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="隐马尔科夫模型">
+<meta name="keywords" content="EM,HMM,贝叶斯网络,Baum-Welch,Viterbi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HMM">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/11/12/HMM/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="隐马尔科夫模型">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112225447.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112225714.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112225814.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112225941.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230035.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230044.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230124.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230315.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230351.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230439.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230513.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230610.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230657.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230811.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230821.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230834.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112230930.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112231049.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112231346.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112233757.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112233910.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112233920.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234032.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234110.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234154.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234317.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234446.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234458.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234549.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234638.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234649.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234808.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234908.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112234946.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235033.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235131.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235143.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235243.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235344.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235412.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235505.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235643.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235817.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235829.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235914.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112235928.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171113000033.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171113000045.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171113000100.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171113000110.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171113000126.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171113000304.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.473Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HMM">
+<meta name="twitter:description" content="隐马尔科夫模型">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/chinahadoop/HMM/TIM截图20171112225447.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/11/12/HMM/"/>
+
+
+
+
+
+  <title>HMM | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/HMM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HMM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-12T22:06:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  隐马尔科夫模型
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="HMM定义"><a href="#HMM定义" class="headerlink" title="HMM定义"></a>HMM定义</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225447.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="隐马尔科夫模型的贝叶斯网络"><a href="#隐马尔科夫模型的贝叶斯网络" class="headerlink" title="隐马尔科夫模型的贝叶斯网络"></a>隐马尔科夫模型的贝叶斯网络</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225714.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<a id="more"></a>
+<h2 id="HMM的参数"><a href="#HMM的参数" class="headerlink" title="HMM的参数"></a>HMM的参数</h2><h3 id="HMM的确定"><a href="#HMM的确定" class="headerlink" title="HMM的确定"></a>HMM的确定</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225814.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="HMM的参数-1"><a href="#HMM的参数-1" class="headerlink" title="HMM的参数"></a>HMM的参数</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225941.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230035.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230044.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="HMM的参数总结"><a href="#HMM的参数总结" class="headerlink" title="HMM的参数总结"></a>HMM的参数总结</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230124.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="HMM的两个基本性质"><a href="#HMM的两个基本性质" class="headerlink" title="HMM的两个基本性质"></a>HMM的两个基本性质</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230315.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="HMM举例"><a href="#HMM举例" class="headerlink" title="HMM举例"></a>HMM举例</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230351.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="示例的各个参数"><a href="#示例的各个参数" class="headerlink" title="示例的各个参数"></a>示例的各个参数</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230439.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="示例的思考"><a href="#示例的思考" class="headerlink" title="示例的思考"></a>示例的思考</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230513.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="HMM的3个基本问题"><a href="#HMM的3个基本问题" class="headerlink" title="HMM的3个基本问题"></a>HMM的3个基本问题</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230610.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="概率计算问题"><a href="#概率计算问题" class="headerlink" title="概率计算问题"></a>概率计算问题</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230657.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="直接计算法"><a href="#直接计算法" class="headerlink" title="直接计算法"></a>直接计算法</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230811.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230821.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230834.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h5 id="直接计算法分析"><a href="#直接计算法分析" class="headerlink" title="直接计算法分析"></a>直接计算法分析</h5><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112230930.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h5 id="借鉴算法的优化思想"><a href="#借鉴算法的优化思想" class="headerlink" title="借鉴算法的优化思想"></a>借鉴算法的优化思想</h5><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112231049.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="前向算法"><a href="#前向算法" class="headerlink" title="前向算法"></a>前向算法</h4><h5 id="定义：前向概率-后向概率"><a href="#定义：前向概率-后向概率" class="headerlink" title="定义：前向概率-后向概率"></a>定义：前向概率-后向概率</h5><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112231346.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h5 id="前向算法定义"><a href="#前向算法定义" class="headerlink" title="前向算法定义"></a>前向算法定义</h5><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112233757.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h5 id="前向算法过程"><a href="#前向算法过程" class="headerlink" title="前向算法过程"></a>前向算法过程</h5><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112233910.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112233920.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="后向算法"><a href="#后向算法" class="headerlink" title="后向算法"></a>后向算法</h4><h5 id="后向算法定义"><a href="#后向算法定义" class="headerlink" title="后向算法定义"></a>后向算法定义</h5><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234032.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h5 id="后向算法过程"><a href="#后向算法过程" class="headerlink" title="后向算法过程"></a>后向算法过程</h5><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234110.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h5 id="后向算法的说明"><a href="#后向算法的说明" class="headerlink" title="后向算法的说明"></a>后向算法的说明</h5><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234154.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="前后向关系"><a href="#前后向关系" class="headerlink" title="前后向关系"></a>前后向关系</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234317.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="单个状态的概率"><a href="#单个状态的概率" class="headerlink" title="单个状态的概率"></a>单个状态的概率</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234446.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234458.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="r的意义"><a href="#r的意义" class="headerlink" title="r的意义"></a>r的意义</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234549.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="两个状态的联合概率"><a href="#两个状态的联合概率" class="headerlink" title="两个状态的联合概率"></a>两个状态的联合概率</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234638.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234649.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234808.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="学习算法"><a href="#学习算法" class="headerlink" title="学习算法"></a>学习算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234908.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="大数定理"><a href="#大数定理" class="headerlink" title="大数定理"></a>大数定理</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112234946.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="监督学习方法"><a href="#监督学习方法" class="headerlink" title="监督学习方法"></a>监督学习方法</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235033.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Baum-Welch算法"><a href="#Baum-Welch算法" class="headerlink" title="Baum-Welch算法"></a>Baum-Welch算法</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235131.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235143.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="EM过程"><a href="#EM过程" class="headerlink" title="EM过程"></a>EM过程</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235243.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="极大化"><a href="#极大化" class="headerlink" title="极大化"></a>极大化</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235344.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+
+<h4 id="初始状态概率"><a href="#初始状态概率" class="headerlink" title="初始状态概率"></a>初始状态概率</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235412.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+
+<h4 id="转移概率和观测概率"><a href="#转移概率和观测概率" class="headerlink" title="转移概率和观测概率"></a>转移概率和观测概率</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235505.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="预测算法"><a href="#预测算法" class="headerlink" title="预测算法"></a>预测算法</h2><h3 id="近似算法"><a href="#近似算法" class="headerlink" title="近似算法"></a>近似算法</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235643.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="算法：走棋盘-格子取数"><a href="#算法：走棋盘-格子取数" class="headerlink" title="算法：走棋盘/格子取数"></a>算法：走棋盘/格子取数</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235817.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235829.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Viterbi算法"><a href="#Viterbi算法" class="headerlink" title="Viterbi算法"></a>Viterbi算法</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235914.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112235928.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h4 id="Viterbi算法举例"><a href="#Viterbi算法举例" class="headerlink" title="Viterbi算法举例"></a>Viterbi算法举例</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171113000033.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171113000045.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171113000100.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171113000110.png" width="80%"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171113000126.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171113000304.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/EM/" rel="tag"># EM</a>
+          
+            <a href="/tags/HMM/" rel="tag"># HMM</a>
+          
+            <a href="/tags/贝叶斯网络/" rel="tag"># 贝叶斯网络</a>
+          
+            <a href="/tags/Baum-Welch/" rel="tag"># Baum-Welch</a>
+          
+            <a href="/tags/Viterbi/" rel="tag"># Viterbi</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/12/贝叶斯网络/" rel="next" title="贝叶斯网络">
+                <i class="fa fa-chevron-left"></i> 贝叶斯网络
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/12/主题模型/" rel="prev" title="主题模型">
+                主题模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HMM定义"><span class="nav-number">1.</span> <span class="nav-text">HMM定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐马尔科夫模型的贝叶斯网络"><span class="nav-number">2.</span> <span class="nav-text">隐马尔科夫模型的贝叶斯网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HMM的参数"><span class="nav-number">3.</span> <span class="nav-text">HMM的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HMM的确定"><span class="nav-number">3.1.</span> <span class="nav-text">HMM的确定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HMM的参数-1"><span class="nav-number">3.2.</span> <span class="nav-text">HMM的参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HMM的参数总结"><span class="nav-number">3.3.</span> <span class="nav-text">HMM的参数总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HMM的两个基本性质"><span class="nav-number">4.</span> <span class="nav-text">HMM的两个基本性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HMM举例"><span class="nav-number">5.</span> <span class="nav-text">HMM举例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#示例的各个参数"><span class="nav-number">5.1.</span> <span class="nav-text">示例的各个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例的思考"><span class="nav-number">5.2.</span> <span class="nav-text">示例的思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HMM的3个基本问题"><span class="nav-number">6.</span> <span class="nav-text">HMM的3个基本问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概率计算问题"><span class="nav-number">6.1.</span> <span class="nav-text">概率计算问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接计算法"><span class="nav-number">6.1.1.</span> <span class="nav-text">直接计算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#直接计算法分析"><span class="nav-number">6.1.1.1.</span> <span class="nav-text">直接计算法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#借鉴算法的优化思想"><span class="nav-number">6.1.1.2.</span> <span class="nav-text">借鉴算法的优化思想</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前向算法"><span class="nav-number">6.1.2.</span> <span class="nav-text">前向算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义：前向概率-后向概率"><span class="nav-number">6.1.2.1.</span> <span class="nav-text">定义：前向概率-后向概率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前向算法定义"><span class="nav-number">6.1.2.2.</span> <span class="nav-text">前向算法定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前向算法过程"><span class="nav-number">6.1.2.3.</span> <span class="nav-text">前向算法过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后向算法"><span class="nav-number">6.1.3.</span> <span class="nav-text">后向算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#后向算法定义"><span class="nav-number">6.1.3.1.</span> <span class="nav-text">后向算法定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后向算法过程"><span class="nav-number">6.1.3.2.</span> <span class="nav-text">后向算法过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后向算法的说明"><span class="nav-number">6.1.3.3.</span> <span class="nav-text">后向算法的说明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前后向关系"><span class="nav-number">6.1.4.</span> <span class="nav-text">前后向关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单个状态的概率"><span class="nav-number">6.1.5.</span> <span class="nav-text">单个状态的概率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#r的意义"><span class="nav-number">6.1.6.</span> <span class="nav-text">r的意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个状态的联合概率"><span class="nav-number">6.1.7.</span> <span class="nav-text">两个状态的联合概率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#期望"><span class="nav-number">6.1.8.</span> <span class="nav-text">期望</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习算法"><span class="nav-number">7.</span> <span class="nav-text">学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#大数定理"><span class="nav-number">7.1.</span> <span class="nav-text">大数定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监督学习方法"><span class="nav-number">7.2.</span> <span class="nav-text">监督学习方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Baum-Welch算法"><span class="nav-number">7.3.</span> <span class="nav-text">Baum-Welch算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EM过程"><span class="nav-number">7.3.1.</span> <span class="nav-text">EM过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#极大化"><span class="nav-number">7.3.2.</span> <span class="nav-text">极大化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始状态概率"><span class="nav-number">7.3.3.</span> <span class="nav-text">初始状态概率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转移概率和观测概率"><span class="nav-number">7.3.4.</span> <span class="nav-text">转移概率和观测概率</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测算法"><span class="nav-number">8.</span> <span class="nav-text">预测算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#近似算法"><span class="nav-number">8.1.</span> <span class="nav-text">近似算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法：走棋盘-格子取数"><span class="nav-number">8.1.1.</span> <span class="nav-text">算法：走棋盘/格子取数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viterbi算法"><span class="nav-number">8.2.</span> <span class="nav-text">Viterbi算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Viterbi算法举例"><span class="nav-number">8.2.1.</span> <span class="nav-text">Viterbi算法举例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CNN,ConvNet,ReLU," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="understanding-cnn">
+<meta name="keywords" content="CNN,ConvNet,ReLU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="understanding-cnn">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/10/10/understanding-cnn/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="understanding-cnn">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/cnnvis/act1.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/cnnvis/act2.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/cnnvis/filt1.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/cnnvis/filt2.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/cnnvis/pool5max.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/cnnvis/tsne.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/cnnvis/occlude.jpeg">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.639Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="understanding-cnn">
+<meta name="twitter:description" content="understanding-cnn">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/cnnvis/act1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/10/10/understanding-cnn/"/>
+
+
+
+
+
+  <title>understanding-cnn | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/understanding-cnn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">understanding-cnn</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-10T14:28:12+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  understanding-cnn
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a name="vis"></a></p>
+<p>(this page is currently in draft form)</p>
+<h2 id="Visualizing-what-ConvNets-learn"><a href="#Visualizing-what-ConvNets-learn" class="headerlink" title="Visualizing what ConvNets learn"></a>Visualizing what ConvNets learn</h2><p>Several approaches for understanding and visualizing Convolutional Networks have been developed in the literature, partly as a response the common criticism that the learned features in a Neural Network are not interpretable. In this section we briefly survey some of these approaches and related work.</p>
+<h3 id="Visualizing-the-activations-and-first-layer-weights"><a href="#Visualizing-the-activations-and-first-layer-weights" class="headerlink" title="Visualizing the activations and first-layer weights"></a>Visualizing the activations and first-layer weights</h3><p><strong>Layer Activations</strong>. The most straight-forward visualization technique is to show the activations of the network during the forward pass. For ReLU networks, the activations usually start out looking relatively blobby and dense, but as the training progresses the activations usually become more sparse and localized. One dangerous pitfall that can be easily noticed with this visualization is that some activation maps may be all zero for many different inputs, which can indicate <em>dead</em> filters, and can be a symptom of high learning rates.</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/act1.jpeg" width="49%"><br>  <img src="/assets/cnnvis/act2.jpeg" width="49%"><br>  <div class="figcaption"><br>    Typical-looking activations on the first CONV layer (left), and the 5th CONV layer (right) of a trained AlexNet looking at a picture of a cat. Every box shows an activation map corresponding to some filter. Notice that the activations are sparse (most values are zero, in this visualization shown in black) and mostly local.<br>  </div><br></div>
+
+<a id="more"></a>
+<p><strong>Conv/FC Filters.</strong> The second common strategy is to visualize the weights. These are usually most interpretable on the first CONV layer which is looking directly at the raw pixel data, but it is possible to also show the filter weights deeper in the network. The weights are useful to visualize because well-trained networks usually display nice and smooth filters without any noisy patterns. Noisy patterns can be an indicator of a network that hasn’t been trained for long enough, or possibly a very low regularization strength that may have led to overfitting.</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/filt1.jpeg" width="49%"><br>  <img src="/assets/cnnvis/filt2.jpeg" width="49%"><br>  <div class="figcaption"><br>    Typical-looking filters on the first CONV layer (left), and the 2nd CONV layer (right) of a trained AlexNet. Notice that the first-layer weights are very nice and smooth, indicating nicely converged network. The color/grayscale features are clustered because the AlexNet contains two separate streams of processing, and an apparent consequence of this architecture is that one stream develops high-frequency grayscale features and the other low-frequency color features. The 2nd CONV layer weights are not as interpretable, but it is apparent that they are still smooth, well-formed, and absent of noisy patterns.<br>  </div><br></div>
+
+<h3 id="Retrieving-images-that-maximally-activate-a-neuron"><a href="#Retrieving-images-that-maximally-activate-a-neuron" class="headerlink" title="Retrieving images that maximally activate a neuron"></a>Retrieving images that maximally activate a neuron</h3><p>Another visualization technique is to take a large dataset of images, feed them through the network and keep track of which images maximally activate some neuron. We can then visualize the images to get an understanding of what the neuron is looking for in its receptive field. One such visualization (among others) is shown in <a href="http://arxiv.org/abs/1311.2524" target="_blank" rel="noopener">Rich feature hierarchies for accurate object detection and semantic segmentation</a> by Ross Girshick et al.:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/pool5max.jpeg" width="100%"><br>  <div class="figcaption"><br>    Maximally activating images for some POOL5 (5th pool layer) neurons of an AlexNet. The activation values and the receptive field of the particular neuron are shown in white. (In particular, note that the POOL5 neurons are a function of a relatively large portion of the input image!) It can be seen that some neurons are responsive to upper bodies, text, or specular highlights.<br>  </div><br></div>
+
+<p>One problem with this approach is that ReLU neurons do not necessarily have any semantic meaning by themselves. Rather, it is more appropriate to think of multiple ReLU neurons as the basis vectors of some space that represents in image patches. In other words, the visualization is showing the patches at the edge of the cloud of representations, along the (arbitrary) axes that correspond to the filter weights. This can also be seen by the fact that neurons in a ConvNet operate linearly over the input space, so any arbitrary rotation of that space is a no-op. This point was further argued in <a href="http://arxiv.org/abs/1312.6199" target="_blank" rel="noopener">Intriguing properties of neural networks</a> by Szegedy et al., where they perform a similar visualization along arbitrary directions in the representation space.</p>
+<h3 id="Embedding-the-codes-with-t-SNE"><a href="#Embedding-the-codes-with-t-SNE" class="headerlink" title="Embedding the codes with t-SNE"></a>Embedding the codes with t-SNE</h3><p>ConvNets can be interpreted as gradually transforming the images into a representation in which the classes are separable by a linear classifier. We can get a rough idea about the topology of this space by embedding images into two dimensions so that their low-dimensional representation has approximately equal distances than their high-dimensional representation. There are many embedding methods that have been developed with the intuition of embedding high-dimensional vectors in a low-dimensional space while preserving the pairwise distances of the points. Among these, <a href="http://lvdmaaten.github.io/tsne/" target="_blank" rel="noopener">t-SNE</a> is one of the best-known methods that consistently produces visually-pleasing results.</p>
+<p>To produce an embedding, we can take a set of images and use the ConvNet to extract the CNN codes (e.g. in AlexNet the 4096-dimensional vector right before the classifier, and crucially, including the ReLU non-linearity). We can then plug these into t-SNE and get 2-dimensional vector for each image. The corresponding images can them be visualized in a grid:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/tsne.jpeg" width="100%"><br>  <div class="figcaption"><br>    t-SNE embedding of a set of images based on their CNN codes. Images that are nearby each other are also close in the CNN representation space, which implies that the CNN “sees” them as being very similar. Notice that the similarities are more often class-based and semantic rather than pixel and color-based. For more details on how this visualization was produced the associated code, and more related visualizations at different scales refer to <a href="http://cs.stanford.edu/people/karpathy/cnnembed/" target="_blank" rel="noopener">t-SNE visualization of CNN codes</a>.<br>  </div><br></div>
+
+<h3 id="Occluding-parts-of-the-image"><a href="#Occluding-parts-of-the-image" class="headerlink" title="Occluding parts of the image"></a>Occluding parts of the image</h3><p>Suppose that a ConvNet classifies an image as a dog. How can we be certain that it’s actually picking up on the dog in the image as opposed to some contextual cues from the background or some other miscellaneous object? One way of investigating which part of the image some classification prediction is coming from is by plotting the probability of the class of interest (e.g. dog class) as a function of the position of an occluder object. That is, we iterate over regions of the image, set a patch of the image to be all zero, and look at the probability of the class. We can visualize the probability as a 2-dimensional heat map. This approach has been used in Matthew Zeiler’s <a href="http://arxiv.org/abs/1311.2901" target="_blank" rel="noopener">Visualizing and Understanding Convolutional Networks</a>:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/occlude.jpeg" width="100%"><br>  <div class="figcaption"><br>    Three input images (top). Notice that the occluder region is shown in grey. As we slide the occluder over the image we record the probability of the correct class and then visualize it as a heatmap (shown below each image). For instance, in the left-most image we see that the probability of Pomeranian plummets when the occluder covers the face of the dog, giving us some level of confidence that the dog’s face is primarily responsible for the high classification score. Conversely, zeroing out other parts of the image is seen to have relatively negligible impact.<br>  </div><br></div>
+
+<h3 id="Visualizing-the-data-gradient-and-friends"><a href="#Visualizing-the-data-gradient-and-friends" class="headerlink" title="Visualizing the data gradient and friends"></a>Visualizing the data gradient and friends</h3><p><strong>Data Gradient</strong>.</p>
+<p><a href="http://arxiv.org/abs/1312.6034" target="_blank" rel="noopener">Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps</a></p>
+<p><strong>DeconvNet</strong>.</p>
+<p><a href="http://arxiv.org/abs/1311.2901" target="_blank" rel="noopener">Visualizing and Understanding Convolutional Networks</a></p>
+<p><strong>Guided Backpropagation</strong>.</p>
+<p><a href="http://arxiv.org/abs/1412.6806" target="_blank" rel="noopener">Striving for Simplicity: The All Convolutional Net</a></p>
+<h3 id="Reconstructing-original-images-based-on-CNN-Codes"><a href="#Reconstructing-original-images-based-on-CNN-Codes" class="headerlink" title="Reconstructing original images based on CNN Codes"></a>Reconstructing original images based on CNN Codes</h3><p><a href="http://arxiv.org/abs/1412.0035" target="_blank" rel="noopener">Understanding Deep Image Representations by Inverting Them</a></p>
+<h3 id="How-much-spatial-information-is-preserved"><a href="#How-much-spatial-information-is-preserved" class="headerlink" title="How much spatial information is preserved?"></a>How much spatial information is preserved?</h3><p><a href="http://papers.nips.cc/paper/5420-do-convnets-learn-correspondence.pdf" target="_blank" rel="noopener">Do ConvNets Learn Correspondence?</a> (tldr: yes)</p>
+<h3 id="Plotting-performance-as-a-function-of-image-attributes"><a href="#Plotting-performance-as-a-function-of-image-attributes" class="headerlink" title="Plotting performance as a function of image attributes"></a>Plotting performance as a function of image attributes</h3><p><a href="http://arxiv.org/abs/1409.0575" target="_blank" rel="noopener">ImageNet Large Scale Visual Recognition Challenge</a></p>
+<h2 id="Fooling-ConvNets"><a href="#Fooling-ConvNets" class="headerlink" title="Fooling ConvNets"></a>Fooling ConvNets</h2><p><a href="http://arxiv.org/abs/1412.6572" target="_blank" rel="noopener">Explaining and Harnessing Adversarial Examples</a></p>
+<h2 id="Comparing-ConvNets-to-Human-labelers"><a href="#Comparing-ConvNets-to-Human-labelers" class="headerlink" title="Comparing ConvNets to Human labelers"></a>Comparing ConvNets to Human labelers</h2><p><a href="http://karpathy.github.io/2014/09/02/what-i-learned-from-competing-against-a-convnet-on-imagenet/" target="_blank" rel="noopener">What I learned from competing against a ConvNet on ImageNet</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/" rel="tag"># CNN</a>
+          
+            <a href="/tags/ConvNet/" rel="tag"># ConvNet</a>
+          
+            <a href="/tags/ReLU/" rel="tag"># ReLU</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/10/assignment2/" rel="next" title="assignment2">
+                <i class="fa fa-chevron-left"></i> assignment2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/10/assignment3/" rel="prev" title="assignment3">
+                assignment3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Visualizing-what-ConvNets-learn"><span class="nav-number">1.</span> <span class="nav-text">Visualizing what ConvNets learn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Visualizing-the-activations-and-first-layer-weights"><span class="nav-number">1.1.</span> <span class="nav-text">Visualizing the activations and first-layer weights</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retrieving-images-that-maximally-activate-a-neuron"><span class="nav-number">1.2.</span> <span class="nav-text">Retrieving images that maximally activate a neuron</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Embedding-the-codes-with-t-SNE"><span class="nav-number">1.3.</span> <span class="nav-text">Embedding the codes with t-SNE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Occluding-parts-of-the-image"><span class="nav-number">1.4.</span> <span class="nav-text">Occluding parts of the image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visualizing-the-data-gradient-and-friends"><span class="nav-number">1.5.</span> <span class="nav-text">Visualizing the data gradient and friends</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reconstructing-original-images-based-on-CNN-Codes"><span class="nav-number">1.6.</span> <span class="nav-text">Reconstructing original images based on CNN Codes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-much-spatial-information-is-preserved"><span class="nav-number">1.7.</span> <span class="nav-text">How much spatial information is preserved?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plotting-performance-as-a-function-of-image-attributes"><span class="nav-number">1.8.</span> <span class="nav-text">Plotting performance as a function of image attributes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fooling-ConvNets"><span class="nav-number">2.</span> <span class="nav-text">Fooling ConvNets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparing-ConvNets-to-Human-labelers"><span class="nav-number">3.</span> <span class="nav-text">Comparing ConvNets to Human labelers</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

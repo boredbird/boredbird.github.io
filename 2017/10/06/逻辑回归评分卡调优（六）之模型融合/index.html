@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="评分卡,逻辑回归," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="逻辑回归评分卡调优（六）之模型融合">
+<meta name="keywords" content="评分卡,逻辑回归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逻辑回归评分卡调优（六）之模型融合">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/10/06/逻辑回归评分卡调优（六）之模型融合/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="逻辑回归评分卡调优（六）之模型融合">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="逻辑回归评分卡调优（六）之模型融合">
+<meta name="twitter:description" content="逻辑回归评分卡调优（六）之模型融合">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/10/06/逻辑回归评分卡调优（六）之模型融合/"/>
+
+
+
+
+
+  <title>逻辑回归评分卡调优（六）之模型融合 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/06/逻辑回归评分卡调优（六）之模型融合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">逻辑回归评分卡调优（六）之模型融合</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-06T10:55:12+08:00">
+                2017-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  逻辑回归评分卡调优（六）之模型融合
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8B%E5%A2%9E%E5%8A%A0%E9%AB%98%E9%98%B6%E7%89%B9%E5%BE%81/" target="_blank" rel="noopener">上回</a>的基础上，我们可以看到<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8B%E5%A2%9E%E5%8A%A0%E9%AB%98%E9%98%B6%E7%89%B9%E5%BE%81/" target="_blank" rel="noopener">增加高阶特征</a>并没有带来模型效果显著提升。考虑到sigmoid函数在0.5处附近区分度比较大，在远离0.5处概率值变换不是很明显，考虑sigmoid梯度平缓的地方，拆分成<0.3和>0.7分别单独领出来，重新建模，期望能提升模型效果。</0.3和></p>
+<p>按照0.3和0.7两个分割点划分，需要重新再训练出三个模型，然后再把这三个模型整体的效果与未重新训练前的效果进行对比。</p>
+<p><strong>首先定义几个函数，省得写一些重复的代码：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">plot_ks</span><span class="params">(proba,target,axistype=<span class="number">0</span>,out_path=False)</span>:</span></span><br><span class="line">    	a = pd.DataFrame(np.array([proba,target]).T,columns=[<span class="string">'proba'</span>,<span class="string">'target'</span>])</span><br><span class="line">    	a.sort_values(by=<span class="string">'proba'</span>,ascending=<span class="keyword">False</span>,inplace=<span class="keyword">True</span>)</span><br><span class="line">    	a[<span class="string">'sum_Times'</span>]=a[<span class="string">'target'</span>].cumsum()</span><br><span class="line">    	total_1 = a[<span class="string">'target'</span>].sum()</span><br><span class="line">    	total_0 = len(a) - a[<span class="string">'target'</span>].sum()</span><br><span class="line">    </span><br><span class="line">    	a[<span class="string">'temp'</span>] = <span class="number">1</span></span><br><span class="line">    	a[<span class="string">'Times'</span>]=a[<span class="string">'temp'</span>].cumsum()</span><br><span class="line">    	a[<span class="string">'cdf1'</span>] = a[<span class="string">'sum_Times'</span>]/total_1</span><br><span class="line">    	a[<span class="string">'cdf0'</span>] = (a[<span class="string">'Times'</span>] - a[<span class="string">'sum_Times'</span>])/total_0</span><br><span class="line">    	a[<span class="string">'ks'</span>] = a[<span class="string">'cdf1'</span>] - a[<span class="string">'cdf0'</span>]</span><br><span class="line">    	a[<span class="string">'percent'</span>] = a[<span class="string">'Times'</span>]*<span class="number">1.0</span>/len(a)</span><br><span class="line">    </span><br><span class="line">    	idx = np.argmax(a[<span class="string">'ks'</span>])</span><br><span class="line">    	<span class="comment"># print a.loc[idx]</span></span><br><span class="line">    </span><br><span class="line">    	<span class="keyword">if</span> axistype == <span class="number">0</span>:</span><br><span class="line">    	<span class="string">'''</span></span><br><span class="line"><span class="string">    	KS曲线,横轴为按照输出的概率值排序后的观察样本比例</span></span><br><span class="line"><span class="string">    	'''</span></span><br><span class="line">    	plt.figure()</span><br><span class="line">    	plt.plot(a[<span class="string">'percent'</span>],a[<span class="string">'cdf1'</span>], label=<span class="string">"CDF_positive"</span>)</span><br><span class="line">    	plt.plot(a[<span class="string">'percent'</span>],a[<span class="string">'cdf0'</span>],label=<span class="string">"CDF_negative"</span>)</span><br><span class="line">    	plt.plot(a[<span class="string">'percent'</span>],a[<span class="string">'ks'</span>],label=<span class="string">"K-S"</span>)</span><br><span class="line">    </span><br><span class="line">    	sx = np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">10</span>)</span><br><span class="line">    	sy = sx</span><br><span class="line">    	plt.plot(sx,sy,linestyle=<span class="string">'--'</span>,color=<span class="string">'darkgrey'</span>,linewidth=<span class="number">1.2</span>)</span><br><span class="line">    </span><br><span class="line">    	plt.legend()</span><br><span class="line">    	plt.grid(<span class="keyword">True</span>)</span><br><span class="line">    	ymin, ymax = plt.ylim()</span><br><span class="line">    	plt.xlabel(<span class="string">'Sample percent'</span>)</span><br><span class="line">    	plt.ylabel(<span class="string">'Cumulative probability'</span>)</span><br><span class="line">    	plt.title(<span class="string">'Model Evaluation Index K-S'</span>)</span><br><span class="line">    	plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">    </span><br><span class="line">    	<span class="comment"># 虚线</span></span><br><span class="line">    	t = a.loc[idx][<span class="string">'percent'</span>]</span><br><span class="line">    	yb = round(a.loc[idx][<span class="string">'cdf1'</span>],<span class="number">4</span>)</span><br><span class="line">    	yg = round(a.loc[idx][<span class="string">'cdf0'</span>],<span class="number">4</span>)</span><br><span class="line">    </span><br><span class="line">    	plt.plot([t,t],[yb,yg], color =<span class="string">'red'</span>, linewidth=<span class="number">1.4</span>, linestyle=<span class="string">"--"</span>)</span><br><span class="line">    	plt.scatter([t,],[yb,], <span class="number">20</span>, color =<span class="string">'dodgerblue'</span>)</span><br><span class="line">    	plt.annotate(<span class="string">r'$recall_p=%s$'</span> % round(a.loc[idx][<span class="string">'cdf1'</span>],<span class="number">4</span>), xy=(t, yb), xycoords=<span class="string">'data'</span>, xytext=(+<span class="number">10</span>, <span class="number">-5</span>),</span><br><span class="line">     	textcoords=<span class="string">'offset points'</span>, fontsize=<span class="number">8</span>,</span><br><span class="line">     	arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">    </span><br><span class="line">    	plt.scatter([t,],[yg,], <span class="number">20</span>, color =<span class="string">'darkorange'</span>)</span><br><span class="line">    	plt.annotate(<span class="string">r'$recall_n=%s$'</span> % round(a.loc[idx][<span class="string">'cdf0'</span>],<span class="number">4</span>), xy=(t, yg), xycoords=<span class="string">'data'</span>, xytext=(+<span class="number">10</span>, <span class="number">-10</span>),</span><br><span class="line">     	textcoords=<span class="string">'offset points'</span>, fontsize=<span class="number">8</span>,</span><br><span class="line">     	arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">    	<span class="comment"># K-S曲线峰值</span></span><br><span class="line">    	plt.scatter([t,],[a.loc[idx][<span class="string">'ks'</span>],], <span class="number">20</span>, color =<span class="string">'limegreen'</span>)</span><br><span class="line">    	plt.annotate(<span class="string">r'$ks=%s,p=%s$'</span> % (round(a.loc[idx][<span class="string">'ks'</span>],<span class="number">4</span>)</span><br><span class="line">    	,round(a.loc[idx][<span class="string">'proba'</span>],<span class="number">4</span>))</span><br><span class="line">     	, xy=(a.loc[idx][<span class="string">'percent'</span>], a.loc[idx][<span class="string">'ks'</span>])</span><br><span class="line">     	, xycoords=<span class="string">'data'</span></span><br><span class="line">     	, xytext=(+<span class="number">15</span>, <span class="number">-15</span>),</span><br><span class="line">     	textcoords=<span class="string">'offset points'</span></span><br><span class="line">     	, fontsize=<span class="number">8</span></span><br><span class="line">     	,arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">    	plt.annotate(<span class="string">r'$percent=%s,cnt=%s$'</span> % (round(a.loc[idx][<span class="string">'percent'</span>],<span class="number">4</span>)</span><br><span class="line">       	,round(a.loc[idx][<span class="string">'Times'</span>],<span class="number">0</span>))</span><br><span class="line">     	, xy=(a.loc[idx][<span class="string">'percent'</span>], a.loc[idx][<span class="string">'ks'</span>])</span><br><span class="line">     	, xycoords=<span class="string">'data'</span></span><br><span class="line">     	, xytext=(+<span class="number">25</span>, <span class="number">-25</span>),</span><br><span class="line">     	textcoords=<span class="string">'offset points'</span></span><br><span class="line">     	, fontsize=<span class="number">8</span></span><br><span class="line">     	)</span><br><span class="line">    </span><br><span class="line">    	<span class="keyword">else</span>:</span><br><span class="line">    	<span class="string">'''</span></span><br><span class="line"><span class="string">    	改变横轴,横轴为模型输出的概率值</span></span><br><span class="line"><span class="string">    	'''</span></span><br><span class="line">	    plt.figure()</span><br><span class="line">	    plt.grid(<span class="keyword">True</span>)</span><br><span class="line">	    plt.plot(<span class="number">1</span>-a[<span class="string">'proba'</span>],a[<span class="string">'cdf1'</span>], label=<span class="string">"CDF_bad"</span>)</span><br><span class="line">	    plt.plot(<span class="number">1</span>-a[<span class="string">'proba'</span>],a[<span class="string">'cdf0'</span>],label=<span class="string">"CDF_good"</span>)</span><br><span class="line">	    plt.plot(<span class="number">1</span>-a[<span class="string">'proba'</span>],a[<span class="string">'ks'</span>],label=<span class="string">"ks"</span>)</span><br><span class="line">	    </span><br><span class="line">	    plt.legend()</span><br><span class="line">	    ymin, ymax = plt.ylim()</span><br><span class="line">	    plt.xlabel(<span class="string">'1-[Predicted probability]'</span>)</span><br><span class="line">	    plt.ylabel(<span class="string">'Cumulative probability'</span>)</span><br><span class="line">	    plt.title(<span class="string">'Model Evaluation Index K-S'</span>)</span><br><span class="line">	    plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">	    plt.show()</span><br><span class="line">	    <span class="comment"># 虚线</span></span><br><span class="line">	    t = <span class="number">1</span> - a.loc[idx][<span class="string">'proba'</span>]</span><br><span class="line">	    yb = round(a.loc[idx][<span class="string">'cdf1'</span>],<span class="number">4</span>)</span><br><span class="line">	    yg = round(a.loc[idx][<span class="string">'cdf0'</span>],<span class="number">4</span>)</span><br><span class="line">	    </span><br><span class="line">	    plt.plot([t,t],[yb,yg], color =<span class="string">'red'</span>, linewidth=<span class="number">1.4</span>, linestyle=<span class="string">"--"</span>)</span><br><span class="line">	    plt.scatter([t,],[yb,], <span class="number">20</span>, color =<span class="string">'dodgerblue'</span>)</span><br><span class="line">	    plt.annotate(<span class="string">r'$recall_p=%s$'</span> % round(a.loc[idx][<span class="string">'cdf1'</span>],<span class="number">4</span>), xy=(t, yb), xycoords=<span class="string">'data'</span>, xytext=(+<span class="number">10</span>, <span class="number">-5</span>),</span><br><span class="line">	     textcoords=<span class="string">'offset points'</span>, fontsize=<span class="number">8</span>,</span><br><span class="line">	     arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">	    </span><br><span class="line">	    plt.scatter([t,],[yg,], <span class="number">20</span>, color =<span class="string">'darkorange'</span>)</span><br><span class="line">	    plt.annotate(<span class="string">r'$recall_n=%s$'</span> % round(a.loc[idx][<span class="string">'cdf0'</span>],<span class="number">4</span>), xy=(t, yg), xycoords=<span class="string">'data'</span>, xytext=(+<span class="number">10</span>, <span class="number">-10</span>),</span><br><span class="line">	     textcoords=<span class="string">'offset points'</span>, fontsize=<span class="number">8</span>,</span><br><span class="line">	     arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">	    <span class="comment"># K-S曲线峰值</span></span><br><span class="line">	    plt.scatter([t,],[a.loc[idx][<span class="string">'ks'</span>],], <span class="number">20</span>, color =<span class="string">'limegreen'</span>)</span><br><span class="line">	    plt.annotate(<span class="string">r'$ks=%s,p=%s$'</span> % (round(a.loc[idx][<span class="string">'ks'</span>],<span class="number">4</span>)</span><br><span class="line">	    ,round(a.loc[idx][<span class="string">'proba'</span>],<span class="number">4</span>))</span><br><span class="line">	     , xy=(t, a.loc[idx][<span class="string">'ks'</span>])</span><br><span class="line">	     , xycoords=<span class="string">'data'</span></span><br><span class="line">	     , xytext=(+<span class="number">15</span>, <span class="number">-15</span>),</span><br><span class="line">	     textcoords=<span class="string">'offset points'</span></span><br><span class="line">	     , fontsize=<span class="number">8</span></span><br><span class="line">	     ,arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">	    plt.annotate(<span class="string">r'$percent=%s,cnt=%s$'</span> % (round(a.loc[idx][<span class="string">'percent'</span>],<span class="number">4</span>)</span><br><span class="line">	       ,round(a.loc[idx][<span class="string">'Times'</span>],<span class="number">0</span>))</span><br><span class="line">	     , xy=(t, a.loc[idx][<span class="string">'ks'</span>])</span><br><span class="line">	     , xycoords=<span class="string">'data'</span></span><br><span class="line">	     , xytext=(+<span class="number">25</span>, <span class="number">-25</span>),</span><br><span class="line">	     textcoords=<span class="string">'offset points'</span></span><br><span class="line">	     , fontsize=<span class="number">8</span></span><br><span class="line">	     )</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">if</span> out_path:</span><br><span class="line">	    file_name = out_path <span class="keyword">if</span> isinstance(out_path, str) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">	    plt.savefig(file_name)</span><br><span class="line">	    <span class="keyword">else</span>:</span><br><span class="line">	    plt.show()</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">return</span> a.loc[idx]</span><br><span class="line">	    </span><br><span class="line">    </span><br><span class="line">    <span class="string">''' 搜索 最优超参数c '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">grid_search_lr_c</span><span class="params">(X_train,y_train,df_coef_path=False</span></span></span><br><span class="line"><span class="function"><span class="params">     	,pic_coefpath_title=<span class="string">'Logistic Regression Path'</span>,pic_coefpath=False</span></span></span><br><span class="line"><span class="function"><span class="params">     	,pic_performance_title=<span class="string">'Logistic Regression Performance'</span>,pic_performance=False)</span>:</span></span><br><span class="line">	    <span class="comment"># init a LogisticRegression model</span></span><br><span class="line">	    clf_l1_LR = LogisticRegression(C=<span class="number">0.1</span>, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>,class_weight=<span class="string">'balanced'</span>)</span><br><span class="line">	    cs = l1_min_c(X_train, y_train, loss=<span class="string">'log'</span>) * np.logspace(<span class="number">0</span>, <span class="number">3</span>)</span><br><span class="line">	    </span><br><span class="line">	    print(<span class="string">"Computing regularization path ..."</span>)</span><br><span class="line">	    start = datetime.now()</span><br><span class="line">	    <span class="keyword">print</span> start</span><br><span class="line">	    coefs_ = []</span><br><span class="line">	    ks = []</span><br><span class="line">	    <span class="keyword">for</span> c <span class="keyword">in</span> cs:</span><br><span class="line">	    clf_l1_LR.set_params(C=c)</span><br><span class="line">	    clf_l1_LR.fit(X_train, y_train)</span><br><span class="line">	    coefs_.append(clf_l1_LR.coef_.ravel().copy())</span><br><span class="line">	    </span><br><span class="line">	    proba = clf_l1_LR.predict_proba(X_train)[:,<span class="number">1</span>]</span><br><span class="line">	    ks.append(get_ks(proba,y_train))</span><br><span class="line">	    </span><br><span class="line">	    end = datetime.now()</span><br><span class="line">	    <span class="keyword">print</span> end</span><br><span class="line">	    print(<span class="string">"This took "</span>, end - start)</span><br><span class="line">	    coef_cv_df = pd.DataFrame(coefs_,columns=X_train.columns)</span><br><span class="line">	    coef_cv_df[<span class="string">'ks'</span>] = ks</span><br><span class="line">	    coef_cv_df[<span class="string">'c'</span>] = cs</span><br><span class="line">	    <span class="comment"># df_coef_path = 'E:\\Code\\ScoreCard\\agr_coef_cv_df_balanced_nextrain_beta.csv'</span></span><br><span class="line">	    <span class="keyword">if</span> df_coef_path:</span><br><span class="line">	    file_name = df_coef_path <span class="keyword">if</span> isinstance(df_coef_path, str) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">	    coef_cv_df.to_csv(file_name)</span><br><span class="line">	    </span><br><span class="line">	    coefs_ = np.array(coefs_)</span><br><span class="line">	    </span><br><span class="line">	    fig1 = plt.figure(<span class="string">'fig1'</span>)</span><br><span class="line">	    plt.plot(np.log10(cs), coefs_)</span><br><span class="line">	    ymin, ymax = plt.ylim()</span><br><span class="line">	    plt.xlabel(<span class="string">'log(C)'</span>)</span><br><span class="line">	    plt.ylabel(<span class="string">'Coefficients'</span>)</span><br><span class="line">	    <span class="comment"># pic_coefpath_title = 'Logistic Regression Path Class_weight Balanced Nextrain_beta'</span></span><br><span class="line">	    plt.title(pic_coefpath_title)</span><br><span class="line">	    plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">	    <span class="keyword">if</span> pic_coefpath:</span><br><span class="line">	    file_name = pic_coefpath <span class="keyword">if</span> isinstance(pic_coefpath, str) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">	    plt.savefig(file_name)</span><br><span class="line">	    <span class="keyword">else</span>:</span><br><span class="line">	    plt.show()</span><br><span class="line">	    </span><br><span class="line">	    fig2 = plt.figure(<span class="string">'fig2'</span>)</span><br><span class="line">	    plt.plot(np.log10(cs), ks)</span><br><span class="line">	    plt.xlabel(<span class="string">'log(C)'</span>)</span><br><span class="line">	    plt.ylabel(<span class="string">'ks score'</span>)</span><br><span class="line">	    <span class="comment"># pic_performance_title = 'Logistic Regression Performance Class_weight balanced Nextrain_beta'</span></span><br><span class="line">	    plt.title(pic_performance_title)</span><br><span class="line">	    plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">	    <span class="keyword">if</span> pic_performance:</span><br><span class="line">	    file_name = pic_performance <span class="keyword">if</span> isinstance(pic_performance, str) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">	    plt.savefig(file_name)</span><br><span class="line">	    <span class="keyword">else</span>:</span><br><span class="line">	    plt.show()</span><br><span class="line">	    </span><br><span class="line">	    </span><br><span class="line">	    flag = coefs_&lt;<span class="number">0</span></span><br><span class="line">	    idx = np.array(ks)[flag.sum(axis=<span class="number">1</span>) == <span class="number">0</span>].argmax()</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">return</span> (cs[idx],ks[idx])</span><br><span class="line">```    </span><br><span class="line">    </span><br><span class="line">**然后拆分模型，合并计算ks,将一个已经预测后的模型，根据输出的概率值，给定两个分割点，划分区间重新用LR训练。**</span><br><span class="line"></span><br><span class="line">``` python</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lr_sub_train</span><span class="params">(X_train,y_train,idx)</span>:</span></span><br><span class="line">	    index = idx</span><br><span class="line">	    sub_xtrain = X_train.loc[index,:]</span><br><span class="line">	    sub_ytrain = y_train.loc[index]</span><br><span class="line">	    </span><br><span class="line">	    c,ks = grid_search_lr_c(sub_xtrain,sub_ytrain)</span><br><span class="line">	    clf_l1_LR = LogisticRegression(C=c, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>,class_weight=<span class="string">'balanced'</span>)</span><br><span class="line">	    clf_l1_LR.fit(sub_xtrain, sub_ytrain)</span><br><span class="line">	    sub_proba = clf_l1_LR.predict_proba(sub_xtrain)[:,<span class="number">1</span>]</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">return</span> c,ks,sub_proba,sub_ytrain</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train_segmentation_model</span><span class="params">(X_train,y_train,proba_train,left_point,right_point)</span>:</span></span><br><span class="line">	    idx1 = (proba_train &lt;= left_point)</span><br><span class="line">	    idx2 = (proba_train &gt; left_point)&amp;(proba_train &lt;= right_point)</span><br><span class="line">	    idx3 = (proba_train &gt; right_point)</span><br><span class="line">	    c1,ks1,sub_proba1,sub_ytrain1 = lr_sub_train(X_train,y_train,idx1)</span><br><span class="line">	    c2,ks2,sub_proba2,sub_ytrain2 = lr_sub_train(X_train,y_train,idx2)</span><br><span class="line">	    c3,ks3,sub_proba3,sub_ytrain3 = lr_sub_train(X_train,y_train,idx3)</span><br><span class="line">	    <span class="keyword">print</span> <span class="string">'c1:'</span>,c1,<span class="string">' ks1:'</span>,ks1</span><br><span class="line">	    <span class="keyword">print</span> <span class="string">'c2:'</span>,c2,<span class="string">' ks2:'</span>,ks2</span><br><span class="line">	    <span class="keyword">print</span> <span class="string">'c3:'</span>,c3,<span class="string">' ks3:'</span>,ks3</span><br><span class="line">	    </span><br><span class="line">	    proba = []</span><br><span class="line">	    proba.extend(sub_proba1)</span><br><span class="line">	    proba.extend(sub_proba2)</span><br><span class="line">	    proba.extend(sub_proba3)</span><br><span class="line">	    </span><br><span class="line">	    y = []</span><br><span class="line">	    y.extend(sub_ytrain1)</span><br><span class="line">	    y.extend(sub_ytrain2)</span><br><span class="line">	    y.extend(sub_ytrain3)</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">return</span> get_ks(np.array(proba),np.array(y))</span><br><span class="line">	    <span class="comment"># 0.29072674001489612</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>输出</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Computing regularization path ...</span></span><br><span class="line"><span class="string">2017-10-03 16:04:45.229000</span></span><br><span class="line"><span class="string">2017-10-03 16:07:12.977000</span></span><br><span class="line"><span class="string">('This took ', datetime.timedelta(0, 147, 748000))</span></span><br><span class="line"><span class="string">Computing regularization path ...</span></span><br><span class="line"><span class="string">2017-10-03 16:07:28.118000</span></span><br><span class="line"><span class="string">2017-10-03 16:08:59.740000</span></span><br><span class="line"><span class="string">('This took ', datetime.timedelta(0, 91, 622000))</span></span><br><span class="line"><span class="string">Computing regularization path ...</span></span><br><span class="line"><span class="string">2017-10-03 16:09:03.475000</span></span><br><span class="line"><span class="string">2017-10-03 16:09:31.128000</span></span><br><span class="line"><span class="string">('This took ', datetime.timedelta(0, 27, 653000))</span></span><br><span class="line"><span class="string">c1: 0.00663966525938  ks1: 0.208779933516</span></span><br><span class="line"><span class="string">c2: 0.00189750388742  ks2: 0.201006811034</span></span><br><span class="line"><span class="string">c3: 0.000415735598049  ks3: 0.169741554117</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>结果并没有按照我想象的那样，反而分割后的效果没有单一模型的效果好。原因是woe变换没有重新训练?</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/评分卡/" rel="tag"># 评分卡</a>
+          
+            <a href="/tags/逻辑回归/" rel="tag"># 逻辑回归</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/" rel="next" title="逻辑回归评分卡调优（五）之增加高阶特征">
+                <i class="fa fa-chevron-left"></i> 逻辑回归评分卡调优（五）之增加高阶特征
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/07/可视化—matploblib 解决中文显示的问题/" rel="prev" title="可视化—matploblib 解决中文显示的问题">
+                可视化—matploblib 解决中文显示的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

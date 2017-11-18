@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NN," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Neural Networks[3]">
+<meta name="keywords" content="NN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neural Networks[3]">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/10/08/Neural Networks[3]/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="Neural Networks[3]">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/nn3/learningrates.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/nn3/loss.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/nn3/accuracies.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/nn3/weights.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/nn3/cnnweights.jpg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/nn3/nesterov.jpeg">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/nn3/opt2.gif">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/nn3/opt1.gif">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/nn3/gridsearchbad.jpeg">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.519Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Neural Networks[3]">
+<meta name="twitter:description" content="Neural Networks[3]">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/nn3/learningrates.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/10/08/Neural Networks[3]/"/>
+
+
+
+
+
+  <title>Neural Networks[3] | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Neural Networks[3]/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Neural Networks[3]</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Neural Networks[3]
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Table of Contents:</p>
+<ul>
+<li><a href="#gradcheck">Gradient checks</a></li>
+<li><a href="#sanitycheck">Sanity checks</a></li>
+<li><a href="#baby">Babysitting the learning process</a><ul>
+<li><a href="#loss">Loss function</a></li>
+<li><a href="#accuracy">Train/val accuracy</a></li>
+<li><a href="#ratio">Weights:Updates ratio</a></li>
+<li><a href="#distr">Activation/Gradient distributions per layer</a></li>
+<li><a href="#vis">Visualization</a></li>
+</ul>
+</li>
+<li><a href="#update">Parameter updates</a><ul>
+<li><a href="#sgd">First-order (SGD), momentum, Nesterov momentum</a></li>
+<li><a href="#anneal">Annealing the learning rate</a></li>
+<li><a href="#second">Second-order methods</a></li>
+<li><a href="#ada">Per-parameter adaptive learning rates (Adagrad, RMSProp)</a></li>
+</ul>
+</li>
+<li><a href="#hyper">Hyperparameter Optimization</a></li>
+<li><a href="#eval">Evaluation</a><ul>
+<li><a href="#ensemble">Model Ensembles</a></li>
+</ul>
+</li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#add">Additional References</a></li>
+</ul>
+<h2 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h2><p>In the previous sections we’ve discussed the static parts of a Neural Networks: how we can set up the network connectivity, the data, and the loss function. This section is devoted to the dynamics, or in other words, the process of learning the parameters and finding good hyperparameters.</p>
+<p><a name="gradcheck"></a></p>
+<a id="more"></a>
+<h3 id="Gradient-Checks"><a href="#Gradient-Checks" class="headerlink" title="Gradient Checks"></a>Gradient Checks</h3><p>In theory, performing a gradient check is as simple as comparing the analytic gradient to the numerical gradient. In practice, the process is much more involved and error prone. Here are some tips, tricks, and issues to watch out for:</p>
+<p><strong>Use the centered formula</strong>. The formula you may have seen for the finite difference approximation when evaluating the numerical gradient looks as follows:</p>
+<p>$$<br>\frac{df(x)}{dx} = \frac{f(x + h) - f(x)}{h} \hspace{0.1in} \text{(bad, do not use)}<br>$$</p>
+<p>where \(h\) is a very small number, in practice approximately 1e-5 or so. In practice, it turns out that it is much better to use the <em>centered</em> difference formula of the form:</p>
+<p>$$<br>\frac{df(x)}{dx} = \frac{f(x + h) - f(x - h)}{2h} \hspace{0.1in} \text{(use instead)}<br>$$</p>
+<p>This requires you to evaluate the loss function twice to check every single dimension of the gradient (so it is about 2 times as expensive), but the gradient approximation turns out to be much more precise. To see this, you can use Taylor expansion of \(f(x+h)\) and \(f(x-h)\) and verify that the first formula has an error on order of \(O(h)\), while the second formula only has error terms on order of \(O(h^2)\) (i.e. it is a second order approximation).</p>
+<p><strong>Use relative error for the comparison</strong>. What are the details of comparing the numerical gradient \(f’_n\) and analytic gradient \(f’_a\)? That is, how do we know if the two are not compatible? You might be temped to keep track of the difference \(\mid f’_a - f’_n \mid \) or its square and define the gradient check as failed if that difference is above a threshold. However, this is problematic. For example, consider the case where their difference is 1e-4. This seems like a very appropriate difference if the two gradients are about 1.0, so we’d consider the two gradients to match. But if the gradients were both on order of 1e-5 or lower, then we’d consider 1e-4 to be a huge difference and likely a failure. Hence, it is always more appropriate to consider the <em>relative error</em>:</p>
+<p>$$<br>\frac{\mid f’_a - f’_n \mid}{\max(\mid f’_a \mid, \mid f’_n \mid)}<br>$$</p>
+<p>which considers their ratio of the differences to the ratio of the absolute values of both gradients. Notice that normally the relative error formula only includes one of the two terms (either one), but I prefer to max (or add) both to make it symmetric and to prevent dividing by zero in the case where one of the two is zero (which can often happen, especially with ReLUs). However, one must explicitly keep track of the case where both are zero and pass the gradient check in that edge case. In practice:</p>
+<ul>
+<li>relative error &gt; 1e-2 usually means the gradient is probably wrong</li>
+<li>1e-2 &gt; relative error &gt; 1e-4 should make you feel uncomfortable</li>
+<li>1e-4 &gt; relative error is usually okay for objectives with kinks. But if there are no kinks (e.g. use of tanh nonlinearities and softmax), then 1e-4 is too high.</li>
+<li>1e-7 and less you should be happy.</li>
+</ul>
+<p>Also keep in mind that the deeper the network, the higher the relative errors will be. So if you are gradient checking the input data for a 10-layer network, a relative error of 1e-2 might be okay because the errors build up on the way. Conversely, an error of 1e-2 for a single differentiable function likely indicates incorrect gradient.</p>
+<p><strong>Use double precision</strong>. A common pitfall is using single precision floating point to compute gradient check. It is often that case that you might get high relative errors (as high as 1e-2) even with a correct gradient implementation. In my experience I’ve sometimes seen my relative errors plummet from 1e-2 to 1e-8 by switching to double precision.</p>
+<p><strong>Stick around active range of floating point</strong>. It’s a good idea to read through <a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html" target="_blank" rel="noopener">“What Every Computer Scientist Should Know About Floating-Point Arithmetic”</a>, as it may demystify your errors and enable you to write more careful code. For example, in neural nets it can be common to normalize the loss function over the batch. However, if your gradients per datapoint are very small, then <em>additionally</em> dividing them by the number of data points is starting to give very small numbers, which in turn will lead to more numerical issues. This is why I like to always print the raw numerical/analytic gradient, and make sure that the numbers you are comparing are not extremely small (e.g. roughly 1e-10 and smaller in absolute value is worrying). If they are you may want to temporarily scale your loss function up by a constant to bring them to a “nicer” range where floats are more dense - ideally on the order of 1.0, where your float exponent is 0.</p>
+<p><strong>Kinks in the objective</strong>. One source of inaccuracy to be aware of during gradient checking is the problem of <em>kinks</em>. Kinks refer to non-differentiable parts of an objective function, introduced by functions such as ReLU (\(max(0,x)\)), or the SVM loss, Maxout neurons, etc. Consider gradient checking the ReLU function at \(x = -1e6\). Since \(x &lt; 0\), the analytic gradient at this point is exactly zero. However, the numerical gradient would suddenly compute a non-zero gradient because \(f(x+h)\) might cross over the kink (e.g. if \(h &gt; 1e-6\)) and introduce a non-zero contribution. You might think that this is a pathological case, but in fact this case can be very common. For example, an SVM for CIFAR-10 contains up to 450,000 \(max(0,x)\) terms because there are 50,000 examples and each example yields 9 terms to the objective. Moreover, a Neural Network with an SVM classifier will contain many more kinks due to ReLUs.</p>
+<p>Note that it is possible to know if a kink was crossed in the evaluation of the loss. This can be done by keeping track of the identities of all “winners” in a function of form \(max(x,y)\); That is, was x or y higher during the forward pass. If the identity of at least one winner changes when evaluating \(f(x+h)\) and then \(f(x-h)\), then a kink was crossed and the numerical gradient will not be exact.</p>
+<p><strong>Use only few datapoints</strong>. One fix to the above problem of kinks is to use fewer datapoints, since loss functions that contain kinks (e.g. due to use of ReLUs or margin losses etc.) will have fewer kinks with fewer datapoints, so it is less likely for you to cross one when you perform the finite different approximation. Moreover, if your gradcheck for only ~2 or 3 datapoints then you would almost certainly gradcheck for an entire batch. Using very few datapoints also makes your gradient check faster and more efficient.</p>
+<p><strong>Be careful with the step size h</strong>. It is not necessarily the case that smaller is better, because when \(h\) is much smaller, you may start running into numerical precision problems. Sometimes when the gradient doesn’t check, it is possible that you change \(h\) to be 1e-4 or 1e-6 and suddenly the gradient will be correct. This <a href="http://en.wikipedia.org/wiki/Numerical_differentiation" target="_blank" rel="noopener">wikipedia article</a> contains a chart that plots the value of <strong>h</strong> on the x-axis and the numerical gradient error on the y-axis.</p>
+<p><strong>Gradcheck during a “characteristic” mode of operation</strong>. It is important to realize that a gradient check is performed at a particular (and usually random), single point in the space of parameters. Even if the gradient check succeeds at that point, it is not immediately certain that the gradient is correctly implemented globally. Additionally, a random initialization might not be the most “characteristic” point in the space of parameters and may in fact introduce pathological situations where the gradient seems to be correctly implemented but isn’t. For instance, an SVM with very small weight initialization will assign almost exactly zero scores to all datapoints and the gradients will exhibit a particular pattern across all datapoints. An incorrect implementation of the gradient could still produce this pattern and not generalize to a more characteristic mode of operation where some scores are larger than others. Therefore, to be safe it is best to use a short <strong>burn-in</strong> time during which the network is allowed to learn and perform the gradient check after the loss starts to go down. The danger of performing it at the first iteration is that this could introduce pathological edge cases and mask an incorrect implementation of the gradient.</p>
+<p><strong>Don’t let the regularization overwhelm the data</strong>. It is often the case that a loss function is a sum of the data loss and the regularization loss (e.g. L2 penalty on weights). One danger to be aware of is that the regularization loss may overwhelm the data loss, in which case the gradients will be primarily coming from the regularization term (which usually has a much simpler gradient expression). This can mask an incorrect implementation of the data loss gradient. Therefore, it is recommended to turn off regularization and check the data loss alone first, and then the regularization term second and independently. One way to perform the latter is to hack the code to remove the data loss contribution. Another way is to increase the regularization strength so as to ensure that its effect is non-negligible in the gradient check, and that an incorrect implementation would be spotted.</p>
+<p><strong>Remember to turn off dropout/augmentations</strong>. When performing gradient check, remember to turn off any non-deterministic effects in the network, such as dropout, random data augmentations, etc. Otherwise these can clearly introduce huge errors when estimating the numerical gradient. The downside of turning off these effects is that you wouldn’t be gradient checking them (e.g. it might be that dropout isn’t backpropagated correctly). Therefore, a better solution might be to force a particular random seed before evaluating both \(f(x+h)\) and \(f(x-h)\), and when evaluating the analytic gradient.</p>
+<p><strong>Check only few dimensions</strong>. In practice the gradients can have sizes of million parameters. In these cases it is only practical to check some of the dimensions of the gradient and assume that the others are correct. <strong>Be careful</strong>: One issue to be careful with is to make sure to gradient check a few dimensions for every separate parameter. In some applications, people combine the parameters into a single large parameter vector for convenience. In these cases, for example, the biases could only take up a tiny number of parameters from the whole vector, so it is important to not sample at random but to take this into account and check that all parameters receive the correct gradients.</p>
+<p><a name="sanitycheck"></a></p>
+<h3 id="Before-learning-sanity-checks-Tips-Tricks"><a href="#Before-learning-sanity-checks-Tips-Tricks" class="headerlink" title="Before learning: sanity checks Tips/Tricks"></a>Before learning: sanity checks Tips/Tricks</h3><p>Here are a few sanity checks you might consider running before you plunge into expensive optimization:</p>
+<ul>
+<li><strong>Look for correct loss at chance performance.</strong> Make sure you’re getting the loss you expect when you initialize with small parameters. It’s best to first check the data loss alone (so set regularization strength to zero). For example, for CIFAR-10 with a Softmax classifier we would expect the initial loss to be 2.302, because we expect a diffuse probability of 0.1 for each class (since there are 10 classes), and Softmax loss is the negative log probability of the correct class so: -ln(0.1) = 2.302. For The Weston Watkins SVM, we expect all desired margins to be violated (since all scores are approximately zero), and hence expect a loss of 9 (since margin is 1 for each wrong class). If you’re not seeing these losses there might be issue with initialization.</li>
+<li>As a second sanity check, increasing the regularization strength should increase the loss</li>
+<li><strong>Overfit a tiny subset of data</strong>. Lastly and most importantly, before training on the full dataset try to train on a tiny portion (e.g. 20 examples) of your data and make sure you can achieve zero cost. For this experiment it’s also best to set regularization to zero, otherwise this can prevent you from getting zero cost. Unless you pass this sanity check with a small dataset it is not worth proceeding to the full dataset. Note that it may happen that you can overfit very small dataset but still have an incorrect implementation. For instance, if your datapoints’ features are random due to some bug, then it will be possible to overfit your small training set but you will never notice any generalization when you fold it your full dataset.</li>
+</ul>
+<p><a name="baby"></a></p>
+<h3 id="Babysitting-the-learning-process"><a href="#Babysitting-the-learning-process" class="headerlink" title="Babysitting the learning process"></a>Babysitting the learning process</h3><p>There are multiple useful quantities you should monitor during training of a neural network. These plots are the window into the training process and should be utilized to get intuitions about different hyperparameter settings and how they should be changed for more efficient learning. </p>
+<p>The x-axis of the plots below are always in units of epochs, which measure how many times every example has been seen during training in expectation (e.g. one epoch means that every example has been seen once). It is preferable to track epochs rather than iterations since the number of iterations depends on the arbitrary setting of batch size.</p>
+<p><a name="loss"></a></p>
+<h4 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h4><p>The first quantity that is useful to track during training is the loss, as it is evaluated on the individual batches during the forward pass. Below is a cartoon diagram showing the loss over time, and especially what the shape might tell you about the learning rate:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/nn3/learningrates.jpeg" width="49%"><br>  <img src="/assets/nn3/loss.jpeg" width="49%"><br>  <div class="figcaption"><br>    <b>Left:</b> A cartoon depicting the effects of different learning rates. With low learning rates the improvements will be linear. With high learning rates they will start to look more exponential. Higher learning rates will decay the loss faster, but they get stuck at worse values of loss (green line). This is because there is too much “energy” in the optimization and the parameters are bouncing around chaotically, unable to settle in a nice spot in the optimization landscape. <b>Right:</b> An example of a typical loss function over time, while training a small network on CIFAR-10 dataset. This loss function looks reasonable (it might indicate a slightly too small learning rate based on its speed of decay, but it’s hard to say), and also indicates that the batch size might be a little too low (since the cost is a little too noisy).<br>  </div><br></div>
+
+<p>The amount of “wiggle” in the loss is related to the batch size. When the batch size is 1, the wiggle will be relatively high. When the batch size is the full dataset, the wiggle will be minimal because every gradient update should be improving the loss function monotonically (unless the learning rate is set too high).</p>
+<p>Some people prefer to plot their loss functions in the log domain. Since learning progress generally takes an exponential form shape, the plot appears more as a slightly more interpretable straight line, rather than a hockey stick. Additionally, if multiple cross-validated models are plotted on the same loss graph, the differences between them become more apparent.</p>
+<p>Sometimes loss functions can look funny <a href="http://lossfunctions.tumblr.com/" target="_blank" rel="noopener">lossfunctions.tumblr.com</a>.</p>
+<p><a name="accuracy"></a></p>
+<h4 id="Train-Val-accuracy"><a href="#Train-Val-accuracy" class="headerlink" title="Train/Val accuracy"></a>Train/Val accuracy</h4><p>The second important quantity to track while training a classifier is the validation/training accuracy. This plot can give you valuable insights into the amount of overfitting in your model:</p>
+<div class="fig figleft fighighlight"><br>  <img src="/assets/nn3/accuracies.jpeg"><br>  <div class="figcaption"><br>    The gap between the training and validation accuracy indicates the amount of overfitting. Two possible cases are shown in the diagram on the left. The blue validation error curve shows very small validation accuracy compared to the training accuracy, indicating strong overfitting (note, it’s possible for the validation accuracy to even start to go down after some point). When you see this in practice you probably want to increase regularization (stronger L2 weight penalty, more dropout, etc.) or collect more data. The other possible case is when the validation accuracy tracks the training accuracy fairly well. This case indicates that your model capacity is not high enough: make the model larger by increasing the number of parameters.<br>  </div><br>  <div style="clear:both"></div><br></div>
+
+<p><a name="ratio"></a></p>
+<h4 id="Ratio-of-weights-updates"><a href="#Ratio-of-weights-updates" class="headerlink" title="Ratio of weights:updates"></a>Ratio of weights:updates</h4><p>The last quantity you might want to track is the ratio of the update magnitudes to the value magnitudes. Note: <em>updates</em>, not the raw gradients (e.g. in vanilla sgd this would be the gradient multiplied by the learning rate). You might want to evaluate and track this ratio for every set of parameters independently. A rough heuristic is that this ratio should be somewhere around 1e-3. If it is lower than this then the learning rate might be too low. If it is higher then the learning rate is likely too high. Here is a specific example:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># assume parameter vector W and its gradient vector dW</span></span><br><span class="line">param_scale = np.linalg.norm(W.ravel())</span><br><span class="line">update = -learning_rate*dW <span class="comment"># simple SGD update</span></span><br><span class="line">update_scale = np.linalg.norm(update.ravel())</span><br><span class="line">W += update <span class="comment"># the actual update</span></span><br><span class="line"><span class="keyword">print</span> update_scale / param_scale <span class="comment"># want ~1e-3</span></span><br></pre></td></tr></table></figure>
+<p>Instead of tracking the min or the max, some people prefer to compute and track the norm of the gradients and their updates instead. These metrics are usually correlated and often give approximately the same results.</p>
+<p><a name="distr"></a></p>
+<h4 id="Activation-Gradient-distributions-per-layer"><a href="#Activation-Gradient-distributions-per-layer" class="headerlink" title="Activation / Gradient distributions per layer"></a>Activation / Gradient distributions per layer</h4><p>An incorrect initialization can slow down or even completely stall the learning process. Luckily, this issue can be diagnosed relatively easily. One way to do so is to plot activation/gradient histograms for all layers of the network. Intuitively, it is not a good sign to see any strange distributions - e.g. with tanh neurons we would like to see a distribution of neuron activations between the full range of [-1,1], instead of seeing all neurons outputting zero, or all neurons being completely saturated at either -1 or 1.</p>
+<p><a name="vis"></a></p>
+<h4 id="First-layer-Visualizations"><a href="#First-layer-Visualizations" class="headerlink" title="First-layer Visualizations"></a>First-layer Visualizations</h4><p>Lastly, when one is working with image pixels it can be helpful and satisfying to plot the first-layer features visually:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/nn3/weights.jpeg" width="43%" style="margin-right:10px;"><br>  <img src="/assets/nn3/cnnweights.jpg" width="49%"><br>  <div class="figcaption"><br>    Examples of visualized weights for the first layer of a neural network. <b>Left</b>: Noisy features indicate could be a symptom: Unconverged network, improperly set learning rate, very low weight regularization penalty. <b>Right:</b> Nice, smooth, clean and diverse features are a good indication that the training is proceeding well.<br>  </div><br></div>
+
+<p><a name="update"></a></p>
+<h3 id="Parameter-updates"><a href="#Parameter-updates" class="headerlink" title="Parameter updates"></a>Parameter updates</h3><p>Once the analytic gradient is computed with backpropagation, the gradients are used to perform a parameter update. There are several approaches for performing the update, which we discuss next.</p>
+<p>We note that optimization for deep networks is currently a very active area of research. In this section we highlight some established and common techniques you may see in practice, briefly describe their intuition, but leave a detailed analysis outside of the scope of the class. We provide some further pointers for an interested reader.</p>
+<p><a name="sgd"></a></p>
+<h4 id="SGD-and-bells-and-whistles"><a href="#SGD-and-bells-and-whistles" class="headerlink" title="SGD and bells and whistles"></a>SGD and bells and whistles</h4><p><strong>Vanilla update</strong>. The simplest form of update is to change the parameters along the negative gradient direction (since the gradient indicates the direction of increase, but we usually wish to minimize a loss function). Assuming a vector of parameters <code>x</code> and the gradient <code>dx</code>, the simplest update has the form:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Vanilla update</span></span><br><span class="line">x += - learning_rate * dx</span><br></pre></td></tr></table></figure>
+<p>where <code>learning_rate</code> is a hyperparameter - a fixed constant. When evaluated on the full dataset, and when the learning rate is low enough, this is guaranteed to make non-negative progress on the loss function.</p>
+<p><strong>Momentum update</strong> is another approach that almost always enjoys better converge rates on deep networks. This update can be motivated from a physical perspective of the optimization problem. In particular, the loss can be interpreted as a the height of a hilly terrain (and therefore also to the potential energy since \(U = mgh\) and therefore \( U \propto h \) ). Initializing the parameters with random numbers is equivalent to setting a particle with zero initial velocity at some location. The optimization process can then be seen as equivalent to the process of simulating the parameter vector (i.e. a particle) as rolling on the landscape.</p>
+<p>Since the force on the particle is related to the gradient of potential energy (i.e. \(F = - \nabla U \) ), the <strong>force</strong> felt by the particle is precisely the (negative) <strong>gradient</strong> of the loss function. Moreover, \(F = ma \) so the (negative) gradient is in this view proportional to the acceleration of the particle. Note that this is different from the SGD update shown above, where the gradient directly integrates the position. Instead, the physics view suggests an update in which the gradient only directly influences the velocity, which in turn has an effect on the position:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Momentum update</span></span><br><span class="line">v = mu * v - learning_rate * dx <span class="comment"># integrate velocity</span></span><br><span class="line">x += v <span class="comment"># integrate position</span></span><br></pre></td></tr></table></figure>
+<p>Here we see an introduction of a <code>v</code> variable that is initialized at zero, and an additional hyperparameter (<code>mu</code>). As an unfortunate misnomer, this variable is in optimization referred to as <em>momentum</em> (its typical value is about 0.9), but its physical meaning is more consistent with the coefficient of friction. Effectively, this variable damps the velocity and reduces the kinetic energy of the system, or otherwise the particle would never come to a stop at the bottom of a hill. When cross-validated, this parameter is usually set to values such as [0.5, 0.9, 0.95, 0.99]. Similar to annealing schedules for learning rates (discussed later, below), optimization can sometimes benefit a little from momentum schedules, where the momentum is increased in later stages of learning. A typical setting is to start with momentum of about 0.5 and anneal it to 0.99 or so over multiple epochs.</p>
+<blockquote>
+<p>With Momentum update, the parameter vector will build up velocity in any direction that has consistent gradient.</p>
+</blockquote>
+<p><strong>Nesterov Momentum</strong> is a slightly different version of the momentum update has recently been gaining popularity. It enjoys stronger theoretical converge guarantees for convex functions and in practice it also consistenly works slightly better than standard momentum.</p>
+<p>The core idea behind Nesterov momentum is that when the current parameter vector is at some position <code>x</code>, then looking at the momentum update above, we know that the momentum term alone (i.e. ignoring the second term with the gradient) is about to nudge the parameter vector by <code>mu * v</code>. Therefore, if we are about to compute the gradient, we can treat the future approximate position <code>x + mu * v</code> as a “lookahead” - this is a point in the vicinity of where we are soon going to end up. Hence, it makes sense to compute the gradient at <code>x + mu * v</code> instead of at the “old/stale” position <code>x</code>. </p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/nn3/nesterov.jpeg"><br>  <div class="figcaption"><br>    Nesterov momentum. Instead of evaluating gradient at the current position (red circle), we know that our momentum is about to carry us to the tip of the green arrow. With Nesterov momentum we therefore instead evaluate the gradient at this “looked-ahead” position.<br>  </div><br></div>
+
+<p>That is, in a slightly awkward notation, we would like to do the following:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x_ahead = x + mu * v</span><br><span class="line"><span class="comment"># evaluate dx_ahead (the gradient at x_ahead instead of at x)</span></span><br><span class="line">v = mu * v - learning_rate * dx_ahead</span><br><span class="line">x += v</span><br></pre></td></tr></table></figure>
+<p>However, in practice people prefer to express the update to look as similar to vanilla SGD or to the previous momentum update as possible. This is possible to achieve by manipulating the update above with a variable transform <code>x_ahead = x + mu * v</code>, and then expressing the update in terms of <code>x_ahead</code> instead of <code>x</code>. That is, the parameter vector we are actually storing is always the ahead version. The equations in terms of <code>x_ahead</code> (but renaming it back to <code>x</code>) then become:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v_prev = v <span class="comment"># back this up</span></span><br><span class="line">v = mu * v - learning_rate * dx <span class="comment"># velocity update stays the same</span></span><br><span class="line">x += -mu * v_prev + (<span class="number">1</span> + mu) * v <span class="comment"># position update changes form</span></span><br></pre></td></tr></table></figure>
+<p>We recommend this further reading to understand the source of these equations and the mathematical formulation of Nesterov’s Accelerated Momentum (NAG):</p>
+<ul>
+<li><a href="http://arxiv.org/pdf/1212.0901v2.pdf" target="_blank" rel="noopener">Advances in optimizing Recurrent Networks</a> by Yoshua Bengio, Section 3.5.</li>
+<li><a href="http://www.cs.utoronto.ca/~ilya/pubs/ilya_sutskever_phd_thesis.pdf" target="_blank" rel="noopener">Ilya Sutskever’s thesis</a> (pdf) contains a longer exposition of the topic in section 7.2</li>
+</ul>
+<p><a name="anneal"></a></p>
+<h4 id="Annealing-the-learning-rate"><a href="#Annealing-the-learning-rate" class="headerlink" title="Annealing the learning rate"></a>Annealing the learning rate</h4><p>In training deep networks, it is usually helpful to anneal the learning rate over time. Good intuition to have in mind is that with a high learning rate, the system contains too much kinetic energy and the parameter vector bounces around chaotically, unable to settle down into deeper, but narrower parts of the loss function. Knowing when to decay the learning rate can be tricky: Decay it slowly and you’ll be wasting computation bouncing around chaotically with little improvement for a long time. But decay it too aggressively and the system will cool too quickly, unable to reach the best position it can. There are three common types of implementing the learning rate decay:</p>
+<ul>
+<li><strong>Step decay</strong>: Reduce the learning rate by some factor every few epochs. Typical values might be reducing the learning rate by a half every 5 epochs, or by 0.1 every 20 epochs. These numbers depend heavily on the type of problem and the model. One heuristic you may see in practice is to watch the validation error while training with a fixed learning rate, and reduce the learning rate by a constant (e.g. 0.5) whenever the validation error stops improving.</li>
+<li><strong>Exponential decay.</strong> has the mathematical form \(\alpha = \alpha_0 e^{-k t}\), where \(\alpha_0, k\) are hyperparameters and \(t\) is the iteration number (but you can also use units of epochs).</li>
+<li><strong>1/t decay</strong> has the mathematical form \(\alpha = \alpha_0 / (1 + k t )\) where \(a_0, k\) are hyperparameters and \(t\) is the iteration number.</li>
+</ul>
+<p>In practice, we find that the step decay dropout is slightly preferable because the hyperparameters it involves (the fraction of decay and the step timings in units of epochs) are more interpretable than the hyperparameter \(k\). Lastly, if you can afford the computational budget, err on the side of slower decay and train for a longer time.</p>
+<p><a name="second"></a></p>
+<h4 id="Second-order-methods"><a href="#Second-order-methods" class="headerlink" title="Second order methods"></a>Second order methods</h4><p>A second, popular group of methods for optimization in context of deep learning is based on <a href="http://en.wikipedia.org/wiki/Newton%27s_method_in_optimization" target="_blank" rel="noopener">Newton’s method</a>, which iterates the following update:</p>
+<p>$$<br>x \leftarrow x - [H f(x)]^{-1} \nabla f(x)<br>$$</p>
+<p>Here, \(H f(x)\) is the <a href="http://en.wikipedia.org/wiki/Hessian_matrix" target="_blank" rel="noopener">Hessian matrix</a>, which is a square matrix of second-order partial derivatives of the function. The term \(\nabla f(x)\) is the gradient vector, as seen in Gradient Descent. Intuitively, the Hessian describes the local curvature of the loss function, which allows us to perform a more efficient update. In particular, multiplying by the inverse Hessian leads the optimization to take more aggressive steps in directions of shallow curvature and shorter steps in directions of steep curvature. Note, crucially, the absence of any learning rate hyperparameters in the update formula, which the proponents of these methods cite this as a large advantage over first-order methods.</p>
+<p>However, the update above is impractical for most deep learning applications because computing (and inverting) the Hessian in its explicit form is a very costly process in both space and time. For instance, a Neural Network with one million parameters would have a Hessian matrix of size [1,000,000 x 1,000,000], occupying approximately 3725 gigabytes of RAM. Hence, a large variety of <em>quasi-Newton</em> methods have been developed that seek to approximate the inverse Hessian. Among these, the most popular is <a href="http://en.wikipedia.org/wiki/Limited-memory_BFGS" target="_blank" rel="noopener">L-BFGS</a>, which uses the information in the gradients over time to form the approximation implicitly (i.e. the full matrix is never computed).</p>
+<p>However, even after we eliminate the memory concerns, a large downside of a naive application of L-BFGS is that it must be computed over the entire training set, which could contain millions of examples. Unlike mini-batch SGD, getting L-BFGS to work on mini-batches is more tricky and an active area of research.</p>
+<p><strong>In practice</strong>, it is currently not common to see L-BFGS or similar second-order methods applied to large-scale Deep Learning and Convolutional Neural Networks. Instead, SGD variants based on (Nesterov’s) momentum are more standard because they are simpler and scale more easily.</p>
+<p>Additional references:</p>
+<ul>
+<li><a href="http://research.google.com/archive/large_deep_networks_nips2012.html" target="_blank" rel="noopener">Large Scale Distributed Deep Networks</a> is a paper from the Google Brain team, comparing L-BFGS and SGD variants in large-scale distributed optimization.</li>
+<li><a href="http://arxiv.org/abs/1311.2115" target="_blank" rel="noopener">SFO</a> algorithm strives to combine the advantages of SGD with advantages of L-BFGS.</li>
+</ul>
+<p><a name="ada"></a></p>
+<h4 id="Per-parameter-adaptive-learning-rate-methods"><a href="#Per-parameter-adaptive-learning-rate-methods" class="headerlink" title="Per-parameter adaptive learning rate methods"></a>Per-parameter adaptive learning rate methods</h4><p>All previous approaches we’ve discussed so far manipulated the learning rate globally and equally for all parameters. Tuning the learning rates is an expensive process, so much work has gone into devising methods that can adaptively tune the learning rates, and even do so per parameter. Many of these methods may still require other hyperparameter settings, but the argument is that they are well-behaved for a broader range of hyperparameter values than the raw learning rate. In this section we highlight some common adaptive methods you may encounter in practice:</p>
+<p><strong>Adagrad</strong> is an adaptive learning rate method originally proposed by <a href="http://jmlr.org/papers/v12/duchi11a.html" target="_blank" rel="noopener">Duchi et al.</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Assume the gradient dx and parameter vector x</span></span><br><span class="line">cache += dx**<span class="number">2</span></span><br><span class="line">x += - learning_rate * dx / (np.sqrt(cache) + eps)</span><br></pre></td></tr></table></figure>
+<p>Notice that the variable <code>cache</code> has size equal to the size of the gradient, and keeps track of per-parameter sum of squared gradients. This is then used to normalize the parameter update step, element-wise. Notice that the weights that receive high gradients will have their effective learning rate reduced, while weights that receive small or infrequent updates will have their effective learning rate increased. Amusingly, the square root operation turns out to be very important and without it the algorithm performs much worse. The smoothing term <code>eps</code> (usually set somewhere in range from 1e-4 to 1e-8) avoids division by zero. A downside of Adagrad is that in case of Deep Learning, the monotonic learning rate usually proves too aggressive and stops learning too early.</p>
+<p><strong>RMSprop.</strong> RMSprop is a very effective, but currently unpublished adaptive learning rate method. Amusingly, everyone who uses this method in their work currently cites <a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf" target="_blank" rel="noopener">slide 29 of Lecture 6</a> of Geoff Hinton’s Coursera class. The RMSProp update adjusts the Adagrad method in a very simple way in an attempt to reduce its aggressive, monotonically decreasing learning rate. In particular, it uses a moving average of squared gradients instead, giving:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cache = decay_rate * cache + (<span class="number">1</span> - decay_rate) * dx**<span class="number">2</span></span><br><span class="line">x += - learning_rate * dx / (np.sqrt(cache) + eps)</span><br></pre></td></tr></table></figure>
+<p>Here, <code>decay_rate</code> is a hyperparameter and typical values are [0.9, 0.99, 0.999]. Notice that the <code>x+=</code> update is identical to Adagrad, but the <code>cache</code> variable is a “leaky”. Hence, RMSProp still modulates the learning rate of each weight based on the magnitudes of its gradients, which has a beneficial equalizing effect, but unlike Adagrad the updates do not get monotonically smaller.</p>
+<p><strong>Adam.</strong> <a href="http://arxiv.org/abs/1412.6980" target="_blank" rel="noopener">Adam</a> is a recently proposed update that looks a bit like RMSProp with momentum. The (simplified) update looks as follows:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m = beta1*m + (<span class="number">1</span>-beta1)*dx</span><br><span class="line">v = beta2*v + (<span class="number">1</span>-beta2)*(dx**<span class="number">2</span>)</span><br><span class="line">x += - learning_rate * m / (np.sqrt(v) + eps)</span><br></pre></td></tr></table></figure>
+<p>Notice that the update looks exactly as RMSProp update, except the “smooth” version of the gradient <code>m</code> is used instead of the raw (and perhaps noisy) gradient vector <code>dx</code>. Recommended values in the paper are <code>eps = 1e-8</code>, <code>beta1 = 0.9</code>, <code>beta2 = 0.999</code>. In practice Adam is currently recommended as the default algorithm to use, and often works slightly better than RMSProp. However, it is often also worth trying SGD+Nesterov Momentum as an alternative. The full Adam update also includes a <em>bias correction</em> mechanism, which compensates for the fact that in the first few time steps the vectors <code>m,v</code> are both initialized and therefore biased at zero, before they fully “warm up”. We refer the reader to the paper for the details, or the course slides where this is expanded on.</p>
+<p>Additional References:</p>
+<ul>
+<li><a href="http://arxiv.org/abs/1312.6055" target="_blank" rel="noopener">Unit Tests for Stochastic Optimization</a> proposes a series of tests as a standardized benchmark for stochastic optimization.</li>
+</ul>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/nn3/opt2.gif" width="49%" style="margin-right:10px;"><br>  <img src="/assets/nn3/opt1.gif" width="49%"><br>  <div class="figcaption"><br>    Animations that may help your intuitions about the learning process dynamics. <b>Left:</b> Contours of a loss surface and time evolution of different optimization algorithms. Notice the “overshooting” behavior of momentum-based methods, which make the optimization look like a ball rolling down the hill. <b>Right:</b> A visualization of a saddle point in the optimization landscape, where the curvature along different dimension has different signs (one dimension curves up and another down). Notice that SGD has a very hard time breaking symmetry and gets stuck on the top. Conversely, algorithms such as RMSprop will see very low gradients in the saddle direction. Due to the denominator term in the RMSprop update, this will increase the effective learning rate along this direction, helping RMSProp proceed. Images credit: <a href="https://twitter.com/alecrad" target="_blank" rel="noopener">Alec Radford</a>.<br>  </div><br></div>
+
+<p><a name="hyper"></a></p>
+<h3 id="Hyperparameter-optimization"><a href="#Hyperparameter-optimization" class="headerlink" title="Hyperparameter optimization"></a>Hyperparameter optimization</h3><p>As we’ve seen, training Neural Networks can involve many hyperparameter settings. The most common hyperparameters in context of Neural Networks include:</p>
+<ul>
+<li>the initial learning rate</li>
+<li>learning rate decay schedule (such as the decay constant)</li>
+<li>regularization strength (L2 penalty, dropout strength)</li>
+</ul>
+<p>But as saw, there are many more relatively less sensitive hyperparameters, for example in per-parameter adaptive learning methods, the setting of momentum and its schedule, etc. In this section we describe some additional tips and tricks for performing the hyperparameter search:</p>
+<p><strong>Implementation</strong>. Larger Neural Networks typically require a long time to train, so performing hyperparameter search can take many days/weeks. It is important to keep this in mind since it influences the design of your code base. One particular design is to have a <strong>worker</strong> that continuously samples random hyperparameters and performs the optimization. During the training, the worker will keep track of the validation performance after every epoch, and writes a model checkpoint (together with miscellaneous training statistics such as the loss over time) to a file, preferably on a shared file system. It is useful to include the validation performance directly in the filename, so that it is simple to inspect and sort the progress. Then there is a second program which we will call a <strong>master</strong>, which launches or kills workers across a computing cluster, and may additionally inspect the checkpoints written by workers and plot their training statistics, etc.</p>
+<p><strong>Prefer one validation fold to cross-validation</strong>. In most cases a single validation set of respectable size substantially simplifies the code base, without the need for cross-validation with multiple folds. You’ll hear people say they “cross-validated” a parameter, but many times it is assumed that they still only used a single validation set.</p>
+<p><strong>Hyperparameter ranges</strong>. Search for hyperparameters on log scale. For example, a typical sampling of the learning rate would look as follows: <code>learning_rate = 10 ** uniform(-6, 1)</code>. That is, we are generating a random number from a uniform distribution, but then raising it to the power of 10. The same strategy should be used for the regularization strength. Intuitively, this is because learning rate and regularization strength have multiplicative effects on the training dynamics. For example, a fixed change of adding 0.01 to a learning rate has huge effects on the dynamics if the learning rate is 0.001, but nearly no effect if the learning rate when it is 10. This is because the learning rate multiplies the computed gradient in the update. Therefore, it is much more natural to consider a range of learning rate multiplied or divided by some value, than a range of learning rate added or subtracted to by some value. Some parameters (e.g. dropout) are instead usually searched in the original scale (e.g. <code>dropout = uniform(0,1)</code>).</p>
+<p><strong>Prefer random search to grid search</strong>. As argued by Bergstra and Bengio in <a href="http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf" target="_blank" rel="noopener">Random Search for Hyper-Parameter Optimization</a>, “randomly chosen trials are more efficient for hyper-parameter optimization than trials on a grid”. As it turns out, this is also usually easier to implement.</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/nn3/gridsearchbad.jpeg" width="50%"><br>  <div class="figcaption"><br>    Core illustration from <a href="http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf" target="_blank" rel="noopener">Random Search for Hyper-Parameter Optimization</a> by Bergstra and Bengio. It is very often the case that some of the hyperparameters matter much more than others (e.g. top hyperparam vs. left one in this figure). Performing random search rather than grid search allows you to much more precisely discover good values for the important ones.<br>  </div><br></div>
+
+<p><strong>Careful with best values on border</strong>. Sometimes it can happen that you’re searching for a hyperparameter (e.g. learning rate) in a bad range. For example, suppose we use <code>learning_rate = 10 ** uniform(-6, 1)</code>. Once we receive the results, it is important to double check that the final learning rate is not at the edge of this interval, or otherwise you may be missing more optimal hyperparameter setting beyond the interval.</p>
+<p><strong>Stage your search from coarse to fine</strong>. In practice, it can be helpful to first search in coarse ranges (e.g. 10 ** [-6, 1]), and then depending on where the best results are turning up, narrow the range. Also, it can be helpful to perform the initial coarse search while only training for 1 epoch or even less, because many hyperparameter settings can lead the model to not learn at all, or immediately explode with infinite cost. The second stage could then perform a narrower search with 5 epochs, and the last stage could perform a detailed search in the final range for many more epochs (for example).</p>
+<p><strong>Bayesian Hyperparameter Optimization</strong> is a whole area of research devoted to coming up with algorithms that try to more efficiently navigate the space of hyperparameters. The core idea is to appropriately balance the exploration - exploitation trade-off when querying the performance at different hyperparameters. Multiple libraries have been developed based on these models as well, among some of the better known ones are <a href="https://github.com/JasperSnoek/spearmint" target="_blank" rel="noopener">Spearmint</a>, <a href="http://www.cs.ubc.ca/labs/beta/Projects/SMAC/" target="_blank" rel="noopener">SMAC</a>, and <a href="http://jaberg.github.io/hyperopt/" target="_blank" rel="noopener">Hyperopt</a>. However, in practical settings with ConvNets it is still relatively difficult to beat random search in a carefully-chosen intervals. See some additional from-the-trenches discussion <a href="http://nlpers.blogspot.com/2014/10/hyperparameter-search-bayesian.html" target="_blank" rel="noopener">here</a>.</p>
+<p><a name="eval"></a></p>
+<h2 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h2><p><a name="ensemble"></a></p>
+<h3 id="Model-Ensembles"><a href="#Model-Ensembles" class="headerlink" title="Model Ensembles"></a>Model Ensembles</h3><p>In practice, one reliable approach to improving the performance of Neural Networks by a few percent is to train multiple independent models, and at test time average their predictions. As the number of models in the ensemble increases, the performance typically monotonically improves (though with diminishing returns). Moreover, the improvements are more dramatic with higher model variety in the ensemble. There are a few approaches to forming an ensemble:</p>
+<ul>
+<li><strong>Same model, different initializations</strong>. Use cross-validation to determine the best hyperparameters, then train multiple models with the best set of hyperparameters but with different random initialization. The danger with this approach is that the variety is only due to initialization.</li>
+<li><strong>Top models discovered during cross-validation</strong>. Use cross-validation to determine the best hyperparameters, then pick the top few (e.g. 10) models to form the ensemble. This improves the variety of the ensemble but has the danger of including suboptimal models. In practice, this can be easier to perform since it doesn’t require additional retraining of models after cross-validation</li>
+<li><strong>Different checkpoints of a single model</strong>. If training is very expensive, some people have had limited success in taking different checkpoints of a single network over time (for example after every epoch) and using those to form an ensemble. Clearly, this suffers from some lack of variety, but can still work reasonably well in practice. The advantage of this approach is that is very cheap.</li>
+<li><strong>Running average of parameters during training</strong>. Related to the last point, a cheap way of almost always getting an extra percent or two of performance is to maintain a second copy of the network’s weights in memory that maintains an exponentially decaying sum of previous weights during training. This way you’re averaging the state of the network over last several iterations. You will find that this “smoothed” version of the weights over last few steps almost always achieves better validation error. The rough intuition to have in mind is that the objective is bowl-shaped and your network is jumping around the mode, so the average has a higher chance of being somewhere nearer the mode.</li>
+</ul>
+<p>One disadvantage of model ensembles is that they take longer to evaluate on test example. An interested reader may find the recent work from Geoff Hinton on <a href="https://www.youtube.com/watch?v=EK61htlw8hY" target="_blank" rel="noopener">“Dark Knowledge”</a> inspiring, where the idea is to “distill” a good ensemble back to a single model by incorporating the ensemble log likelihoods into a modified objective.</p>
+<p><a name="summary"></a></p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>To train a Neural Network:</p>
+<ul>
+<li>Gradient check your implementation with a small batch of data and be aware of the pitfalls.</li>
+<li>As a sanity check, make sure your initial loss is reasonable, and that you can achieve 100% training accuracy on a very small portion of the data</li>
+<li>During training, monitor the loss, the training/validation accuracy, and if you’re feeling fancier, the magnitude of updates in relation to parameter values (it should be ~1e-3), and when dealing with ConvNets, the first-layer weights.</li>
+<li>The two recommended updates to use are either SGD+Nesterov Momentum or Adam.</li>
+<li>Decay your learning rate over the period of the training. For example, halve the learning rate after a fixed number of epochs, or whenever the validation accuracy tops off.</li>
+<li>Search for good hyperparameters with random search (not grid search). Stage your search from coarse (wide hyperparameter ranges, training only for 1-5 epochs), to fine (narrower rangers, training for many more epochs)</li>
+<li>Form model ensembles for extra performance</li>
+</ul>
+<p><a name="add"></a></p>
+<h2 id="Additional-References"><a href="#Additional-References" class="headerlink" title="Additional References"></a>Additional References</h2><ul>
+<li><a href="http://research.microsoft.com/pubs/192769/tricks-2012.pdf" target="_blank" rel="noopener">SGD</a> tips and tricks from Leon Bottou</li>
+<li><a href="http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf" target="_blank" rel="noopener">Efficient BackProp</a> (pdf) from Yann LeCun</li>
+<li><a href="http://arxiv.org/pdf/1206.5533v2.pdf" target="_blank" rel="noopener">Practical Recommendations for Gradient-Based Training of Deep<br>Architectures</a> from Yoshua Bengio</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NN/" rel="tag"># NN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/08/Neural Networks[1]/" rel="next" title="Neural Networks[1]">
+                <i class="fa fa-chevron-left"></i> Neural Networks[1]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/08/Convolutional Networks/" rel="prev" title="Convolutional Networks">
+                Convolutional Networks <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Learning"><span class="nav-number">1.</span> <span class="nav-text">Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Checks"><span class="nav-number">1.1.</span> <span class="nav-text">Gradient Checks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Before-learning-sanity-checks-Tips-Tricks"><span class="nav-number">1.2.</span> <span class="nav-text">Before learning: sanity checks Tips/Tricks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Babysitting-the-learning-process"><span class="nav-number">1.3.</span> <span class="nav-text">Babysitting the learning process</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Loss-function"><span class="nav-number">1.3.1.</span> <span class="nav-text">Loss function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Train-Val-accuracy"><span class="nav-number">1.3.2.</span> <span class="nav-text">Train/Val accuracy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ratio-of-weights-updates"><span class="nav-number">1.3.3.</span> <span class="nav-text">Ratio of weights:updates</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activation-Gradient-distributions-per-layer"><span class="nav-number">1.3.4.</span> <span class="nav-text">Activation / Gradient distributions per layer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#First-layer-Visualizations"><span class="nav-number">1.3.5.</span> <span class="nav-text">First-layer Visualizations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-updates"><span class="nav-number">1.4.</span> <span class="nav-text">Parameter updates</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SGD-and-bells-and-whistles"><span class="nav-number">1.4.1.</span> <span class="nav-text">SGD and bells and whistles</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Annealing-the-learning-rate"><span class="nav-number">1.4.2.</span> <span class="nav-text">Annealing the learning rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Second-order-methods"><span class="nav-number">1.4.3.</span> <span class="nav-text">Second order methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Per-parameter-adaptive-learning-rate-methods"><span class="nav-number">1.4.4.</span> <span class="nav-text">Per-parameter adaptive learning rate methods</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hyperparameter-optimization"><span class="nav-number">1.5.</span> <span class="nav-text">Hyperparameter optimization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluation"><span class="nav-number">2.</span> <span class="nav-text">Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Ensembles"><span class="nav-number">2.1.</span> <span class="nav-text">Model Ensembles</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Additional-References"><span class="nav-number">4.</span> <span class="nav-text">Additional References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

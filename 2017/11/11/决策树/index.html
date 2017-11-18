@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="决策树," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="决策树">
+<meta name="keywords" content="决策树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="决策树">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/11/11/决策树/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="决策树">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111135956.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111140116.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111140225.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111140314.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111140829.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111140904.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111141620.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111141639.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111142828.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111143402.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111143441.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="决策树">
+<meta name="twitter:description" content="决策树">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/chinahadoop/决策树和随机森林/TIM截图20171111135956.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/11/11/决策树/"/>
+
+
+
+
+
+  <title>决策树 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/决策树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">决策树</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T13:25:12+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  决策树
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="决策树的概念"><a href="#决策树的概念" class="headerlink" title="决策树的概念"></a>决策树的概念</h2><p>决策树是一种树型结构，其中每个内部结点表示在一个属性上的测试，每个分支代表一个测试输出，每个叶节点代表一种类别。<br>决策树学习是以实例为基础的归纳学习。<br>决策树学习采用的是自顶向下的递归方法，其基本思想是以信息熵为度量构造一棵熵值下降最快的树，到叶子节点处的熵值为零，此时每个叶节点中的实例都属于同一类。</p>
+<h2 id="决策树学习的生成算法"><a href="#决策树学习的生成算法" class="headerlink" title="决策树学习的生成算法"></a>决策树学习的生成算法</h2><p>建立决策树的关键，即在当前状态下选择哪个属性作为分类依据。根据不同的目标函数，建立决策树主要有以下三种算法：</p>
+<ul>
+<li>ID3(Iterative Dichotomiser)</li>
+<li>C4.5</li>
+<li>CART(Classification And Regression Tree)</li>
+</ul>
+<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵和条件熵分别称为经验熵和经验条件熵。</p>
+<p>信息增益表示得知特征A的信息而使得类X的信息的不确定性减少的程度。</p>
+<a id="more"></a>
+<h4 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h4><p>特征A对训练数据集D的信息增益g(D,A)，定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵H(D/A)之差，即：g(D,A)=H(D)-H(D/A)，显然，这即为训练数据集D和特征A的互信息。</p>
+<h4 id="基本记号："><a href="#基本记号：" class="headerlink" title="基本记号："></a>基本记号：</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111135956.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="信息增益的计算方法"><a href="#信息增益的计算方法" class="headerlink" title="信息增益的计算方法"></a>信息增益的计算方法</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111140116.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="经验条件熵H-D-A"><a href="#经验条件熵H-D-A" class="headerlink" title="经验条件熵H(D/A)"></a>经验条件熵H(D/A)</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111140225.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="其他目标"><a href="#其他目标" class="headerlink" title="其他目标"></a>其他目标</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111140314.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="关于Gini系数的讨论"><a href="#关于Gini系数的讨论" class="headerlink" title="关于Gini系数的讨论"></a>关于Gini系数的讨论</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111140829.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111140904.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Gini系数的第二定义"><a href="#Gini系数的第二定义" class="headerlink" title="Gini系数的第二定义"></a>Gini系数的第二定义</h3><p>决策树中的Gini系数和社会学上的Gini系数并不相等。</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111141620.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div><br><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111141639.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="三种决策树学习算法的比较"><a href="#三种决策树学习算法的比较" class="headerlink" title="三种决策树学习算法的比较"></a>三种决策树学习算法的比较</h2><ul>
+<li>ID3:使用信息增益/互信息g(D,A)进行特征选择</li>
+<li><ul>
+<li>取值多的属性，更容易使数据更纯，其信息增益更大</li>
+</ul>
+</li>
+<li><ul>
+<li>训练得到的是一棵庞大且深度浅的树：不合理。</li>
+</ul>
+</li>
+<li>C4.5：信息增益率gr(D,A)=g(D,A)/H(A)</li>
+<li>CART：基尼指数<br>一个属性的信息增益（率）/Gini指数越大，表明属性对样本的熵减少的能力更强，这个属性使得数据由不确定性变成确定性的能力越强。</li>
+</ul>
+<h2 id="决策树的评价"><a href="#决策树的评价" class="headerlink" title="决策树的评价"></a>决策树的评价</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111142828.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="决策树的过拟合"><a href="#决策树的过拟合" class="headerlink" title="决策树的过拟合"></a>决策树的过拟合</h2><p>决策树对训练属于有很好的分类能力，但对未知的测试数据未必有好的分类能力，泛化能力弱，即可能发生过拟合现象。</p>
+<ul>
+<li>剪枝</li>
+<li>随机森林</li>
+</ul>
+<h2 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h2><p>三种决策树的剪枝过程算法相同，区别仅是对于当前树的评价标准不同。</p>
+<ul>
+<li>信息增益、信息增益率、基尼系数<br>剪枝总体思路：</li>
+<li>由完全树T0开始，剪枝部分结点得到T1，再次剪枝部分结点得到T2…直到仅剩树根的树Tk</li>
+<li>在验证数据集上对这k个树分别评价，选择损失函数最小的树Ti</li>
+</ul>
+<h3 id="剪枝系数的确定"><a href="#剪枝系数的确定" class="headerlink" title="剪枝系数的确定"></a>剪枝系数的确定</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111143402.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="剪枝算法"><a href="#剪枝算法" class="headerlink" title="剪枝算法"></a>剪枝算法</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/决策树和随机森林/TIM截图20171111143441.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/决策树/" rel="tag"># 决策树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/11/Logistic回归/" rel="next" title="Logistic回归">
+                <i class="fa fa-chevron-left"></i> Logistic回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/11/随机森林/" rel="prev" title="随机森林">
+                随机森林 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的概念"><span class="nav-number">1.</span> <span class="nav-text">决策树的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树学习的生成算法"><span class="nav-number">2.</span> <span class="nav-text">决策树学习的生成算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息增益"><span class="nav-number">3.</span> <span class="nav-text">信息增益</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">3.1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义："><span class="nav-number">3.1.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本记号："><span class="nav-number">3.1.2.</span> <span class="nav-text">基本记号：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益的计算方法"><span class="nav-number">3.2.</span> <span class="nav-text">信息增益的计算方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#经验条件熵H-D-A"><span class="nav-number">3.3.</span> <span class="nav-text">经验条件熵H(D/A)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他目标"><span class="nav-number">3.4.</span> <span class="nav-text">其他目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于Gini系数的讨论"><span class="nav-number">3.5.</span> <span class="nav-text">关于Gini系数的讨论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gini系数的第二定义"><span class="nav-number">3.6.</span> <span class="nav-text">Gini系数的第二定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种决策树学习算法的比较"><span class="nav-number">4.</span> <span class="nav-text">三种决策树学习算法的比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的评价"><span class="nav-number">5.</span> <span class="nav-text">决策树的评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的过拟合"><span class="nav-number">6.</span> <span class="nav-text">决策树的过拟合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剪枝"><span class="nav-number">7.</span> <span class="nav-text">剪枝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#剪枝系数的确定"><span class="nav-number">7.1.</span> <span class="nav-text">剪枝系数的确定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剪枝算法"><span class="nav-number">7.2.</span> <span class="nav-text">剪枝算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

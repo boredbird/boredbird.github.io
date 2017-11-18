@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="django," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Django[09]配置URL">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django[09]配置URL">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/10/08/Django[09]配置URL/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="Django[09]配置URL">
+<meta property="og:image" content="https://i.imgur.com/kgAiXW3.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django[09]配置URL">
+<meta name="twitter:description" content="Django[09]配置URL">
+<meta name="twitter:image" content="https://i.imgur.com/kgAiXW3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/10/08/Django[09]配置URL/"/>
+
+
+
+
+
+  <title>Django[09]配置URL | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Django[09]配置URL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Django[09]配置URL</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-08T08:57:02+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Django[09]配置URL
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="bbs-URL-Configuration"><a href="#bbs-URL-Configuration" class="headerlink" title="bbs URL Configuration"></a>bbs URL Configuration</h1><p>The <code>urlpatterns</code> list routes URLs to views. For more information please see:<br>    <a href="https://docs.djangoproject.com/en/1.11/topics/http/urls/" target="_blank" rel="noopener">https://docs.djangoproject.com/en/1.11/topics/http/urls/</a></p>
+<h1 id="Examples"><a href="#Examples" class="headerlink" title="Examples:"></a>Examples:</h1><h2 id="Function-views"><a href="#Function-views" class="headerlink" title="Function views"></a>Function views</h2><pre><code>1. Add an import:  from my_app import views
+2. Add a URL to urlpatterns:  url(r&apos;^$&apos;, views.home, name=&apos;home&apos;)
+</code></pre><h2 id="Class-based-views"><a href="#Class-based-views" class="headerlink" title="Class-based views"></a>Class-based views</h2><pre><code>1. Add an import:  from other_app.views import Home
+2. Add a URL to urlpatterns:  url(r&apos;^$&apos;, Home.as_view(), name=&apos;home&apos;)
+</code></pre><h2 id="Including-another-URLconf"><a href="#Including-another-URLconf" class="headerlink" title="Including another URLconf"></a>Including another URLconf</h2><pre><code>1. Import the include() function: from django.conf.urls import url, include
+2. Add a URL to urlpatterns:  url(r&apos;^blog/&apos;, include(&apos;blog.urls&apos;))
+</code></pre><h1 id="project-project-urls-py-中的urls-py常见的几种写法"><a href="#project-project-urls-py-中的urls-py常见的几种写法" class="headerlink" title="project(project/urls.py)中的urls.py常见的几种写法"></a>project(project/urls.py)中的urls.py常见的几种写法</h1><h2 id="1、基于function的view"><a href="#1、基于function的view" class="headerlink" title="1、基于function的view"></a>1、基于function的view</h2><p><a href="https://boredbird.github.io/2017/10/08/Django[08]%E7%AC%AC%E4%B8%80%E4%B8%AAview%EF%BC%88%E8%A7%86%E5%9B%BE%EF%BC%89/" target="_blank" rel="noopener">详见上回</a></p>
+<h2 id="2、基于class的view"><a href="#2、基于class的view" class="headerlink" title="2、基于class的view"></a>2、基于class的view</h2><h3 id="1、修改posts-app-下views-py"><a href="#1、修改posts-app-下views-py" class="headerlink" title="1、修改posts[app]下views.py"></a>1、修改posts[app]下views.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.views.generic <span class="keyword">import</span> ListView</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostList</span><span class="params">(ListView)</span>:</span></span><br><span class="line">	<span class="string">"""post的视图类"""</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;post的视图类&lt;/h1&gt;"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="2、修改bbs-project-下urls-py"><a href="#2、修改bbs-project-下urls-py" class="headerlink" title="2、修改bbs[project]下urls.py"></a>2、修改bbs[project]下urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    <span class="comment"># url(r'^home/', views.posts_home),</span></span><br><span class="line">    url(<span class="string">r'^home/'</span>, views.PostList.as_view()),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="3、效果"><a href="#3、效果" class="headerlink" title="3、效果"></a>3、效果</h3><p><img src="https://i.imgur.com/kgAiXW3.png" alt=""></p>
+<h2 id="3、view别名"><a href="#3、view别名" class="headerlink" title="3、view别名"></a>3、view别名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app01 <span class="keyword">import</span> views <span class="keyword">as</span> app01_views</span><br><span class="line"><span class="keyword">from</span> app02 <span class="keyword">import</span> views <span class="keyword">as</span> app02_views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    url(<span class="string">r'^home/'</span>, app01_views.posts_home),</span><br><span class="line">    url(<span class="string">r'^home/'</span>, app02_views.PostList.as_view()),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="4、在app中的urls-py的使用"><a href="#4、在app中的urls-py的使用" class="headerlink" title="4、在app中的urls.py的使用"></a>4、在app中的urls.py的使用</h2><h3 id="1、posts-app-下增加urls-py："><a href="#1、posts-app-下增加urls-py：" class="headerlink" title="1、posts[app]下增加urls.py："></a>1、posts[app]下增加urls.py：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="2、在project下的urls-py-中设置第一级的路由："><a href="#2、在project下的urls-py-中设置第一级的路由：" class="headerlink" title="2、在project下的urls.py 中设置第一级的路由："></a>2、在project下的urls.py 中设置第一级的路由：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url,include</span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</span><br><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> urls <span class="keyword">as</span> posts_urls</span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    <span class="comment"># url(r'^home/', views.posts_home),</span></span><br><span class="line">    <span class="comment"># url(r'^home/', views.PostList.as_view()),</span></span><br><span class="line">    url(<span class="string">r'^post/'</span>,include(posts_urls))</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="3、在app下的urls-py中设置第二级路由，同第一步："><a href="#3、在app下的urls-py中设置第二级路由，同第一步：" class="headerlink" title="3、在app下的urls.py中设置第二级路由，同第一步："></a>3、在app下的urls.py中设置第二级路由，同第一步：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="多视图示例"><a href="#多视图示例" class="headerlink" title="多视图示例"></a>多视图示例</h1><h2 id="1、app下的urls-py"><a href="#1、app下的urls-py" class="headerlink" title="1、app下的urls.py"></a>1、app下的urls.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^$'</span>, views.posts_home),</span><br><span class="line">    url(<span class="string">r'^create/$'</span>, views.posts_create),</span><br><span class="line">    url(<span class="string">r'^update/$'</span>, views.posts_update),</span><br><span class="line">    url(<span class="string">r'^detail/$'</span>, views.posts_detail),</span><br><span class="line">    url(<span class="string">r'^delete/$'</span>, views.posts_delete),</span><br><span class="line">    url(<span class="string">r'^'</span>, views.posts_home),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="2、app下的view-py"><a href="#2、app下的view-py" class="headerlink" title="2、app下的view.py"></a>2、app下的view.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"Hello World!"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_create</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_create&lt;/h1&gt;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_update</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_update&lt;/h1&gt;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_detail&lt;/h1&gt;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_delete</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_delete&lt;/h1&gt;"</span>)</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<p>1、如果匹配到排在上面的正则表达式那么就不会适配下面的正则表达式了</p>
+<p>2、不要忘记加’^’和’$’</p>
+<p>via <a href="https://docs.djangoproject.com/en/1.9/topics/class-based-views/" target="_blank" rel="noopener">Class-based views</a></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjQ4Mzc0NjkxNg==.html?spm=a2h0j.8191423.playlist_content.5!12~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.12" target="_blank" rel="noopener">Django1.10教程 -09 -配置URL</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/django/" rel="tag"># django</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/08/Django[08]第一个view（视图）/" rel="next" title="Django[08]第一个view（视图）">
+                <i class="fa fa-chevron-left"></i> Django[08]第一个view（视图）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/08/Django[10]模板Template的配置/" rel="prev" title="Django[10]模板Template的配置">
+                Django[10]模板Template的配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bbs-URL-Configuration"><span class="nav-number">1.</span> <span class="nav-text">bbs URL Configuration</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Examples"><span class="nav-number">2.</span> <span class="nav-text">Examples:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Function-views"><span class="nav-number">2.1.</span> <span class="nav-text">Function views</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class-based-views"><span class="nav-number">2.2.</span> <span class="nav-text">Class-based views</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Including-another-URLconf"><span class="nav-number">2.3.</span> <span class="nav-text">Including another URLconf</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#project-project-urls-py-中的urls-py常见的几种写法"><span class="nav-number">3.</span> <span class="nav-text">project(project/urls.py)中的urls.py常见的几种写法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、基于function的view"><span class="nav-number">3.1.</span> <span class="nav-text">1、基于function的view</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、基于class的view"><span class="nav-number">3.2.</span> <span class="nav-text">2、基于class的view</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、修改posts-app-下views-py"><span class="nav-number">3.2.1.</span> <span class="nav-text">1、修改posts[app]下views.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、修改bbs-project-下urls-py"><span class="nav-number">3.2.2.</span> <span class="nav-text">2、修改bbs[project]下urls.py</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、效果"><span class="nav-number">3.2.3.</span> <span class="nav-text">3、效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、view别名"><span class="nav-number">3.3.</span> <span class="nav-text">3、view别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、在app中的urls-py的使用"><span class="nav-number">3.4.</span> <span class="nav-text">4、在app中的urls.py的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、posts-app-下增加urls-py："><span class="nav-number">3.4.1.</span> <span class="nav-text">1、posts[app]下增加urls.py：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、在project下的urls-py-中设置第一级的路由："><span class="nav-number">3.4.2.</span> <span class="nav-text">2、在project下的urls.py 中设置第一级的路由：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、在app下的urls-py中设置第二级路由，同第一步："><span class="nav-number">3.4.3.</span> <span class="nav-text">3、在app下的urls.py中设置第二级路由，同第一步：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多视图示例"><span class="nav-number">4.</span> <span class="nav-text">多视图示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、app下的urls-py"><span class="nav-number">4.1.</span> <span class="nav-text">1、app下的urls.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、app下的view-py"><span class="nav-number">4.2.</span> <span class="nav-text">2、app下的view.py</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

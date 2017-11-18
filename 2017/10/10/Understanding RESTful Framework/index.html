@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="django," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="理解RESTful架构-来自阮一峰">
+<meta name="keywords" content="django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解RESTful架构-来自阮一峰">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/10/10/Understanding RESTful Framework/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="理解RESTful架构-来自阮一峰">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解RESTful架构-来自阮一峰">
+<meta name="twitter:description" content="理解RESTful架构-来自阮一峰">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/10/10/Understanding RESTful Framework/"/>
+
+
+
+
+
+  <title>理解RESTful架构-来自阮一峰 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/Understanding RESTful Framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">理解RESTful架构-来自阮一峰</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-10T17:21:02+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  理解RESTful架构-来自阮一峰
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近在研究Python开发接口微服务，以便用Python开发出来的模型与服务能对接上，提供复杂模型上线的方案。看到了阮一峰的<a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="noopener">《理解RESTful架构》</a>这篇文章，写的真好，虽然我是还没入门的外外行。</p>
+<h1 id="什么是RESTful架构"><a href="#什么是RESTful架构" class="headerlink" title="什么是RESTful架构"></a>什么是RESTful架构</h1><h2 id="一、起源"><a href="#一、起源" class="headerlink" title="一、起源"></a>一、起源</h2><p>REST这个词，是<a href="http://en.wikipedia.org/wiki/Roy_Fielding" target="_blank" rel="noopener">Roy Thomas Fielding</a>在他2000年的博士论文中提出的。</p>
+<p>文中写到：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"本文研究计算机科学两大前沿----软件和网络----的交叉点。长期以来，软件研究主要关注软件设计的分类、设计方法的演化，很少客观地评估不同的设计选择对系统行为的影响。而相反地，网络研究主要关注系统之间通信行为的细节、如何改进特定通信机制的表现，常常忽视了一个事实，那就是改变应用程序的互动风格比改变互动协议，对整体表现有更大的影响。我这篇文章的写作目的，就是想在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。"</span></span><br><span class="line">(This dissertation explores a junction <span class="keyword">on</span> <span class="keyword">the</span> frontiers <span class="keyword">of</span> two research disciplines <span class="keyword">in</span> computer science: software <span class="keyword">and</span> networking. Software research has long been concerned <span class="keyword">with</span> <span class="keyword">the</span> categorization <span class="keyword">of</span> software designs <span class="keyword">and</span> <span class="keyword">the</span> development <span class="keyword">of</span> design methodologies, <span class="keyword">but</span> has rarely been able <span class="keyword">to</span> objectively evaluate <span class="keyword">the</span> impact <span class="keyword">of</span> various design choices <span class="keyword">on</span> system behavior. Networking research, <span class="keyword">in</span> contrast, <span class="keyword">is</span> focused <span class="keyword">on</span> <span class="keyword">the</span> details <span class="keyword">of</span> generic communication behavior <span class="keyword">between</span> systems <span class="keyword">and</span> improving <span class="keyword">the</span> performance <span class="keyword">of</span> particular communication techniques, often <span class="keyword">ignoring</span> <span class="keyword">the</span> fact <span class="keyword">that</span> changing <span class="keyword">the</span> interaction style <span class="keyword">of</span> an <span class="built_in">application</span> can have more impact <span class="keyword">on</span> performance than <span class="keyword">the</span> communication protocols used <span class="keyword">for</span> <span class="keyword">that</span> interaction. My work <span class="keyword">is</span> motivated <span class="keyword">by</span> <span class="keyword">the</span> desire <span class="keyword">to</span> understand <span class="keyword">and</span> evaluate <span class="keyword">the</span> architectural design <span class="keyword">of</span> network-based <span class="built_in">application</span> software <span class="keyword">through</span> principled use <span class="keyword">of</span> architectural constraints, thereby obtaining <span class="keyword">the</span> functional, performance, <span class="keyword">and</span> social properties desired <span class="keyword">of</span> an architecture. )</span><br></pre></td></tr></table></figure>
+<h2 id="二、名称"><a href="#二、名称" class="headerlink" title="二、名称"></a>二、名称</h2><p>Fielding将他对互联网软件的架构原则，定名为REST，即Representational State Transfer的缩写。我对这个词组的翻译是”表现层状态转化”。</p>
+<p>如果一个架构符合REST原则，就称它为RESTful架构。</p>
+<p>要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义。如果你把这个名称搞懂了，也就不难体会REST是一种什么样的设计。</p>
+<a id="more"></a>
+<h2 id="三、资源（Resources）"><a href="#三、资源（Resources）" class="headerlink" title="三、资源（Resources）"></a>三、资源（Resources）</h2><p>REST的名称”表现层状态转化”中，省略了主语。”表现层”其实指的是”资源”（Resources）的”表现层”。</p>
+<p>所谓”资源”，就是网络上的一个实体，或者说是网络上的一个具体信息。它可以是一段文本、一张图片、一首歌曲、一种服务，总之就是一个具体的实在。你可以用一个URI（统一资源定位符）指向它，每种资源对应一个特定的URI。要获取这个资源，访问它的URI就可以，因此URI就成了每一个资源的地址或独一无二的识别符。</p>
+<p>所谓”上网”，就是与互联网上一系列的”资源”互动，调用它的URI。</p>
+<h2 id="四、表现层（Representation）"><a href="#四、表现层（Representation）" class="headerlink" title="四、表现层（Representation）"></a>四、表现层（Representation）</h2><p>“资源”是一种信息实体，它可以有多种外在表现形式。我们把”资源”具体呈现出来的形式，叫做它的”表现层”（Representation）。<br>比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。</p>
+<p>URI只代表资源的实体，不代表它的形式。严格地说，有些网址最后的”.html”后缀名是不必要的，因为这个后缀名表示格式，属于”表现层”范畴，而URI应该只代表”资源”的位置。它的具体表现形式，应该在HTTP请求的头信息中用Accept和Content-Type字段指定，这两个字段才是对”表现层”的描述。</p>
+<h2 id="五、状态转化（State-Transfer）"><a href="#五、状态转化（State-Transfer）" class="headerlink" title="五、状态转化（State Transfer）"></a>五、状态转化（State Transfer）</h2><p>访问一个网站，就代表了客户端和服务器的一个互动过程。在这个过程中，势必涉及到数据和状态的变化。</p>
+<p>互联网通信协议HTTP协议，是一个无状态协议。这意味着，所有的状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生”状态转化”（State Transfer）。而这种转化是建立在表现层之上的，所以就是”表现层状态转化”。</p>
+<p>客户端用到的手段，只能是HTTP协议。具体来说，就是HTTP协议里面，四个表示操作方式的动词：GET、POST、PUT、DELETE。它们分别对应四种基本操作：GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源。</p>
+<h2 id="六、综述"><a href="#六、综述" class="headerlink" title="六、综述"></a>六、综述</h2><p>综合上面的解释，我们总结一下什么是RESTful架构：</p>
+<ul>
+<li>每一个URI代表一种资源；</li>
+<li>客户端和服务器之间，传递这种资源的某种表现层；</li>
+<li>客户端通过四个HTTP动词，对服务器端资源进行操作，实现”表现层状态转化”。</li>
+</ul>
+<h2 id="七、误区"><a href="#七、误区" class="headerlink" title="七、误区"></a>七、误区</h2><p><strong>RESTful架构有一些典型的设计误区。</strong><br>最常见的一种设计错误，就是URI包含动词。因为”资源”表示一种实体，所以应该是名词，URI不应该有动词，动词应该放在HTTP协议中。<br>举例来说，某个URI是/posts/show/1，其中show是动词，这个URI就设计错了，正确的写法应该是/posts/1，然后用GET方法表示show。<br>如果某些动作是HTTP动词表示不了的，你就应该把动作做成一种资源。比如网上汇款，从账户1向账户2汇款500元，错误的URI是：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">POST <span class="regexp">/accounts/</span><span class="number">1</span><span class="regexp">/transfer/</span><span class="number">500</span><span class="regexp">/to/</span><span class="number">2</span></span><br></pre></td></tr></table></figure></p>
+<p>正确的写法是把动词transfer改成名词transaction，资源不能是动词，但是可以是一种服务：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　POST /<span class="keyword">transaction</span> HTTP/<span class="number">1.1</span></span><br><span class="line">　　Host: <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">　　</span><br><span class="line">　　<span class="keyword">from</span>=<span class="number">1</span>&amp;<span class="keyword">to</span>=<span class="number">2</span>&amp;amount=<span class="number">500.00</span></span><br></pre></td></tr></table></figure></p>
+<p>另一个设计误区，就是在URI中加入版本号：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　<span class="symbol">http:</span>/<span class="regexp">/www.example.com/app</span><span class="regexp">/1.0/foo</span></span><br><span class="line"></span><br><span class="line">　　<span class="symbol">http:</span>/<span class="regexp">/www.example.com/app</span><span class="regexp">/1.1/foo</span></span><br><span class="line"></span><br><span class="line">　　<span class="symbol">http:</span>/<span class="regexp">/www.example.com/app</span><span class="regexp">/2.0/foo</span></span><br></pre></td></tr></table></figure>
+<p>因为不同的版本，可以理解成同一种资源的不同表现形式，所以应该采用同一个URI。版本号可以在HTTP请求头信息的Accept字段中进行区分<a href="http://www.informit.com/articles/article.aspx?p=1566460" target="_blank" rel="noopener">参见Versioning REST Services</a>：<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　<span class="attribute">Accept</span>: vnd.example-com.foo+json; version=1.0</span><br><span class="line"></span><br><span class="line">　　<span class="attribute">Accept</span>: vnd.example-com.foo+json; version=1.1</span><br><span class="line"></span><br><span class="line">　　<span class="attribute">Accept</span>: vnd.example-com.foo+json; version=2.0</span><br></pre></td></tr></table></figure></p>
+<p>via </p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="noopener">理解RESTful架构</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/django/" rel="tag"># django</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/10/django flow/" rel="next" title="django处理HTTP请求流程">
+                <i class="fa fa-chevron-left"></i> django处理HTTP请求流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/10/RESTful API Design Guide/" rel="prev" title="RESTful API 设计指南-来自阮一峰">
+                RESTful API 设计指南-来自阮一峰 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是RESTful架构"><span class="nav-number">1.</span> <span class="nav-text">什么是RESTful架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、起源"><span class="nav-number">1.1.</span> <span class="nav-text">一、起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、名称"><span class="nav-number">1.2.</span> <span class="nav-text">二、名称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、资源（Resources）"><span class="nav-number">1.3.</span> <span class="nav-text">三、资源（Resources）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、表现层（Representation）"><span class="nav-number">1.4.</span> <span class="nav-text">四、表现层（Representation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、状态转化（State-Transfer）"><span class="nav-number">1.5.</span> <span class="nav-text">五、状态转化（State Transfer）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、综述"><span class="nav-number">1.6.</span> <span class="nav-text">六、综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、误区"><span class="nav-number">1.7.</span> <span class="nav-text">七、误区</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

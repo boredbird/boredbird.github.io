@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="记一次python数据处理性能调优">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次python数据处理性能调优">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/10/21/记一次python数据处理性能调优/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="记一次python数据处理性能调优">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一次python数据处理性能调优">
+<meta name="twitter:description" content="记一次python数据处理性能调优">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/10/21/记一次python数据处理性能调优/"/>
+
+
+
+
+
+  <title>记一次python数据处理性能调优 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/21/记一次python数据处理性能调优/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">记一次python数据处理性能调优</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-21T11:24:12+08:00">
+                2017-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  记一次python数据处理性能调优
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Python垃圾回收机制<br>根据官方的描叙，Python中，有2中方式将会触发垃圾回收：<br>1、用户显示调用gc.collect()<br>2、每次Python为新对象分配内存时，检查threshold阀值，当对象数量超过threshold设置的阀值就开始进行垃圾回收。</p>
+<p>因为数据量太大，处理过程中留下太多暂时不能清除的变量，而python的垃圾回收却在一遍一遍地扫这些不断在增长的列表，导致程序受到的影响越来越大。赶紧证实一下，import gc，然后在数据载入模块前gc.disable（）,结束后再gc.enable()。结果原来要跑将近两个小时的程序，这下不用5分钟就跑完了。cool~！用gc.get_count()也证明了之前的猜想，在第一次运行之后临时变量数目就从几百上升到百万，并一直在涨。</p>
+<p>如果你的python程序在处理大数据量的问题，并且出现某个子程序在做同样量的工作，却越跑越慢的情况。</p>
+<p>程序代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">series_trans</span><span class="params">(dataset)</span>:</span></span><br><span class="line">    <span class="comment"># 一行转多行</span></span><br><span class="line">    dataset_trans = pd.DataFrame(&#123;<span class="string">'user_id'</span>:dataset[<span class="string">'user_id'</span>],</span><br><span class="line">                                   <span class="string">'shop_id'</span>:dataset[<span class="string">'shop_id'</span>],</span><br><span class="line">                                   <span class="string">'time_stamp'</span>:dataset[<span class="string">'time_stamp'</span>],</span><br><span class="line">                                   <span class="string">'longitude'</span>:dataset[<span class="string">'longitude'</span>],</span><br><span class="line">                                   <span class="string">'latitude'</span>:dataset[<span class="string">'latitude'</span>],</span><br><span class="line">                                   <span class="string">'wifi_infos'</span>:dataset[<span class="string">'wifi_splits'</span>]&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>  dataset_trans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</span><br><span class="line">dataset_trans = series_trans(dataset.loc[<span class="number">0</span>,:])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>,dataset.shape[<span class="number">0</span>]):</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">10000</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">print</span> i</span><br><span class="line">        <span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</span><br><span class="line"></span><br><span class="line">    dataset_trans = dataset_trans.append(series_trans(dataset.loc[i,:]))</span><br></pre></td></tr></table></figure>
+<p>程序的性能表现如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:01</span><span class="selector-pseudo">:30</span> 2017</span><br><span class="line">10000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:02</span><span class="selector-pseudo">:07</span> 2017</span><br><span class="line">20000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:03</span><span class="selector-pseudo">:41</span> 2017</span><br><span class="line">30000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:06</span><span class="selector-pseudo">:12</span> 2017</span><br><span class="line">40000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:09</span><span class="selector-pseudo">:37</span> 2017</span><br><span class="line">50000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:13</span><span class="selector-pseudo">:55</span> 2017</span><br><span class="line">60000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:19</span><span class="selector-pseudo">:10</span> 2017</span><br><span class="line">70000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:25</span><span class="selector-pseudo">:26</span> 2017</span><br><span class="line">80000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:33</span><span class="selector-pseudo">:03</span> 2017</span><br><span class="line">90000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:41</span><span class="selector-pseudo">:21</span> 2017</span><br><span class="line">100000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:50</span><span class="selector-pseudo">:33</span> 2017</span><br><span class="line">110000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:00</span><span class="selector-pseudo">:41</span> 2017</span><br><span class="line">120000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:11</span><span class="selector-pseudo">:45</span> 2017</span><br><span class="line">130000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:23</span><span class="selector-pseudo">:43</span> 2017</span><br><span class="line">140000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:36</span><span class="selector-pseudo">:37</span> 2017</span><br><span class="line">150000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:50</span><span class="selector-pseudo">:25</span> 2017</span><br><span class="line">160000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:05</span><span class="selector-pseudo">:10</span> 2017</span><br><span class="line">170000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:20</span><span class="selector-pseudo">:46</span> 2017</span><br><span class="line">180000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:37</span><span class="selector-pseudo">:18</span> 2017</span><br></pre></td></tr></table></figure>
+<p>采用：dataset_trans.loc[10:19,] = dataset_trans<br>会提示错误：<br>info_idx = indexer[info_axis]<br>IndexError: tuple index out of range</p>
+<p>DataFrame is a 2-dimensional labeled data structure with columns of potentially different types.所以一般说来dataframe就是a set of columns, each column is an array of values. In pandas, the array is one way or another a (maybe variant of) numpy ndarray. 而ndarray本身不存在一种in place append的操作。。。因为它实际上是一段连续内存。。。任何需要改变ndarray长度的操作都涉及分配一段长度合适的新的内存，然后copy。。。这是这类操作慢的原因。。。如果pandas dataframe没有用其他设计减少copy的话，我相信Bren说的”That’s probably as efficient as any”是很对的。。。所以in general, 正如Bren说的。。。Pandas/numpy structures are fundamentally not suited for efficiently growing.Matti 和 arynaq说的是两种常见的对付这个问题的方法。。。我想Matti实际的意思是把要加的rows收集成起来然后concatenate, 这样只copy一次。arynaq的方法就是预先分配内存比较好理解。。。如果你真的需要incrementally build a dataframe的话，估计你需要实际测试一下两种方法。。。我的建议是，如有可能，尽力避免incrementally build a dataframe, 比如用其他data structure 收集齐所有data然后转变成dataframe做分析。。。</p>
+<p>via</p>
+<ul>
+<li><p><a href="http://blog.csdn.net/overstack/article/details/11603893" target="_blank" rel="noopener">Python垃圾回收(gc)拖累了程序执行性能？</a></p>
+</li>
+<li><p><a href="https://www.zhihu.com/question/36170252?sort=created" target="_blank" rel="noopener">python pandas 怎样高效地添加一行数据？</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/17/使用pydotplus绘决策树/" rel="next" title="使用pydotplus绘决策树">
+                <i class="fa fa-chevron-left"></i> 使用pydotplus绘决策树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/24/李德荃关于偏度与峰度的讲解/" rel="prev" title="李德荃关于偏度与峰度的讲解">
+                李德荃关于偏度与峰度的讲解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

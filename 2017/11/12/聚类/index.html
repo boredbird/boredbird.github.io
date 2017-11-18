@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="聚类,k-Means,Canopy,AGNES,DIANA,DBSCAN,AP,谱聚类,层次聚类,密度最大值聚类,拉普拉斯,边界,噪声,标签传递," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="聚类">
+<meta name="keywords" content="聚类,k-Means,Canopy,AGNES,DIANA,DBSCAN,AP,谱聚类,层次聚类,密度最大值聚类,拉普拉斯,边界,噪声,标签传递">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聚类">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/11/12/聚类/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="聚类">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112160705.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112165344.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112165507.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112165538.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112171852.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112172003.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112172036.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112172157.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112172208.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112165628.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112165759.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112165854.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112170231.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112170428.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112171457.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112171549.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112171730.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112172418.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112172514.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112172835.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112172923.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173029.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173039.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173106.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173433.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173502.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173554.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173620.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173717.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173730.png">
+<meta property="og:image" content="https://i.imgur.com/SUIggzc.png">
+<meta property="og:image" content="https://i.imgur.com/eXxCpLx.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112173925.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174328.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174408.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174436.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174445.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174548.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174624.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174651.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174719.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174754.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174813.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174846.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112174932.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112175026.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112175101.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.703Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="聚类">
+<meta name="twitter:description" content="聚类">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/chinahadoop/聚类/TIM截图20171112160705.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/11/12/聚类/"/>
+
+
+
+
+
+  <title>聚类 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/聚类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">聚类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-12T16:15:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  聚类
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="聚类的定义"><a href="#聚类的定义" class="headerlink" title="聚类的定义"></a>聚类的定义</h2><p>聚类就是对大量未知标注的数据集，按数据的内在相似性将数据集划分为多个类别，使类别内的数据相似度较大而类别间的数据相似度较小。</p>
+<h2 id="相似度-距离计算方法总结"><a href="#相似度-距离计算方法总结" class="headerlink" title="相似度/距离计算方法总结"></a>相似度/距离计算方法总结</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112160705.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Hellinger-distance"><a href="#Hellinger-distance" class="headerlink" title="Hellinger distance"></a>Hellinger distance</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112165344.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<a id="more"></a>
+<h3 id="余弦相似度与Pearson相似系数"><a href="#余弦相似度与Pearson相似系数" class="headerlink" title="余弦相似度与Pearson相似系数"></a>余弦相似度与Pearson相似系数</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112165507.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="聚类的基本思想"><a href="#聚类的基本思想" class="headerlink" title="聚类的基本思想"></a>聚类的基本思想</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112165538.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="聚类的衡量指标"><a href="#聚类的衡量指标" class="headerlink" title="聚类的衡量指标"></a>聚类的衡量指标</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112171852.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="ARI"><a href="#ARI" class="headerlink" title="ARI"></a>ARI</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172003.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="AMI"><a href="#AMI" class="headerlink" title="AMI"></a>AMI</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172036.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="轮廓系数-Silhouette"><a href="#轮廓系数-Silhouette" class="headerlink" title="轮廓系数(Silhouette)"></a>轮廓系数(Silhouette)</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172157.png" width="80%"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172208.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="k-Means"><a href="#k-Means" class="headerlink" title="k-Means"></a>k-Means</h1><h2 id="k-Means算法"><a href="#k-Means算法" class="headerlink" title="k-Means算法"></a>k-Means算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112165628.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="对k-Means的思考"><a href="#对k-Means的思考" class="headerlink" title="对k-Means的思考"></a>对k-Means的思考</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112165759.png" width="80%"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112165854.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="k-Means的公式化解释"><a href="#k-Means的公式化解释" class="headerlink" title="k-Means的公式化解释"></a>k-Means的公式化解释</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112170231.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="如果使用其他相似度-距离度量"><a href="#如果使用其他相似度-距离度量" class="headerlink" title="如果使用其他相似度/距离度量"></a>如果使用其他相似度/距离度量</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112170428.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Mini-batch-k-Means算法描述"><a href="#Mini-batch-k-Means算法描述" class="headerlink" title="Mini-batch k-Means算法描述"></a>Mini-batch k-Means算法描述</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112171457.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="k-Means聚类总结"><a href="#k-Means聚类总结" class="headerlink" title="k-Means聚类总结"></a>k-Means聚类总结</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112171549.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="Canopy"><a href="#Canopy" class="headerlink" title="Canopy"></a>Canopy</h1><h2 id="Canopy算法"><a href="#Canopy算法" class="headerlink" title="Canopy算法"></a>Canopy算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112171730.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="层次聚类方法"><a href="#层次聚类方法" class="headerlink" title="层次聚类方法"></a>层次聚类方法</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172418.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="AGNES和DIANA算法"><a href="#AGNES和DIANA算法" class="headerlink" title="AGNES和DIANA算法"></a>AGNES和DIANA算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172514.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="密度聚类方法"><a href="#密度聚类方法" class="headerlink" title="密度聚类方法"></a>密度聚类方法</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172835.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="DBSCAN算法"><a href="#DBSCAN算法" class="headerlink" title="DBSCAN算法"></a>DBSCAN算法</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112172923.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="DBSCAN算法的若干概念"><a href="#DBSCAN算法的若干概念" class="headerlink" title="DBSCAN算法的若干概念"></a>DBSCAN算法的若干概念</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173029.png" width="80%"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173039.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="DBSCAN算法流程"><a href="#DBSCAN算法流程" class="headerlink" title="DBSCAN算法流程"></a>DBSCAN算法流程</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173106.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="密度最大值聚类"><a href="#密度最大值聚类" class="headerlink" title="密度最大值聚类"></a>密度最大值聚类</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173433.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="高局部密度点距离"><a href="#高局部密度点距离" class="headerlink" title="高局部密度点距离"></a>高局部密度点距离</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173502.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="簇中心的识别"><a href="#簇中心的识别" class="headerlink" title="簇中心的识别"></a>簇中心的识别</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173554.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="密度最大值聚类过程"><a href="#密度最大值聚类过程" class="headerlink" title="密度最大值聚类过程"></a>密度最大值聚类过程</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173620.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="边界和噪声的重新认识"><a href="#边界和噪声的重新认识" class="headerlink" title="边界和噪声的重新认识"></a>边界和噪声的重新认识</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173717.png" width="80%"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173730.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="Affinity-Propagation"><a href="#Affinity-Propagation" class="headerlink" title="Affinity Propagation"></a>Affinity Propagation</h1><h2 id="算法概述"><a href="#算法概述" class="headerlink" title="算法概述"></a>算法概述</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>Exemplar范例：即聚类族中心点；</li>
+<li>s(i,j)：数据点i与数据点j的相似度值，一般使用欧氏距离的的负值表示，即s(i,j)值越大表示点i与j的距离越近，AP算法中理解为数据点j作为数据点i的聚类中心的能力；</li>
+<li>相似度矩阵：作为算法的初始化矩阵，n个点就有由n乘n个相似度值组成的矩阵；</li>
+<li>Preference参考度或称为偏好参数：是相似度矩阵中横轴纵轴索引相同的点，如s(i,i)，若按欧氏距离计算其值应为0，但在AP聚类中其表示数据点i作为聚类中心的程度，因此不能为0。迭代开始前假设所有点成为聚类中心的能力相同，因此参考度一般设为相似度矩阵中所有值得最小值或者中位数，但是参考度越大则说明个数据点成为聚类中心的能力越强，则最终聚类中心的个数则越多； </li>
+<li>Responsibility，r(i,k)：吸引度信息，表示数据点k适合作为数据点i的聚类中心的程度；公式如下： <img src="https://i.imgur.com/SUIggzc.png" alt=""></li>
+<li><ul>
+<li>其中a(i,k’)表示除k外其他点对i点的归属度值，初始为0；s(i,k’)表示除k外其他点对i的吸引度，即i外其他点都在争夺i点的 所有权；r(i,k)表示数据点k成为数据点i的聚类中心的累积证明，r(i,k)值大于0，则表示数据点k成为聚类中心的能力强。说明：此时只考虑哪个点k成为点i的聚类中心的可能性最大，但是没考虑这个吸引度最大的k是否也经常成为其他点的聚类中心（即归属度），若点k只是点i的聚类中心，不是其他任何点的聚类中心，则会造成最终聚类中心个数大于实际的中心个数。 </li>
+</ul>
+</li>
+<li>Availability，a(i,k)：归属度信息，表示数据点i选择数据点k作为其聚类中心的合适程度，公式如下： <img src="https://i.imgur.com/eXxCpLx.png" alt=""></li>
+<li><ul>
+<li>其中r(i’,k)表示点k作为除i外其他点的聚类中心的相似度值，取所有大于等于0的吸引度值，加上k作为聚类中心的可能程。即点k在这些吸引度值大于0的数据点的支持下，数据点i选择k作为其聚类中心的累积证明。 </li>
+</ul>
+</li>
+<li>Damping factor阻尼系数：为防止数据震荡，引入地衰减系数，每个信息值等于前一次迭代更新的信息值的λ倍加上此轮更新值得1-λ倍，其中λ在0-1之间，默认为0.5。</li>
+</ul>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><ul>
+<li><ol>
+<li>更新相似度矩阵中每个点的吸引度信息，计算归属度信息；</li>
+</ol>
+</li>
+<li><ol>
+<li>更新归属度信息，计算吸引度信息；</li>
+</ol>
+</li>
+<li><ol>
+<li>对样本点的吸引度信息和归属度信息求和，检测其选择聚类中心的决策；若经过若干次迭代之后其聚类中心不变、或者迭代次数超过既定的次数、又或者一个子区域内的关于样本点的决策经过数次迭代后保持不变，则算法结束。</li>
+</ol>
+</li>
+</ul>
+<p>关于其算法流程，知乎上kael 用户将AP聚类过程比喻为选举过程： </p>
+<ul>
+<li>所有人都参加选举（大家都是选民也都是参选人），要选出几个作为代表 </li>
+<li>s(i,k)就相当于i对选k这个人的一个固有的偏好程度 </li>
+<li>r(i,k)表示用s(i,k)减去最强竞争者的评分，可以理解为k在对i这个选民的竞争中的优势程度 </li>
+<li>r(i,k)的更新过程对应选民i对各个参选人的挑选（越出众越有吸引力） </li>
+<li>a(i,k)：从公式里可以看到，所有r(i’,k)&gt;0的值都对a有正的加成。对应到我们这个比喻中，就相当于选民i通过网上关于k的民意调查看到：有很多人（即i’们）都觉得k不错（r(i’,k)&gt;0），那么选民i也就会相应地觉得k不错，是个可以相信的选择 </li>
+<li>a(i,k)的更新过程对应关于参选人k的民意调查对于选民i的影响（已经有了很多跟随者的人更有吸引力） </li>
+<li>两者交替的过程也就可以理解为选民在各个参选人之间不断地比较和不断地参考各个参选人给出的民意调查。 </li>
+<li>r(i,k)的思想反映的是竞争，a(i,k)则是为了让聚类更成功。 <h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3></li>
+</ul>
+<ol>
+<li>不需要制定最终聚类族的个数 </li>
+<li>已有的数据点作为最终的聚类中心，而不是新生成一个族中心。 </li>
+<li>模型对数据的初始值不敏感。 </li>
+<li>对初始相似度矩阵数据的对称性没有要求。 </li>
+<li>相比与k-centers聚类方法，其结果的平方差误差较小。<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3></li>
+<li>虽然AP算法不用提前设置聚类中心的个数，但是需要事先设置参考度，而参考度的大小与聚类中心的个数正相关； </li>
+<li>由于AP算法每次迭代都需要更新每个数据点的吸引度值和归属度值，算法复杂度较高，在大数据量下运行时间较长。</li>
+</ol>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112173925.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="谱和谱聚类"><a href="#谱和谱聚类" class="headerlink" title="谱和谱聚类"></a>谱和谱聚类</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174328.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="谱分析的整体过程"><a href="#谱分析的整体过程" class="headerlink" title="谱分析的整体过程"></a>谱分析的整体过程</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174408.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="一些概念-1"><a href="#一些概念-1" class="headerlink" title="一些概念"></a>一些概念</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174436.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div><br><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174445.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="相似度图G的建立方法"><a href="#相似度图G的建立方法" class="headerlink" title="相似度图G的建立方法"></a>相似度图G的建立方法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174548.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="权值比较"><a href="#权值比较" class="headerlink" title="权值比较"></a>权值比较</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174624.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="拉普拉斯矩阵的定义"><a href="#拉普拉斯矩阵的定义" class="headerlink" title="拉普拉斯矩阵的定义"></a>拉普拉斯矩阵的定义</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174651.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="拉普拉斯矩阵及其性质"><a href="#拉普拉斯矩阵及其性质" class="headerlink" title="拉普拉斯矩阵及其性质"></a>拉普拉斯矩阵及其性质</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174719.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="谱聚类算法：未正则拉普拉斯矩阵"><a href="#谱聚类算法：未正则拉普拉斯矩阵" class="headerlink" title="谱聚类算法：未正则拉普拉斯矩阵"></a>谱聚类算法：未正则拉普拉斯矩阵</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174754.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="谱聚类算法：随机游走拉普拉斯矩阵"><a href="#谱聚类算法：随机游走拉普拉斯矩阵" class="headerlink" title="谱聚类算法：随机游走拉普拉斯矩阵"></a>谱聚类算法：随机游走拉普拉斯矩阵</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174813.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="谱聚类算法：对称拉普拉斯矩阵"><a href="#谱聚类算法：对称拉普拉斯矩阵" class="headerlink" title="谱聚类算法：对称拉普拉斯矩阵"></a>谱聚类算法：对称拉普拉斯矩阵</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174846.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="进一步思考"><a href="#进一步思考" class="headerlink" title="进一步思考"></a>进一步思考</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112174932.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="随机游走和拉普拉斯矩阵的关系"><a href="#随机游走和拉普拉斯矩阵的关系" class="headerlink" title="随机游走和拉普拉斯矩阵的关系"></a>随机游走和拉普拉斯矩阵的关系</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112175026.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="标签传递算法"><a href="#标签传递算法" class="headerlink" title="标签传递算法"></a>标签传递算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112175101.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<p>via</p>
+<ul>
+<li><a href="http://blog.csdn.net/u010161379/article/details/51636926" target="_blank" rel="noopener">Affinity Propagation: AP聚类算法</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/聚类/" rel="tag"># 聚类</a>
+          
+            <a href="/tags/k-Means/" rel="tag"># k-Means</a>
+          
+            <a href="/tags/Canopy/" rel="tag"># Canopy</a>
+          
+            <a href="/tags/AGNES/" rel="tag"># AGNES</a>
+          
+            <a href="/tags/DIANA/" rel="tag"># DIANA</a>
+          
+            <a href="/tags/DBSCAN/" rel="tag"># DBSCAN</a>
+          
+            <a href="/tags/AP/" rel="tag"># AP</a>
+          
+            <a href="/tags/谱聚类/" rel="tag"># 谱聚类</a>
+          
+            <a href="/tags/层次聚类/" rel="tag"># 层次聚类</a>
+          
+            <a href="/tags/密度最大值聚类/" rel="tag"># 密度最大值聚类</a>
+          
+            <a href="/tags/拉普拉斯/" rel="tag"># 拉普拉斯</a>
+          
+            <a href="/tags/边界/" rel="tag"># 边界</a>
+          
+            <a href="/tags/噪声/" rel="tag"># 噪声</a>
+          
+            <a href="/tags/标签传递/" rel="tag"># 标签传递</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/12/SVM/" rel="next" title="SVM">
+                <i class="fa fa-chevron-left"></i> SVM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/12/EM/" rel="prev" title="EM">
+                EM <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些概念"><span class="nav-number">1.</span> <span class="nav-text">一些概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类的定义"><span class="nav-number">1.1.</span> <span class="nav-text">聚类的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相似度-距离计算方法总结"><span class="nav-number">1.2.</span> <span class="nav-text">相似度/距离计算方法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hellinger-distance"><span class="nav-number">1.2.1.</span> <span class="nav-text">Hellinger distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#余弦相似度与Pearson相似系数"><span class="nav-number">1.2.2.</span> <span class="nav-text">余弦相似度与Pearson相似系数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类的基本思想"><span class="nav-number">1.3.</span> <span class="nav-text">聚类的基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类的衡量指标"><span class="nav-number">1.4.</span> <span class="nav-text">聚类的衡量指标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ARI"><span class="nav-number">1.4.1.</span> <span class="nav-text">ARI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMI"><span class="nav-number">1.4.2.</span> <span class="nav-text">AMI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#轮廓系数-Silhouette"><span class="nav-number">1.4.3.</span> <span class="nav-text">轮廓系数(Silhouette)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#k-Means"><span class="nav-number">2.</span> <span class="nav-text">k-Means</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#k-Means算法"><span class="nav-number">2.1.</span> <span class="nav-text">k-Means算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对k-Means的思考"><span class="nav-number">2.1.1.</span> <span class="nav-text">对k-Means的思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-Means的公式化解释"><span class="nav-number">2.1.2.</span> <span class="nav-text">k-Means的公式化解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果使用其他相似度-距离度量"><span class="nav-number">2.1.3.</span> <span class="nav-text">如果使用其他相似度/距离度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mini-batch-k-Means算法描述"><span class="nav-number">2.1.4.</span> <span class="nav-text">Mini-batch k-Means算法描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-Means聚类总结"><span class="nav-number">2.2.</span> <span class="nav-text">k-Means聚类总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Canopy"><span class="nav-number">3.</span> <span class="nav-text">Canopy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Canopy算法"><span class="nav-number">3.1.</span> <span class="nav-text">Canopy算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#层次聚类方法"><span class="nav-number">4.</span> <span class="nav-text">层次聚类方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AGNES和DIANA算法"><span class="nav-number">4.1.</span> <span class="nav-text">AGNES和DIANA算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密度聚类方法"><span class="nav-number">5.</span> <span class="nav-text">密度聚类方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DBSCAN算法"><span class="nav-number">6.</span> <span class="nav-text">DBSCAN算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN算法的若干概念"><span class="nav-number">6.1.</span> <span class="nav-text">DBSCAN算法的若干概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DBSCAN算法流程"><span class="nav-number">6.2.</span> <span class="nav-text">DBSCAN算法流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密度最大值聚类"><span class="nav-number">7.</span> <span class="nav-text">密度最大值聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高局部密度点距离"><span class="nav-number">7.1.</span> <span class="nav-text">高局部密度点距离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#簇中心的识别"><span class="nav-number">7.2.</span> <span class="nav-text">簇中心的识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密度最大值聚类过程"><span class="nav-number">7.3.</span> <span class="nav-text">密度最大值聚类过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边界和噪声的重新认识"><span class="nav-number">7.4.</span> <span class="nav-text">边界和噪声的重新认识</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Affinity-Propagation"><span class="nav-number">8.</span> <span class="nav-text">Affinity Propagation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法概述"><span class="nav-number">8.1.</span> <span class="nav-text">算法概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">8.1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法流程"><span class="nav-number">8.1.2.</span> <span class="nav-text">算法流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">8.1.3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">8.1.4.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#谱和谱聚类"><span class="nav-number">9.</span> <span class="nav-text">谱和谱聚类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#谱分析的整体过程"><span class="nav-number">9.1.</span> <span class="nav-text">谱分析的整体过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些概念-1"><span class="nav-number">9.2.</span> <span class="nav-text">一些概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相似度图G的建立方法"><span class="nav-number">9.3.</span> <span class="nav-text">相似度图G的建立方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权值比较"><span class="nav-number">9.4.</span> <span class="nav-text">权值比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉普拉斯矩阵的定义"><span class="nav-number">9.5.</span> <span class="nav-text">拉普拉斯矩阵的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉普拉斯矩阵及其性质"><span class="nav-number">9.6.</span> <span class="nav-text">拉普拉斯矩阵及其性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谱聚类算法：未正则拉普拉斯矩阵"><span class="nav-number">9.7.</span> <span class="nav-text">谱聚类算法：未正则拉普拉斯矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谱聚类算法：随机游走拉普拉斯矩阵"><span class="nav-number">9.8.</span> <span class="nav-text">谱聚类算法：随机游走拉普拉斯矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谱聚类算法：对称拉普拉斯矩阵"><span class="nav-number">9.9.</span> <span class="nav-text">谱聚类算法：对称拉普拉斯矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进一步思考"><span class="nav-number">9.10.</span> <span class="nav-text">进一步思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机游走和拉普拉斯矩阵的关系"><span class="nav-number">9.11.</span> <span class="nav-text">随机游走和拉普拉斯矩阵的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签传递算法"><span class="nav-number">9.12.</span> <span class="nav-text">标签传递算法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

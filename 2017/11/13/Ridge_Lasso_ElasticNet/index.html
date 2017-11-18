@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="sklearn,linear_model,ElasticNet,Pipeline,Ridge,Lasso," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="sklearn.linear_model中的Ridge、Lasso、ElasticNet回归">
+<meta name="keywords" content="sklearn,linear_model,ElasticNet,Pipeline,Ridge,Lasso">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sklearn.linear_model中的Ridge、Lasso、ElasticNet回归">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/11/13/Ridge_Lasso_ElasticNet/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="sklearn.linear_model中的Ridge、Lasso、ElasticNet回归">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/linear_model/QQ截图20171113165729.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/linear_model/QQ截图20171113165824.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.554Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sklearn.linear_model中的Ridge、Lasso、ElasticNet回归">
+<meta name="twitter:description" content="sklearn.linear_model中的Ridge、Lasso、ElasticNet回归">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/ML/linear_model/QQ截图20171113165729.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/11/13/Ridge_Lasso_ElasticNet/"/>
+
+
+
+
+
+  <title>sklearn.linear_model中的Ridge、Lasso、ElasticNet回归 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/Ridge_Lasso_ElasticNet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sklearn.linear_model中的Ridge、Lasso、ElasticNet回归</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  sklearn.linear_model中的Ridge、Lasso、ElasticNet回归
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression, RidgeCV, LassoCV, ElasticNetCV</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> warnings</span><br></pre></td></tr></table></figure>
+<h1 id="定义模型评价函数："><a href="#定义模型评价函数：" class="headerlink" title="定义模型评价函数："></a>定义模型评价函数：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xss</span><span class="params">(y, y_hat)</span>:</span></span><br><span class="line">    y = y.ravel()</span><br><span class="line">    y_hat = y_hat.ravel()</span><br><span class="line">    tss = np.var(y)</span><br><span class="line">    rss = np.average((y_hat - y) ** <span class="number">2</span>)</span><br><span class="line">    r2 = <span class="number">1</span> - rss / tss</span><br><span class="line">    corr_coef = np.corrcoef(y, y_hat)[<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> r2, corr_coef</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="生成训练数据"><a href="#生成训练数据" class="headerlink" title="生成训练数据"></a>生成训练数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">warnings.filterwarnings(<span class="string">"ignore"</span>)   <span class="comment"># ConvergenceWarning</span></span><br><span class="line">np.random.seed(<span class="number">0</span>)</span><br><span class="line">np.set_printoptions(linewidth=<span class="number">1000</span>)</span><br><span class="line">N = <span class="number">9</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>, <span class="number">6</span>, N) + np.random.randn(N)</span><br><span class="line">x = np.sort(x)</span><br><span class="line">y = x**<span class="number">2</span> - <span class="number">4</span>*x - <span class="number">3</span> + np.random.randn(N)</span><br><span class="line">x.shape = <span class="number">-1</span>, <span class="number">1</span></span><br><span class="line">y.shape = <span class="number">-1</span>, <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h1 id="模型设置"><a href="#模型设置" class="headerlink" title="模型设置"></a>模型设置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">models = [Pipeline([(<span class="string">'poly'</span>, PolynomialFeatures()),</span><br><span class="line">                    (<span class="string">'linear'</span>, LinearRegression(fit_intercept=<span class="keyword">False</span>))]),</span><br><span class="line">        Pipeline([(<span class="string">'poly'</span>, PolynomialFeatures()),</span><br><span class="line">                (<span class="string">'linear'</span>, RidgeCV(alphas=np.logspace(<span class="number">-3</span>, <span class="number">2</span>, <span class="number">50</span>), fit_intercept=<span class="keyword">False</span>))]),</span><br><span class="line">        Pipeline([(<span class="string">'poly'</span>, PolynomialFeatures()),</span><br><span class="line">                (<span class="string">'linear'</span>, LassoCV(alphas=np.logspace(<span class="number">-3</span>, <span class="number">2</span>, <span class="number">50</span>), fit_intercept=<span class="keyword">False</span>))]),</span><br><span class="line">        Pipeline([(<span class="string">'poly'</span>, PolynomialFeatures()),</span><br><span class="line">                (<span class="string">'linear'</span>, ElasticNetCV(alphas=np.logspace(<span class="number">-3</span>, <span class="number">2</span>, <span class="number">50</span>), l1_ratio=[<span class="number">.1</span>, <span class="number">.5</span>, <span class="number">.7</span>, <span class="number">.9</span>, <span class="number">.95</span>, <span class="number">.99</span>, <span class="number">1</span>],</span><br><span class="line">                                fit_intercept=<span class="keyword">False</span>))])]</span><br><span class="line"></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">u'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br><span class="line">np.set_printoptions(suppress=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="模型训练与图形展示"><a href="#模型训练与图形展示" class="headerlink" title="模型训练与图形展示"></a>模型训练与图形展示</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">16</span>, <span class="number">10</span>), facecolor=<span class="string">'w'</span>)</span><br><span class="line">d_pool = np.arange(<span class="number">1</span>, N, <span class="number">1</span>)  <span class="comment"># 阶</span></span><br><span class="line">m = d_pool.size</span><br><span class="line">clrs = []  <span class="comment"># 颜色</span></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> np.linspace(<span class="number">16711680</span>, <span class="number">255</span>, m):</span><br><span class="line">    clrs.append(<span class="string">'#%06x'</span> % c)</span><br><span class="line"></span><br><span class="line">line_width = np.linspace(<span class="number">5</span>, <span class="number">2</span>, m)</span><br><span class="line">titles = <span class="string">u'LinearRegression'</span>, <span class="string">u'Ridge'</span>, <span class="string">u'LASSO'</span>, <span class="string">u'ElasticNet'</span></span><br><span class="line">tss_list = []</span><br><span class="line">rss_list = []</span><br><span class="line">ess_list = []</span><br><span class="line">ess_rss_list = []</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    model = models[t]</span><br><span class="line">    plt.subplot(<span class="number">2</span>, <span class="number">2</span>, t+<span class="number">1</span>)</span><br><span class="line">    plt.plot(x, y, <span class="string">'ro'</span>, ms=<span class="number">10</span>, zorder=N)</span><br><span class="line">    <span class="keyword">for</span> i, d <span class="keyword">in</span> enumerate(d_pool):</span><br><span class="line">        model.set_params(poly__degree=d)</span><br><span class="line">        model.fit(x, y.ravel())</span><br><span class="line">        lin = model.get_params(<span class="string">'linear'</span>)[<span class="string">'linear'</span>]</span><br><span class="line">        output = <span class="string">u'%s：%d阶，系数为：'</span> % (titles[t], d)</span><br><span class="line">        <span class="keyword">if</span> hasattr(lin, <span class="string">'alpha_'</span>):</span><br><span class="line">            idx = output.find(<span class="string">u'系数'</span>)</span><br><span class="line">            output = output[:idx] + (<span class="string">u'alpha=%.6f，'</span> % lin.alpha_) + output[idx:]</span><br><span class="line">        <span class="keyword">if</span> hasattr(lin, <span class="string">'l1_ratio_'</span>):   <span class="comment"># 根据交叉验证结果，从输入l1_ratio(list)中选择的最优l1_ratio_(float)</span></span><br><span class="line">            idx = output.find(<span class="string">u'系数'</span>)</span><br><span class="line">            output = output[:idx] + (<span class="string">u'l1_ratio=%.6f，'</span> % lin.l1_ratio_) + output[idx:]</span><br><span class="line">        <span class="keyword">print</span> output, lin.coef_.ravel()</span><br><span class="line">        x_hat = np.linspace(x.min(), x.max(), num=<span class="number">100</span>)</span><br><span class="line">        x_hat.shape = <span class="number">-1</span>, <span class="number">1</span></span><br><span class="line">        y_hat = model.predict(x_hat)</span><br><span class="line">        s = model.score(x, y)</span><br><span class="line">        r2, corr_coef = xss(y, model.predict(x))</span><br><span class="line">        <span class="comment"># print 'R2和相关系数：', r2, corr_coef</span></span><br><span class="line">        <span class="comment"># print 'R2：', s, '\n'</span></span><br><span class="line">        z = N - <span class="number">1</span> <span class="keyword">if</span> (d == <span class="number">2</span>) <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">        label = <span class="string">u'%d阶，$R^2$=%.3f'</span> % (d, s)</span><br><span class="line">        <span class="keyword">if</span> hasattr(lin, <span class="string">'l1_ratio_'</span>):</span><br><span class="line">            label += <span class="string">u'，L1 ratio=%.2f'</span> % lin.l1_ratio_</span><br><span class="line">        plt.plot(x_hat, y_hat, color=clrs[i], lw=line_width[i], alpha=<span class="number">0.75</span>, label=label, zorder=z)</span><br><span class="line">    plt.legend(loc=<span class="string">'upper left'</span>)</span><br><span class="line">    plt.grid(<span class="keyword">True</span>)</span><br><span class="line">    plt.title(titles[t], fontsize=<span class="number">18</span>)</span><br><span class="line">    plt.xlabel(<span class="string">'X'</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'Y'</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">plt.tight_layout(<span class="number">1</span>, rect=(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0.95</span>))</span><br><span class="line">plt.suptitle(<span class="string">u'多项式曲线拟合比较'</span>, fontsize=<span class="number">22</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">y_max = max(max(tss_list), max(ess_rss_list)) * <span class="number">1.05</span></span><br><span class="line">plt.figure(figsize=(<span class="number">9</span>, <span class="number">7</span>), facecolor=<span class="string">'w'</span>)</span><br><span class="line">t = np.arange(len(tss_list))</span><br><span class="line">plt.plot(t, tss_list, <span class="string">'ro-'</span>, lw=<span class="number">2</span>, label=<span class="string">u'TSS(Total Sum of Squares)'</span>)</span><br><span class="line">plt.plot(t, ess_list, <span class="string">'mo-'</span>, lw=<span class="number">1</span>, label=<span class="string">u'ESS(Explained Sum of Squares)'</span>)</span><br><span class="line">plt.plot(t, rss_list, <span class="string">'bo-'</span>, lw=<span class="number">1</span>, label=<span class="string">u'RSS(Residual Sum of Squares)'</span>)</span><br><span class="line">plt.plot(t, ess_rss_list, <span class="string">'go-'</span>, lw=<span class="number">2</span>, label=<span class="string">u'ESS+RSS'</span>)</span><br><span class="line">plt.ylim((<span class="number">0</span>, y_max))</span><br><span class="line">plt.legend(loc=<span class="string">'center right'</span>)</span><br><span class="line">plt.xlabel(<span class="string">u'LinearRegression/Ridge/LASSO/Elastic Net'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">plt.ylabel(<span class="string">u'XSS值'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">plt.title(<span class="string">u'总平方和TSS=？'</span>, fontsize=<span class="number">18</span>)</span><br><span class="line">plt.grid(<span class="keyword">True</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h5 id="输出如下："><a href="#输出如下：" class="headerlink" title="输出如下："></a>输出如下：</h5><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/linear_model/QQ截图20171113165729.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/linear_model/QQ截图20171113165824.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">线性回归：<span class="number">1</span>阶，系数为： [<span class="number">-12.12113792</span>   <span class="number">3.05477422</span>]</span><br><span class="line">线性回归：<span class="number">2</span>阶，系数为： [<span class="number">-3.23812184</span> <span class="number">-3.36390661</span>  <span class="number">0.90493645</span>]</span><br><span class="line">线性回归：<span class="number">3</span>阶，系数为： [<span class="number">-3.90207326</span> <span class="number">-2.61163034</span>  <span class="number">0.66422328</span>  <span class="number">0.02290431</span>]</span><br><span class="line">线性回归：<span class="number">4</span>阶，系数为： [<span class="number">-8.20599769</span>  <span class="number">4.20778207</span> <span class="number">-2.85304163</span>  <span class="number">0.73902338</span> <span class="number">-0.05008557</span>]</span><br><span class="line">线性回归：<span class="number">5</span>阶，系数为： [ <span class="number">21.59733285</span> <span class="number">-54.12232017</span>  <span class="number">38.43116219</span> <span class="number">-12.68651476</span>   <span class="number">1.98134176</span>  <span class="number">-0.11572371</span>]</span><br><span class="line">线性回归：<span class="number">6</span>阶，系数为： [ <span class="number">14.73304785</span> <span class="number">-37.87317494</span>  <span class="number">23.67462342</span>  <span class="number">-6.07037979</span>   <span class="number">0.42536833</span>   <span class="number">0.06803132</span>  <span class="number">-0.00859246</span>]</span><br><span class="line">线性回归：<span class="number">7</span>阶，系数为： [ <span class="number">314.30344622</span> <span class="number">-827.89446924</span>  <span class="number">857.33293186</span> <span class="number">-465.46543638</span>  <span class="number">144.21883851</span>  <span class="number">-25.67294678</span>    <span class="number">2.44658612</span>   <span class="number">-0.09675941</span>]</span><br><span class="line">线性回归：<span class="number">8</span>阶，系数为： [<span class="number">-1189.50149198</span>  <span class="number">3643.69109456</span> <span class="number">-4647.92941149</span>  <span class="number">3217.22814712</span> <span class="number">-1325.87384337</span>   <span class="number">334.32869072</span>   <span class="number">-50.57119119</span>     <span class="number">4.21251817</span>    <span class="number">-0.148521</span>  ]</span><br><span class="line">Ridge回归：<span class="number">1</span>阶，alpha=<span class="number">0.109854</span>，系数为： [<span class="number">-11.21592213</span>   <span class="number">2.85121516</span>]</span><br><span class="line">Ridge回归：<span class="number">2</span>阶，alpha=<span class="number">0.138950</span>，系数为： [<span class="number">-2.90423989</span> <span class="number">-3.49931368</span>  <span class="number">0.91803171</span>]</span><br><span class="line">Ridge回归：<span class="number">3</span>阶，alpha=<span class="number">0.068665</span>，系数为： [<span class="number">-3.47165245</span> <span class="number">-2.85078293</span>  <span class="number">0.69245987</span>  <span class="number">0.02314415</span>]</span><br><span class="line">Ridge回归：<span class="number">4</span>阶，alpha=<span class="number">0.222300</span>，系数为： [<span class="number">-2.84560266</span> <span class="number">-1.99887417</span> <span class="number">-0.40628792</span>  <span class="number">0.33863868</span> <span class="number">-0.02674442</span>]</span><br><span class="line">Ridge回归：<span class="number">5</span>阶，alpha=<span class="number">1.151395</span>，系数为： [<span class="number">-1.68160373</span> <span class="number">-1.52726943</span> <span class="number">-0.8382036</span>   <span class="number">0.2329258</span>   <span class="number">0.03934251</span> <span class="number">-0.00663323</span>]</span><br><span class="line">Ridge回归：<span class="number">6</span>阶，alpha=<span class="number">0.001000</span>，系数为： [ <span class="number">0.53724068</span> <span class="number">-6.00552086</span> <span class="number">-3.75961826</span>  <span class="number">5.64559118</span> <span class="number">-2.21569695</span>  <span class="number">0.36872911</span> <span class="number">-0.02221343</span>]</span><br><span class="line">Ridge回归：<span class="number">7</span>阶，alpha=<span class="number">0.033932</span>，系数为： [<span class="number">-2.38021238</span> <span class="number">-2.26383055</span> <span class="number">-1.47715232</span>  <span class="number">0.00763115</span>  <span class="number">1.12242917</span> <span class="number">-0.52769633</span>  <span class="number">0.09199201</span> <span class="number">-0.00560199</span>]</span><br><span class="line">Ridge回归：<span class="number">8</span>阶，alpha=<span class="number">0.138950</span>，系数为： [<span class="number">-2.19299093</span> <span class="number">-1.91896884</span> <span class="number">-1.21608489</span> <span class="number">-0.19314178</span>  <span class="number">0.49300277</span>  <span class="number">0.05452898</span> <span class="number">-0.09690455</span>  <span class="number">0.02114435</span> <span class="number">-0.00140196</span>]</span><br><span class="line">LASSO：<span class="number">1</span>阶，alpha=<span class="number">0.222300</span>，系数为： [<span class="number">-10.41556797</span>   <span class="number">2.66199326</span>]</span><br><span class="line">LASSO：<span class="number">2</span>阶，alpha=<span class="number">0.001000</span>，系数为： [<span class="number">-3.29932625</span> <span class="number">-3.31989869</span>  <span class="number">0.89878903</span>]</span><br><span class="line">LASSO：<span class="number">3</span>阶，alpha=<span class="number">0.013257</span>，系数为： [<span class="number">-4.83524033</span> <span class="number">-1.48721929</span>  <span class="number">0.29726322</span>  <span class="number">0.05804667</span>]</span><br><span class="line">LASSO：<span class="number">4</span>阶，alpha=<span class="number">0.002560</span>，系数为： [<span class="number">-5.08513199</span> <span class="number">-1.41147772</span>  <span class="number">0.3380565</span>   <span class="number">0.0440427</span>   <span class="number">0.00099807</span>]</span><br><span class="line">LASSO：<span class="number">5</span>阶，alpha=<span class="number">0.042919</span>，系数为： [<span class="number">-4.11853758</span> <span class="number">-1.8643949</span>   <span class="number">0.2618319</span>   <span class="number">0.07954732</span>  <span class="number">0.00257481</span> <span class="number">-0.00069093</span>]</span><br><span class="line">LASSO：<span class="number">6</span>阶，alpha=<span class="number">0.001000</span>，系数为： [<span class="number">-4.53546398</span> <span class="number">-1.70335188</span>  <span class="number">0.29896515</span>  <span class="number">0.05237738</span>  <span class="number">0.00489432</span>  <span class="number">0.00007551</span> <span class="number">-0.00010944</span>]</span><br><span class="line">LASSO：<span class="number">7</span>阶，alpha=<span class="number">0.001000</span>，系数为： [<span class="number">-4.51456835</span> <span class="number">-1.58477275</span>  <span class="number">0.23483228</span>  <span class="number">0.04900369</span>  <span class="number">0.00593868</span>  <span class="number">0.00044879</span> <span class="number">-0.00002625</span> <span class="number">-0.00002132</span>]</span><br><span class="line">LASSO：<span class="number">8</span>阶，alpha=<span class="number">0.001000</span>，系数为： [<span class="number">-4.62623251</span> <span class="number">-1.37717809</span>  <span class="number">0.17183854</span>  <span class="number">0.04307765</span>  <span class="number">0.00629505</span>  <span class="number">0.00069171</span>  <span class="number">0.0000355</span>  <span class="number">-0.00000875</span> <span class="number">-0.00000386</span>]</span><br><span class="line">ElasticNet：<span class="number">1</span>阶，alpha=<span class="number">0.021210</span>，l1_ratio=<span class="number">0.100000</span>，系数为： [<span class="number">-10.74762959</span>   <span class="number">2.74580662</span>]</span><br><span class="line">ElasticNet：<span class="number">2</span>阶，alpha=<span class="number">0.013257</span>，l1_ratio=<span class="number">0.100000</span>，系数为： [<span class="number">-2.95099269</span> <span class="number">-3.48472703</span>  <span class="number">0.91705013</span>]</span><br><span class="line">ElasticNet：<span class="number">3</span>阶，alpha=<span class="number">0.013257</span>，l1_ratio=<span class="number">1.000000</span>，系数为： [<span class="number">-4.83524033</span> <span class="number">-1.48721929</span>  <span class="number">0.29726322</span>  <span class="number">0.05804667</span>]</span><br><span class="line">ElasticNet：<span class="number">4</span>阶，alpha=<span class="number">0.010481</span>，l1_ratio=<span class="number">0.950000</span>，系数为： [<span class="number">-4.8799192</span>  <span class="number">-1.5317438</span>   <span class="number">0.3452403</span>   <span class="number">0.04825571</span>  <span class="number">0.00049763</span>]</span><br><span class="line">ElasticNet：<span class="number">5</span>阶，alpha=<span class="number">0.004095</span>，l1_ratio=<span class="number">0.100000</span>，系数为： [<span class="number">-4.07916291</span> <span class="number">-2.18606287</span>  <span class="number">0.44650232</span>  <span class="number">0.05102669</span>  <span class="number">0.00239164</span> <span class="number">-0.00048279</span>]</span><br><span class="line">ElasticNet：<span class="number">6</span>阶，alpha=<span class="number">0.001000</span>，l1_ratio=<span class="number">1.000000</span>，系数为： [<span class="number">-4.53546398</span> <span class="number">-1.70335188</span>  <span class="number">0.29896515</span>  <span class="number">0.05237738</span>  <span class="number">0.00489432</span>  <span class="number">0.00007551</span> <span class="number">-0.00010944</span>]</span><br><span class="line">ElasticNet：<span class="number">7</span>阶，alpha=<span class="number">0.001000</span>，l1_ratio=<span class="number">1.000000</span>，系数为： [<span class="number">-4.51456835</span> <span class="number">-1.58477275</span>  <span class="number">0.23483228</span>  <span class="number">0.04900369</span>  <span class="number">0.00593868</span>  <span class="number">0.00044879</span> <span class="number">-0.00002625</span> <span class="number">-0.00002132</span>]</span><br><span class="line">ElasticNet：<span class="number">8</span>阶，alpha=<span class="number">0.001000</span>，l1_ratio=<span class="number">0.500000</span>，系数为： [<span class="number">-4.53761647</span> <span class="number">-1.45230301</span>  <span class="number">0.18829714</span>  <span class="number">0.0427561</span>   <span class="number">0.00619739</span>  <span class="number">0.00068209</span>  <span class="number">0.00003506</span> <span class="number">-0.00000869</span> <span class="number">-0.00000384</span>]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sklearn/" rel="tag"># sklearn</a>
+          
+            <a href="/tags/linear-model/" rel="tag"># linear_model</a>
+          
+            <a href="/tags/ElasticNet/" rel="tag"># ElasticNet</a>
+          
+            <a href="/tags/Pipeline/" rel="tag"># Pipeline</a>
+          
+            <a href="/tags/Ridge/" rel="tag"># Ridge</a>
+          
+            <a href="/tags/Lasso/" rel="tag"># Lasso</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/13/sklearn.linear_model.LogisticRegression/" rel="next" title="sklearn.linear_model.LogisticRegression">
+                <i class="fa fa-chevron-left"></i> sklearn.linear_model.LogisticRegression
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/13/scipy.optimize/" rel="prev" title="scipy.optimize使用">
+                scipy.optimize使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导入包："><span class="nav-number">1.</span> <span class="nav-text">导入包：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义模型评价函数："><span class="nav-number">2.</span> <span class="nav-text">定义模型评价函数：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成训练数据"><span class="nav-number">3.</span> <span class="nav-text">生成训练数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型设置"><span class="nav-number">4.</span> <span class="nav-text">模型设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型训练与图形展示"><span class="nav-number">5.</span> <span class="nav-text">模型训练与图形展示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#输出如下："><span class="nav-number">5.0.0.0.1.</span> <span class="nav-text">输出如下：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

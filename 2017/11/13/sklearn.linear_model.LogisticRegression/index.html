@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="sklearn,linear_model,Pipeline,LogisticRegression,分割面," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="sklearn.linear_model.LogisticRegression">
+<meta name="keywords" content="sklearn,linear_model,Pipeline,LogisticRegression,分割面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sklearn.linear_model.LogisticRegression">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/11/13/sklearn.linear_model.LogisticRegression/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="sklearn.linear_model.LogisticRegression">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/linear_model/Figure_2.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.622Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sklearn.linear_model.LogisticRegression">
+<meta name="twitter:description" content="sklearn.linear_model.LogisticRegression">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/ML/linear_model/Figure_2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/11/13/sklearn.linear_model.LogisticRegression/"/>
+
+
+
+
+
+  <title>sklearn.linear_model.LogisticRegression | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/sklearn.linear_model.LogisticRegression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sklearn.linear_model.LogisticRegression</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  sklearn.linear_model.LogisticRegression
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
+<h1 id="数据处理与模型拟合Pipeline"><a href="#数据处理与模型拟合Pipeline" class="headerlink" title="数据处理与模型拟合Pipeline"></a>数据处理与模型拟合Pipeline</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">lr = Pipeline([(<span class="string">'sc'</span>, StandardScaler()),</span><br><span class="line">               (<span class="string">'clf'</span>, LogisticRegression()) ])</span><br><span class="line">lr.fit(X, y.ravel())</span><br><span class="line">y_hat = lr.predict(X)</span><br><span class="line">y_hat_prob = lr.predict_proba(X)</span><br><span class="line">np.set_printoptions(suppress=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'y_hat = \n'</span>, y_hat</span><br><span class="line"><span class="keyword">print</span> <span class="string">'y_hat_prob = \n'</span>, y_hat_prob</span><br><span class="line"><span class="keyword">print</span> <span class="string">u'准确度：%.2f%%'</span> % (<span class="number">100</span>*np.mean(y_hat == y.ravel()))</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="绘图：分割面"><a href="#绘图：分割面" class="headerlink" title="绘图：分割面"></a>绘图：分割面</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line">N, M = <span class="number">500</span>, <span class="number">500</span>     <span class="comment"># 横纵各采样多少个值</span></span><br><span class="line">x1_min, x1_max = X[:, <span class="number">0</span>].min(), X[:, <span class="number">0</span>].max()   <span class="comment"># 第0列的范围</span></span><br><span class="line">x2_min, x2_max = X[:, <span class="number">1</span>].min(), X[:, <span class="number">1</span>].max()   <span class="comment"># 第1列的范围</span></span><br><span class="line">t1 = np.linspace(x1_min, x1_max, N)</span><br><span class="line">t2 = np.linspace(x2_min, x2_max, M)</span><br><span class="line">x1, x2 = np.meshgrid(t1, t2)                    <span class="comment"># 生成网格采样点</span></span><br><span class="line">x_test = np.stack((x1.flat, x2.flat), axis=<span class="number">1</span>)   <span class="comment"># 测试点</span></span><br><span class="line"></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">u'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br><span class="line">cm_light = mpl.colors.ListedColormap([<span class="string">'#77E0A0'</span>, <span class="string">'#FF8080'</span>, <span class="string">'#A0A0FF'</span>])</span><br><span class="line">cm_dark = mpl.colors.ListedColormap([<span class="string">'g'</span>, <span class="string">'r'</span>, <span class="string">'b'</span>])</span><br><span class="line">y_hat = lr.predict(x_test)                  <span class="comment"># 预测值</span></span><br><span class="line">y_hat = y_hat.reshape(x1.shape)                 <span class="comment"># 使之与输入的形状相同</span></span><br><span class="line">plt.figure(facecolor=<span class="string">'w'</span>)</span><br><span class="line">plt.pcolormesh(x1, x2, y_hat, cmap=cm_light)     <span class="comment"># 预测值的显示</span></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, edgecolors=<span class="string">'k'</span>, s=<span class="number">50</span>, cmap=cm_dark)    <span class="comment"># 样本的显示</span></span><br><span class="line">plt.xlabel(<span class="string">u'花萼长度'</span>, fontsize=<span class="number">14</span>)</span><br><span class="line">plt.ylabel(<span class="string">u'花萼宽度'</span>, fontsize=<span class="number">14</span>)</span><br><span class="line">plt.xlim(x1_min, x1_max)</span><br><span class="line">plt.ylim(x2_min, x2_max)</span><br><span class="line">plt.grid()</span><br><span class="line">plt.title(<span class="string">u'鸢尾花Logistic回归分类效果 - 标准化'</span>, fontsize=<span class="number">17</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/linear_model/Figure_2.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sklearn/" rel="tag"># sklearn</a>
+          
+            <a href="/tags/linear-model/" rel="tag"># linear_model</a>
+          
+            <a href="/tags/Pipeline/" rel="tag"># Pipeline</a>
+          
+            <a href="/tags/LogisticRegression/" rel="tag"># LogisticRegression</a>
+          
+            <a href="/tags/分割面/" rel="tag"># 分割面</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/13/python读取文件数据的几种方式/" rel="next" title="python读取文件数据的几种方式">
+                <i class="fa fa-chevron-left"></i> python读取文件数据的几种方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/13/Ridge_Lasso_ElasticNet/" rel="prev" title="sklearn.linear_model中的Ridge、Lasso、ElasticNet回归">
+                sklearn.linear_model中的Ridge、Lasso、ElasticNet回归 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导入数据集"><span class="nav-number">1.</span> <span class="nav-text">导入数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据处理与模型拟合Pipeline"><span class="nav-number">2.</span> <span class="nav-text">数据处理与模型拟合Pipeline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘图：分割面"><span class="nav-number">3.</span> <span class="nav-text">绘图：分割面</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

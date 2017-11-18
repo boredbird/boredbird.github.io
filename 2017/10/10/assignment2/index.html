@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Neural Networks,backpropagation,mini-batch gradient descent,cross-validate,Convolutional Neural Networks," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="assignment2">
+<meta name="keywords" content="Neural Networks,backpropagation,mini-batch gradient descent,cross-validate,Convolutional Neural Networks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="assignment2">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/10/10/assignment2/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="assignment2">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.580Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="assignment2">
+<meta name="twitter:description" content="assignment2">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/10/10/assignment2/"/>
+
+
+
+
+
+  <title>assignment2 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/assignment2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">assignment2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-10T14:28:12+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  assignment2
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In this assignment you will practice writing backpropagation code, and training Neural Networks and Convolutional Neural Networks. The goals of this assignment are as follows:</p>
+<ul>
+<li>understand <strong>Neural Networks</strong> and how they are arranged in layered architectures</li>
+<li>understand and be able to implement (vectorized) <strong>backpropagation</strong></li>
+<li>implement the core parameter update loop of <strong>mini-batch gradient descent</strong></li>
+<li>effectively <strong>cross-validate</strong> and find the best hyperparameters for Neural Network architecture</li>
+<li>understand the architecture of <strong>Convolutional Neural Networks</strong> and train gain experience with training these models on data</li>
+</ul>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>You can work on the assignment in one of two ways: locally on your own machine, or on a virtual machine through <a href="https://www.terminal.com/" target="_blank" rel="noopener">Terminal</a>.</p>
+<h3 id="Working-locally"><a href="#Working-locally" class="headerlink" title="Working locally"></a>Working locally</h3><p><strong>Get the code:</strong><br><a href="http://vision.stanford.edu/teaching/cs231n/assignment2.zip" target="_blank" rel="noopener">Download the starter code here</a>.</p>
+<a id="more"></a>
+<p><strong>[Optional] virtual environment:</strong><br>Once you have unzipped the starter code, you might want to create a<br><a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/" target="_blank" rel="noopener">virtual environment</a><br>for the project. If you choose not to use a virtual environment, it is up to you<br>to make sure that all dependencies for the code are installed on your machine.<br>To set up a virtual environment, run the following:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> assignment2</span><br><span class="line">sudo pip install virtualenv      <span class="comment"># This may already be installed</span></span><br><span class="line">virtualenv .env                  <span class="comment"># Create a virtual environment</span></span><br><span class="line"><span class="built_in">source</span> .env/bin/activate         <span class="comment"># Activate the virtual environment</span></span><br><span class="line">pip install -r requirements.txt  <span class="comment"># Install dependencies</span></span><br><span class="line"><span class="comment"># Work on the assignment for a while ...</span></span><br><span class="line">deactivate                       <span class="comment"># Exit the virtual environment</span></span><br></pre></td></tr></table></figure>
+<p>You can reuse the virtual environment that you created for the first assignment,<br>but you will need to run <code>pip install -r requirements.txt</code> after activating it<br>to install additional dependencies required by this assignment.</p>
+<p><strong>Download data:</strong><br>Once you have the starter code, you will need to download the CIFAR-10 dataset.<br>Run the following from the <code>assignment2</code> directory:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> cs231n/datasets</span><br><span class="line">./get_datasets.sh</span><br></pre></td></tr></table></figure>
+<p><strong>Compile the Cython extension:</strong> Convolutional Neural Networks require a very efficient implementation. We have implemented of the functionality using <a href="http://cython.org/" target="_blank" rel="noopener">Cython</a>; you will need to compile the Cython extension before you can run the code. From the <code>cs231n</code> directory, run the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py build_ext --inplace</span><br></pre></td></tr></table></figure>
+<p><strong>Start IPython:</strong><br>After you have the CIFAR-10 data, you should start the IPython notebook server from the<br><code>assignment2</code> directory. If you are unfamiliar with IPython, you should read our<br><a href="/ipython-tutorial">IPython tutorial</a>.</p>
+<h3 id="Working-on-Terminal"><a href="#Working-on-Terminal" class="headerlink" title="Working on Terminal"></a>Working on Terminal</h3><p>We have created a Terminal snapshot that is preconfigured for this assignment;<br>you can <a href="https://www.terminal.com/tiny/WcL5zSlT0e" target="_blank" rel="noopener">find it here</a>. Terminal allows you to work on the assignment from your browser. You can find a tutorial on how to use it <a href="/terminal-tutorial">here</a>.</p>
+<h3 id="Submitting-your-work"><a href="#Submitting-your-work" class="headerlink" title="Submitting your work:"></a>Submitting your work:</h3><p>Whether you work on the assignment locally or using Terminal, once you are done<br>working run the <code>collectSubmission.sh</code> script; this will produce a file called<br><code>assignment2.zip</code>. Upload this file to your dropbox on<br><a href="https://coursework.stanford.edu/portal/site/W15-CS-231N-01/" target="_blank" rel="noopener">the coursework</a><br>page for the course.</p>
+<h3 id="Q1-Two-layer-Neural-Network-30-points"><a href="#Q1-Two-layer-Neural-Network-30-points" class="headerlink" title="Q1: Two-layer Neural Network (30 points)"></a>Q1: Two-layer Neural Network (30 points)</h3><p>The IPython Notebook <code>two_layer_net.ipynb</code> will walk you through implementing a two-layer neural network on CIFAR-10. You will write a hard-coded 2-layer Neural Network, implement its backprop pass, and tune its hyperparameters.</p>
+<h3 id="Q2-Modular-Neural-Network-30-points"><a href="#Q2-Modular-Neural-Network-30-points" class="headerlink" title="Q2: Modular Neural Network (30 points)"></a>Q2: Modular Neural Network (30 points)</h3><p>The IPython Notebook <code>layers.ipynb</code> will walk you through a modular Neural Network implementation. You will implement the forward and backward passes of many different layer types, including convolution and pooling layers.</p>
+<h3 id="Q3-ConvNet-on-CIFAR-10-40-points"><a href="#Q3-ConvNet-on-CIFAR-10-40-points" class="headerlink" title="Q3: ConvNet on CIFAR-10 (40 points)"></a>Q3: ConvNet on CIFAR-10 (40 points)</h3><p>The IPython Notebook <code>convnet.ipynb</code> will walk you through the process of training a (shallow) convolutional neural network on CIFAR-10. It wil then be up to you to train the best network that you can.</p>
+<h3 id="Q4-Do-something-extra-up-to-20-points"><a href="#Q4-Do-something-extra-up-to-20-points" class="headerlink" title="Q4: Do something extra! (up to +20 points)"></a>Q4: Do something extra! (up to +20 points)</h3><p>In the process of training your network, you should feel free to implement anything that you want to get better performance. You can modify the solver, implement additional layers, use different types of regularization, use an ensemble of models, or anything else that comes to mind. If you implement these or other ideas not covered in the assignment then you will be awarded some bonus points.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Neural-Networks/" rel="tag"># Neural Networks</a>
+          
+            <a href="/tags/backpropagation/" rel="tag"># backpropagation</a>
+          
+            <a href="/tags/mini-batch-gradient-descent/" rel="tag"># mini-batch gradient descent</a>
+          
+            <a href="/tags/cross-validate/" rel="tag"># cross-validate</a>
+          
+            <a href="/tags/Convolutional-Neural-Networks/" rel="tag"># Convolutional Neural Networks</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/10/optimization-1/" rel="next" title="optimization-1">
+                <i class="fa fa-chevron-left"></i> optimization-1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/10/understanding-cnn/" rel="prev" title="understanding-cnn">
+                understanding-cnn <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-number">1.</span> <span class="nav-text">Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Working-locally"><span class="nav-number">1.1.</span> <span class="nav-text">Working locally</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Working-on-Terminal"><span class="nav-number">1.2.</span> <span class="nav-text">Working on Terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Submitting-your-work"><span class="nav-number">1.3.</span> <span class="nav-text">Submitting your work:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1-Two-layer-Neural-Network-30-points"><span class="nav-number">1.4.</span> <span class="nav-text">Q1: Two-layer Neural Network (30 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q2-Modular-Neural-Network-30-points"><span class="nav-number">1.5.</span> <span class="nav-text">Q2: Modular Neural Network (30 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q3-ConvNet-on-CIFAR-10-40-points"><span class="nav-number">1.6.</span> <span class="nav-text">Q3: ConvNet on CIFAR-10 (40 points)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q4-Do-something-extra-up-to-20-points"><span class="nav-number">1.7.</span> <span class="nav-text">Q4: Do something extra! (up to +20 points)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="python类属性和方法的封装">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python类属性和方法的封装">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/10/14/python类属性和方法的封装/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="python类属性和方法的封装">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/python/private1.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/python/private3.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/python/private4.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/python/private5.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/python/private6.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/python/private2.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python类属性和方法的封装">
+<meta name="twitter:description" content="python类属性和方法的封装">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/python/private1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/10/14/python类属性和方法的封装/"/>
+
+
+
+
+
+  <title>python类属性和方法的封装 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/14/python类属性和方法的封装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python类属性和方法的封装</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-14T15:00:12+08:00">
+                2017-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  python类属性和方法的封装
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>封装是一种限制直接访问目标属性和方法的机制，但同时它又有利于对数据（对象的方法）进行操作。</p>
+<p>封装是一种将抽象性函数接口的实现细节部分包装、隐藏起来的方法。同时，它也是一种防止外界调用端，去访问对象内部实现细节的手段，这个手段是由编程语言本身来提供的。</p>
+<p>对象所有的内部表征对于外部来说都是隐藏的，只有对象能直接与内部数据交互。首先，我们需要理解公开（public）和私有（non-public）实例变量和方法。</p>
+<h1 id="公开实例变量"><a href="#公开实例变量" class="headerlink" title="公开实例变量"></a>公开实例变量</h1><p>对于 Python 的类，我们可以使用 constructor 方法初始化公开实例变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,first_name)</span>:</span></span><br><span class="line">		self.first_name = first_name</span><br></pre></td></tr></table></figure>
+<p>下面我们应用 first_name 的值作为公开实例变量的变元。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>)</span><br><span class="line"><span class="keyword">print</span> a.first_name  <span class="comment"># -&gt; zhang</span></span><br></pre></td></tr></table></figure>
+<p>在类别内：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	first_name = <span class="string">'zhang'</span></span><br></pre></td></tr></table></figure>
+<p>现在我们不需要再对 first_name 赋值，所有赋值到 a 的目标都将有类的属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Person()</span><br><span class="line"><span class="keyword">print</span> a.first_name <span class="comment"># -&gt; zhang</span></span><br></pre></td></tr></table></figure>
+<p>现在我们已经学会如何使用公开实例变量和类属性。除此之外，我们还能管理公开部分的变量值，即对象可以管理其变量的值：Get 和 Set 变量值。保留 Person 类，我们希望能给 first_name 变量赋另外一个值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>)</span><br><span class="line">a.first_name = <span class="string">'Z'</span></span><br><span class="line"><span class="keyword">print</span> a.first_name <span class="comment"># -&gt; Z</span></span><br></pre></td></tr></table></figure>
+<p>如上我们将另外一个值赋予了 first_name 实例变量，因为它又是一个公开变量，所以会更新变量值。</p>
+<h1 id="私有实例变量"><a href="#私有实例变量" class="headerlink" title="私有实例变量"></a>私有实例变量</h1><p>和公开实例变量一样，我们可以使用 constructor 方法或在类的内部声明而定义一个私有实例变量。语法上的不同在于私有实例变量在变量名前面加一个下划线：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,first_name,email)</span>:</span></span><br><span class="line">		self.first_name = first_name</span><br><span class="line">		self._email = email</span><br></pre></td></tr></table></figure>
+<p>上述定义的 email 变量就是私有变量。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>,<span class="string">'zhang@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a._email <span class="comment"># -&gt; zhang@mail.com</span></span><br></pre></td></tr></table></figure></p>
+<p>我们可以访问并且更新它，私有变量仅是一个约定，即他们需要被视为 API 非公开的部分。所以我们可以使用方法在类的定义中完成操作，例如使用两种方法展示私有实例的值与更新实例的值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,first_name,email)</span>:</span></span><br><span class="line">		self.first_name = first_name</span><br><span class="line">		self.__email = email</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">update_email</span><span class="params">(self,new_email)</span>:</span></span><br><span class="line">		self.__email = new_email</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">email</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> self.__email</span><br></pre></td></tr></table></figure>
+<p>现在我们可以使用方法更新或访问私有变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>,<span class="string">'zhang@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; zhang@mail.com</span></span><br><span class="line"></span><br><span class="line">a.__email = <span class="string">'new_email@mail.com'</span></span><br><span class="line"><span class="keyword">print</span> a.__email <span class="comment"># -&gt; new_email@mail.com</span></span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; zhang@mail.com</span></span><br><span class="line"></span><br><span class="line">a.update_email(<span class="string">'update_email@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a.__email <span class="comment"># -&gt; new_email@mail.com</span></span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; update_email@mail.com</span></span><br></pre></td></tr></table></figure>
+<p><img src="/assets/python/private1.png" alt=""></p>
+<p>从上面可见，以双下划线打头的名称会导致出现名称重整的行为。具体来说就是上面的这个类中的私有属性会被分别重命名为_C<strong>private 和 _C</strong>private_name。<br>但是为啥两个值不一样？？</p>
+<p><img src="/assets/python/private3.png" alt=""></p>
+<p><img src="/assets/python/private4.png" alt=""></p>
+<p><img src="/assets/python/private5.png" alt=""></p>
+<p><img src="/assets/python/private6.png" alt=""></p>
+<p>豁然开朗！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>,<span class="string">'zhang@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; zhang@mail.com</span></span><br><span class="line"></span><br><span class="line">a._email = <span class="string">'new_email@mail.com'</span></span><br><span class="line"><span class="keyword">print</span> a._email <span class="comment"># -&gt; new_email@mail.com</span></span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; new_email@mail.com</span></span><br><span class="line"></span><br><span class="line">a.update_email(<span class="string">'update_email@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a._email <span class="comment"># -&gt; update_email@mail.com</span></span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; update_email@mail.com</span></span><br></pre></td></tr></table></figure>
+<p><img src="/assets/python/private2.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/11/django自带的server局域网访问/" rel="next" title="django自带的server局域网访问">
+                <i class="fa fa-chevron-left"></i> django自带的server局域网访问
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/15/基于Django REST Framework创建API服务/" rel="prev" title="基于Django REST Framework创建API服务">
+                基于Django REST Framework创建API服务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#公开实例变量"><span class="nav-number">1.</span> <span class="nav-text">公开实例变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#私有实例变量"><span class="nav-number">2.</span> <span class="nav-text">私有实例变量</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

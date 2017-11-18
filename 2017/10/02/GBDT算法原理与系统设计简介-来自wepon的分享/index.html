@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="GBDT," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="GBDT算法原理与系统设计简介-来自wepon的分享">
+<meta name="keywords" content="GBDT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GBDT算法原理与系统设计简介-来自wepon的分享">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="GBDT算法原理与系统设计简介-来自wepon的分享">
+<meta property="og:image" content="https://i.imgur.com/nIrdPkM.png">
+<meta property="og:image" content="https://i.imgur.com/OtJtsoy.png">
+<meta property="og:image" content="https://i.imgur.com/8zoVsFG.png">
+<meta property="og:image" content="https://i.imgur.com/4TRkwMS.png">
+<meta property="og:image" content="https://i.imgur.com/Jj8rUYo.png">
+<meta property="og:image" content="https://i.imgur.com/hJRvJer.png">
+<meta property="og:image" content="https://i.imgur.com/lO7KTEr.png">
+<meta property="og:image" content="https://i.imgur.com/KclXmop.png">
+<meta property="og:image" content="https://i.imgur.com/SISeq7n.png">
+<meta property="og:image" content="https://i.imgur.com/SGENIVu.png">
+<meta property="og:image" content="https://i.imgur.com/bEdk0hq.png">
+<meta property="og:image" content="https://i.imgur.com/TlInpcp.png">
+<meta property="og:image" content="https://i.imgur.com/fMlDTe1.png">
+<meta property="og:image" content="https://i.imgur.com/uArASZT.png">
+<meta property="og:image" content="https://i.imgur.com/zpVimRg.png">
+<meta property="og:image" content="https://i.imgur.com/dMkJkKI.png">
+<meta property="og:image" content="https://i.imgur.com/9AQxjbh.png">
+<meta property="og:image" content="https://i.imgur.com/omqUwQk.png">
+<meta property="og:image" content="https://i.imgur.com/RHJtO8t.png">
+<meta property="og:image" content="https://i.imgur.com/kFwfgpE.png">
+<meta property="og:image" content="https://i.imgur.com/nQDZs8n.png">
+<meta property="og:image" content="https://i.imgur.com/vbKq7gi.png">
+<meta property="og:image" content="https://i.imgur.com/zRVBwsj.png">
+<meta property="og:image" content="https://i.imgur.com/WPdpamn.png">
+<meta property="og:image" content="https://i.imgur.com/TzC0Jgx.png">
+<meta property="og:image" content="https://i.imgur.com/6y8fXhr.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GBDT算法原理与系统设计简介-来自wepon的分享">
+<meta name="twitter:description" content="GBDT算法原理与系统设计简介-来自wepon的分享">
+<meta name="twitter:image" content="https://i.imgur.com/nIrdPkM.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/"/>
+
+
+
+
+
+  <title>GBDT算法原理与系统设计简介-来自wepon的分享 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GBDT算法原理与系统设计简介-来自wepon的分享</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-02T17:27:04+08:00">
+                2017-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  GBDT算法原理与系统设计简介-来自wepon的分享
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、泰勒公式"><a href="#一、泰勒公式" class="headerlink" title="一、泰勒公式"></a>一、泰勒公式</h1><ul>
+<li>定义：泰勒公式是一个用函数在某点的信息描述其附近取值的公式。局部有效性<br><img src="https://i.imgur.com/nIrdPkM.png" alt=""><h1 id="二、最优化方法"><a href="#二、最优化方法" class="headerlink" title="二、最优化方法"></a>二、最优化方法</h1><h2 id="2-1-梯度下降法（Gradient-descend-method）"><a href="#2-1-梯度下降法（Gradient-descend-method）" class="headerlink" title="2.1 梯度下降法（Gradient descend method）"></a>2.1 梯度下降法（Gradient descend method）</h2><img src="https://i.imgur.com/OtJtsoy.png" alt=""><h2 id="2-2-牛顿法（Newton’s-method）"><a href="#2-2-牛顿法（Newton’s-method）" class="headerlink" title="2.2 牛顿法（Newton’s method）"></a>2.2 牛顿法（Newton’s method）</h2><img src="https://i.imgur.com/8zoVsFG.png" alt=""><h1 id="三、从参数空间到函数空间"><a href="#三、从参数空间到函数空间" class="headerlink" title="三、从参数空间到函数空间"></a>三、从参数空间到函数空间</h1><h2 id="3-1-从Gradient-descend-到-Gradient-Boosting"><a href="#3-1-从Gradient-descend-到-Gradient-Boosting" class="headerlink" title="3.1 从Gradient descend 到 Gradient Boosting"></a>3.1 从Gradient descend 到 Gradient Boosting</h2><img src="https://i.imgur.com/4TRkwMS.png" alt=""><br><img src="https://i.imgur.com/Jj8rUYo.png" alt=""><h2 id="3-2-从Newton’s-method-到-Newton-Boosting"><a href="#3-2-从Newton’s-method-到-Newton-Boosting" class="headerlink" title="3.2 从Newton’s method 到 Newton Boosting"></a>3.2 从Newton’s method 到 Newton Boosting</h2><img src="https://i.imgur.com/hJRvJer.png" alt=""><br><img src="https://i.imgur.com/lO7KTEr.png" alt=""><h1 id="四、Gradient-Boosting-Tree算法原理"><a href="#四、Gradient-Boosting-Tree算法原理" class="headerlink" title="四、Gradient Boosting Tree算法原理"></a>四、Gradient Boosting Tree算法原理</h1><img src="https://i.imgur.com/KclXmop.png" alt=""><br><img src="https://i.imgur.com/SISeq7n.png" alt=""><h1 id="五、Newton-Boosting-Tree算法原理：详解XGBoost"><a href="#五、Newton-Boosting-Tree算法原理：详解XGBoost" class="headerlink" title="五、Newton Boosting Tree算法原理：详解XGBoost"></a>五、Newton Boosting Tree算法原理：详解XGBoost</h1><h2 id="5-1-模型函数形式"><a href="#5-1-模型函数形式" class="headerlink" title="5.1 模型函数形式"></a>5.1 模型函数形式</h2><img src="https://i.imgur.com/SGENIVu.png" alt=""><br><img src="https://i.imgur.com/bEdk0hq.png" alt=""><h2 id="5-2-目标函数"><a href="#5-2-目标函数" class="headerlink" title="5.2 目标函数"></a>5.2 目标函数</h2><img src="https://i.imgur.com/TlInpcp.png" alt=""><h3 id="5-2-1-正则项"><a href="#5-2-1-正则项" class="headerlink" title="5.2.1 正则项"></a>5.2.1 正则项</h3><img src="https://i.imgur.com/fMlDTe1.png" alt=""><br><img src="https://i.imgur.com/uArASZT.png" alt=""><h3 id="5-2-2-误差函数的二阶泰勒展开"><a href="#5-2-2-误差函数的二阶泰勒展开" class="headerlink" title="5.2.2 误差函数的二阶泰勒展开"></a>5.2.2 误差函数的二阶泰勒展开</h3><img src="https://i.imgur.com/zpVimRg.png" alt=""><br><img src="https://i.imgur.com/dMkJkKI.png" alt=""><br><img src="https://i.imgur.com/9AQxjbh.png" alt=""><br><img src="https://i.imgur.com/omqUwQk.png" alt=""><h2 id="5-3-回归树的学习策略"><a href="#5-3-回归树的学习策略" class="headerlink" title="5.3 回归树的学习策略"></a>5.3 回归树的学习策略</h2><img src="https://i.imgur.com/RHJtO8t.png" alt=""><h3 id="5-3-1-打分函数"><a href="#5-3-1-打分函数" class="headerlink" title="5.3.1 打分函数"></a>5.3.1 打分函数</h3><img src="https://i.imgur.com/kFwfgpE.png" alt=""><h3 id="5-3-2-树节点分裂方法"><a href="#5-3-2-树节点分裂方法" class="headerlink" title="5.3.2 树节点分裂方法"></a>5.3.2 树节点分裂方法</h3><img src="https://i.imgur.com/nQDZs8n.png" alt=""><br><img src="https://i.imgur.com/vbKq7gi.png" alt=""><br><img src="https://i.imgur.com/zRVBwsj.png" alt=""><br><img src="https://i.imgur.com/WPdpamn.png" alt=""><h3 id="5-3-3-缺失值的处理"><a href="#5-3-3-缺失值的处理" class="headerlink" title="5.3.3 缺失值的处理"></a>5.3.3 缺失值的处理</h3><img src="https://i.imgur.com/TzC0Jgx.png" alt=""><h2 id="5-4-其它特性"><a href="#5-4-其它特性" class="headerlink" title="5.4 其它特性"></a>5.4 其它特性</h2><img src="https://i.imgur.com/6y8fXhr.png" alt=""></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GBDT/" rel="tag"># GBDT</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/02/天池老司机天音的经验分享/" rel="next" title="天池老司机天音的经验分享">
+                <i class="fa fa-chevron-left"></i> 天池老司机天音的经验分享
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/02/LightGBM与XGBoost对比/" rel="prev" title="LightGBM与XGBoost对比">
+                LightGBM与XGBoost对比 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、泰勒公式"><span class="nav-number">1.</span> <span class="nav-text">一、泰勒公式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、最优化方法"><span class="nav-number">2.</span> <span class="nav-text">二、最优化方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-梯度下降法（Gradient-descend-method）"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 梯度下降法（Gradient descend method）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-牛顿法（Newton’s-method）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 牛顿法（Newton’s method）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、从参数空间到函数空间"><span class="nav-number">3.</span> <span class="nav-text">三、从参数空间到函数空间</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-从Gradient-descend-到-Gradient-Boosting"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 从Gradient descend 到 Gradient Boosting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-从Newton’s-method-到-Newton-Boosting"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 从Newton’s method 到 Newton Boosting</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、Gradient-Boosting-Tree算法原理"><span class="nav-number">4.</span> <span class="nav-text">四、Gradient Boosting Tree算法原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、Newton-Boosting-Tree算法原理：详解XGBoost"><span class="nav-number">5.</span> <span class="nav-text">五、Newton Boosting Tree算法原理：详解XGBoost</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-模型函数形式"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 模型函数形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-目标函数"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 目标函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-1-正则项"><span class="nav-number">5.2.1.</span> <span class="nav-text">5.2.1 正则项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-2-误差函数的二阶泰勒展开"><span class="nav-number">5.2.2.</span> <span class="nav-text">5.2.2 误差函数的二阶泰勒展开</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-回归树的学习策略"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 回归树的学习策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-1-打分函数"><span class="nav-number">5.3.1.</span> <span class="nav-text">5.3.1 打分函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-2-树节点分裂方法"><span class="nav-number">5.3.2.</span> <span class="nav-text">5.3.2 树节点分裂方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-3-缺失值的处理"><span class="nav-number">5.3.3.</span> <span class="nav-text">5.3.3 缺失值的处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-其它特性"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 其它特性</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

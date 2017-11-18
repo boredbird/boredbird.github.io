@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="凸优化," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="凸优化">
+<meta name="keywords" content="凸优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="凸优化">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/11/08/凸优化/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="凸优化">
+<meta property="og:image" content="https://i.imgur.com/Ik2mJaU.png">
+<meta property="og:image" content="https://i.imgur.com/Q6GhpAw.png">
+<meta property="og:image" content="https://i.imgur.com/FrQ9fVw.png">
+<meta property="og:image" content="https://i.imgur.com/zUJzlAY.png">
+<meta property="og:image" content="https://i.imgur.com/ZkUDATz.png">
+<meta property="og:image" content="https://i.imgur.com/d9TyYk2.png">
+<meta property="og:image" content="https://i.imgur.com/oh5uRW6.png">
+<meta property="og:image" content="https://i.imgur.com/zpVxFfU.png">
+<meta property="og:image" content="https://i.imgur.com/pKP4kUZ.png">
+<meta property="og:image" content="https://i.imgur.com/i9Ucga9.png">
+<meta property="og:image" content="https://i.imgur.com/EpsPV37.png">
+<meta property="og:image" content="https://i.imgur.com/4lo1pZC.png">
+<meta property="og:image" content="https://i.imgur.com/AN9cjbb.png">
+<meta property="og:image" content="https://i.imgur.com/IUGMIju.png">
+<meta property="og:image" content="https://i.imgur.com/OxKCJFj.png">
+<meta property="og:image" content="https://i.imgur.com/Z6LfBm6.png">
+<meta property="og:image" content="https://i.imgur.com/MPxhVLT.png">
+<meta property="og:image" content="https://i.imgur.com/QMX1iKQ.png">
+<meta property="og:image" content="https://i.imgur.com/X49Cy61.png">
+<meta property="og:image" content="https://i.imgur.com/nWhxmBn.png">
+<meta property="og:image" content="https://i.imgur.com/sJvYBms.png">
+<meta property="og:image" content="https://i.imgur.com/JA5VpAF.png">
+<meta property="og:image" content="https://i.imgur.com/wrHYy6y.png">
+<meta property="og:image" content="https://i.imgur.com/E4SqeSk.png">
+<meta property="og:updated_time" content="2017-11-18T06:17:14.657Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="凸优化">
+<meta name="twitter:description" content="凸优化">
+<meta name="twitter:image" content="https://i.imgur.com/Ik2mJaU.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/11/08/凸优化/"/>
+
+
+
+
+
+  <title>凸优化 | boredbird</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/08/凸优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">凸优化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-08T19:42:12+08:00">
+                2017-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  凸优化
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="凸集基本概念"><a href="#凸集基本概念" class="headerlink" title="凸集基本概念"></a>凸集基本概念</h1><h2 id="凸集保凸运算"><a href="#凸集保凸运算" class="headerlink" title="凸集保凸运算"></a>凸集保凸运算</h2><h3 id="凸集和凸函数"><a href="#凸集和凸函数" class="headerlink" title="凸集和凸函数"></a>凸集和凸函数</h3><p>凸函数图像的上方区域，一定是凸集；<br>一个函数图像的上方区域为凸集，则该函数是凸函数。</p>
+<h4 id="仿射集（Affine-Set）"><a href="#仿射集（Affine-Set）" class="headerlink" title="仿射集（Affine Set）"></a>仿射集（Affine Set）</h4><p>定义：通过集合C中任意两个不同点的直线仍然在集合C内，则称集合C为仿射集。</p>
+<p><img src="https://i.imgur.com/Ik2mJaU.png" alt=""></p>
+<h4 id="仿射集的例子："><a href="#仿射集的例子：" class="headerlink" title="仿射集的例子："></a>仿射集的例子：</h4><p>直线、平面、超平面</p>
+<h4 id="凸集"><a href="#凸集" class="headerlink" title="凸集"></a>凸集</h4><p>集合C内任意两点间的线段均在集合C内，则称集合C为凸集。<br><img src="https://i.imgur.com/Q6GhpAw.png" alt=""></p>
+<p>两个点和k个点的表达版本内涵是一样的。</p>
+<h4 id="仿射集和凸集的关系"><a href="#仿射集和凸集的关系" class="headerlink" title="仿射集和凸集的关系"></a>仿射集和凸集的关系</h4><p>因为仿射集的条件比凸集的条件强，所以，仿射集必然是凸集。</p>
+<a id="more"></a>
+<h4 id="凸包"><a href="#凸包" class="headerlink" title="凸包"></a>凸包</h4><p>集合C的所有点的凸组合形成的集合，叫做集合c的凸包。集合C的凸包是能够包含C的最小的凸集。<br><img src="https://i.imgur.com/FrQ9fVw.png" alt=""></p>
+<h4 id="超平面和半空间"><a href="#超平面和半空间" class="headerlink" title="超平面和半空间"></a>超平面和半空间</h4><p><img src="https://i.imgur.com/zUJzlAY.png" alt=""></p>
+<h4 id="保持凸性的运算"><a href="#保持凸性的运算" class="headerlink" title="保持凸性的运算"></a>保持凸性的运算</h4><ul>
+<li><p>集合交运算</p>
+</li>
+<li><p>仿射变换</p>
+<p>  函数f=ax+b的形式，称函数是仿射的，即线性函数加常数的形式。<br><img src="https://i.imgur.com/ZkUDATz.png" alt=""><br><img src="https://i.imgur.com/d9TyYk2.png" alt=""></p>
+</li>
+<li><p>透视变换</p>
+<p>  透视函数对向量进行伸缩（规范化），使得最后一维的分量为1并舍弃之。</p>
+<p>  凸集的透视变换仍然是凸集。</p>
+</li>
+<li>投射变换（线性分式变换）<br>  <img src="https://i.imgur.com/oh5uRW6.png" alt=""></li>
+</ul>
+<h2 id="分割超平面"><a href="#分割超平面" class="headerlink" title="分割超平面"></a>分割超平面</h2><h3 id="分割超平面的定义"><a href="#分割超平面的定义" class="headerlink" title="分割超平面的定义"></a>分割超平面的定义</h3><p><img src="https://i.imgur.com/zpVxFfU.png" alt=""></p>
+<h3 id="分割超平面的构造"><a href="#分割超平面的构造" class="headerlink" title="分割超平面的构造"></a>分割超平面的构造</h3><p>两个集合的距离，定义为两个集合间元素的最短距离。</p>
+<p>做集合A和集合B最短线段的垂直平分线。</p>
+<h2 id="支撑超平面"><a href="#支撑超平面" class="headerlink" title="支撑超平面"></a>支撑超平面</h2><p><img src="https://i.imgur.com/pKP4kUZ.png" alt=""></p>
+<h1 id="凸函数基本概念"><a href="#凸函数基本概念" class="headerlink" title="凸函数基本概念"></a>凸函数基本概念</h1><h2 id="一般化定义"><a href="#一般化定义" class="headerlink" title="一般化定义"></a>一般化定义</h2><p><img src="https://i.imgur.com/i9Ucga9.png" alt=""></p>
+<h2 id="一阶可微"><a href="#一阶可微" class="headerlink" title="一阶可微"></a>一阶可微</h2><p><img src="https://i.imgur.com/EpsPV37.png" alt=""></p>
+<h2 id="二阶可微"><a href="#二阶可微" class="headerlink" title="二阶可微"></a>二阶可微</h2><p><img src="https://i.imgur.com/4lo1pZC.png" alt=""></p>
+<h2 id="凸函数举例"><a href="#凸函数举例" class="headerlink" title="凸函数举例"></a>凸函数举例</h2><p><img src="https://i.imgur.com/AN9cjbb.png" alt=""></p>
+<h2 id="Jensen不等式：若f是凸函数"><a href="#Jensen不等式：若f是凸函数" class="headerlink" title="Jensen不等式：若f是凸函数"></a>Jensen不等式：若f是凸函数</h2><p><img src="https://i.imgur.com/IUGMIju.png" alt=""></p>
+<h2 id="凸函数保凸运算"><a href="#凸函数保凸运算" class="headerlink" title="凸函数保凸运算"></a>凸函数保凸运算</h2><h3 id="保持函数凸性的算子"><a href="#保持函数凸性的算子" class="headerlink" title="保持函数凸性的算子"></a>保持函数凸性的算子</h3><p><img src="https://i.imgur.com/OxKCJFj.png" alt=""></p>
+<h2 id="共轭函数"><a href="#共轭函数" class="headerlink" title="共轭函数"></a>共轭函数</h2><h3 id="共轭函数的定义"><a href="#共轭函数的定义" class="headerlink" title="共轭函数的定义"></a>共轭函数的定义</h3><p><img src="https://i.imgur.com/Z6LfBm6.png" alt=""></p>
+<h3 id="共轭函数的理解"><a href="#共轭函数的理解" class="headerlink" title="共轭函数的理解"></a>共轭函数的理解</h3><p><img src="https://i.imgur.com/MPxhVLT.png" alt=""></p>
+<h3 id="共轭函数的求解举例"><a href="#共轭函数的求解举例" class="headerlink" title="共轭函数的求解举例"></a>共轭函数的求解举例</h3><p><img src="https://i.imgur.com/QMX1iKQ.png" alt=""></p>
+<h1 id="凸优化一般提法"><a href="#凸优化一般提法" class="headerlink" title="凸优化一般提法"></a>凸优化一般提法</h1><h2 id="对偶函数"><a href="#对偶函数" class="headerlink" title="对偶函数"></a>对偶函数</h2><p><img src="https://i.imgur.com/X49Cy61.png" alt=""><br><img src="https://i.imgur.com/nWhxmBn.png" alt=""><br><img src="https://i.imgur.com/sJvYBms.png" alt=""><br><img src="https://i.imgur.com/JA5VpAF.png" alt=""></p>
+<h2 id="强对偶KKT条件"><a href="#强对偶KKT条件" class="headerlink" title="强对偶KKT条件"></a>强对偶KKT条件</h2><h3 id="强对偶条件"><a href="#强对偶条件" class="headerlink" title="强对偶条件"></a>强对偶条件</h3><p><img src="https://i.imgur.com/wrHYy6y.png" alt=""></p>
+<h3 id="Karush-Kuhn-Tucker-KKT-条件"><a href="#Karush-Kuhn-Tucker-KKT-条件" class="headerlink" title="Karush-Kuhn-Tucker(KKT)条件"></a>Karush-Kuhn-Tucker(KKT)条件</h3><p><img src="https://i.imgur.com/E4SqeSk.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/凸优化/" rel="tag"># 凸优化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/24/vscode 调试适配器进程已意外终止/" rel="next" title="vscode 调试适配器进程已意外终止">
+                <i class="fa fa-chevron-left"></i> vscode 调试适配器进程已意外终止
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/08/Python基础/" rel="prev" title="Python基础">
+                Python基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#凸集基本概念"><span class="nav-number">1.</span> <span class="nav-text">凸集基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#凸集保凸运算"><span class="nav-number">1.1.</span> <span class="nav-text">凸集保凸运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#凸集和凸函数"><span class="nav-number">1.1.1.</span> <span class="nav-text">凸集和凸函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#仿射集（Affine-Set）"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">仿射集（Affine Set）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仿射集的例子："><span class="nav-number">1.1.1.2.</span> <span class="nav-text">仿射集的例子：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#凸集"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">凸集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#仿射集和凸集的关系"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">仿射集和凸集的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#凸包"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">凸包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超平面和半空间"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">超平面和半空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保持凸性的运算"><span class="nav-number">1.1.1.7.</span> <span class="nav-text">保持凸性的运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分割超平面"><span class="nav-number">1.2.</span> <span class="nav-text">分割超平面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分割超平面的定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">分割超平面的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分割超平面的构造"><span class="nav-number">1.2.2.</span> <span class="nav-text">分割超平面的构造</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支撑超平面"><span class="nav-number">1.3.</span> <span class="nav-text">支撑超平面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#凸函数基本概念"><span class="nav-number">2.</span> <span class="nav-text">凸函数基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一般化定义"><span class="nav-number">2.1.</span> <span class="nav-text">一般化定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一阶可微"><span class="nav-number">2.2.</span> <span class="nav-text">一阶可微</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二阶可微"><span class="nav-number">2.3.</span> <span class="nav-text">二阶可微</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#凸函数举例"><span class="nav-number">2.4.</span> <span class="nav-text">凸函数举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jensen不等式：若f是凸函数"><span class="nav-number">2.5.</span> <span class="nav-text">Jensen不等式：若f是凸函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#凸函数保凸运算"><span class="nav-number">2.6.</span> <span class="nav-text">凸函数保凸运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保持函数凸性的算子"><span class="nav-number">2.6.1.</span> <span class="nav-text">保持函数凸性的算子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共轭函数"><span class="nav-number">2.7.</span> <span class="nav-text">共轭函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#共轭函数的定义"><span class="nav-number">2.7.1.</span> <span class="nav-text">共轭函数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共轭函数的理解"><span class="nav-number">2.7.2.</span> <span class="nav-text">共轭函数的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共轭函数的求解举例"><span class="nav-number">2.7.3.</span> <span class="nav-text">共轭函数的求解举例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#凸优化一般提法"><span class="nav-number">3.</span> <span class="nav-text">凸优化一般提法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对偶函数"><span class="nav-number">3.1.</span> <span class="nav-text">对偶函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强对偶KKT条件"><span class="nav-number">3.2.</span> <span class="nav-text">强对偶KKT条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#强对偶条件"><span class="nav-number">3.2.1.</span> <span class="nav-text">强对偶条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Karush-Kuhn-Tucker-KKT-条件"><span class="nav-number">3.2.2.</span> <span class="nav-text">Karush-Kuhn-Tucker(KKT)条件</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
