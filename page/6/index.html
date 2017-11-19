@@ -485,7 +485,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/understanding-cnn/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/transfer-learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -504,7 +504,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/10/understanding-cnn/" itemprop="url">understanding-cnn</a></h1>
+                <a class="post-title-link" href="/2017/10/10/transfer-learning/" itemprop="url">transfer-learning</a></h1>
         
 
         <div class="post-meta">
@@ -557,8 +557,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/10/understanding-cnn/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/understanding-cnn/" itemprop="commentCount"></span>
+                <a href="/2017/10/10/transfer-learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/transfer-learning/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -566,7 +566,7 @@
 
           
           
-             <span id="/2017/10/10/understanding-cnn/" class="leancloud_visitors" data-flag-title="understanding-cnn">
+             <span id="/2017/10/10/transfer-learning/" class="leancloud_visitors" data-flag-title="transfer-learning">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -584,7 +584,7 @@
 
           
               <div class="post-description">
-                  understanding-cnn
+                  transfer-learning
               </div>
           
 
@@ -602,14 +602,21 @@
 
       
         
-          <p><a name="vis"></a></p>
-<p>(this page is currently in draft form)</p>
-<h2 id="Visualizing-what-ConvNets-learn"><a href="#Visualizing-what-ConvNets-learn" class="headerlink" title="Visualizing what ConvNets learn"></a>Visualizing what ConvNets learn</h2><p>Several approaches for understanding and visualizing Convolutional Networks have been developed in the literature, partly as a response the common criticism that the learned features in a Neural Network are not interpretable. In this section we briefly survey some of these approaches and related work.</p>
-<h3 id="Visualizing-the-activations-and-first-layer-weights"><a href="#Visualizing-the-activations-and-first-layer-weights" class="headerlink" title="Visualizing the activations and first-layer weights"></a>Visualizing the activations and first-layer weights</h3><p><strong>Layer Activations</strong>. The most straight-forward visualization technique is to show the activations of the network during the forward pass. For ReLU networks, the activations usually start out looking relatively blobby and dense, but as the training progresses the activations usually become more sparse and localized. One dangerous pitfall that can be easily noticed with this visualization is that some activation maps may be all zero for many different inputs, which can indicate <em>dead</em> filters, and can be a symptom of high learning rates.</p>
-<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/act1.jpeg" width="49%"><br>  <img src="/assets/cnnvis/act2.jpeg" width="49%"><br>  <div class="figcaption"><br>    Typical-looking activations on the first CONV layer (left), and the 5th CONV layer (right) of a trained AlexNet looking at a picture of a cat. Every box shows an activation map corresponding to some filter. Notice that the activations are sparse (most values are zero, in this visualization shown in black) and mostly local.<br>  </div><br></div>
+          <p>(These notes are currently in draft form and under development)</p>
+<p>Table of Contents:</p>
+<ul>
+<li><a href="#tf">Transfer Learning</a></li>
+<li><a href="#add">Additional References</a></li>
+</ul>
+<p><a name="tf"></a></p>
+<h2 id="Transfer-Learning"><a href="#Transfer-Learning" class="headerlink" title="Transfer Learning"></a>Transfer Learning</h2><p>In practice, very few people train an entire Convolutional Network from scratch (with random initialization), because it is relatively rare to have a dataset of sufficient size. Instead, it is common to pretrain a ConvNet on a very large dataset (e.g. ImageNet, which contains 1.2 million images with 1000 categories), and then use the ConvNet either as an initialization or a fixed feature extractor for the task of interest. The three major Transfer Learning scenarios look as follows:</p>
+<ul>
+<li><strong>ConvNet as fixed feature extractor</strong>. Take a ConvNet pretrained on ImageNet, remove the last fully-connected layer (this layer’s outputs are the 1000 class scores for a different task like ImageNet), then treat the rest of the ConvNet as a fixed feature extractor for the new dataset. In an AlexNet, this would compute a 4096-D vector for every image that contains the activations of the hidden layer immediately before the classifier. We call these features <strong>CNN codes</strong>. It is important for performance that these codes are ReLUd (i.e. thresholded at zero) if they were also thresholded during the training of the ConvNet on ImageNet (as is usually the case). Once you extract the 4096-D codes for all images, train a linear classifier (e.g. Linear SVM or Softmax classifier) for the new dataset.</li>
+<li><strong>Fine-tuning the ConvNet</strong>. The second strategy is to not only replace and retrain the classifier on top of the ConvNet on the new dataset, but to also fine-tune the weights of the pretrained network by continuing the backpropagation. It is possible to fine-tune all the layers of the ConvNet, or it’s possible to keep some of the earlier layers fixed (due to overfitting concerns) and only fine-tune some higher-level portion of the network. This is motivated by the observation that the earlier features of a ConvNet contain more generic features (e.g. edge detectors or color blob detectors) that should be useful to many tasks, but later layers of the ConvNet becomes progressively more specific to the details of the classes contained in the original dataset. In case of ImageNet for example, which contains many dog breeds, a significant portion of the representational power of the ConvNet may be devoted to features that are specific to differentiating between dog breeds.</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/understanding-cnn/" rel="contents">
+            <a class="btn" href="/2017/10/10/transfer-learning/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -843,7 +850,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/transfer-learning/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/understanding-cnn/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -862,7 +869,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/10/transfer-learning/" itemprop="url">transfer-learning</a></h1>
+                <a class="post-title-link" href="/2017/10/10/understanding-cnn/" itemprop="url">understanding-cnn</a></h1>
         
 
         <div class="post-meta">
@@ -915,8 +922,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/10/transfer-learning/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/transfer-learning/" itemprop="commentCount"></span>
+                <a href="/2017/10/10/understanding-cnn/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/understanding-cnn/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -924,7 +931,7 @@
 
           
           
-             <span id="/2017/10/10/transfer-learning/" class="leancloud_visitors" data-flag-title="transfer-learning">
+             <span id="/2017/10/10/understanding-cnn/" class="leancloud_visitors" data-flag-title="understanding-cnn">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -942,7 +949,7 @@
 
           
               <div class="post-description">
-                  transfer-learning
+                  understanding-cnn
               </div>
           
 
@@ -960,21 +967,14 @@
 
       
         
-          <p>(These notes are currently in draft form and under development)</p>
-<p>Table of Contents:</p>
-<ul>
-<li><a href="#tf">Transfer Learning</a></li>
-<li><a href="#add">Additional References</a></li>
-</ul>
-<p><a name="tf"></a></p>
-<h2 id="Transfer-Learning"><a href="#Transfer-Learning" class="headerlink" title="Transfer Learning"></a>Transfer Learning</h2><p>In practice, very few people train an entire Convolutional Network from scratch (with random initialization), because it is relatively rare to have a dataset of sufficient size. Instead, it is common to pretrain a ConvNet on a very large dataset (e.g. ImageNet, which contains 1.2 million images with 1000 categories), and then use the ConvNet either as an initialization or a fixed feature extractor for the task of interest. The three major Transfer Learning scenarios look as follows:</p>
-<ul>
-<li><strong>ConvNet as fixed feature extractor</strong>. Take a ConvNet pretrained on ImageNet, remove the last fully-connected layer (this layer’s outputs are the 1000 class scores for a different task like ImageNet), then treat the rest of the ConvNet as a fixed feature extractor for the new dataset. In an AlexNet, this would compute a 4096-D vector for every image that contains the activations of the hidden layer immediately before the classifier. We call these features <strong>CNN codes</strong>. It is important for performance that these codes are ReLUd (i.e. thresholded at zero) if they were also thresholded during the training of the ConvNet on ImageNet (as is usually the case). Once you extract the 4096-D codes for all images, train a linear classifier (e.g. Linear SVM or Softmax classifier) for the new dataset.</li>
-<li><strong>Fine-tuning the ConvNet</strong>. The second strategy is to not only replace and retrain the classifier on top of the ConvNet on the new dataset, but to also fine-tune the weights of the pretrained network by continuing the backpropagation. It is possible to fine-tune all the layers of the ConvNet, or it’s possible to keep some of the earlier layers fixed (due to overfitting concerns) and only fine-tune some higher-level portion of the network. This is motivated by the observation that the earlier features of a ConvNet contain more generic features (e.g. edge detectors or color blob detectors) that should be useful to many tasks, but later layers of the ConvNet becomes progressively more specific to the details of the classes contained in the original dataset. In case of ImageNet for example, which contains many dog breeds, a significant portion of the representational power of the ConvNet may be devoted to features that are specific to differentiating between dog breeds.</li>
-</ul>
+          <p><a name="vis"></a></p>
+<p>(this page is currently in draft form)</p>
+<h2 id="Visualizing-what-ConvNets-learn"><a href="#Visualizing-what-ConvNets-learn" class="headerlink" title="Visualizing what ConvNets learn"></a>Visualizing what ConvNets learn</h2><p>Several approaches for understanding and visualizing Convolutional Networks have been developed in the literature, partly as a response the common criticism that the learned features in a Neural Network are not interpretable. In this section we briefly survey some of these approaches and related work.</p>
+<h3 id="Visualizing-the-activations-and-first-layer-weights"><a href="#Visualizing-the-activations-and-first-layer-weights" class="headerlink" title="Visualizing the activations and first-layer weights"></a>Visualizing the activations and first-layer weights</h3><p><strong>Layer Activations</strong>. The most straight-forward visualization technique is to show the activations of the network during the forward pass. For ReLU networks, the activations usually start out looking relatively blobby and dense, but as the training progresses the activations usually become more sparse and localized. One dangerous pitfall that can be easily noticed with this visualization is that some activation maps may be all zero for many different inputs, which can indicate <em>dead</em> filters, and can be a symptom of high learning rates.</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/act1.jpeg" width="49%"><br>  <img src="/assets/cnnvis/act2.jpeg" width="49%"><br>  <div class="figcaption"><br>    Typical-looking activations on the first CONV layer (left), and the 5th CONV layer (right) of a trained AlexNet looking at a picture of a cat. Every box shows an activation map corresponding to some filter. Notice that the activations are sparse (most values are zero, in this visualization shown in black) and mostly local.<br>  </div><br></div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/transfer-learning/" rel="contents">
+            <a class="btn" href="/2017/10/10/understanding-cnn/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1758,7 +1758,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Neural Networks[2]/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Neural Networks[3]/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1777,7 +1777,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/Neural Networks[2]/" itemprop="url">Neural Networks[2]</a></h1>
+                <a class="post-title-link" href="/2017/10/08/Neural Networks[3]/" itemprop="url">Neural Networks[3]</a></h1>
         
 
         <div class="post-meta">
@@ -1830,8 +1830,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/08/Neural Networks[2]/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Neural Networks[2]/" itemprop="commentCount"></span>
+                <a href="/2017/10/08/Neural Networks[3]/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Neural Networks[3]/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1839,7 +1839,7 @@
 
           
           
-             <span id="/2017/10/08/Neural Networks[2]/" class="leancloud_visitors" data-flag-title="Neural Networks[2]">
+             <span id="/2017/10/08/Neural Networks[3]/" class="leancloud_visitors" data-flag-title="Neural Networks[3]">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1857,7 +1857,7 @@
 
           
               <div class="post-description">
-                  Neural Networks[2]
+                  Neural Networks[3]
               </div>
           
 
@@ -1877,22 +1877,36 @@
         
           <p>Table of Contents:</p>
 <ul>
-<li><a href="#intro">Setting up the data and the model</a><ul>
-<li><a href="#datapre">Data Preprocessing</a></li>
-<li><a href="#init">Weight Initialization</a></li>
-<li><a href="#batchnorm">Batch Normalization</a></li>
-<li><a href="#reg">Regularization</a> (L2/L1/Maxnorm/Dropout)</li>
+<li><a href="#gradcheck">Gradient checks</a></li>
+<li><a href="#sanitycheck">Sanity checks</a></li>
+<li><a href="#baby">Babysitting the learning process</a><ul>
+<li><a href="#loss">Loss function</a></li>
+<li><a href="#accuracy">Train/val accuracy</a></li>
+<li><a href="#ratio">Weights:Updates ratio</a></li>
+<li><a href="#distr">Activation/Gradient distributions per layer</a></li>
+<li><a href="#vis">Visualization</a></li>
 </ul>
 </li>
-<li><a href="#losses">Loss functions</a></li>
-<li><a href="#summary">Summary</a></li>
+<li><a href="#update">Parameter updates</a><ul>
+<li><a href="#sgd">First-order (SGD), momentum, Nesterov momentum</a></li>
+<li><a href="#anneal">Annealing the learning rate</a></li>
+<li><a href="#second">Second-order methods</a></li>
+<li><a href="#ada">Per-parameter adaptive learning rates (Adagrad, RMSProp)</a></li>
 </ul>
-<p><a name="intro"></a></p>
-<h2 id="Setting-up-the-data-and-the-model"><a href="#Setting-up-the-data-and-the-model" class="headerlink" title="Setting up the data and the model"></a>Setting up the data and the model</h2><p>In the previous section we introduced a model of a Neuron, which computes a dot product following a non-linearity, and Neural Networks that arrange neurons into layers. Together, these choices define the new form of the <strong>score function</strong>, which we have extended from the simple linear mapping that we have seen in the Linear Classification section. In particular, a Neural Network performs a sequence of linear mappings with interwoven non-linearities. In this section we will discuss additional design choices regarding data preprocessing, weight initialization, and loss functions.</p>
-<p><a name="datapre"></a></p>
+</li>
+<li><a href="#hyper">Hyperparameter Optimization</a></li>
+<li><a href="#eval">Evaluation</a><ul>
+<li><a href="#ensemble">Model Ensembles</a></li>
+</ul>
+</li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#add">Additional References</a></li>
+</ul>
+<h2 id="Learning"><a href="#Learning" class="headerlink" title="Learning"></a>Learning</h2><p>In the previous sections we’ve discussed the static parts of a Neural Networks: how we can set up the network connectivity, the data, and the loss function. This section is devoted to the dynamics, or in other words, the process of learning the parameters and finding good hyperparameters.</p>
+<p><a name="gradcheck"></a></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Neural Networks[2]/" rel="contents">
+            <a class="btn" href="/2017/10/08/Neural Networks[3]/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

@@ -306,195 +306,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[01]Virtualenv&Django/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="url">Django[01]Virtualenv&Django</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T22:47:02+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/07/Django[01]Virtualenv&Django/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/07/Django[01]Virtualenv&Django/" class="leancloud_visitors" data-flag-title="Django[01]Virtualenv&Django">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Django[01]Virtualenv&Django
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="配置虚拟环境"><a href="#配置虚拟环境" class="headerlink" title="配置虚拟环境"></a>配置虚拟环境</h1><h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv:"></a>安装virtualenv:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
-<h2 id="使用virtualenv"><a href="#使用virtualenv" class="headerlink" title="使用virtualenv"></a>使用virtualenv</h2><h3 id="创建虚拟环境："><a href="#创建虚拟环境：" class="headerlink" title="创建虚拟环境："></a>创建虚拟环境：</h3><p><strong>virtualenv [环境（文件夹）名]</strong></p>
-<p><img src="https://i.imgur.com/91qxDdD.png" alt=""></p>
-<h3 id="启用虚拟环境："><a href="#启用虚拟环境：" class="headerlink" title="启用虚拟环境："></a>启用虚拟环境：</h3><p><strong>.\Scripts\activate</strong></p>
-<p><img src="https://i.imgur.com/vAZWmfe.png" alt=""></p>
-<h3 id="退出虚拟环境："><a href="#退出虚拟环境：" class="headerlink" title="退出虚拟环境："></a>退出虚拟环境：</h3><p><strong>deactivate</strong></p>
-<p><img src="https://i.imgur.com/crvhBNX.png" alt=""></p>
-<h1 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install django</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/7aXfWWO.png" alt=""></p>
-<h1 id="第一个Django项目"><a href="#第一个Django项目" class="headerlink" title="第一个Django项目"></a>第一个Django项目</h1><p><strong>1、python manage.py startproject my_first(我们的项目名)</strong><br><img src="https://i.imgur.com/OAE9fFY.png" alt=""></p>
-<p><strong>2、python manage.py runserver 127.0.0.1:8000</strong></p>
-<p><img src="https://i.imgur.com/rf21gwg.png" alt=""></p>
-<p><img src="https://i.imgur.com/eNM2lYU.png" alt=""></p>
-<p>补充：</p>
-<p>1、PowerShell里面执行activate失败？</p>
-<p>输入：</p>
-<pre><code>set-executionpolicy RemoteSigned
-</code></pre><p>2、pip freeze命令使用</p>
-<ul>
-<li>1、pip freeze &gt; requirements.txt (保存依赖包到requirements.txt)</li>
-<li>2、pip install -r requirements.txt (批量安装项目需要的所有依赖包)</li>
-</ul>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg3MTU2NDU0NA==.html?spm=a2h0j.8191423.playlist_content.5!2~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.2" target="_blank" rel="noopener">Django1.10教程[01]之virtualenv使用</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[03]DjangoAdmin/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -802,6 +613,195 @@
 <p><strong>启动服务：python .\manage.py runserver</strong></p>
 <p>浏览器中输入<a href="http://127.0.0.1:8000/admin/进入django的管理后台" target="_blank" rel="noopener">http://127.0.0.1:8000/admin/进入django的管理后台</a><br><img src="https://i.imgur.com/DjTCMZc.png" alt=""><br><img src="https://i.imgur.com/XQF0M6q.png" alt=""></p>
 <p>via <a href="http://v.youku.com/v_show/id_XMTg3NDg4MDEzMg==.html?spm=a2h0j.8191423.playlist_content.5!3~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.3" target="_blank" rel="noopener">Django1.10教程[02]之第一个Django程序</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[01]Virtualenv&Django/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="url">Django[01]Virtualenv&Django</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T22:47:02+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/07/Django[01]Virtualenv&Django/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/07/Django[01]Virtualenv&Django/" class="leancloud_visitors" data-flag-title="Django[01]Virtualenv&Django">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Django[01]Virtualenv&Django
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="配置虚拟环境"><a href="#配置虚拟环境" class="headerlink" title="配置虚拟环境"></a>配置虚拟环境</h1><h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv:"></a>安装virtualenv:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="使用virtualenv"><a href="#使用virtualenv" class="headerlink" title="使用virtualenv"></a>使用virtualenv</h2><h3 id="创建虚拟环境："><a href="#创建虚拟环境：" class="headerlink" title="创建虚拟环境："></a>创建虚拟环境：</h3><p><strong>virtualenv [环境（文件夹）名]</strong></p>
+<p><img src="https://i.imgur.com/91qxDdD.png" alt=""></p>
+<h3 id="启用虚拟环境："><a href="#启用虚拟环境：" class="headerlink" title="启用虚拟环境："></a>启用虚拟环境：</h3><p><strong>.\Scripts\activate</strong></p>
+<p><img src="https://i.imgur.com/vAZWmfe.png" alt=""></p>
+<h3 id="退出虚拟环境："><a href="#退出虚拟环境：" class="headerlink" title="退出虚拟环境："></a>退出虚拟环境：</h3><p><strong>deactivate</strong></p>
+<p><img src="https://i.imgur.com/crvhBNX.png" alt=""></p>
+<h1 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install django</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/7aXfWWO.png" alt=""></p>
+<h1 id="第一个Django项目"><a href="#第一个Django项目" class="headerlink" title="第一个Django项目"></a>第一个Django项目</h1><p><strong>1、python manage.py startproject my_first(我们的项目名)</strong><br><img src="https://i.imgur.com/OAE9fFY.png" alt=""></p>
+<p><strong>2、python manage.py runserver 127.0.0.1:8000</strong></p>
+<p><img src="https://i.imgur.com/rf21gwg.png" alt=""></p>
+<p><img src="https://i.imgur.com/eNM2lYU.png" alt=""></p>
+<p>补充：</p>
+<p>1、PowerShell里面执行activate失败？</p>
+<p>输入：</p>
+<pre><code>set-executionpolicy RemoteSigned
+</code></pre><p>2、pip freeze命令使用</p>
+<ul>
+<li>1、pip freeze &gt; requirements.txt (保存依赖包到requirements.txt)</li>
+<li>2、pip install -r requirements.txt (批量安装项目需要的所有依赖包)</li>
+</ul>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg3MTU2NDU0NA==.html?spm=a2h0j.8191423.playlist_content.5!2~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.2" target="_blank" rel="noopener">Django1.10教程[01]之virtualenv使用</a></p>
 
           
         
