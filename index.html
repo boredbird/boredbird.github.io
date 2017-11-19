@@ -1904,7 +1904,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/插值/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/sklearn.tree.DecisionTreeClassifier/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1923,7 +1923,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/插值/" itemprop="url">插值</a></h2>
+                <a class="post-title-link" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" itemprop="url">sklearn.tree.DecisionTreeClassifier</a></h2>
         
 
         <div class="post-meta">
@@ -1976,8 +1976,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/插值/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/插值/" itemprop="commentCount"></span>
+                <a href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1985,7 +1985,7 @@
 
           
           
-             <span id="/2017/11/13/插值/" class="leancloud_visitors" data-flag-title="插值">
+             <span id="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" class="leancloud_visitors" data-flag-title="sklearn.tree.DecisionTreeClassifier">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2003,7 +2003,7 @@
 
           
               <div class="post-description">
-                  插值
+                  sklearn.tree.DecisionTreeClassifier
               </div>
           
 
@@ -2021,11 +2021,11 @@
 
       
         
-          <h1 id="插值的定义"><a href="#插值的定义" class="headerlink" title="插值的定义"></a>插值的定义</h1><p>插值法又称“内插法”，是利用函数f(x)在某区间中已知的若干点的函数值，作出适当的特定函数，在区间的其他点上用这特定函数的值作为函数f(x)的近似值，这种方法称为插值法。如果这特定函数是多项式，就称它为插值多项式。</p>
-<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/interpolation/QQ截图20171113112144.png" width="50%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> pydotplus</span><br></pre></td></tr></table></figure>
+<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris=load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">iris_feature_E = <span class="string">'sepal length'</span>, <span class="string">'sepal width'</span>, <span class="string">'petal length'</span>, <span class="string">'petal width'</span></span><br><span class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></span><br><span class="line">iris_class = <span class="string">'Iris-setosa'</span>, <span class="string">'Iris-versicolor'</span>, <span class="string">'Iris-virginica'</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/插值/" rel="contents">
+            <a class="btn" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
