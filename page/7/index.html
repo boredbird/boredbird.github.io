@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Neural Networks[1]/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/ConvNet Tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/Neural Networks[1]/" itemprop="url">Neural Networks[1]</a></h2>
+                <a class="post-title-link" href="/2017/10/08/ConvNet Tips/" itemprop="url">convnet-tips</a></h2>
         
 
         <div class="post-meta">
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/08/Neural Networks[1]/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Neural Networks[1]/" itemprop="commentCount"></span>
+                <a href="/2017/10/08/ConvNet Tips/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/ConvNet Tips/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2017/10/08/Neural Networks[1]/" class="leancloud_visitors" data-flag-title="Neural Networks[1]">
+             <span id="/2017/10/08/ConvNet Tips/" class="leancloud_visitors" data-flag-title="convnet-tips">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,182 @@
 
           
               <div class="post-description">
-                  Neural Networks[1]
+                  convnet-tips
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a name="overfitting"></a></p>
+<h3 id="Addressing-Overfitting"><a href="#Addressing-Overfitting" class="headerlink" title="Addressing Overfitting"></a>Addressing Overfitting</h3><h4 id="Data-Augmentation"><a href="#Data-Augmentation" class="headerlink" title="Data Augmentation"></a>Data Augmentation</h4><ul>
+<li>Flip the training images over x-axis</li>
+<li>Sample random crops / scales in the original image</li>
+<li>Jitter the colors</li>
+</ul>
+<h4 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h4><ul>
+<li>Dropout is just as effective for Conv layers. Usually people apply less dropout right before early conv layers since there are not that many parameters there compared to later stages of the network (e.g. the fully connected layers).</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Linear Classification/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/08/Linear Classification/" itemprop="url">linear-classify</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Linear Classification/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Linear Classification/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/08/Linear Classification/" class="leancloud_visitors" data-flag-title="linear-classify">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  linear-classify
               </div>
           
 
@@ -427,28 +602,217 @@
         
           <p>Table of Contents:</p>
 <ul>
-<li><a href="#quick">Quick intro without brain analogies</a></li>
-<li><a href="#intro">Modeling one neuron</a><ul>
-<li><a href="#bio">Biological motivation and connections</a></li>
-<li><a href="#classifier">Single neuron as a linear classifier</a></li>
-<li><a href="#actfun">Commonly used activation functions</a></li>
+<li><a href="#intro">Intro to Linear classification</a></li>
+<li><a href="#score">Linear score function</a></li>
+<li><a href="#interpret">Interpreting a linear classifier</a></li>
+<li><a href="#loss">Loss function</a><ul>
+<li><a href="#svm">Multiclass SVM</a></li>
+<li><a href="#softmax">Softmax classifier</a></li>
+<li><a href="#svmvssoftmax">SVM vs Softmax</a></li>
 </ul>
 </li>
-<li><a href="#nn">Neural Network architectures</a><ul>
-<li><a href="#layers">Layer-wise organization</a></li>
-<li><a href="#feedforward">Example feed-forward computation</a></li>
-<li><a href="#power">Representational power</a></li>
-<li><a href="#arch">Setting number of layers and their sizes</a></li>
-</ul>
-</li>
+<li><a href="#webdemo">Interactive Web Demo of Linear Classification</a></li>
 <li><a href="#summary">Summary</a></li>
-<li><a href="#add">Additional references</a></li>
 </ul>
-<p><a name="quick"></a></p>
-<h2 id="Quick-intro"><a href="#Quick-intro" class="headerlink" title="Quick intro"></a>Quick intro</h2><p>It is possible to introduce neural networks without appealing to brain analogies. In the section on linear classification we computed scores for different visual categories given the image using the formula \( s = W x \), where \(W\) was a matrix and \(x\) was an input column vector containing all pixel data of the image. In the case of CIFAR-10, \(x\) is a [3072x1] column vector, and \(W\) is a [10x3072] matrix, so that the output scores is a vector of 10 class scores. </p>
+<p><a name="intro"></a></p>
+<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>In the last section we introduced the problem of Image Classification, which is the task of assigning a single label to an image from a fixed set of categories. Morever, we described the k-Nearest Neighbor (kNN) classifier which labels images by comparing them to (annotated) images from the training set. As we saw, kNN has a number of disadvantages:</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Neural Networks[1]/" rel="contents">
+            <a class="btn" href="/2017/10/08/Linear Classification/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Convolutional Networks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/08/Convolutional Networks/" itemprop="url">Convolutional Networks</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Convolutional Networks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Convolutional Networks/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/08/Convolutional Networks/" class="leancloud_visitors" data-flag-title="Convolutional Networks">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Convolutional Networks
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Table of Contents:</p>
+<ul>
+<li><a href="#overview">Architecture Overview</a></li>
+<li><a href="#layers">ConvNet Layers</a><ul>
+<li><a href="#conv">Convolutional Layer</a></li>
+<li><a href="#pool">Pooling Layer</a></li>
+<li><a href="#norm">Normalization Layer</a></li>
+<li><a href="#fc">Fully-Connected Layer</a></li>
+<li><a href="#convert">Converting Fully-Connected Layers to Convolutional Layers</a></li>
+</ul>
+</li>
+<li><a href="#architectures">ConvNet Architectures</a><ul>
+<li><a href="#layerpat">Layer Patterns</a></li>
+<li><a href="#layersizepat">Layer Sizing Patterns</a></li>
+<li><a href="#case">Case Studies</a> (LeNet / AlexNet / ZFNet / GoogLeNet / VGGNet)</li>
+<li><a href="#comp">Computational Considerations</a></li>
+</ul>
+</li>
+<li><a href="#add">Additional References</a></li>
+</ul>
+<h2 id="Convolutional-Neural-Networks-CNNs-ConvNets"><a href="#Convolutional-Neural-Networks-CNNs-ConvNets" class="headerlink" title="Convolutional Neural Networks (CNNs / ConvNets)"></a>Convolutional Neural Networks (CNNs / ConvNets)</h2><p>Convolutional Neural Networks are very similar to ordinary Neural Networks from the previous chapter: they are made up of neurons that have learnable weights and biases. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function: from the raw image pixels on one end to class scores at the other. And they still have a loss function (e.g. SVM/Softmax) on the last (fully-connected) layer and all the tips/tricks we developed for learning regular Neural Networks still apply.</p>
+<p>So what does change? ConvNet architectures make the explicit assumption that the inputs are images, which allows us to encode certain properties into the architecture. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.</p>
+<p><a name="overview"></a></p>
+<h3 id="Architecture-Overview"><a href="#Architecture-Overview" class="headerlink" title="Architecture Overview"></a>Architecture Overview</h3><p><em>Recall: Regular Neural Nets.</em> As we saw in the previous chapter, Neural Networks receive an input (a single vector), and transform it through a series of <em>hidden layers</em>. Each hidden layer is made up of a set of neurons, where each neuron is fully connected to all neurons in the previous layer, and where neurons in a single layer function completely independently and do not share any connections. The last fully-connected layer is called the “output layer” and in classification settings it represents the class scores.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/08/Convolutional Networks/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -892,386 +1256,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Convolutional Networks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Convolutional Networks/" itemprop="url">Convolutional Networks</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/Convolutional Networks/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Convolutional Networks/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Convolutional Networks/" class="leancloud_visitors" data-flag-title="Convolutional Networks">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Convolutional Networks
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Table of Contents:</p>
-<ul>
-<li><a href="#overview">Architecture Overview</a></li>
-<li><a href="#layers">ConvNet Layers</a><ul>
-<li><a href="#conv">Convolutional Layer</a></li>
-<li><a href="#pool">Pooling Layer</a></li>
-<li><a href="#norm">Normalization Layer</a></li>
-<li><a href="#fc">Fully-Connected Layer</a></li>
-<li><a href="#convert">Converting Fully-Connected Layers to Convolutional Layers</a></li>
-</ul>
-</li>
-<li><a href="#architectures">ConvNet Architectures</a><ul>
-<li><a href="#layerpat">Layer Patterns</a></li>
-<li><a href="#layersizepat">Layer Sizing Patterns</a></li>
-<li><a href="#case">Case Studies</a> (LeNet / AlexNet / ZFNet / GoogLeNet / VGGNet)</li>
-<li><a href="#comp">Computational Considerations</a></li>
-</ul>
-</li>
-<li><a href="#add">Additional References</a></li>
-</ul>
-<h2 id="Convolutional-Neural-Networks-CNNs-ConvNets"><a href="#Convolutional-Neural-Networks-CNNs-ConvNets" class="headerlink" title="Convolutional Neural Networks (CNNs / ConvNets)"></a>Convolutional Neural Networks (CNNs / ConvNets)</h2><p>Convolutional Neural Networks are very similar to ordinary Neural Networks from the previous chapter: they are made up of neurons that have learnable weights and biases. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function: from the raw image pixels on one end to class scores at the other. And they still have a loss function (e.g. SVM/Softmax) on the last (fully-connected) layer and all the tips/tricks we developed for learning regular Neural Networks still apply.</p>
-<p>So what does change? ConvNet architectures make the explicit assumption that the inputs are images, which allows us to encode certain properties into the architecture. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.</p>
-<p><a name="overview"></a></p>
-<h3 id="Architecture-Overview"><a href="#Architecture-Overview" class="headerlink" title="Architecture Overview"></a>Architecture Overview</h3><p><em>Recall: Regular Neural Nets.</em> As we saw in the previous chapter, Neural Networks receive an input (a single vector), and transform it through a series of <em>hidden layers</em>. Each hidden layer is made up of a set of neurons, where each neuron is fully connected to all neurons in the previous layer, and where neurons in a single layer function completely independently and do not share any connections. The last fully-connected layer is called the “output layer” and in classification settings it represents the class scores.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Convolutional Networks/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Linear Classification/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Linear Classification/" itemprop="url">linear-classify</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/Linear Classification/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Linear Classification/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Linear Classification/" class="leancloud_visitors" data-flag-title="linear-classify">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  linear-classify
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Table of Contents:</p>
-<ul>
-<li><a href="#intro">Intro to Linear classification</a></li>
-<li><a href="#score">Linear score function</a></li>
-<li><a href="#interpret">Interpreting a linear classifier</a></li>
-<li><a href="#loss">Loss function</a><ul>
-<li><a href="#svm">Multiclass SVM</a></li>
-<li><a href="#softmax">Softmax classifier</a></li>
-<li><a href="#svmvssoftmax">SVM vs Softmax</a></li>
-</ul>
-</li>
-<li><a href="#webdemo">Interactive Web Demo of Linear Classification</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>In the last section we introduced the problem of Image Classification, which is the task of assigning a single label to an image from a fixed set of categories. Morever, we described the k-Nearest Neighbor (kNN) classifier which labels images by comparing them to (annotated) images from the training set. As we saw, kNN has a number of disadvantages:</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Linear Classification/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Image Classification With KNN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1407,181 +1391,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/08/Image Classification With KNN/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/ipython-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/ipython-tutorial/" itemprop="url">IPython Tutorial</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T18:53:12+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/ipython-tutorial/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/ipython-tutorial/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/ipython-tutorial/" class="leancloud_visitors" data-flag-title="IPython Tutorial">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  IPython Tutorial
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>In this class, we will use <a href="http://ipython.org/" target="_blank" rel="noopener">IPython notebooks</a> for the<br>programming assignments. An IPython notebook lets you write and execute Python<br>code in your web browser. IPython notebooks make it very easy to tinker with<br>code and execute it in bits and pieces; for this reason IPython notebooks are<br>widely used in scientific computing.</p>
-<p>Installing and running IPython is easy. From the command line, the following<br>will install IPython:</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> <span class="string">"ipython[notebook]"</span></span><br></pre></td></tr></table></figure>
-<p>Once you have IPython installed, start it with this command:</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ipython notebook</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/ipython-tutorial/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1820,6 +1629,181 @@ Numpy
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/08/python-numpy-tutorial/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/ipython-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/08/ipython-tutorial/" itemprop="url">IPython Tutorial</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T18:53:12+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/ipython-tutorial/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/ipython-tutorial/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/08/ipython-tutorial/" class="leancloud_visitors" data-flag-title="IPython Tutorial">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  IPython Tutorial
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>In this class, we will use <a href="http://ipython.org/" target="_blank" rel="noopener">IPython notebooks</a> for the<br>programming assignments. An IPython notebook lets you write and execute Python<br>code in your web browser. IPython notebooks make it very easy to tinker with<br>code and execute it in bits and pieces; for this reason IPython notebooks are<br>widely used in scientific computing.</p>
+<p>Installing and running IPython is easy. From the command line, the following<br>will install IPython:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> <span class="string">"ipython[notebook]"</span></span><br></pre></td></tr></table></figure>
+<p>Once you have IPython installed, start it with this command:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ipython notebook</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/08/ipython-tutorial/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
