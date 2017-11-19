@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -258,26 +258,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -296,152 +292,6 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[03]DjangoAdmin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/07/Django[03]DjangoAdmin/" itemprop="url">Django[03]DjangoAdmin</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T22:47:02+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Django[03]DjangoAdmin
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/07/Django[03]DjangoAdmin/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
     
       
 
@@ -523,15 +373,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/07/Django[02]第一个django程序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[02]第一个django程序/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/07/Django[02]第一个django程序/" class="leancloud_visitors" data-flag-title="Django[02]第一个django程序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[02]第一个django程序
+              </div>
           
 
         </div>
@@ -548,14 +423,198 @@
 
       
         
-          Django[02]第一个django程序
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/07/Django[02]第一个django程序/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p><strong>创建一个bbs项目</strong></p>
+<p><img src="https://i.imgur.com/2KEqYgu.png" alt=""></p>
+<p><strong>bbs可以作为一个独立的app部署，重命名文件名为src</strong></p>
+<p><img src="https://i.imgur.com/1hJclPe.png" alt=""></p>
+<p><strong>同步数据表：python .\manage.py migrate</strong></p>
+<p><img src="https://i.imgur.com/jxOPiG9.png" alt=""></p>
+<p><strong>修改setting.py配置文件</strong></p>
+<p><img src="https://i.imgur.com/Z75TCOq.png" alt=""></p>
+<p><strong>创建超级用户：python .\manage.py createsuperuser</strong><br><img src="https://i.imgur.com/XSlVyFQ.png" alt=""></p>
+<p><strong>启动服务：python .\manage.py runserver</strong></p>
+<p>浏览器中输入<a href="http://127.0.0.1:8000/admin/进入django的管理后台" target="_blank" rel="noopener">http://127.0.0.1:8000/admin/进入django的管理后台</a><br><img src="https://i.imgur.com/DjTCMZc.png" alt=""><br><img src="https://i.imgur.com/XQF0M6q.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg3NDg4MDEzMg==.html?spm=a2h0j.8191423.playlist_content.5!3~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.3" target="_blank" rel="noopener">Django1.10教程[02]之第一个Django程序</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[03]DjangoAdmin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/07/Django[03]DjangoAdmin/" itemprop="url">Django[03]DjangoAdmin</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T22:47:02+08:00">
+                2017-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/07/Django[03]DjangoAdmin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[03]DjangoAdmin/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/07/Django[03]DjangoAdmin/" class="leancloud_visitors" data-flag-title="Django[03]DjangoAdmin">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Django[03]DjangoAdmin
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="WSGI"><a href="#WSGI" class="headerlink" title="WSGI"></a>WSGI</h1><p>WSGI(Web  server gateway interface)：Web服务器网关接口是为Python语言定义的Web服务器和Web应用程序或框架之间的一种简单而通用的接口。自从WSGI被开发出来以后，许多其它语言中也出现了类似接口。</p>
+<p>web app &lt;-WSGI-&gt;web server(nginx/tomcat)</p>
+<h1 id="createsuperuser注意事项"><a href="#createsuperuser注意事项" class="headerlink" title="createsuperuser注意事项"></a>createsuperuser注意事项</h1><p>注：至少八个字符，不能是简单的数字</p>
+<h1 id="Django-admin使用的介绍"><a href="#Django-admin使用的介绍" class="headerlink" title="Django admin使用的介绍"></a>Django admin使用的介绍</h1><ul>
+<li>python manage.py runserver 127.0.0.1:8000</li>
+<li>浏览器里面输入：<a href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener">http://127.0.0.1:8000/admin/</a></li>
+<li>输入用户名、密码登录即可。</li>
+</ul>
+<h1 id="urls-py使用的介绍"><a href="#urls-py使用的介绍" class="headerlink" title="urls.py使用的介绍"></a>urls.py使用的介绍</h1><p>django的路由是通过正则表达式来匹配的。</p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg4NDk0NzA3Mg==.html?spm=a2h0j.8191423.playlist_content.5!4~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.4" target="_blank" rel="noopener">Django1.10教程[03]之DjangoAdmin</a></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg5Nzk3NTczNg==.html?spm=a2h0j.8191423.playlist_content.5!5~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.5" target="_blank" rel="noopener">Django1.10教程[03]之DjangoAdmin</a></p>
+
+          
         
       
     </div>
@@ -669,15 +728,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/07/Django[01]Virtualenv&Django/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/07/Django[01]Virtualenv&Django/" class="leancloud_visitors" data-flag-title="Django[01]Virtualenv&Django">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[01]Virtualenv&Django
+              </div>
           
 
         </div>
@@ -694,14 +778,32 @@
 
       
         
-          Django[01]Virtualenv&Django
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/07/Django[01]Virtualenv&Django/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="配置虚拟环境"><a href="#配置虚拟环境" class="headerlink" title="配置虚拟环境"></a>配置虚拟环境</h1><h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv:"></a>安装virtualenv:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="使用virtualenv"><a href="#使用virtualenv" class="headerlink" title="使用virtualenv"></a>使用virtualenv</h2><h3 id="创建虚拟环境："><a href="#创建虚拟环境：" class="headerlink" title="创建虚拟环境："></a>创建虚拟环境：</h3><p><strong>virtualenv [环境（文件夹）名]</strong></p>
+<p><img src="https://i.imgur.com/91qxDdD.png" alt=""></p>
+<h3 id="启用虚拟环境："><a href="#启用虚拟环境：" class="headerlink" title="启用虚拟环境："></a>启用虚拟环境：</h3><p><strong>.\Scripts\activate</strong></p>
+<p><img src="https://i.imgur.com/vAZWmfe.png" alt=""></p>
+<h3 id="退出虚拟环境："><a href="#退出虚拟环境：" class="headerlink" title="退出虚拟环境："></a>退出虚拟环境：</h3><p><strong>deactivate</strong></p>
+<p><img src="https://i.imgur.com/crvhBNX.png" alt=""></p>
+<h1 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install django</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/7aXfWWO.png" alt=""></p>
+<h1 id="第一个Django项目"><a href="#第一个Django项目" class="headerlink" title="第一个Django项目"></a>第一个Django项目</h1><p><strong>1、python manage.py startproject my_first(我们的项目名)</strong><br><img src="https://i.imgur.com/OAE9fFY.png" alt=""></p>
+<p><strong>2、python manage.py runserver 127.0.0.1:8000</strong></p>
+<p><img src="https://i.imgur.com/rf21gwg.png" alt=""></p>
+<p><img src="https://i.imgur.com/eNM2lYU.png" alt=""></p>
+<p>补充：</p>
+<p>1、PowerShell里面执行activate失败？</p>
+<p>输入：</p>
+<pre><code>set-executionpolicy RemoteSigned
+</code></pre><p>2、pip freeze命令使用</p>
+<ul>
+<li>1、pip freeze &gt; requirements.txt (保存依赖包到requirements.txt)</li>
+<li>2、pip install -r requirements.txt (批量安装项目需要的所有依赖包)</li>
+</ul>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg3MTU2NDU0NA==.html?spm=a2h0j.8191423.playlist_content.5!2~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.2" target="_blank" rel="noopener">Django1.10教程[01]之virtualenv使用</a></p>
+
+          
         
       
     </div>
@@ -815,15 +917,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/07/Error Analysis (Post-Modeling)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Error Analysis (Post-Modeling)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/07/Error Analysis (Post-Modeling)/" class="leancloud_visitors" data-flag-title="Error Analysis (Post-Modeling)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Error Analysis (Post-Modeling)
+              </div>
           
 
         </div>
@@ -840,14 +967,18 @@
 
       
         
-          Error Analysis (Post-Modeling)
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/07/Error Analysis (Post-Modeling)/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p><strong>Error analysis</strong> is a broad term that refers to analyzing the misclassified or high error observations from your model and deciding on your next steps for improvement. This is performed after training your first model.</p>
+<p>Possible next steps include collecting more data, splitting the problem apart, or engineering new features that address the errors. To use error analysis for feature engineering, you’ll need to understand why your model missed its mark.</p>
+<p>Here’s how:</p>
+<ul>
+<li><strong>Start with larger errors:</strong> Error analysis is typically a manual process. You won’t have time to scrutinize every observation. We recommend starting with those that had higher error scores. Look for patterns that you can formalize into new features.</li>
+<li><strong>Segment by classes:</strong> Another technique is to segment your observations and compare the average error within each segment. You can try creating indicator variables for the segments with the highest errors.</li>
+<li><strong>Unsupervised clustering:</strong> If you have trouble spotting patterns, you can run an unsupervised clustering algorithm on the misclassified observations. We don’t recommend blindly using those clusters as a new feature, but they can make it easier to spot patterns. Remember, the goal is to understand why observations were misclassified.</li>
+<li><strong>Ask colleagues or domain experts:</strong> This is a great complement to any of the other three techniques. Asking a domain expert is especially useful if you’ve identified a pattern of poor performance (e.g. through segmentations) but don’t yet understand why.</li>
+</ul>
+
+          
         
       
     </div>
@@ -961,15 +1092,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/07/5 Tips for Writing Better Python/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/5 Tips for Writing Better Python/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/07/5 Tips for Writing Better Python/" class="leancloud_visitors" data-flag-title="5 Tips for Writing Better Python">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  5 Tips for Writing Better Python
+              </div>
           
 
         </div>
@@ -986,10 +1142,17 @@
 
       
         
-          5 Tips for Writing Better Python
+          <h1 id="1-Make-your-code-a-PIP-installable-Package"><a href="#1-Make-your-code-a-PIP-installable-Package" class="headerlink" title="1. Make your code a PIP-installable Package"></a>1. Make your code a PIP-installable Package</h1><p>When you come across a new Python package, it’s always easier to start using it if all you have to do is run “pip install” followed by the package name or location.</p>
+<p>There are a number of ways to do this, my “go to” being to create a setup.py file for my project.</p>
+<p>Assume we have a simple Flask program in “flask_example.py”:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">'Hello, World!'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	app.run()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == ‘__main__’:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure>
+<p>We can turn this into an installable Python package by first moving it into a separate folder (let’s call this “flask_example/”. Then, we can make a setup.py file in the root project folder that looks like this:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name=<span class="string">'flask_example'</span>,</span><br><span class="line">    version=<span class="string">'1.0'</span>,</span><br><span class="line">    description=<span class="string">'Hello, World! in flask.'</span>,</span><br><span class="line">    packages=[<span class="string">'flask_example'</span>],</span><br><span class="line">    install_requires=[</span><br><span class="line">        <span class="string">'Flask==0.12.2'</span></span><br><span class="line">    ],</span><br><span class="line">    entry_points = &#123;</span><br><span class="line">        <span class="string">'console_scripts'</span>: <span class="string">'runserver=flask_example.flask_example:main'</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>This has a few advantages that comes with it. First, you can now install your app locally using “pip install -e .” This makes it easier for developers to clone and install your project because the setup.py file will take care of all the heavy lifting.</p>
+<p>Second, with the setup.py file comes dependency management. The install_requires variable allows you to define packages and specific versions to use. If you’re not sure what packages and versions you are using, run “pip freeze” to view them.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/07/5 Tips for Writing Better Python/">
+            <a class="btn" href="/2017/10/07/5 Tips for Writing Better Python/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1107,161 +1270,40 @@
 
           
             
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          可视化—matploblib 解决中文显示的问题
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/07/可视化—matploblib 解决中文显示的问题/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/06/逻辑回归评分卡调优（六）之模型融合/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/06/逻辑回归评分卡调优（六）之模型融合/" itemprop="url">逻辑回归评分卡调优（六）之模型融合</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-06T10:55:12+08:00">
-                2017-10-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-
-                
-                
-              
-            </span>
-          
-
-          
+                <a href="/2017/10/07/可视化—matploblib 解决中文显示的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/可视化—matploblib 解决中文显示的问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
           
           
-
+             <span id="/2017/10/07/可视化—matploblib 解决中文显示的问题/" class="leancloud_visitors" data-flag-title="可视化—matploblib 解决中文显示的问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  可视化—matploblib 解决中文显示的问题
+              </div>
           
 
         </div>
@@ -1278,10 +1320,11 @@
 
       
         
-          逻辑回归评分卡调优（六）之模型融合
+          <h3 id="导入相关包"><a href="#导入相关包" class="headerlink" title="导入相关包"></a>导入相关包</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<h3 id="指定字体"><a href="#指定字体" class="headerlink" title="指定字体"></a>指定字体</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'SimHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/06/逻辑回归评分卡调优（六）之模型融合/">
+            <a class="btn" href="/2017/10/07/可视化—matploblib 解决中文显示的问题/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1399,15 +1442,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/" class="leancloud_visitors" data-flag-title="逻辑回归评分卡调优（五）之增加高阶特征">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  逻辑回归评分卡调优（五）之增加高阶特征
+              </div>
           
 
         </div>
@@ -1424,14 +1492,187 @@
 
       
         
-          逻辑回归评分卡调优（五）之增加高阶特征
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/06/逻辑回归评分卡调优（五）之增加高阶特征/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>在<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B/" target="_blank" rel="noopener">上回</a>的基础上，我们可以看到根据业务理解<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E5%9B%9B%EF%BC%89%E4%B9%8B%E5%88%86%E5%89%B2%E6%A8%A1%E5%9E%8B/" target="_blank" rel="noopener">分割模型</a>带来了模型效果的提升。这节我们尝试通过增加高阶特征来增强模型的表达能力。由于备选变量比较多，盲目的全部生成高阶特征会造成特征数量指数级的爆炸式增长，这个不是我想要的，所以先根据IV值进行单变量特征选择，筛选比较重要的变量，然后再次基础上才生成高阶特征。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">   __author__ = <span class="string">'boredbird'</span></span><br><span class="line">   <span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">   <span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">   <span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">   <span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line">   <span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">   <span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">   <span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> l1_min_c</span><br><span class="line">   <span class="keyword">from</span> scipy.stats <span class="keyword">import</span> ks_2samp</span><br><span class="line">   <span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line">   </span><br><span class="line">   get_ks = <span class="keyword">lambda</span> y_pred,y_true: ks_2samp(y_pred[y_true==<span class="number">1</span>], y_pred[y_true!=<span class="number">1</span>]).statistic</span><br><span class="line">   </span><br><span class="line">   dataset_train = pd.read_csv(<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_woe_trans.csv'</span>)</span><br><span class="line">   cfg = pd.read_csv(<span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span>)</span><br><span class="line">   </span><br><span class="line">   poly_features = [</span><br><span class="line"></span><br><span class="line">]</span><br><span class="line">   </span><br><span class="line">   y_train = dataset_train[<span class="string">'target'</span>]</span><br><span class="line">   poly = PolynomialFeatures(<span class="number">2</span>)</span><br><span class="line">   X_train = poly.fit_transform(dataset_train[poly_features])</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">del</span> dataset_train</span><br><span class="line">   <span class="keyword">import</span> gc</span><br><span class="line">   gc.collect()</span><br><span class="line"></span><br><span class="line">   <span class="comment"># init a LogisticRegression model</span></span><br><span class="line">   clf_l1_LR = LogisticRegression(C=<span class="number">0.1</span>, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>)</span><br><span class="line">   cs = l1_min_c(X_train, y_train, loss=<span class="string">'log'</span>) * np.logspace(<span class="number">0</span>, <span class="number">3</span>)</span><br><span class="line">   </span><br><span class="line">   print(<span class="string">"Computing regularization path ..."</span>)</span><br><span class="line">   start = datetime.now()</span><br><span class="line">   <span class="keyword">print</span> start</span><br><span class="line">   coefs_ = []</span><br><span class="line">   ks = []</span><br><span class="line">   <span class="keyword">for</span> c <span class="keyword">in</span> cs:</span><br><span class="line">   clf_l1_LR.set_params(C=c)</span><br><span class="line">   clf_l1_LR.fit(X_train, y_train)</span><br><span class="line">   coefs_.append(clf_l1_LR.coef_.ravel().copy())</span><br><span class="line">   </span><br><span class="line">   proba = clf_l1_LR.predict_proba(X_train)[:,<span class="number">1</span>]</span><br><span class="line">   ks.append(get_ks(proba,y_train))</span><br><span class="line">   </span><br><span class="line">   end = datetime.now()</span><br><span class="line">   <span class="keyword">print</span> end</span><br><span class="line">   print(<span class="string">"This took "</span>, end - start)</span><br><span class="line">   </span><br><span class="line">   coef_cv_df = pd.DataFrame(coefs_)</span><br><span class="line">   coef_cv_df.to_csv(<span class="string">'E:\\Code\\ScoreCard\\agr_coef_cv_df_poly.csv'</span>)</span><br><span class="line">   </span><br><span class="line">   coefs_ = np.array(coefs_)</span><br><span class="line">   </span><br><span class="line">   fig1 = plt.figure(<span class="string">'fig1'</span>)</span><br><span class="line">   plt.plot(np.log10(cs), coefs_)</span><br><span class="line">   ymin, ymax = plt.ylim()</span><br><span class="line">   plt.xlabel(<span class="string">'log(C)'</span>)</span><br><span class="line">   plt.ylabel(<span class="string">'Coefficients'</span>)</span><br><span class="line">   plt.title(<span class="string">'Logistic Regression Path Poly'</span>)</span><br><span class="line">   plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">   plt.show()</span><br><span class="line">   </span><br><span class="line">   fig2 = plt.figure(<span class="string">'fig2'</span>)</span><br><span class="line">   plt.plot(np.log10(cs), ks)</span><br><span class="line">   plt.xlabel(<span class="string">'log(C)'</span>)</span><br><span class="line">   plt.ylabel(<span class="string">'ks score'</span>)</span><br><span class="line">   plt.title(<span class="string">'Logistic Regression Performance Poly'</span>)</span><br><span class="line">   plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">   plt.show()</span><br><span class="line">   </span><br><span class="line">   fig2.show()</span><br><span class="line">   fig1.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/t4Z4KC8.png" alt=""></p>
+<p><img src="https://i.imgur.com/7gkS2nc.png" alt=""></p>
+<p>注：X_train第一列是常数项，就是系数图中的那条蓝色线。</p>
+<p>从模型的表现来看，模型效果并没有显著提升，根据奥卡姆剃刀原理，放弃采用高阶特征。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/06/逻辑回归评分卡调优（六）之模型融合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/06/逻辑回归评分卡调优（六）之模型融合/" itemprop="url">逻辑回归评分卡调优（六）之模型融合</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-06T10:55:12+08:00">
+                2017-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/06/逻辑回归评分卡调优（六）之模型融合/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/06/逻辑回归评分卡调优（六）之模型融合/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/06/逻辑回归评分卡调优（六）之模型融合/" class="leancloud_visitors" data-flag-title="逻辑回归评分卡调优（六）之模型融合">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  逻辑回归评分卡调优（六）之模型融合
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8B%E5%A2%9E%E5%8A%A0%E9%AB%98%E9%98%B6%E7%89%B9%E5%BE%81/" target="_blank" rel="noopener">上回</a>的基础上，我们可以看到<a href="https://boredbird.github.io/2017/10/06/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E4%BA%94%EF%BC%89%E4%B9%8B%E5%A2%9E%E5%8A%A0%E9%AB%98%E9%98%B6%E7%89%B9%E5%BE%81/" target="_blank" rel="noopener">增加高阶特征</a>并没有带来模型效果显著提升。考虑到sigmoid函数在0.5处附近区分度比较大，在远离0.5处概率值变换不是很明显，考虑sigmoid梯度平缓的地方，拆分成<0.3和>0.7分别单独领出来，重新建模，期望能提升模型效果。</0.3和></p>
+<p>按照0.3和0.7两个分割点划分，需要重新再训练出三个模型，然后再把这三个模型整体的效果与未重新训练前的效果进行对比。</p>
+<p><strong>首先定义几个函数，省得写一些重复的代码：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">plot_ks</span><span class="params">(proba,target,axistype=<span class="number">0</span>,out_path=False)</span>:</span></span><br><span class="line">    	a = pd.DataFrame(np.array([proba,target]).T,columns=[<span class="string">'proba'</span>,<span class="string">'target'</span>])</span><br><span class="line">    	a.sort_values(by=<span class="string">'proba'</span>,ascending=<span class="keyword">False</span>,inplace=<span class="keyword">True</span>)</span><br><span class="line">    	a[<span class="string">'sum_Times'</span>]=a[<span class="string">'target'</span>].cumsum()</span><br><span class="line">    	total_1 = a[<span class="string">'target'</span>].sum()</span><br><span class="line">    	total_0 = len(a) - a[<span class="string">'target'</span>].sum()</span><br><span class="line">    </span><br><span class="line">    	a[<span class="string">'temp'</span>] = <span class="number">1</span></span><br><span class="line">    	a[<span class="string">'Times'</span>]=a[<span class="string">'temp'</span>].cumsum()</span><br><span class="line">    	a[<span class="string">'cdf1'</span>] = a[<span class="string">'sum_Times'</span>]/total_1</span><br><span class="line">    	a[<span class="string">'cdf0'</span>] = (a[<span class="string">'Times'</span>] - a[<span class="string">'sum_Times'</span>])/total_0</span><br><span class="line">    	a[<span class="string">'ks'</span>] = a[<span class="string">'cdf1'</span>] - a[<span class="string">'cdf0'</span>]</span><br><span class="line">    	a[<span class="string">'percent'</span>] = a[<span class="string">'Times'</span>]*<span class="number">1.0</span>/len(a)</span><br><span class="line">    </span><br><span class="line">    	idx = np.argmax(a[<span class="string">'ks'</span>])</span><br><span class="line">    	<span class="comment"># print a.loc[idx]</span></span><br><span class="line">    </span><br><span class="line">    	<span class="keyword">if</span> axistype == <span class="number">0</span>:</span><br><span class="line">    	<span class="string">'''</span></span><br><span class="line"><span class="string">    	KS曲线,横轴为按照输出的概率值排序后的观察样本比例</span></span><br><span class="line"><span class="string">    	'''</span></span><br><span class="line">    	plt.figure()</span><br><span class="line">    	plt.plot(a[<span class="string">'percent'</span>],a[<span class="string">'cdf1'</span>], label=<span class="string">"CDF_positive"</span>)</span><br><span class="line">    	plt.plot(a[<span class="string">'percent'</span>],a[<span class="string">'cdf0'</span>],label=<span class="string">"CDF_negative"</span>)</span><br><span class="line">    	plt.plot(a[<span class="string">'percent'</span>],a[<span class="string">'ks'</span>],label=<span class="string">"K-S"</span>)</span><br><span class="line">    </span><br><span class="line">    	sx = np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">10</span>)</span><br><span class="line">    	sy = sx</span><br><span class="line">    	plt.plot(sx,sy,linestyle=<span class="string">'--'</span>,color=<span class="string">'darkgrey'</span>,linewidth=<span class="number">1.2</span>)</span><br><span class="line">    </span><br><span class="line">    	plt.legend()</span><br><span class="line">    	plt.grid(<span class="keyword">True</span>)</span><br><span class="line">    	ymin, ymax = plt.ylim()</span><br><span class="line">    	plt.xlabel(<span class="string">'Sample percent'</span>)</span><br><span class="line">    	plt.ylabel(<span class="string">'Cumulative probability'</span>)</span><br><span class="line">    	plt.title(<span class="string">'Model Evaluation Index K-S'</span>)</span><br><span class="line">    	plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">    </span><br><span class="line">    	<span class="comment"># 虚线</span></span><br><span class="line">    	t = a.loc[idx][<span class="string">'percent'</span>]</span><br><span class="line">    	yb = round(a.loc[idx][<span class="string">'cdf1'</span>],<span class="number">4</span>)</span><br><span class="line">    	yg = round(a.loc[idx][<span class="string">'cdf0'</span>],<span class="number">4</span>)</span><br><span class="line">    </span><br><span class="line">    	plt.plot([t,t],[yb,yg], color =<span class="string">'red'</span>, linewidth=<span class="number">1.4</span>, linestyle=<span class="string">"--"</span>)</span><br><span class="line">    	plt.scatter([t,],[yb,], <span class="number">20</span>, color =<span class="string">'dodgerblue'</span>)</span><br><span class="line">    	plt.annotate(<span class="string">r'$recall_p=%s$'</span> % round(a.loc[idx][<span class="string">'cdf1'</span>],<span class="number">4</span>), xy=(t, yb), xycoords=<span class="string">'data'</span>, xytext=(+<span class="number">10</span>, <span class="number">-5</span>),</span><br><span class="line">     	textcoords=<span class="string">'offset points'</span>, fontsize=<span class="number">8</span>,</span><br><span class="line">     	arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">    </span><br><span class="line">    	plt.scatter([t,],[yg,], <span class="number">20</span>, color =<span class="string">'darkorange'</span>)</span><br><span class="line">    	plt.annotate(<span class="string">r'$recall_n=%s$'</span> % round(a.loc[idx][<span class="string">'cdf0'</span>],<span class="number">4</span>), xy=(t, yg), xycoords=<span class="string">'data'</span>, xytext=(+<span class="number">10</span>, <span class="number">-10</span>),</span><br><span class="line">     	textcoords=<span class="string">'offset points'</span>, fontsize=<span class="number">8</span>,</span><br><span class="line">     	arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">    	<span class="comment"># K-S曲线峰值</span></span><br><span class="line">    	plt.scatter([t,],[a.loc[idx][<span class="string">'ks'</span>],], <span class="number">20</span>, color =<span class="string">'limegreen'</span>)</span><br><span class="line">    	plt.annotate(<span class="string">r'$ks=%s,p=%s$'</span> % (round(a.loc[idx][<span class="string">'ks'</span>],<span class="number">4</span>)</span><br><span class="line">    	,round(a.loc[idx][<span class="string">'proba'</span>],<span class="number">4</span>))</span><br><span class="line">     	, xy=(a.loc[idx][<span class="string">'percent'</span>], a.loc[idx][<span class="string">'ks'</span>])</span><br><span class="line">     	, xycoords=<span class="string">'data'</span></span><br><span class="line">     	, xytext=(+<span class="number">15</span>, <span class="number">-15</span>),</span><br><span class="line">     	textcoords=<span class="string">'offset points'</span></span><br><span class="line">     	, fontsize=<span class="number">8</span></span><br><span class="line">     	,arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">    	plt.annotate(<span class="string">r'$percent=%s,cnt=%s$'</span> % (round(a.loc[idx][<span class="string">'percent'</span>],<span class="number">4</span>)</span><br><span class="line">       	,round(a.loc[idx][<span class="string">'Times'</span>],<span class="number">0</span>))</span><br><span class="line">     	, xy=(a.loc[idx][<span class="string">'percent'</span>], a.loc[idx][<span class="string">'ks'</span>])</span><br><span class="line">     	, xycoords=<span class="string">'data'</span></span><br><span class="line">     	, xytext=(+<span class="number">25</span>, <span class="number">-25</span>),</span><br><span class="line">     	textcoords=<span class="string">'offset points'</span></span><br><span class="line">     	, fontsize=<span class="number">8</span></span><br><span class="line">     	)</span><br><span class="line">    </span><br><span class="line">    	<span class="keyword">else</span>:</span><br><span class="line">    	<span class="string">'''</span></span><br><span class="line"><span class="string">    	改变横轴,横轴为模型输出的概率值</span></span><br><span class="line"><span class="string">    	'''</span></span><br><span class="line">	    plt.figure()</span><br><span class="line">	    plt.grid(<span class="keyword">True</span>)</span><br><span class="line">	    plt.plot(<span class="number">1</span>-a[<span class="string">'proba'</span>],a[<span class="string">'cdf1'</span>], label=<span class="string">"CDF_bad"</span>)</span><br><span class="line">	    plt.plot(<span class="number">1</span>-a[<span class="string">'proba'</span>],a[<span class="string">'cdf0'</span>],label=<span class="string">"CDF_good"</span>)</span><br><span class="line">	    plt.plot(<span class="number">1</span>-a[<span class="string">'proba'</span>],a[<span class="string">'ks'</span>],label=<span class="string">"ks"</span>)</span><br><span class="line">	    </span><br><span class="line">	    plt.legend()</span><br><span class="line">	    ymin, ymax = plt.ylim()</span><br><span class="line">	    plt.xlabel(<span class="string">'1-[Predicted probability]'</span>)</span><br><span class="line">	    plt.ylabel(<span class="string">'Cumulative probability'</span>)</span><br><span class="line">	    plt.title(<span class="string">'Model Evaluation Index K-S'</span>)</span><br><span class="line">	    plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">	    plt.show()</span><br><span class="line">	    <span class="comment"># 虚线</span></span><br><span class="line">	    t = <span class="number">1</span> - a.loc[idx][<span class="string">'proba'</span>]</span><br><span class="line">	    yb = round(a.loc[idx][<span class="string">'cdf1'</span>],<span class="number">4</span>)</span><br><span class="line">	    yg = round(a.loc[idx][<span class="string">'cdf0'</span>],<span class="number">4</span>)</span><br><span class="line">	    </span><br><span class="line">	    plt.plot([t,t],[yb,yg], color =<span class="string">'red'</span>, linewidth=<span class="number">1.4</span>, linestyle=<span class="string">"--"</span>)</span><br><span class="line">	    plt.scatter([t,],[yb,], <span class="number">20</span>, color =<span class="string">'dodgerblue'</span>)</span><br><span class="line">	    plt.annotate(<span class="string">r'$recall_p=%s$'</span> % round(a.loc[idx][<span class="string">'cdf1'</span>],<span class="number">4</span>), xy=(t, yb), xycoords=<span class="string">'data'</span>, xytext=(+<span class="number">10</span>, <span class="number">-5</span>),</span><br><span class="line">	     textcoords=<span class="string">'offset points'</span>, fontsize=<span class="number">8</span>,</span><br><span class="line">	     arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">	    </span><br><span class="line">	    plt.scatter([t,],[yg,], <span class="number">20</span>, color =<span class="string">'darkorange'</span>)</span><br><span class="line">	    plt.annotate(<span class="string">r'$recall_n=%s$'</span> % round(a.loc[idx][<span class="string">'cdf0'</span>],<span class="number">4</span>), xy=(t, yg), xycoords=<span class="string">'data'</span>, xytext=(+<span class="number">10</span>, <span class="number">-10</span>),</span><br><span class="line">	     textcoords=<span class="string">'offset points'</span>, fontsize=<span class="number">8</span>,</span><br><span class="line">	     arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">	    <span class="comment"># K-S曲线峰值</span></span><br><span class="line">	    plt.scatter([t,],[a.loc[idx][<span class="string">'ks'</span>],], <span class="number">20</span>, color =<span class="string">'limegreen'</span>)</span><br><span class="line">	    plt.annotate(<span class="string">r'$ks=%s,p=%s$'</span> % (round(a.loc[idx][<span class="string">'ks'</span>],<span class="number">4</span>)</span><br><span class="line">	    ,round(a.loc[idx][<span class="string">'proba'</span>],<span class="number">4</span>))</span><br><span class="line">	     , xy=(t, a.loc[idx][<span class="string">'ks'</span>])</span><br><span class="line">	     , xycoords=<span class="string">'data'</span></span><br><span class="line">	     , xytext=(+<span class="number">15</span>, <span class="number">-15</span>),</span><br><span class="line">	     textcoords=<span class="string">'offset points'</span></span><br><span class="line">	     , fontsize=<span class="number">8</span></span><br><span class="line">	     ,arrowprops=dict(arrowstyle=<span class="string">'-&gt;'</span>, connectionstyle=<span class="string">"arc3,rad=.1"</span>))</span><br><span class="line">	    plt.annotate(<span class="string">r'$percent=%s,cnt=%s$'</span> % (round(a.loc[idx][<span class="string">'percent'</span>],<span class="number">4</span>)</span><br><span class="line">	       ,round(a.loc[idx][<span class="string">'Times'</span>],<span class="number">0</span>))</span><br><span class="line">	     , xy=(t, a.loc[idx][<span class="string">'ks'</span>])</span><br><span class="line">	     , xycoords=<span class="string">'data'</span></span><br><span class="line">	     , xytext=(+<span class="number">25</span>, <span class="number">-25</span>),</span><br><span class="line">	     textcoords=<span class="string">'offset points'</span></span><br><span class="line">	     , fontsize=<span class="number">8</span></span><br><span class="line">	     )</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">if</span> out_path:</span><br><span class="line">	    file_name = out_path <span class="keyword">if</span> isinstance(out_path, str) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">	    plt.savefig(file_name)</span><br><span class="line">	    <span class="keyword">else</span>:</span><br><span class="line">	    plt.show()</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">return</span> a.loc[idx]</span><br><span class="line">	    </span><br><span class="line">    </span><br><span class="line">    <span class="string">''' 搜索 最优超参数c '''</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">grid_search_lr_c</span><span class="params">(X_train,y_train,df_coef_path=False</span></span></span><br><span class="line"><span class="function"><span class="params">     	,pic_coefpath_title=<span class="string">'Logistic Regression Path'</span>,pic_coefpath=False</span></span></span><br><span class="line"><span class="function"><span class="params">     	,pic_performance_title=<span class="string">'Logistic Regression Performance'</span>,pic_performance=False)</span>:</span></span><br><span class="line">	    <span class="comment"># init a LogisticRegression model</span></span><br><span class="line">	    clf_l1_LR = LogisticRegression(C=<span class="number">0.1</span>, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>,class_weight=<span class="string">'balanced'</span>)</span><br><span class="line">	    cs = l1_min_c(X_train, y_train, loss=<span class="string">'log'</span>) * np.logspace(<span class="number">0</span>, <span class="number">3</span>)</span><br><span class="line">	    </span><br><span class="line">	    print(<span class="string">"Computing regularization path ..."</span>)</span><br><span class="line">	    start = datetime.now()</span><br><span class="line">	    <span class="keyword">print</span> start</span><br><span class="line">	    coefs_ = []</span><br><span class="line">	    ks = []</span><br><span class="line">	    <span class="keyword">for</span> c <span class="keyword">in</span> cs:</span><br><span class="line">	    clf_l1_LR.set_params(C=c)</span><br><span class="line">	    clf_l1_LR.fit(X_train, y_train)</span><br><span class="line">	    coefs_.append(clf_l1_LR.coef_.ravel().copy())</span><br><span class="line">	    </span><br><span class="line">	    proba = clf_l1_LR.predict_proba(X_train)[:,<span class="number">1</span>]</span><br><span class="line">	    ks.append(get_ks(proba,y_train))</span><br><span class="line">	    </span><br><span class="line">	    end = datetime.now()</span><br><span class="line">	    <span class="keyword">print</span> end</span><br><span class="line">	    print(<span class="string">"This took "</span>, end - start)</span><br><span class="line">	    coef_cv_df = pd.DataFrame(coefs_,columns=X_train.columns)</span><br><span class="line">	    coef_cv_df[<span class="string">'ks'</span>] = ks</span><br><span class="line">	    coef_cv_df[<span class="string">'c'</span>] = cs</span><br><span class="line">	    <span class="comment"># df_coef_path = 'E:\\Code\\ScoreCard\\agr_coef_cv_df_balanced_nextrain_beta.csv'</span></span><br><span class="line">	    <span class="keyword">if</span> df_coef_path:</span><br><span class="line">	    file_name = df_coef_path <span class="keyword">if</span> isinstance(df_coef_path, str) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">	    coef_cv_df.to_csv(file_name)</span><br><span class="line">	    </span><br><span class="line">	    coefs_ = np.array(coefs_)</span><br><span class="line">	    </span><br><span class="line">	    fig1 = plt.figure(<span class="string">'fig1'</span>)</span><br><span class="line">	    plt.plot(np.log10(cs), coefs_)</span><br><span class="line">	    ymin, ymax = plt.ylim()</span><br><span class="line">	    plt.xlabel(<span class="string">'log(C)'</span>)</span><br><span class="line">	    plt.ylabel(<span class="string">'Coefficients'</span>)</span><br><span class="line">	    <span class="comment"># pic_coefpath_title = 'Logistic Regression Path Class_weight Balanced Nextrain_beta'</span></span><br><span class="line">	    plt.title(pic_coefpath_title)</span><br><span class="line">	    plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">	    <span class="keyword">if</span> pic_coefpath:</span><br><span class="line">	    file_name = pic_coefpath <span class="keyword">if</span> isinstance(pic_coefpath, str) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">	    plt.savefig(file_name)</span><br><span class="line">	    <span class="keyword">else</span>:</span><br><span class="line">	    plt.show()</span><br><span class="line">	    </span><br><span class="line">	    fig2 = plt.figure(<span class="string">'fig2'</span>)</span><br><span class="line">	    plt.plot(np.log10(cs), ks)</span><br><span class="line">	    plt.xlabel(<span class="string">'log(C)'</span>)</span><br><span class="line">	    plt.ylabel(<span class="string">'ks score'</span>)</span><br><span class="line">	    <span class="comment"># pic_performance_title = 'Logistic Regression Performance Class_weight balanced Nextrain_beta'</span></span><br><span class="line">	    plt.title(pic_performance_title)</span><br><span class="line">	    plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">	    <span class="keyword">if</span> pic_performance:</span><br><span class="line">	    file_name = pic_performance <span class="keyword">if</span> isinstance(pic_performance, str) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">	    plt.savefig(file_name)</span><br><span class="line">	    <span class="keyword">else</span>:</span><br><span class="line">	    plt.show()</span><br><span class="line">	    </span><br><span class="line">	    </span><br><span class="line">	    flag = coefs_&lt;<span class="number">0</span></span><br><span class="line">	    idx = np.array(ks)[flag.sum(axis=<span class="number">1</span>) == <span class="number">0</span>].argmax()</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">return</span> (cs[idx],ks[idx])</span><br><span class="line">```    </span><br><span class="line">    </span><br><span class="line">**然后拆分模型，合并计算ks,将一个已经预测后的模型，根据输出的概率值，给定两个分割点，划分区间重新用LR训练。**</span><br><span class="line"></span><br><span class="line">``` python</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lr_sub_train</span><span class="params">(X_train,y_train,idx)</span>:</span></span><br><span class="line">	    index = idx</span><br><span class="line">	    sub_xtrain = X_train.loc[index,:]</span><br><span class="line">	    sub_ytrain = y_train.loc[index]</span><br><span class="line">	    </span><br><span class="line">	    c,ks = grid_search_lr_c(sub_xtrain,sub_ytrain)</span><br><span class="line">	    clf_l1_LR = LogisticRegression(C=c, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>,class_weight=<span class="string">'balanced'</span>)</span><br><span class="line">	    clf_l1_LR.fit(sub_xtrain, sub_ytrain)</span><br><span class="line">	    sub_proba = clf_l1_LR.predict_proba(sub_xtrain)[:,<span class="number">1</span>]</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">return</span> c,ks,sub_proba,sub_ytrain</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train_segmentation_model</span><span class="params">(X_train,y_train,proba_train,left_point,right_point)</span>:</span></span><br><span class="line">	    idx1 = (proba_train &lt;= left_point)</span><br><span class="line">	    idx2 = (proba_train &gt; left_point)&amp;(proba_train &lt;= right_point)</span><br><span class="line">	    idx3 = (proba_train &gt; right_point)</span><br><span class="line">	    c1,ks1,sub_proba1,sub_ytrain1 = lr_sub_train(X_train,y_train,idx1)</span><br><span class="line">	    c2,ks2,sub_proba2,sub_ytrain2 = lr_sub_train(X_train,y_train,idx2)</span><br><span class="line">	    c3,ks3,sub_proba3,sub_ytrain3 = lr_sub_train(X_train,y_train,idx3)</span><br><span class="line">	    <span class="keyword">print</span> <span class="string">'c1:'</span>,c1,<span class="string">' ks1:'</span>,ks1</span><br><span class="line">	    <span class="keyword">print</span> <span class="string">'c2:'</span>,c2,<span class="string">' ks2:'</span>,ks2</span><br><span class="line">	    <span class="keyword">print</span> <span class="string">'c3:'</span>,c3,<span class="string">' ks3:'</span>,ks3</span><br><span class="line">	    </span><br><span class="line">	    proba = []</span><br><span class="line">	    proba.extend(sub_proba1)</span><br><span class="line">	    proba.extend(sub_proba2)</span><br><span class="line">	    proba.extend(sub_proba3)</span><br><span class="line">	    </span><br><span class="line">	    y = []</span><br><span class="line">	    y.extend(sub_ytrain1)</span><br><span class="line">	    y.extend(sub_ytrain2)</span><br><span class="line">	    y.extend(sub_ytrain3)</span><br><span class="line">	    </span><br><span class="line">	    <span class="keyword">return</span> get_ks(np.array(proba),np.array(y))</span><br><span class="line">	    <span class="comment"># 0.29072674001489612</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>输出</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">Computing regularization path ...</span></span><br><span class="line"><span class="string">2017-10-03 16:04:45.229000</span></span><br><span class="line"><span class="string">2017-10-03 16:07:12.977000</span></span><br><span class="line"><span class="string">('This took ', datetime.timedelta(0, 147, 748000))</span></span><br><span class="line"><span class="string">Computing regularization path ...</span></span><br><span class="line"><span class="string">2017-10-03 16:07:28.118000</span></span><br><span class="line"><span class="string">2017-10-03 16:08:59.740000</span></span><br><span class="line"><span class="string">('This took ', datetime.timedelta(0, 91, 622000))</span></span><br><span class="line"><span class="string">Computing regularization path ...</span></span><br><span class="line"><span class="string">2017-10-03 16:09:03.475000</span></span><br><span class="line"><span class="string">2017-10-03 16:09:31.128000</span></span><br><span class="line"><span class="string">('This took ', datetime.timedelta(0, 27, 653000))</span></span><br><span class="line"><span class="string">c1: 0.00663966525938  ks1: 0.208779933516</span></span><br><span class="line"><span class="string">c2: 0.00189750388742  ks2: 0.201006811034</span></span><br><span class="line"><span class="string">c3: 0.000415735598049  ks3: 0.169741554117</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>结果并没有按照我想象的那样，反而分割后的效果没有单一模型的效果好。原因是woe变换没有重新训练?</p>
+
+          
         
       
     </div>
@@ -1545,15 +1786,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/06/逻辑回归评分卡调优（四）之分割模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/06/逻辑回归评分卡调优（四）之分割模型/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/06/逻辑回归评分卡调优（四）之分割模型/" class="leancloud_visitors" data-flag-title="逻辑回归评分卡调优（四）之分割模型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  逻辑回归评分卡调优（四）之分割模型
+              </div>
           
 
         </div>
@@ -1570,14 +1836,23 @@
 
       
         
-          逻辑回归评分卡调优（四）之分割模型
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/06/逻辑回归评分卡调优（四）之分割模型/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>在<a href="https://boredbird.github.io/2017/10/04/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E5%89%94%E9%99%A4%E5%99%AA%E5%A3%B0/" target="_blank" rel="noopener">上回</a>的基础上，我们可以看到根据业务理解<a href="https://boredbird.github.io/2017/10/04/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E4%B8%89%EF%BC%89%E4%B9%8B%E5%89%94%E9%99%A4%E5%99%AA%E5%A3%B0/" target="_blank" rel="noopener">剔除噪声</a>样本带来了模型效果的提升。同时也感受到了“与此相关”变量的重要，在这个字段上不同取值的客户所对应的入模特征分布也许有很大差异，于是我尝试了根据这个字段分割建模，期望能达到提升的效果。</p>
+<h1 id="按条件分割数据集："><a href="#按条件分割数据集：" class="headerlink" title="按条件分割数据集："></a>按条件分割数据集：</h1><ul>
+<li>agr_dd1 + agr_dd2 + agr_dd3 + agr_dd4 == 1</li>
+<li>agr_dd1 + agr_dd2 + agr_dd3 + agr_dd4 == 2</li>
+<li>agr_dd1 + agr_dd2 + agr_dd3 + agr_dd4 == 3</li>
+<li>agr_dd1 + agr_dd2 + agr_dd3 + agr_dd4 &gt;= 4</li>
+</ul>
+<h1 id="在分割出的4个训练集上分布训练WOE转换，然后对测试集进行对应的WOE转换"><a href="#在分割出的4个训练集上分布训练WOE转换，然后对测试集进行对应的WOE转换" class="headerlink" title="在分割出的4个训练集上分布训练WOE转换，然后对测试集进行对应的WOE转换"></a>在分割出的4个训练集上分布训练WOE转换，然后对测试集进行对应的WOE转换</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br></pre></td><td class="code"><pre><span class="line">__author__ = <span class="string">'boredbird'</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> woe.config <span class="keyword">as</span> config</span><br><span class="line"><span class="keyword">import</span> woe.feature_process <span class="keyword">as</span> fp</span><br><span class="line"><span class="keyword">import</span> woe.eval <span class="keyword">as</span> eval</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> l1_min_c</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> ks_2samp</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************A****************************************************************'</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr.csv'</span>)</span><br><span class="line">dataset_dd1 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] == <span class="number">1</span>,:]</span><br><span class="line">dataset_dd2 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] == <span class="number">2</span>,:]</span><br><span class="line">dataset_dd3 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] == <span class="number">3</span>,:]</span><br><span class="line">dataset_dd4 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] &gt;= <span class="number">4</span>,:]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************B****************************************************************'</span></span><br><span class="line">dataset_dd1.to_csv(<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd1.csv'</span>)</span><br><span class="line">dataset_dd2.to_csv(<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd2.csv'</span>)</span><br><span class="line">dataset_dd3.to_csv(<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd3.csv'</span>)</span><br><span class="line">dataset_dd4.to_csv(<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd4.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************C****************************************************************'</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr.csv'</span>)</span><br><span class="line">dataset_dd1 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] == <span class="number">1</span>,:]</span><br><span class="line">dataset_dd2 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] == <span class="number">2</span>,:]</span><br><span class="line">dataset_dd3 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] == <span class="number">3</span>,:]</span><br><span class="line">dataset_dd4 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] &gt;= <span class="number">4</span>,:]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************D****************************************************************'</span></span><br><span class="line">dataset_dd1.to_csv(<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd1.csv'</span>)</span><br><span class="line">dataset_dd2.to_csv(<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd2.csv'</span>)</span><br><span class="line">dataset_dd3.to_csv(<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd3.csv'</span>)</span><br><span class="line">dataset_dd4.to_csv(<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd4.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************E****************************************************************'</span></span><br><span class="line">dataset = pd.read_csv(<span class="string">'E:\\ScoreCard\\pos_model_var_tbl_validation_20160806_agr.csv'</span>)</span><br><span class="line">dataset_dd1 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] == <span class="number">1</span>,:]</span><br><span class="line">dataset_dd2 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] == <span class="number">2</span>,:]</span><br><span class="line">dataset_dd3 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] == <span class="number">3</span>,:]</span><br><span class="line">dataset_dd4 = dataset.loc[dataset[<span class="string">'agr_dd1'</span>]+dataset[<span class="string">'agr_dd2'</span>]+dataset[<span class="string">'agr_dd3'</span>]+dataset[<span class="string">'agr_dd4'</span>] &gt;= <span class="number">4</span>,:]</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************F****************************************************************'</span></span><br><span class="line">dataset_dd1.to_csv(<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd1.csv'</span>)</span><br><span class="line">dataset_dd2.to_csv(<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd2.csv'</span>)</span><br><span class="line">dataset_dd3.to_csv(<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd3.csv'</span>)</span><br><span class="line">dataset_dd4.to_csv(<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd4.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_alpha.pkl'</span></span><br><span class="line"><span class="comment"># 'E:\\Code\\ScoreCard\\whitelist_ext_feature_detail_agr.csv'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_train_woe</span><span class="params">(infile_path=None,outfile_path=None,rst_path=None)</span>:</span></span><br><span class="line">config_path = <span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span></span><br><span class="line">data_path = infile_path</span><br><span class="line">cfg = config.config()</span><br><span class="line">cfg.load_file(config_path,data_path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.bin_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(cfg.dataset_train.columns)]:</span><br><span class="line"><span class="comment"># fill null</span></span><br><span class="line">cfg.dataset_train.loc[cfg.dataset_train[var].isnull(), (var)] = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># change feature dtypes</span></span><br><span class="line">fp.change_feature_dtype(cfg.dataset_train, cfg.variable_type)</span><br><span class="line">rst = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># process woe transformation of continuous variables</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'cfg.global_bt'</span>,cfg.global_bt</span><br><span class="line"><span class="keyword">print</span> <span class="string">'cfg.global_gt'</span>, cfg.global_gt</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.bin_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(cfg.dataset_train.columns)]:</span><br><span class="line">rst.append(fp.proc_woe_continuous(cfg.dataset_train,var,cfg.global_bt,cfg.global_gt,cfg.min_sample,alpha=<span class="number">0.05</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># process woe transformation of discrete variables</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.discrete_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(cfg.dataset_train.columns)]:</span><br><span class="line"><span class="comment"># fill null</span></span><br><span class="line">cfg.dataset_train.loc[cfg.dataset_train[var].isnull(), (var)] = <span class="string">'missing'</span></span><br><span class="line">rst.append(fp.proc_woe_discrete(cfg.dataset_train,var,cfg.global_bt,cfg.global_gt,cfg.min_sample,alpha=<span class="number">0.05</span>))</span><br><span class="line"></span><br><span class="line">eval.eval_feature_detail(rst, outfile_path)</span><br><span class="line"></span><br><span class="line">output = open(rst_path, <span class="string">'wb'</span>)</span><br><span class="line">pickle.dump(rst,output)</span><br><span class="line">output.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************G****************************************************************'</span></span><br><span class="line">process_train_woe(infile_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd1.csv'</span></span><br><span class="line">  ,outfile_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_feature_detail_agr_dd1.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd1.pkl'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************H****************************************************************'</span></span><br><span class="line">process_train_woe(infile_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd2.csv'</span></span><br><span class="line">  ,outfile_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_feature_detail_agr_dd2.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd2.pkl'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************I****************************************************************'</span></span><br><span class="line">process_train_woe(infile_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd3.csv'</span></span><br><span class="line">  ,outfile_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_feature_detail_agr_dd3.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd3.pkl'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************J****************************************************************'</span></span><br><span class="line">process_train_woe(infile_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd4.csv'</span></span><br><span class="line">  ,outfile_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_feature_detail_agr_dd4.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd4.pkl'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_woe_trans</span><span class="params">(in_data_path=None,rst_path=None,out_path=None)</span>:</span></span><br><span class="line">config_path = <span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span></span><br><span class="line">data_path = in_data_path</span><br><span class="line">cfg = config.config()</span><br><span class="line">cfg.load_file(config_path, data_path)</span><br><span class="line"></span><br><span class="line">fp.change_feature_dtype(cfg.dataset_train, cfg.variable_type)</span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.bin_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(cfg.dataset_train.columns)]:</span><br><span class="line"><span class="comment"># fill null</span></span><br><span class="line">cfg.dataset_train.loc[cfg.dataset_train[var].isnull(), (var)] = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> [tmp <span class="keyword">for</span> tmp <span class="keyword">in</span> cfg.discrete_var_list <span class="keyword">if</span> tmp <span class="keyword">in</span> list(cfg.dataset_train.columns)]:</span><br><span class="line"><span class="comment"># fill null</span></span><br><span class="line">cfg.dataset_train.loc[cfg.dataset_train[var].isnull(), (var)] = <span class="string">'missing'</span></span><br><span class="line"></span><br><span class="line">output = open(rst_path, <span class="string">'rb'</span>)</span><br><span class="line">rst = pickle.load(output)</span><br><span class="line">output.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Training dataset Woe Transformation</span></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> rst:</span><br><span class="line">cfg.dataset_train[r.var_name] = fp.woe_trans(cfg.dataset_train[r.var_name], r)</span><br><span class="line"></span><br><span class="line">cfg.dataset_train.to_csv(out_path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************K****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd1.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd1.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd1_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************L****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd2.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd2.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd2_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************M****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd3.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd3.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd3_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************N****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd4.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd4.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd4_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************O****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd1.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd1.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd1_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************P****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd2.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd2.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd2_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************Q****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd3.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd3.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd3_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************R****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd4.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd4.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd4_woe_trans.csv'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************K****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd1.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd1.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd1_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************L****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd2.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd2.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd2_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************M****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd3.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd3.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd3_woe_trans.csv'</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'*************************************N****************************************************************'</span></span><br><span class="line">process_woe_trans(in_data_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd4.csv'</span></span><br><span class="line">  ,rst_path=<span class="string">'E:\\Code\\ScoreCard\\whitelist_ext_civ_list_dd4.pkl'</span></span><br><span class="line">  ,out_path=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd4_woe_trans.csv'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Training Model</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">get_ks = <span class="keyword">lambda</span> y_pred,y_true: ks_2samp(y_pred[y_true==<span class="number">1</span>], y_pred[y_true!=<span class="number">1</span>]).statistic</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_model</span><span class="params">(infile,outfile,fig1,fig2)</span>:</span></span><br><span class="line">dataset_train = pd.read_csv(infile)</span><br><span class="line">cfg = pd.read_csv(<span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span>)</span><br><span class="line">candidate_var_list = cfg[cfg[<span class="string">'is_modelfeature'</span>] == <span class="number">1</span>][<span class="string">'var_name'</span>]</span><br><span class="line"></span><br><span class="line">X_train = dataset_train[candidate_var_list]</span><br><span class="line">y_train = dataset_train[<span class="string">'target'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># init a LogisticRegression model</span></span><br><span class="line">clf_l1_LR = LogisticRegression(C=<span class="number">0.1</span>, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>)</span><br><span class="line">cs = l1_min_c(X_train, y_train, loss=<span class="string">'log'</span>) * np.logspace(<span class="number">0</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Computing regularization path ..."</span>)</span><br><span class="line">start = datetime.now()</span><br><span class="line"><span class="keyword">print</span> start</span><br><span class="line">coefs_ = []</span><br><span class="line">ks = []</span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> cs:</span><br><span class="line">clf_l1_LR.set_params(C=c)</span><br><span class="line">clf_l1_LR.fit(X_train, y_train)</span><br><span class="line">coefs_.append(clf_l1_LR.coef_.ravel().copy())</span><br><span class="line"></span><br><span class="line">proba = clf_l1_LR.predict_proba(X_train)[:,<span class="number">1</span>]</span><br><span class="line">ks.append(get_ks(proba,y_train))</span><br><span class="line"></span><br><span class="line">end = datetime.now()</span><br><span class="line"><span class="keyword">print</span> end</span><br><span class="line">print(<span class="string">"This took "</span>, end - start)</span><br><span class="line"></span><br><span class="line">coef_cv_df = pd.DataFrame(coefs_,columns=X_train.columns)</span><br><span class="line">coef_cv_df[<span class="string">'ks'</span>] = ks</span><br><span class="line">coef_cv_df[<span class="string">'cs'</span>] = cs</span><br><span class="line">coef_cv_df.to_csv(outfile)</span><br><span class="line"></span><br><span class="line">coefs_ = np.array(coefs_)</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(np.log10(cs), coefs_)</span><br><span class="line">ymin, ymax = plt.ylim()</span><br><span class="line">plt.xlabel(<span class="string">'log(C)'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'Coefficients'</span>)</span><br><span class="line">plt.title(<span class="string">'Logistic Regression Path'</span>)</span><br><span class="line">plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">plt.savefig(fig1)</span><br><span class="line">plt.close()</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(np.log10(cs), ks)</span><br><span class="line">plt.xlabel(<span class="string">'log(C)'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ks score'</span>)</span><br><span class="line">plt.title(<span class="string">'Logistic Regression Performance'</span>)</span><br><span class="line">plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">plt.savefig(fig2)</span><br><span class="line">plt.close()</span><br><span class="line"></span><br><span class="line">train_model(infile=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd1_woe_trans.csv'</span></span><br><span class="line">,outfile=<span class="string">'E:\\ScoreCard\\coef_cv_df_agr_dd1.csv'</span></span><br><span class="line">,fig1=<span class="string">'E:\\ScoreCard\\LR_Path_cv_agr_dd1.png'</span></span><br><span class="line">,fig2=<span class="string">'E:\\ScoreCard\\LR_Performance_cv_agr_dd1.png'</span>)</span><br><span class="line"></span><br><span class="line">train_model(infile=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd2_woe_trans.csv'</span></span><br><span class="line">,outfile=<span class="string">'E:\\ScoreCard\\coef_cv_df_agr_dd2.csv'</span></span><br><span class="line">,fig1=<span class="string">'E:\\ScoreCard\\LR_Path_cv_agr_dd2.png'</span></span><br><span class="line">,fig2=<span class="string">'E:\\ScoreCard\\LR_Performance_cv_agr_dd2.png'</span>)</span><br><span class="line"></span><br><span class="line">train_model(infile=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd3_woe_trans.csv'</span></span><br><span class="line">,outfile=<span class="string">'E:\\ScoreCard\\coef_cv_df_agr_dd3.csv'</span></span><br><span class="line">,fig1=<span class="string">'E:\\ScoreCard\\LR_Path_cv_agr_dd3.png'</span></span><br><span class="line">,fig2=<span class="string">'E:\\ScoreCard\\LR_Performance_cv_agr_dd3.png'</span>)</span><br><span class="line"></span><br><span class="line">train_model(infile=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd4_woe_trans.csv'</span></span><br><span class="line">,outfile=<span class="string">'E:\\ScoreCard\\coef_cv_df_agr_dd4.csv'</span></span><br><span class="line">,fig1=<span class="string">'E:\\ScoreCard\\LR_Path_cv_agr_dd4.png'</span></span><br><span class="line">,fig2=<span class="string">'E:\\ScoreCard\\LR_Performance_cv_agr_dd4.png'</span>)</span><br><span class="line">  </span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Model Performance</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict_model</span><span class="params">(train_file,test_file,dataset_validation_path,c)</span>:</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'*********************************************************'</span></span><br><span class="line">cfg = pd.read_csv(<span class="string">'E:\\Code\\ScoreCard\\config\\config_whitelist_ext_pos.csv'</span>)</span><br><span class="line">candidate_var_list = cfg[cfg[<span class="string">'is_modelfeature'</span>] == <span class="number">1</span>][<span class="string">'var_name'</span>]</span><br><span class="line">clf_l1_LR = LogisticRegression(C=c, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>,class_weight=<span class="string">'balanced'</span>)</span><br><span class="line"></span><br><span class="line">dataset_train = pd.read_csv(train_file)</span><br><span class="line">dataset_test = pd.read_csv(test_file)</span><br><span class="line">dataset_validation = pd.read_csv(dataset_validation_path)</span><br><span class="line"><span class="comment"># fill null</span></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> candidate_var_list:</span><br><span class="line"><span class="keyword">if</span> dataset_validation[var].isnull().sum()&gt;<span class="number">0</span>:</span><br><span class="line">dataset_validation.loc[dataset_validation[var].isnull(), (var)] = dataset_validation[var].mean()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> dataset_test[var].isnull().sum()&gt;<span class="number">0</span>:</span><br><span class="line">dataset_test.loc[dataset_test[var].isnull(), (var)] = dataset_test[var].mean()</span><br><span class="line"></span><br><span class="line">X_train = dataset_train[candidate_var_list]</span><br><span class="line">y_train = dataset_train[<span class="string">'target'</span>]</span><br><span class="line"></span><br><span class="line">X_test = dataset_test[candidate_var_list]</span><br><span class="line">y_test = dataset_test[<span class="string">'target'</span>]</span><br><span class="line"></span><br><span class="line">clf_l1_LR.fit(X_train, y_train)</span><br><span class="line">proba = clf_l1_LR.predict_proba(X_train)[:,<span class="number">1</span>]</span><br><span class="line"><span class="keyword">print</span> get_ks(proba,y_train)</span><br><span class="line"></span><br><span class="line">proba = clf_l1_LR.predict_proba(X_test)[:,<span class="number">1</span>]</span><br><span class="line"><span class="keyword">print</span> get_ks(proba,y_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># prediction</span></span><br><span class="line">proba = clf_l1_LR.predict_proba(dataset_validation[candidate_var_list])[:,<span class="number">1</span>]</span><br><span class="line"><span class="keyword">print</span> get_ks(proba,dataset_validation[<span class="string">'target'</span>])</span><br><span class="line"> </span><br><span class="line">predict_model(train_file=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd1_woe_trans.csv'</span></span><br><span class="line">  ,test_file=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd1_woe_trans.csv'</span></span><br><span class="line">  ,dataset_validation_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd1_woe_trans.csv'</span></span><br><span class="line">  ,c=<span class="number">0.00948742173925</span>)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">agr_dd1:</span></span><br><span class="line"><span class="string">0.391337297417</span></span><br><span class="line"><span class="string">0.401760434721</span></span><br><span class="line"><span class="string">0.41978303981</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">predict_model(train_file=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd2_woe_trans.csv'</span></span><br><span class="line">  ,test_file=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd2_woe_trans.csv'</span></span><br><span class="line">  ,dataset_validation_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd2_woe_trans.csv'</span></span><br><span class="line">  ,c=<span class="number">0.00949207179031</span>)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">agr_dd2:</span></span><br><span class="line"><span class="string">0.42881515259</span></span><br><span class="line"><span class="string">0.425330615971</span></span><br><span class="line"><span class="string">0.423628758103</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">predict_model(train_file=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd3_woe_trans.csv'</span></span><br><span class="line">  ,test_file=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd3_woe_trans.csv'</span></span><br><span class="line">  ,dataset_validation_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd3_woe_trans.csv'</span></span><br><span class="line">  ,c=<span class="number">0.0063130606165</span>)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">agr_dd3:</span></span><br><span class="line"><span class="string">0.444853052712</span></span><br><span class="line"><span class="string">0.442965593278</span></span><br><span class="line"><span class="string">0.429972957194</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">predict_model(train_file=<span class="string">'E:\\ScoreCard\\pos_train_20160406_agr_dd4_woe_trans.csv'</span></span><br><span class="line">  ,test_file=<span class="string">'E:\\ScoreCard\\pos_test_20160406_agr_dd4_woe_trans.csv'</span></span><br><span class="line">  ,dataset_validation_path=<span class="string">'E:\\ScoreCard\\pos_validation_20160806_agr_dd4_woe_trans.csv'</span></span><br><span class="line">  ,c=<span class="number">0.00479980706543</span>)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">agr_dd4:</span></span><br><span class="line"><span class="string">0.45628377635</span></span><br><span class="line"><span class="string">0.445146067293</span></span><br><span class="line"><span class="string">0.464371772806</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>由切分成4个数据集分别的ks表现来看，分割后的模型表现差异比较明显，并且agr_dd1，agr_dd2，agr_dd3，agr_dd4的ks逐渐提升，这也不难寻求业务理解。可见，在这个字段上分割模型是有意义。  </p>
+<p>逻辑回归是线性的且单一的分类器，即使我们把这4个数据集增加一个‘A’,’B’,’C’,’D’的字段标识，然后合并为一个数据集，也不能够达到分割的效果。分割模型相对于只是分割数据集会进一步增强模型的表现能力。</p>
+<p><strong>分割数据集</strong></p>
+<p><img src="https://i.imgur.com/HFzIexW.png" alt=""></p>
+<p><strong>分割模型</strong></p>
+<p><img src="https://i.imgur.com/59fOnql.png" alt=""></p>
+
+          
         
       
     </div>
@@ -1691,15 +1966,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/04/本地模块名与系统安装的包名重名冲突问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/04/本地模块名与系统安装的包名重名冲突问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/04/本地模块名与系统安装的包名重名冲突问题/" class="leancloud_visitors" data-flag-title="Python本地模块名与系统安装的包名重名冲突问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Python本地模块名与系统安装的包名重名冲突问题
+              </div>
           
 
         </div>
@@ -1716,14 +2016,22 @@
 
       
         
-          Python本地模块名与系统安装的包名重名冲突问题
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/04/本地模块名与系统安装的包名重名冲突问题/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>本地修改 woe包中的eval模块时，发现 系统老是import<br><code>&quot;D:\ProgramData\Anaconda2\lib\site-packages\woe\eval.py&quot;</code><br>路径下的eval文件。<br>那是因为我已经安装了woe这个包，然后需要调用我修改后的woe源码的本地模块文件，系统自动优先import的是之前安装的woe版本。</p>
+<p>解决方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#-*-coding:utf-8-*-</span></span><br><span class="line">__author__=<span class="string">'boredbird'</span></span><br><span class="line"><span class="comment"># importwoe.configasconfig</span></span><br><span class="line"><span class="comment"># importwoe.feature_processasfp</span></span><br><span class="line"><span class="comment"># importwoe.evalaseval</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> imp</span><br><span class="line">config = imp.load_source(<span class="string">'config'</span>,<span class="string">r'E:\Code\woe\woe\config.py'</span>)</span><br><span class="line">fp = imp.load_source(<span class="string">'feature_process'</span>,<span class="string">r'E:\Code\woe\woe\feature_process.py'</span>)</span><br><span class="line">eval = imp.load_source(<span class="string">'eval'</span>,<span class="string">r'E:\Code\woe\woe\eval.py'</span>)</span><br></pre></td></tr></table></figure>
+<p>For <strong>Python 3.5+</strong> use:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> importlib.util</span><br><span class="line">spec = importlib.util.spec_from_file_location(<span class="string">"module.name"</span>, <span class="string">"/path/to/file.py"</span>)</span><br><span class="line">foo = importlib.util.module_from_spec(spec)</span><br><span class="line">spec.loader.exec_module(foo)</span><br><span class="line">foo.MyClass()</span><br></pre></td></tr></table></figure>
+<p>For <strong>Python 3.3</strong> and <strong>3.4</strong> use:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> importlib.machinery <span class="keyword">import</span> SourceFileLoader</span><br><span class="line">foo = SourceFileLoader(<span class="string">"module.name"</span>, <span class="string">"/path/to/file.py"</span>).load_module()</span><br><span class="line">foo.MyClass()</span><br><span class="line"><span class="comment"># (Although this has been deprecated in Python 3.4.)</span></span><br></pre></td></tr></table></figure>
+<p>For <strong>Python 2</strong> use:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> imp</span><br><span class="line">foo = imp.load_source(<span class="string">'module.name'</span>, <span class="string">'/path/to/file.py'</span>)</span><br><span class="line">foo.MyClass()</span><br></pre></td></tr></table></figure>
+<p>There are equivalent convenience functions for compiled Python files and DLLs.<br>See it <a href="http://bugs.python.org/issue21436" target="_blank" rel="noopener">here</a>. </p>
+<p>另外一种方式，将要导入的模块路径添加到系统路径，并且放在<code>&quot;D:\ProgramData\Anaconda2\lib\site-packages\</code>这个路径前面。<br>比如，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys; </span><br><span class="line">print(<span class="string">'Python %s on %s'</span> % (sys.version, sys.platform))</span><br><span class="line">sys.path.extend([<span class="string">'E:\\Code\\Python_Crawler'</span>, <span class="string">'E:\\Code\\Python_Exercise_Code'</span>, <span class="string">'E:\\Code\\Python_ML_Code'</span>, <span class="string">'E:/Code/Python_Crawler'</span>])</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/z2sGDF8.png" alt=""><br>然后再讲你刚添加的路径元素调整在sys.path这个list中的位置。</p>
+
+          
         
       
     </div>
@@ -1886,12 +2194,23 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+	<span id="busuanzi_container_site_pv">
+		本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
 
+	<span id="busuanzi_container_site_uv">
+	  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+	
   
 </div>
 
@@ -1904,7 +2223,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
 
 
 
@@ -2051,26 +2370,468 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
 
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
 
 
 
   
+
   
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
   
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
 
   
   
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
-
-
 
   
 
@@ -2080,12 +2841,88 @@
 
   
   
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
 
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
   
-
-  
-
-  
-
 </body>
 </html>

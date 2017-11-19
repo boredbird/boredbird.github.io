@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -258,26 +258,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -377,15 +373,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[13]从数据库中获取某个对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[13]从数据库中获取某个对象/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[13]从数据库中获取某个对象/" class="leancloud_visitors" data-flag-title="Django[13]从数据库中获取某个对象">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[13]从数据库中获取某个对象
+              </div>
           
 
         </div>
@@ -402,14 +423,16 @@
 
       
         
-          Django[13]从数据库中获取某个对象
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[13]从数据库中获取某个对象/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="获取对象"><a href="#获取对象" class="headerlink" title="获取对象"></a>获取对象</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">models.Post.objects.get(id=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">models.Post.objects.get(title=<span class="string">"隔壁老王是谁？"</span>)  <span class="comment"># 获取 标题是隔壁老王是谁？的帖子</span></span><br><span class="line"></span><br><span class="line">models.Post.objects.get(title__icontains=<span class="string">"隔壁"</span>)  <span class="comment"># 获取 标题中包含隔壁两个字 的帖子</span></span><br></pre></td></tr></table></figure>
+<h1 id="404页面，get-object-or-404"><a href="#404页面，get-object-or-404" class="headerlink" title="404页面，get_object_or_404"></a>404页面，get_object_or_404</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> get_object_or_404</span><br><span class="line"></span><br><span class="line">get_object_or_404(models.Post, id=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="新建了一个detail-html页面"><a href="#新建了一个detail-html页面" class="headerlink" title="新建了一个detail.html页面"></a>新建了一个detail.html页面</h1><p>用于展示的是帖子详情</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><span class="template-variable">&#123;&#123;obj.title&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span>&gt;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><span class="template-variable">&#123;&#123;obj.content&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.row --&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="修改views-py"><a href="#修改views-py" class="headerlink" title="修改views.py"></a>修改views.py</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="comment"># obj = models.Post.objects.get(id=3)</span></span><br><span class="line">	obj = get_object_or_404(models.Post,id=<span class="number">1</span>)</span><br><span class="line">	data = &#123;</span><br><span class="line">		<span class="string">"obj"</span>:obj</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> render(request,<span class="string">"detail.html"</span>,data)</span><br></pre></td></tr></table></figure>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/F2lHBVY.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjUzMTM1NDM2MA==.html?spm=a2h0j.8191423.playlist_content.5!16~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.16" target="_blank" rel="noopener">Django1.10教程 -13 -从数据库中获取某个对象</a></p>
+
+          
         
       
     </div>
@@ -523,15 +546,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[12]Queryset介绍以及Template context补充/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[12]Queryset介绍以及Template context补充/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[12]Queryset介绍以及Template context补充/" class="leancloud_visitors" data-flag-title="Django[12]Queryset介绍以及Template context补充">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[12]Queryset介绍以及Template context补充
+              </div>
           
 
         </div>
@@ -548,14 +596,26 @@
 
       
         
-          Django[12]Queryset介绍以及Template context补充
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[12]Queryset介绍以及Template context补充/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="Django-shell"><a href="#Django-shell" class="headerlink" title="Django shell"></a>Django shell</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> manage.<span class="keyword">py</span> <span class="keyword">shell</span></span><br></pre></td></tr></table></figure>
+<p>进入django shell,可以在命令行做一些操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#查询出所有的post对象，for循环遍历</span></span><br><span class="line">queryset = models.Post.objects.all()</span><br><span class="line"><span class="keyword">for</span> obj <span class="keyword">in</span> queryset:</span><br><span class="line">    print(obj.title)</span><br><span class="line">    print(obj.content)</span><br><span class="line">    print(obj.update)</span><br><span class="line">    print(obj.timestamp)</span><br><span class="line">    print(obj.id)</span><br><span class="line">    print(obj.pk)</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建一条新的post记录</span></span><br><span class="line">models.Post.objects.create(title=<span class="string">"abc"</span>, content=<span class="string">"abc abc abc"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取所有的记录条数</span></span><br><span class="line">models.Post.objects.all().count()</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/Jk5HHJB.png" alt=""></p>
+<h1 id="queryset介绍"><a href="#queryset介绍" class="headerlink" title="queryset介绍"></a>queryset介绍</h1><p>queryset 是一个可以遍历取值的结果集</p>
+<p>queryset 里面都是 对象，可以通过对象.字段名的形式取值</p>
+<p>一个对象就对应了数据库里面的一条记录</p>
+<p><strong>数据库里面的一条记录  &lt;- ORM -&gt; Python中的对象</strong></p>
+<h1 id="如何在前端使用queryset"><a href="#如何在前端使用queryset" class="headerlink" title="如何在前端使用queryset"></a>如何在前端使用queryset</h1><h2 id="1-从数据库里取出数据"><a href="#1-从数据库里取出数据" class="headerlink" title="1. 从数据库里取出数据"></a>1. 从数据库里取出数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryset = models.Post.objects.all()</span><br></pre></td></tr></table></figure>
+<h2 id="2-把渠道的数据塞进-data"><a href="#2-把渠道的数据塞进-data" class="headerlink" title="2. 把渠道的数据塞进 data"></a>2. 把渠道的数据塞进 data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">"queryset"</span>: queryset&#125;</span><br></pre></td></tr></table></figure>
+<p>即，修改views.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> models</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></span><br><span class="line">	queryset = models.Post.objects.all()</span><br><span class="line">	data = &#123;</span><br><span class="line">		<span class="string">"queryset"</span>: queryset,</span><br><span class="line">		<span class="string">"name"</span>: <span class="string">"home"</span>,</span><br><span class="line">		<span class="string">"age"</span>: <span class="string">"18"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> render(request,<span class="string">"base.html"</span>,data)</span><br></pre></td></tr></table></figure>
+<h2 id="3-用data去填充前端的页面"><a href="#3-用data去填充前端的页面" class="headerlink" title="3. 用data去填充前端的页面"></a>3. 用data去填充前端的页面</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">render(request, <span class="string">"xxx.html"</span>, data)</span><br></pre></td></tr></table></figure>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> obj <span class="keyword">in</span> queryset %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"blog-post"</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"blog-post-title"</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.title &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"blog-post-meta"</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.timestamp &#125;&#125;</span><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Mark<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.content &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.blog-post --&gt;</span></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/5E6Nuje.png" alt=""></p>
+<h1 id="补充-Django的模板语言语法"><a href="#补充-Django的模板语言语法" class="headerlink" title="补充 Django的模板语言语法"></a>补充 Django的模板语言语法</h1><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> x <span class="keyword">in</span> xx %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-variable">&#123;&#123; val &#125;&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+<p>via <a href="http://v.youku.com/v_show/id_XMjUzMTM0MjQwOA==.html?spm=a2h0j.8191423.playlist_content.5!15~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.15" target="_blank" rel="noopener">Django1.10教程 -12 -Queryset介绍以及Template context补充</a></p>
+
+          
         
       
     </div>
@@ -669,15 +729,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[11]模板Template context和Bootstrap使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[11]模板Template context和Bootstrap使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[11]模板Template context和Bootstrap使用/" class="leancloud_visitors" data-flag-title="Django[11]模板Template context和Bootstrap使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[11]模板Template context和Bootstrap使用
+              </div>
           
 
         </div>
@@ -694,14 +779,19 @@
 
       
         
-          Django[11]模板Template context和Bootstrap使用
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[11]模板Template context和Bootstrap使用/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="Template-context"><a href="#Template-context" class="headerlink" title="Template context"></a>Template context</h1><h2 id="视图views-py中："><a href="#视图views-py中：" class="headerlink" title="视图views.py中："></a><strong>视图views.py中</strong>：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></span><br><span class="line">	context = &#123;</span><br><span class="line">		<span class="string">"title"</span>： <span class="string">"home"</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>,context)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_create</span><span class="params">(request)</span>:</span></span><br><span class="line">	context = &#123;</span><br><span class="line">		<span class="string">"title"</span>： <span class="string">"create"</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>,context)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></span><br><span class="line">	context = &#123;</span><br><span class="line">		<span class="string">"title"</span>： <span class="string">"detail"</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>,context)</span><br></pre></td></tr></table></figure>
+<h2 id="index-html中"><a href="#index-html中" class="headerlink" title="index.html中"></a><strong>index.html中</strong></h2><p>用 <strong>context</strong>去填充模板 index.html，然后再返回</p>
+<p>index.html中添加如下代码：<br><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello </span><span class="template-variable">&#123;&#123; title &#125;&#125;</span><span class="xml">&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p><strong>context</strong>是一个字典,存放要渲染到页面的数据</p>
+<h1 id="Bootstrap模板使用"><a href="#Bootstrap模板使用" class="headerlink" title="Bootstrap模板使用"></a>Bootstrap模板使用</h1><h2 id="1-下载模板文件"><a href="#1-下载模板文件" class="headerlink" title="1. 下载模板文件"></a>1. 下载模板文件</h2><p><a href="http://v3.bootcss.com/examples/blog/" target="_blank" rel="noopener">模板文件链接</a></p>
+<h2 id="2-把html文件拷贝到了templates文件夹下面"><a href="#2-把html文件拷贝到了templates文件夹下面" class="headerlink" title="2. 把html文件拷贝到了templates文件夹下面"></a>2. 把html文件拷贝到了templates文件夹下面</h2><h2 id="3-新建一个statics文件夹，用于存放css文件和js文件"><a href="#3-新建一个statics文件夹，用于存放css文件和js文件" class="headerlink" title="3. 新建一个statics文件夹，用于存放css文件和js文件"></a>3. 新建一个statics文件夹，用于存放css文件和js文件</h2><h2 id="4-把css和js文件拷贝到statics文件夹下"><a href="#4-把css和js文件拷贝到statics文件夹下" class="headerlink" title="4. 把css和js文件拷贝到statics文件夹下"></a>4. 把css和js文件拷贝到statics文件夹下</h2><h2 id="5-在settings-py中配置statics文件夹"><a href="#5-在settings-py中配置statics文件夹" class="headerlink" title="5. 在settings.py中配置statics文件夹"></a>5. 在settings.py中配置statics文件夹</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">STATICFILES_DIRS = [</span><br><span class="line">    os<span class="selector-class">.path</span><span class="selector-class">.join</span>(BASE_DIR, <span class="string">"statics"</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="6-将html文件中指定位置的css和js文件的路径修改为-static-…"><a href="#6-将html文件中指定位置的css和js文件的路径修改为-static-…" class="headerlink" title="6. 将html文件中指定位置的css和js文件的路径修改为/static/…"></a>6. 将html文件中指定位置的css和js文件的路径修改为/static/…</h2><p><strong>文档结构如下：</strong></p>
+<p><img src="https://i.imgur.com/AGdigpr.png" alt=""></p>
+<p><strong>效果如图：</strong><br><img src="https://i.imgur.com/d85xmJA.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjUyMDA4Mzk4NA==.html?spm=a2h0j.8191423.playlist_content.5!14~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.14" target="_blank" rel="noopener">Django1.10教程 -11 -模板Template context和Bootstrap使用</a></p>
+
+          
         
       
     </div>
@@ -815,15 +905,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[10]模板Template的配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[10]模板Template的配置/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[10]模板Template的配置/" class="leancloud_visitors" data-flag-title="Django[10]模板Template的配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[10]模板Template的配置
+              </div>
           
 
         </div>
@@ -840,14 +955,16 @@
 
       
         
-          Django[10]模板Template的配置
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[10]模板Template的配置/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="BASE-DIR-和-os-path-join-xx-xxx"><a href="#BASE-DIR-和-os-path-join-xx-xxx" class="headerlink" title="BASE_DIR 和 os.path.join(xx, xxx)"></a>BASE_DIR 和 os.path.join(xx, xxx)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># Build paths inside the project like this: os.path.join(BASE_DIR, ...)</span></span><br><span class="line">BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))</span><br></pre></td></tr></table></figure>
+<h1 id="创建一个templates目录"><a href="#创建一个templates目录" class="headerlink" title="创建一个templates目录"></a>创建一个templates目录</h1><p><img src="https://i.imgur.com/8SnMh2q.png" alt=""></p>
+<h1 id="在settings-py中配置templates路径"><a href="#在settings-py中配置templates路径" class="headerlink" title="在settings.py中配置templates路径"></a>在settings.py中配置templates路径</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATES = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'BACKEND'</span>: <span class="string">'django.template.backends.django.DjangoTemplates'</span>,</span><br><span class="line">        <span class="string">'DIRS'</span>: [os.path.join(BASE_DIR,<span class="string">"templates"</span>)],</span><br><span class="line">        <span class="string">'APP_DIRS'</span>: <span class="keyword">True</span>,</span><br><span class="line">        <span class="string">'OPTIONS'</span>: &#123;</span><br><span class="line">            <span class="string">'context_processors'</span>: [</span><br><span class="line">                <span class="string">'django.template.context_processors.debug'</span>,</span><br><span class="line">                <span class="string">'django.template.context_processors.request'</span>,</span><br><span class="line">                <span class="string">'django.contrib.auth.context_processors.auth'</span>,</span><br><span class="line">                <span class="string">'django.contrib.messages.context_processors.messages'</span>,</span><br><span class="line">            ],</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="在templates文件夹下创建html文件"><a href="#在templates文件夹下创建html文件" class="headerlink" title="在templates文件夹下创建html文件"></a>在templates文件夹下创建html文件</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>try django<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World! Django!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="在views-py中使用templates目录下的html文件"><a href="#在views-py中使用templates目录下的html文件" class="headerlink" title="在views.py中使用templates目录下的html文件"></a>在views.py中使用templates目录下的html文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> render(request,<span class="string">"index.html"</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h1><p><img src="https://i.imgur.com/2o9FySq.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjUyMDA3MDQ3Ng==.html?spm=a2h0j.8191423.playlist_content.5!13~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.13" target="_blank" rel="noopener">Django1.10教程 -10 -模板Template的配置</a></p>
+
+          
         
       
     </div>
@@ -961,15 +1078,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[09]配置URL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[09]配置URL/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[09]配置URL/" class="leancloud_visitors" data-flag-title="Django[09]配置URL">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[09]配置URL
+              </div>
           
 
         </div>
@@ -986,14 +1128,31 @@
 
       
         
-          Django[09]配置URL
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[09]配置URL/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="bbs-URL-Configuration"><a href="#bbs-URL-Configuration" class="headerlink" title="bbs URL Configuration"></a>bbs URL Configuration</h1><p>The <code>urlpatterns</code> list routes URLs to views. For more information please see:<br>    <a href="https://docs.djangoproject.com/en/1.11/topics/http/urls/" target="_blank" rel="noopener">https://docs.djangoproject.com/en/1.11/topics/http/urls/</a></p>
+<h1 id="Examples"><a href="#Examples" class="headerlink" title="Examples:"></a>Examples:</h1><h2 id="Function-views"><a href="#Function-views" class="headerlink" title="Function views"></a>Function views</h2><pre><code>1. Add an import:  from my_app import views
+2. Add a URL to urlpatterns:  url(r&apos;^$&apos;, views.home, name=&apos;home&apos;)
+</code></pre><h2 id="Class-based-views"><a href="#Class-based-views" class="headerlink" title="Class-based views"></a>Class-based views</h2><pre><code>1. Add an import:  from other_app.views import Home
+2. Add a URL to urlpatterns:  url(r&apos;^$&apos;, Home.as_view(), name=&apos;home&apos;)
+</code></pre><h2 id="Including-another-URLconf"><a href="#Including-another-URLconf" class="headerlink" title="Including another URLconf"></a>Including another URLconf</h2><pre><code>1. Import the include() function: from django.conf.urls import url, include
+2. Add a URL to urlpatterns:  url(r&apos;^blog/&apos;, include(&apos;blog.urls&apos;))
+</code></pre><h1 id="project-project-urls-py-中的urls-py常见的几种写法"><a href="#project-project-urls-py-中的urls-py常见的几种写法" class="headerlink" title="project(project/urls.py)中的urls.py常见的几种写法"></a>project(project/urls.py)中的urls.py常见的几种写法</h1><h2 id="1、基于function的view"><a href="#1、基于function的view" class="headerlink" title="1、基于function的view"></a>1、基于function的view</h2><p><a href="https://boredbird.github.io/2017/10/08/Django[08]%E7%AC%AC%E4%B8%80%E4%B8%AAview%EF%BC%88%E8%A7%86%E5%9B%BE%EF%BC%89/" target="_blank" rel="noopener">详见上回</a></p>
+<h2 id="2、基于class的view"><a href="#2、基于class的view" class="headerlink" title="2、基于class的view"></a>2、基于class的view</h2><h3 id="1、修改posts-app-下views-py"><a href="#1、修改posts-app-下views-py" class="headerlink" title="1、修改posts[app]下views.py"></a>1、修改posts[app]下views.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.views.generic <span class="keyword">import</span> ListView</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostList</span><span class="params">(ListView)</span>:</span></span><br><span class="line">	<span class="string">"""post的视图类"""</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;post的视图类&lt;/h1&gt;"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="2、修改bbs-project-下urls-py"><a href="#2、修改bbs-project-下urls-py" class="headerlink" title="2、修改bbs[project]下urls.py"></a>2、修改bbs[project]下urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    <span class="comment"># url(r'^home/', views.posts_home),</span></span><br><span class="line">    url(<span class="string">r'^home/'</span>, views.PostList.as_view()),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="3、效果"><a href="#3、效果" class="headerlink" title="3、效果"></a>3、效果</h3><p><img src="https://i.imgur.com/kgAiXW3.png" alt=""></p>
+<h2 id="3、view别名"><a href="#3、view别名" class="headerlink" title="3、view别名"></a>3、view别名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> app01 <span class="keyword">import</span> views <span class="keyword">as</span> app01_views</span><br><span class="line"><span class="keyword">from</span> app02 <span class="keyword">import</span> views <span class="keyword">as</span> app02_views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    url(<span class="string">r'^home/'</span>, app01_views.posts_home),</span><br><span class="line">    url(<span class="string">r'^home/'</span>, app02_views.PostList.as_view()),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="4、在app中的urls-py的使用"><a href="#4、在app中的urls-py的使用" class="headerlink" title="4、在app中的urls.py的使用"></a>4、在app中的urls.py的使用</h2><h3 id="1、posts-app-下增加urls-py："><a href="#1、posts-app-下增加urls-py：" class="headerlink" title="1、posts[app]下增加urls.py："></a>1、posts[app]下增加urls.py：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="2、在project下的urls-py-中设置第一级的路由："><a href="#2、在project下的urls-py-中设置第一级的路由：" class="headerlink" title="2、在project下的urls.py 中设置第一级的路由："></a>2、在project下的urls.py 中设置第一级的路由：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url,include</span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</span><br><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> urls <span class="keyword">as</span> posts_urls</span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    <span class="comment"># url(r'^home/', views.posts_home),</span></span><br><span class="line">    <span class="comment"># url(r'^home/', views.PostList.as_view()),</span></span><br><span class="line">    url(<span class="string">r'^post/'</span>,include(posts_urls))</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="3、在app下的urls-py中设置第二级路由，同第一步："><a href="#3、在app下的urls-py中设置第二级路由，同第一步：" class="headerlink" title="3、在app下的urls.py中设置第二级路由，同第一步："></a>3、在app下的urls.py中设置第二级路由，同第一步：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="多视图示例"><a href="#多视图示例" class="headerlink" title="多视图示例"></a>多视图示例</h1><h2 id="1、app下的urls-py"><a href="#1、app下的urls-py" class="headerlink" title="1、app下的urls.py"></a>1、app下的urls.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^$'</span>, views.posts_home),</span><br><span class="line">    url(<span class="string">r'^create/$'</span>, views.posts_create),</span><br><span class="line">    url(<span class="string">r'^update/$'</span>, views.posts_update),</span><br><span class="line">    url(<span class="string">r'^detail/$'</span>, views.posts_detail),</span><br><span class="line">    url(<span class="string">r'^delete/$'</span>, views.posts_delete),</span><br><span class="line">    url(<span class="string">r'^'</span>, views.posts_home),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="2、app下的view-py"><a href="#2、app下的view-py" class="headerlink" title="2、app下的view.py"></a>2、app下的view.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> unicode_literals</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"Hello World!"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_create</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_create&lt;/h1&gt;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_update</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_update&lt;/h1&gt;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_detail&lt;/h1&gt;"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_delete</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"&lt;h1&gt;posts_delete&lt;/h1&gt;"</span>)</span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<p>1、如果匹配到排在上面的正则表达式那么就不会适配下面的正则表达式了</p>
+<p>2、不要忘记加’^’和’$’</p>
+<p>via <a href="https://docs.djangoproject.com/en/1.9/topics/class-based-views/" target="_blank" rel="noopener">Class-based views</a></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjQ4Mzc0NjkxNg==.html?spm=a2h0j.8191423.playlist_content.5!12~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.12" target="_blank" rel="noopener">Django1.10教程 -09 -配置URL</a></p>
+
+          
         
       
     </div>
@@ -1107,15 +1266,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[08]第一个view（视图）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[08]第一个view（视图）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[08]第一个view（视图）/" class="leancloud_visitors" data-flag-title="Django[08]第一个view（视图）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[08]第一个view（视图）
+              </div>
           
 
         </div>
@@ -1132,14 +1316,13 @@
 
       
         
-          Django[08]第一个view（视图）
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[08]第一个view（视图）/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="定义我们第一个视图"><a href="#定义我们第一个视图" class="headerlink" title="定义我们第一个视图"></a>定义我们第一个视图</h1><p>修改posts[app]下views.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"Hello World!"</span>)</span><br></pre></td></tr></table></figure></p>
+<h1 id="url建立映射到view"><a href="#url建立映射到view" class="headerlink" title="url建立映射到view"></a>url建立映射到view</h1><p>修改bbs[project]下urls.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/9QePi8q.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjQ3MzA0NzAxNg==.html?spm=a2h0j.8191423.playlist_content.5!11~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.11" target="_blank" rel="noopener">Django1.10教程 -08 -第一个view（视图）</a></p>
+
+          
         
       
     </div>
@@ -1253,15 +1436,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[07]增删改查（CRUD）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[07]增删改查（CRUD）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[07]增删改查（CRUD）/" class="leancloud_visitors" data-flag-title="Django[07]增删改查（CRUD）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[07]增删改查（CRUD）
+              </div>
           
 
         </div>
@@ -1278,14 +1486,103 @@
 
       
         
-          Django[07]增删改查（CRUD）
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[07]增删改查（CRUD）/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h1><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th style="text-align:center">动作名称</th>
+<th style="text-align:center">SQL</th>
+<th style="text-align:center">HTTP</th>
+<th style="text-align:right">实际动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td style="text-align:center">Create</td>
+<td style="text-align:center">INSERT</td>
+<td style="text-align:center">PUT/POST</td>
+<td style="text-align:right">增加</td>
+</tr>
+<tr>
+<td>R</td>
+<td style="text-align:center">Retrieve</td>
+<td style="text-align:center">SELECT</td>
+<td style="text-align:center">GET</td>
+<td style="text-align:right">查询</td>
+</tr>
+<tr>
+<td>U</td>
+<td style="text-align:center">Update</td>
+<td style="text-align:center">UPDATE</td>
+<td style="text-align:center">POST/PUT/PATCH</td>
+<td style="text-align:right">更新</td>
+</tr>
+<tr>
+<td>D</td>
+<td style="text-align:center">Delete</td>
+<td style="text-align:center">DELETE</td>
+<td style="text-align:center">DELETE</td>
+<td style="text-align:right">删除</td>
+</tr>
+</tbody>
+</table>
+<h1 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h1><table>
+<thead>
+<tr>
+<th>序号</th>
+<th style="text-align:center">方法</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">GET</td>
+<td style="text-align:right">请求指定的页面信息，并返回实体主体。</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">HEAD</td>
+<td style="text-align:right">类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">POST</td>
+<td style="text-align:right">向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">PUT</td>
+<td style="text-align:right">从客户端向服务器传送的数据取代指定的文档的内容。</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:center">DELETE</td>
+<td style="text-align:right">请求服务器删除指定的页面。</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align:center">CONNECT</td>
+<td style="text-align:right">HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align:center">OPTIONS</td>
+<td style="text-align:right">允许客户端查看服务器的性能。</td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align:center">TRACE</td>
+<td style="text-align:right">回显服务器收到的请求，主要用于测试或诊断。</td>
+</tr>
+</tbody>
+</table>
+<p>via <a href="http://v.youku.com/v_show/id_XMjQ3MzA0NDY5Mg==.html?spm=a2h0j.8191423.playlist_content.5!10~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.10" target="_blank" rel="noopener">Django1.10教程 -07 -增删改查（CRUD）</a></p>
+<p>via <a href="http://www.runoob.com/http/http-methods.html" target="_blank" rel="noopener">HTTP请求方法</a></p>
+
+          
         
       
     </div>
@@ -1399,15 +1696,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[06]定制admin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[06]定制admin/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[06]定制admin/" class="leancloud_visitors" data-flag-title="Django[06]定制admin">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[06]定制admin
+              </div>
           
 
         </div>
@@ -1424,14 +1746,18 @@
 
       
         
-          Django[06]定制admin
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[06]定制admin/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="在post-admin-py文件中添加如下代码："><a href="#在post-admin-py文件中添加如下代码：" class="headerlink" title="在post/admin.py文件中添加如下代码："></a>在post/admin.py文件中添加如下代码：</h1><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class PostAdmin(admin.ModelAdmin):</span><br><span class="line"></span><br><span class="line">    <span class="attr">list_display</span> = [,]  <span class="comment"># 控制页面展示哪些字段</span></span><br><span class="line">    <span class="attr">list_display_links</span> = [,]  <span class="comment"># 控制哪些字段是超链接</span></span><br><span class="line">    <span class="attr">list_filter</span> = [,]  <span class="comment"># 支持在右侧过滤的字段</span></span><br><span class="line">    <span class="attr">search_fields</span> = [,]  <span class="comment"># 支持搜索的字段</span></span><br><span class="line">    <span class="attr">list_editable</span> = [,]  <span class="comment"># 支持直接编辑的字段，注意！不能与list_display_links重复！</span></span><br><span class="line"></span><br><span class="line">    class Meta:</span><br><span class="line">        <span class="attr">model</span> = model.Post</span><br></pre></td></tr></table></figure>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>如何修改admin中显示的app名字？</p>
+<h2 id="1-在posts-apps-py中"><a href="#1-在posts-apps-py中" class="headerlink" title="1. 在posts/apps.py中"></a>1. 在posts/apps.py中</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">PostsConfig类中添加</span><br><span class="line">verbose_name = <span class="string">"帖子"</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-posts-init-py"><a href="#2-posts-init-py" class="headerlink" title="2. posts/init.py"></a>2. posts/<strong>init</strong>.py</h2><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">default_app_config</span> = <span class="string">"posts.apps.PostsConfig"</span></span><br></pre></td></tr></table></figure>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="1、修改posts-app-下admin-py"><a href="#1、修改posts-app-下admin-py" class="headerlink" title="1、修改posts[app]下admin.py"></a>1、修改posts[app]下admin.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Register your models here.</span></span><br><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">	<span class="string">"""docstring for PostAdmin"""</span></span><br><span class="line">	list_display = [<span class="string">"title"</span>,<span class="string">"content"</span>]</span><br><span class="line">	list_display_links = [<span class="string">"title"</span>]</span><br><span class="line">	list_filter = [<span class="string">"timestamp"</span>,<span class="string">"content"</span>]</span><br><span class="line">	search_fields = [<span class="string">"title"</span>,<span class="string">"content"</span>]</span><br><span class="line">	list_editable = [<span class="string">"content"</span>]</span><br><span class="line">	<span class="comment"># def __init__(self, arg):</span></span><br><span class="line">	<span class="comment"># 	super(PostAdmin, self).__init__()</span></span><br><span class="line">	<span class="comment"># 	self.arg = arg</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">		model = models.Post</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">admin.site.register(models.Post,PostAdmin)</span><br></pre></td></tr></table></figure>
+<h2 id="2、修改posts-app-下apps-py"><a href="#2、修改posts-app-下apps-py" class="headerlink" title="2、修改posts[app]下apps.py"></a>2、修改posts[app]下apps.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostsConfig</span><span class="params">(AppConfig)</span>:</span></span><br><span class="line">    name = <span class="string">'posts'</span></span><br><span class="line">    verbose_name = <span class="string">"帖子"</span></span><br></pre></td></tr></table></figure>
+<h2 id="3、修改posts-app-下init-py"><a href="#3、修改posts-app-下init-py" class="headerlink" title="3、修改posts[app]下init.py"></a>3、修改posts[app]下<strong>init</strong>.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">default_app_config = <span class="string">"posts.apps.PostsConfig"</span></span><br></pre></td></tr></table></figure>
+<h2 id="4、查看效果"><a href="#4、查看效果" class="headerlink" title="4、查看效果"></a>4、查看效果</h2><p><img src="https://i.imgur.com/Z5dk0nf.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTk5MzkwMTI5Mg==.html?spm=a2h0j.8191423.playlist_content.5!9~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.9" target="_blank" rel="noopener">Django1.10教程[06]_定制admin</a></p>
+
+          
         
       
     </div>
@@ -1545,15 +1871,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[05]model与admin的关系/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[05]model与admin的关系/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[05]model与admin的关系/" class="leancloud_visitors" data-flag-title="Django[05]model与admin的关系">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[05]model与admin的关系
+              </div>
           
 
         </div>
@@ -1570,14 +1921,13 @@
 
       
         
-          Django[05]model与admin的关系
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[05]model与admin的关系/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="修改app的models中class名称"><a href="#修改app的models中class名称" class="headerlink" title="修改app的models中class名称"></a>修改app的models中class名称</h1><p>尝试去掉models.py里面 把class Posts改成 class Post<br><img src="https://i.imgur.com/N7Qk5BR.png" alt=""></p>
+<h1 id="一行代码让model在admin中可见"><a href="#一行代码让model在admin中可见" class="headerlink" title="一行代码让model在admin中可见"></a>一行代码让model在admin中可见</h1><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(myenvs) E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\s</span>rc&gt;python .<span class="symbol">\m</span>anage.py runserver</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/gyFUpT9.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTk5MTAzODk0NA==.html?spm=a2h0j.8191423.playlist_content.5!8~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.8" target="_blank" rel="noopener">Django1.10教程[05]_model与admin的关系</a></p>
+
+          
         
       
     </div>
@@ -1691,15 +2041,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[04]App和Model/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[04]App和Model/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[04]App和Model/" class="leancloud_visitors" data-flag-title="Django[04]App和Model">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[04]App和Model
+              </div>
           
 
         </div>
@@ -1716,14 +2091,27 @@
 
       
         
-          Django[04]App和Model
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[04]App和Model/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="Django中project和app分别是什么？"><a href="#Django中project和app分别是什么？" class="headerlink" title="Django中project和app分别是什么？"></a>Django中project和app分别是什么？</h1><ul>
+<li>Project：python manage.py startproject [你的project名]</li>
+<li>app: python manage.py startapp [你的app名字]</li>
+<li>project是项目，project下面分一个或多个app</li>
+</ul>
+<h1 id="我们的第一个App"><a href="#我们的第一个App" class="headerlink" title="我们的第一个App"></a>我们的第一个App</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-tag">python</span> <span class="selector-tag">manage</span><span class="selector-class">.py</span> <span class="selector-tag">startapp</span> <span class="selector-attr">[app的名字]</span></span><br></pre></td></tr></table></figure>
+<h1 id="一定要注意："><a href="#一定要注意：" class="headerlink" title="一定要注意："></a>一定要注意：</h1><p>把你的app在project的settings.py里面的INSTALLED_APPS加上</p>
+<h1 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h1><p>models.py里面创建类（与数据库建立联系的）</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">python manage<span class="selector-class">.py</span> makemigrations（告诉Django我设计了一些表结构，你去准备一下）</span><br><span class="line"></span><br><span class="line">python manage<span class="selector-class">.py</span> migrate（告诉Django去数据库里操作一下刚才的动作）</span><br></pre></td></tr></table></figure>
+<p>MVC:Model View Controllers</p>
+<p>MTV:Model View Template</p>
+<h1 id="1、创建一个app"><a href="#1、创建一个app" class="headerlink" title="1、创建一个app"></a>1、创建一个app</h1><p><img src="https://i.imgur.com/bSC8Op9.png" alt=""></p>
+<h1 id="2、修改app目录下的models-py文件"><a href="#2、修改app目录下的models-py文件" class="headerlink" title="2、修改app目录下的models.py文件"></a>2、修改app目录下的models.py文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Posts</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">	title = models.CharField(max_length=<span class="number">256</span>) <span class="comment"># 标题，存文字的</span></span><br><span class="line">	content = models.TextField() <span class="comment"># 内容</span></span><br><span class="line">	update = models.DateTimeField(auto_now=<span class="keyword">True</span>,auto_now_add=<span class="keyword">False</span>) <span class="comment"># 更新时间</span></span><br><span class="line">	timestamp = models.DateTimeField(auto_now=<span class="keyword">False</span>,auto_now_add=<span class="keyword">True</span>) <span class="comment">#创建时间</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">()</span>:</span> <span class="comment"># python3</span></span><br><span class="line">		<span class="keyword">return</span> self.title</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">()</span>:</span> <span class="comment">#python2</span></span><br><span class="line">		<span class="keyword">return</span> self.title</span><br></pre></td></tr></table></figure>
+<h1 id="3、修改project目录下的setting-py文件"><a href="#3、修改project目录下的setting-py文件" class="headerlink" title="3、修改project目录下的setting.py文件"></a>3、修改project目录下的setting.py文件</h1><pre><code>INSTALLED_APPS 中添加你刚创建的app名称。
+</code></pre><p><img src="https://i.imgur.com/JLFyqiJ.png" alt=""></p>
+<h1 id="4、提交修改至数据库"><a href="#4、提交修改至数据库" class="headerlink" title="4、提交修改至数据库"></a>4、提交修改至数据库</h1><p><img src="https://i.imgur.com/VgFExeq.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTkwMzgxNzY1Ng==.html?spm=a2h0j.8191423.playlist_content.5!6~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.6" target="_blank" rel="noopener">Django1.10教程[04]之App和Model</a></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTk1MDY2MzA0OA==.html?spm=a2h0j.8191423.playlist_content.5!7~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.7" target="_blank" rel="noopener">Django1.10教程[04]_APPandModel补录</a></p>
+
+          
         
       
     </div>
@@ -1886,12 +2274,23 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+	<span id="busuanzi_container_site_pv">
+		本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
 
+	<span id="busuanzi_container_site_uv">
+	  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+	
   
 </div>
 
@@ -1904,7 +2303,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
 
 
 
@@ -2051,26 +2450,468 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
 
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
 
 
 
   
+
   
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
   
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
 
   
   
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
-
-
 
   
 
@@ -2080,12 +2921,88 @@
 
   
   
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
 
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
   
-
-  
-
-  
-
 </body>
 </html>

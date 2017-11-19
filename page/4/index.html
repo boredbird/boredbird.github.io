@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -258,26 +258,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -377,15 +373,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/回归与特征选择/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/回归与特征选择/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/11/回归与特征选择/" class="leancloud_visitors" data-flag-title="回归与特征选择">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  回归与特征选择
+              </div>
           
 
         </div>
@@ -402,10 +423,14 @@
 
       
         
-          回归与特征选择
+          <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><p>可以对样本是非线性的，只要对参数线性。</p>
+<h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>在做特征选择的时候，可以看回归的残差图，真正理想状态下，经过模型回归后的残差应该是服从正态分布的，而不是均匀的随机分布；此时可以画个单变量与残差的关系图，直观的看一下是不是有什么明显的一阶、高阶趋势在里面，则需要进一步特征加工。</p>
+<p>大数定理指的是事件发生的概率在N取无穷大的时候趋近于事件发生的概率。频率的极限是概率。</p>
+<h3 id="使用极大似然估计解释最小二乘"><a href="#使用极大似然估计解释最小二乘" class="headerlink" title="使用极大似然估计解释最小二乘"></a>使用极大似然估计解释最小二乘</h3><p><img src="https://i.imgur.com/BLDhXge.png" alt=""></p>
+<h2 id="最大似然估计MLE"><a href="#最大似然估计MLE" class="headerlink" title="最大似然估计MLE"></a>最大似然估计MLE</h2><h3 id="最大似然函数的假设"><a href="#最大似然函数的假设" class="headerlink" title="最大似然函数的假设"></a>最大似然函数的假设</h3><p>似然函数假设每个样本出现的概率是独立的，因此整体出现的概率就是各个样本出现的概率的累计。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/回归与特征选择/">
+            <a class="btn" href="/2017/11/11/回归与特征选择/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -523,15 +548,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/08/Python基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/08/Python基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/08/Python基础/" class="leancloud_visitors" data-flag-title="Python基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Python基础
+              </div>
           
 
         </div>
@@ -548,10 +598,10 @@
 
       
         
-          Python基础
+          <h1 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h1>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/08/Python基础/">
+            <a class="btn" href="/2017/11/08/Python基础/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -669,15 +719,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/08/凸优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/08/凸优化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/08/凸优化/" class="leancloud_visitors" data-flag-title="凸优化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  凸优化
+              </div>
           
 
         </div>
@@ -694,10 +769,16 @@
 
       
         
-          凸优化
+          <h1 id="凸集基本概念"><a href="#凸集基本概念" class="headerlink" title="凸集基本概念"></a>凸集基本概念</h1><h2 id="凸集保凸运算"><a href="#凸集保凸运算" class="headerlink" title="凸集保凸运算"></a>凸集保凸运算</h2><h3 id="凸集和凸函数"><a href="#凸集和凸函数" class="headerlink" title="凸集和凸函数"></a>凸集和凸函数</h3><p>凸函数图像的上方区域，一定是凸集；<br>一个函数图像的上方区域为凸集，则该函数是凸函数。</p>
+<h4 id="仿射集（Affine-Set）"><a href="#仿射集（Affine-Set）" class="headerlink" title="仿射集（Affine Set）"></a>仿射集（Affine Set）</h4><p>定义：通过集合C中任意两个不同点的直线仍然在集合C内，则称集合C为仿射集。</p>
+<p><img src="https://i.imgur.com/Ik2mJaU.png" alt=""></p>
+<h4 id="仿射集的例子："><a href="#仿射集的例子：" class="headerlink" title="仿射集的例子："></a>仿射集的例子：</h4><p>直线、平面、超平面</p>
+<h4 id="凸集"><a href="#凸集" class="headerlink" title="凸集"></a>凸集</h4><p>集合C内任意两点间的线段均在集合C内，则称集合C为凸集。<br><img src="https://i.imgur.com/Q6GhpAw.png" alt=""></p>
+<p>两个点和k个点的表达版本内涵是一样的。</p>
+<h4 id="仿射集和凸集的关系"><a href="#仿射集和凸集的关系" class="headerlink" title="仿射集和凸集的关系"></a>仿射集和凸集的关系</h4><p>因为仿射集的条件比凸集的条件强，所以，仿射集必然是凸集。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/08/凸优化/">
+            <a class="btn" href="/2017/11/08/凸优化/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -815,15 +896,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/24/vscode 调试适配器进程已意外终止/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/24/vscode 调试适配器进程已意外终止/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/24/vscode 调试适配器进程已意外终止/" class="leancloud_visitors" data-flag-title="vscode 调试适配器进程已意外终止">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  vscode 调试适配器进程已意外终止
+              </div>
           
 
         </div>
@@ -840,14 +946,10 @@
 
       
         
-          vscode 调试适配器进程已意外终止
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/24/vscode 调试适配器进程已意外终止/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>隔了N天以后，重新打开，一进来就重新下载C依赖，然后提示reload。<br>然后莫名的就可以用了。我晕。</p>
+
+          
         
       
     </div>
@@ -961,15 +1063,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/24/李德荃关于偏度与峰度的讲解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/24/李德荃关于偏度与峰度的讲解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/24/李德荃关于偏度与峰度的讲解/" class="leancloud_visitors" data-flag-title="李德荃关于偏度与峰度的讲解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  李德荃关于偏度与峰度的讲解
+              </div>
           
 
         </div>
@@ -986,10 +1113,12 @@
 
       
         
-          李德荃关于偏度与峰度的讲解
+          <p>偏度这一指标，又称偏斜系数、偏态系数，是用来帮助判断数据序列的分布规律性的指标。</p>
+<p>在数据序列呈对称分布（正态分布）的状态下，其均值、中位数和众数重合。且在这三个数的两侧，其它所有的数据完全以对称的方式左右分布。</p>
+<p>如果数据序列的分布不对称，则均值、中位数和众数必定分处不同的位置。这时，若以均值为参照点，则要么位于均值左侧的数据较多，称之为右偏；要么位于均值右侧的数据较多，称之为左偏；除此无它。<br>考虑到所有数据与均值之间的离差之和应为零这一约束，则当均值左侧数据较多的时候，均值的右侧必定存在数值较大的“离群”数据；同理，当均值右侧数据较多的时候，均值的左侧必定存在数值较小的“离群”数据。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/24/李德荃关于偏度与峰度的讲解/">
+            <a class="btn" href="/2017/10/24/李德荃关于偏度与峰度的讲解/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1107,15 +1236,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/21/记一次python数据处理性能调优/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/21/记一次python数据处理性能调优/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/21/记一次python数据处理性能调优/" class="leancloud_visitors" data-flag-title="记一次python数据处理性能调优">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  记一次python数据处理性能调优
+              </div>
           
 
         </div>
@@ -1132,10 +1286,371 @@
 
       
         
-          记一次python数据处理性能调优
+          
+            <p>Python垃圾回收机制<br>根据官方的描叙，Python中，有2中方式将会触发垃圾回收：<br>1、用户显示调用gc.collect()<br>2、每次Python为新对象分配内存时，检查threshold阀值，当对象数量超过threshold设置的阀值就开始进行垃圾回收。</p>
+<p>因为数据量太大，处理过程中留下太多暂时不能清除的变量，而python的垃圾回收却在一遍一遍地扫这些不断在增长的列表，导致程序受到的影响越来越大。赶紧证实一下，import gc，然后在数据载入模块前gc.disable（）,结束后再gc.enable()。结果原来要跑将近两个小时的程序，这下不用5分钟就跑完了。cool~！用gc.get_count()也证明了之前的猜想，在第一次运行之后临时变量数目就从几百上升到百万，并一直在涨。</p>
+<p>如果你的python程序在处理大数据量的问题，并且出现某个子程序在做同样量的工作，却越跑越慢的情况。</p>
+<p>程序代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">series_trans</span><span class="params">(dataset)</span>:</span></span><br><span class="line">    <span class="comment"># 一行转多行</span></span><br><span class="line">    dataset_trans = pd.DataFrame(&#123;<span class="string">'user_id'</span>:dataset[<span class="string">'user_id'</span>],</span><br><span class="line">                                   <span class="string">'shop_id'</span>:dataset[<span class="string">'shop_id'</span>],</span><br><span class="line">                                   <span class="string">'time_stamp'</span>:dataset[<span class="string">'time_stamp'</span>],</span><br><span class="line">                                   <span class="string">'longitude'</span>:dataset[<span class="string">'longitude'</span>],</span><br><span class="line">                                   <span class="string">'latitude'</span>:dataset[<span class="string">'latitude'</span>],</span><br><span class="line">                                   <span class="string">'wifi_infos'</span>:dataset[<span class="string">'wifi_splits'</span>]&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>  dataset_trans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</span><br><span class="line">dataset_trans = series_trans(dataset.loc[<span class="number">0</span>,:])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>,dataset.shape[<span class="number">0</span>]):</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">10000</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">print</span> i</span><br><span class="line">        <span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</span><br><span class="line"></span><br><span class="line">    dataset_trans = dataset_trans.append(series_trans(dataset.loc[i,:]))</span><br></pre></td></tr></table></figure>
+<p>程序的性能表现如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:01</span><span class="selector-pseudo">:30</span> 2017</span><br><span class="line">10000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:02</span><span class="selector-pseudo">:07</span> 2017</span><br><span class="line">20000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:03</span><span class="selector-pseudo">:41</span> 2017</span><br><span class="line">30000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:06</span><span class="selector-pseudo">:12</span> 2017</span><br><span class="line">40000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:09</span><span class="selector-pseudo">:37</span> 2017</span><br><span class="line">50000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:13</span><span class="selector-pseudo">:55</span> 2017</span><br><span class="line">60000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:19</span><span class="selector-pseudo">:10</span> 2017</span><br><span class="line">70000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:25</span><span class="selector-pseudo">:26</span> 2017</span><br><span class="line">80000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:33</span><span class="selector-pseudo">:03</span> 2017</span><br><span class="line">90000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:41</span><span class="selector-pseudo">:21</span> 2017</span><br><span class="line">100000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:50</span><span class="selector-pseudo">:33</span> 2017</span><br><span class="line">110000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:00</span><span class="selector-pseudo">:41</span> 2017</span><br><span class="line">120000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:11</span><span class="selector-pseudo">:45</span> 2017</span><br><span class="line">130000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:23</span><span class="selector-pseudo">:43</span> 2017</span><br><span class="line">140000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:36</span><span class="selector-pseudo">:37</span> 2017</span><br><span class="line">150000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:50</span><span class="selector-pseudo">:25</span> 2017</span><br><span class="line">160000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:05</span><span class="selector-pseudo">:10</span> 2017</span><br><span class="line">170000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:20</span><span class="selector-pseudo">:46</span> 2017</span><br><span class="line">180000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:37</span><span class="selector-pseudo">:18</span> 2017</span><br></pre></td></tr></table></figure>
+<p>采用：dataset_trans.loc[10:19,] = dataset_trans<br>会提示错误：<br>info_idx = indexer[info_axis]<br>IndexError: tuple index out of range</p>
+<p>DataFrame is a 2-dimensional labeled data structure with columns of potentially different types.所以一般说来dataframe就是a set of columns, each column is an array of values. In pandas, the array is one way or another a (maybe variant of) numpy ndarray. 而ndarray本身不存在一种in place append的操作。。。因为它实际上是一段连续内存。。。任何需要改变ndarray长度的操作都涉及分配一段长度合适的新的内存，然后copy。。。这是这类操作慢的原因。。。如果pandas dataframe没有用其他设计减少copy的话，我相信Bren说的”That’s probably as efficient as any”是很对的。。。所以in general, 正如Bren说的。。。Pandas/numpy structures are fundamentally not suited for efficiently growing.Matti 和 arynaq说的是两种常见的对付这个问题的方法。。。我想Matti实际的意思是把要加的rows收集成起来然后concatenate, 这样只copy一次。arynaq的方法就是预先分配内存比较好理解。。。如果你真的需要incrementally build a dataframe的话，估计你需要实际测试一下两种方法。。。我的建议是，如有可能，尽力避免incrementally build a dataframe, 比如用其他data structure 收集齐所有data然后转变成dataframe做分析。。。</p>
+<p>via</p>
+<ul>
+<li><p><a href="http://blog.csdn.net/overstack/article/details/11603893" target="_blank" rel="noopener">Python垃圾回收(gc)拖累了程序执行性能？</a></p>
+</li>
+<li><p><a href="https://www.zhihu.com/question/36170252?sort=created" target="_blank" rel="noopener">python pandas 怎样高效地添加一行数据？</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/17/Visual Studio 无法编译新打开的C文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/17/Visual Studio 无法编译新打开的C文件/" itemprop="url">Visual Studio 无法编译新打开的C文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T13:37:12+08:00">
+                2017-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/17/Visual Studio 无法编译新打开的C文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/17/Visual Studio 无法编译新打开的C文件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/17/Visual Studio 无法编译新打开的C文件/" class="leancloud_visitors" data-flag-title="Visual Studio 无法编译新打开的C文件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Visual Studio 无法编译新打开的C文件
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>用 Visual Studio打开有c文件的文件夹，发现里面的c文件都无法编译，导航栏里面连<code>生成</code>按钮都没有，调试按钮也是灰色的。</p>
+<p><img src="assets/C/Visual Studio 1.png" alt=""></p>
+<p><img src="assets/C/Visual Studio 2.png" alt=""></p>
+<p><img src="assets/C/Visual Studio 3.png" alt=""></p>
+<p>需在项目中单个添加c文件。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/17/Visual Studio Code工具上手体验/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/17/Visual Studio Code工具上手体验/" itemprop="url">Visual Studio Code工具上手体验</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T13:37:12+08:00">
+                2017-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/17/Visual Studio Code工具上手体验/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/17/Visual Studio Code工具上手体验/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/17/Visual Studio Code工具上手体验/" class="leancloud_visitors" data-flag-title="Visual Studio Code工具上手体验">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Visual Studio Code工具上手体验
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>下载安装Visual Studio Code,地址：<a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">https://code.visualstudio.com/Download</a></p>
+<p>在VSCode内安装c++插件：<br>打开vscode，Ctrl+P之后输入<code>ext install c++</code></p>
+<p><img src="assets/C/vscode1.png" alt=""></p>
+<p>弹出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">扩展：商店   错误</span><br></pre></td></tr></table></figure>
+<p>不用管它，重新再来一次，Ctrl+P之后输入<code>ext install c++</code></p>
+<p>安装第一个官方的。</p>
+<p><img src="assets/C/vscode2.png" alt=""></p>
+<p>重启vscode。然后发现重新启动，vscode开始自动下载插件依赖。<br>依赖自动下载安装完成。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/21/记一次python数据处理性能调优/">
+            <a class="btn" href="/2017/10/17/Visual Studio Code工具上手体验/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1253,161 +1768,40 @@
 
           
             
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          使用pydotplus绘决策树
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/17/使用pydotplus绘决策树/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/17/Visual Studio 无法编译新打开的C文件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/17/Visual Studio 无法编译新打开的C文件/" itemprop="url">Visual Studio 无法编译新打开的C文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T13:37:12+08:00">
-                2017-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-
-                
-                
-              
-            </span>
-          
-
-          
+                <a href="/2017/10/17/使用pydotplus绘决策树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/17/使用pydotplus绘决策树/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
           
           
-
+             <span id="/2017/10/17/使用pydotplus绘决策树/" class="leancloud_visitors" data-flag-title="使用pydotplus绘决策树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  使用pydotplus绘决策树
+              </div>
           
 
         </div>
@@ -1424,156 +1818,16 @@
 
       
         
-          Visual Studio 无法编译新打开的C文件
+          <p>首先安装<code>pydotplus</code></p>
+<p><code>pip install pydotplus</code></p>
+<p>然后打印训练好的<code>clf</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pydotplus</span><br><span class="line">dot_data = tree.export_graphviz(clf, out_file=<span class="keyword">None</span>,</span><br><span class="line">                                feature_names=X_dummy.columns,</span><br><span class="line">                                class_names=<span class="string">'target'</span>,</span><br><span class="line">                                filled=<span class="keyword">True</span>, rounded=<span class="keyword">True</span>,</span><br><span class="line">                                special_characters=<span class="keyword">True</span>)</span><br><span class="line">graph = pydotplus.graph_from_dot_data(dot_data)</span><br><span class="line">graph.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</span><br></pre></td></tr></table></figure>
+<p>发现报错：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\IPython\core\interactiveshell.py"</span>, <span class="keyword">line</span> 2881, <span class="keyword">in</span> run_code</span><br><span class="line">    exec(code_obj, self.user_global_ns, self.user_ns)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"&lt;ipython-input-27-2c78351c7fea&gt;"</span>, <span class="keyword">line</span> 7, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">graph</span>.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1810, <span class="keyword">in</span> &lt;lambda&gt;</span><br><span class="line">    <span class="keyword">prog</span>=self.<span class="keyword">prog</span>: self.write(path, <span class="keyword">format</span>=f, <span class="keyword">prog</span>=<span class="keyword">prog</span>)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1918, <span class="keyword">in</span> write</span><br><span class="line">    fobj.write(self.create(<span class="keyword">prog</span>, <span class="keyword">format</span>))</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1960, <span class="keyword">in</span> create</span><br><span class="line">    'GraphViz\'s executables not found')</span><br><span class="line">InvocationException: GraphViz's executables not found</span><br></pre></td></tr></table></figure>
+<p>提示没有找到<code>&#39;GraphViz\&#39;s executables&#39;</code>:</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/17/Visual Studio 无法编译新打开的C文件/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/17/Visual Studio Code工具上手体验/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/17/Visual Studio Code工具上手体验/" itemprop="url">Visual Studio Code工具上手体验</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-17T13:37:12+08:00">
-                2017-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Visual Studio Code工具上手体验
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/17/Visual Studio Code工具上手体验/">
+            <a class="btn" href="/2017/10/17/使用pydotplus绘决策树/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1691,15 +1945,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/17/记录一次诡异的Python中文乱码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/17/记录一次诡异的Python中文乱码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/17/记录一次诡异的Python中文乱码/" class="leancloud_visitors" data-flag-title="记录一次诡异的Python中文乱码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  记录一次诡异的Python中文乱码
+              </div>
           
 
         </div>
@@ -1716,10 +1995,15 @@
 
       
         
-          记录一次诡异的Python中文乱码
+          <p>有一天突然出现了这样的中文乱码：</p>
+<p><img src="assets/Python/luanma1.png" alt=""></p>
+<p>我的第一反应就是检查：<br><code># -*- coding:utf-8 -*-</code></p>
+<p>然后检查：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.getdefaultencoding()</span><br><span class="line">Out[<span class="number">5</span>]: </span><br><span class="line"><span class="string">'utf-8'</span></span><br></pre></td></tr></table></figure>
+<p>这，，是中文编码的啊，再检查：</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/17/记录一次诡异的Python中文乱码/">
+            <a class="btn" href="/2017/10/17/记录一次诡异的Python中文乱码/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1886,12 +2170,23 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+	<span id="busuanzi_container_site_pv">
+		本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
 
+	<span id="busuanzi_container_site_uv">
+	  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+	
   
 </div>
 
@@ -1904,7 +2199,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
 
 
 
@@ -2051,26 +2346,468 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
 
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
 
 
 
   
+
   
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
   
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
 
   
   
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
-
-
 
   
 
@@ -2080,12 +2817,88 @@
 
   
   
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
 
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
   
-
-  
-
-  
-
 </body>
 </html>

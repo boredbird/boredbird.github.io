@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -258,26 +258,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -377,15 +373,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/17/手撸AdaBoost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/17/手撸AdaBoost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/17/手撸AdaBoost/" class="leancloud_visitors" data-flag-title="手撸AdaBoost">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  手撸AdaBoost
+              </div>
           
 
         </div>
@@ -402,10 +423,15 @@
 
       
         
-          手撸AdaBoost
+          <h2 id="AdaBoost算法概述："><a href="#AdaBoost算法概述：" class="headerlink" title="AdaBoost算法概述："></a>AdaBoost算法概述：</h2><ul>
+<li>优点：泛化错误率低，易编码，可以应用在大部分分类器上，无参数调整。</li>
+<li>缺点：对离群点敏感。</li>
+<li>适用数据类型：数值型和标称型数据。</li>
+</ul>
+<p>将不同的分类器组合起来，成为集成方法（ensemble method）或者元算法（meta-algorithm)。使用集成方法时会有多种形式：可以是不同算法的集成，也可以是同一算法在不同设置下的集成，还可以是数据集不同部分分配给不同分类器之后的集成。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/17/手撸AdaBoost/">
+            <a class="btn" href="/2017/11/17/手撸AdaBoost/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -523,15 +549,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/16/手撸SVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸SVM/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/16/手撸SVM/" class="leancloud_visitors" data-flag-title="手撸SVM">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  手撸SVM
+              </div>
           
 
         </div>
@@ -548,14 +599,14 @@
 
       
         
-          手撸SVM
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/手撸SVM/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="基于最大间隔分隔数据"><a href="#基于最大间隔分隔数据" class="headerlink" title="基于最大间隔分隔数据"></a>基于最大间隔分隔数据</h2><ul>
+<li>优点：泛化错误率低，计算开销不大，结果易解释。</li>
+<li>缺点：对参数调节和核函数的选择敏感，原始分类器不加修改仅适用于处理二类问题。</li>
+<li>适用数据类型：数值型和标称型数据。</li>
+</ul>
+
+          
         
       
     </div>
@@ -669,15 +720,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/16/手撸LogisticRegression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸LogisticRegression/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/16/手撸LogisticRegression/" class="leancloud_visitors" data-flag-title="手撸LogisticRegression">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  手撸LogisticRegression
+              </div>
           
 
         </div>
@@ -694,10 +770,24 @@
 
       
         
-          手撸LogisticRegression
+          <h2 id="LogisticRegression算法概述："><a href="#LogisticRegression算法概述：" class="headerlink" title="LogisticRegression算法概述："></a>LogisticRegression算法概述：</h2><p>利用Logistic回归进行分类的主要思想是：根据现有数据对分类边界线建立回归公式，以此进行分类。</p>
+<ul>
+<li>优点：计算代价不高，易于理解和实现。</li>
+<li>缺点：容易欠拟合，分类精度可能不高。</li>
+<li>适用数据类型：数值型和标称型数据。</li>
+</ul>
+<h2 id="梯度下降法求最佳参数伪代码："><a href="#梯度下降法求最佳参数伪代码：" class="headerlink" title="梯度下降法求最佳参数伪代码："></a>梯度下降法求最佳参数伪代码：</h2><ol>
+<li>每个回归系数初始化为1</li>
+<li>重复R次：</li>
+</ol>
+<ul>
+<li>a.计算整个数据集的梯度</li>
+<li>b.使用alpha*gradient更新回归系数的向量</li>
+<li>c.返回回归系数</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/手撸LogisticRegression/">
+            <a class="btn" href="/2017/11/16/手撸LogisticRegression/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -815,15 +905,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/16/手撸DecisionTree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸DecisionTree/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/16/手撸DecisionTree/" class="leancloud_visitors" data-flag-title="手撸DecisionTree">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  手撸DecisionTree
+              </div>
           
 
         </div>
@@ -840,10 +955,18 @@
 
       
         
-          手撸DecisionTree
+          <h2 id="DecisionTree算法概述："><a href="#DecisionTree算法概述：" class="headerlink" title="DecisionTree算法概述："></a>DecisionTree算法概述：</h2><ul>
+<li>优点：计算复杂度不高，输出结果易于理解，对中间值的缺失不敏感，可以处理不相关特征数据。</li>
+<li>缺点：可能会产生过度匹配问题。</li>
+<li>适用数据范围：数值型和标称型</li>
+</ul>
+<h2 id="DecisionTree伪代码："><a href="#DecisionTree伪代码：" class="headerlink" title="DecisionTree伪代码："></a>DecisionTree伪代码：</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/tree/QQ截图20171116135703.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="DecisionTree代码实现："><a href="#DecisionTree代码实现：" class="headerlink" title="DecisionTree代码实现："></a>DecisionTree代码实现：</h2><h3 id="创建数据集"><a href="#创建数据集" class="headerlink" title="创建数据集"></a>创建数据集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createDataSet</span><span class="params">()</span>:</span></span><br><span class="line">    dataSet = [[<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</span><br><span class="line">               [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</span><br><span class="line">               [<span class="number">1</span>, <span class="number">0</span>, <span class="string">'no'</span>],</span><br><span class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>],</span><br><span class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>]]</span><br><span class="line">    labels = [<span class="string">'no surfacing'</span>, <span class="string">'flippers'</span>]</span><br><span class="line">    <span class="comment"># change to discrete values</span></span><br><span class="line">    <span class="keyword">return</span> dataSet, labels</span><br></pre></td></tr></table></figure>
+<h3 id="计算给定数据集的香农熵"><a href="#计算给定数据集的香农熵" class="headerlink" title="计算给定数据集的香农熵"></a>计算给定数据集的香农熵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcShannonEnt</span><span class="params">(dataSet)</span>:</span></span><br><span class="line">    numEntries = len(dataSet)</span><br><span class="line">    labelCounts = &#123;&#125; <span class="comment"># 为所有可能分类创建字典</span></span><br><span class="line">    <span class="comment"># 循环遍历数据集的每一行</span></span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:  <span class="comment"># the the number of unique elements and their occurance</span></span><br><span class="line">        currentLabel = featVec[<span class="number">-1</span>] <span class="comment"># 假设最后一列是label</span></span><br><span class="line">        <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</span><br><span class="line">            labelCounts[currentLabel] = <span class="number">0</span></span><br><span class="line">        labelCounts[currentLabel] += <span class="number">1</span></span><br><span class="line">    shannonEnt = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">        prob = float(labelCounts[key]) / numEntries</span><br><span class="line">        shannonEnt -= prob * log(prob, <span class="number">2</span>)  <span class="comment"># log base 2</span></span><br><span class="line">    <span class="keyword">return</span> shannonEnt</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/手撸DecisionTree/">
+            <a class="btn" href="/2017/11/16/手撸DecisionTree/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -961,15 +1084,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/16/手撸kNN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸kNN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/16/手撸kNN/" class="leancloud_visitors" data-flag-title="手撸kNN">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  手撸kNN
+              </div>
           
 
         </div>
@@ -986,10 +1134,24 @@
 
       
         
-          手撸kNN
+          <h2 id="k近邻算法概述："><a href="#k近邻算法概述：" class="headerlink" title="k近邻算法概述："></a>k近邻算法概述：</h2><p>k-近邻算法采用测量不同特征值之间的距离方法进行分类。</p>
+<ul>
+<li>优点：精度高、对异常值不敏感、无数据输入假定</li>
+<li>缺点：计算复杂度高、空间复杂度高</li>
+<li>适用数据范围：数值型和标称型</li>
+</ul>
+<h2 id="kNN伪代码："><a href="#kNN伪代码：" class="headerlink" title="kNN伪代码："></a>kNN伪代码：</h2><p>对未知类别属性的数据集中的每个点依次执行以下操作：</p>
+<ol>
+<li>计算已知类别数据集中的点与当前点之间的距离；</li>
+<li>按照距离递增次序排序；</li>
+<li>选取与当前点距离最小的k个点；</li>
+<li>确定前k个点所在类别的出现频率；</li>
+<li>返回前k个点出现频率最高的类别作为当前点的预测分类。</li>
+</ol>
+<h2 id="kNN代码实现："><a href="#kNN代码实现：" class="headerlink" title="kNN代码实现："></a>kNN代码实现：</h2>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/手撸kNN/">
+            <a class="btn" href="/2017/11/16/手撸kNN/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1107,15 +1269,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/15/Clustering with sklearn/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/15/Clustering with sklearn/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/15/Clustering with sklearn/" class="leancloud_visitors" data-flag-title="Clustering with sklearn">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Clustering with sklearn
+              </div>
           
 
         </div>
@@ -1132,10 +1319,22 @@
 
       
         
-          Clustering with sklearn
+          <h1 id="生成聚类数据集的方法"><a href="#生成聚类数据集的方法" class="headerlink" title="生成聚类数据集的方法"></a>生成聚类数据集的方法</h1><p><code>生成数据集方法</code>：sklearn.datasets.make_blobs(n_samples,n_featurs,centers)可以生成数据集,n_samples表示个数，n_features表示特征个数，centers表示y的种类数:</p>
+<ul>
+<li>make_blobs函数是为聚类产生数据集产生一个数据集和相应的标签</li>
+<li>n_samples:表示数据样本点个数,默认值100</li>
+<li>n_features:表示数据的维度，默认值是2</li>
+<li>centers:产生数据的中心点，默认值3</li>
+<li>cluster_std：数据集的标准差，浮点数或者浮点数序列，默认值1.0</li>
+<li>center_box：中心确定之后的数据边界，默认值(-10.0, 10.0)</li>
+<li>shuffle ：洗乱，默认值是True</li>
+<li>random_state:官网解释是随机生成器的种子</li>
+</ul>
+<p>y3 = np.array([0]<em>100 + [1]</em>50 + [2]<em>20 + [3]</em>5)可以这样建立array数组</p>
+<p>k-means对于方差不相等和数据与坐标轴不平行时效果不理想；对于数据大小量纲敏感。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/15/Clustering with sklearn/">
+            <a class="btn" href="/2017/11/15/Clustering with sklearn/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1253,15 +1452,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/14/sklearn.svm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/sklearn.svm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/14/sklearn.svm/" class="leancloud_visitors" data-flag-title="sklearn.svm">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  sklearn.svm
+              </div>
           
 
         </div>
@@ -1278,10 +1502,11 @@
 
       
         
-          sklearn.svm
+          <h3 id="SVC-ovr"><a href="#SVC-ovr" class="headerlink" title="SVC:ovr"></a>SVC:ovr</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 'sepal length', 'sepal width', 'petal length', 'petal width'</span></span><br><span class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_accuracy</span><span class="params">(a, b, tip)</span>:</span></span><br><span class="line">    acc = a.ravel() == b.ravel()</span><br><span class="line">    <span class="keyword">print</span> tip + <span class="string">'正确率：'</span>, np.mean(acc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分类器</span></span><br><span class="line"><span class="comment"># clf = svm.SVC(C=0.1, kernel='linear', decision_function_shape='ovr')</span></span><br><span class="line"><span class="comment"># ‘ovo’ 一对一, ‘ovr’ 多对多  or None 无, default=None</span></span><br><span class="line">clf = svm.SVC(C=<span class="number">0.8</span>, kernel=<span class="string">'rbf'</span>, gamma=<span class="number">20</span>, decision_function_shape=<span class="string">'ovr'</span>)</span><br><span class="line">clf.fit(x_train, y_train.ravel())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 准确率</span></span><br><span class="line"><span class="comment"># score(X, y, sample_weight=None) ：Returns the mean accuracy on the given test data and labels.</span></span><br><span class="line"><span class="keyword">print</span> clf.score(x_train, y_train)  <span class="comment"># 精度</span></span><br><span class="line">y_hat = clf.predict(x_train)</span><br><span class="line">show_accuracy(y_hat, y_train, <span class="string">'训练集'</span>)</span><br><span class="line"><span class="keyword">print</span> clf.score(x_test, y_test)</span><br><span class="line">y_hat = clf.predict(x_test)</span><br><span class="line">show_accuracy(y_hat, y_test, <span class="string">'测试集'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># decision_function</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'decision_function:\n'</span>, clf.decision_function(x_train)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'\npredict:\n'</span>, clf.predict(x_train)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># decision_function(): Distance of the samples X to the separating hyperplane.</span></span><br><span class="line"><span class="string"># 分类归属于距离数值最小的类别，距离有正有负只是平面的两侧而已</span></span><br><span class="line"><span class="string">decision_function:</span></span><br><span class="line"><span class="string">[[-0.25631211  0.80529378  2.45101833]</span></span><br><span class="line"><span class="string"> [ 2.35232967  0.82494155 -0.17727121]</span></span><br><span class="line"><span class="string"> [ 2.45418203  0.77495649 -0.22913852]</span></span><br><span class="line"><span class="string"> [ 2.45421283  0.77518383 -0.22939666]</span></span><br><span class="line"><span class="string"> [-0.24854074  2.39614366  0.85239708]</span></span><br><span class="line"><span class="string"> [ 2.46621083  0.76927647 -0.23548729]</span></span><br><span class="line"><span class="string"> [ 2.45410944  0.77775367 -0.2318631 ]</span></span><br><span class="line"><span class="string"> [-0.24677667  0.84905678  2.39771989]</span></span><br><span class="line"><span class="string"> [-0.46050688  1.21154683  2.24896005]</span></span><br><span class="line"><span class="string"> [-0.26893412  0.80449581  2.46443831]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">predict:</span></span><br><span class="line"><span class="string">[2 0 0 0 1 0 0 2 2 2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 画图</span></span><br><span class="line">x1_min, x1_max = X[:, <span class="number">0</span>].min(), X[:, <span class="number">0</span>].max()  <span class="comment"># 第0列的范围</span></span><br><span class="line">x2_min, x2_max = X[:, <span class="number">1</span>].min(), X[:, <span class="number">1</span>].max()  <span class="comment"># 第1列的范围</span></span><br><span class="line">x1, x2 = np.mgrid[x1_min:x1_max:<span class="number">200j</span>, x2_min:x2_max:<span class="number">200j</span>]  <span class="comment"># 生成网格采样点</span></span><br><span class="line"><span class="comment"># numpy.ndarray.flat : A 1-D iterator over the array.</span></span><br><span class="line"><span class="comment"># This is a numpy.flatiter instance, which acts similarly to,</span></span><br><span class="line"><span class="comment"># but is not a subclass of, Python’s built-in iterator object.</span></span><br><span class="line">grid_test = np.stack((x1.flat, x2.flat), axis=<span class="number">1</span>)  <span class="comment"># 测试点</span></span><br><span class="line"><span class="comment"># print 'grid_test = \n', grid_test</span></span><br><span class="line"><span class="comment"># Z = clf.decision_function(grid_test)    # 样本到决策面的距离</span></span><br><span class="line"><span class="comment"># print Z</span></span><br><span class="line">grid_hat = clf.predict(grid_test)       <span class="comment"># 预测分类值</span></span><br><span class="line"><span class="keyword">print</span> grid_hat</span><br><span class="line">grid_hat = grid_hat.reshape(x1.shape)  <span class="comment"># 使之与输入的形状相同</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">u'SimHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">cm_light = mpl.colors.ListedColormap([<span class="string">'#A0FFA0'</span>, <span class="string">'#FFA0A0'</span>, <span class="string">'#A0A0FF'</span>])</span><br><span class="line">cm_dark = mpl.colors.ListedColormap([<span class="string">'g'</span>, <span class="string">'r'</span>, <span class="string">'b'</span>])</span><br><span class="line">plt.pcolormesh(x1, x2, grid_hat, cmap=cm_light)</span><br><span class="line"></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, edgecolors=<span class="string">'k'</span>, s=<span class="number">50</span>, cmap=cm_dark)      <span class="comment"># 样本</span></span><br><span class="line">plt.scatter(x_test[:, <span class="number">0</span>], x_test[:, <span class="number">1</span>], s=<span class="number">120</span>, facecolors=<span class="string">'none'</span>, zorder=<span class="number">10</span>)     <span class="comment"># 圈中测试集样本</span></span><br><span class="line">plt.xlabel(iris_feature[<span class="number">0</span>], fontsize=<span class="number">13</span>)</span><br><span class="line">plt.ylabel(iris_feature[<span class="number">1</span>], fontsize=<span class="number">13</span>)</span><br><span class="line">plt.xlim(x1_min, x1_max)</span><br><span class="line">plt.ylim(x2_min, x2_max)</span><br><span class="line">plt.title(<span class="string">u'鸢尾花SVM二特征分类'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">plt.grid()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/Figure_1.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/14/sklearn.svm/">
+            <a class="btn" href="/2017/11/14/sklearn.svm/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1399,15 +1624,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/14/Bagging/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/Bagging/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/14/Bagging/" class="leancloud_visitors" data-flag-title="Bagging">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Bagging
+              </div>
           
 
         </div>
@@ -1424,10 +1674,12 @@
 
       
         
-          Bagging
+          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>假设一个分类器分类正确的概率为0.6，如果有n个独立的分类器，选择其中的k个采用投票的方式，作为预测结果，则预测正确的概率为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"><span class="comment"># operator.__mul__(a, b)</span></span><br><span class="line"><span class="comment"># Return a * b, for a and b numbers.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">c</span><span class="params">(n, k)</span>:</span></span><br><span class="line">    <span class="comment"># 求组合数</span></span><br><span class="line">    <span class="keyword">return</span> reduce(operator.mul, range(n-k+<span class="number">1</span>, n+<span class="number">1</span>)) / reduce(operator.mul, range(<span class="number">1</span>, k+<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bagging</span><span class="params">(n, p)</span>:</span></span><br><span class="line">    s = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n / <span class="number">2</span> + <span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        s += c(n, i) * p ** i * (<span class="number">1</span> - p) ** (n - i)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">9</span>, <span class="number">100</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="comment"># 假设事件发生的概率为0.6</span></span><br><span class="line">    <span class="keyword">print</span> t, <span class="string">'次采样正确率：'</span>, bagging(t, <span class="number">0.6</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">9 </span>次采样正确率： <span class="number">0.73343232</span></span><br><span class="line"><span class="symbol">19 </span>次采样正确率： <span class="number">0.813907978585</span></span><br><span class="line"><span class="symbol">29 </span>次采样正确率： <span class="number">0.863787051336</span></span><br><span class="line"><span class="symbol">39 </span>次采样正确率： <span class="number">0.897941368711</span></span><br><span class="line"><span class="symbol">49 </span>次采样正确率： <span class="number">0.922424437652</span></span><br><span class="line"><span class="symbol">59 </span>次采样正确率： <span class="number">0.940447995732</span></span><br><span class="line"><span class="symbol">69 </span>次采样正确率： <span class="number">0.953949756505</span></span><br><span class="line"><span class="symbol">79 </span>次采样正确率： <span class="number">0.964189692839</span></span><br><span class="line"><span class="symbol">89 </span>次采样正确率： <span class="number">0.972027516007</span></span><br><span class="line"><span class="symbol">99 </span>次采样正确率： <span class="number">0.97806955787</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/14/Bagging/">
+            <a class="btn" href="/2017/11/14/Bagging/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1545,15 +1797,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" class="leancloud_visitors" data-flag-title="sklearn.tree.DecisionTreeRegressor">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  sklearn.tree.DecisionTreeRegressor
+              </div>
           
 
         </div>
@@ -1570,10 +1847,11 @@
 
       
         
-          sklearn.tree.DecisionTreeRegressor
+          <h3 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br></pre></td></tr></table></figure>
+<h3 id="生成数据集："><a href="#生成数据集：" class="headerlink" title="生成数据集："></a>生成数据集：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">N = <span class="number">100</span></span><br><span class="line">x = np.random.rand(N) * <span class="number">6</span> - <span class="number">3</span>     <span class="comment"># [-3,3)</span></span><br><span class="line">x.sort()</span><br><span class="line">y = np.sin(x) + np.random.randn(N) * <span class="number">0.05</span></span><br><span class="line"><span class="keyword">print</span> y</span><br><span class="line">x = x.reshape(<span class="number">-1</span>, <span class="number">1</span>)  <span class="comment"># 转置后，得到N个样本，每个样本都是1维的</span></span><br><span class="line"><span class="keyword">print</span> x</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/">
+            <a class="btn" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1624,7 +1902,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/插值/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/ElasticNetCV/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1643,7 +1921,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/插值/" itemprop="url">插值</a></h1>
+                <a class="post-title-link" href="/2017/11/13/ElasticNetCV/" itemprop="url">ElasticNetCV</a></h1>
         
 
         <div class="post-meta">
@@ -1691,15 +1969,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/13/ElasticNetCV/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/ElasticNetCV/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/11/13/ElasticNetCV/" class="leancloud_visitors" data-flag-title="ElasticNetCV">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  ElasticNetCV
+              </div>
           
 
         </div>
@@ -1716,10 +2019,11 @@
 
       
         
-          插值
+          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> ElasticNetCV</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures, StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br></pre></td></tr></table></figure>
+<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_empty</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> s != <span class="string">''</span></span><br><span class="line"></span><br><span class="line">data = sklearn.datasets.load_boston()</span><br><span class="line">x = np.array(data.data)</span><br><span class="line">y = np.array(data.target)</span><br><span class="line"><span class="keyword">print</span> x.shape</span><br><span class="line"><span class="keyword">print</span> y.shape</span><br><span class="line"></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/插值/">
+            <a class="btn" href="/2017/11/13/ElasticNetCV/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1886,12 +2190,23 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+	<span id="busuanzi_container_site_pv">
+		本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
 
+	<span id="busuanzi_container_site_uv">
+	  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+	
   
 </div>
 
@@ -1904,7 +2219,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
 
 
 
@@ -2051,26 +2366,468 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
 
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
 
 
 
   
+
   
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
   
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
 
   
   
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
-
-
 
   
 
@@ -2080,12 +2837,88 @@
 
   
   
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
 
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
   
-
-  
-
-  
-
 </body>
 </html>

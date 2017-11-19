@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -258,26 +258,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -310,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Convolutional Networks/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Neural Networks[1]/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -329,7 +325,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/Convolutional Networks/" itemprop="url">Convolutional Networks</a></h1>
+                <a class="post-title-link" href="/2017/10/08/Neural Networks[1]/" itemprop="url">Neural Networks[1]</a></h1>
         
 
         <div class="post-meta">
@@ -377,15 +373,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Neural Networks[1]/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Neural Networks[1]/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Neural Networks[1]/" class="leancloud_visitors" data-flag-title="Neural Networks[1]">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Neural Networks[1]
+              </div>
           
 
         </div>
@@ -402,14 +423,403 @@
 
       
         
-          Convolutional Networks
+          <p>Table of Contents:</p>
+<ul>
+<li><a href="#quick">Quick intro without brain analogies</a></li>
+<li><a href="#intro">Modeling one neuron</a><ul>
+<li><a href="#bio">Biological motivation and connections</a></li>
+<li><a href="#classifier">Single neuron as a linear classifier</a></li>
+<li><a href="#actfun">Commonly used activation functions</a></li>
+</ul>
+</li>
+<li><a href="#nn">Neural Network architectures</a><ul>
+<li><a href="#layers">Layer-wise organization</a></li>
+<li><a href="#feedforward">Example feed-forward computation</a></li>
+<li><a href="#power">Representational power</a></li>
+<li><a href="#arch">Setting number of layers and their sizes</a></li>
+</ul>
+</li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#add">Additional references</a></li>
+</ul>
+<p><a name="quick"></a></p>
+<h2 id="Quick-intro"><a href="#Quick-intro" class="headerlink" title="Quick intro"></a>Quick intro</h2><p>It is possible to introduce neural networks without appealing to brain analogies. In the section on linear classification we computed scores for different visual categories given the image using the formula \( s = W x \), where \(W\) was a matrix and \(x\) was an input column vector containing all pixel data of the image. In the case of CIFAR-10, \(x\) is a [3072x1] column vector, and \(W\) is a [10x3072] matrix, so that the output scores is a vector of 10 class scores. </p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Convolutional Networks/">
+            <a class="btn" href="/2017/10/08/Neural Networks[1]/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Neural Networks Case Study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/08/Neural Networks Case Study/" itemprop="url">neural-networks-case-study</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Neural Networks Case Study/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Neural Networks Case Study/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/08/Neural Networks Case Study/" class="leancloud_visitors" data-flag-title="neural-networks-case-study">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  neural-networks-case-study
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Table of Contents:</p>
+<ul>
+<li><a href="#data">Generating some data</a></li>
+<li><a href="#linear">Training a Softmax Linear Classifier</a><ul>
+<li><a href="#init">Initialize the parameters</a></li>
+<li><a href="#scores">Compute the class scores</a></li>
+<li><a href="#loss">Compute the loss</a></li>
+<li><a href="#grad">Computing the analytic gradient with backpropagation</a></li>
+<li><a href="#update">Performing a parameter update</a></li>
+<li><a href="#together">Putting it all together: Training a Softmax Classifier</a></li>
+</ul>
+</li>
+<li><a href="#net">Training a Neural Network</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+<p>In this section we’ll walk through a complete implementation of a toy Neural Network in 2 dimensions. We’ll first implement a simple linear classifier and then extend the code to a 2-layer Neural Network. As we’ll see, this extension is surprisingly simple and very few changes are necessary.</p>
+<p><a name="data"></a></p>
+<h2 id="Generating-some-data"><a href="#Generating-some-data" class="headerlink" title="Generating some data"></a>Generating some data</h2><p>Lets generate a classification dataset that is not easily linearly separable. Our favorite example is the spiral dataset, which can be generated as follows:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">100</span> <span class="comment"># number of points per class</span></span><br><span class="line">D = <span class="number">2</span> <span class="comment"># dimensionality</span></span><br><span class="line">K = <span class="number">3</span> <span class="comment"># number of classes</span></span><br><span class="line">X = np.zeros((N*K,D)) <span class="comment"># data matrix (each row = single example)</span></span><br><span class="line">y = np.zeros(N*K, dtype=<span class="string">'uint8'</span>) <span class="comment"># class labels</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> xrange(K):</span><br><span class="line">  ix = range(N*j,N*(j+<span class="number">1</span>))</span><br><span class="line">  r = np.linspace(<span class="number">0.0</span>,<span class="number">1</span>,N) <span class="comment"># radius</span></span><br><span class="line">  t = np.linspace(j*<span class="number">4</span>,(j+<span class="number">1</span>)*<span class="number">4</span>,N) + np.random.randn(N)*<span class="number">0.2</span> <span class="comment"># theta</span></span><br><span class="line">  X[ix] = np.c_[r*np.sin(t), r*np.cos(t)]</span><br><span class="line">  y[ix] = j</span><br><span class="line"><span class="comment"># lets visualize the data:</span></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, s=<span class="number">40</span>, cmap=plt.cm.Spectral)</span><br></pre></td></tr></table></figure>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/eg/spiral_raw.png"><br>  <div class="figcaption"><br>    The toy spiral data consists of three classes (blue, red, yellow) that are not linearly separable.<br>  </div><br></div>
+
+<p>Normally we would want to preprocess the dataset so that each feature has zero mean and unit standard deviation, but in this case the features are already in a nice range from -1 to 1, so we skip this step.</p>
+<p><a name="linear"></a></p>
+<h2 id="Training-a-Softmax-Linear-Classifier"><a href="#Training-a-Softmax-Linear-Classifier" class="headerlink" title="Training a Softmax Linear Classifier"></a>Training a Softmax Linear Classifier</h2><p><a name="init"></a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/08/Neural Networks Case Study/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/ConvNet Tips/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/08/ConvNet Tips/" itemprop="url">convnet-tips</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
+                2017-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/ConvNet Tips/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/ConvNet Tips/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/08/ConvNet Tips/" class="leancloud_visitors" data-flag-title="convnet-tips">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  convnet-tips
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a name="overfitting"></a></p>
+<h3 id="Addressing-Overfitting"><a href="#Addressing-Overfitting" class="headerlink" title="Addressing Overfitting"></a>Addressing Overfitting</h3><h4 id="Data-Augmentation"><a href="#Data-Augmentation" class="headerlink" title="Data Augmentation"></a>Data Augmentation</h4><ul>
+<li>Flip the training images over x-axis</li>
+<li>Sample random crops / scales in the original image</li>
+<li>Jitter the colors</li>
+</ul>
+<h4 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h4><ul>
+<li>Dropout is just as effective for Conv layers. Usually people apply less dropout right before early conv layers since there are not that many parameters there compared to later stages of the network (e.g. the fully connected layers).</li>
+</ul>
+
+          
         
       
     </div>
@@ -523,15 +933,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Linear Classification/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Linear Classification/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Linear Classification/" class="leancloud_visitors" data-flag-title="linear-classify">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  linear-classify
+              </div>
           
 
         </div>
@@ -548,10 +983,25 @@
 
       
         
-          linear-classify
+          <p>Table of Contents:</p>
+<ul>
+<li><a href="#intro">Intro to Linear classification</a></li>
+<li><a href="#score">Linear score function</a></li>
+<li><a href="#interpret">Interpreting a linear classifier</a></li>
+<li><a href="#loss">Loss function</a><ul>
+<li><a href="#svm">Multiclass SVM</a></li>
+<li><a href="#softmax">Softmax classifier</a></li>
+<li><a href="#svmvssoftmax">SVM vs Softmax</a></li>
+</ul>
+</li>
+<li><a href="#webdemo">Interactive Web Demo of Linear Classification</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+<p><a name="intro"></a></p>
+<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>In the last section we introduced the problem of Image Classification, which is the task of assigning a single label to an image from a fixed set of categories. Morever, we described the k-Nearest Neighbor (kNN) classifier which labels images by comparing them to (annotated) images from the training set. As we saw, kNN has a number of disadvantages:</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Linear Classification/">
+            <a class="btn" href="/2017/10/08/Linear Classification/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -602,7 +1052,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Neural Networks[1]/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Convolutional Networks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -621,7 +1071,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/Neural Networks[1]/" itemprop="url">Neural Networks[1]</a></h1>
+                <a class="post-title-link" href="/2017/10/08/Convolutional Networks/" itemprop="url">Convolutional Networks</a></h1>
         
 
         <div class="post-meta">
@@ -669,161 +1119,40 @@
 
           
             
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Neural Networks[1]
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Neural Networks[1]/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Neural Networks[2]/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Neural Networks[2]/" itemprop="url">Neural Networks[2]</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
                 </span>
-
-                
-                
-              
-            </span>
-          
-
-          
+                <a href="/2017/10/08/Convolutional Networks/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Convolutional Networks/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
           
           
-
+             <span id="/2017/10/08/Convolutional Networks/" class="leancloud_visitors" data-flag-title="Convolutional Networks">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Convolutional Networks
+              </div>
           
 
         </div>
@@ -840,156 +1169,33 @@
 
       
         
-          Neural Networks[2]
+          <p>Table of Contents:</p>
+<ul>
+<li><a href="#overview">Architecture Overview</a></li>
+<li><a href="#layers">ConvNet Layers</a><ul>
+<li><a href="#conv">Convolutional Layer</a></li>
+<li><a href="#pool">Pooling Layer</a></li>
+<li><a href="#norm">Normalization Layer</a></li>
+<li><a href="#fc">Fully-Connected Layer</a></li>
+<li><a href="#convert">Converting Fully-Connected Layers to Convolutional Layers</a></li>
+</ul>
+</li>
+<li><a href="#architectures">ConvNet Architectures</a><ul>
+<li><a href="#layerpat">Layer Patterns</a></li>
+<li><a href="#layersizepat">Layer Sizing Patterns</a></li>
+<li><a href="#case">Case Studies</a> (LeNet / AlexNet / ZFNet / GoogLeNet / VGGNet)</li>
+<li><a href="#comp">Computational Considerations</a></li>
+</ul>
+</li>
+<li><a href="#add">Additional References</a></li>
+</ul>
+<h2 id="Convolutional-Neural-Networks-CNNs-ConvNets"><a href="#Convolutional-Neural-Networks-CNNs-ConvNets" class="headerlink" title="Convolutional Neural Networks (CNNs / ConvNets)"></a>Convolutional Neural Networks (CNNs / ConvNets)</h2><p>Convolutional Neural Networks are very similar to ordinary Neural Networks from the previous chapter: they are made up of neurons that have learnable weights and biases. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function: from the raw image pixels on one end to class scores at the other. And they still have a loss function (e.g. SVM/Softmax) on the last (fully-connected) layer and all the tips/tricks we developed for learning regular Neural Networks still apply.</p>
+<p>So what does change? ConvNet architectures make the explicit assumption that the inputs are images, which allows us to encode certain properties into the architecture. These then make the forward function more efficient to implement and vastly reduce the amount of parameters in the network.</p>
+<p><a name="overview"></a></p>
+<h3 id="Architecture-Overview"><a href="#Architecture-Overview" class="headerlink" title="Architecture Overview"></a>Architecture Overview</h3><p><em>Recall: Regular Neural Nets.</em> As we saw in the previous chapter, Neural Networks receive an input (a single vector), and transform it through a series of <em>hidden layers</em>. Each hidden layer is made up of a set of neurons, where each neuron is fully connected to all neurons in the previous layer, and where neurons in a single layer function completely independently and do not share any connections. The last fully-connected layer is called the “output layer” and in classification settings it represents the class scores.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Neural Networks[2]/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Neural Networks[3]/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Neural Networks[3]/" itemprop="url">Neural Networks[3]</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Neural Networks[3]
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Neural Networks[3]/">
+            <a class="btn" href="/2017/10/08/Convolutional Networks/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1107,15 +1313,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Image Classification With KNN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Image Classification With KNN/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Image Classification With KNN/" class="leancloud_visitors" data-flag-title="Image Classification With KNN">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Image Classification With KNN
+              </div>
           
 
         </div>
@@ -1132,10 +1363,24 @@
 
       
         
-          Image Classification With KNN
+          <p>This is an introductory lecture designed to introduce people from outside of Computer Vision to the Image Classification problem, and the data-driven approach. The Table of Contents:</p>
+<ul>
+<li><a href="#intro">Intro to Image Classification, data-driven approach, pipeline</a></li>
+<li><a href="#nn">Nearest Neighbor Classifier</a><ul>
+<li><a href="#knn">k-Nearest Neighbor</a></li>
+</ul>
+</li>
+<li><a href="#val">Validation sets, Cross-validation, hyperparameter tuning</a></li>
+<li><a href="#procon">Pros/Cons of Nearest Neighbor</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#summaryapply">Summary: Applying kNN in practice</a></li>
+<li><a href="#reading">Further Reading</a></li>
+</ul>
+<p><a name="intro"></a></p>
+<h2 id="Image-Classification"><a href="#Image-Classification" class="headerlink" title="Image Classification"></a>Image Classification</h2><p><strong>Motivation</strong>. In this section we will introduce the Image Classification problem, which is the task of assigning an input image one label from a fixed set of categories. This is one of the core problems in Computer Vision that, despite its simplicity, has a large variety of practical applications. Moreover, as we will see later in the course, many other seemingly distinct Computer Vision tasks (such as object detection, segmentation) can be reduced to image classification.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Image Classification With KNN/">
+            <a class="btn" href="/2017/10/08/Image Classification With KNN/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1253,15 +1498,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/python-numpy-tutorial/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/python-numpy-tutorial/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/python-numpy-tutorial/" class="leancloud_visitors" data-flag-title="Python Numpy Tutorial">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Python Numpy Tutorial
+              </div>
           
 
         </div>
@@ -1278,10 +1548,77 @@
 
       
         
-          Python Numpy Tutorial
+          <!--
+Python:
+  Simple data types
+    integer, float, string
+  Compound data types
+    tuple, list, dictionary, set
+  Flow control
+    if, while, for, try, with
+  Comprehensions, generators
+  Functions
+  Classes
+  Standard library
+    json, collections, itertools
+
+Numpy
+-->
+<p>This tutorial was contributed by <a href="http://cs.stanford.edu/people/jcjohns/" target="_blank" rel="noopener">Justin Johnson</a>.</p>
+<p>We will use the Python programming language for all assignments in this course.<br>Python is a great general-purpose programming language on its own, but with the<br>help of a few popular libraries (numpy, scipy, matplotlib) it becomes a powerful<br>environment for scientific computing.</p>
+<p>We expect that many of you will have some experience with Python and numpy;<br>for the rest of you, this section will serve as a quick crash course both on<br>the Python programming language and on the use of Python for scientific<br>computing.</p>
+<p>Some of you may have previous knowledge in Matlab, in which case we also recommend the <a href="http://wiki.scipy.org/NumPy_for_Matlab_Users" target="_blank" rel="noopener">numpy for Matlab users</a> page.</p>
+<p>You can also find an <a href="https://github.com/kuleshov/cs228-material/blob/master/tutorials/python/cs228-python-tutorial.ipynb" target="_blank" rel="noopener">IPython notebook version of this tutorial here</a> created by <a href="http://web.stanford.edu/~kuleshov/" target="_blank" rel="noopener">Volodymyr Kuleshov</a> and <a href="https://symsys.stanford.edu/viewing/symsysaffiliate/21335" target="_blank" rel="noopener">Isaac Caswell</a> for <a href="http://cs.stanford.edu/~ermon/cs228/index.html" target="_blank" rel="noopener">CS 228</a>.</p>
+<p>Table of contents:</p>
+<ul>
+<li><a href="#python">Python</a><ul>
+<li><a href="#python-basic">Basic data types</a></li>
+<li><a href="#python-containers">Containers</a><ul>
+<li><a href="#python-lists">Lists</a></li>
+<li><a href="#python-dicts">Dictionaries</a></li>
+<li><a href="#python-sets">Sets</a></li>
+<li><a href="#python-tuples">Tuples</a></li>
+</ul>
+</li>
+<li><a href="#python-functions">Functions</a></li>
+<li><a href="#python-classes">Classes</a></li>
+</ul>
+</li>
+<li><a href="#numpy">Numpy</a><ul>
+<li><a href="#numpy-arrays">Arrays</a></li>
+<li><a href="#numpy-array-indexing">Array indexing</a></li>
+<li><a href="#numpy-datatypes">Datatypes</a></li>
+<li><a href="#numpy-math">Array math</a></li>
+<li><a href="#numpy-broadcasting">Broadcasting</a></li>
+</ul>
+</li>
+<li><a href="#scipy">SciPy</a><ul>
+<li><a href="#scipy-image">Image operations</a></li>
+<li><a href="#scipy-matlab">MATLAB files</a></li>
+<li><a href="#scipy-dist">Distance between points</a></li>
+</ul>
+</li>
+<li><a href="#matplotlib">Matplotlib</a><ul>
+<li><a href="#matplotlib-plotting">Plotting</a></li>
+<li><a href="#matplotlib-subplots">Subplots</a></li>
+<li><a href="#matplotlib-images">Images</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="python"></a></p>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>Python is a high-level, dynamically typed multiparadigm programming language.<br>Python code is often said to be almost like pseudocode, since it allows you<br>to express very powerful ideas in very few lines of code while being very<br>readable. As an example, here is an implementation of the classic quicksort<br>algorithm in Python:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(arr) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    pivot = arr[len(arr) / <span class="number">2</span>]</span><br><span class="line">    left = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &lt; pivot]</span><br><span class="line">    middle = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x == pivot]</span><br><span class="line">    right = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &gt; pivot]</span><br><span class="line">    <span class="keyword">return</span> quicksort(left) + middle + quicksort(right)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">print</span> quicksort([<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>])</span><br><span class="line"><span class="comment"># Prints "[1, 1, 2, 3, 6, 8, 10]"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Python-versions"><a href="#Python-versions" class="headerlink" title="Python versions"></a>Python versions</h3><p>There are currently two different supported versions of Python, 2.7 and 3.4.<br>Somewhat confusingly, Python 3.0 introduced many backwards-incompatible changes<br>to the language, so code written for 2.7 may not work under 3.4 and vice versa.<br>For this class all code will use Python 2.7.</p>
+<p>You can check your Python version at the command line by running<br><code>python --version</code>.</p>
+<p><a name="python-basic"></a></p>
+<h3 id="Basic-data-types"><a href="#Basic-data-types" class="headerlink" title="Basic data types"></a>Basic data types</h3><p>Like most languages, Python has a number of basic types including integers,<br>floats, booleans, and strings. These data types behave in ways that are<br>familiar from other programming languages.</p>
+<p><strong>Numbers:</strong> Integers and floats work as you would expect from other languages:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">3</span></span><br><span class="line"><span class="keyword">print</span> type(x) <span class="comment"># Prints "&lt;type 'int'&gt;"</span></span><br><span class="line"><span class="keyword">print</span> x       <span class="comment"># Prints "3"</span></span><br><span class="line"><span class="keyword">print</span> x + <span class="number">1</span>   <span class="comment"># Addition; prints "4"</span></span><br><span class="line"><span class="keyword">print</span> x - <span class="number">1</span>   <span class="comment"># Subtraction; prints "2"</span></span><br><span class="line"><span class="keyword">print</span> x * <span class="number">2</span>   <span class="comment"># Multiplication; prints "6"</span></span><br><span class="line"><span class="keyword">print</span> x ** <span class="number">2</span>  <span class="comment"># Exponentiation; prints "9"</span></span><br><span class="line">x += <span class="number">1</span></span><br><span class="line"><span class="keyword">print</span> x  <span class="comment"># Prints "4"</span></span><br><span class="line">x *= <span class="number">2</span></span><br><span class="line"><span class="keyword">print</span> x  <span class="comment"># Prints "8"</span></span><br><span class="line">y = <span class="number">2.5</span></span><br><span class="line"><span class="keyword">print</span> type(y) <span class="comment"># Prints "&lt;type 'float'&gt;"</span></span><br><span class="line"><span class="keyword">print</span> y, y + <span class="number">1</span>, y * <span class="number">2</span>, y ** <span class="number">2</span> <span class="comment"># Prints "2.5 3.5 5.0 6.25"</span></span><br></pre></td></tr></table></figure>
+<p>Note that unlike many languages, Python does not have unary increment (<code>x++</code>)<br>or decrement (<code>x--</code>) operators.</p>
+<p>Python also has built-in types for long integers and complex numbers;<br>you can find all of the details<br><a href="https://docs.python.org/2/library/stdtypes.html#numeric-types-int-float-long-complex" target="_blank" rel="noopener">in the documentation</a>.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/python-numpy-tutorial/">
+            <a class="btn" href="/2017/10/08/python-numpy-tutorial/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1399,15 +1736,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/ipython-tutorial/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/ipython-tutorial/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/ipython-tutorial/" class="leancloud_visitors" data-flag-title="IPython Tutorial">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  IPython Tutorial
+              </div>
           
 
         </div>
@@ -1424,10 +1786,14 @@
 
       
         
-          IPython Tutorial
+          <p>In this class, we will use <a href="http://ipython.org/" target="_blank" rel="noopener">IPython notebooks</a> for the<br>programming assignments. An IPython notebook lets you write and execute Python<br>code in your web browser. IPython notebooks make it very easy to tinker with<br>code and execute it in bits and pieces; for this reason IPython notebooks are<br>widely used in scientific computing.</p>
+<p>Installing and running IPython is easy. From the command line, the following<br>will install IPython:</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> <span class="string">"ipython[notebook]"</span></span><br></pre></td></tr></table></figure>
+<p>Once you have IPython installed, start it with this command:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ipython notebook</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/ipython-tutorial/">
+            <a class="btn" href="/2017/10/08/ipython-tutorial/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1545,15 +1911,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[15]反向解析路由/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[15]反向解析路由/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[15]反向解析路由/" class="leancloud_visitors" data-flag-title="Django[15]反向解析路由">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[15]反向解析路由
+              </div>
           
 
         </div>
@@ -1570,14 +1961,24 @@
 
       
         
-          Django[15]反向解析路由
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[15]反向解析路由/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="给url起一个名字"><a href="#给url起一个名字" class="headerlink" title="给url起一个名字"></a>给url起一个名字</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url(<span class="string">r'^(?P&lt;id&gt;\d+)/$'</span>, views.posts_detail, name=<span class="string">"detail"</span>),</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Template中</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"</span></span></span><span class="template-tag">&#123;% <span class="name"><span class="name">url</span></span> 'detail' id=obj.id %&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.title &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Python代码中</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> redirect  <span class="comment"># 调转请求</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse  <span class="comment"># 反向解析url的</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="keyword">return</span> redirect(reverse(<span class="string">"detail"</span>, kwargs=&#123;<span class="string">"id"</span>: <span class="number">3</span>&#125;))</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Model中 get_absolute_url()</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reverse(<span class="string">"detail"</span>, kwargs=&#123;<span class="string">"id"</span>: self.id&#125;)</span><br><span class="line">    <span class="comment"># return "/post/&#123;&#125;/".format(self.id)</span></span><br><span class="line">    <span class="comment"># return "/post/%s/" % (self.id)</span></span><br></pre></td></tr></table></figure>
+<h1 id="url的命令空间-namespace"><a href="#url的命令空间-namespace" class="headerlink" title="url的命令空间 namespace"></a>url的命令空间 namespace</h1><p>在一级的url设置的，用于区分不用的app，因为不同的app下面可能存在同名的 url<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">url(<span class="string">r'^post/'</span>, include(posts_urls, namespace=<span class="string">"post"</span>)),</span><br><span class="line"></span><br><span class="line">&lt;a href=<span class="string">"&#123;% url 'post:detail' id=obj.id %&#125;"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reverse(<span class="string">"post:detail"</span>, kwargs=&#123;<span class="string">"id"</span>: self.id&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMjYxMzI1ODE4MA==.html?spm=a2h0j.8191423.playlist_content.5!18~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.18" target="_blank" rel="noopener">Django1.10教程 -15 -反向解析路由</a></p>
+
+          
         
       
     </div>
@@ -1691,15 +2092,40 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/08/Django[14]动态路由/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[14]动态路由/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
+             <span id="/2017/10/08/Django[14]动态路由/" class="leancloud_visitors" data-flag-title="Django[14]动态路由">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
 
+          
+
+          
+              <div class="post-description">
+                  Django[14]动态路由
+              </div>
           
 
         </div>
@@ -1716,14 +2142,17 @@
 
       
         
-          Django[14]动态路由
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Django[14]动态路由/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="Django中的URL介绍"><a href="#Django中的URL介绍" class="headerlink" title="Django中的URL介绍"></a>Django中的URL介绍</h1><p><strong>/bbs/urls.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> urls <span class="keyword">as</span> posts_urls</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    url(<span class="string">r'^post/'</span>, include(posts_urls)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>/posts/urls.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^$'</span>, views.posts_home),</span><br><span class="line">    url(<span class="string">r'^detail/$'</span>, views.posts_detail),</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p><a href="http://127.0.0.1:8000/post/detail/" target="_blank" rel="noopener">http://127.0.0.1:8000/post/detail/</a></p>
+<h1 id="动态路由和参数传递"><a href="#动态路由和参数传递" class="headerlink" title="动态路由和参数传递"></a>动态路由和参数传递</h1><h2 id="页面点击是通过设置a标签来调转的"><a href="#页面点击是通过设置a标签来调转的" class="headerlink" title="页面点击是通过设置a标签来调转的 "></a>页面点击是通过设置a标签来调转的 <a href="/post/detail/id.../"></a></h2><h2 id="后端view中通过id来查询不同的帖子对象"><a href="#后端view中通过id来查询不同的帖子对象" class="headerlink" title="后端view中通过id来查询不同的帖子对象"></a>后端view中通过id来查询不同的帖子对象</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url(<span class="string">r'^detail/(?P&lt;id&gt;\d+)/$'</span>, views.posts_detail,),</span><br></pre></td></tr></table></figure>
+<h2 id="在模板中组合起来"><a href="#在模板中组合起来" class="headerlink" title="在模板中组合起来"></a>在模板中组合起来</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2 <span class="class"><span class="keyword">class</span></span>=<span class="string">"blog-post-title"</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/post/detail/&#123;&#123;obj.id&#125;&#125;/"</span>&gt;</span>&#123;&#123; obj.title &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>via <a href="http://v.youku.com/v_show/id_XMjYwNDA0MzIzNg==.html?spm=a2h0j.8191423.playlist_content.5!17~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.17" target="_blank" rel="noopener">Django1.10教程 -14 -动态路由</a></p>
+
+          
         
       
     </div>
@@ -1886,12 +2315,23 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+	<span id="busuanzi_container_site_pv">
+		本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</span>
 
+	<span id="busuanzi_container_site_uv">
+	  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</span>
+	
   
 </div>
 
@@ -1904,7 +2344,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
 
 
 
@@ -2051,26 +2491,468 @@
 
 
 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
 
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
 
 
 
   
+
   
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
   
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
 
   
   
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
-
-
 
   
 
@@ -2080,12 +2962,88 @@
 
   
   
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
 
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
   
-
-  
-
-  
-
 </body>
 </html>
