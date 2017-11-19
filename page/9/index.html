@@ -306,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[02]第一个django程序/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[01]Virtualenv&Django/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -325,7 +325,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/07/Django[02]第一个django程序/" itemprop="url">Django[02]第一个django程序</a></h1>
+                <a class="post-title-link" href="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="url">Django[01]Virtualenv&Django</a></h1>
         
 
         <div class="post-meta">
@@ -378,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/07/Django[02]第一个django程序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[02]第一个django程序/" itemprop="commentCount"></span>
+                <a href="/2017/10/07/Django[01]Virtualenv&Django/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -387,7 +387,7 @@
 
           
           
-             <span id="/2017/10/07/Django[02]第一个django程序/" class="leancloud_visitors" data-flag-title="Django[02]第一个django程序">
+             <span id="/2017/10/07/Django[01]Virtualenv&Django/" class="leancloud_visitors" data-flag-title="Django[01]Virtualenv&Django">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -405,7 +405,7 @@
 
           
               <div class="post-description">
-                  Django[02]第一个django程序
+                  Django[01]Virtualenv&Django
               </div>
           
 
@@ -424,18 +424,29 @@
       
         
           
-            <p><strong>创建一个bbs项目</strong></p>
-<p><img src="https://i.imgur.com/2KEqYgu.png" alt=""></p>
-<p><strong>bbs可以作为一个独立的app部署，重命名文件名为src</strong></p>
-<p><img src="https://i.imgur.com/1hJclPe.png" alt=""></p>
-<p><strong>同步数据表：python .\manage.py migrate</strong></p>
-<p><img src="https://i.imgur.com/jxOPiG9.png" alt=""></p>
-<p><strong>修改setting.py配置文件</strong></p>
-<p><img src="https://i.imgur.com/Z75TCOq.png" alt=""></p>
-<p><strong>创建超级用户：python .\manage.py createsuperuser</strong><br><img src="https://i.imgur.com/XSlVyFQ.png" alt=""></p>
-<p><strong>启动服务：python .\manage.py runserver</strong></p>
-<p>浏览器中输入<a href="http://127.0.0.1:8000/admin/进入django的管理后台" target="_blank" rel="noopener">http://127.0.0.1:8000/admin/进入django的管理后台</a><br><img src="https://i.imgur.com/DjTCMZc.png" alt=""><br><img src="https://i.imgur.com/XQF0M6q.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg3NDg4MDEzMg==.html?spm=a2h0j.8191423.playlist_content.5!3~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.3" target="_blank" rel="noopener">Django1.10教程[02]之第一个Django程序</a></p>
+            <h1 id="配置虚拟环境"><a href="#配置虚拟环境" class="headerlink" title="配置虚拟环境"></a>配置虚拟环境</h1><h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv:"></a>安装virtualenv:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="使用virtualenv"><a href="#使用virtualenv" class="headerlink" title="使用virtualenv"></a>使用virtualenv</h2><h3 id="创建虚拟环境："><a href="#创建虚拟环境：" class="headerlink" title="创建虚拟环境："></a>创建虚拟环境：</h3><p><strong>virtualenv [环境（文件夹）名]</strong></p>
+<p><img src="https://i.imgur.com/91qxDdD.png" alt=""></p>
+<h3 id="启用虚拟环境："><a href="#启用虚拟环境：" class="headerlink" title="启用虚拟环境："></a>启用虚拟环境：</h3><p><strong>.\Scripts\activate</strong></p>
+<p><img src="https://i.imgur.com/vAZWmfe.png" alt=""></p>
+<h3 id="退出虚拟环境："><a href="#退出虚拟环境：" class="headerlink" title="退出虚拟环境："></a>退出虚拟环境：</h3><p><strong>deactivate</strong></p>
+<p><img src="https://i.imgur.com/crvhBNX.png" alt=""></p>
+<h1 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install django</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/7aXfWWO.png" alt=""></p>
+<h1 id="第一个Django项目"><a href="#第一个Django项目" class="headerlink" title="第一个Django项目"></a>第一个Django项目</h1><p><strong>1、python manage.py startproject my_first(我们的项目名)</strong><br><img src="https://i.imgur.com/OAE9fFY.png" alt=""></p>
+<p><strong>2、python manage.py runserver 127.0.0.1:8000</strong></p>
+<p><img src="https://i.imgur.com/rf21gwg.png" alt=""></p>
+<p><img src="https://i.imgur.com/eNM2lYU.png" alt=""></p>
+<p>补充：</p>
+<p>1、PowerShell里面执行activate失败？</p>
+<p>输入：</p>
+<pre><code>set-executionpolicy RemoteSigned
+</code></pre><p>2、pip freeze命令使用</p>
+<ul>
+<li>1、pip freeze &gt; requirements.txt (保存依赖包到requirements.txt)</li>
+<li>2、pip install -r requirements.txt (批量安装项目需要的所有依赖包)</li>
+</ul>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg3MTU2NDU0NA==.html?spm=a2h0j.8191423.playlist_content.5!2~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.2" target="_blank" rel="noopener">Django1.10教程[01]之virtualenv使用</a></p>
 
           
         
@@ -661,7 +672,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[01]Virtualenv&Django/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[02]第一个django程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -680,7 +691,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="url">Django[01]Virtualenv&Django</a></h1>
+                <a class="post-title-link" href="/2017/10/07/Django[02]第一个django程序/" itemprop="url">Django[02]第一个django程序</a></h1>
         
 
         <div class="post-meta">
@@ -733,8 +744,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/07/Django[01]Virtualenv&Django/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="commentCount"></span>
+                <a href="/2017/10/07/Django[02]第一个django程序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[02]第一个django程序/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -742,7 +753,7 @@
 
           
           
-             <span id="/2017/10/07/Django[01]Virtualenv&Django/" class="leancloud_visitors" data-flag-title="Django[01]Virtualenv&Django">
+             <span id="/2017/10/07/Django[02]第一个django程序/" class="leancloud_visitors" data-flag-title="Django[02]第一个django程序">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -760,7 +771,7 @@
 
           
               <div class="post-description">
-                  Django[01]Virtualenv&Django
+                  Django[02]第一个django程序
               </div>
           
 
@@ -779,29 +790,18 @@
       
         
           
-            <h1 id="配置虚拟环境"><a href="#配置虚拟环境" class="headerlink" title="配置虚拟环境"></a>配置虚拟环境</h1><h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv:"></a>安装virtualenv:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
-<h2 id="使用virtualenv"><a href="#使用virtualenv" class="headerlink" title="使用virtualenv"></a>使用virtualenv</h2><h3 id="创建虚拟环境："><a href="#创建虚拟环境：" class="headerlink" title="创建虚拟环境："></a>创建虚拟环境：</h3><p><strong>virtualenv [环境（文件夹）名]</strong></p>
-<p><img src="https://i.imgur.com/91qxDdD.png" alt=""></p>
-<h3 id="启用虚拟环境："><a href="#启用虚拟环境：" class="headerlink" title="启用虚拟环境："></a>启用虚拟环境：</h3><p><strong>.\Scripts\activate</strong></p>
-<p><img src="https://i.imgur.com/vAZWmfe.png" alt=""></p>
-<h3 id="退出虚拟环境："><a href="#退出虚拟环境：" class="headerlink" title="退出虚拟环境："></a>退出虚拟环境：</h3><p><strong>deactivate</strong></p>
-<p><img src="https://i.imgur.com/crvhBNX.png" alt=""></p>
-<h1 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install django</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/7aXfWWO.png" alt=""></p>
-<h1 id="第一个Django项目"><a href="#第一个Django项目" class="headerlink" title="第一个Django项目"></a>第一个Django项目</h1><p><strong>1、python manage.py startproject my_first(我们的项目名)</strong><br><img src="https://i.imgur.com/OAE9fFY.png" alt=""></p>
-<p><strong>2、python manage.py runserver 127.0.0.1:8000</strong></p>
-<p><img src="https://i.imgur.com/rf21gwg.png" alt=""></p>
-<p><img src="https://i.imgur.com/eNM2lYU.png" alt=""></p>
-<p>补充：</p>
-<p>1、PowerShell里面执行activate失败？</p>
-<p>输入：</p>
-<pre><code>set-executionpolicy RemoteSigned
-</code></pre><p>2、pip freeze命令使用</p>
-<ul>
-<li>1、pip freeze &gt; requirements.txt (保存依赖包到requirements.txt)</li>
-<li>2、pip install -r requirements.txt (批量安装项目需要的所有依赖包)</li>
-</ul>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg3MTU2NDU0NA==.html?spm=a2h0j.8191423.playlist_content.5!2~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.2" target="_blank" rel="noopener">Django1.10教程[01]之virtualenv使用</a></p>
+            <p><strong>创建一个bbs项目</strong></p>
+<p><img src="https://i.imgur.com/2KEqYgu.png" alt=""></p>
+<p><strong>bbs可以作为一个独立的app部署，重命名文件名为src</strong></p>
+<p><img src="https://i.imgur.com/1hJclPe.png" alt=""></p>
+<p><strong>同步数据表：python .\manage.py migrate</strong></p>
+<p><img src="https://i.imgur.com/jxOPiG9.png" alt=""></p>
+<p><strong>修改setting.py配置文件</strong></p>
+<p><img src="https://i.imgur.com/Z75TCOq.png" alt=""></p>
+<p><strong>创建超级用户：python .\manage.py createsuperuser</strong><br><img src="https://i.imgur.com/XSlVyFQ.png" alt=""></p>
+<p><strong>启动服务：python .\manage.py runserver</strong></p>
+<p>浏览器中输入<a href="http://127.0.0.1:8000/admin/进入django的管理后台" target="_blank" rel="noopener">http://127.0.0.1:8000/admin/进入django的管理后台</a><br><img src="https://i.imgur.com/DjTCMZc.png" alt=""><br><img src="https://i.imgur.com/XQF0M6q.png" alt=""></p>
+<p>via <a href="http://v.youku.com/v_show/id_XMTg3NDg4MDEzMg==.html?spm=a2h0j.8191423.playlist_content.5!3~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.3" target="_blank" rel="noopener">Django1.10教程[02]之第一个Django程序</a></p>
 
           
         
@@ -2203,14 +2203,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">boredbird</span>
 	
-	<span id="busuanzi_container_site_pv">
-		本站总访问量<span id="busuanzi_value_site_pv"></span>次
-	</span>
-
-	<span id="busuanzi_container_site_uv">
-	  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-	</span>
-	
   
 </div>
 
@@ -2218,6 +2210,14 @@
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
+<span id="busuanzi_container_site_pv">
+	本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+	
 
   <span class="post-meta-divider">|</span>
 

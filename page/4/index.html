@@ -1351,7 +1351,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/17/Visual Studio 无法编译新打开的C文件/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/17/使用pydotplus绘决策树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1370,7 +1370,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/17/Visual Studio 无法编译新打开的C文件/" itemprop="url">Visual Studio 无法编译新打开的C文件</a></h1>
+                <a class="post-title-link" href="/2017/10/17/使用pydotplus绘决策树/" itemprop="url">使用pydotplus绘决策树</a></h1>
         
 
         <div class="post-meta">
@@ -1423,8 +1423,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/17/Visual Studio 无法编译新打开的C文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/17/Visual Studio 无法编译新打开的C文件/" itemprop="commentCount"></span>
+                <a href="/2017/10/17/使用pydotplus绘决策树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/17/使用pydotplus绘决策树/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1432,7 +1432,7 @@
 
           
           
-             <span id="/2017/10/17/Visual Studio 无法编译新打开的C文件/" class="leancloud_visitors" data-flag-title="Visual Studio 无法编译新打开的C文件">
+             <span id="/2017/10/17/使用pydotplus绘决策树/" class="leancloud_visitors" data-flag-title="使用pydotplus绘决策树">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1450,7 +1450,7 @@
 
           
               <div class="post-description">
-                  Visual Studio 无法编译新打开的C文件
+                  使用pydotplus绘决策树
               </div>
           
 
@@ -1468,14 +1468,20 @@
 
       
         
-          
-            <p>用 Visual Studio打开有c文件的文件夹，发现里面的c文件都无法编译，导航栏里面连<code>生成</code>按钮都没有，调试按钮也是灰色的。</p>
-<p><img src="assets/C/Visual Studio 1.png" alt=""></p>
-<p><img src="assets/C/Visual Studio 2.png" alt=""></p>
-<p><img src="assets/C/Visual Studio 3.png" alt=""></p>
-<p>需在项目中单个添加c文件。</p>
-
-          
+          <p>首先安装<code>pydotplus</code></p>
+<p><code>pip install pydotplus</code></p>
+<p>然后打印训练好的<code>clf</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pydotplus</span><br><span class="line">dot_data = tree.export_graphviz(clf, out_file=<span class="keyword">None</span>,</span><br><span class="line">                                feature_names=X_dummy.columns,</span><br><span class="line">                                class_names=<span class="string">'target'</span>,</span><br><span class="line">                                filled=<span class="keyword">True</span>, rounded=<span class="keyword">True</span>,</span><br><span class="line">                                special_characters=<span class="keyword">True</span>)</span><br><span class="line">graph = pydotplus.graph_from_dot_data(dot_data)</span><br><span class="line">graph.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</span><br></pre></td></tr></table></figure>
+<p>发现报错：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\IPython\core\interactiveshell.py"</span>, <span class="keyword">line</span> 2881, <span class="keyword">in</span> run_code</span><br><span class="line">    exec(code_obj, self.user_global_ns, self.user_ns)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"&lt;ipython-input-27-2c78351c7fea&gt;"</span>, <span class="keyword">line</span> 7, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">graph</span>.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1810, <span class="keyword">in</span> &lt;lambda&gt;</span><br><span class="line">    <span class="keyword">prog</span>=self.<span class="keyword">prog</span>: self.write(path, <span class="keyword">format</span>=f, <span class="keyword">prog</span>=<span class="keyword">prog</span>)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1918, <span class="keyword">in</span> write</span><br><span class="line">    fobj.write(self.create(<span class="keyword">prog</span>, <span class="keyword">format</span>))</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1960, <span class="keyword">in</span> create</span><br><span class="line">    'GraphViz\'s executables not found')</span><br><span class="line">InvocationException: GraphViz's executables not found</span><br></pre></td></tr></table></figure>
+<p>提示没有找到<code>&#39;GraphViz\&#39;s executables&#39;</code>:</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/17/使用pydotplus绘决策树/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1701,7 +1707,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/17/使用pydotplus绘决策树/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/17/Visual Studio 无法编译新打开的C文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1720,7 +1726,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/17/使用pydotplus绘决策树/" itemprop="url">使用pydotplus绘决策树</a></h1>
+                <a class="post-title-link" href="/2017/10/17/Visual Studio 无法编译新打开的C文件/" itemprop="url">Visual Studio 无法编译新打开的C文件</a></h1>
         
 
         <div class="post-meta">
@@ -1773,8 +1779,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/17/使用pydotplus绘决策树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/17/使用pydotplus绘决策树/" itemprop="commentCount"></span>
+                <a href="/2017/10/17/Visual Studio 无法编译新打开的C文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/17/Visual Studio 无法编译新打开的C文件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1782,7 +1788,7 @@
 
           
           
-             <span id="/2017/10/17/使用pydotplus绘决策树/" class="leancloud_visitors" data-flag-title="使用pydotplus绘决策树">
+             <span id="/2017/10/17/Visual Studio 无法编译新打开的C文件/" class="leancloud_visitors" data-flag-title="Visual Studio 无法编译新打开的C文件">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1800,7 +1806,7 @@
 
           
               <div class="post-description">
-                  使用pydotplus绘决策树
+                  Visual Studio 无法编译新打开的C文件
               </div>
           
 
@@ -1818,20 +1824,14 @@
 
       
         
-          <p>首先安装<code>pydotplus</code></p>
-<p><code>pip install pydotplus</code></p>
-<p>然后打印训练好的<code>clf</code>:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pydotplus</span><br><span class="line">dot_data = tree.export_graphviz(clf, out_file=<span class="keyword">None</span>,</span><br><span class="line">                                feature_names=X_dummy.columns,</span><br><span class="line">                                class_names=<span class="string">'target'</span>,</span><br><span class="line">                                filled=<span class="keyword">True</span>, rounded=<span class="keyword">True</span>,</span><br><span class="line">                                special_characters=<span class="keyword">True</span>)</span><br><span class="line">graph = pydotplus.graph_from_dot_data(dot_data)</span><br><span class="line">graph.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</span><br></pre></td></tr></table></figure>
-<p>发现报错：</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\IPython\core\interactiveshell.py"</span>, <span class="keyword">line</span> 2881, <span class="keyword">in</span> run_code</span><br><span class="line">    exec(code_obj, self.user_global_ns, self.user_ns)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"&lt;ipython-input-27-2c78351c7fea&gt;"</span>, <span class="keyword">line</span> 7, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">graph</span>.write_pdf(<span class="string">"E:\\ScoreCard\\fpd30.pdf"</span>)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1810, <span class="keyword">in</span> &lt;lambda&gt;</span><br><span class="line">    <span class="keyword">prog</span>=self.<span class="keyword">prog</span>: self.write(path, <span class="keyword">format</span>=f, <span class="keyword">prog</span>=<span class="keyword">prog</span>)</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1918, <span class="keyword">in</span> write</span><br><span class="line">    fobj.write(self.create(<span class="keyword">prog</span>, <span class="keyword">format</span>))</span><br><span class="line">  <span class="keyword">File</span> <span class="string">"D:\ProgramData\Anaconda2\lib\site-packages\pydotplus\graphviz.py"</span>, <span class="keyword">line</span> 1960, <span class="keyword">in</span> create</span><br><span class="line">    'GraphViz\'s executables not found')</span><br><span class="line">InvocationException: GraphViz's executables not found</span><br></pre></td></tr></table></figure>
-<p>提示没有找到<code>&#39;GraphViz\&#39;s executables&#39;</code>:</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/17/使用pydotplus绘决策树/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>用 Visual Studio打开有c文件的文件夹，发现里面的c文件都无法编译，导航栏里面连<code>生成</code>按钮都没有，调试按钮也是灰色的。</p>
+<p><img src="assets/C/Visual Studio 1.png" alt=""></p>
+<p><img src="assets/C/Visual Studio 2.png" alt=""></p>
+<p><img src="assets/C/Visual Studio 3.png" alt=""></p>
+<p>需在项目中单个添加c文件。</p>
+
+          
         
       
     </div>
@@ -2179,14 +2179,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">boredbird</span>
 	
-	<span id="busuanzi_container_site_pv">
-		本站总访问量<span id="busuanzi_value_site_pv"></span>次
-	</span>
-
-	<span id="busuanzi_container_site_uv">
-	  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-	</span>
-	
   
 </div>
 
@@ -2194,6 +2186,14 @@
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
+<span id="busuanzi_container_site_pv">
+	本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+<span id="busuanzi_container_site_uv">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+	
 
   <span class="post-meta-divider">|</span>
 
