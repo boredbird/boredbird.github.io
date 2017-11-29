@@ -8,7 +8,7 @@ tags:
 description: Sequential Minimal Optimization:A Fast Algorithm for Training Support Vector Machines
 toc: true
 ---
-## INTRODUCTION
+### INTRODUCTION
 Training a support vector machine requires the solution of a very large quadratic programming (QP) optimization problem. SMO breaks this large QP problem into a series of smallest possible QP problems. These small QP problems are solved analytically, which avoids using a time-consuming numerical QP optimization as an inner loop. The amount of memory required for SMO is linear in the training set size,which allows SMO to handle very large training sets.SMO’s computation time is dominated by SVM evaluation, hence SMO is fastest for linear SVMs and sparse data sets.Instead of previous SVM learning algorithms that use numerical quadratic programming (QP) as an inner loop, SMO uses an analytic QP step.
 
 ### Overview of Support Vector Machines
@@ -17,6 +17,8 @@ Training a support vector machine requires the solution of a very large quadrati
   <div class="figcaption">
   </div>
 </div>
+
+<!--more-->
 
 ### Lagrange dual form
 SVM在求解过程中首先用了拉格朗日对偶，作用是将w的计算提前并消除w，使得优化函数变为拉格朗日乘子的单一参数优化问题。
@@ -57,7 +59,7 @@ SVMs can be even further generalized to non-linear classifiers. The output of a 
 ### Karush-Kuhn-Tucker (KKT) conditions
 The QP problem in equation (11), above, is the QP problem that the SMO algorithm will solve. In order to make the QP problem above be positive definite, the kernel function K must obey Mercer’s conditions.The Karush-Kuhn-Tucker (KKT) conditions are necessary and sufficient conditions for an optimal point of a positive definite QP problem. The KKT conditions for the QP problem (11) are particularly simple. The QP problem is solved when, for all i:
 <div class="fig figcenter fighighlight">
-  <img src="/assets/ML/svm/SMO_fig6.png" width="30%">
+  <img src="/assets/ML/svm/SMO_fig6.png" width="40%">
   <div class="figcaption">
   </div>
 </div>
@@ -65,7 +67,7 @@ where *ui* is the output of the SVM for the ith training example. Notice that th
 can be evaluated on one example at a time, which will be useful in the construction of the SMO
 algorithm.
 
-## SEQUENTIAL MINIMAL OPTIMIZATION
+### SEQUENTIAL MINIMAL OPTIMIZATION
 Sequential Minimal Optimization (SMO) is a simple algorithm that can quickly solve the SVM QP problem without any extra matrix storage and without using numerical QP optimization steps at all. SMO decomposes the overall QP problem into QP sub-problems, using Osuna’s theorem to ensure convergence.
 
 Unlike the previous methods, SMO chooses to solve the smallest possible optimization problem at every step. For the standard SVM QP problem, the smallest possible optimization problem involves two Lagrange multipliers, because the Lagrange multipliers must obey a linear equality constraint. At every step, SMO chooses two Lagrange multipliers to jointly optimize, finds the optimal values for these multipliers, and updates the SVM to reflect the new optimal values.
@@ -78,7 +80,7 @@ There are two components to SMO: an analytic method for solving for the two Lagr
 
 假设我们选取了初始值{a_1,a_2,a_3,...,a_n}满足了问题中的约束条件。接下来，{a_3,a_4,...,a_n}，这样*W*就是*a_1*和*a_2*的函数。并且*a_1*和*a_2*满足条件：
 <div class="fig figcenter fighighlight">
-  <img src="/assets/ML/svm/SMO_fig8.png" width="20%">
+  <img src="/assets/ML/svm/SMO_fig8.png" width="40%">
   <div class="figcaption">
   </div>
 </div>
