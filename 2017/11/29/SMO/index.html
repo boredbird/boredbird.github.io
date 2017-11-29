@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="Pl2GAjqhdU" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SVM,SMO," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Sequential Minimal Optimization:A Fast Algorithm for Training Support Vector Machines">
+<meta name="keywords" content="SVM,SMO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sequential Minimal Optimization">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/11/29/SMO/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="Sequential Minimal Optimization:A Fast Algorithm for Training Support Vector Machines">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig1.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig2.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig3.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig4.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig5.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig6.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig8.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig7.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig9.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig10.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig11.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig12.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig13.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig14.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig15.png">
+<meta property="og:updated_time" content="2017-11-29T12:27:44.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sequential Minimal Optimization">
+<meta name="twitter:description" content="Sequential Minimal Optimization:A Fast Algorithm for Training Support Vector Machines">
+<meta name="twitter:image" content="http://zhangchunhui.cn/assets/ML/svm/SMO_fig1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/11/29/SMO/"/>
+
+
+
+
+
+  <title>Sequential Minimal Optimization | boredbird</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bd5a63e2d0d6f11fcae1d6b1506b54ef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/29/SMO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Sequential Minimal Optimization</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T20:26:12+08:00">
+                2017-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/29/SMO/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/29/SMO/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/29/SMO/" class="leancloud_visitors" data-flag-title="Sequential Minimal Optimization">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+              <div class="post-description">
+                  Sequential Minimal Optimization:A Fast Algorithm for Training Support Vector Machines
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a>INTRODUCTION</h3><p>Training a support vector machine requires the solution of a very large quadratic programming (QP) optimization problem. SMO breaks this large QP problem into a series of smallest possible QP problems. These small QP problems are solved analytically, which avoids using a time-consuming numerical QP optimization as an inner loop. The amount of memory required for SMO is linear in the training set size,which allows SMO to handle very large training sets.SMO’s computation time is dominated by SVM evaluation, hence SMO is fastest for linear SVMs and sparse data sets.Instead of previous SVM learning algorithms that use numerical quadratic programming (QP) as an inner loop, SMO uses an analytic QP step.</p>
+<h3 id="Overview-of-Support-Vector-Machines"><a href="#Overview-of-Support-Vector-Machines" class="headerlink" title="Overview of Support Vector Machines"></a>Overview of Support Vector Machines</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig1.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<a id="more"></a>
+<h3 id="Lagrange-dual-form"><a href="#Lagrange-dual-form" class="headerlink" title="Lagrange dual form"></a>Lagrange dual form</h3><p>SVM在求解过程中首先用了拉格朗日对偶，作用是将w的计算提前并消除w，使得优化函数变为拉格朗日乘子的单一参数优化问题。<br>对偶函数最后的优化问题：</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig2.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<p>There is a one-to-one relationship between each Lagrange multiplier and each training example.Once the Lagrange multipliers are determined, the normal vector <em>w</em><br>and the threshold <em>b</em> can be derived from the Lagrange multipliers:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig3.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="linearly-unseparable"><a href="#linearly-unseparable" class="headerlink" title="linearly unseparable"></a>linearly unseparable</h3><p>Of course, not all data sets are linearly separable. There may be no hyperplane that splits the positive examples from the negative examples. In the formulation above, the non-separable case would correspond to an infinite solution. However, in 1995, Cortes &amp; Vapnik  suggested a modification to the original optimization statement (3) which allows, but penalizes, the failure of an example to reach the correct margin. That modification is:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig4.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="generalized-to-non-linear-classifiers"><a href="#generalized-to-non-linear-classifiers" class="headerlink" title="generalized to non-linear classifiers"></a>generalized to non-linear classifiers</h3><p>SVMs can be even further generalized to non-linear classifiers. The output of a non-linear SVM is explicitly computed from the Lagrange multipliers:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig5.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Karush-Kuhn-Tucker-KKT-conditions"><a href="#Karush-Kuhn-Tucker-KKT-conditions" class="headerlink" title="Karush-Kuhn-Tucker (KKT) conditions"></a>Karush-Kuhn-Tucker (KKT) conditions</h3><p>The QP problem in equation (11), above, is the QP problem that the SMO algorithm will solve. In order to make the QP problem above be positive definite, the kernel function K must obey Mercer’s conditions.The Karush-Kuhn-Tucker (KKT) conditions are necessary and sufficient conditions for an optimal point of a positive definite QP problem. The KKT conditions for the QP problem (11) are particularly simple. The QP problem is solved when, for all i:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig6.png" width="40%"><br>  <div class="figcaption"><br>  </div><br></div><br>where <em>ui</em> is the output of the SVM for the ith training example. Notice that the KKT conditions<br>can be evaluated on one example at a time, which will be useful in the construction of the SMO<br>algorithm.<br><br>### SEQUENTIAL MINIMAL OPTIMIZATION<br>Sequential Minimal Optimization (SMO) is a simple algorithm that can quickly solve the SVM QP problem without any extra matrix storage and without using numerical QP optimization steps at all. SMO decomposes the overall QP problem into QP sub-problems, using Osuna’s theorem to ensure convergence.<br><br>Unlike the previous methods, SMO chooses to solve the smallest possible optimization problem at every step. For the standard SVM QP problem, the smallest possible optimization problem involves two Lagrange multipliers, because the Lagrange multipliers must obey a linear equality constraint. At every step, SMO chooses two Lagrange multipliers to jointly optimize, finds the optimal values for these multipliers, and updates the SVM to reflect the new optimal values.<br><br>The advantage of SMO lies in the fact that solving for two Lagrange multipliers can be done analytically. Thus, numerical QP optimization is avoided entirely. The inner loop of the algorithm can be expressed in a short amount of C code, rather than invoking an entire QP library routine. Even though more optimization sub-problems are solved in the course of the algorithm,each sub-problem is so fast that the overall QP problem is solved quickly.<br><br>In addition, SMO requires no extra matrix storage at all. Thus, very large SVM training problems can fit inside of the memory of an ordinary personal computer or workstation. Because no matrix algorithms are used in SMO, it is less susceptible to numerical precision problems.<br><br>There are two components to SMO: an analytic method for solving for the two Lagrange multipliers, and a heuristic for choosing which multipliers to optimize.<br><br>假设我们选取了初始值{a_1,a_2,a_3,…,a_n}满足了问题中的约束条件。接下来，{a_3,a_4,…,a_n}，这样<em>W</em>就是<em>a_1</em>和<em>a_2</em>的函数。并且<em>a_1</em>和<em>a_2</em>满足条件：<br><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig8.png" width="40%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<p>由于{a_3,a_4,…,a_n}都是已知固定值，因此右边是一个具体的常数。当<em>y_1</em>和<em>y_2</em>异号时，也就是一个为1，一个为-1时，他们可以表示成一条直线，斜率为1；同理当<em>y_1</em>和<em>y_2</em>同号时，斜率为-1.</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig7.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Solving-for-Two-Lagrange-Multipliers"><a href="#Solving-for-Two-Lagrange-Multipliers" class="headerlink" title="Solving for Two Lagrange Multipliers"></a>Solving for Two Lagrange Multipliers</h3><p>In order to solve for the two Lagrange multipliers, SMO first computes the constraints on these multipliers and then solves for the constrained minimum. For convenience, all quantities that refer to the first multiplier will have a subscript 1, while all quantities that refer to the second multiplier will have a subscript 2. Because there are only two multipliers, the constraints can be easily be displayed in two dimensions (see figure 3). The bound constraints (9) cause the Lagrange multipliers to lie within a box, while the linear equality constraint (6) causes the Lagrange multipliers to lie on a diagonal line. Thus, the constrained minimum of the objective function must lie on a diagonal line segment (as shown in figure 3). This constraint explains why two is the minimum number of Lagrange multipliers that can be optimized: if SMO optimized only one multiplier, it could not fulfill the linear equality constraint at every step.</p>
+<p>The ends of the diagonal line segment can be expressed quite simply. Without loss of generality,<br>the algorithm first computes the second Lagrange multiplier <em>a_2</em> and computes the ends of the<br>diagonal line segment in terms of <em>a_2</em>. If the target <em>y_1</em> does not equal the target <em>y_2</em>, then the<br>following bounds apply to <em>a_2</em>:</p>
+<p>L = max(0,<em>a_2</em> - <em>a_1</em>), H = min(C,C + <em>a_2</em>- <em>a_1</em>).</p>
+<p>If the target <em>y_1</em> equals the target <em>y_2</em>, then the following bounds apply to <em>a_2</em>:</p>
+<p>L = max(0,<em>a_2</em> + <em>a_1</em> - C), H = min(C, <em>a_2</em> + <em>a_1</em>).</p>
+<p>然后将<em>a_1</em>用<em>a_2</em>表示：</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig9.png" width="20%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<p>然后反代入<em>W</em>中，得：</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig10.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<p>展开后<em>W</em>可以表示成<em>a_2</em>的二次函数。这样，直接求导可以得到<em>a_2</em>，然而要保证满足<em>L&lt;=a_2&lt;=H</em>，我们使用<em>new,unclipped</em>表示求导求出来的<em>a_2</em>，然后最后的<em>a_2</em>,要根据下面情况得到：</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig11.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<p>这样得到新的<em>a_2</em>，就可以得到新的<em>a_1</em>。</p>
+<h4 id="论文中的表达方式："><a href="#论文中的表达方式：" class="headerlink" title="论文中的表达方式："></a>论文中的表达方式：</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig12.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Heuristics-for-Choosing-Which-Multipliers-To-Optimize"><a href="#Heuristics-for-Choosing-Which-Multipliers-To-Optimize" class="headerlink" title="Heuristics for Choosing Which Multipliers To Optimize"></a>Heuristics for Choosing Which Multipliers To Optimize</h3><p>As long as SMO always optimizes and alters two Lagrange multipliers at every step and at least one of the Lagrange multipliers violated the KKT conditions before the step, then each step will decrease the objective function according to Osuna’s theorem [16]. Convergence is thus guaranteed. In order to speed convergence, SMO uses heuristics to choose which two Lagrange multipliers to jointly optimize.</p>
+<p>There are two separate choice heuristics: one for the first Lagrange multiplier and one for the second. The choice of the first heuristic provides the outer loop of the SMO algorithm. The outer loop first iterates over the entire training set, determining whether each example violates the KKT conditions (12). If an example violates the KKT conditions, it is then eligible for optimization. After one pass through the entire training set, the outer loop iterates over all examples whose Lagrange multipliers are neither 0 nor C (the non-bound examples). Again, each example is checked against the KKT conditions and violating examples are eligible for optimization. The outer loop makes repeated passes over the non-bound examples until all of the non-bound examples obey the KKT conditions within e. The outer loop then goes back and iterates over the entire training set. The outer loop keeps alternating between single passes over the entire training set and multiple passes over the non-bound subset until the entire training set obeys the KKT conditions within e, whereupon the algorithm terminates.</p>
+<p>The first choice heuristic concentrates the CPU time on the examples that are most likely to violate the KKT conditions: the non-bound subset. As the SMO algorithm progresses, examples that are at the bounds are likely to stay at the bounds, while examples that are not at the bounds will move as other examples are optimized. The SMO algorithm will thus iterate over the nonbound subset until that subset is self-consistent, then SMO will scan the entire data set to search for any bound examples that have become KKT violated due to optimizing the non-bound subset.</p>
+<p>Notice that the KKT conditions are checked to be within e of fulfillment. Typically, e is set to be 10-3. Recognition systems typically do not need to have the KKT conditions fulfilled to high accuracy: it is acceptable for examples on the positive margin to have outputs between 0.999 and 1.001. The SMO algorithm (and other SVM algorithms) will not converge as quickly if it is required to produce very high accuracy output.</p>
+<p>Once a first Lagrange multiplier is chosen, SMO chooses the second Lagrange multiplier to<br>maximize the size of the step taken during joint optimization. Now, evaluating the kernel<br>function K is time consuming, so SMO approximates the step size by the absolute value of the numerator in equation (16): |E_1 - E_2|. SMO keeps a cached error value E for every non-bound example in the training set and then chooses an error to approximately maximize the step size. If E_1 is positive, SMO chooses an example with minimum error E2. If E1 is negative, SMO chooses<br>an example with maximum error E_2.</p>
+<p>Under unusual circumstances, SMO cannot make positive progress using the second choice<br>heuristic described above. For example, positive progress cannot be made if the first and second training examples share identical input vectors x, which causes the objective function to become semi-definite. In this case, SMO uses a hierarchy of second choice heuristics until it finds a pair of Lagrange multipliers that can be make positive progress. Positive progress can be determined by making a non-zero step size upon joint optimization of the two Lagrange multipliers . The hierarchy of second choice heuristics consists of the following. If the above heuristic does not make positive progress, then SMO starts iterating through the non-bound examples, searching for an second example that can make positive progress. If none of the non-bound examples make positive progress, then SMO starts iterating through the entire training set until an example is found that makes positive progress. Both the iteration through the non-bound examples and the iteration through the entire training set are started at random locations, in order not to bias SMO towards the examples at the beginning of the training set. In extremely degenerate circumstances, none of the examples will make an adequate second example. When this happens, the first example is skipped and SMO continues with another chosen first example.</p>
+<h3 id="Computing-the-Threshold"><a href="#Computing-the-Threshold" class="headerlink" title="Computing the Threshold"></a>Computing the Threshold</h3><p>The threshold <em>b</em> is re-computed after each step, so that the KKT conditions are fulfilled for both optimized examples. The following threshold <em>b_1</em> is valid when the new <em>a_1</em> is not at the bounds,because it forces the output of the SVM to be <em>y_1</em> when the input is <em>x_1</em>:</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig13.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div><br>The following threshold <em>b_2</em> is valid when the new <em>a_2</em> is not at bounds, because it forces the output of the SVM to be <em>y_2</em> when the input is <em>x_2</em>:<br><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig14.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div><br>When both <em>b_1</em> and <em>b_2</em> are valid, they are equal. When both new Lagrange multipliers are at bound and if <em>L</em> is not equal to <em>H</em>, then the interval between <em>b_1</em> and <em>b_2</em> are all thresholds that are consistent with the KKT conditions. SMO chooses the threshold to be halfway in between <em>b_1</em> and <em>b_2</em>.<br><br>### An Optimization for Linear SVMs<br>To compute a linear SVM, only a single weight vector <em>w</em> needs to be stored, rather than all of the training examples that correspond to non-zero Lagrange multipliers. If the joint optimization succeeds, the stored weight vector needs to be updated to reflect the new Lagrange multiplier values. The weight vector update is easy, due to the linearity of the SVM:<br><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/SMO_fig15.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Pseudo-Code-Details"><a href="#Pseudo-Code-Details" class="headerlink" title="Pseudo Code Details"></a>Pseudo Code Details</h3><p>The pseudo-code below describes the entire SMO algorithm:<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">target = desired output <span class="built_in">vector</span></span><br><span class="line">point = training point <span class="built_in">matrix</span></span><br><span class="line"></span><br><span class="line">procedure takeStep(<span class="built_in">i1</span>,i2)</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">i1</span> == i2) <span class="built_in">return</span> <span class="number">0</span></span><br><span class="line">	alph1 = Lagrange multiplier <span class="keyword">for</span> <span class="built_in">i1</span></span><br><span class="line">	y1 = target[<span class="built_in">i1</span>]</span><br><span class="line">	E1 = SVM output on point[<span class="built_in">i1</span>] – y1 (check <span class="keyword">in</span> <span class="built_in">error</span> cache)</span><br><span class="line">	s = y1*y2</span><br><span class="line">	Compute L, H via equations (<span class="number">13</span>) <span class="keyword">and</span> (<span class="number">14</span>)</span><br><span class="line">	<span class="keyword">if</span> (L == H)</span><br><span class="line">		<span class="built_in">return</span> <span class="number">0</span></span><br><span class="line">	k11 = kernel(point[<span class="built_in">i1</span>],point[<span class="built_in">i1</span>])</span><br><span class="line">	k12 = kernel(point[<span class="built_in">i1</span>],point[i2])</span><br><span class="line">	k22 = kernel(point[i2],point[i2])</span><br><span class="line">	eta = k11+k22-<span class="number">2</span>*k12</span><br><span class="line">	<span class="keyword">if</span> (eta &gt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		a2 = alph2 + y2*(E1-E2)/eta</span><br><span class="line">		<span class="keyword">if</span> (a2 &lt; L) a2 = L</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (a2 &gt; H) a2 = H</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		Lobj = objective function <span class="built_in">at</span> a2=L</span><br><span class="line">		Hobj = objective function <span class="built_in">at</span> a2=H</span><br><span class="line">		<span class="keyword">if</span> (Lobj &lt; Hobj-eps)</span><br><span class="line">		a2 = L</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (Lobj &gt; Hobj+eps)</span><br><span class="line">		a2 = H</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		a2 = alph2</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (|a2-alph2| &lt; eps*(a2+alph2+eps))</span><br><span class="line">		<span class="built_in">return</span> <span class="number">0</span></span><br><span class="line">	a1 = alph1+s*(alph2-a2)</span><br><span class="line">	Update threshold to reflect change <span class="keyword">in</span> Lagrange multipliers</span><br><span class="line">	Update weight <span class="built_in">vector</span> to reflect change <span class="keyword">in</span> a1 &amp; a2, <span class="keyword">if</span> SVM <span class="built_in">is</span> <span class="built_in">linear</span></span><br><span class="line">	Update <span class="built_in">error</span> cache using <span class="built_in">new</span> Lagrange multipliers</span><br><span class="line">	Store a1 <span class="keyword">in</span> the alpha <span class="built_in">array</span></span><br><span class="line">	Store a2 <span class="keyword">in</span> the alpha <span class="built_in">array</span></span><br><span class="line">	<span class="built_in">return</span> <span class="number">1</span></span><br><span class="line">endprocedure</span><br><span class="line"></span><br><span class="line">procedure examineExample(i2)</span><br><span class="line">	y2 = target[i2]</span><br><span class="line">	alph2 = Lagrange multiplier <span class="keyword">for</span> i2</span><br><span class="line">	E2 = SVM output on point[i2] – y2 (check <span class="keyword">in</span> <span class="built_in">error</span> cache)</span><br><span class="line">	r2 = E2*y2</span><br><span class="line">	<span class="keyword">if</span> ((r2 &lt; -tol &amp;&amp; alph2 &lt; C) || (r2 &gt; tol &amp;&amp; alph2 &gt; <span class="number">0</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (number of non-zero &amp; non-C alpha &gt; <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">i1</span> = result of <span class="built_in">second</span> choice heuristic (section <span class="number">2.2</span>)</span><br><span class="line">			<span class="keyword">if</span> takeStep(<span class="built_in">i1</span>,i2)</span><br><span class="line">			<span class="built_in">return</span> <span class="number">1</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		loop over all non-zero <span class="keyword">and</span> non-C alpha, starting <span class="built_in">at</span> a <span class="built_in">random</span> point</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">i1</span> = <span class="built_in">identity</span> of current alpha</span><br><span class="line">			<span class="keyword">if</span> takeStep(<span class="built_in">i1</span>,i2)</span><br><span class="line">			<span class="built_in">return</span> <span class="number">1</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		loop over all possible <span class="built_in">i1</span>, starting <span class="built_in">at</span> a <span class="built_in">random</span> point</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">i1</span> = loop variable</span><br><span class="line">			<span class="keyword">if</span> (takeStep(<span class="built_in">i1</span>,i2)</span><br><span class="line">			<span class="built_in">return</span> <span class="number">1</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span></span><br><span class="line">endprocedure</span><br><span class="line"></span><br><span class="line">main routine:</span><br><span class="line">	numChanged = <span class="number">0</span>;</span><br><span class="line">	examineAll = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (numChanged &gt; <span class="number">0</span> | examineAll)</span><br><span class="line">	&#123;</span><br><span class="line">		numChanged = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (examineAll)</span><br><span class="line">			loop I over all training examples</span><br><span class="line">				numChanged += examineExample(I)</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			loop I over examples where alpha <span class="built_in">is</span> <span class="keyword">not</span> <span class="number">0</span> &amp; <span class="keyword">not</span> C</span><br><span class="line">				numChanged += examineExample(I)</span><br><span class="line">		<span class="keyword">if</span> (examineAll == <span class="number">1</span>)</span><br><span class="line">			examineAll = <span class="number">0</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (numChanged == <span class="number">0</span>)</span><br><span class="line">			examineAll = <span class="number">1</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>via</p>
+<ul>
+<li>Sequential Minimal Optimization: A Fast Algorithm for Training Support Vector Machines;© 1998 John Platt</li>
+<li><a href="http://www.cnblogs.com/jerrylead/archive/2011/03/18/1988419.html" target="_blank" rel="noopener">支持向量机（五）SMO算法</a></li>
+<li><a href="http://blog.csdn.net/luoshixian099/article/details/51227754" target="_blank" rel="noopener">【机器学习详解】SMO算法剖析</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SVM/" rel="tag"># SVM</a>
+          
+            <a href="/tags/SMO/" rel="tag"># SMO</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/19/BFGS算法/" rel="next" title="BFGS算法">
+                <i class="fa fa-chevron-left"></i> BFGS算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/pic_avatar.jpg"
+                alt="boredbird" />
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/boredbird" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/boredbird" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#INTRODUCTION"><span class="nav-number">1.</span> <span class="nav-text">INTRODUCTION</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview-of-Support-Vector-Machines"><span class="nav-number">2.</span> <span class="nav-text">Overview of Support Vector Machines</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lagrange-dual-form"><span class="nav-number">3.</span> <span class="nav-text">Lagrange dual form</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linearly-unseparable"><span class="nav-number">4.</span> <span class="nav-text">linearly unseparable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#generalized-to-non-linear-classifiers"><span class="nav-number">5.</span> <span class="nav-text">generalized to non-linear classifiers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Karush-Kuhn-Tucker-KKT-conditions"><span class="nav-number">6.</span> <span class="nav-text">Karush-Kuhn-Tucker (KKT) conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solving-for-Two-Lagrange-Multipliers"><span class="nav-number">7.</span> <span class="nav-text">Solving for Two Lagrange Multipliers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#论文中的表达方式："><span class="nav-number">7.1.</span> <span class="nav-text">论文中的表达方式：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heuristics-for-Choosing-Which-Multipliers-To-Optimize"><span class="nav-number">8.</span> <span class="nav-text">Heuristics for Choosing Which Multipliers To Optimize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Computing-the-Threshold"><span class="nav-number">9.</span> <span class="nav-text">Computing the Threshold</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pseudo-Code-Details"><span class="nav-number">10.</span> <span class="nav-text">Pseudo Code Details</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+	
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+  
+</body>
+</html>

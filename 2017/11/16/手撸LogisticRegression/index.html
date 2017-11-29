@@ -90,7 +90,7 @@
 <meta property="og:description" content="手撸LogisticRegression">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/ML/linear_model/QQ截图20171116153650.png">
-<meta property="og:updated_time" content="2017-11-18T15:16:24.871Z">
+<meta property="og:updated_time" content="2017-11-29T12:27:44.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手撸LogisticRegression">
 <meta name="twitter:description" content="手撸LogisticRegression">
@@ -438,13 +438,13 @@
 </ul>
 <h2 id="梯度下降法求最佳参数伪代码："><a href="#梯度下降法求最佳参数伪代码：" class="headerlink" title="梯度下降法求最佳参数伪代码："></a>梯度下降法求最佳参数伪代码：</h2><ol>
 <li>每个回归系数初始化为1</li>
-<li>重复R次：</li>
-</ol>
-<ul>
+<li>重复R次：<ul>
 <li>a.计算整个数据集的梯度</li>
 <li>b.使用alpha*gradient更新回归系数的向量</li>
 <li>c.返回回归系数</li>
 </ul>
+</li>
+</ol>
 <a id="more"></a>
 <h2 id="梯度下降法求最佳参数代码实现："><a href="#梯度下降法求最佳参数代码实现：" class="headerlink" title="梯度下降法求最佳参数代码实现："></a>梯度下降法求最佳参数代码实现：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 定义sigmoid函数：</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(inX)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span> / (<span class="number">1</span> + exp(-inX))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 梯度下降法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradAscent</span><span class="params">(dataMatIn, classLabels)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    利用梯度下降法求解逻辑回归系数</span></span><br><span class="line"><span class="string">    :param dataMatIn:2维NumPy数组，每列分别代表每个不同的特征，每行则代表每个训练样本</span></span><br><span class="line"><span class="string">    :param classLabels:</span></span><br><span class="line"><span class="string">    :return: 返回训练好的回归系数</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    dataMatrix = mat(dataMatIn)  <span class="comment"># convert to NumPy matrix</span></span><br><span class="line">    labelMat = mat(classLabels).transpose()  <span class="comment"># convert to NumPy matrix</span></span><br><span class="line">    m, n = shape(dataMatrix)</span><br><span class="line">    alpha = <span class="number">0.001</span> <span class="comment"># 步长</span></span><br><span class="line">    maxCycles = <span class="number">500</span> <span class="comment"># 迭代次数</span></span><br><span class="line">    weights = ones((n, <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(maxCycles):  <span class="comment"># heavy on matrix operations</span></span><br><span class="line">        h = sigmoid(dataMatrix * weights)  <span class="comment"># matrix mult</span></span><br><span class="line">        error = (labelMat - h)  <span class="comment"># vector subtraction</span></span><br><span class="line">        weights = weights + alpha * dataMatrix.transpose() * error  <span class="comment"># matrix mult</span></span><br><span class="line">    <span class="keyword">return</span> weights</span><br></pre></td></tr></table></figure>
 <h2 id="随机梯度下降法求最佳参数伪代码："><a href="#随机梯度下降法求最佳参数伪代码：" class="headerlink" title="随机梯度下降法求最佳参数伪代码："></a>随机梯度下降法求最佳参数伪代码：</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/linear_model/QQ截图20171116153650.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
@@ -582,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">101</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -604,7 +604,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">158</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
