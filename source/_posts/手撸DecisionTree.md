@@ -58,6 +58,20 @@ toc: true
 
 <!--more-->
 
+
+### 按照给定特征划分数据集
+``` python
+
+	def splitDataSet(dataSet, axis, value):
+	    retDataSet = []
+	    for featVec in dataSet:
+	        if featVec[axis] == value: # 只能筛选离散取值的变量
+	            reducedFeatVec = featVec[:axis]  # chop out axis used for splitting
+	            reducedFeatVec.extend(featVec[axis + 1:])
+	            retDataSet.append(reducedFeatVec)
+	    return retDataSet
+```
+
 ### 选择最好的数据集划分方式
 ``` python
 
@@ -78,7 +92,7 @@ toc: true
 	        # get a set of unique values
 	        uniqueVals = set(featList)
 	        newEntropy = 0.0
-	        for value in uniqueVals: # 遍历所有取值作为可能的分割点
+	        for value in uniqueVals: # 遍历所有取值作为可能的分割点,每个离散值作为一个单独的分组
 	            subDataSet = splitDataSet(dataSet, i, value) # 只能筛选离散取值的变量
 	            prob = len(subDataSet) / float(len(dataSet))
 	            newEntropy += prob * calcShannonEnt(subDataSet)
@@ -154,6 +168,21 @@ toc: true
 	        # 叶节点
 	        classLabel = valueOfFeat
 	    return classLabel
+```
+
+### 示例
+``` python
+	
+	dataSet, labels = createDataSet()
+	clf_tree = createTree(dataSet, labels)
+```
+
+#### 输出
+```
+
+	clf_tree
+	Out[5]: 
+	{'no surfacing': {0: 'no', 1: {'flippers': {0: 'no', 1: 'yes'}}}}
 ```
 
 ## DecisionTree小结
