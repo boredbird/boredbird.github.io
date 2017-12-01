@@ -4,10 +4,6 @@ date: 2017-11-13 14:53:12
 categories: "Python" 
 tags: 
      - Python
-     - file
-     - csv
-     - loadtxt
-     - read_csv
 description: python读取文件数据的几种方式
 ---
 # 方式一：f = file(path)

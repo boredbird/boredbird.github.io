@@ -3,7 +3,7 @@ title: 手撸LogisticRegression
 date: 2017-11-16 20:06:12 
 categories: "机器学习" 
 tags: 
-     - LogisticRegression
+     - 逻辑回归
 description: 手撸LogisticRegression
 toc: true
 ---
