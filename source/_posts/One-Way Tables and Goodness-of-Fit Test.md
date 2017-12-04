@@ -1,11 +1,11 @@
 ---
-title: Statistical Inference and Estimation
+title: One-Way Tables and Goodness-of-Fit Test
 date: 2017-12-04 20:26:12 
 categories: "statistics" 
 tags: 
      - Sampling distribution
      - Central Limit Theorem
-description: Statistical Inference and Estimation
+description: One-Way Tables and Goodness-of-Fit Test
 toc: true
 ---
 # Statistical Inference
