@@ -1,10 +1,10 @@
 ---
-title: Received "500: Internal Server Error"
+title: Received "500 Internal Server Error"
 date: 2018-03-01 16:53:12
 categories: "Python"
 tags:
      - Python
-description: Received "500: Internal Server Error"
+description: Received "500 Internal Server Error"
 ---
 ## 问题
 使用twine在whl文件打包上传到pypi时，出现如下错误：

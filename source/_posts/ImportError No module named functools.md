@@ -1,11 +1,11 @@
 ---
-title: ImportError: No module named functools
-date: 2017-10-11 09:59:02 
-categories: "django" 
-tags: 
+title: ImportError No module named functools
+date: 2017-10-11 09:59:02
+categories: "django"
+tags:
      - django
      - virtualenv
-description: ImportError: No module named functools
+description: ImportError No module named functools
 ---
 # 问题描述
 今天早上从git pull代码后，启动本地的virtualenv,发现报错：
@@ -22,7 +22,7 @@ description: ImportError: No module named functools
 	    import locale, codecs
 	  File "E:\Code\virtualenvs\myenvs\lib\locale.py", line 17, in <module>
 	    import functools
-	
+
 	ImportError: No module named functools
 ```
 # 解决方法
@@ -48,7 +48,7 @@ description: ImportError: No module named functools
 
 	(myenvs) E:\Code\virtualenvs\myenvs\src>python .\manage.py runserver
 	Performing system checks...
-	
+
 	System check identified no issues (0 silenced).
 	October 11, 2017 - 10:05:10
 	Django version 1.11.6, using settings 'bbs.settings'
