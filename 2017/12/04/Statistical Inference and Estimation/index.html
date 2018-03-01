@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="Pl2GAjqhdU" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Sampling distribution,Central Limit Theorem," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Statistical Inference and Estimation">
+<meta name="keywords" content="Sampling distribution,Central Limit Theorem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Statistical Inference and Estimation">
+<meta property="og:url" content="http://zhangchunhui.cn/2017/12/04/Statistical Inference and Estimation/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="Statistical Inference and Estimation">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://onlinecourses.science.psu.edu/stat504/sites/onlinecourses.science.psu.edu.stat504/files/lesson01/height_plot.gif">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204144632.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204145320.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204150533.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204151437.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204151631.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204151714.png">
+<meta property="og:image" content="https://onlinecourses.science.psu.edu/stat504/sites/onlinecourses.science.psu.edu.stat504/files/lesson01/sas_output_height.gif">
+<meta property="og:image" content="https://onlinecourses.science.psu.edu/stat504/sites/onlinecourses.science.psu.edu.stat504/files/lesson01/cnn_01.gif">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204153045.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204154105.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204154312.png">
+<meta property="og:image" content="http://zhangchunhui.cn/assets/Statistics/Statistical%20Inference%20and%20Estimation/QQ截图20171204155319.png">
+<meta property="og:updated_time" content="2018-03-01T11:03:13.474Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Statistical Inference and Estimation">
+<meta name="twitter:description" content="Statistical Inference and Estimation">
+<meta name="twitter:image" content="https://onlinecourses.science.psu.edu/stat504/sites/onlinecourses.science.psu.edu.stat504/files/lesson01/height_plot.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2017/12/04/Statistical Inference and Estimation/"/>
+
+
+
+
+
+  <title>Statistical Inference and Estimation | boredbird</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bd5a63e2d0d6f11fcae1d6b1506b54ef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/04/Statistical Inference and Estimation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Statistical Inference and Estimation</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T20:26:12+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/04/Statistical Inference and Estimation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/04/Statistical Inference and Estimation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/04/Statistical Inference and Estimation/" class="leancloud_visitors" data-flag-title="Statistical Inference and Estimation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+              <div class="post-description">
+                  Statistical Inference and Estimation
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Statistical-Inference"><a href="#Statistical-Inference" class="headerlink" title="Statistical Inference"></a>Statistical Inference</h1><p>Recall, a <strong>statistical inference</strong> aims at learning characteristics of the population from a sample; the population characteristics are <em>parameters</em> and sample characteristics are <em>statistics</em>.</p>
+<p>A <strong>statistical model</strong> is a representation of a complex phenomena that generated the data.</p>
+<ul>
+<li>It has mathematical formulations that describe relationships between random variables and parameters.</li>
+<li>It makes assumptions about the random variables, and sometimes parameters.</li>
+<li>A general form: data = model + residuals</li>
+<li>Model should explain most of the variation in the data</li>
+<li>Residuals are a representation of a lack-of-fit, that is of the portion of the data unexplained by the model.</li>
+</ul>
+<a id="more"></a>
+<p><strong>Estimation</strong> represents ways or a process of learning and determining the population parameter based on the model fitted to the data.</p>
+<p>Point estimation and interval estimation, and hypothesis testing are three main ways of learning about the population parameter from the sample statistic.</p>
+<p>An <strong>estimator</strong> is particular example of a statistic, which becomes an <strong>estimate</strong> when the formula is replaced with actual observed sample values.</p>
+<p><strong>Point estimation</strong> = a single value that estimates the parameter. Point estimates are single values calculated from the sample</p>
+<p><strong>Confidence Intervals</strong> = gives a range of values for the parameter Interval estimates are intervals within which the parameter is expected to fall, with a certain degree of confidence.</p>
+<p><strong>Hypothesis tests</strong> = tests for a specific value(s) of the parameter.</p>
+<p>In order to perform these inferential tasks, i.e., make inference about the unknown population parameter from the sample statistic, we need to know the likely values of the sample statistic. What would happen if we do sampling many times?</p>
+<p><img src="https://onlinecourses.science.psu.edu/stat504/sites/onlinecourses.science.psu.edu.stat504/files/lesson01/height_plot.gif" alt=""></p>
+<h2 id="CLT-Central-Limit-Theorem"><a href="#CLT-Central-Limit-Theorem" class="headerlink" title="CLT,Central Limit Theorem"></a>CLT,Central Limit Theorem</h2><p>Sampling distribution of the sample mean:</p>
+<p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204144632.png" alt=""></p>
+<p>For categorical data, the CLT holds for the sampling distribution of the sample proportion.</p>
+<p>So, what is the 95% confidence interval? Based on the CLT, the 95% CI is</p>
+<p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204145320.png" alt=""></p>
+<h1 id="Point-Estimation"><a href="#Point-Estimation" class="headerlink" title="Point Estimation"></a>Point Estimation</h1><p><strong>Estimation</strong> represents ways or a process of learning and determining the population parameter based on the model fitted to the data.</p>
+<p><em>Point estimation</em> and interval estimation, and hypothesis testing are three main ways of learning about the population parameter from the sample statistic.</p>
+<p>An <strong>estimator</strong> is particular example of a statistic, which becomes an <strong>estimate</strong> when the formula is replaced with actual observed sample values.</p>
+<p><strong>Point estimation</strong> = a single value that estimates the parameter. Point estimates are single values calculated from the sample</p>
+<h1 id="Model-amp-Estimation"><a href="#Model-amp-Estimation" class="headerlink" title="Model &amp; Estimation"></a>Model &amp; Estimation</h1><p>A statistical model is a representation of a complex phenomena that generated the data.</p>
+<ul>
+<li>It has mathematical formulations that describe relationships between random variables and parameters.</li>
+<li>It makes assumptions about the random variables, and sometimes parameters.</li>
+<li>A general form: data = model + residuals</li>
+<li>Model should explain most of the variation in the data</li>
+<li>Residuals are a representation of a lack-of-fit, that is of the portion of the data unexplained by the model.</li>
+</ul>
+<p>In models, the focus is on estimating the model parameters. The basic inference tools (e.g., point estimation, hypothesis testing, and confidence intervals) will be applied to the these parameters. When discussing models, we will keep in mind the following parts:</p>
+<h2 id="Objective"><a href="#Objective" class="headerlink" title="Objective"></a>Objective</h2><p>State what the objective is for this model. For instance, “Estimate the probability that a characteristic is present given the value of the explanatory values are … “</p>
+<h2 id="Model-Structure"><a href="#Model-Structure" class="headerlink" title="Model Structure"></a>Model Structure</h2><p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204150533.png" alt=""></p>
+<h1 id="Confidence-Intervals"><a href="#Confidence-Intervals" class="headerlink" title="Confidence Intervals"></a>Confidence Intervals</h1><h2 id="General-form-of-a-confidence-interval-CI"><a href="#General-form-of-a-confidence-interval-CI" class="headerlink" title="General form of a confidence interval (CI)"></a>General form of a confidence interval (CI)</h2><p>A confidence interval estimates are intervals within which the parameter is expected to fall, with a certain degree of confidence.</p>
+<p>The general form:</p>
+<ul>
+<li>estimate ± critical value × std.dev of the estimate</li>
+<li><p>estimate ± margin of error<br>For example:</p>
+</li>
+<li><p>sample mean ± critical value × estimated standard error</p>
+</li>
+</ul>
+<p>The CIs differ based on:</p>
+<ul>
+<li>The parameter of interest, e.g., population mean, population proportion, difference in population’s means, etc…</li>
+<li>Design of the sample: SRS, stratified, experiments</li>
+<li>Confidence level or a confidence coefficient, (1 - α)100%, e.g., 95%, 99%, 90%, 80%, corresponding, respectively, to α values of 0.05, 0.01, 0.1, 0.2, etc…</li>
+</ul>
+<h2 id="Interpretation-of-a-Confidence-Interval"><a href="#Interpretation-of-a-Confidence-Interval" class="headerlink" title="Interpretation of a Confidence Interval"></a>Interpretation of a Confidence Interval</h2><p>In most general terms, for a 95% CI, we say “we are 95% confident that the true population parameter is between the lower and upper calculated values”.</p>
+<p>A 95% CI for a population parameter DOES NOT mean that the interval has a probability of 0.95 that the true value of the parameter falls in the interval.</p>
+<p>The CI either contains the parameter or it does not contain it.</p>
+<p>The probability is associated with the process that generated the interval. And if we repeat this process many times, 95% of all intervals should in fact contain the true value of the parameter.</p>
+<p>What does a 99% CI say?</p>
+<p>Would you choose a 99% or 95% CI, and why?</p>
+<h2 id="Tradeoffs"><a href="#Tradeoffs" class="headerlink" title="Tradeoffs"></a>Tradeoffs</h2><p>We want confidence coefficient to be closer to 1.</p>
+<p>We want the sample size to be as small as possible (but not too small). This is a practical issue.</p>
+<p>We want the CI to be as narrow as possible</p>
+<ul>
+<li>As we increase the sample estimate, the CI …?</li>
+<li>As we decrease st. dev, the CI …?</li>
+<li>As we decrease the confidence level, (1-α), the CI …?</li>
+<li>As we increase sample size….?</li>
+</ul>
+<h2 id="z-Tests-amp-Intervals"><a href="#z-Tests-amp-Intervals" class="headerlink" title="z-Tests &amp; Intervals"></a>z-Tests &amp; Intervals</h2><p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204151437.png" alt=""></p>
+<h2 id="More-About-Confidence-Intervals"><a href="#More-About-Confidence-Intervals" class="headerlink" title="More About Confidence Intervals"></a>More About Confidence Intervals</h2><h3 id="Simplified-Expression-for-a-95-Confidence-Interval"><a href="#Simplified-Expression-for-a-95-Confidence-Interval" class="headerlink" title="Simplified Expression for a 95% Confidence Interval"></a>Simplified Expression for a 95% Confidence Interval</h3><p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204151631.png" alt=""></p>
+<h3 id="Generalizing-the-95-Confidence-Interval"><a href="#Generalizing-the-95-Confidence-Interval" class="headerlink" title="Generalizing the 95% Confidence Interval"></a>Generalizing the 95% Confidence Interval</h3><p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204151714.png" alt=""></p>
+<blockquote>
+<p><strong>Height Example</strong></p>
+</blockquote>
+<ul>
+<li>Assume that the s is known and is equal to 3.</li>
+<li>We want to estimate the unknown true height of our population.</li>
+<li>Point sample estimate, can be the sample mean, 66.463.</li>
+<li>What is the distribution of the sample mean?</li>
+<li>What is the 95% confidence interval? What does it mean?<blockquote>
+</blockquote>
+<img src="https://onlinecourses.science.psu.edu/stat504/sites/onlinecourses.science.psu.edu.stat504/files/lesson01/sas_output_height.gif" alt=""></li>
+</ul>
+<h2 id="Confidence-Intervals-for-Proportions-in-Newspapers"><a href="#Confidence-Intervals-for-Proportions-in-Newspapers" class="headerlink" title="Confidence Intervals for Proportions in Newspapers"></a>Confidence Intervals for Proportions in Newspapers</h2><p>As found in CNN in June, 2006:<br><img src="https://onlinecourses.science.psu.edu/stat504/sites/onlinecourses.science.psu.edu.stat504/files/lesson01/cnn_01.gif" alt=""></p>
+<p>The stated <strong>Margin of error</strong>: +/- 3%</p>
+<p>Therefore, this would be the <strong>Confidence interval</strong>: 62%+/- 3%.</p>
+<p>We can be really confident that between 59% and 65% of all U.S. adults disapprove of how President Bush is handling the situation in Iraq.</p>
+<h1 id="Hypothesis-Testing"><a href="#Hypothesis-Testing" class="headerlink" title="Hypothesis Testing"></a>Hypothesis Testing</h1><h2 id="Basic-approach-to-hypothesis-testing"><a href="#Basic-approach-to-hypothesis-testing" class="headerlink" title="Basic approach to hypothesis testing"></a>Basic approach to hypothesis testing</h2><ul>
+<li><ol>
+<li><strong>State a model</strong> describing the relationship between the explanatory variables and the outcome variable(s) in the population and the nature of the variability. <strong>State all of your assumptions</strong>.</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>Specify the null and alternative hypotheses</strong> in terms of the parameters of the model.</li>
+</ol>
+</li>
+<li><ol>
+<li>Invent a <strong>test statistic</strong> that will tend to be different under the null and alternative hypotheses.</li>
+</ol>
+</li>
+<li><ol>
+<li>Using the assumptions of step 1, <strong>find the theoretical sampling distribution</strong> of the statistic under the null hypothesis of step 2. Ideally the form of the sampling distribution should be one of the “standard distributions”(e.g. normal, t, binomial..)</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>Calculate a p-value</strong>, as the area under the sampling distribution more extreme than your statistic. Depends on the form of the alternative hypothesis.</li>
+</ol>
+</li>
+<li><ol>
+<li><strong>Choose your acceptable type 1 error rate</strong> (alpha) and <strong>apply the decision rule</strong>: reject the null hypothesis if the p-value is less than alpha, otherwise do not reject.</li>
+</ol>
+</li>
+</ul>
+<p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204153045.png" alt=""></p>
+<h2 id="Making-the-Decision"><a href="#Making-the-Decision" class="headerlink" title="Making the Decision"></a>Making the Decision</h2><p>It is either <strong>likely</strong> or <strong>unlikely</strong> that we would collect the evidence we did given the initial assumption. (Note: “likely” or “unlikely” is measured by calculating a probability!)</p>
+<p>If it is likely, then we “do not reject” our initial assumption. There is not enough evidence to do otherwise.</p>
+<p>If it is unlikely, then:</p>
+<p>either our initial assumption is correct and we experienced an unusual event or,<br>our initial assumption is incorrect<br>In statistics, if it is unlikely, we decide to “reject” our initial assumption.</p>
+<h2 id="Example-Criminal-Trial-Analogy"><a href="#Example-Criminal-Trial-Analogy" class="headerlink" title="Example: Criminal Trial Analogy"></a>Example: Criminal Trial Analogy</h2><p>First, state 2 hypotheses, the <strong>null hypothesis</strong> (“H0”) and the <strong>alternative hypothesis</strong> (“HA”)</p>
+<ul>
+<li>H0: Defendant is not guilty.</li>
+<li>HA: Defendant is guilty.</li>
+</ul>
+<p>Usually the H0 is a statement of “no effect”, or “no change”, or “chance only” about a population parameter.</p>
+<p>While the HA , depending on the situation, is that there is a difference, trend, effect, or a relationship with respect to a population parameter.</p>
+<ul>
+<li>It can one-sided and two-sided.</li>
+<li>In two-sided we only care there is a difference, but not the direction of it. In one-sided we care about a particular direction of the relationship. We want to know if the value is strictly larger or smaller.</li>
+</ul>
+<p>Then, collect evidence, such as finger prints, blood spots, hair samples, carpet fibers, shoe prints, ransom notes, handwriting samples, etc. (In statistics, the data are the evidence.)</p>
+<p>Next, you make your initial assumption.</p>
+<ul>
+<li>Defendant is innocent until proven guilty.</li>
+</ul>
+<p>In statistics, <strong>we always assume the null hypothesis is true</strong>.</p>
+<p>Then, make a decision based on the available evidence.</p>
+<ul>
+<li>If there is sufficient evidence (“beyond a reasonable doubt”), <strong>reject the null hypothesis</strong>. (Behave as if defendant is guilty.)</li>
+<li>If there is not enough evidence, <strong>do not reject the null hypothesis</strong>. (Behave as if defendant is not guilty.)</li>
+</ul>
+<p>If the observed outcome, e.g., a sample statistic, is surprising under the assumption that the null hypothesis is true, but more probable if the alternative is true, then this outcome is evidence against H0 and in favor of HA.</p>
+<p>An observed effect so large that it would rarely occur by chance is called statistically significant (i.e., not likely to happen by chance).</p>
+<h2 id="Using-the-p-value-to-make-the-decision"><a href="#Using-the-p-value-to-make-the-decision" class="headerlink" title="Using the p-value to make the decision"></a>Using the p-value to make the decision</h2><p>The p-value represents <strong>how likely</strong> we would be to observe such an extreme sample if the null hypothesis were true. The <strong>p-value is a probability</strong> computed assuming the null hypothesis is true, that the test statistic would take a value as extreme or more extreme than that actually observed. Since it’s a probability, it is a number between 0 and 1. The closer the number is to 0 means the event is “unlikely.” So if p-value is “small,” (typically, less than 0.05), we can then reject the null hypothesis.</p>
+<h3 id="Significance-level-and-p-value"><a href="#Significance-level-and-p-value" class="headerlink" title="Significance level and p-value"></a>Significance level and p-value</h3><p>Significance level, α, is a decisive value for p-value. In this context, significant does not mean “important”, but it means “not likely to happened just by chance”.</p>
+<p>α is the maximum probability of rejecting the null hypothesis when the null hypothesis is true. If α = 1 we always reject the null, if α = 0 we never reject the null hypothesis. In articles, journals, etc… you may read: “The results were significant (p&lt;0.05).” So if p=0.03, it’s significant at the level of α = 0.05 but not at the level of α = 0.01. If we reject the H0 at the level of α = 0.05 (which corresponds to 95% CI), we are saying that if H0 is true, the observed phenomenon would happen no more than 5% of the time (that is 1 in 20). If we choose to compare the p-value to α = 0.01, we are insisting on a stronger evidence!</p>
+<h3 id="Errors-in-Hypothesis-Testing"><a href="#Errors-in-Hypothesis-Testing" class="headerlink" title="Errors in Hypothesis Testing"></a>Errors in Hypothesis Testing</h3><p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204154105.png" alt=""></p>
+<h2 id="Power"><a href="#Power" class="headerlink" title="Power"></a>Power</h2><p>The power of a statistical test is its probability of rejecting the null hypothesis if the null hypothesis is false. That is, power is the ability to correctly reject H0 and detect a significant effect. In other words, power is one minus the type II error risk.</p>
+<p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204154312.png" alt=""></p>
+<p>Which error is worse?</p>
+<p>Type I = you are innocent, yet accused of cheating on the test.</p>
+<p>Type II = you cheated on the test, but you are found innocent.</p>
+<p>This depends on the context of the problem too. But in most cases scientists are trying to be “conservative”; it’s worse to make a spurious discovery than to fail to make a good one. Our goal it to increase the power of the test that is to minimize the length of the CI.</p>
+<p>We need to keep in mind:</p>
+<ul>
+<li>the effect of the sample size,</li>
+<li>the correctness of the underlying assumptions about the population,</li>
+<li>statistical vs. practical significance, etc…</li>
+</ul>
+<p><strong>sometimes the p-value is too low because of the large sample size, and we may have statistical significance but not really practical significance! </strong></p>
+<p>That’s why most statisticians are much more comfortable with <strong>using CI than tests</strong>.</p>
+<p>There is a need for a further generalization. What if we can’t assume that σ is known? In this case we would use s (the sample standard deviation) to estimate σ.</p>
+<p>If the sample is very large, we can treat σ as known by assuming that σ = s. According to the law of large numbers, this is not too bad a thing to do. But if the sample is small, the fact that we have to estimate both the standard deviation and the mean adds extra uncertainty to our inference. In practice this means that we need a larger multiplier for the standard error.</p>
+<p>We need one-sample t-test.</p>
+<h3 id="One-sample-t-test"><a href="#One-sample-t-test" class="headerlink" title="One sample t-test"></a>One sample t-test</h3><p><img src="/assets/Statistics/Statistical Inference and Estimation/QQ截图20171204155319.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sampling-distribution/" rel="tag"># Sampling distribution</a>
+          
+            <a href="/tags/Central-Limit-Theorem/" rel="tag"># Central Limit Theorem</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/04/One-Way Tables and Goodness-of-Fit Test/" rel="next" title="One-Way Tables and Goodness-of-Fit Test">
+                <i class="fa fa-chevron-left"></i> One-Way Tables and Goodness-of-Fit Test
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/26/cannot start process the working directory '' does not exist/" rel="prev" title="cannot start process the working directory '' does not exist">
+                cannot start process the working directory '' does not exist <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/pic_avatar.jpg"
+                alt="boredbird" />
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/boredbird" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/boredbird" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Statistical-Inference"><span class="nav-number">1.</span> <span class="nav-text">Statistical Inference</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CLT-Central-Limit-Theorem"><span class="nav-number">1.1.</span> <span class="nav-text">CLT,Central Limit Theorem</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Point-Estimation"><span class="nav-number">2.</span> <span class="nav-text">Point Estimation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model-amp-Estimation"><span class="nav-number">3.</span> <span class="nav-text">Model &amp; Estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Objective"><span class="nav-number">3.1.</span> <span class="nav-text">Objective</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Structure"><span class="nav-number">3.2.</span> <span class="nav-text">Model Structure</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Confidence-Intervals"><span class="nav-number">4.</span> <span class="nav-text">Confidence Intervals</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#General-form-of-a-confidence-interval-CI"><span class="nav-number">4.1.</span> <span class="nav-text">General form of a confidence interval (CI)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpretation-of-a-Confidence-Interval"><span class="nav-number">4.2.</span> <span class="nav-text">Interpretation of a Confidence Interval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tradeoffs"><span class="nav-number">4.3.</span> <span class="nav-text">Tradeoffs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#z-Tests-amp-Intervals"><span class="nav-number">4.4.</span> <span class="nav-text">z-Tests &amp; Intervals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#More-About-Confidence-Intervals"><span class="nav-number">4.5.</span> <span class="nav-text">More About Confidence Intervals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Simplified-Expression-for-a-95-Confidence-Interval"><span class="nav-number">4.5.1.</span> <span class="nav-text">Simplified Expression for a 95% Confidence Interval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generalizing-the-95-Confidence-Interval"><span class="nav-number">4.5.2.</span> <span class="nav-text">Generalizing the 95% Confidence Interval</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Confidence-Intervals-for-Proportions-in-Newspapers"><span class="nav-number">4.6.</span> <span class="nav-text">Confidence Intervals for Proportions in Newspapers</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hypothesis-Testing"><span class="nav-number">5.</span> <span class="nav-text">Hypothesis Testing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-approach-to-hypothesis-testing"><span class="nav-number">5.1.</span> <span class="nav-text">Basic approach to hypothesis testing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Making-the-Decision"><span class="nav-number">5.2.</span> <span class="nav-text">Making the Decision</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example-Criminal-Trial-Analogy"><span class="nav-number">5.3.</span> <span class="nav-text">Example: Criminal Trial Analogy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-the-p-value-to-make-the-decision"><span class="nav-number">5.4.</span> <span class="nav-text">Using the p-value to make the decision</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Significance-level-and-p-value"><span class="nav-number">5.4.1.</span> <span class="nav-text">Significance level and p-value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Errors-in-Hypothesis-Testing"><span class="nav-number">5.4.2.</span> <span class="nav-text">Errors in Hypothesis Testing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Power"><span class="nav-number">5.5.</span> <span class="nav-text">Power</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#One-sample-t-test"><span class="nav-number">5.5.1.</span> <span class="nav-text">One sample t-test</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+	
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+  
+</body>
+</html>

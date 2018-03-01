@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://zhangchunhui.cn/assets/margin.jpg">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/svmvssoftmax.png">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/classifydemo.jpeg">
-<meta property="og:updated_time" content="2017-11-18T15:16:24.836Z">
+<meta property="og:updated_time" content="2018-03-01T11:03:13.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linear-classify">
 <meta name="twitter:description" content="linear-classify">
@@ -500,12 +500,12 @@
 <p><a name="svm"></a></p>
 <h4 id="Multiclass-Support-Vector-Machine-loss"><a href="#Multiclass-Support-Vector-Machine-loss" class="headerlink" title="Multiclass Support Vector Machine loss"></a>Multiclass Support Vector Machine loss</h4><p>There are several ways to define the details of the loss function. As a first example we will first develop a commonly used loss called the <strong>Multiclass Support Vector Machine</strong> (SVM) loss. The SVM loss is set up so that the SVM “wants” the correct class for each image to a have a score higher than the incorrect classes by some fixed margin \(\Delta\). Notice that it’s sometimes helpful to anthropomorphise the loss functions as we did above: The SVM “wants” a certain outcome in the sense that the outcome would yield a lower loss (which is good).</p>
 <p>Let’s now get more precise. Recall that for the i-th example we are given the pixels of image \( x_i \) and the label \( y_i \) that specifies the index of the correct class. The score function takes the pixels and computes the vector \( f(x_i, W) \) of class scores, which we will abbreviate to \(s\) (short for scores).  For example, the score for the j-th class is the j-th element: \( s_j = f(x_i, W)_j \). The Multiclass SVM loss for the i-th example is then formalized as follows:</p>
-<p>$$<br>L<em>i = \sum</em>{j\neq y_i} \max(0, s<em>j - s</em>{y_i} + \Delta)<br>$$</p>
+<p>$$<br>L_i = \sum_{j\neq y_i} \max(0, s_j - s_{y_i} + \Delta)<br>$$</p>
 <p><strong>Example.</strong> Lets unpack this with an example to see how it works. Suppose that we have three classes that receive the scores \( s = [13, -7, 11]\), and that the first class is the true class (i.e. \(y_i = 0\)). Also assume that \(\Delta\) (a hyperparameter we will go into more detail about soon) is 10. The expression above sums over all incorrect classes (\(j \neq y_i\)), so we get two terms:</p>
 <p>$$<br>L_i = \max(0, -7 - 13 + 10) + \max(0, 11 - 13 + 10)<br>$$</p>
 <p>You can see that the first term gives zero since [-7 - 13 + 10] gives a negative number, which is then thresholded to zero with the \(max(0,-)\) function. We get zero loss for this pair because the correct class score (13) was greater than the incorrect class score (-7) by at least the margin 10. In fact the difference was 20, which is much greater than 10 but the SVM only cares that the difference is at least 10; Any additional difference above the margin is clamped at zero with the max operation. The second term computes [11 - 13 + 10] which gives 8. That is, even though the correct class had a higher score than the incorrect class (13 &gt; 11), it was not greater by the desired margin of 10. The difference was only 2, which is why the loss comes out to 8 (i.e. how much higher the difference would have to be to meet the margin). In summary, the SVM loss function wants the score of the correct class \(y_i\) to be larger than the incorrect class scores by at least by \(\Delta\) (delta). If this is not the case, we will accumulate loss.</p>
 <p>Note that in this particular module we are working with linear score functions ( \( f(x_i; W) =  W x_i \) ), so we can also rewrite the loss function in this equivalent form:</p>
-<p>$$<br>L<em>i = \sum</em>{j\neq y_i} \max(0, w_j^T x<em>i - w</em>{y_i}^T x_i + \Delta)<br>$$</p>
+<p>$$<br>L_i = \sum_{j\neq y_i} \max(0, w_j^T x_i - w_{y_i}^T x_i + \Delta)<br>$$</p>
 <p>where \(w_j\) is the j-th row of \(W\) reshaped as a column. However, this will not necessarily be the case once we start to consider more complex forms of the score function \(f\).</p>
 <p>A last piece of terminology we’ll mention before we finish with this section is that the threshold at zero \(max(0,-)\) function is often called the <strong>hinge loss</strong>. You’ll sometimes hear about people instead using the squared hinge loss SVM (or L2-SVM), which uses the form \(max(0,-)^2\) that penalizes violated margins more strongly (quadratically instead of linearly). The unsquared version is more standard, but in some datasets the squared hinge loss can work better. This can be determined during cross-validation.</p>
 <blockquote>
@@ -517,11 +517,11 @@
 <p><a name="regularization"></a></p>
 <p><strong>Regularization</strong>. There is one bug with the loss function we presented above. Suppose that we have a dataset and a set of parameters <strong>W</strong> that correctly classify every example (i.e. all scores are so that all the margins are met, and \(L_i = 0\) for all i). The issue is that this set of <strong>W</strong> is not necessarily unique: there might be many similar <strong>W</strong> that correctly classify the examples. One easy way to see this is that if some parameters <strong>W</strong> correctly classify all examples (so loss is zero for each example), then any multiple of these parameters \( \lambda W \) where \( \lambda &gt; 1 \) will also give zero loss because this transformation uniformly stretches all score magnitudes and hence also their absolute differences. For example, if the difference in scores between a correct class and a nearest incorrect class was 15, then multiplying all elements of <strong>W</strong> by 2 would make the new difference 30.</p>
 <p>In other words, we wish to encode some preference for a certain set of weights <strong>W</strong> over others to remove this ambiguity. We can do so by extending the loss function with a <strong>regularization penalty</strong> \(R(W)\). The most common regularization penalty is the <strong>L2</strong> norm that discourages large weights through an elementwise quadratic penalty over all parameters:</p>
-<p>$$<br>R(W) = \sum_k\sum<em>l W</em>{k,l}^2<br>$$</p>
+<p>$$<br>R(W) = \sum_k\sum_l W_{k,l}^2<br>$$</p>
 <p>In the expression above, we are summing up all the squared elements of \(W\). Notice that the regularization function is not a function of the data, it is only based on the weights. Including the regularization penalty completes the full Multiclass Support Vector Machine loss, which is made up of two components: the <strong>data loss</strong> (which is the average loss \(L_i\) over all examples) and the <strong>regularization loss</strong>. That is, the full Multiclass SVM loss becomes:</p>
-<p>$$<br>L =  \underbrace{ \frac{1}{N} \sum_i L<em>i }</em>\text{data loss} + \underbrace{ \lambda R(W) }_\text{regularization loss} \\<br>$$</p>
+<p>$$<br>L =  \underbrace{ \frac{1}{N} \sum_i L_i }<em>\text{data loss} + \underbrace{ \lambda R(W) }</em>\text{regularization loss} \\<br>$$</p>
 <p>Or expanding this out in its full form:</p>
-<p>$$<br>L = \frac{1}{N} \sum<em>i \sum</em>{j\neq y_i} \left[ \max(0, f(x_i; W)_j - f(x<em>i; W)</em>{y_i} + \Delta) \right] + \lambda \sum_k\sum<em>l W</em>{k,l}^2<br>$$</p>
+<p>$$<br>L = \frac{1}{N} \sum_i \sum_{j\neq y_i} \left[ \max(0, f(x_i; W)_j - f(x_i; W)_{y_i} + \Delta) \right] + \lambda \sum_k\sum_l W_{k,l}^2<br>$$</p>
 <p>Where \(N\) is the number of training examples. As you can see, we append the regularization penalty to the loss objective, weighted by a hyperparameter \(\lambda\). There is no simple way of setting this hyperparameter and it is usually determined by cross-validation.</p>
 <p>In addition to the motivation we provided above there are many desirable properties to include the regularization penalty, many of which we will come back to in later sections. For example, it turns out that including the L2 penalty leads to the appealing <strong>max margin</strong> property in SVMs (See <a href="http://cs229.stanford.edu/notes/cs229-notes3.pdf" target="_blank" rel="noopener">CS229</a> lecture notes for full details if you are interested).</p>
 <p>The most appealing property is that penalizing large weights tends to improve generalization, because it means that no input dimension can have a very large influence on the scores all by itself. For example, suppose that we have some input vector \(x = [1,1,1,1] \) and two weight vectors \(w_1 = [1,0,0,0]\), \(w_2 = [0.25,0.25,0.25,0.25] \). Then \(w_1^Tx = w_2^Tx = 1\) so both weight vectors lead to the same dot product, but the L2 penalty of \(w_1\) is 1.0 while the L2 penalty of \(w_2\) is only 0.25. Therefore, according to the L2 penalty the weight vector \(w_2\) would be preferred since it achieves a lower regularization loss. Intuitively, this is because the weights in \(w_2\) are smaller and more diffuse. Since the L2 penalty prefers smaller and more diffuse weight vectors, the final classifier is encouraged to take into account all input dimensions to small amounts rather than a few input dimensions and very strongly. As we will see later in the class, this effect can improve the generalization performance of the classifiers on test images and lead to less <em>overfitting</em>.</p>
@@ -540,16 +540,16 @@
 <p><strong>Aside: Other Multiclass SVM formulations.</strong> It is worth noting that the Multiclass SVM presented in this section is one of few ways of formulating the SVM over multiple classes. Another commonly used form is the <em>One-Vs-All</em> (OVA) SVM which trains an independent binary SVM for each class vs. all other classes. Related, but less common to see in practice is also the <em>All-vs-All</em> (AVA) strategy. Our formulation follows the <a href="https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es1999-461.pdf" target="_blank" rel="noopener">Weston and Watkins 1999 (pdf)</a> version, which is a more powerful version than OVA (in the sense that you can construct multiclass datasets where this version can achieve zero data loss, but OVA cannot. See details in the paper if interested). The last formulation you may see is a <em>Structured SVM</em>, which maximizes the margin between the score of the correct class and the score of the highest-scoring incorrect runner-up class. Understanding the differences between these formulations is outside of the scope of the class. The version presented in these notes is a safe bet to use in practice, but the arguably simplest OVA strategy is likely to work just as well (as also argued by Rikin et al. 2004 in <a href="http://www.jmlr.org/papers/volume5/rifkin04a/rifkin04a.pdf" target="_blank" rel="noopener">In Defense of One-Vs-All Classification (pdf)</a>).</p>
 <p><a name="softmax"></a></p>
 <h3 id="Softmax-classifier"><a href="#Softmax-classifier" class="headerlink" title="Softmax classifier"></a>Softmax classifier</h3><p>It turns out that the SVM is one of two commonly seen classifiers. The other popular choice is the <strong>Softmax classifier</strong>, which has a different loss function. If you’ve heard of the binary Logistic Regression classifier before, the Softmax classifier is its generalization to multiple classes. Unlike the SVM which treats the outputs \(f(x_i,W)\) as (uncalibrated and possibly difficult to interpret) scores for each class, the Softmax classifier gives a slightly more intuitive output (normalized class probabilities) and also has a probabilistic interpretation that we will describe shortly. In the Softmax classifier, the function mapping \(f(x_i; W) =  W x_i\) stays unchanged, but we now interpret these scores as the unnormalized log probabilities for each class and replace the <em>hinge loss</em> with a <strong>cross-entropy loss</strong> that has the form:</p>
-<p>$$<br>L<em>i = -\log\left(\frac{e^{f</em>{y_i}}}{ \sum_j e^{f_j} }\right) \hspace{0.5in} \text{or equivalently} \hspace{0.5in} L<em>i = -f</em>{y_i} + \log\sum_j e^{f_j}<br>$$</p>
+<p>$$<br>L_i = -\log\left(\frac{e^{f_{y_i}}}{ \sum_j e^{f_j} }\right) \hspace{0.5in} \text{or equivalently} \hspace{0.5in} L_i = -f_{y_i} + \log\sum_j e^{f_j}<br>$$</p>
 <p>where we are using the notation \(f_j\) to mean the j-th element of the vector of class scores \(f\). As before, the full loss for the dataset is the mean of \(L_i\) over all training examples together with a regularization term \(R(W)\). The function \(f_j(z) = \frac{e^{z_j}}{\sum_k e^{z_k}} \) is called the <strong>softmax function</strong>: It takes a vector of arbitrary real-valued scores (in \(z\)) and squashes it to a vector of values between zero and one that sum to one. The full cross-entropy loss that involves the softmax function might look scary if you’re seeing it for the first time but it is relatively easy to motivate.</p>
 <p><strong>Information theory view</strong>. The <em>cross-entropy</em> between a “true” distribution \(p\) and an estimated distribution \(q\) is defined as:</p>
 <p>$$<br>H(p,q) = - \sum_x p(x) \log q(x)<br>$$</p>
-<p>The Softmax classifier is hence minimizing the cross-entropy between the estimated class probabilities ( \(q = e^{f_{y_i}}  / \sum_j e^{f_j} \) as seen above) and the “true” distribution, which in this interpretation is the distribution where all probability mass is on the correct class (i.e. \(p = [0, \ldots 1, \ldots, 0]\) contains a single 1 at the \(y<em>i\) -th position.). Moreover, since the cross-entropy can be written in terms of entropy and the Kullback-Leibler divergence as \(H(p,q) = H(p) + D</em>{KL}(p||q)\), and the entropy of the delta function \(p\) is zero, this is also equivalent to minimizing the KL divergence between the two distributions (a measure of distance). In other words, the cross-entropy objective <em>wants</em> the predicted distribution to have all of its mass on the correct answer.</p>
+<p>The Softmax classifier is hence minimizing the cross-entropy between the estimated class probabilities ( \(q = e^{f_{y_i}}  / \sum_j e^{f_j} \) as seen above) and the “true” distribution, which in this interpretation is the distribution where all probability mass is on the correct class (i.e. \(p = [0, \ldots 1, \ldots, 0]\) contains a single 1 at the \(y_i\) -th position.). Moreover, since the cross-entropy can be written in terms of entropy and the Kullback-Leibler divergence as \(H(p,q) = H(p) + D_{KL}(p||q)\), and the entropy of the delta function \(p\) is zero, this is also equivalent to minimizing the KL divergence between the two distributions (a measure of distance). In other words, the cross-entropy objective <em>wants</em> the predicted distribution to have all of its mass on the correct answer.</p>
 <p><strong>Probabilistic interpretation</strong>. Looking at the expression, we see that</p>
-<p>$$<br>P(y_i \mid x<em>i; W) = \frac{e^{f</em>{y_i}}}{\sum_j e^{f_j} }<br>$$</p>
+<p>$$<br>P(y_i \mid x_i; W) = \frac{e^{f_{y_i}}}{\sum_j e^{f_j} }<br>$$</p>
 <p>can be interpreted as the (normalized) probability assigned to the correct label \(y_i\) given the image \(x_i\) and parameterized by \(W\). To see this, remember that the Softmax classifier interprets the scores inside the output vector \(f\) as the unnormalized log probabilities. Exponentiating these quantities therefore gives the (unnormalized) probabilities, and the division performs the normalization so that the probabilities sum to one. In the probabilistic interpretation, we are therefore minimizing the negative log likelihood of the correct class, which can be interpreted as performing <em>Maximum Likelihood Estimation</em> (MLE). A nice feature of this view is that we can now also interpret the regularization term \(R(W)\) in the full loss function as coming from a Gaussian prior over the weight matrix \(W\), where instead of MLE we are performing the <em>Maximum a posteriori</em> (MAP) estimation. We mention these interpretations to help your intuitions, but the full details of this derivation are beyond the scope of this class.</p>
 <p><strong>Practical issues: Numeric stability</strong>. When you’re writing code for computing the Softmax function in practice, the intermediate terms \(e^{f_{y_i}}\) and \(\sum_j e^{f_j}\) may be very large due to the exponentials. Dividing large numbers can be numerically unstable, so it is important to use a normalization trick. Notice that if we multiply the top and bottom of the fraction by a constant \(C\) and push it into the sum, we get the following (mathematically equivalent) expression:</p>
-<p>$$<br>\frac{e^{f_{y_i}}}{\sum_j e^{f<em>j}}<br>= \frac{Ce^{f</em>{y_i}}}{C\sum_j e^{f<em>j}}<br>= \frac{e^{f</em>{y_i} + \log C}}{\sum_j e^{f_j + \log C}}<br>$$</p>
+<p>$$<br>\frac{e^{f_{y_i}}}{\sum_j e^{f_j}}<br>= \frac{Ce^{f_{y_i}}}{C\sum_j e^{f_j}}<br>= \frac{e^{f_{y_i} + \log C}}{\sum_j e^{f_j + \log C}}<br>$$</p>
 <p>We are free to choose the value of \(C\). This will not change any of the results, but we can use this value to improve the numerical stability of the computation. A common choice for \(C\) is to set \(\log C = -\max_j f_j \). This simply states that we should shift the values inside the vector \(f\) so that the highest value is zero. In code:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f = np.array([<span class="number">123</span>, <span class="number">456</span>, <span class="number">789</span>]) <span class="comment"># example with 3 classes and each having large scores</span></span><br><span class="line">p = np.exp(f) / np.sum(np.exp(f)) <span class="comment"># Bad: Numeric problem, potential blowup</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># instead: first shift the values of f so that the highest number is 0:</span></span><br><span class="line">f -= np.max(f) <span class="comment"># f becomes [-666, -333, 0]</span></span><br><span class="line">p = np.exp(f) / np.sum(np.exp(f)) <span class="comment"># safe to do, gives the correct answer</span></span><br></pre></td></tr></table></figure>
 <p><strong>Possibly confusing naming conventions</strong>. To be precise, the <em>SVM classifier</em> uses the <em>hinge loss</em>, or also sometimes called the <em>max-margin loss</em>. The <em>Softmax classifier</em> uses the <em>cross-entropy loss</em>. The Softmax classifier gets its name from the <em>softmax function</em>, which is used to squash the raw class scores into normalized positive values that sum to one, so that the cross-entropy loss can be applied. In particular, note that technically it doesn’t make sense to talk about the “softmax loss”, since softmax is just the squashing function, but it is a relatively commonly used shorthand.</p>
@@ -613,8 +613,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/08/Convolutional Networks/" rel="next" title="Convolutional Networks">
-                <i class="fa fa-chevron-left"></i> Convolutional Networks
+              <a href="/2017/10/08/Image Classification With KNN/" rel="next" title="Image Classification With KNN">
+                <i class="fa fa-chevron-left"></i> Image Classification With KNN
               </a>
             
           </div>
@@ -623,8 +623,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/08/ConvNet Tips/" rel="prev" title="convnet-tips">
-                convnet-tips <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/09/python的-m参数/" rel="prev" title="python的-m参数">
+                python的-m参数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -709,7 +709,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -720,7 +720,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -731,7 +731,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-count">156</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -803,7 +803,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 
-<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

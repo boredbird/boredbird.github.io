@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://zhangchunhui.cn/assets/svmbowl.png">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/stepsize.jpg">
 <meta property="og:image" content="http://zhangchunhui.cn/assets/dataflow.jpeg">
-<meta property="og:updated_time" content="2017-11-18T15:16:24.856Z">
+<meta property="og:updated_time" content="2018-03-01T11:03:13.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="optimization-1">
 <meta name="twitter:description" content="optimization-1">
@@ -461,7 +461,7 @@
 </ol>
 <a id="more"></a>
 <p>Concretely, recall that the linear function had the form \( f(x_i, W) =  W x_i \) and the SVM we developed was formulated as:</p>
-<p>$$<br>L = \frac{1}{N} \sum<em>i \sum</em>{j\neq y_i} \left[ \max(0, f(x_i; W)_j - f(x<em>i; W)</em>{y_i} + 1) \right] + \alpha R(W)<br>$$</p>
+<p>$$<br>L = \frac{1}{N} \sum_i \sum_{j\neq y_i} \left[ \max(0, f(x_i; W)_j - f(x_i; W)_{y_i} + 1) \right] + \alpha R(W)<br>$$</p>
 <p>We saw that a setting of the parameters \(W\) that produced predictions for examples \(x_i\) consistent with their ground truth labels \(y_i\) would also have a very low loss \(L\). We are now going to introduce the third and last key component: <strong>optimization</strong>. Optimization is the process of finding the set of parameters \(W\) that minimize the loss function.</p>
 <p><strong>Foreshadowing:</strong> Once we understand how these three core components interact, we will revisit the first component (the parameterized function mapping) and extend it to functions much more complicated than a linear mapping: First entire Neural Networks, and then Convolutional Neural Networks. The loss functions and the optimization process will remain relatively unchanged.</p>
 <p><a name="vis"></a></p>
@@ -469,7 +469,7 @@
 <div class="fig figcenter fighighlight"><br>  <img src="/assets/svm1d.png"><br>  <img src="/assets/svm_one.jpg"><br>  <img src="/assets/svm_all.jpg"><br>  <div class="figcaption"><br>    Loss function landscape for the Multiclass SVM (without regularization) for one single example (left,middle) and for a hundred examples (right) in CIFAR-10. Left: one-dimensional loss by only varying <b>a</b>. Middle, Right: two-dimensional loss slice, Blue = low loss, Red = high loss. Notice the piecewise-linear structure of the loss function. The losses for multiple examples are combined with average, so the bowl shape on the right is the average of many piece-wise linear bowls (such as the one in the middle).<br>  </div><br></div>
 
 <p>We can explain the piecewise-linear structure of the loss function by examining the math. For a single example we have:</p>
-<p>$$<br>L<em>i = \sum</em>{j\neq y_i} \left[ \max(0, w_j^Tx<em>i - w</em>{y_i}^Tx_i + 1) \right]<br>$$</p>
+<p>$$<br>L_i = \sum_{j\neq y_i} \left[ \max(0, w_j^Tx_i - w_{y_i}^Tx_i + 1) \right]<br>$$</p>
 <p>It is clear from the equation that the data loss for each example is a sum of (zero-thresholded due to the \(\max(0,-)\) function) linear functions of \(W\). Moreover, each row of \(W\) (i.e. \(w_j\)) sometimes has a positive sign in front of it (when it corresponds to a wrong class for an example), and sometimes a negative sign (when it corresponds to the correct class for that example). To make this more explicit, consider a simple dataset that contains three 1-dimensional points and three classes. The full SVM loss (without regularization) becomes:</p>
 <p>$$<br>\begin{align}<br>L_0 = &amp; \max(0, w_1^Tx_0 - w_0^Tx_0 + 1) + \max(0, w_2^Tx_0 - w_0^Tx_0 + 1) \\<br>L_1 = &amp; \max(0, w_0^Tx_1 - w_1^Tx_1 + 1) + \max(0, w_2^Tx_1 - w_1^Tx_1 + 1) \\<br>L_2 = &amp; \max(0, w_0^Tx_2 - w_2^Tx_2 + 1) + \max(0, w_1^Tx_2 - w_2^Tx_2 + 1) \\<br>L = &amp; (L_0 + L_1 + L_2)/3<br>\end{align}<br>$$</p>
 <p>Since these examples are 1-dimensional, the data \(x_i\) and weights \(w_j\) are numbers. Looking at, for instance, \(w_0\), some terms above are linear functions of \(w_0\) and each is clamped at zero. We can visualize this as follows:</p>
@@ -518,11 +518,11 @@
 <p><a name="analytic"></a></p>
 <h4 id="Computing-the-gradient-analytically-with-Calculus"><a href="#Computing-the-gradient-analytically-with-Calculus" class="headerlink" title="Computing the gradient analytically with Calculus"></a>Computing the gradient analytically with Calculus</h4><p>The numerical gradient is very simple to compute using the finite difference approximation, but the downside is that it is approximate (since we have to pick a small value of <em>h</em>, while the true gradient is defined as the limit as <em>h</em> goes to zero), and that it is very computationally expensive to compute. The second way to compute the gradient is analytically using Calculus, which allows us to derive a direct formula for the gradient (no approximations) that is also very fast to compute. However, unlike the numerical gradient it can be more error prone to implement, which is why in practice it is very common to compute the analytic gradient and compare it to the numerical gradient to check the correctness of your implementation. This is called a <strong>gradient check</strong>.</p>
 <p>Lets use the example of the SVM loss function for a single datapoint:</p>
-<p>$$<br>L<em>i = \sum</em>{j\neq y_i} \left[ \max(0, w_j^Tx<em>i - w</em>{y_i}^Tx_i + \Delta) \right]<br>$$</p>
+<p>$$<br>L_i = \sum_{j\neq y_i} \left[ \max(0, w_j^Tx_i - w_{y_i}^Tx_i + \Delta) \right]<br>$$</p>
 <p>We can differentiate the function with respect to the weights. For example, taking the gradient with respect to \(w_{y_i}\) we obtain:</p>
-<p>$$<br>\nabla<em>{w</em>{y_i}} L<em>i = - \left( \sum</em>{j\neq y_i} \mathbb{1}(w_j^Tx<em>i - w</em>{y_i}^Tx_i + \Delta &gt; 0) \right) x_i<br>$$</p>
+<p>$$<br>\nabla_{w_{y_i}} L_i = - \left( \sum_{j\neq y_i} \mathbb{1}(w_j^Tx_i - w_{y_i}^Tx_i + \Delta &gt; 0) \right) x_i<br>$$</p>
 <p>where \(\mathbb{1}\) is the indicator function that is one if the condition inside is true or zero otherwise. While the expression may look scary when it is written out, when you’re implementing this in code you’d simply count the number of classes that didn’t meet the desired margin (and hence contributed to the loss function) and then the data vector \(x_i\) scaled by this number is the gradient. Notice that this is the gradient only with respect to the row of \(W\) that corresponds to the correct class. For the other rows where \(j \neq y_i \) the gradient is:</p>
-<p>$$<br>\nabla_{w_j} L_i = \mathbb{1}(w_j^Tx<em>i - w</em>{y_i}^Tx_i + \Delta &gt; 0) x_i<br>$$</p>
+<p>$$<br>\nabla_{w_j} L_i = \mathbb{1}(w_j^Tx_i - w_{y_i}^Tx_i + \Delta &gt; 0) x_i<br>$$</p>
 <p>Once you derive the expression for the gradient it is straight-forward to implement the expressions and use them to perform the gradient update. </p>
 <p><a name="gd"></a></p>
 <h3 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h3><p>Now that we can compute the gradient of the loss function, the procedure of repeatedly evaluating the gradient and then performing a parameter update is called <em>Gradient Descent</em>. Its <strong>vanilla</strong> version looks as follows:</p>
@@ -676,7 +676,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -687,7 +687,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -698,7 +698,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-count">156</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -770,7 +770,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 
-<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

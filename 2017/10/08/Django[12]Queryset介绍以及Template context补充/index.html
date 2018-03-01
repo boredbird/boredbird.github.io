@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.imgur.com/Jk5HHJB.png">
 <meta property="og:image" content="https://i.imgur.com/5E6Nuje.png">
-<meta property="og:updated_time" content="2017-11-18T15:16:24.836Z">
+<meta property="og:updated_time" content="2018-03-01T11:03:13.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django[12]Queryset介绍以及Template context补充">
 <meta name="twitter:description" content="Django[12]Queryset介绍以及Template context补充">
@@ -438,7 +438,7 @@
 <h1 id="queryset介绍"><a href="#queryset介绍" class="headerlink" title="queryset介绍"></a>queryset介绍</h1><p>queryset 是一个可以遍历取值的结果集</p>
 <p>queryset 里面都是 对象，可以通过对象.字段名的形式取值</p>
 <p>一个对象就对应了数据库里面的一条记录</p>
-<p><strong>数据库里面的一条记录  &lt;- ORM -&gt; Python中的对象</strong></p>
+<p><strong>数据库里面的一条记录  <- orm="" -=""> Python中的对象</-></strong></p>
 <h1 id="如何在前端使用queryset"><a href="#如何在前端使用queryset" class="headerlink" title="如何在前端使用queryset"></a>如何在前端使用queryset</h1><h2 id="1-从数据库里取出数据"><a href="#1-从数据库里取出数据" class="headerlink" title="1. 从数据库里取出数据"></a>1. 从数据库里取出数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryset = models.Post.objects.all()</span><br></pre></td></tr></table></figure>
 <h2 id="2-把渠道的数据塞进-data"><a href="#2-把渠道的数据塞进-data" class="headerlink" title="2. 把渠道的数据塞进 data"></a>2. 把渠道的数据塞进 data</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">"queryset"</span>: queryset&#125;</span><br></pre></td></tr></table></figure>
 <p>即，修改views.py</p>
@@ -574,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">101</span>
+                  <span class="site-state-item-count">106</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -585,7 +585,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -596,7 +596,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">158</span>
+                  <span class="site-state-item-count">156</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -668,7 +668,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
 
-<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
