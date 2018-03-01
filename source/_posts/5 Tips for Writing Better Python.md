@@ -1,8 +1,8 @@
 ---
 title: 5 Tips for Writing Better Python
-date: 2017-10-07 12:53:12 
-categories: "Python" 
-tags: 
+date: 2017-10-07 12:53:12
+categories: "Python"
+tags:
      - Python
 description: 5 Tips for Writing Better Python
 ---
@@ -18,14 +18,14 @@ Assume we have a simple Flask program in “flask_example.py”:
 
     from flask import Flask
     app = Flask(__name__)
-    
+
     @app.route('/')
     def hello_world():
     	return 'Hello, World!'
-    
+
     def main():
     	app.run()
-    
+
     if __name__ == ‘__main__’:
     	main()
 ```
@@ -35,7 +35,7 @@ We can turn this into an installable Python package by first moving it into a se
 ``` python
 
 	from distutils.core import setup
-	
+
 	setup(
 	    name='flask_example',
 	    version='1.0',
