@@ -699,6 +699,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/" itemprop="url">EDA_1.3.3.11. DOE Scatter Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T17:26:12+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.11. DOE Scatter Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.11. DOE Scatter Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Determine Important Factors with Respect to Location and Scale</p>
+<p>The DOE scatter plot shows the response values for each level of each factor (i.e., independent) variable. This graphically shows how the location and scale vary for both within a factor variable and between different factor variables. This graphically shows which are the important factors and can help provide a ranked list of important factors from a designed experiment. The DOE scatter plot is a complement to the traditional analyis of variance of designed experiments.</p>
+<p>DOE scatter plots are typically used in conjunction with the DOE mean plotand the DOE standard deviation plot. The DOE mean plot replaces the raw response values with mean response values while the DOE standard deviation plot replaces the raw response values with the standard deviation of the response values. There is value in generating all 3 of these plots. The DOE mean and standard deviation plots are useful in that the summary measures of location and spread stand out (they can sometimes get lost with the raw plot). However, the raw data points can reveal subtleties, such as the presence of outliers, that might get lost with the summary statistics.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>Factors 4, 2, 3, and 7 are the Important Factors.</p>
+<p><img src="assets/EDA/eda_dexboxbike_r01.gif" alt=""></p>
+<h3 id="Description-of-the-Plot"><a href="#Description-of-the-Plot" class="headerlink" title="Description of the Plot"></a>Description of the Plot</h3><p>For this sample plot, there are seven factors and each factor has two levels. For each factor, we define a distinct x coordinate for each level of the factor. For example, for factor 1, level 1 is coded as 0.8 and level 2 is coded as 1.2. The y coordinate is simply the value of the response variable. The solid horizontal line is drawn at the overall mean of the response variable. The vertical dotted lines are added for clarity.</p>
+<p>Although the plot can be drawn with an arbitrary number of levels for a factor, it is really only useful when there are two or three levels for a factor.</p>
+<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>This sample DOE scatter plot shows that:</p>
+<pre><code>1. there does not appear to be any outliers;
+2. the levels of factors 2 and 4 show distinct location differences; and
+3. the levels of factor 1 show distinct scale differences.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Response Values Versus Factor Variables<br>DOE scatter plots are formed by:<br>    • Vertical axis: Value of the response variable<br>    • Horizontal axis: Factor variable (with each level of the factor coded with a slightly offset x coordinate)</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The DOE scatter plot can be used to answer the following questions:</p>
+<pre><code>1. Which factors are important with respect to location and scale?
+2. Are there outliers?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Identify Important Factors with Respect to Location and Scale</p>
+<p>The goal of many designed experiments is to determine which factors are important with respect to location and scale. A ranked list of the important factors is also often of interest. DOE scatter, mean, and standard deviation plots show this graphically. The DOE scatter plot additionally shows if outliers may potentially be distorting the results.</p>
+<p>DOE scatter plots were designed primarily for analyzing designed experiments. However, they are useful for any type of multi-factor data (i.e., a response variable with two or more factor variables having a small number of distinct levels) whether or not the data were generated from a designed experiment.</p>
+<h3 id="Extension-for-Interaction-Effects"><a href="#Extension-for-Interaction-Effects" class="headerlink" title="Extension for Interaction Effects"></a>Extension for Interaction Effects</h3><p>Using the concept of the scatterplot matrix, the DOE scatter plot can be extended to display first order interaction effects.</p>
+<p>Specifically, if there are k factors, we create a matrix of plots with krows and k columns. On the diagonal, the plot is simply a DOE scatter plot with a single factor. For the off-diagonal plots, we multiply the values ofXi and Xj. For the common 2-level designs (i.e., each factor has two levels) the values are typically coded as -1 and 1, so the multiplied values are also -1 and 1. We then generate a DOE scatter plot for this interaction variable. This plot is called a DOE interaction effects plot and an example is shown below.</p>
+<p><img src="assets/EDA/dexscat1.gif" alt=""></p>
+<h3 id="Interpretation-of-the-DOE-Interaction-Effects-Plot"><a href="#Interpretation-of-the-DOE-Interaction-Effects-Plot" class="headerlink" title="Interpretation of the DOE Interaction Effects Plot"></a>Interpretation of the DOE Interaction Effects Plot</h3><p>We can first examine the diagonal elements for the main effects. These diagonal plots show a great deal of overlap between the levels for all three factors. This indicates that location and scale effects will be relatively small.</p>
+<p>We can then examine the off-diagonal plots for the first order interaction effects. For example, the plot in the first row and second column is the interaction between factors X1 and X2. As with the main effect plots, no clear patterns are evident.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>DOE mean plot</li>
+<li>DOE standard deviation plot</li>
+<li>Block plot</li>
+<li>Box plot</li>
+<li>Analysis of variance</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.10. Contour Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -886,7 +1082,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -905,7 +1101,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/" itemprop="url">EDA_1.3.3.11. DOE Scatter Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/" itemprop="url">EDA_1.3.3.9. Complex Demodulation Phase Plot</a></h2>
         
 
         <div class="post-meta">
@@ -917,7 +1113,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T17:26:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T16:26:12+08:00">
                 2018-03-02
               </time>
             
@@ -958,8 +1154,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -967,7 +1163,7 @@
 
           
           
-             <span id="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.11. DOE Scatter Plot">
+             <span id="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.9. Complex Demodulation Phase Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -985,7 +1181,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.11. DOE Scatter Plot
+                  EDA_1.3.3.9. Complex Demodulation Phase Plot
               </div>
           
 
@@ -1004,35 +1200,31 @@
       
         
           
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Determine Important Factors with Respect to Location and Scale</p>
-<p>The DOE scatter plot shows the response values for each level of each factor (i.e., independent) variable. This graphically shows how the location and scale vary for both within a factor variable and between different factor variables. This graphically shows which are the important factors and can help provide a ranked list of important factors from a designed experiment. The DOE scatter plot is a complement to the traditional analyis of variance of designed experiments.</p>
-<p>DOE scatter plots are typically used in conjunction with the DOE mean plotand the DOE standard deviation plot. The DOE mean plot replaces the raw response values with mean response values while the DOE standard deviation plot replaces the raw response values with the standard deviation of the response values. There is value in generating all 3 of these plots. The DOE mean and standard deviation plots are useful in that the summary measures of location and spread stand out (they can sometimes get lost with the raw plot). However, the raw data points can reveal subtleties, such as the presence of outliers, that might get lost with the summary statistics.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>Factors 4, 2, 3, and 7 are the Important Factors.</p>
-<p><img src="assets/EDA/eda_dexboxbike_r01.gif" alt=""></p>
-<h3 id="Description-of-the-Plot"><a href="#Description-of-the-Plot" class="headerlink" title="Description of the Plot"></a>Description of the Plot</h3><p>For this sample plot, there are seven factors and each factor has two levels. For each factor, we define a distinct x coordinate for each level of the factor. For example, for factor 1, level 1 is coded as 0.8 and level 2 is coded as 1.2. The y coordinate is simply the value of the response variable. The solid horizontal line is drawn at the overall mean of the response variable. The vertical dotted lines are added for clarity.</p>
-<p>Although the plot can be drawn with an arbitrary number of levels for a factor, it is really only useful when there are two or three levels for a factor.</p>
-<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>This sample DOE scatter plot shows that:</p>
-<pre><code>1. there does not appear to be any outliers;
-2. the levels of factors 2 and 4 show distinct location differences; and
-3. the levels of factor 1 show distinct scale differences.
-</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Response Values Versus Factor Variables<br>DOE scatter plots are formed by:<br>    • Vertical axis: Value of the response variable<br>    • Horizontal axis: Factor variable (with each level of the factor coded with a slightly offset x coordinate)</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The DOE scatter plot can be used to answer the following questions:</p>
-<pre><code>1. Which factors are important with respect to location and scale?
-2. Are there outliers?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Identify Important Factors with Respect to Location and Scale</p>
-<p>The goal of many designed experiments is to determine which factors are important with respect to location and scale. A ranked list of the important factors is also often of interest. DOE scatter, mean, and standard deviation plots show this graphically. The DOE scatter plot additionally shows if outliers may potentially be distorting the results.</p>
-<p>DOE scatter plots were designed primarily for analyzing designed experiments. However, they are useful for any type of multi-factor data (i.e., a response variable with two or more factor variables having a small number of distinct levels) whether or not the data were generated from a designed experiment.</p>
-<h3 id="Extension-for-Interaction-Effects"><a href="#Extension-for-Interaction-Effects" class="headerlink" title="Extension for Interaction Effects"></a>Extension for Interaction Effects</h3><p>Using the concept of the scatterplot matrix, the DOE scatter plot can be extended to display first order interaction effects.</p>
-<p>Specifically, if there are k factors, we create a matrix of plots with krows and k columns. On the diagonal, the plot is simply a DOE scatter plot with a single factor. For the off-diagonal plots, we multiply the values ofXi and Xj. For the common 2-level designs (i.e., each factor has two levels) the values are typically coded as -1 and 1, so the multiplied values are also -1 and 1. We then generate a DOE scatter plot for this interaction variable. This plot is called a DOE interaction effects plot and an example is shown below.</p>
-<p><img src="assets/EDA/dexscat1.gif" alt=""></p>
-<h3 id="Interpretation-of-the-DOE-Interaction-Effects-Plot"><a href="#Interpretation-of-the-DOE-Interaction-Effects-Plot" class="headerlink" title="Interpretation of the DOE Interaction Effects Plot"></a>Interpretation of the DOE Interaction Effects Plot</h3><p>We can first examine the diagonal elements for the main effects. These diagonal plots show a great deal of overlap between the levels for all three factors. This indicates that location and scale effects will be relatively small.</p>
-<p>We can then examine the off-diagonal plots for the first order interaction effects. For example, the plot in the first row and second column is the interaction between factors X1 and X2. As with the main effect plots, no clear patterns are evident.</p>
+            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Improve the estimate of frequency in sinusoidal time series models<br>As stated previously, in the frequency analysis of time series models, a common model is the sinusoidal model:</p>
+<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
+</code></pre><p>In this equation, α is the amplitude, φ is the phase shift, and ω is the dominant frequency. In the above model, α and φ are constant, that is they do not vary with time ti.<br>The complex demodulation phase plot (Granger, 1964) is used to improve the estimate of the frequency (i.e., ω) in this model.</p>
+<p>If the complex demodulation phase plot shows lines sloping from left to right, then the estimate of the frequency should be increased. If it shows lines sloping right to left, then the frequency should be decreased. If there is essentially zero slope, then the frequency estimate does not need to be modified.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/cdphasep.gif" alt=""></p>
+<p>This complex demodulation phase plot shows that:</p>
+<ul>
+<li>the specified demodulation frequency is incorrect;</li>
+<li>the demodulation frequency should be increased.</li>
+</ul>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The complex demodulation phase plot is formed by:</p>
+<ul>
+<li>Vertical axis: Phase</li>
+<li>Horizontal axis: Time</li>
+</ul>
+<p>The mathematical computations for the phase plot are beyond the scope of the Handbook. Consult Granger (Granger, 1964) for details.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The complex demodulation phase plot answers the following question:</p>
+<pre><code>Is the specified demodulation frequency correct?
+</code></pre><h3 id="Importance-of-a-Good-Initial-Estimate-for-the-Frequency"><a href="#Importance-of-a-Good-Initial-Estimate-for-the-Frequency" class="headerlink" title="Importance of a Good Initial Estimate for the Frequency"></a>Importance of a Good Initial Estimate for the Frequency</h3><p>The non-linear fitting for the sinusoidal model:</p>
+<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
+</code></pre><p>is usually quite sensitive to the choice of good starting values. The initial estimate of the frequency, ω, is obtained from a spectral plot. The complex demodulation phase plot is used to assess whether this estimate is adequate, and if it is not, whether it should be increased or decreased. Using the complex demodulation phase plot with the spectral plot can significantly improve the quality of the non-linear fits obtained.</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>DOE mean plot</li>
-<li>DOE standard deviation plot</li>
-<li>Block plot</li>
-<li>Box plot</li>
-<li>Analysis of variance</li>
+<li>Spectral Plot</li>
+<li>Complex Demodulation Phase Plot</li>
+<li>Non-Linear Fitting</li>
 </ul>
 
           
@@ -1485,198 +1677,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/" itemprop="url">EDA_1.3.3.9. Complex Demodulation Phase Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T16:26:12+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.9. Complex Demodulation Phase Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.9. Complex Demodulation Phase Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Improve the estimate of frequency in sinusoidal time series models<br>As stated previously, in the frequency analysis of time series models, a common model is the sinusoidal model:</p>
-<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
-</code></pre><p>In this equation, α is the amplitude, φ is the phase shift, and ω is the dominant frequency. In the above model, α and φ are constant, that is they do not vary with time ti.<br>The complex demodulation phase plot (Granger, 1964) is used to improve the estimate of the frequency (i.e., ω) in this model.</p>
-<p>If the complex demodulation phase plot shows lines sloping from left to right, then the estimate of the frequency should be increased. If it shows lines sloping right to left, then the frequency should be decreased. If there is essentially zero slope, then the frequency estimate does not need to be modified.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/cdphasep.gif" alt=""></p>
-<p>This complex demodulation phase plot shows that:</p>
-<ul>
-<li>the specified demodulation frequency is incorrect;</li>
-<li>the demodulation frequency should be increased.</li>
-</ul>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The complex demodulation phase plot is formed by:</p>
-<ul>
-<li>Vertical axis: Phase</li>
-<li>Horizontal axis: Time</li>
-</ul>
-<p>The mathematical computations for the phase plot are beyond the scope of the Handbook. Consult Granger (Granger, 1964) for details.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The complex demodulation phase plot answers the following question:</p>
-<pre><code>Is the specified demodulation frequency correct?
-</code></pre><h3 id="Importance-of-a-Good-Initial-Estimate-for-the-Frequency"><a href="#Importance-of-a-Good-Initial-Estimate-for-the-Frequency" class="headerlink" title="Importance of a Good Initial Estimate for the Frequency"></a>Importance of a Good Initial Estimate for the Frequency</h3><p>The non-linear fitting for the sinusoidal model:</p>
-<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
-</code></pre><p>is usually quite sensitive to the choice of good starting values. The initial estimate of the frequency, ω, is obtained from a spectral plot. The complex demodulation phase plot is used to assess whether this estimate is adequate, and if it is not, whether it should be increased or decreased. Using the complex demodulation phase plot with the spectral plot can significantly improve the quality of the non-linear fits obtained.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Spectral Plot</li>
-<li>Complex Demodulation Phase Plot</li>
-<li>Non-Linear Fitting</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.6. Box-Cox Normality Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1816,196 +1816,6 @@
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
 <li>Normal Probability Plot </li>
 <li>Box-Cox Linearity Plot</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/" itemprop="url">EDA_1.3.3.5. Box-Cox Linearity Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T14:26:12+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.5. Box-Cox Linearity Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.5. Box-Cox Linearity Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Find the transformation of the X variable that maximizes the correlation between a Y and an X variable</p>
-<p>When performing a linear fit of Y against X, an appropriate transformation of X can often significantly improve the fit. The Box-Cox transformation (Box and Cox, 1964) is a particularly useful family of transformations. It is defined as:</p>
-<blockquote>
-<p>   T(X)=(Xλ−1)/λ</p>
-</blockquote>
-<p>where X is the variable being transformed and λis the transformation parameter. For λ = 0, the natural log of the data is taken instead of using the above formula.</p>
-<p>The Box-Cox linearity plot is a plot of the correlation between Y and the transformed X for given values of λ. That is, λ is the coordinate for the horizontal axis variable and the value of the correlation between Y and the transformed X is the coordinate for the vertical axis of the plot. The value of λcorresponding to the maximum correlation (or minimum for negative correlation) on the plot is then the optimal choice for λ.</p>
-<p>Transforming X is used to improve the fit. The Box-Cox transformation applied to Y can be used as the basis for meeting the error assumptions. That case is not covered here. See page 225 of (Draper and Smith, 1981) or page 77 of (Ryan, 1997) for a discussion of this case.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/bootstra.gif" alt=""></p>
-<p>The plot of the original data with the predicted values from a linear fit indicate that a quadratic fit might be preferable. The Box-Cox linearity plot shows a value of λ = 2.0. The plot of the transformed data with the predicted values from a linear fit with the transformed data shows a better fit (verified by the significant reduction in the residual standard deviation).</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Box-Cox linearity plots are formed by</p>
-<ul>
-<li>Vertical axis: Correlation coefficient from the transformed X and Y</li>
-<li>Horizontal axis: Value for λ</li>
-</ul>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Box-Cox linearity plot can provide answers to the following questions:</p>
-<pre><code>1. Would a suitable transformation improve my fit?
-2. What is the optimal value of the transformation parameter?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Find a suitable transformation</p>
-<p>Transformations can often significantly improve a fit. The Box-Cox linearity plot provides a convenient way to find a suitable transformation without engaging in a lot of trial and error fitting.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Linear Regression </li>
-<li>Box-Cox Normality Plot</li>
 </ul>
 
           
@@ -2198,6 +2008,196 @@
 <li><p>Jackknife</p>
 <p>  The jacknife is a technique that is closely related to the bootstrap. The jackknife is beyond the scope of this handbook. See the Efron and Gong article for a discussion of the jackknife.</p>
 </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/" itemprop="url">EDA_1.3.3.5. Box-Cox Linearity Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T14:26:12+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.5. Box-Cox Linearity Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.5. Box-Cox Linearity Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Find the transformation of the X variable that maximizes the correlation between a Y and an X variable</p>
+<p>When performing a linear fit of Y against X, an appropriate transformation of X can often significantly improve the fit. The Box-Cox transformation (Box and Cox, 1964) is a particularly useful family of transformations. It is defined as:</p>
+<blockquote>
+<p>   T(X)=(Xλ−1)/λ</p>
+</blockquote>
+<p>where X is the variable being transformed and λis the transformation parameter. For λ = 0, the natural log of the data is taken instead of using the above formula.</p>
+<p>The Box-Cox linearity plot is a plot of the correlation between Y and the transformed X for given values of λ. That is, λ is the coordinate for the horizontal axis variable and the value of the correlation between Y and the transformed X is the coordinate for the vertical axis of the plot. The value of λcorresponding to the maximum correlation (or minimum for negative correlation) on the plot is then the optimal choice for λ.</p>
+<p>Transforming X is used to improve the fit. The Box-Cox transformation applied to Y can be used as the basis for meeting the error assumptions. That case is not covered here. See page 225 of (Draper and Smith, 1981) or page 77 of (Ryan, 1997) for a discussion of this case.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/bootstra.gif" alt=""></p>
+<p>The plot of the original data with the predicted values from a linear fit indicate that a quadratic fit might be preferable. The Box-Cox linearity plot shows a value of λ = 2.0. The plot of the transformed data with the predicted values from a linear fit with the transformed data shows a better fit (verified by the significant reduction in the residual standard deviation).</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Box-Cox linearity plots are formed by</p>
+<ul>
+<li>Vertical axis: Correlation coefficient from the transformed X and Y</li>
+<li>Horizontal axis: Value for λ</li>
+</ul>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Box-Cox linearity plot can provide answers to the following questions:</p>
+<pre><code>1. Would a suitable transformation improve my fit?
+2. What is the optimal value of the transformation parameter?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Find a suitable transformation</p>
+<p>Transformations can often significantly improve a fit. The Box-Cox linearity plot provides a convenient way to find a suitable transformation without engaging in a lot of trial and error fitting.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Linear Regression </li>
+<li>Box-Cox Normality Plot</li>
 </ul>
 
           

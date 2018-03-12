@@ -1309,7 +1309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.26. Scatter Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1328,7 +1328,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" itemprop="url">EDA_1.3.3.26. Scatter Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" itemprop="url">EDA_1.3.3.25 Run-Sequence Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1381,8 +1381,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.26. Scatter Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1390,7 +1390,7 @@
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.26. Scatter Plot">
+             <span id="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.25 Run-Sequence Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1408,7 +1408,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.26. Scatter Plot
+                  EDA_1.3.3.25 Run-Sequence Plot
               </div>
           
 
@@ -1427,47 +1427,33 @@
       
         
           
-            <h3 id="Purpose-Check-for-Relationship"><a href="#Purpose-Check-for-Relationship" class="headerlink" title="Purpose: Check for Relationship"></a>Purpose: Check for Relationship</h3><p>A scatter plot (Chambers 1983) reveals relationships or association between two variables. Such relationships manifest themselves by any non-random structure in the plot. Various common types of patterns are demonstrated in the examples.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>Linear Relationship Between Variables Y and X</p>
-<p><img src="assets/EDA/scatterp.gif" alt=""></p>
-<p>This sample plot reveals a linear relationship between the two variables indicating that alinear regression model might be appropriate.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><pre><code>Y Versus X
-</code></pre><p>A scatter plot is a plot of the values of Yversus the corresponding values of X:</p>
-<pre><code>• Vertical axis: variable Y--usually the response variable
-• Horizontal axis: variable X--usually some variable we suspect may ber related to the response
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Scatter plots can provide answers to the following questions:</p>
-<pre><code>1. Are variables X and Y related?
-2. Are variables X and Y linearly related?
-3. Are variables X and Y non-linearly related?
-4. Does the variation in Y change depending onX?
-5. Are there outliers?
-</code></pre><h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. No relationship
-2. Strong linear (positive correlation)
-3. Strong linear (negative correlation)
-4. Exact linear (positive correlation)
-5. Quadratic relationship
-6. Exponential relationship
-7. Sinusoidal relationship (damped)
-8. Variation of Y doesn&apos;t depend on X(homoscedastic)
-9. Variation of Y does depend on X(heteroscedastic)
-10. Outlier
-</code></pre><h3 id="Combining-Scatter-Plots"><a href="#Combining-Scatter-Plots" class="headerlink" title="Combining Scatter Plots"></a>Combining Scatter Plots</h3><p>Scatter plots can also be combined in multiple plots per page to help understand higher-level structure in data sets with more than two variables.</p>
-<p>The scatterplot matrix generates all pairwise scatter plots on a single page. The conditioning plot, also called a co-plot or subset plot, generates scatter plots of Y versus X dependent on the value of a third variable.</p>
-<h3 id="Causality-Is-Not-Proved-By-Association"><a href="#Causality-Is-Not-Proved-By-Association" class="headerlink" title="Causality Is Not Proved By Association"></a>Causality Is Not Proved By Association</h3><p>The scatter plot uncovers relationships in data. “Relationships” means that there is some structured association (linear, quadratic, etc.) between X and Y. Note, however, that even though</p>
-<pre><code>causality implies association
-association does NOT imply causality.
-</code></pre><p>Scatter plots are a useful diagnostic tool for determining association, but if such association exists, the plot may or may not suggest an underlying cause-and-effect mechanism. A scatter plot can never “prove” cause and effect–it is ultimately only the researcher (relying on the underlying science/engineering) who can conclude that causality actually exists.</p>
-<h3 id="Appearance"><a href="#Appearance" class="headerlink" title="Appearance"></a>Appearance</h3><p>The most popular rendition of a scatter plot is</p>
-<pre><code>1. some plot character (e.g., X) at the data points, and
-2. no line connecting data points.
-</code></pre><p>Other scatter plot format variants include</p>
-<pre><code>1. an optional plot character (e.g, X) at the data points, but
-2. a solid line connecting data points.
-</code></pre><p>In both cases, the resulting plot is referred to as a scatter plot, although the former (discrete and disconnected) is the author’s personal preference since nothing makes it onto the screen except the data–there are no interpolative artifacts to bias the interpretation.</p>
+            <h3 id="Purpose-Check-for-Shifts-in-Location-and-Scale-and-Outliers"><a href="#Purpose-Check-for-Shifts-in-Location-and-Scale-and-Outliers" class="headerlink" title="Purpose: Check for Shifts in Location and Scale and Outliers"></a>Purpose: Check for Shifts in Location and Scale and Outliers</h3><p>Run sequence plots (Chambers 1983) are an easy way to graphically summarize a univariate data set. A common assumption of univariate data sets is that they behave like:</p>
+<pre><code>1. random drawings;
+2. from a fixed distribution;
+3. with a common location; and
+4. with a common scale.
+</code></pre><p>With run sequence plots, shifts in location and scale are typically quite evident. Also, outliers can easily be detected.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/runseq.gif" alt=""></p>
+<p>Last Third of Data Shows a Shift of Location</p>
+<p>This sample run sequence plot shows that the location shifts up for the last third of the data.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><pre><code>y(i) Versus i
+</code></pre><p>Run sequence plots are formed by:</p>
+<pre><code>• Vertical axis: Response variable Yi
+• Horizontal axis: Index i (i = 1, 2, 3, ... )
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The run sequence plot can be used to answer the following questions</p>
+<pre><code>1. Are there any shifts in location?
+2. Are there any shifts in variation?
+3. Are there any outliers?
+</code></pre><p>The run sequence plot can also give the analyst an excellent feel for the data.</p>
+<h3 id="Importance-Check-Univariate-Assumptions"><a href="#Importance-Check-Univariate-Assumptions" class="headerlink" title="Importance: Check Univariate Assumptions"></a>Importance: Check Univariate Assumptions</h3><p>For univariate data, the default model is</p>
+<pre><code>Y = constant + error
+</code></pre><p>where the error is assumed to be random, from a fixed distribution, and with constant location and scale. The validity of this model depends on the validity of these assumptions. The run sequence plot is useful for checking for constant location and scale.</p>
+<p>Even for more complex models, the assumptions on the error term are still often the same. That is, a run sequence plot of the residuals (even from very complex models) is still vital for checking for outliers and for detecting shifts in location and scale.</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Run Sequence Plot </li>
-<li>Box Plot </li>
-<li>Block Plot </li>
+<li>Scatter Plot</li>
+<li>Histogram</li>
+<li>Autocorrelation Plot</li>
+<li>Lag Plot</li>
 </ul>
 
           
@@ -1709,7 +1695,7 @@ association does NOT imply causality.
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.26. Scatter Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1728,7 +1714,7 @@ association does NOT imply causality.
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" itemprop="url">EDA_1.3.3.25 Run-Sequence Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" itemprop="url">EDA_1.3.3.26. Scatter Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1781,8 +1767,8 @@ association does NOT imply causality.
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.26. Scatter Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1790,7 +1776,7 @@ association does NOT imply causality.
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.25 Run-Sequence Plot">
+             <span id="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.26. Scatter Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1808,7 +1794,7 @@ association does NOT imply causality.
 
           
               <div class="post-description">
-                  EDA_1.3.3.25 Run-Sequence Plot
+                  EDA_1.3.3.26. Scatter Plot
               </div>
           
 
@@ -1827,33 +1813,248 @@ association does NOT imply causality.
       
         
           
-            <h3 id="Purpose-Check-for-Shifts-in-Location-and-Scale-and-Outliers"><a href="#Purpose-Check-for-Shifts-in-Location-and-Scale-and-Outliers" class="headerlink" title="Purpose: Check for Shifts in Location and Scale and Outliers"></a>Purpose: Check for Shifts in Location and Scale and Outliers</h3><p>Run sequence plots (Chambers 1983) are an easy way to graphically summarize a univariate data set. A common assumption of univariate data sets is that they behave like:</p>
-<pre><code>1. random drawings;
-2. from a fixed distribution;
-3. with a common location; and
-4. with a common scale.
-</code></pre><p>With run sequence plots, shifts in location and scale are typically quite evident. Also, outliers can easily be detected.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/runseq.gif" alt=""></p>
-<p>Last Third of Data Shows a Shift of Location</p>
-<p>This sample run sequence plot shows that the location shifts up for the last third of the data.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><pre><code>y(i) Versus i
-</code></pre><p>Run sequence plots are formed by:</p>
-<pre><code>• Vertical axis: Response variable Yi
-• Horizontal axis: Index i (i = 1, 2, 3, ... )
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The run sequence plot can be used to answer the following questions</p>
-<pre><code>1. Are there any shifts in location?
-2. Are there any shifts in variation?
-3. Are there any outliers?
-</code></pre><p>The run sequence plot can also give the analyst an excellent feel for the data.</p>
-<h3 id="Importance-Check-Univariate-Assumptions"><a href="#Importance-Check-Univariate-Assumptions" class="headerlink" title="Importance: Check Univariate Assumptions"></a>Importance: Check Univariate Assumptions</h3><p>For univariate data, the default model is</p>
-<pre><code>Y = constant + error
-</code></pre><p>where the error is assumed to be random, from a fixed distribution, and with constant location and scale. The validity of this model depends on the validity of these assumptions. The run sequence plot is useful for checking for constant location and scale.</p>
-<p>Even for more complex models, the assumptions on the error term are still often the same. That is, a run sequence plot of the residuals (even from very complex models) is still vital for checking for outliers and for detecting shifts in location and scale.</p>
+            <h3 id="Purpose-Check-for-Relationship"><a href="#Purpose-Check-for-Relationship" class="headerlink" title="Purpose: Check for Relationship"></a>Purpose: Check for Relationship</h3><p>A scatter plot (Chambers 1983) reveals relationships or association between two variables. Such relationships manifest themselves by any non-random structure in the plot. Various common types of patterns are demonstrated in the examples.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>Linear Relationship Between Variables Y and X</p>
+<p><img src="assets/EDA/scatterp.gif" alt=""></p>
+<p>This sample plot reveals a linear relationship between the two variables indicating that alinear regression model might be appropriate.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><pre><code>Y Versus X
+</code></pre><p>A scatter plot is a plot of the values of Yversus the corresponding values of X:</p>
+<pre><code>• Vertical axis: variable Y--usually the response variable
+• Horizontal axis: variable X--usually some variable we suspect may ber related to the response
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Scatter plots can provide answers to the following questions:</p>
+<pre><code>1. Are variables X and Y related?
+2. Are variables X and Y linearly related?
+3. Are variables X and Y non-linearly related?
+4. Does the variation in Y change depending onX?
+5. Are there outliers?
+</code></pre><h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. No relationship
+2. Strong linear (positive correlation)
+3. Strong linear (negative correlation)
+4. Exact linear (positive correlation)
+5. Quadratic relationship
+6. Exponential relationship
+7. Sinusoidal relationship (damped)
+8. Variation of Y doesn&apos;t depend on X(homoscedastic)
+9. Variation of Y does depend on X(heteroscedastic)
+10. Outlier
+</code></pre><h3 id="Combining-Scatter-Plots"><a href="#Combining-Scatter-Plots" class="headerlink" title="Combining Scatter Plots"></a>Combining Scatter Plots</h3><p>Scatter plots can also be combined in multiple plots per page to help understand higher-level structure in data sets with more than two variables.</p>
+<p>The scatterplot matrix generates all pairwise scatter plots on a single page. The conditioning plot, also called a co-plot or subset plot, generates scatter plots of Y versus X dependent on the value of a third variable.</p>
+<h3 id="Causality-Is-Not-Proved-By-Association"><a href="#Causality-Is-Not-Proved-By-Association" class="headerlink" title="Causality Is Not Proved By Association"></a>Causality Is Not Proved By Association</h3><p>The scatter plot uncovers relationships in data. “Relationships” means that there is some structured association (linear, quadratic, etc.) between X and Y. Note, however, that even though</p>
+<pre><code>causality implies association
+association does NOT imply causality.
+</code></pre><p>Scatter plots are a useful diagnostic tool for determining association, but if such association exists, the plot may or may not suggest an underlying cause-and-effect mechanism. A scatter plot can never “prove” cause and effect–it is ultimately only the researcher (relying on the underlying science/engineering) who can conclude that causality actually exists.</p>
+<h3 id="Appearance"><a href="#Appearance" class="headerlink" title="Appearance"></a>Appearance</h3><p>The most popular rendition of a scatter plot is</p>
+<pre><code>1. some plot character (e.g., X) at the data points, and
+2. no line connecting data points.
+</code></pre><p>Other scatter plot format variants include</p>
+<pre><code>1. an optional plot character (e.g, X) at the data points, but
+2. a solid line connecting data points.
+</code></pre><p>In both cases, the resulting plot is referred to as a scatter plot, although the former (discrete and disconnected) is the author’s personal preference since nothing makes it onto the screen except the data–there are no interpolative artifacts to bias the interpretation.</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Scatter Plot</li>
+<li>Run Sequence Plot </li>
+<li>Box Plot </li>
+<li>Block Plot </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.22. Probability Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.22. Probability Plot/" itemprop="url">EDA_1.3.3.22. Probability Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.22. Probability Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.22. Probability Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.22. Probability Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.22. Probability Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.22. Probability Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Check-If-Data-Follow-a-Given-Distribution"><a href="#Purpose-Check-If-Data-Follow-a-Given-Distribution" class="headerlink" title="Purpose: Check If Data Follow a Given Distribution"></a>Purpose: Check If Data Follow a Given Distribution</h3><p>The probability plot (Chambers et al., 1983) is a graphical technique for assessing whether or not a data set follows a given distribution such as the normal or Weibull.</p>
+<p>The data are plotted against a theoretical distribution in such a way that the points should form approximately a straight line. Departures from this straight line indicate departures from the specified distribution.</p>
+<p>The correlation coefficient associated with the linear fit to the data in the probability plot is a measure of the goodness of the fit. Estimates of the location and scale parametersof the distribution are given by the intercept and slope. Probability plots can be generated for several competing distributions to see which provides the best fit, and the probability plot generating the highest correlation coefficient is the best choice since it generates the straightest probability plot.</p>
+<p>For distributions with shape parameters (not counting location and scale parameters), the shape parameters must be known in order to generate the probability plot. For distributions with a single shape parameter, the probability plot correlation coefficient(PPCC) plot provides an excellent method for estimating the shape parameter.</p>
+<p>We cover the special case of the normal probability plot separately due to its importance in many statistical applications.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/probplot.gif" alt=""></p>
+<p>This data is a set of 500 Weibull random numbers with a shape parameter = 2, location parameter = 0, and scale parameter = 1. The Weibull probability plot indicates that the Weibull distribution does in fact fit these data well.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Ordered Response Values Versus Order Statistic Medians for the Given Distribution<br>The probability plot is formed by:</p>
+<pre><code>• Vertical axis: Ordered response values
+• Horizontal axis: Order statistic medians for the given distribution
+</code></pre><p>The order statistic medians (see Filliben 1975)can be approximated by:</p>
+<pre><code>Ni = G(Ui)
+</code></pre><p>where Ui are the uniform order statistic medians (defined below) and G is the percent point function for the desired distribution. The percent point function is the inverse of the cumulative distribution function(probability that x is less than or equal to some value). That is, given a probability, we want the corresponding x of the cumulative distribution function.</p>
+<p>The uniform order statistic medians are defined as:</p>
+<pre><code>mi = 1 - mn    for i = 1
+mi = (i - 0.3175)/(n + 0.365)    for i = 2, 3, ..., n-1 
+mi = 0.5(1/n)    for i = n
+</code></pre><p>In addition, a straight line can be fit to the points and added as a reference line. The further the points vary from this line, the greater the indication of a departure from the specified distribution.</p>
+<p>This definition implies that a probability plot can be easily generated for any distribution for which the percent point function can be computed.</p>
+<p>One advantage of this method of computing proability plots is that the intercept and slope estimates of the fitted line are in fact estimates for the location and scale parameters of the distribution. Although this is not too important for the normal distribution (the location and scale are estimated by the mean and standard deviation, respectively), it can be useful for many other distributions.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The probability plot is used to answer the following questions:</p>
+<pre><code>• Does a given distribution, such as the Weibull, provide a good fit to my data?
+• What distribution best fits my data?
+• What are good estimates for the location and scale parameters of the chosen distribution?
+</code></pre><h3 id="Importance-Check-distributional-assumption"><a href="#Importance-Check-distributional-assumption" class="headerlink" title="Importance: Check distributional assumption"></a>Importance: Check distributional assumption</h3><p>The discussion for the normal probability plotcovers the use of probability plots for checking the fixed distribution assumption.</p>
+<p>Some statistical models assume data have come from a population with a specific type of distribution. For example, in reliability applications, the Weibull, lognormal, and exponential are commonly used distributional models. Probability plots can be useful for checking this distributional assumption.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
 <li>Histogram</li>
-<li>Autocorrelation Plot</li>
-<li>Lag Plot</li>
+<li>Probability Plot Correlation Coefficient (PPCC) Plot</li>
+<li>Hazard Plot</li>
+<li>Quantile-Quantile Plot</li>
+<li>Anderson-Darling Goodness of Fit</li>
+<li>Chi-Square Goodness of Fit</li>
+<li>Kolmogorov-Smirnov Goodness of Fit</li>
 </ul>
 
           
@@ -2051,213 +2252,6 @@ association does NOT imply causality.
 <li>F Test</li>
 <li>2-Sample Chi-Square Test</li>
 <li>2-Sample Kolmogorov-Smirnov Test</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/" itemprop="url">EDA_1.3.3.21. Normal Probability Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.21. Normal Probability Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.21. Normal Probability Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Check-If-Data-Are-Approximately-Normally-Distributed"><a href="#Purpose-Check-If-Data-Are-Approximately-Normally-Distributed" class="headerlink" title="Purpose: Check If Data Are Approximately Normally Distributed"></a>Purpose: Check If Data Are Approximately Normally Distributed</h3><p>The normal probability plot (Chambers et al., 1983) is a graphical technique for assessing whether or not a data set is approximatelynormally distributed.</p>
-<p>The data are plotted against a theoretical normal distribution in such a way that the points should form an approximate straight line. Departures from this straight line indicate departures from normality.</p>
-<p>The normal probability plot is a special case of the probability plot. We cover the normal probability plot separately due to its importance in many applications.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/normprpl.gif" alt=""></p>
-<p>The points on this plot form a nearly linear pattern, which indicates that the normal distribution is a good model for this data set.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Ordered Response Values Versus Normal Order Statistic Medians<br>The normal probability plot is formed by:</p>
-<pre><code>• Vertical axis: Ordered response values
-• Horizontal axis: Normal order statistic medians
-</code></pre><p>The observations are plotted as a function of the corresponding normal order statistic medians which are defined as:</p>
-<pre><code>Ni = G(Ui)
-</code></pre><p>where Ui are the uniform order statistic medians (defined below) and G is the percent point function of the normal distribution. The percent point function is the inverse of thecumulative distribution function (probability that x is less than or equal to some value). That is, given a probability, we want the corresponding x of the cumulative distribution function.</p>
-<p>The uniform order statistic medians (seeFilliben 1975) can be approximated by:</p>
-<pre><code>Ui = 1 - Un    for i = 1
-Ui = (i - 0.3175)/(n + 0.365)    for i = 2, 3, ..., n-1 
-Ui = 0.5(1/n)    for i = n
-</code></pre><p>In addition, a straight line can be fit to the points and added as a reference line. The further the points vary from this line, the greater the indication of departures from normality.</p>
-<p>Probability plots for distributions other than the normal are computed in exactly the same way. The normal percent point function (the G) is simply replaced by the percent point function of the desired distribution. That is, a probability plot can easily be generated for any distribution for which you have the percent point function.</p>
-<p>One advantage of this method of computing probability plots is that the intercept and slope estimates of the fitted line are in fact estimates for the location and scale parameters of the distribution. Although this is not too important for the normal distribution since the location and scale are estimated by the mean and standard deviation, respectively, it can be useful for many other distributions.</p>
-<p>The correlation coefficient of the points on the normal probability plot can be compared to a table of critical values to provide a formal test of the hypothesis that the data come from a normal distribution.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The normal probability plot is used to answer the following questions.</p>
-<pre><code>1. Are the data normally distributed?
-2. What is the nature of the departure from normality (data skewed, shorter than expected tails, longer than expected tails)?
-</code></pre><h3 id="Importance-Check-Normality-Assumption"><a href="#Importance-Check-Normality-Assumption" class="headerlink" title="Importance: Check Normality Assumption"></a>Importance: Check Normality Assumption</h3><p>The underlying assumptions for a measurement process are that the data should behave like:</p>
-<pre><code>1. random drawings;
-2. from a fixed distribution;
-3. with fixed location;
-4. with fixed scale.
-</code></pre><p>Probability plots are used to assess the assumption of a fixed distribution. In particular, most statistical models are of the form:</p>
-<pre><code>response = deterministic + random
-</code></pre><p>where the deterministic part is the fit and the random part is error. This error component in most common statistical models is specifically assumed to be normally distributed with fixed location and scale. This is the most frequent application of normal probability plots. That is, a model is fit and a normal probability plot is generated for the residuals from the fitted model. If the residuals from the fitted model are not normally distributed, then one of the major assumptions of the model has been violated.</p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. Data are normally distributed
-2. Data have short tails
-3. Data have fat tails
-4. Data are skewed right
-</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Histogram</li>
-<li>Probability plots for other distributions (e.g., Weibull)</li>
-<li>Probability plot correlation coefficient plot (PPCC plot) Anderson-Darling Goodness-of-Fit Test</li>
-<li>Chi-Square Goodness-of-Fit Test</li>
-<li>Kolmogorov-Smirnov Goodness-of-Fit Test</li>
 </ul>
 
           

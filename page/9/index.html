@@ -479,7 +479,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/01/手撸SVD/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/01/手撸CART/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -498,7 +498,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/01/手撸SVD/" itemprop="url">手撸SVD</a></h2>
+                <a class="post-title-link" href="/2017/12/01/手撸CART/" itemprop="url">手撸CART</a></h2>
         
 
         <div class="post-meta">
@@ -551,8 +551,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/01/手撸SVD/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/01/手撸SVD/" itemprop="commentCount"></span>
+                <a href="/2017/12/01/手撸CART/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/01/手撸CART/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -560,7 +560,7 @@
 
           
           
-             <span id="/2017/12/01/手撸SVD/" class="leancloud_visitors" data-flag-title="手撸SVD">
+             <span id="/2017/12/01/手撸CART/" class="leancloud_visitors" data-flag-title="手撸CART">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -578,7 +578,7 @@
 
           
               <div class="post-description">
-                  手撸SVD
+                  手撸CART
               </div>
           
 
@@ -596,13 +596,13 @@
 
       
         
-          <p>利用SVD，我们能够用小得多的数据集来表示原始数据集。这样做，实际上是去除了噪声和冗余信息。</p>
-<p><img src="https://i.imgur.com/rJzpOxt.png" alt=""></p>
-<p>在PCA中得到的是矩阵的特征值，它们告诉我们数据集中的重要特征。这里的奇异值也是如此。奇异值和特征值是有关系的。这里的奇异值就是矩阵Data*DataT特征值的平方根。</p>
-<h3 id="相似度计算："><a href="#相似度计算：" class="headerlink" title="相似度计算："></a>相似度计算：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> linalg <span class="keyword">as</span> la</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ecludSim</span><span class="params">(inA,inB)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1.0</span>/(<span class="number">1.0</span> + la.norm(inA - inB))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pearsSim</span><span class="params">(inA,inB)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(inA) &lt; <span class="number">3</span> : <span class="keyword">return</span> <span class="number">1.0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.5</span>+<span class="number">0.5</span>*corrcoef(inA, inB, rowvar = <span class="number">0</span>)[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cosSim</span><span class="params">(inA,inB)</span>:</span></span><br><span class="line">    num = float(inA.T*inB)</span><br><span class="line">    denom = la.norm(inA)*la.norm(inB)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.5</span>+<span class="number">0.5</span>*(num/denom)</span><br></pre></td></tr></table></figure>
+          <p>CART(Classification And Regression Trees)既可以用于分类还可以用于回归。</p>
+<p>CART算法只做二元切分，所以这里可以固定树的数据结构。树包含左键和右键，可以存储另一棵子树或者单个值。字典还包含特征和特征值这两个键，它们给出切分算法所有的特征和特征值。</p>
+<h3 id="建立树节点："><a href="#建立树节点：" class="headerlink" title="建立树节点："></a>建立树节点：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">classtreeNode()：</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,feat,val,right,left)</span>：</span></span><br><span class="line">		featureToSplitOn = feat</span><br><span class="line">		valueOfSplit = val</span><br><span class="line">		rightBranch = right</span><br><span class="line">		leftBranch = left</span><br></pre></td></tr></table></figure>
+<h3 id="函数createTree-的伪代码大致如下："><a href="#函数createTree-的伪代码大致如下：" class="headerlink" title="函数createTree()的伪代码大致如下："></a>函数createTree()的伪代码大致如下：</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">找到最佳的待切分特征：</span><br><span class="line">	如果该节点不能再分，将该节点存为叶节点</span><br><span class="line">	执行二元切分</span><br><span class="line">	在右子树调用createTree<span class="comment">()</span>方法</span><br><span class="line">	在左子树调用createTree<span class="comment">()</span>方法</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/01/手撸SVD/" rel="contents">
+            <a class="btn" href="/2017/12/01/手撸CART/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
