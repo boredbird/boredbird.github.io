@@ -1,7 +1,7 @@
 ---
 title: cannot start process the working directory '' does not exist
-date: 2017-12-26 11:24:12 
-categories: "Python" 
+date: 2017-12-26 11:24:12
+categories: "Python"
 tags: 
      - Python
 description: cannot start process the working directory '' does not exist
