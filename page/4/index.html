@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/Ridge_Lasso_ElasticNet/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.30. Weibull Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/Ridge_Lasso_ElasticNet/" itemprop="url">sklearn.linear_model中的Ridge、Lasso、ElasticNet回归</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.30. Weibull Plot/" itemprop="url">EDA_1.3.3.30. Weibull Plot</a></h2>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:56:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/Ridge_Lasso_ElasticNet/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/Ridge_Lasso_ElasticNet/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.30. Weibull Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.30. Weibull Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2017/11/13/Ridge_Lasso_ElasticNet/" class="leancloud_visitors" data-flag-title="sklearn.linear_model中的Ridge、Lasso、ElasticNet回归">
+             <span id="/2018/03/12/EDA_1.3.3.30. Weibull Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.30. Weibull Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,694 +407,7 @@
 
           
               <div class="post-description">
-                  sklearn.linear_model中的Ridge、Lasso、ElasticNet回归
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression, RidgeCV, LassoCV, ElasticNetCV</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> warnings</span><br></pre></td></tr></table></figure>
-<h1 id="定义模型评价函数："><a href="#定义模型评价函数：" class="headerlink" title="定义模型评价函数："></a>定义模型评价函数：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xss</span><span class="params">(y, y_hat)</span>:</span></span><br><span class="line">    y = y.ravel()</span><br><span class="line">    y_hat = y_hat.ravel()</span><br><span class="line">    tss = np.var(y)</span><br><span class="line">    rss = np.average((y_hat - y) ** <span class="number">2</span>)</span><br><span class="line">    r2 = <span class="number">1</span> - rss / tss</span><br><span class="line">    corr_coef = np.corrcoef(y, y_hat)[<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> r2, corr_coef</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/Ridge_Lasso_ElasticNet/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/sklearn.linear_model/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/13/sklearn.linear_model/" itemprop="url">sklearn.linear_model</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/13/sklearn.linear_model/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/sklearn.linear_model/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/11/13/sklearn.linear_model/" class="leancloud_visitors" data-flag-title="sklearn.linear_model">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  sklearn.linear_model
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">X = boston.data</span><br><span class="line">y = boston.target</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">划分数据集</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="GridSearchCV寻参"><a href="#GridSearchCV寻参" class="headerlink" title="GridSearchCV寻参"></a>GridSearchCV寻参</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">lr = linear_model.LinearRegression()</span><br><span class="line">model = Lasso()</span><br><span class="line"><span class="comment"># model = Ridge()</span></span><br><span class="line"></span><br><span class="line">alpha_can = np.logspace(<span class="number">-3</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">lasso_model = GridSearchCV(model, param_grid=&#123;<span class="string">'alpha'</span>: alpha_can&#125;, cv=<span class="number">5</span>)</span><br><span class="line">lasso_model.fit(x_train, y_train)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'超参数：\n'</span>, lasso_model.best_params_</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/sklearn.linear_model/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/sklearn.linear_model.LogisticRegression/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/13/sklearn.linear_model.LogisticRegression/" itemprop="url">sklearn.linear_model.LogisticRegression</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/13/sklearn.linear_model.LogisticRegression/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/sklearn.linear_model.LogisticRegression/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/11/13/sklearn.linear_model.LogisticRegression/" class="leancloud_visitors" data-flag-title="sklearn.linear_model.LogisticRegression">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  sklearn.linear_model.LogisticRegression
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
-<h1 id="数据处理与模型拟合Pipeline"><a href="#数据处理与模型拟合Pipeline" class="headerlink" title="数据处理与模型拟合Pipeline"></a>数据处理与模型拟合Pipeline</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">lr = Pipeline([(<span class="string">'sc'</span>, StandardScaler()),</span><br><span class="line">               (<span class="string">'clf'</span>, LogisticRegression()) ])</span><br><span class="line">lr.fit(X, y.ravel())</span><br><span class="line">y_hat = lr.predict(X)</span><br><span class="line">y_hat_prob = lr.predict_proba(X)</span><br><span class="line">np.set_printoptions(suppress=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'y_hat = \n'</span>, y_hat</span><br><span class="line"><span class="keyword">print</span> <span class="string">'y_hat_prob = \n'</span>, y_hat_prob</span><br><span class="line"><span class="keyword">print</span> <span class="string">u'准确度：%.2f%%'</span> % (<span class="number">100</span>*np.mean(y_hat == y.ravel()))</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/sklearn.linear_model.LogisticRegression/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/scipy.optimize/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/13/scipy.optimize/" itemprop="url">scipy.optimize使用</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/13/scipy.optimize/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/scipy.optimize/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/11/13/scipy.optimize/" class="leancloud_visitors" data-flag-title="scipy.optimize使用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  scipy.optimize使用
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="定义损失函数"><a href="#定义损失函数" class="headerlink" title="定义损失函数"></a>定义损失函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入NumPy函数库，一般都是用这样的形式(包括别名np，几乎是约定俗成的)</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> leastsq</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">residual</span><span class="params">(t, x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> y - (t[<span class="number">0</span>] * x ** <span class="number">2</span> + t[<span class="number">1</span>] * x + t[<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">residual2</span><span class="params">(t, x, y)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> t[<span class="number">0</span>], t[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> y - t[<span class="number">0</span>]*np.sin(t[<span class="number">1</span>]*x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># x ** x        x &gt; 0</span></span><br><span class="line"><span class="comment"># (-x) ** (-x)  x &lt; 0</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    y = np.ones_like(x)</span><br><span class="line">    i = x &gt; <span class="number">0</span></span><br><span class="line">    y[i] = np.power(x[i], x[i])</span><br><span class="line">    i = x &lt; <span class="number">0</span></span><br><span class="line">    y[i] = np.power(-x[i], -x[i])</span><br><span class="line">    <span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/scipy.optimize/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/python读取文件数据的几种方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/13/python读取文件数据的几种方式/" itemprop="url">python读取文件数据的几种方式</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T14:53:12+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/13/python读取文件数据的几种方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/python读取文件数据的几种方式/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/11/13/python读取文件数据的几种方式/" class="leancloud_visitors" data-flag-title="python读取文件数据的几种方式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  python读取文件数据的几种方式
+                  EDA_1.3.3.30. Weibull Plot
               </div>
           
 
@@ -1113,10 +426,33 @@
       
         
           
-            <h1 id="方式一：f-file-path"><a href="#方式一：f-file-path" class="headerlink" title="方式一：f = file(path)"></a>方式一：f = file(path)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">f = file(path)</span><br><span class="line">x = []</span><br><span class="line">y = []</span><br><span class="line"><span class="keyword">for</span> i, d <span class="keyword">in</span> enumerate(f):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    d = d.strip()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> d:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    d = map(float, d.split(<span class="string">','</span>))</span><br><span class="line">    x.append(d[<span class="number">1</span>:<span class="number">-1</span>])</span><br><span class="line">    y.append(d[<span class="number">-1</span>])</span><br><span class="line">pprint(x)</span><br><span class="line">pprint(y)</span><br><span class="line">x = np.array(x)</span><br><span class="line">y = np.array(y)</span><br></pre></td></tr></table></figure>
-<h1 id="方式二：Python自带库csv"><a href="#方式二：Python自带库csv" class="headerlink" title="方式二：Python自带库csv"></a>方式二：Python自带库csv</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line">   f = file(path, <span class="string">'rb'</span>)</span><br><span class="line">   <span class="keyword">print</span> f</span><br><span class="line">   d = csv.reader(f)</span><br><span class="line">   <span class="keyword">for</span> line <span class="keyword">in</span> d:</span><br><span class="line">       <span class="keyword">print</span> line</span><br><span class="line">   f.close()</span><br></pre></td></tr></table></figure>
-<h1 id="方式三：Python自带库numpy"><a href="#方式三：Python自带库numpy" class="headerlink" title="方式三：Python自带库numpy"></a>方式三：Python自带库numpy</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">p = np.loadtxt(path, delimiter=<span class="string">','</span>, skiprows=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="方式四：Python自带库pandas"><a href="#方式四：Python自带库pandas" class="headerlink" title="方式四：Python自带库pandas"></a>方式四：Python自带库pandas</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(path)</span><br></pre></td></tr></table></figure>
+            <h3 id="Purpose-Graphical-Check-To-See-If-Data-Come-From-a-Population-That-Would-Be-Fit-by-a-Weibull-Distribution"><a href="#Purpose-Graphical-Check-To-See-If-Data-Come-From-a-Population-That-Would-Be-Fit-by-a-Weibull-Distribution" class="headerlink" title="Purpose: Graphical Check To See If Data Come From a Population That Would Be Fit by a Weibull Distribution"></a>Purpose: Graphical Check To See If Data Come From a Population That Would Be Fit by a Weibull Distribution</h3><p>The Weibull plot (Nelson 1982) is a graphical technique for determining if a data set comes from a population that would logically be fit by a 2-parameter Weibull distribution (the location is assumed to be zero).</p>
+<p>The Weibull plot has special scales that are designed so that if the data do in fact follow a Weibull distribution, the points will be linear (or nearly linear). The least squares fit of this line yields estimates for the shape and scale parameters of the Weibull distribution (the location is assumed to be zero).</p>
+<p>Specifically, the shape parameter is the reciprocal of the slope of the fitted line and the scale parameter is the exponent of the intercept of the fitted line.<br>The Weibull distribution also has the property that the scale parameter falls at the 63.2% point irrespective of the value of the shape parameter. The plot shows a horizontal line at this 63.2% point and a vertical line where the horizontal line intersects the least squares fitted line. This vertical line shows the value of scale parameter.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/weibullp.gif" alt=""></p>
+<p>This Weibull plot shows that:</p>
+<pre><code>1. the assumption of a Weibull distribution is reasonable;
+2. the scale parameter estimate is computed to be 33.32;
+3. the shape parameter estimate is computed to be 5.28; and
+4. there are no outliers.
+</code></pre><p>Note that the values on the x-axis (“0”, “1”, and “2”) are the exponents. These actually denote the value 100 = 1, 101 = 10, and 102 = 100.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Weibull Cumulative Probability Versus LN(Ordered Response)</p>
+<p>The Weibull plot is formed by:</p>
+<pre><code>• Vertical axis: Weibull cumulative probability expressed as a percentage
+• Horizontal axis: ordered failure times (in a LOG10 scale)
+</code></pre><p>The vertical scale is ln(-ln(1-p)) where p=(i-0.3)/(n+0.4) and i is the rank of the observation. This scale is chosen in order to linearize the resulting plot for Weibull data.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Weibull plot can be used to answer the following questions:</p>
+<pre><code>1. Do the data follow a 2-parameter Weibull distribution?
+2. What is the best estimate of the shape parameter for the 2-parameter Weibull distribution?
+3. What is the best estimate of the scale (= variation) parameter for the 2-parameter Weibull distribution?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Check Distributional Assumptions</p>
+<p>Many statistical analyses, particularly in the field of reliability, are based on the assumption that the data follow a Weibull distribution. If the analysis assumes the data follow a Weibull distribution, it is important to verify this assumption and, if verified, find good estimates of the Weibull parameters.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Weibull Probability Plot</li>
+<li>Weibull PPCC Plot</li>
+<li>Weibull Hazard Plot</li>
+</ul>
+<p>The Weibull probability plot (in conjunction with the Weibull PPCC plot), the Weibull hazard plot, and the Weibull plot are all similar techniques that can be used for assessing the adequacy of the Weibull distribution as a model for the data, and additionally providing estimation for the shape, scale, or location parameters.<br>The Weibull hazard plot and Weibull plot are designed to handle censored data (which the Weibull probability plot does not).</p>
 
           
         
@@ -1165,7 +501,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/主题模型/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.32. 4-Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1184,7 +520,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/12/主题模型/" itemprop="url">主题模型</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.32. 4-Plot/" itemprop="url">EDA_1.3.3.32. 4-Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1196,8 +532,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T22:06:12+08:00">
-                2017-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:56:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1219,8 +555,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1237,8 +573,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/12/主题模型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/主题模型/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.32. 4-Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.32. 4-Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1246,7 +582,7 @@
 
           
           
-             <span id="/2017/11/12/主题模型/" class="leancloud_visitors" data-flag-title="主题模型">
+             <span id="/2018/03/12/EDA_1.3.3.32. 4-Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.32. 4-Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1264,7 +600,7 @@
 
           
               <div class="post-description">
-                  主题模型
+                  EDA_1.3.3.32. 4-Plot
               </div>
           
 
@@ -1282,16 +618,87 @@
 
       
         
-          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/主题模型/TIM截图20171112220821.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          
+            <h3 id="Purpose-Check-Underlying-Statistical-Assumptions"><a href="#Purpose-Check-Underlying-Statistical-Assumptions" class="headerlink" title="Purpose: Check Underlying Statistical Assumptions"></a>Purpose: Check Underlying Statistical Assumptions</h3><p>The 4-plot is a collection of 4 specific EDA graphical techniques whose purpose is to test the assumptions that underlie most measurement processes. A 4-plot consists of a</p>
+<pre><code>1. run sequence plot;
+2. lag plot;
+3. histogram;
+4. normal probability plot.
+</code></pre><p>If the 4 underlying assumptions of a typical measurement process hold, then the above 4 plots will have a characteristic appearance (see the normal random numbers case study below); if any of the underlying assumptions fail to hold, then it will be revealed by an anomalous appearance in one or more of the plots. Several commonly encountered situations are demonstrated in the case studies below.<br>Although the 4-plot has an obvious use for univariate and time series data, its usefulness extends far beyond that. Many statisticalmodels of the form</p>
+<pre><code>Yi=f(X1,...,Xk)+Ei
+</code></pre><p>have the same underlying assumptions for the error term. That is, no matter how complicated the functional fit, the assumptions on the underlying error term are still the same. The 4-plot can and should be routinely applied to the residuals when fitting models regardless of whether the model is simple or complicated.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/4-plot.gif" alt=""></p>
+<p>Process Has Fixed Location, Fixed Variation, Non-Random (Oscillatory), Non-Normal U-Shaped Distribution, and Has 3 Outliers.</p>
+<p>This 4-plot reveals the following:</p>
+<pre><code>1. the fixed location assumption is justified as shown by the run sequence plot in the upper left corner.
+2. the fixed variation assumption is justified as shown by the run sequence plot in the upper left corner.
+3. the randomness assumption is violated as shown by the non-random (oscillatory) lag plot in the upper right corner.
+4. the assumption of a common, normal distribution is violated as shown by the histogram in the lower left corner and the normal probability plot in the lower right corner. The distribution is non-normal and is a U-shaped distribution.
+5. there are several outliers apparent in the lag plot in the upper right corner.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><ol>
+<li>Run Sequence Plot;</li>
+<li>Lag Plot;</li>
+<li>Histogram;</li>
+<li>Normal Probability Plot</li>
+</ol>
+<p>The 4-plot consists of the following:</p>
+<pre><code>1. Run sequence plot to test fixed location and variation.
+    ○ Vertically: Yi
+    ○ Horizontally: i
+2. Lag Plot to test randomness.
+    ○ Vertically: Yi
+    ○ Horizontally: Yi-1
+3. Histogram to test (normal) distribution.
+    ○ Vertically: Counts
+    ○ Horizontally: Y
+4. Normal probability plot to test normal distribution.
+    ○ Vertically: Ordered Yi
+    ○ Horizontally: Theoretical values from a normal N(0,1) distribution for ordered Yi
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>4-plots can provide answers to many questions:</p>
+<pre><code>1. Is the process in-control, stable, and predictable?
+2. Is the process drifting with respect to location?
+3. Is the process drifting with respect to variation?
+4. Are the data random?
+5. Is an observation related to an adjacent observation?
+6. If the data are a time series, is is white noise?
+7. If the data are a time series and not white noise, is it sinusoidal, autoregressive, etc.?
+8. If the data are non-random, what is a better model?
+9. Does the process follow a normal distribution?
+10. If non-normal, what distribution does the process follow?
+11. Is the model
+    Yi=A0+Ei
+    valid and sufficient?
+12. If the default model is insufficient, what is a better model?
+13. Is the formula
+    sY¯=s/N−−√
+    valid?
+14. Is the sample mean a good estimator of the process location?
+15. If not, what would be a better estimator?
+16. Are there any outliers?
+</code></pre><h3 id="Importance-Testing-Underlying-Assumptions-Helps-Ensure-the-Validity-of-the-Final-Scientific-and-Engineering-Conclusions"><a href="#Importance-Testing-Underlying-Assumptions-Helps-Ensure-the-Validity-of-the-Final-Scientific-and-Engineering-Conclusions" class="headerlink" title="Importance: Testing Underlying Assumptions Helps Ensure the Validity of the Final Scientific and Engineering Conclusions"></a>Importance: Testing Underlying Assumptions Helps Ensure the Validity of the Final Scientific and Engineering Conclusions</h3><p>There are 4 assumptions that typically underlie all measurement processes; namely, that the data from the process at hand “behave like”:</p>
+<pre><code>1. random drawings;
+2. from a fixed distribution;
+3. with that distribution having a fixed location; and
+4. with that distribution having fixed variation.
+</code></pre><p>Predictability is an all-important goal in science and engineering. If the above 4 assumptions hold, then we have achieved probabilistic predictability–the ability to make probability statements not only about the process in the past, but also about the process in the future. In short, such processes are said to be “statistically in control”. If the 4 assumptions do not hold, then we have a process that is drifting (with respect to location, variation, or distribution), is unpredictable, and is out of control. A simple characterization of such processes by a location estimate, a variation estimate, or a distribution “estimate” inevitably leads to optimistic and grossly invalid engineering conclusions.</p>
+<p>Inasmuch as the validity of the final scientific and engineering conclusions is inextricably linked to the validity of these same 4 underlying assumptions, it naturally follows that there is a real necessity for all 4 assumptions to be routinely tested. The 4-plot (run sequence plot, lag plot, histogram, and normal probability plot) is seen as a simple, efficient, and powerful way of carrying out this routine checking.</p>
+<p>Interpretation:<br>Flat, Equi-Banded, Random, Bell-Shaped, and Linear<br>Of the 4 underlying assumptions:</p>
+<pre><code>1. If the fixed location assumption holds, then the run sequence plot will be flat and non-drifting.
+2. If the fixed variation assumption holds, then the vertical spread in the run sequence plot will be approximately the same over the entire horizontal axis.
+3. If the randomness assumption holds, then the lag plot will be structureless and random.
+4. If the fixed distribution assumption holds (in particular, if the fixed normal distribution assumption holds), then the histogram will be bell-shaped and the normal probability plot will be approximatelylinear.
+</code></pre><p>If all 4 of the assumptions hold, then the process is “statistically in control”. In practice, many processes fall short of achieving this ideal.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Run Sequence Plot </li>
+<li>Lag Plot </li>
+<li>Histogram </li>
+<li>Normal Probability Plot </li>
+<li>Autocorrelation Plot </li>
+<li>Spectral Plot </li>
+<li>PPCC Plot </li>
+</ul>
 
-<h1 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/主题模型/TIM截图20171112221007.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/12/主题模型/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1338,7 +745,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/HMM/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.31. Youden Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1357,7 +764,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/12/HMM/" itemprop="url">HMM</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.31. Youden Plot/" itemprop="url">EDA_1.3.3.31. Youden Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1369,8 +776,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T22:06:12+08:00">
-                2017-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:56:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1392,8 +799,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1410,8 +817,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/12/HMM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/HMM/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.31. Youden Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.31. Youden Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1419,7 +826,7 @@
 
           
           
-             <span id="/2017/11/12/HMM/" class="leancloud_visitors" data-flag-title="HMM">
+             <span id="/2018/03/12/EDA_1.3.3.31. Youden Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.31. Youden Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1437,7 +844,7 @@
 
           
               <div class="post-description">
-                  隐马尔科夫模型
+                  EDA_1.3.3.31. Youden Plot
               </div>
           
 
@@ -1455,16 +862,30 @@
 
       
         
-          <h2 id="HMM定义"><a href="#HMM定义" class="headerlink" title="HMM定义"></a>HMM定义</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225447.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          
+            <h3 id="Purpose-Interlab-Comparisons"><a href="#Purpose-Interlab-Comparisons" class="headerlink" title="Purpose: Interlab Comparisons"></a>Purpose: Interlab Comparisons</h3><p>Youden plots are a graphical technique for analyzing interlab data when each lab has made two runs on the same product or one run on two different products.<br>The Youden plot is a simple but effective method for comparing both the within-laboratory variability and the between-laboratory variability.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/youdenpl.gif" alt=""></p>
+<p>This plot shows:</p>
+<pre><code>1. Not all labs are equivalent.
+2. Lab 4 is biased low.
+3. Lab 3 has within-lab variability problems.
+4. Lab 5 has an outlying run.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Response 1 Versus Response 2 Coded by Lab</p>
+<p>Youden plots are formed by:</p>
+<pre><code>1. Vertical axis: Response variable 1 (i.e., run 1 or product 1 response value)
+2. Horizontal axis: Response variable 2 (i.e., run 2 or product 2 response value)
+</code></pre><p>In addition, the plot symbol is the lab id (typically an integer from 1 to k where k is the number of labs). Sometimes a 45-degree reference line is drawn. Ideally, a lab generating two runs of the same product should produce reasonably similar results. Departures from this reference line indicate inconsistency from the lab. If two different products are being tested, then a 45-degree line may not be appropriate. However, if the labs are consistent, the points should lie near some fitted straight line.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Youden plot can be used to answer the following questions:</p>
+<pre><code>1. Are all labs equivalent?
+2. What labs have between-lab problems (reproducibility)?
+3. What labs have within-lab problems (repeatability)?
+4. What labs are outliers?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>In interlaboratory studies or in comparing two runs from the same lab, it is useful to know if consistent results are generated. Youden plots should be a routine plot for analyzing this type of data.</p>
+<p>DOE Youden Plot</p>
+<p>The DOE Youden plot is a specialized Youden plot used in the design of experiments. In particular, it is useful for full and fractional designs.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>Scatter Plot</p>
 
-<h2 id="隐马尔科夫模型的贝叶斯网络"><a href="#隐马尔科夫模型的贝叶斯网络" class="headerlink" title="隐马尔科夫模型的贝叶斯网络"></a>隐马尔科夫模型的贝叶斯网络</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225714.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/12/HMM/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1511,7 +932,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/贝叶斯网络/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1530,7 +951,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/12/贝叶斯网络/" itemprop="url">贝叶斯网络</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/" itemprop="url">EDA_1.3.3.28. Standard Deviation Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1542,8 +963,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T21:56:12+08:00">
-                2017-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:46:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1565,8 +986,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1583,8 +1004,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/12/贝叶斯网络/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/贝叶斯网络/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1592,7 +1013,7 @@
 
           
           
-             <span id="/2017/11/12/贝叶斯网络/" class="leancloud_visitors" data-flag-title="贝叶斯网络">
+             <span id="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.28. Standard Deviation Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1610,7 +1031,7 @@
 
           
               <div class="post-description">
-                  贝叶斯网络
+                  EDA_1.3.3.28. Standard Deviation Plot
               </div>
           
 
@@ -1628,14 +1049,31 @@
 
       
         
-          <h1 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/12/贝叶斯网络/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="Purpose-Detect-Changes-in-Scale-Between-Groups"><a href="#Purpose-Detect-Changes-in-Scale-Between-Groups" class="headerlink" title="Purpose: Detect Changes in Scale Between Groups"></a>Purpose: Detect Changes in Scale Between Groups</h3><p>Standard deviation plots are used to see if the standard deviation varies between different groups of the data. The grouping is determined by the analyst. In most cases, the data provide a specific grouping variable. For example, the groups may be the levels of a factor variable. In the sample plot below, the months of the year provide the grouping.</p>
+<p>Standard deviation plots can be used with ungrouped data to determine if the standard deviation is changing over time. In this case, the data are broken into an arbitrary number of equal-sized groups. For example, a data series with 400 points can be divided into 10 groups of 40 points each. A standard deviation plot can then be generated with these groups to see if the standard deviation is increasing or decreasing over time.</p>
+<p>Although the standard deviation is the most commonly used measure of scale, the same concept applies to other measures of scale. For example, instead of plotting the standard deviation of each group, the median absolute deviation or theaverage absolute deviation might be plotted instead. This might be done if there were significant outliers in the data and a more robust measure of scale than the standard deviation was desired.</p>
+<p>Standard deviation plots are typically used in conjunction with mean plots. The mean plot would be used to check for shifts in location while the standard deviation plot would be used to check for shifts in scale.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/sdplot.gif" alt=""></p>
+<p>This sample standard deviation plot shows</p>
+<pre><code>1. there is a shift in variation;
+2. greatest variation is during the summer months.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Standard Deviations Versus Group ID</p>
+<p>Standard deviation plots are formed by:</p>
+<pre><code>• Vertical axis: Group standard deviations
+• Horizontal axis: Group identifier
+</code></pre><p>A reference line is plotted at the overall standard deviation.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The standard deviation plot can be used to answer the following questions.</p>
+<pre><code>1. Are there any shifts in variation?
+2. What is the magnitude of the shifts in variation?
+3. Is there a distinct pattern in the shifts in variation?
+</code></pre><h3 id="Importance-Checking-Assumptions"><a href="#Importance-Checking-Assumptions" class="headerlink" title="Importance: Checking Assumptions"></a>Importance: Checking Assumptions</h3><p>A common assumption in 1-factor analyses is that of equal variances. That is, the variance is the same for different levels of the factor variable. The standard deviation plot provides a graphical check for that assumption. A common assumption for univariate data is that the variance is constant. By grouping the data into equi-sized intervals, the standard deviation plot can provide a graphical test of this assumption.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Mean Plot</li>
+<li>DOE Standard Deviation Plot</li>
+</ul>
+
+          
         
       
     </div>
@@ -1682,7 +1120,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/PLSA/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.29. Star Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1701,7 +1139,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/12/PLSA/" itemprop="url">PLSA</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.29. Star Plot/" itemprop="url">EDA_1.3.3.29. Star Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1713,8 +1151,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T20:56:12+08:00">
-                2017-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:46:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1736,8 +1174,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1754,8 +1192,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/12/PLSA/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/PLSA/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.29. Star Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.29. Star Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1763,7 +1201,7 @@
 
           
           
-             <span id="/2017/11/12/PLSA/" class="leancloud_visitors" data-flag-title="PLSA">
+             <span id="/2018/03/12/EDA_1.3.3.29. Star Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.29. Star Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1781,7 +1219,7 @@
 
           
               <div class="post-description">
-                  主题模型
+                  EDA_1.3.3.29. Star Plot
               </div>
           
 
@@ -1799,16 +1237,32 @@
 
       
         
-          <h1 id="PLSA模型"><a href="#PLSA模型" class="headerlink" title="PLSA模型"></a>PLSA模型</h1><h2 id="PLSA模型概述"><a href="#PLSA模型概述" class="headerlink" title="PLSA模型概述"></a>PLSA模型概述</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/PLSA/TIM截图20171112205947.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          
+            <h3 id="Purpose-Display-Multivariate-Data"><a href="#Purpose-Display-Multivariate-Data" class="headerlink" title="Purpose: Display Multivariate Data"></a>Purpose: Display Multivariate Data</h3><p>The star plot (Chambers 1983) is a method of displaying multivariate data. Each star represents a single observation. Typically, star plots are generated in a multi-plot format with many stars on each page and each star representing one observation.</p>
+<p>Star plots are used to examine the relative values for a single data point (e.g., point 3 is large for variables 2 and 4, small for variables 1, 3, 5, and 6) and to locate similar points or dissimilar points.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/starplot.gif" alt=""></p>
+<p>The plot below contains the star plots of 16 cars. The data file actually contains 74 cars, but we restrict the plot to what can reasonably be shown on one page. The variable list for the sample star plot is</p>
+<pre><code>1. Price
+2. Mileage (MPG)
+3. 1978 Repair Record (1 = Worst, 5 = Best)
+4. 1977 Repair Record (1 = Worst, 5 = Best)
+5. Headroom
+6. Rear Seat Room
+7. Trunk Space
+8. Weight
+9. 9
+10. Length
+</code></pre><p>We can look at these plots individually or we can use them to identify clusters of cars with similar features. For example, we can look at the star plot of the Cadillac Seville and see that it is one of the most expensive cars, gets below average (but not among the worst) gas mileage, has an average repair record, and has average-to-above-average roominess and size. We can then compare the Cadillac models (the last three plots) with the AMC models (the first three plots). This comparison shows distinct patterns. The AMC models tend to be inexpensive, have below average gas mileage, and are small in both height and weight and in roominess. The Cadillac models are expensive, have poor gas mileage, and are large in both size and roominess.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The star plot consists of a sequence of equi-angular spokes, called radii, with each spoke representing one of the variables. The data length of a spoke is proportional to the magnitude of the variable for the data point relative to the maximum magnitude of the variable across all data points. A line is drawn connecting the data values for each spoke. This gives the plot a star-like appearance and the origin of the name of this plot.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The star plot can be used to answer the following questions:</p>
+<pre><code>1. What variables are dominant for a given observation?
+2. Which observations are most similar, i.e., are there clusters of observations?
+3. Are there outliers?
+</code></pre><h3 id="Weakness-in-Technique"><a href="#Weakness-in-Technique" class="headerlink" title="Weakness in Technique"></a>Weakness in Technique</h3><p>Star plots are helpful for small-to-moderate-sized multivariate data sets. Their primary weakness is that their effectiveness is limited to data sets with less than a few hundred points. After that, they tend to be overwhelming.</p>
+<p>Graphical techniques suited for large data sets are discussed by Scott.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>Alternative ways to plot multivariate data are discussed in Chambers, du Toit, and Everitt.</p>
 
-<h2 id="PLSA模型过程"><a href="#PLSA模型过程" class="headerlink" title="PLSA模型过程"></a>PLSA模型过程</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/PLSA/TIM截图20171112210114.png" width="80%"><br>  <img src="/assets/chinahadoop/PLSA/TIM截图20171112210128.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/12/PLSA/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1855,7 +1309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/EM/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.26. Scatter Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1874,7 +1328,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/12/EM/" itemprop="url">EM</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" itemprop="url">EDA_1.3.3.26. Scatter Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1886,8 +1340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T19:15:12+08:00">
-                2017-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:36:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1909,8 +1363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1927,8 +1381,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/12/EM/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/EM/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.26. Scatter Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1936,7 +1390,7 @@
 
           
           
-             <span id="/2017/11/12/EM/" class="leancloud_visitors" data-flag-title="EM">
+             <span id="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.26. Scatter Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1954,7 +1408,7 @@
 
           
               <div class="post-description">
-                  主题模型
+                  EDA_1.3.3.26. Scatter Plot
               </div>
           
 
@@ -1972,16 +1426,841 @@
 
       
         
-          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><h2 id="k-Means算法"><a href="#k-Means算法" class="headerlink" title="k-Means算法"></a>k-Means算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/EM/TIM截图20171112192635.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          
+            <h3 id="Purpose-Check-for-Relationship"><a href="#Purpose-Check-for-Relationship" class="headerlink" title="Purpose: Check for Relationship"></a>Purpose: Check for Relationship</h3><p>A scatter plot (Chambers 1983) reveals relationships or association between two variables. Such relationships manifest themselves by any non-random structure in the plot. Various common types of patterns are demonstrated in the examples.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>Linear Relationship Between Variables Y and X</p>
+<p><img src="assets/EDA/scatterp.gif" alt=""></p>
+<p>This sample plot reveals a linear relationship between the two variables indicating that alinear regression model might be appropriate.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><pre><code>Y Versus X
+</code></pre><p>A scatter plot is a plot of the values of Yversus the corresponding values of X:</p>
+<pre><code>• Vertical axis: variable Y--usually the response variable
+• Horizontal axis: variable X--usually some variable we suspect may ber related to the response
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Scatter plots can provide answers to the following questions:</p>
+<pre><code>1. Are variables X and Y related?
+2. Are variables X and Y linearly related?
+3. Are variables X and Y non-linearly related?
+4. Does the variation in Y change depending onX?
+5. Are there outliers?
+</code></pre><h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. No relationship
+2. Strong linear (positive correlation)
+3. Strong linear (negative correlation)
+4. Exact linear (positive correlation)
+5. Quadratic relationship
+6. Exponential relationship
+7. Sinusoidal relationship (damped)
+8. Variation of Y doesn&apos;t depend on X(homoscedastic)
+9. Variation of Y does depend on X(heteroscedastic)
+10. Outlier
+</code></pre><h3 id="Combining-Scatter-Plots"><a href="#Combining-Scatter-Plots" class="headerlink" title="Combining Scatter Plots"></a>Combining Scatter Plots</h3><p>Scatter plots can also be combined in multiple plots per page to help understand higher-level structure in data sets with more than two variables.</p>
+<p>The scatterplot matrix generates all pairwise scatter plots on a single page. The conditioning plot, also called a co-plot or subset plot, generates scatter plots of Y versus X dependent on the value of a third variable.</p>
+<h3 id="Causality-Is-Not-Proved-By-Association"><a href="#Causality-Is-Not-Proved-By-Association" class="headerlink" title="Causality Is Not Proved By Association"></a>Causality Is Not Proved By Association</h3><p>The scatter plot uncovers relationships in data. “Relationships” means that there is some structured association (linear, quadratic, etc.) between X and Y. Note, however, that even though</p>
+<pre><code>causality implies association
+association does NOT imply causality.
+</code></pre><p>Scatter plots are a useful diagnostic tool for determining association, but if such association exists, the plot may or may not suggest an underlying cause-and-effect mechanism. A scatter plot can never “prove” cause and effect–it is ultimately only the researcher (relying on the underlying science/engineering) who can conclude that causality actually exists.</p>
+<h3 id="Appearance"><a href="#Appearance" class="headerlink" title="Appearance"></a>Appearance</h3><p>The most popular rendition of a scatter plot is</p>
+<pre><code>1. some plot character (e.g., X) at the data points, and
+2. no line connecting data points.
+</code></pre><p>Other scatter plot format variants include</p>
+<pre><code>1. an optional plot character (e.g, X) at the data points, but
+2. a solid line connecting data points.
+</code></pre><p>In both cases, the resulting plot is referred to as a scatter plot, although the former (discrete and disconnected) is the author’s personal preference since nothing makes it onto the screen except the data–there are no interpolative artifacts to bias the interpretation.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Run Sequence Plot </li>
+<li>Box Plot </li>
+<li>Block Plot </li>
+</ul>
 
-<h2 id="对K-Means的思考"><a href="#对K-Means的思考" class="headerlink" title="对K-Means的思考"></a>对K-Means的思考</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/EM/TIM截图20171112192704.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/12/EM/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.27. Spectral Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" itemprop="url">EDA_1.3.3.27. Spectral Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:36:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.27. Spectral Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.27. Spectral Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.27. Spectral Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Examine-Cyclic-Structure"><a href="#Purpose-Examine-Cyclic-Structure" class="headerlink" title="Purpose: Examine Cyclic Structure"></a>Purpose: Examine Cyclic Structure</h3><p>A spectral plot ( Jenkins and Watts 1968 orBloomfield 1976) is a graphical technique for examining cyclic structure in the frequency domain. It is a smoothed Fourier transform of the autocovariance function.</p>
+<p>The frequency is measured in cycles per unit time where unit time is defined to be the distance between 2 points. A frequency of 0 corresponds to an infinite cycle while a frequency of 0.5 corresponds to a cycle of 2 data points. Equi-spaced time series are inherently limited to detecting frequencies between 0 and 0.5.</p>
+<p>Trends should typically be removed from the time series before applying the spectral plot. Trends can be detected from a run sequence plot. Trends are typically removed by differencing the series or by fitting a straight line (or some other polynomial curve) and applying the spectral analysis to the residuals.</p>
+<p>Spectral plots are often used to find a starting value for the frequency, ω, in the sinusoidal model</p>
+<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
+</code></pre><p>See the beam deflection case study for an example of this.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/spectrum.gif" alt=""></p>
+<p>This spectral plot shows one dominant frequency of approximately 0.3 cycles per observation.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Variance Versus Frequency</p>
+<p>The spectral plot is formed by:</p>
+<pre><code>• Vertical axis: Smoothed variance (power)
+• Horizontal axis: Frequency (cycles per observation)
+</code></pre><p>The computations for generating the smoothed variances can be involved and are not discussed further here. The details can be found in the Jenkins and Bloomfield references and in most texts that discuss the frequency analysis of time series.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The spectral plot can be used to answer the following questions:</p>
+<pre><code>1. How many cyclic components are there?
+2. Is there a dominant cyclic frequency?
+3. If there is a dominant cyclic frequency, what is it?
+</code></pre><h3 id="Importance-Check-Cyclic-Behavior-of-Time-Series"><a href="#Importance-Check-Cyclic-Behavior-of-Time-Series" class="headerlink" title="Importance: Check Cyclic Behavior of Time Series"></a>Importance: Check Cyclic Behavior of Time Series</h3><p>The spectral plot is the primary technique for assessing the cyclic nature of univariate time series in the frequency domain. It is almost always the second plot (after a run sequence plot) generated in a frequency domain analysis of a time series.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. Random (= White Noise)
+2. Strong autocorrelation and autoregressive model 
+3. Sinusoidal model
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Autocorrelation Plot</li>
+<li>Complex Demodulation Amplitude Plot</li>
+<li>Complex Demodulation Phase Plot</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" itemprop="url">EDA_1.3.3.25 Run-Sequence Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:36:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.25 Run-Sequence Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.25 Run-Sequence Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Check-for-Shifts-in-Location-and-Scale-and-Outliers"><a href="#Purpose-Check-for-Shifts-in-Location-and-Scale-and-Outliers" class="headerlink" title="Purpose: Check for Shifts in Location and Scale and Outliers"></a>Purpose: Check for Shifts in Location and Scale and Outliers</h3><p>Run sequence plots (Chambers 1983) are an easy way to graphically summarize a univariate data set. A common assumption of univariate data sets is that they behave like:</p>
+<pre><code>1. random drawings;
+2. from a fixed distribution;
+3. with a common location; and
+4. with a common scale.
+</code></pre><p>With run sequence plots, shifts in location and scale are typically quite evident. Also, outliers can easily be detected.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/runseq.gif" alt=""></p>
+<p>Last Third of Data Shows a Shift of Location</p>
+<p>This sample run sequence plot shows that the location shifts up for the last third of the data.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><pre><code>y(i) Versus i
+</code></pre><p>Run sequence plots are formed by:</p>
+<pre><code>• Vertical axis: Response variable Yi
+• Horizontal axis: Index i (i = 1, 2, 3, ... )
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The run sequence plot can be used to answer the following questions</p>
+<pre><code>1. Are there any shifts in location?
+2. Are there any shifts in variation?
+3. Are there any outliers?
+</code></pre><p>The run sequence plot can also give the analyst an excellent feel for the data.</p>
+<h3 id="Importance-Check-Univariate-Assumptions"><a href="#Importance-Check-Univariate-Assumptions" class="headerlink" title="Importance: Check Univariate Assumptions"></a>Importance: Check Univariate Assumptions</h3><p>For univariate data, the default model is</p>
+<pre><code>Y = constant + error
+</code></pre><p>where the error is assumed to be random, from a fixed distribution, and with constant location and scale. The validity of this model depends on the validity of these assumptions. The run sequence plot is useful for checking for constant location and scale.</p>
+<p>Even for more complex models, the assumptions on the error term are still often the same. That is, a run sequence plot of the residuals (even from very complex models) is still vital for checking for outliers and for detecting shifts in location and scale.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Scatter Plot</li>
+<li>Histogram</li>
+<li>Autocorrelation Plot</li>
+<li>Lag Plot</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/" itemprop="url">EDA_1.3.3.24. Quantile-Quantile Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.24. Quantile-Quantile Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.24. Quantile-Quantile Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Check-If-Two-Data-Sets-Can-Be-Fit-With-the-Same-Distribution"><a href="#Purpose-Check-If-Two-Data-Sets-Can-Be-Fit-With-the-Same-Distribution" class="headerlink" title="Purpose: Check If Two Data Sets Can Be Fit With the Same Distribution"></a>Purpose: Check If Two Data Sets Can Be Fit With the Same Distribution</h3><p>The quantile-quantile (q-q) plot is a graphical technique for determining if two data sets come from populations with a common distribution.</p>
+<p>A q-q plot is a plot of the quantiles of the first data set against the quantiles of the second data set. By a quantile, we mean the fraction (or percent) of points below the given value. That is, the 0.3 (or 30%) quantile is the point at which 30% percent of the data fall below and 70% fall above that value.</p>
+<p>A 45-degree reference line is also plotted. If the two sets come from a population with the same distribution, the points should fall approximately along this reference line. The greater the departure from this reference line, the greater the evidence for the conclusion that the two data sets have come from populations with different distributions.</p>
+<p>The advantages of the q-q plot are:</p>
+<pre><code>1. The sample sizes do not need to be equal.
+2. Many distributional aspects can be simultaneously tested. For example, shifts in location, shifts in scale, changes in symmetry, and the presence of outliers can all be detected from this plot. For example, if the two data sets come from populations whose distributions differ only by a shift in location, the points should lie along a straight line that is displaced either up or down from the 45-degree reference line.
+</code></pre><p>The q-q plot is similar to a probability plot. For a probability plot, the quantiles for one of the data samples are replaced with the quantiles of a theoretical distribution.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/qqplot.gif" alt=""></p>
+<p>This q-q plot shows that</p>
+<pre><code>1. These 2 batches do not appear to have come from populations with a common distribution.
+2. The batch 1 values are significantly higher than the corresponding batch 2 values.
+3. The differences are increasing from values 525 to 625. Then the values for the 2 batches get closer again.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Quantiles for Data Set 1 Versus Quantiles of Data Set 2</p>
+<p>The q-q plot is formed by:</p>
+<pre><code>• Vertical axis: Estimated quantiles from data set 1
+• Horizontal axis: Estimated quantiles from data set 2
+</code></pre><p>Both axes are in units of their respective data sets. That is, the actual quantile level is not plotted. For a given point on the q-q plot, we know that the quantile level is the same for both points, but not what that quantile level actually is.</p>
+<p>If the data sets have the same size, the q-q plot is essentially a plot of sorted data set 1 against sorted data set 2. If the data sets are not of equal size, the quantiles are usually picked to correspond to the sorted values from the smaller data set and then the quantiles for the larger data set are interpolated.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The q-q plot is used to answer the following questions:</p>
+<pre><code>• Do two data sets come from populations with a common distribution?
+• Do two data sets have common location and scale?
+• Do two data sets have similar distributional shapes?
+• Do two data sets have similar tail behavior?
+</code></pre><h3 id="Importance-Check-for-Common-Distribution"><a href="#Importance-Check-for-Common-Distribution" class="headerlink" title="Importance: Check for Common Distribution"></a>Importance: Check for Common Distribution</h3><p>When there are two data samples, it is often desirable to know if the assumption of a common distribution is justified. If so, then location and scale estimators can pool both data sets to obtain estimates of the common location and scale. If two samples do differ, it is also useful to gain some understanding of the differences. The q-q plot can provide more insight into the nature of the difference than analytical methods such as the chi-square and Kolmogorov-Smirnov 2-sample tests.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Bihistogram</li>
+<li>T Test</li>
+<li>F Test</li>
+<li>2-Sample Chi-Square Test</li>
+<li>2-Sample Kolmogorov-Smirnov Test</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/" itemprop="url">EDA_1.3.3.21. Normal Probability Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.21. Normal Probability Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.21. Normal Probability Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Check-If-Data-Are-Approximately-Normally-Distributed"><a href="#Purpose-Check-If-Data-Are-Approximately-Normally-Distributed" class="headerlink" title="Purpose: Check If Data Are Approximately Normally Distributed"></a>Purpose: Check If Data Are Approximately Normally Distributed</h3><p>The normal probability plot (Chambers et al., 1983) is a graphical technique for assessing whether or not a data set is approximatelynormally distributed.</p>
+<p>The data are plotted against a theoretical normal distribution in such a way that the points should form an approximate straight line. Departures from this straight line indicate departures from normality.</p>
+<p>The normal probability plot is a special case of the probability plot. We cover the normal probability plot separately due to its importance in many applications.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/normprpl.gif" alt=""></p>
+<p>The points on this plot form a nearly linear pattern, which indicates that the normal distribution is a good model for this data set.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Ordered Response Values Versus Normal Order Statistic Medians<br>The normal probability plot is formed by:</p>
+<pre><code>• Vertical axis: Ordered response values
+• Horizontal axis: Normal order statistic medians
+</code></pre><p>The observations are plotted as a function of the corresponding normal order statistic medians which are defined as:</p>
+<pre><code>Ni = G(Ui)
+</code></pre><p>where Ui are the uniform order statistic medians (defined below) and G is the percent point function of the normal distribution. The percent point function is the inverse of thecumulative distribution function (probability that x is less than or equal to some value). That is, given a probability, we want the corresponding x of the cumulative distribution function.</p>
+<p>The uniform order statistic medians (seeFilliben 1975) can be approximated by:</p>
+<pre><code>Ui = 1 - Un    for i = 1
+Ui = (i - 0.3175)/(n + 0.365)    for i = 2, 3, ..., n-1 
+Ui = 0.5(1/n)    for i = n
+</code></pre><p>In addition, a straight line can be fit to the points and added as a reference line. The further the points vary from this line, the greater the indication of departures from normality.</p>
+<p>Probability plots for distributions other than the normal are computed in exactly the same way. The normal percent point function (the G) is simply replaced by the percent point function of the desired distribution. That is, a probability plot can easily be generated for any distribution for which you have the percent point function.</p>
+<p>One advantage of this method of computing probability plots is that the intercept and slope estimates of the fitted line are in fact estimates for the location and scale parameters of the distribution. Although this is not too important for the normal distribution since the location and scale are estimated by the mean and standard deviation, respectively, it can be useful for many other distributions.</p>
+<p>The correlation coefficient of the points on the normal probability plot can be compared to a table of critical values to provide a formal test of the hypothesis that the data come from a normal distribution.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The normal probability plot is used to answer the following questions.</p>
+<pre><code>1. Are the data normally distributed?
+2. What is the nature of the departure from normality (data skewed, shorter than expected tails, longer than expected tails)?
+</code></pre><h3 id="Importance-Check-Normality-Assumption"><a href="#Importance-Check-Normality-Assumption" class="headerlink" title="Importance: Check Normality Assumption"></a>Importance: Check Normality Assumption</h3><p>The underlying assumptions for a measurement process are that the data should behave like:</p>
+<pre><code>1. random drawings;
+2. from a fixed distribution;
+3. with fixed location;
+4. with fixed scale.
+</code></pre><p>Probability plots are used to assess the assumption of a fixed distribution. In particular, most statistical models are of the form:</p>
+<pre><code>response = deterministic + random
+</code></pre><p>where the deterministic part is the fit and the random part is error. This error component in most common statistical models is specifically assumed to be normally distributed with fixed location and scale. This is the most frequent application of normal probability plots. That is, a model is fit and a normal probability plot is generated for the residuals from the fitted model. If the residuals from the fitted model are not normally distributed, then one of the major assumptions of the model has been violated.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. Data are normally distributed
+2. Data have short tails
+3. Data have fat tails
+4. Data are skewed right
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Histogram</li>
+<li>Probability plots for other distributions (e.g., Weibull)</li>
+<li>Probability plot correlation coefficient plot (PPCC plot) Anderson-Darling Goodness-of-Fit Test</li>
+<li>Chi-Square Goodness-of-Fit Test</li>
+<li>Kolmogorov-Smirnov Goodness-of-Fit Test</li>
+</ul>
+
+          
         
       
     </div>
@@ -2019,7 +2298,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2069,7 +2348,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">174</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2091,7 +2370,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">224</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/django自带的server局域网访问/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.3. Block Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/11/django自带的server局域网访问/" itemprop="url">django自带的server局域网访问</a></h2>
+                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.3. Block Plot/" itemprop="url">EDA_1.3.3.3. Block Plot</a></h2>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T16:03:02+08:00">
-                2017-10-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T13:26:12+08:00">
+                2018-03-02
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/11/django自带的server局域网访问/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/django自带的server局域网访问/" itemprop="commentCount"></span>
+                <a href="/2018/03/02/EDA_1.3.3.3. Block Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.3. Block Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2017/10/11/django自带的server局域网访问/" class="leancloud_visitors" data-flag-title="django自带的server局域网访问">
+             <span id="/2018/03/02/EDA_1.3.3.3. Block Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.3. Block Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  django自带的server局域网访问
+                  EDA_1.3.3.3. Block Plot
               </div>
           
 
@@ -425,19 +425,55 @@
 
       
         
-          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>用<code>(myenvs) E:\Code\virtualenvs\myenvs\src&gt;python .\manage.py runserver</code>启动服务，对应的访问地址为：</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Starting development server <span class="meta">at</span> http://<span class="number">127.0</span><span class="meta">.0</span><span class="meta">.1</span>:<span class="number">8000</span>/</span><br></pre></td></tr></table></figure>
-<p><img src="/assets/django/django_get.png" alt=""></p>
-<p>然后，我把<code>127.0.0.1</code>改为本机的地址发现居然不能访问。</p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>使用<code>python .\manage.py runserver 0.0.0.0:8000</code>启动服务：</p>
-<h2 id="又出现新的错误："><a href="#又出现新的错误：" class="headerlink" title="又出现新的错误："></a><strong>又出现新的错误：</strong></h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/11/django自带的server局域网访问/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Check to determine if a factor of interest has an effect robust over all other factors</p>
+<p>The block plot (Filliben 1993) is an EDA tool for assessing whether the factor of interest (the primary factor) has a statistically significant effect on the response, and whether that conclusion about the primary factor effect is valid robustly over all other nuisance or secondary factors in the experiment.</p>
+<p>It replaces the analysis of variance test with a less assumption-dependent binomial test and should be routinely used whenever we are trying to robustly decide whether a primary factor has an effect.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>Weld method 2 is lower (better) than weld method 1 in 10 of 12 cases</p>
+<p><img src="assets/EDA/blockplo.gif" alt=""></p>
+<p>This block plot reveals that in 10 of the 12 cases (bars), weld method 2 is lower (better) than weld method 1. From a binomial point of view, weld method is statistically significant.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Block Plots are formed as follows:</p>
+<ul>
+<li>Vertical axis: Response variable Y</li>
+<li>Horizontal axis: All combinations of all levels of all nuisance (secondary) factors X1, X2, …</li>
+<li>Plot Character: Levels of the primary factor XP</li>
+</ul>
+<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion:"></a>Discussion:</h3><p>Primary factor is denoted by plot character: within-bar plot character.<br>Average number of defective lead wires per hour from a study with four factors,</p>
+<pre><code>1. weld strength (2 levels)
+2. plant (2 levels)
+3. speed (2 levels)
+4. shift (3 levels)
+</code></pre><p>are shown in the plot above. Weld strength is the primary factor and the other three factors are nuisance factors. The 12 distinct positions along the horizontal axis correspond to all possible combinations of the three nuisance factors, i.e., 12 = 2 plants x 2 speeds x 3 shifts. These 12 conditions provide the framework for assessing whether any conclusions about the 2 levels of the primary factor (weld method) can truly be called “general conclusions”. If we find that one weld method setting does better (smaller average defects per hour) than the other weld method setting for all or most of these 12 nuisance factor combinations, then the conclusion is in fact general and robust.</p>
+<h3 id="Ordering-along-the-horizontal-axis"><a href="#Ordering-along-the-horizontal-axis" class="headerlink" title="Ordering along the horizontal axis"></a>Ordering along the horizontal axis</h3><p>In the above chart, the ordering along the horizontal axis is as follows:</p>
+<ul>
+<li>The left 6 bars are from plant 1 and the right 6 bars are from plant 2.</li>
+<li>The first 3 bars are from speed 1, the next 3 bars are from speed 2, the next 3 bars are from speed 1, and the last 3 bars are from speed 2.</li>
+<li>Bars 1, 4, 7, and 10 are from the first shift, bars 2, 5, 8, and 11 are from the second shift, and bars 3, 6, 9, and 12 are from the third shift.</li>
+</ul>
+<h3 id="Setting-2-is-better-than-setting-1-in-10-out-of-12-cases"><a href="#Setting-2-is-better-than-setting-1-in-10-out-of-12-cases" class="headerlink" title="Setting 2 is better than setting 1 in 10 out of 12 cases"></a>Setting 2 is better than setting 1 in 10 out of 12 cases</h3><p>In the block plot for the first bar (plant 1, speed 1, shift 1), weld method 1 yields about 28 defects per hour while weld method 2 yields about 22 defects per hour–hence the difference for this combination is about 6 defects per hour and weld method 2 is seen to be better (smaller number of defects per hour).</p>
+<p>Is “weld method 2 is better than weld method 1” a general conclusion?</p>
+<p>For the second bar (plant 1, speed 1, shift 2), weld method 1 is about 37 while weld method 2 is only about 18. Thus weld method 2 is again seen to be better than weld method 1. Similarly for bar 3 (plant 1, speed 1, shift 3), we see weld method 2 is smaller than weld method 1. Scanning over all of the 12 bars, we see that weld method 2 is smaller than weld method 1 in 10 of the 12 cases, which is highly suggestive of a robust weld method effect.</p>
+<h3 id="An-event-with-chance-probability-of-only-2"><a href="#An-event-with-chance-probability-of-only-2" class="headerlink" title="An event with chance probability of only 2%"></a>An event with chance probability of only 2%</h3><p>What is the chance of 10 out of 12 happening by chance? This is probabilistically equivalent to testing whether a coin is fair by flipping it and getting 10 heads in 12 tosses. The chance (from the binomial distribution) of getting 10 (or more extreme: 11, 12) heads in 12 flips of a fair coin is about 2%. Such low-probability events are usually rejected as untenable and in practice we would conclude that there is a difference in weld methods.</p>
+<h3 id="Advantage"><a href="#Advantage" class="headerlink" title="Advantage:"></a>Advantage:</h3><p>Graphical and binomial<br>The advantages of the block plot are as follows:<br>    • A quantitative procedure (analysis of variance) is replaced by a graphical procedure.<br>    • An F-test (analysis of variance) is replaced with a binomial test, which requires fewer assumptions.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The block plot can provide answers to the following questions:</p>
+<pre><code>1. Is the factor of interest significant?
+2. Does the factor of interest have an effect?
+3. Does the location change between levels of the primary factor?
+4. Has the process improved?
+5. What is the best setting (= level) of the primary factor?
+6. How much of an average improvement can we expect with this best setting of the primary factor?
+7. Is there an interaction between the primary factor and one or more nuisance factors?
+8. Does the effect of the primary factor change depending on the setting of some nuisance factor?
+9. Are there any outliers?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Robustly checks the significance of the factor of interest</p>
+<p>The block plot is a graphical technique that pointedly focuses on whether or not the primary factor conclusions are in fact robustly general. This question is fundamentally different from the generic multi-factor experiment question where the analyst asks, “What factors are important and what factors are not” (a screening problem)? Global data analysis techniques, such as analysis of variance, can potentially be improved by local, focused data analysis techniques that take advantage of this difference.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>t test (for shift in location for exactly 2 levels) </li>
+<li>ANOVA (for shift in location for 2 or more levels) </li>
+<li>Bihistogram (for shift in location, variation, and distribution for exactly 2 levels).</li>
+</ul>
+
+          
         
       
     </div>
@@ -484,7 +520,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/Forbidden (CSRF cookie not set.)/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/Exploratory Data Analysis(三)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -503,7 +539,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/11/Forbidden (CSRF cookie not set.)/" itemprop="url">Forbidden (CSRF cookie not set.)</a></h2>
+                <a class="post-title-link" href="/2018/03/02/Exploratory Data Analysis(三)/" itemprop="url">Exploratory Data Analysis(三)</a></h2>
         
 
         <div class="post-meta">
@@ -515,8 +551,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T15:03:02+08:00">
-                2017-10-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T12:26:12+08:00">
+                2018-03-02
               </time>
             
 
@@ -538,8 +574,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -556,8 +592,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/11/Forbidden (CSRF cookie not set.)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/Forbidden (CSRF cookie not set.)/" itemprop="commentCount"></span>
+                <a href="/2018/03/02/Exploratory Data Analysis(三)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/Exploratory Data Analysis(三)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -565,7 +601,7 @@
 
           
           
-             <span id="/2017/10/11/Forbidden (CSRF cookie not set.)/" class="leancloud_visitors" data-flag-title="Forbidden (CSRF cookie not set.)">
+             <span id="/2018/03/02/Exploratory Data Analysis(三)/" class="leancloud_visitors" data-flag-title="Exploratory Data Analysis(三)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -583,7 +619,7 @@
 
           
               <div class="post-description">
-                  Forbidden (CSRF cookie not set.)
+                  Exploratory Data Analysis(三)
               </div>
           
 
@@ -601,19 +637,59 @@
 
       
         
-          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>用postman提交post请求时，终端打印错误<code>Forbidden (CSRF cookie not set.)</code>：</p>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">[11/Oct/2017 14:55:00]</span> <span class="string">"<span class="keyword">GET</span> /post/post/ HTTP/1.1"</span> <span class="number">200</span> <span class="number">47</span></span><br><span class="line">Forbidden (CSRF cookie not set.): /post/post/</span><br><span class="line"><span class="string">[11/Oct/2017 14:55:16]</span> <span class="string">"<span class="keyword">POST</span> /post/post/ HTTP/1.1"</span> <span class="number">403</span> <span class="number">2829</span></span><br><span class="line">Forbidden (CSRF cookie not set.): /post/post/</span><br><span class="line"><span class="string">[11/Oct/2017 15:00:06]</span> <span class="string">"<span class="keyword">POST</span> /post/post/ HTTP/1.1"</span> <span class="number">403</span> <span class="number">2829</span></span><br><span class="line">Performing system checks...</span><br></pre></td></tr></table></figure>
-<p>情况如下图所示：</p>
-<div class="fig figcenter fighighlight"><br>  <img src="/assets/django/django_post_forbiden.png"><br></div>
-
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p><strong>修改settings.py文件，注释掉</strong></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/11/Forbidden (CSRF cookie not set.)/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="1-3-EDA-Techniques"><a href="#1-3-EDA-Techniques" class="headerlink" title="1.3. EDA Techniques"></a>1.3. EDA Techniques</h2><p>After you have collected a set of data, how do you do an exploratory data analysis? What techniques do you employ? What do the various techniques focus on? What conclusions can you expect to reach?<br>This section provides answers to these kinds of questions via a gallery of EDA techniques and a detailed description of each technique. The techniques are divided into graphical and quantitative techniques. For exploratory data analysis, the emphasis is primarily on the graphical techniques.</p>
+<h3 id="1-3-1-Introduction"><a href="#1-3-1-Introduction" class="headerlink" title="1.3.1.Introduction"></a>1.3.1.Introduction</h3><h4 id="Graphical-and-Quantitative-Techniques"><a href="#Graphical-and-Quantitative-Techniques" class="headerlink" title="Graphical and Quantitative Techniques"></a>Graphical and Quantitative Techniques</h4><p>This section describes many techniques that are commonly used in exploratory and classical data analysis. This list is by no means meant to be exhaustive. Additional techniques (both graphical and quantitative) are discussed in the other chapters. Specifically, the product comparisons chapter has a much more detailed description of many classical statistical techniques.<br>EDA emphasizes graphical techniques while classical techniques emphasize quantitative techniques. In practice, an analyst typically uses a mixture of graphical and quantitative techniques. In this section, we have divided the descriptions into graphical and quantitative techniques. This is for organizational clarity and is not meant to discourage the use of both graphical and quantitiative techniques when analyzing data.</p>
+<h4 id="Use-of-Techniques-Shown-in-Case-Studies"><a href="#Use-of-Techniques-Shown-in-Case-Studies" class="headerlink" title="Use of Techniques Shown in Case Studies"></a>Use of Techniques Shown in Case Studies</h4><p>This section emphasizes the techniques themselves; how the graph or test is defined, published references, and sample output. The use of the techniques to answer engineering questions is demonstrated in the case studiessection. The case studies do not demonstrate all of the techniques.</p>
+<h4 id="Availability-in-Software"><a href="#Availability-in-Software" class="headerlink" title="Availability in Software"></a>Availability in Software</h4><p>The sample plots and output in this section were generated with the Dataplot software program. Other general purpose statistical data analysis programs can generate most of the plots, intervals, and tests discussed here, or macros can be written to acheive the same result.</p>
+<h3 id="1-3-2-Analysis-Questions"><a href="#1-3-2-Analysis-Questions" class="headerlink" title="1.3.2.Analysis Questions"></a>1.3.2.Analysis Questions</h3><h4 id="EDA-Questions"><a href="#EDA-Questions" class="headerlink" title="EDA Questions"></a>EDA Questions</h4><p>Some common questions that exploratory data analysis is used to answer are:</p>
+<pre><code>1. What is a typical value?
+2. What is the uncertainty for a typical value?
+3. What is a good distributional fit for a set of numbers?
+4. What is a percentile?
+5. Does an engineering modification have an effect?
+6. Does a factor have an effect?
+7. What are the most important factors?
+8. Are measurements coming from different laboratories equivalent?
+9. What is the best function for relating a response variable to a set of factor variables?
+10. What are the best settings for factors?
+11. Can we separate signal from noise in time dependent data?
+12. Can we extract any structure from multivariate data?
+13. Does the data have outliers?
+</code></pre><h4 id="Analyst-Should-Identify-Relevant-Questions-for-his-Engineering-Problem"><a href="#Analyst-Should-Identify-Relevant-Questions-for-his-Engineering-Problem" class="headerlink" title="Analyst Should Identify Relevant Questions for his Engineering Problem"></a>Analyst Should Identify Relevant Questions for his Engineering Problem</h4><p>A critical early step in any analysis is to identify (for the engineering problem at hand) which of the above questions are relevant. That is, we need to identify which questions we want answered and which questions have no bearing on the problem at hand. After collecting such a set of questions, an equally important step, which is invaluable for maintaining focus, is to prioritize those questions in decreasing order of importance. EDA techniques are tied in with each of the questions. There are some EDA techniques (e.g., the scatter plot) that are broad-brushed and apply almost universally. On the other hand, there are a large number of EDA techniques that are specific and whose specificity is tied in with one of the above questions. Clearly if one chooses not to explicitly identify relevant questions, then one cannot take advantage of these question-specific EDA technqiues.</p>
+<h4 id="EDA-Approach-Emphasizes-Graphics"><a href="#EDA-Approach-Emphasizes-Graphics" class="headerlink" title="EDA Approach Emphasizes Graphics"></a>EDA Approach Emphasizes Graphics</h4><p>Most of these questions can be addressed by techniques discussed in this chapter. The process modeling and process improvement chapters also address many of the questions above. These questions are also relevant for the classical approach to statistics. What distinguishes the EDA approach is an emphasis on graphical techniques to gain insight as opposed to the classical approach of quantitative tests. Most data analysts will use a mix of graphical and classical quantitative techniques to address these problems.</p>
+<h3 id="1-3-3-Graphical-Techniques-Alphabetic"><a href="#1-3-3-Graphical-Techniques-Alphabetic" class="headerlink" title="1.3.3.Graphical Techniques: Alphabetic"></a>1.3.3.Graphical Techniques: Alphabetic</h3><h4 id="1-3-3-1-Autocorrelation-Plot"><a href="#1-3-3-1-Autocorrelation-Plot" class="headerlink" title="1.3.3.1. Autocorrelation Plot"></a>1.3.3.1. Autocorrelation Plot</h4><h5 id="Purpose-Check-Randomness"><a href="#Purpose-Check-Randomness" class="headerlink" title="Purpose: Check Randomness"></a>Purpose: Check Randomness</h5><p>Autocorrelation plots (Box and Jenkins, pp. 28-32) are a commonly-used tool for checking randomness in a data set. This randomness is ascertained by computing autocorrelations for data values at varying time lags. If random, such autocorrelations should be near zero for any and all time-lag separations. If non-random, then one or more of the autocorrelations will be significantly non-zero.<br>In addition, autocorrelation plots are used in the model identification stage for Box-Jenkinsautoregressive, moving average time series models.</p>
+<h5 id="Autocorrelation-is-Only-One-Measure-of-Randomness"><a href="#Autocorrelation-is-Only-One-Measure-of-Randomness" class="headerlink" title="Autocorrelation is Only One Measure of Randomness"></a>Autocorrelation is Only One Measure of Randomness</h5><p>Note that uncorrelated does not necessarily mean random. Data that has significant autocorrelation is not random. However, data that does not show significant autocorrelation can still exhibit non-randomness in other ways. Autocorrelation is just one measure of randomness. In the context of model validation (which is the primary type of randomness we dicuss in the Handbook), checking for autocorrelation is typically a sufficient test of randomness since the residuals from a poor fitting models tend to display non-subtle randomness. However, some applications require a more rigorous determination of randomness. In these cases, a battery of tests, which might include checking for autocorrelation, are applied since data can be non-random in many different and often subtle ways.<br>An example of where a more rigorous check for randomness is needed would be in testing random number generators.</p>
+<h5 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h5><p>Autocorrelations should be near-zero for randomness. Such is not the case in this example and thus the randomness assumption fails</p>
+<p><img src="assets/EDA/autocop0.gif" alt=""></p>
+<p>This sample autocorrelation plot shows that the time series is not random, but rather has a high degree of autocorrelation between adjacent and near-adjacent observations.</p>
+<h5 id="Definition-r-h-versus-h"><a href="#Definition-r-h-versus-h" class="headerlink" title="Definition: r(h) versus h"></a>Definition: r(h) versus h</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Autocorrelation plots are formed by</span><br><span class="line">	• Vertical axis: Autocorrelation coefficient</span><br><span class="line">        Rh=Ch/C0</span><br><span class="line">        where Ch is the autocovariance function</span><br><span class="line">        Ch=1N∑t=1N−h(Yt−Y¯)(Yt+h−Y¯)</span><br><span class="line">        and C0 is the variance function</span><br><span class="line">        C0=∑Nt=1(Yt−Y¯)2N</span><br><span class="line">        Note that Rh is between -1 and +1.</span><br><span class="line">        Note that some sources may <span class="keyword">use</span> the <span class="keyword">following</span> formula <span class="keyword">for</span> the autocovariance <span class="keyword">function</span></span><br><span class="line">        Ch=<span class="number">1</span>N−h∑t=<span class="number">1</span>N−h(Yt−Y¯)(Yt+h−Y¯)</span><br><span class="line">        Although this definition has <span class="keyword">less</span> bias, the (<span class="number">1</span>/N) formulation has <span class="keyword">some</span> desirable statistical properties <span class="keyword">and</span> <span class="keyword">is</span> the <span class="keyword">form</span> most commonly used <span class="keyword">in</span> the <span class="keyword">statistics</span> literature. See pages <span class="number">20</span> <span class="keyword">and</span> <span class="number">49</span><span class="number">-50</span> <span class="keyword">in</span> Chatfield <span class="keyword">for</span> details.</span><br><span class="line">	• Horizontal axis: <span class="keyword">Time</span> lag h (h = <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, ...)</span><br><span class="line">	• The above line also contains several horizontal <span class="keyword">reference</span> lines. The middle line <span class="keyword">is</span> <span class="keyword">at</span> zero. The other four <span class="keyword">lines</span> <span class="keyword">are</span> <span class="number">95</span> % <span class="keyword">and</span> <span class="number">99</span> % confidence bands. Note that there <span class="keyword">are</span> two <span class="keyword">distinct</span> formulas <span class="keyword">for</span> generating the confidence bands.</span><br><span class="line">		<span class="number">1.</span> <span class="keyword">If</span> the autocorrelation plot <span class="keyword">is</span> being used <span class="keyword">to</span> <span class="keyword">test</span> <span class="keyword">for</span> randomness (i.e., there <span class="keyword">is</span> <span class="keyword">no</span> <span class="keyword">time</span> dependence <span class="keyword">in</span> the <span class="keyword">data</span>), the <span class="keyword">following</span> formula <span class="keyword">is</span> recommended:</span><br><span class="line">        ±z1−α/<span class="number">2</span>N−−√</span><br><span class="line">        <span class="keyword">where</span> N <span class="keyword">is</span> the <span class="keyword">sample</span> <span class="keyword">size</span>, z <span class="keyword">is</span> the cumulative distribution <span class="keyword">function</span> <span class="keyword">of</span> the standard <span class="keyword">normal</span> distribution <span class="keyword">and</span> α<span class="keyword">is</span> the significance level. <span class="keyword">In</span> this <span class="keyword">case</span>, the confidence bands have <span class="keyword">fixed</span> width that depends <span class="keyword">on</span> the <span class="keyword">sample</span> size. This <span class="keyword">is</span> the formula that was used <span class="keyword">to</span> generate the confidence bands <span class="keyword">in</span> the above plot.</span><br><span class="line">		<span class="number">2.</span> Autocorrelation plots <span class="keyword">are</span> also used <span class="keyword">in</span> the <span class="keyword">model</span> identification stage <span class="keyword">for</span> fitting ARIMA models. <span class="keyword">In</span> this <span class="keyword">case</span>, a moving average <span class="keyword">model</span> <span class="keyword">is</span> assumed <span class="keyword">for</span> the <span class="keyword">data</span> <span class="keyword">and</span> the <span class="keyword">following</span> confidence bands should be <span class="keyword">generated</span>:</span><br><span class="line">        ±z1−α/<span class="number">21</span>N(<span class="number">1</span>+<span class="number">2</span>∑i=<span class="number">1</span>ky2i)−−−−−−−−−−−−−⎷</span><br><span class="line">        <span class="keyword">where</span> k <span class="keyword">is</span> the lag, N <span class="keyword">is</span> the <span class="keyword">sample</span> <span class="keyword">size</span>, z <span class="keyword">is</span> the cumulative distribution <span class="keyword">function</span> <span class="keyword">of</span> the standard <span class="keyword">normal</span> distribution <span class="keyword">and</span> α <span class="keyword">is</span> the significance level. <span class="keyword">In</span> this <span class="keyword">case</span>, the confidence bands increase <span class="keyword">as</span> the lag increases.</span><br></pre></td></tr></table></figure>
+<h5 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h5><p>The autocorrelation plot can provide answers to the following questions:</p>
+<pre><code>1. Are the data random?
+2. Is an observation related to an adjacent observation?
+3. Is an observation related to an observation twice-removed? (etc.)
+4. Is the observed time series white noise?
+5. Is the observed time series sinusoidal?
+6. Is the observed time series autoregressive?
+7. What is an appropriate model for the observed time series?
+8. Is the model
+    Y = constant + error
+    valid and sufficient?
+9. Is the formula
+    sY¯=s/N−−√
+    valid?
+</code></pre><h5 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h5><p>Ensure validity of engineering conclusions</p>
+<p>Randomness (along with fixed model, fixed variation, and fixed distribution) is one of the four assumptions that typically underlie all measurement processes. The randomness assumption is critically important for the following three reasons:</p>
+<pre><code>1. Most standard statistical tests depend on randomness. The validity of the test conclusions is directly linked to the validity of the randomness assumption.
+2. Many commonly-used statistical formulae depend on the randomness assumption, the most common formula being the formula for determining the standard deviation of the sample mean:
+sY¯=s/N−−√
+where s is the standard deviation of the data. Although heavily used, the results from using this formula are of no value unless the randomness assumption holds.
+3. For univariate data, the default model is
+Y = constant + error
+If the data are not random, this model is incorrect and invalid, and the estimates for the parameters (such as the constant) become nonsensical and invalid.
+In short, if the analyst does not check for randomness, then the validity of many of the statistical conclusions becomes suspect. The autocorrelation plot is an excellent way of checking for such randomness.
+</code></pre>
+          
         
       
     </div>
@@ -660,7 +736,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/gitignore规则不生效的解决办法/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.2. Bihistogram/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -679,7 +755,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/11/gitignore规则不生效的解决办法/" itemprop="url">gitignore规则不生效的解决办法</a></h2>
+                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.2. Bihistogram/" itemprop="url">EDA_1.3.3.2. Bihistogram</a></h2>
         
 
         <div class="post-meta">
@@ -691,8 +767,1398 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T11:50:02+08:00">
-                2017-10-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T12:26:12+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/02/EDA_1.3.3.2. Bihistogram/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.2. Bihistogram/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/02/EDA_1.3.3.2. Bihistogram/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.2. Bihistogram">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.2. Bihistogram
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Check for a change in location, variation, or distribution</p>
+<p>The bihistogram is an EDA tool for assessing whether a before-versus-after engineering modification has caused a change in</p>
+<ul>
+<li>location;</li>
+<li>variation; or</li>
+<li>distribution.</li>
+</ul>
+<p>It is a graphical alternative to the two-sample t-test. The bihistogram can be more powerful than the t-test in that all of the distributional features (location, scale, skewness, outliers) are evident on a single plot. It is also based on the common and well-understood histogram.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>This bihistogram reveals that there is a significant difference in ceramic breaking strength between batch 1 (above) and batch 2 (below)</p>
+<p><img src="assets/EDA/bihistog.gif" alt=""></p>
+<p>From the above bihistogram, we can see that batch 1 is centered at a ceramic strength value of approximately 725 while batch 2 is centered at a ceramic strength value of approximately 625. That indicates that these batches are displaced by about 100 strength units. Thus the batch factor has a significant effect on the location (typical value) for strength and hence batch is said to be “significant” or to “have an effect”. We thus see graphically and convincingly what a t-test or analysis of variance would indicate quantitatively.</p>
+<p>With respect to variation, note that the spread (variation) of the above-axis batch 1 histogram does not appear to be that much different from the below-axis batch 2 histogram. With respect to distributional shape, note that the batch 1 histogram is skewed left while the batch 2 histogram is more symmetric with even a hint of a slight skewness to the right.</p>
+<p>Thus the bihistogram reveals that there is a clear difference between the batches with respect to location and distribution, but not in regard to variation. Comparing batch 1 and batch 2, we also note that batch 1 is the “better batch” due to its 100-unit higher average strength (around 725).</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Two adjoined histograms<br>Bihistograms are formed by vertically juxtaposing two histograms:</p>
+<ul>
+<li>Above the axis: Histogram of the response variable for condition 1</li>
+<li>Below the axis: Histogram of the response variable for condition 2</li>
+</ul>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The bihistogram can provide answers to the following questions:</p>
+<pre><code>1. Is a (2-level) factor significant?
+2. Does a (2-level) factor have an effect?
+3. Does the location change between the 2 subgroups?
+4. Does the variation change between the 2 subgroups?
+5. Does the distributional shape change between subgroups?
+6. Are there any outliers?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Checks 3 out of the 4 underlying assumptions of a measurement process</p>
+<p>The bihistogram is an important EDA tool for determining if a factor “has an effect”. Since the bihistogram provides insight into the validity of three (location, variation, and distribution) out of the four (missing only randomness) underlying assumptions in a measurement process, it is an especially valuable tool. Because of the dual (above/below) nature of the plot, the bihistogram is restricted to assessing factors that have only two levels. However, this is very common in the before-versus-after character of many scientific and engineering experiments.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>t test (for shift in location) </li>
+<li>F test (for shift in variation) </li>
+<li>Kolmogorov-Smirnov test (for shift in distribution) </li>
+<li>Quantile-quantile plot (for shift in location and distribution) </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/MathJax basic tutorial and quick reference/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/02/MathJax basic tutorial and quick reference/" itemprop="url">MathJax basic tutorial and quick reference</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T12:26:12+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/02/MathJax basic tutorial and quick reference/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/MathJax basic tutorial and quick reference/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/02/MathJax basic tutorial and quick reference/" class="leancloud_visitors" data-flag-title="MathJax basic tutorial and quick reference">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  MathJax basic tutorial and quick reference
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>For inline formulas, enclose the formula in $…$. For displayed formulas, use $$…$$.<br>These render differently. For example, type<br>$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$<br>to show ∑<br>n<br>i=0<br>i2=<br>(n2+n)(2n+1)<br>6</p>
+<p> (which is inline mode) or type<br>$$\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}$$<br>to show</p>
+<p>$$ x \href{why-equal.html}{=} y^2 + 1 $$</p>
+<p>$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}. $</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/Exploratory Data Analysis(二)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/02/Exploratory Data Analysis(二)/" itemprop="url">Exploratory Data Analysis(二)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T11:26:12+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/02/Exploratory Data Analysis(二)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/Exploratory Data Analysis(二)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/02/Exploratory Data Analysis(二)/" class="leancloud_visitors" data-flag-title="Exploratory Data Analysis(二)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Exploratory Data Analysis(二)
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-2-EDA-Assumptions"><a href="#1-2-EDA-Assumptions" class="headerlink" title="1.2. EDA Assumptions"></a>1.2. EDA Assumptions</h2><p>The gamut of scientific and engineering experimentation is virtually limitless. In this sea of diversity is there any common basis that allows the analyst to systematically and validly arrive at supportable, repeatable research conclusions?</p>
+<p>Fortunately, there is such a basis and it is rooted in the fact that every measurement process, however complicated, has certain underlying assumptions. This section deals with what those assumptions are, why they are important, how to go about testing them, and what the consequences are if the assumptions do not hold.</p>
+<h3 id="1-2-1-Underlying-Assumptions"><a href="#1-2-1-Underlying-Assumptions" class="headerlink" title="1.2.1. Underlying Assumptions"></a>1.2.1. Underlying Assumptions</h3><h4 id="Assumptions-Underlying-a-Measurement-Process"><a href="#Assumptions-Underlying-a-Measurement-Process" class="headerlink" title="Assumptions Underlying a Measurement Process"></a>Assumptions Underlying a Measurement Process</h4><p>There are four assumptions that typically underlie all measurement processes; namely, that the data from the process at hand “behave like”:</p>
+<pre><code>1. random drawings;
+2. from a fixed distribution;
+3. with the distribution having fixed location; and
+4. with the distribution having fixed variation.
+</code></pre><h4 id="Univariate-or-Single-Response-Variable"><a href="#Univariate-or-Single-Response-Variable" class="headerlink" title="Univariate or Single Response Variable"></a>Univariate or Single Response Variable</h4><p>The “fixed location” referred to in item 3 above differs for different problem types. The simplest problem type is univariate; that is, a single variable.</p>
+<pre><code>For the univariate problem, the general model
+    response = deterministic component + random component
+becomes
+    response = constant + error
+</code></pre><h4 id="Assumptions-for-Univariate-Model"><a href="#Assumptions-for-Univariate-Model" class="headerlink" title="Assumptions for Univariate Model"></a>Assumptions for Univariate Model</h4><p>For this case, the “fixed location” is simply the unknown constant. We can thus imagine the process at hand to be operating under constant conditions that produce a single column of data with the properties that</p>
+<pre><code>• the data are uncorrelated with one another;
+• the random component has a fixed distribution;
+• the deterministic component consists of only a constant; and
+• the random component has fixed variation.
+</code></pre><h4 id="Extrapolation-to-a-Function-of-Many-Variables"><a href="#Extrapolation-to-a-Function-of-Many-Variables" class="headerlink" title="Extrapolation to a Function of Many Variables"></a>Extrapolation to a Function of Many Variables</h4><p>The universal power and importance of the univariate model is that it can easily be extended to the more general case where the deterministic component is not just a constant, but is in fact a function of many variables, and the engineering objective is tocharacterize and model the function.</p>
+<h4 id="Residuals-Will-Behave-According-to-Univariate-Assumptions"><a href="#Residuals-Will-Behave-According-to-Univariate-Assumptions" class="headerlink" title="Residuals Will Behave According to Univariate Assumptions"></a>Residuals Will Behave According to Univariate Assumptions</h4><p>The key point is that regardless of how many factors there are, and regardless of how complicated the function is, if the engineer succeeds in choosing a good model, then the differences (residuals) between the raw response data and the predicted values from the fitted model should themselves behave like a univariate process. Furthermore, the residuals from this univariate process fit will behave like:</p>
+<pre><code>• random drawings;
+• from a fixed distribution;
+• with fixed location (namely, 0 in this case); and
+• with fixed variation.
+</code></pre><h4 id="Validation-of-Model"><a href="#Validation-of-Model" class="headerlink" title="Validation of Model"></a>Validation of Model</h4><p>Thus if the residuals from the fitted model do in fact behave like the ideal, then testing of underlying assumptions becomes a tool for the validation and quality of fit of the chosen model. On the other hand, if the residuals from the chosen fitted model violate one or more of the above univariate assumptions, then the chosen fitted model is inadequate and an opportunity exists for arriving at an improved model.</p>
+<h3 id="1-2-2-Importance"><a href="#1-2-2-Importance" class="headerlink" title="1.2.2.Importance"></a>1.2.2.Importance</h3><h4 id="Predictability-and-Statistical-Control"><a href="#Predictability-and-Statistical-Control" class="headerlink" title="Predictability and Statistical Control"></a>Predictability and Statistical Control</h4><p>Predictability is an all-important goal in science and engineering. If the four underlying assumptions hold, then we have achieved probabilistic predictability–the ability to make probability statements not only about the process in the past, but also about the process in the future. In short, such processes are said to be “in statistical control”.</p>
+<h4 id="Validity-of-Engineering-Conclusions"><a href="#Validity-of-Engineering-Conclusions" class="headerlink" title="Validity of Engineering Conclusions"></a>Validity of Engineering Conclusions</h4><p>Moreover, if the four assumptions are valid, then the process is amenable to the generation of valid scientific and engineering conclusions. If the four assumptions are not valid, then the process is drifting (with respect to location, variation, or distribution), unpredictable, and out of control. A simple characterization of such processes by a location estimate, a variation estimate, or a distribution “estimate” inevitably leads to engineering conclusions that are not valid, are not supportable (scientifically or legally), and which are not repeatable in the laboratory.</p>
+<h3 id="1-2-3-Techniques-for-Testing-Assumptions"><a href="#1-2-3-Techniques-for-Testing-Assumptions" class="headerlink" title="1.2.3. Techniques for Testing Assumptions"></a>1.2.3. Techniques for Testing Assumptions</h3><h4 id="Testing-Underlying-Assumptions-Helps-Assure-the-Validity-of-Scientific-and-Engineering-Conclusions"><a href="#Testing-Underlying-Assumptions-Helps-Assure-the-Validity-of-Scientific-and-Engineering-Conclusions" class="headerlink" title="Testing Underlying Assumptions Helps Assure the Validity of Scientific and Engineering Conclusions"></a>Testing Underlying Assumptions Helps Assure the Validity of Scientific and Engineering Conclusions</h4><p>Because the validity of the final scientific/engineering conclusions is inextricably linked to the validity of the underlying univariate assumptions, it naturally follows that there is a real necessity that each and every one of the above four assumptions be routinely tested.</p>
+<h4 id="Four-Techniques-to-Test-Underlying-Assumptions"><a href="#Four-Techniques-to-Test-Underlying-Assumptions" class="headerlink" title="Four Techniques to Test Underlying Assumptions"></a>Four Techniques to Test Underlying Assumptions</h4><p>The following EDA techniques are simple, efficient, and powerful for the routine testing of underlying assumptions:</p>
+<pre><code>1. run sequence plot (Yi versus i)
+2. lag plot (Yi versus Yi-1)
+3. histogram (counts versus subgroups of Y)
+4. normal probability plot (ordered Y versus theoretical ordered Y)
+</code></pre><h4 id="Plot-on-a-Single-Page-for-a-Quick-Characterization-of-the-Data"><a href="#Plot-on-a-Single-Page-for-a-Quick-Characterization-of-the-Data" class="headerlink" title="Plot on a Single Page for a Quick Characterization of the Data"></a>Plot on a Single Page for a Quick Characterization of the Data</h4><p>The four EDA plots can be juxtaposed for a quick look at the characteristics of the data. The plots below are ordered as follows:</p>
+<pre><code>1. Run sequence plot - upper left
+2. Lag plot - upper right
+3. Histogram - lower left
+4. Normal probability plot - lower right
+</code></pre><h4 id="Sample-Plot-Assumptions-Hold"><a href="#Sample-Plot-Assumptions-Hold" class="headerlink" title="Sample Plot: Assumptions Hold"></a>Sample Plot: Assumptions Hold</h4><p><img src="assets/EDA/randn4p.gif" alt=""></p>
+<p>This 4-plot reveals a process that has fixed location, fixed variation, is random, apparently has a fixed approximately normal distribution, and has no outliers.</p>
+<h4 id="Sample-Plot-Assumptions-Do-Not-Hold"><a href="#Sample-Plot-Assumptions-Do-Not-Hold" class="headerlink" title="Sample Plot: Assumptions Do Not Hold"></a>Sample Plot: Assumptions Do Not Hold</h4><p>If one or more of the four underlying assumptions do not hold, then it will show up in the various plots as demonstrated in the following example.</p>
+<p><img src="assets/EDA/lew4p.gif" alt=""></p>
+<p>This 4-plot reveals a process that has fixed location, fixed variation, is non-random (oscillatory), has a non-normal, U-shaped distribution, and has several outliers.</p>
+<h3 id="1-2-4-Interpretation-of-4-Plot"><a href="#1-2-4-Interpretation-of-4-Plot" class="headerlink" title="1.2.4. Interpretation of 4-Plot"></a>1.2.4. Interpretation of 4-Plot</h3><h4 id="Interpretation-of-EDA-Plots"><a href="#Interpretation-of-EDA-Plots" class="headerlink" title="Interpretation of EDA Plots:"></a>Interpretation of EDA Plots:</h4><p>Flat and Equi-Banded, Random, Bell-Shaped, and Linear</p>
+<p>The four EDA plots discussed on the previous page are used to test the underlying assumptions:</p>
+<pre><code>1. Fixed Location:
+    If the fixed location assumption holds, then the run sequence plot will be flat and non-drifting.
+2. Fixed Variation:
+    If the fixed variation assumption holds, then the vertical spread in the run sequence plot will be the approximately the same over the entire horizontal axis.
+3. Randomness:
+    If the randomness assumption holds, then the lag plot will be structureless and random.
+4. Fixed Distribution:
+    If the fixed distribution assumption holds, in particular if the fixed normal distribution holds, then
+            1. the histogram will be bell-shaped, and
+            2. the normal probability plot will be linear.
+</code></pre><h4 id="Plots-Utilized-to-Test-the-Assumptions"><a href="#Plots-Utilized-to-Test-the-Assumptions" class="headerlink" title="Plots Utilized to Test the Assumptions"></a>Plots Utilized to Test the Assumptions</h4><p>Conversely, the underlying assumptions are tested using the EDA plots:</p>
+<ul>
+<li>Run Sequence Plot:<blockquote>
+<p>If the run sequence plot is flat and non-drifting, the fixed-location assumption holds. If the run sequence plot has a vertical spread that is about the same over the entire plot, then the fixed-variation assumption holds.</p>
+</blockquote>
+</li>
+<li>Lag Plot:<blockquote>
+<p>If the lag plot is structureless, then the randomness assumption holds.</p>
+</blockquote>
+</li>
+<li>Histogram:<blockquote>
+<p>If the histogram is bell-shaped, the underlying distribution is symmetric and perhaps approximately normal.</p>
+</blockquote>
+</li>
+<li>Normal Probability Plot:<blockquote>
+<p>If the normal probability plot is linear, the underlying distribution is approximately normal.<br>  If all four of the assumptions hold, then the process is said definitionally to be “in statistical control”.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="1-2-5-Consequences"><a href="#1-2-5-Consequences" class="headerlink" title="1.2.5 Consequences"></a>1.2.5 Consequences</h3><h4 id="What-If-Assumptions-Do-Not-Hold"><a href="#What-If-Assumptions-Do-Not-Hold" class="headerlink" title="What If Assumptions Do Not Hold?"></a>What If Assumptions Do Not Hold?</h4><p>If some of the underlying assumptions do not hold, what can be done about it? What corrective actions can be taken? The positive way of approaching this is to view the testing of underlying assumptions as a framework for learning about the process. Assumption-testing promotes insight into important aspects of the process that may not have surfaced otherwise.</p>
+<h4 id="Primary-Goal-is-Correct-and-Valid-Scientific-Conclusions"><a href="#Primary-Goal-is-Correct-and-Valid-Scientific-Conclusions" class="headerlink" title="Primary Goal is Correct and Valid Scientific Conclusions"></a>Primary Goal is Correct and Valid Scientific Conclusions</h4><p>The primary goal is to have correct, validated, and complete scientific/engineering conclusions flowing from the analysis. This usually includes intermediate goals such as the derivation of a good-fitting model and the computation of realistic parameter estimates. It should always include the ultimate goal of an understanding and a “feel” for “what makes the process tick”. There is no more powerful catalyst for discovery than the bringing together of an experienced/expert scientist/engineer and a data set ripe with intriguing “anomalies” and characteristics.</p>
+<h4 id="Consequences-of-Invalid-Assumptions"><a href="#Consequences-of-Invalid-Assumptions" class="headerlink" title="Consequences of Invalid Assumptions"></a>Consequences of Invalid Assumptions</h4><p>The following sections discuss in more detail the consequences of invalid assumptions:</p>
+<pre><code>1. Consequences of non-randomness
+2. Consequences of non-fixed location parameter
+3. Consequences of non-fixed variation
+4. Consequences related to distributional assumptions
+</code></pre><h4 id="1-2-5-1-Consequences-of-Non-Randomness"><a href="#1-2-5-1-Consequences-of-Non-Randomness" class="headerlink" title="1.2.5.1.    Consequences of Non-Randomness"></a>1.2.5.1.    Consequences of Non-Randomness</h4><h5 id="Randomness-Assumption"><a href="#Randomness-Assumption" class="headerlink" title="Randomness Assumption"></a>Randomness Assumption</h5><p>There are four underlying assumptions:</p>
+<pre><code>1. randomness;
+2. fixed location;
+3. fixed variation; and
+4. fixed distribution.
+</code></pre><p>The randomness assumption is the most critical but the least tested.</p>
+<h5 id="Consequeces-of-Non-Randomness"><a href="#Consequeces-of-Non-Randomness" class="headerlink" title="Consequeces of Non-Randomness"></a>Consequeces of Non-Randomness</h5><p>If the randomness assumption does not hold, then</p>
+<pre><code>1. All of the usual statistical tests are invalid.
+2. The calculated uncertainties for commonly used statistics become meaningless.
+3. The calculated minimal sample size required for a pre-specified tolerance becomes meaningless.
+4. The simple model: y = constant + error becomes invalid.
+5. The parameter estimates become suspect and non-supportable.
+</code></pre><h5 id="Non-Randomness-Due-to-Autocorrelation"><a href="#Non-Randomness-Due-to-Autocorrelation" class="headerlink" title="Non-Randomness Due to Autocorrelation"></a>Non-Randomness Due to Autocorrelation</h5><p>One specific and common type of non-randomness is autocorrelation. Autocorrelation is the correlation between Ytand Yt-k, where k is an integer that defines the lag for the autocorrelation. That is, autocorrelation is a time dependent non-randomness. This means that the value of the current point is highly dependent on the previous point if k = 1 (or k points ago if kis not 1). Autocorrelation is typically detected via an autocorrelation plot or a lag plot.<br>If the data are not random due to autocorrelation, then</p>
+<pre><code>1. Adjacent data values may be related.
+2. There may not be n independent snapshots of the phenomenon under study.
+3. There may be undetected &quot;junk&quot;-outliers.
+4. There may be undetected &quot;information-rich&quot;-outliers.
+</code></pre><h4 id="1-2-5-2-Consequences-of-Non-Fixed-Location-Parameter"><a href="#1-2-5-2-Consequences-of-Non-Fixed-Location-Parameter" class="headerlink" title="1.2.5.2.    Consequences of Non-Fixed Location Parameter"></a>1.2.5.2.    Consequences of Non-Fixed Location Parameter</h4><h5 id="Location-Estimate"><a href="#Location-Estimate" class="headerlink" title="Location Estimate"></a>Location Estimate</h5><p>The usual estimate of location is the mean<br>    Y¯=1N∑i=1NYi<br>from N measurements Y1, Y2, … , YN.</p>
+<h5 id="Consequences-of-Non-Fixed-Location"><a href="#Consequences-of-Non-Fixed-Location" class="headerlink" title="Consequences of Non-Fixed Location"></a>Consequences of Non-Fixed Location</h5><p>If the run sequence plot does not support the assumption of fixed location, then</p>
+<pre><code>1. The location may be drifting.
+2. The single location estimate may be meaningless (if the process is drifting).
+3. The choice of location estimator (e.g., the sample mean) may be sub-optimal.
+4. The usual formula for the uncertainty of the mean:
+</code></pre><p>s(Y¯)=1N(N−1)−−−−−−−−√∑i=1N(Yi−Y¯)2−−−−−−−−−−−⎷<br>may be invalid and the numerical value optimistically small.</p>
+<pre><code>5. The location estimate may be poor.
+6. The location estimate may be biased.
+</code></pre><h4 id="1-2-5-3-Consequences-of-Non-Fixed-Variation-Parameter"><a href="#1-2-5-3-Consequences-of-Non-Fixed-Variation-Parameter" class="headerlink" title="1.2.5.3.    Consequences of Non-Fixed Variation Parameter"></a>1.2.5.3.    Consequences of Non-Fixed Variation Parameter</h4><h5 id="Variation-Estimate"><a href="#Variation-Estimate" class="headerlink" title="Variation Estimate"></a>Variation Estimate</h5><p>The usual estimate of variation is the standard deviation<br>    sY=1(N−1)−−−−−−−√∑i=1N(Yi−Y¯)2−−−−−−−−−−−⎷<br>from N measurements Y1, Y2, … , YN.</p>
+<h5 id="Consequences-of-Non-Fixed-Variation"><a href="#Consequences-of-Non-Fixed-Variation" class="headerlink" title="Consequences of Non-Fixed Variation"></a>Consequences of Non-Fixed Variation</h5><p>If the run sequence plot does not support the assumption of fixed variation, then</p>
+<pre><code>1. The variation may be drifting.
+2. The single variation estimate may be meaningless (if the process variation is drifting).
+3. The variation estimate may be poor.
+4. The variation estimate may be biased.
+</code></pre><h4 id="1-2-5-4-Consequences-Related-to-Distributional-Assumptions"><a href="#1-2-5-4-Consequences-Related-to-Distributional-Assumptions" class="headerlink" title="1.2.5.4. Consequences Related to Distributional Assumptions"></a>1.2.5.4. Consequences Related to Distributional Assumptions</h4><h5 id="Distributional-Analysis"><a href="#Distributional-Analysis" class="headerlink" title="Distributional Analysis"></a>Distributional Analysis</h5><p>Scientists and engineers routinely use the mean (average) to estimate the “middle” of a distribution. It is not so well known that the variability and the noisiness of the mean as a location estimator are intrinsically linked with the underlying distribution of the data. For certain distributions, the mean is a poor choice. For any given distribution, there exists an optimal choice– that is, the estimator with minimum variability/noisiness. This optimal choice may be, for example, the median, the midrange, the midmean, the mean, or something else. The implication of this is to “estimate” the distribution first, and then–based on the distribution–choose the optimal estimator. The resulting engineering parameter estimators will have less variability than if this approach is not followed.</p>
+<h5 id="Case-Studies"><a href="#Case-Studies" class="headerlink" title="Case Studies"></a>Case Studies</h5><p>The airplane glass failure case study gives an example of determining an appropriate distribution and estimating the parameters of that distribution. The uniform random numberscase study gives an example of determining a more appropriate centrality parameter for a non-normal distribution.</p>
+<p>Other consequences that flow from problems with distributional assumptions are:</p>
+<h5 id="Distribution"><a href="#Distribution" class="headerlink" title="Distribution"></a>Distribution</h5><pre><code>1. The distribution may be changing.
+2. The single distribution estimate may be meaningless (if the process distribution is changing).
+3. The distribution may be markedly non-normal.
+4. The distribution may be unknown.
+5. The true probability distribution for the error may remain unknown.
+</code></pre><h5 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h5><pre><code>1. The model may be changing.
+2. The single model estimate may be meaningless.
+3. The default model
+    Y = constant + error
+    may be invalid.
+4. If the default model is insufficient, information about a better model may remain undetected.
+5. A poor deterministic model may be fit.
+6. Information about an improved model may go undetected.
+</code></pre><h5 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h5><pre><code>1. The process may be out-of-control.
+2. The process may be unpredictable.
+3. The process may be un-modelable.
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/Exploratory Data Analysis(一)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/02/Exploratory Data Analysis(一)/" itemprop="url">Exploratory Data Analysis(一)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T10:26:12+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/02/Exploratory Data Analysis(一)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/Exploratory Data Analysis(一)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/02/Exploratory Data Analysis(一)/" class="leancloud_visitors" data-flag-title="Exploratory Data Analysis(一)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Exploratory Data Analysis(一)
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-Exploratory-Data-Analysis"><a href="#1-Exploratory-Data-Analysis" class="headerlink" title="1. Exploratory Data Analysis"></a>1. Exploratory Data Analysis</h1><p>This chapter presents the assumptions, principles, and techniques necessary to gain insight into data via EDA–exploratory data analysis.</p>
+<h2 id="1-1-EDA-Introduction"><a href="#1-1-EDA-Introduction" class="headerlink" title="1.1. EDA Introduction"></a>1.1. EDA Introduction</h2><p>What is exploratory data analysis? How did it begin? How and where did it originate? How is it differentiated from other data analysis approaches, such as classical and Bayesian? Is EDA the same as statistical graphics? What role does statistical graphics play in EDA? Is statistical graphics identical to EDA?<br>These questions and related questions are dealt with in this section. This section answers these questions and provides the necessary frame of reference for EDA assumptions, principles, and techniques.</p>
+<h3 id="1-1-1-What-is-EDA"><a href="#1-1-1-What-is-EDA" class="headerlink" title="1.1.1. What is EDA?"></a>1.1.1. What is EDA?</h3><h4 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h4><p>Exploratory Data Analysis (EDA) is an approach/philosophy for data analysis that employs a variety of techniques (mostly graphical) to</p>
+<blockquote>
+<ol>
+<li>maximize insight into a data set;</li>
+<li>uncover underlying structure;</li>
+<li>extract important variables;</li>
+<li>detect outliers and anomalies;</li>
+<li>test underlying assumptions;</li>
+<li>develop parsimonious models; and</li>
+<li>determine optimal factor settings.</li>
+</ol>
+</blockquote>
+<h4 id="Focus"><a href="#Focus" class="headerlink" title="Focus"></a>Focus</h4><p>The EDA approach is precisely that–an approach–not a set of techniques, but an attitude/philosophy about how a data analysis should be carried out.</p>
+<h4 id="Philosophy"><a href="#Philosophy" class="headerlink" title="Philosophy"></a>Philosophy</h4><p>EDA is not identical to statistical graphics although the two terms are used almost interchangeably. Statistical graphics is a collection of techniques–all graphically based and all focusing on one data characterization aspect. EDA encompasses a larger venue; EDA is an approach to data analysis that postpones the usual assumptions about what kind of model the data follow with the more direct approach of allowing the data itself to reveal its underlying structure and model. EDA is not a mere collection of techniques; EDA is a philosophy as to how we dissect a data set; what we look for; how we look; and how we interpret. It is true that EDA heavily uses the collection of techniques that we call “statistical graphics”, but it is not identical to statistical graphics per se.</p>
+<h4 id="History"><a href="#History" class="headerlink" title="History"></a>History</h4><p>The seminal work in EDA is Exploratory Data Analysis, Tukey, (1977). Over the years it has benefitted from other noteworthy publications such as Data Analysis and Regression, Mosteller and Tukey (1977), Interactive Data Analysis, Hoaglin (1977), The ABC’s of EDA, Velleman and Hoaglin (1981) and has gained a large following as “the” way to analyze a data set.</p>
+<h4 id="Techniques"><a href="#Techniques" class="headerlink" title="Techniques"></a>Techniques</h4><p>Most EDA techniques are graphical in nature with a few quantitative techniques. The reason for the heavy reliance on graphics is that by its very nature the main role of EDA is to open-mindedly explore, and graphics gives the analysts unparalleled power to do so, enticing the data to reveal its structural secrets, and being always ready to gain some new, often unsuspected, insight into the data. In combination with the natural pattern-recognition capabilities that we all possess, graphics provides, of course, unparalleled power to carry this out.<br>The particular graphical techniques employed in EDA are often quite simple, consisting of various techniques of:</p>
+<blockquote>
+<ol>
+<li>Plotting the raw data (such as data traces,histograms, bihistograms, probability plots,lag plots, block plots, and Youden plots.</li>
+<li>Plotting simple statistics such as mean plots, standard deviation plots, box plots, and main effects plots of the raw data.</li>
+<li>Positioning such plots so as to maximize our natural pattern-recognition abilities, such as using multiple plots per page.</li>
+</ol>
+</blockquote>
+<h3 id="1-1-2-How-Does-Exploratory-Data-Analysis-differ-from-Classical-Data-Analysis"><a href="#1-1-2-How-Does-Exploratory-Data-Analysis-differ-from-Classical-Data-Analysis" class="headerlink" title="1.1.2. How Does Exploratory Data Analysis differ from Classical Data Analysis?"></a>1.1.2. How Does Exploratory Data Analysis differ from Classical Data Analysis?</h3><h4 id="Data-Analysis-Approaches"><a href="#Data-Analysis-Approaches" class="headerlink" title="Data Analysis Approaches"></a>Data Analysis Approaches</h4><p>EDA is a data analysis approach. What other data analysis approaches exist and how does EDA differ from these other approaches?</p>
+<p>Three popular data analysis approaches are:</p>
+<blockquote>
+<ol>
+<li>Classical</li>
+<li>Exploratory (EDA)</li>
+<li>Bayesian</li>
+</ol>
+</blockquote>
+<h4 id="Paradigms-for-Analysis-Techniques"><a href="#Paradigms-for-Analysis-Techniques" class="headerlink" title="Paradigms for Analysis Techniques"></a>Paradigms for Analysis Techniques</h4><p>These three approaches are similar in that they all start with a general science/engineering problem and all yield science/engineering conclusions. The difference is the sequence and focus of the intermediate steps.</p>
+<ul>
+<li>For classical analysis, the sequence is<pre><code>Problem =&gt; Data =&gt; Model =&gt; Analysis =&gt; Conclusions
+</code></pre></li>
+<li>For EDA, the sequence is<pre><code>Problem =&gt; Data =&gt; Analysis =&gt; Model =&gt; Conclusions
+</code></pre></li>
+<li>For Bayesian, the sequence is<pre><code>Problem =&gt; Data =&gt; Model =&gt; Prior Distribution =&gt; Analysis =&gt; Conclusions
+</code></pre></li>
+</ul>
+<h4 id="Method-of-dealing-with-underlying-model-for-the-data-distinguishes-the-3-approaches"><a href="#Method-of-dealing-with-underlying-model-for-the-data-distinguishes-the-3-approaches" class="headerlink" title="Method of dealing with underlying model for the data distinguishes the 3 approaches"></a>Method of dealing with underlying model for the data distinguishes the 3 approaches</h4><p>Thus for classical analysis, the data collection is followed by the imposition of a model (normality, linearity, etc.) and the analysis, estimation, and testing that follows are focused on the parameters of that model.</p>
+<p>For EDA, the data collection is not followed by a model imposition; rather it is followed immediately by analysis with a goal of inferring what model would be appropriate.</p>
+<p>Finally, for a Bayesian analysis, the analyst attempts to incorporate scientific/engineering knowledge/expertise into the analysis by imposing a data-independent distribution on the parameters of the selected model; the analysis thus consists of formally combining both the prior distribution on the parameters and the collected data to jointly make inferences and/or test assumptions about the model parameters.</p>
+<p>In the real world, data analysts freely mix elements of all of the above three approaches (and other approaches). The above distinctions were made to emphasize the major differences among the three approaches.</p>
+<p>Further discussion of the distinction between the classical and EDA approaches    Focusing on EDA versus classical, these two approaches differ as follows:</p>
+<blockquote>
+<ol>
+<li>Models</li>
+<li>Focus</li>
+<li>Techniques</li>
+<li>Rigor</li>
+<li>Data Treatment</li>
+<li>Assumptions</li>
+</ol>
+</blockquote>
+<h3 id="1-1-3-How-Does-Exploratory-Data-Analysis-Differ-from-Summary-Analysis"><a href="#1-1-3-How-Does-Exploratory-Data-Analysis-Differ-from-Summary-Analysis" class="headerlink" title="1.1.3 How Does Exploratory Data Analysis Differ from Summary Analysis?"></a>1.1.3 How Does Exploratory Data Analysis Differ from Summary Analysis?</h3><h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>A summary analysis is simply a numeric reduction of a historical data set. It is quite passive. Its focus is in the past. Quite commonly, its purpose is to simply arrive at a few key statistics (for example, mean and standard deviation) which may then either replace the data set or be added to the data set in the form of a summary table.</p>
+<h4 id="Exploratory"><a href="#Exploratory" class="headerlink" title="Exploratory"></a>Exploratory</h4><p>In contrast, EDA has as its broadest goal the desire to gain insight into the engineering/scientific process behind the data. Whereas summary statistics are passive and historical, EDA is active and futuristic. In an attempt to “understand” the process and improve it in the future, EDA uses the data as a “window” to peer into the heart of the process that generated the data. There is an archival role in the research and manufacturing world for summary statistics, but there is an enormously larger role for the EDA approach.</p>
+<h3 id="1-1-4-What-are-the-EDA-Goals"><a href="#1-1-4-What-are-the-EDA-Goals" class="headerlink" title="1.1.4. What are the EDA Goals?"></a>1.1.4. What are the EDA Goals?</h3><h4 id="Primary-and-Secondary-Goals"><a href="#Primary-and-Secondary-Goals" class="headerlink" title="Primary and Secondary Goals"></a>Primary and Secondary Goals</h4><p>The primary goal of EDA is to maximize the analyst’s insight into a data set and into the underlying structure of a data set, while providing all of the specific items that an analyst would want to extract from a data set, such as:</p>
+<pre><code>1. a good-fitting, parsimonious model
+2. a list of outliers
+3. a sense of robustness of conclusions
+4. estimates for parameters
+5. uncertainties for those estimates
+6. a ranked list of important factors
+7. conclusions as to whether individual factors are statistically significant
+8. optimal settings
+</code></pre><h4 id="Insight-into-the-Data"><a href="#Insight-into-the-Data" class="headerlink" title="Insight into the Data"></a>Insight into the Data</h4><p>Insight implies detecting and uncovering underlying structure in the data. Such underlying structure may not be encapsulated in the list of items above; such items serve as the specific targets of an analysis, but the real insight and “feel” for a data set comes as the analyst judiciously probes and explores the various subtleties of the data. The “feel” for the data comes almost exclusively from the application of various graphical techniques, the collection of which serves as the window into the essence of the data. Graphics are irreplaceable–there are no quantitative analogues that will give the same insight as well-chosen graphics.</p>
+<p>To get a “feel” for the data, it is not enough for the analyst to know what is in the data; the analyst also must know what is not in the data, and the only way to do that is to draw on our own human pattern-recognition and comparative abilities in the context of a series of judicious graphical techniques applied to the data.</p>
+<h3 id="1-1-5-The-Role-of-Graphics"><a href="#1-1-5-The-Role-of-Graphics" class="headerlink" title="1.1.5.The Role of Graphics"></a>1.1.5.The Role of Graphics</h3><h4 id="Graphical"><a href="#Graphical" class="headerlink" title="Graphical"></a>Graphical</h4><p>Statistics and data analysis procedures can broadly be split into two parts:</p>
+<ol>
+<li>quantitative</li>
+<li>graphical</li>
+</ol>
+<h4 id="Quantitative"><a href="#Quantitative" class="headerlink" title="Quantitative"></a>Quantitative</h4><p>Quantitative techniques are the set of statistical procedures that yield numeric or tabular output. Examples of quantitative techniques include:</p>
+<ol>
+<li>hypothesis testing</li>
+<li>analysis of variance</li>
+<li>point estimates and confidence intervals</li>
+<li>least squares regression</li>
+</ol>
+<p>These and similar techniques are all valuable and are mainstream in terms of classical analysis.</p>
+<h4 id="Graphical-1"><a href="#Graphical-1" class="headerlink" title="Graphical"></a>Graphical</h4><p>On the other hand, there is a large collection of statistical tools that we generally refer to as graphical techniques. These include:</p>
+<ul>
+<li>scatter plots</li>
+<li>histograms</li>
+<li>probability plots</li>
+<li>residual plots</li>
+<li>box plots</li>
+<li>block plots</li>
+</ul>
+<h4 id="EDA-Approach-Relies-Heavily-on-Graphical-Techniques"><a href="#EDA-Approach-Relies-Heavily-on-Graphical-Techniques" class="headerlink" title="EDA Approach Relies Heavily on Graphical Techniques"></a>EDA Approach Relies Heavily on Graphical Techniques</h4><p>The EDA approach relies heavily on these and similar graphical techniques. Graphical procedures are not just tools that we could use in an EDA context, they are tools that we must use. Such graphical tools are the shortest path to gaining insight into a data set in terms of</p>
+<ul>
+<li>testing assumptions</li>
+<li>model selection</li>
+<li>model validation</li>
+<li>estimator selection</li>
+<li>relationship identification</li>
+<li>factor effect determination</li>
+<li>outlier detection</li>
+</ul>
+<p>If one is not using statistical graphics, then one is forfeiting insight into one or more aspects of the underlying structure of the data.</p>
+<h3 id="1-1-6-An-EDA-Graphics-Example"><a href="#1-1-6-An-EDA-Graphics-Example" class="headerlink" title="1.1.6. An EDA/Graphics Example"></a>1.1.6. An EDA/Graphics Example</h3><h4 id="Anscombe-Example"><a href="#Anscombe-Example" class="headerlink" title="Anscombe Example"></a>Anscombe Example</h4><p>A simple, classic (Anscombe) example of the central role that graphics play in terms of providing insight into a data set starts with the following data set:</p>
+<p><code>Data</code></p>
+<table>
+<thead>
+<tr>
+<th>X</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.00</td>
+<td>8.04</td>
+</tr>
+<tr>
+<td> 8.00</td>
+<td>6.95</td>
+</tr>
+<tr>
+<td>13.00</td>
+<td>7.58</td>
+</tr>
+<tr>
+<td> 9.00</td>
+<td>8.81</td>
+</tr>
+<tr>
+<td>11.00</td>
+<td>8.33</td>
+</tr>
+<tr>
+<td>14.00</td>
+<td>9.96</td>
+</tr>
+<tr>
+<td> 6.00</td>
+<td>7.24</td>
+</tr>
+<tr>
+<td> 4.00</td>
+<td>4.26</td>
+</tr>
+<tr>
+<td>12.00</td>
+<td>10.84</td>
+</tr>
+<tr>
+<td> 7.00</td>
+<td>4.82</td>
+</tr>
+<tr>
+<td> 5.00</td>
+<td>5.68</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Summary-Statistics"><a href="#Summary-Statistics" class="headerlink" title="Summary Statistics"></a>Summary Statistics</h4><p>If the goal of the analysis is to compute summary statistics plus determine the best linear fit for Y as a function of X, the results might be given as:</p>
+<pre><code>N = 11
+Mean of X = 9.0
+Mean of Y = 7.5
+Intercept = 3
+Slope = 0.5
+Residual standard deviation = 1.237
+Correlation = 0.816
+</code></pre><p>The above quantitative analysis, although valuable, gives us only limited insight into the data.</p>
+<h4 id="Scatter-Plot"><a href="#Scatter-Plot" class="headerlink" title="Scatter Plot"></a>Scatter Plot</h4><p>In contrast, the following simple scatter plotof the data</p>
+<p><img src="assets/EDA/anscomb1.gif" alt=""></p>
+<p>suggests the following:</p>
+<ul>
+<li><ol>
+<li>The data set “behaves like” a linear curve with some scatter;</li>
+</ol>
+</li>
+<li><ol>
+<li>there is no justification for a more complicated model (e.g., quadratic);</li>
+</ol>
+</li>
+<li><ol>
+<li>there are no outliers;</li>
+</ol>
+</li>
+<li><ol>
+<li>the vertical spread of the data appears to be of equal height irrespective of the X-value; this indicates that the data are equally-precise throughout and so a “regular” (that is, equi-weighted) fit is appropriate.</li>
+</ol>
+</li>
+</ul>
+<h4 id="Three-Additional-Data-Sets"><a href="#Three-Additional-Data-Sets" class="headerlink" title="Three Additional Data Sets"></a>Three Additional Data Sets</h4><p>This kind of characterization for the data serves as the core for getting insight/feel for the data. Such insight/feel does not come from the quantitative statistics; on the contrary, calculations of quantitative statistics such as intercept and slope should be subsequent to the characterization and will make sense only if the characterization is true. To illustrate the loss of information that results when the graphics insight step is skipped, consider the following three data sets [Anscombe data sets 2, 3, and 4]:</p>
+<table>
+<thead>
+<tr>
+<th>X2</th>
+<th>Y2</th>
+<th>X3</th>
+<th>Y3</th>
+<th>X4</th>
+<th>Y4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.00</td>
+<td>9.14</td>
+<td>10.00</td>
+<td>7.46</td>
+<td>8.00</td>
+<td>6.58</td>
+</tr>
+<tr>
+<td> 8.00</td>
+<td>8.14</td>
+<td>8.00</td>
+<td>6.77</td>
+<td>8.00</td>
+<td>5.76</td>
+</tr>
+<tr>
+<td>13.00</td>
+<td>8.74</td>
+<td>13.00</td>
+<td>12.74</td>
+<td>8.00</td>
+<td>7.71</td>
+</tr>
+<tr>
+<td> 9.00</td>
+<td>8.77</td>
+<td>9.00</td>
+<td>7.11</td>
+<td>8.00</td>
+<td>8.84</td>
+</tr>
+<tr>
+<td>11.00</td>
+<td>9.26</td>
+<td>11.00</td>
+<td>7.81</td>
+<td>8.00</td>
+<td>8.47</td>
+</tr>
+<tr>
+<td>14.00</td>
+<td>8.10</td>
+<td>14.00</td>
+<td>8.84</td>
+<td>8.00</td>
+<td>7.04</td>
+</tr>
+<tr>
+<td> 6.00</td>
+<td>6.13</td>
+<td>6.00</td>
+<td>6.08</td>
+<td>8.00</td>
+<td>5.25</td>
+</tr>
+<tr>
+<td> 4.00</td>
+<td>3.10</td>
+<td>4.00</td>
+<td>5.39</td>
+<td>19.00</td>
+<td>12.50</td>
+</tr>
+<tr>
+<td>12.00</td>
+<td>9.13</td>
+<td>12.00</td>
+<td>8.15</td>
+<td>8.00</td>
+<td>5.56</td>
+</tr>
+<tr>
+<td> 7.00</td>
+<td>7.26</td>
+<td>7.00</td>
+<td>6.42</td>
+<td>8.00</td>
+<td>7.91</td>
+</tr>
+<tr>
+<td> 5.00</td>
+<td>4.74</td>
+<td>5.00</td>
+<td>5.73</td>
+<td>8.00</td>
+<td>6.89</td>
+</tr>
+</tbody>
+</table>
+<h5 id="Quantitative-Statistics-for-Data-Set-2"><a href="#Quantitative-Statistics-for-Data-Set-2" class="headerlink" title="Quantitative Statistics for Data Set 2"></a>Quantitative Statistics for Data Set 2</h5><p> A quantitative analysis on data set 2 yields</p>
+<pre><code>N = 11
+Mean of X = 9.0
+Mean of Y = 7.5
+Intercept = 3
+Slope = 0.5
+Residual standard deviation = 1.237
+Correlation = 0.816
+</code></pre><p> which is identical to the analysis for data set 1. One might naively assume that the two data sets are “equivalent” since that is what the statistics tell us; but what do the statistics not tell us?</p>
+<h5 id="Quantitative-Statistics-for-Data-Sets-3-and-4"><a href="#Quantitative-Statistics-for-Data-Sets-3-and-4" class="headerlink" title="Quantitative Statistics for Data Sets 3 and 4"></a>Quantitative Statistics for Data Sets 3 and 4</h5><p> Remarkably, a quantitative analysis on data sets 3 and 4 also yields</p>
+<pre><code>N = 11
+Mean of X = 9.0
+Mean of Y = 7.5
+Intercept = 3
+Slope = 0.5
+Residual standard deviation = 1.236
+Correlation = 0.816 (0.817 for data set 4)
+</code></pre><p> which implies that in some quantitative sense, all four of the data sets are “equivalent”. In fact, the four data sets are far from “equivalent” and a scatter plot of each data set, which would be step 1 of any EDA approach, would tell us that immediately.</p>
+<h5 id="Scatter-Plots"><a href="#Scatter-Plots" class="headerlink" title="Scatter Plots"></a>Scatter Plots</h5><p><img src="assets/EDA/anscomb4.gif" alt=""></p>
+<h6 id="Interpretation-of-Scatter-Plots"><a href="#Interpretation-of-Scatter-Plots" class="headerlink" title="Interpretation of Scatter Plots"></a>Interpretation of Scatter Plots</h6><p>Conclusions from the scatter plots are:</p>
+<blockquote>
+<ol>
+<li>data set 1 is clearly linear with some scatter.</li>
+<li>data set 2 is clearly quadratic.</li>
+<li>data set 3 clearly has an outlier.</li>
+<li>data set 4 is obviously the victim of a poor experimental design with a single point far removed from the bulk of the data “wagging the dog”.</li>
+</ol>
+</blockquote>
+<h6 id="Importance-of-Exploratory-Analysis"><a href="#Importance-of-Exploratory-Analysis" class="headerlink" title="Importance of Exploratory Analysis"></a>Importance of Exploratory Analysis</h6><p>These points are exactly the substance that provide and define “insight” and “feel” for a data set. They are the goals and the fruits of an open exploratory data analysis (EDA) approach to the data.</p>
+<p> Quantitative statistics are not wrong per se, but they are incomplete. They are incomplete because they are numericsummaries which in the summarization operation do a good job of focusing on a particular aspect of the data (e.g., location, intercept, slope, degree of relatedness, etc.) by judiciously reducing the data to a few numbers. Doing so also filters the data, necessarily omitting and screening out other sometimes crucial information in the focusing operation. Quantitative statistics focus but also filter; and filtering is exactly what makes the quantitative approach incomplete at best and misleading at worst.</p>
+<p>The estimated intercepts (= 3) and slopes (= 0.5) for data sets 2, 3, and 4 are misleading because the estimation is done in the context of an assumed linear model and that linearity assumption is the fatal flaw in this analysis.</p>
+<p>The EDA approach of deliberately postponing the model selection until further along in the analysis has many rewards, not the least of which is the ultimate convergence to a much-improved model and the formulation of valid and supportable scientific and engineering conclusions.</p>
+<h3 id="1-1-7-General-Problem-Categories"><a href="#1-1-7-General-Problem-Categories" class="headerlink" title="1.1.7.General Problem Categories"></a>1.1.7.General Problem Categories</h3><h4 id="Problem-Classification"><a href="#Problem-Classification" class="headerlink" title="Problem Classification"></a>Problem Classification</h4><p>The following table is a convenient way to classify EDA problems.</p>
+<h5 id="Univariate-and-Control"><a href="#Univariate-and-Control" class="headerlink" title="Univariate and Control"></a>Univariate and Control</h5><h6 id="UNIVARIATE"><a href="#UNIVARIATE" class="headerlink" title="UNIVARIATE"></a>UNIVARIATE</h6><pre><code>Data:
+    A single column of numbers, Y.
+Model:
+    y = constant + error
+Output:
+    1. A number (the estimated constant in the model).
+    2. An estimate of uncertainty for the constant.
+    3. An estimate of the distribution for the error.
+Techniques:
+    • 4-Plot
+    • Probability Plot
+    • PPCC Plot
+</code></pre><h6 id="CONTROL"><a href="#CONTROL" class="headerlink" title="CONTROL"></a>CONTROL</h6><pre><code>Data:
+    A single column of numbers, Y.
+Model:
+    y = constant + error
+Output:
+    A &quot;yes&quot; or &quot;no&quot; to the question &quot;Is the system out of control?&quot;.
+Techniques:
+    • Control Charts
+</code></pre><h4 id="Comparative-and-Screening"><a href="#Comparative-and-Screening" class="headerlink" title="Comparative and Screening"></a>Comparative and Screening</h4><h5 id="COMPARATIVE"><a href="#COMPARATIVE" class="headerlink" title="COMPARATIVE"></a>COMPARATIVE</h5><pre><code>Data:
+    A single response variable and k independent variables (Y, X1, X2, ... , Xk), primary focus is onone (the primary factor) of these independent variables.
+Model:
+    y = f(x1, x2, ..., xk) + error
+Output:
+    A &quot;yes&quot; or &quot;no&quot; to the question &quot;Is the primary factor significant?&quot;.
+Techniques:
+    • Block Plot
+    • Scatter Plot
+    • Box Plot
+</code></pre><h5 id="SCREENING"><a href="#SCREENING" class="headerlink" title="SCREENING"></a>SCREENING</h5><pre><code>Data:
+    A single response variable and k independent variables (Y, X1, X2, ... , Xk).
+Model:
+    y = f(x1, x2, ..., xk) + error
+Output:
+    1. A ranked list (from most important to least important) of factors.
+    2. Best settings for the factors.
+    3. A good model/prediction equation relating Y to the factors.
+Techniques:
+    • Block Plot
+    • Probability Plot
+    • Bihistogram
+</code></pre><h4 id="Optimization-and-Regression"><a href="#Optimization-and-Regression" class="headerlink" title="Optimization and Regression"></a>Optimization and Regression</h4><h5 id="OPTIMIZATION"><a href="#OPTIMIZATION" class="headerlink" title="OPTIMIZATION"></a>OPTIMIZATION</h5><pre><code>Data:
+    A single response variable and k independent variables (Y, X1, X2, ... , Xk).
+Model:
+    y = f(x1, x2, ..., xk) + error
+Output:
+    Best settings for the factor variables.
+Techniques:
+    • Block Plot
+    • Least Squares Fitting
+    • Contour Plot
+</code></pre><h5 id="REGRESSION"><a href="#REGRESSION" class="headerlink" title="REGRESSION"></a>REGRESSION</h5><pre><code>Data:
+    A single response variable and k independent variables (Y, X1, X2, ... , Xk). The independent variables can be continuous.
+Model:
+    y = f(x1, x2, ..., xk) + error
+Output:
+    A good model/prediction equation relating Y to the factors.
+Techniques:
+    • Least Squares Fitting
+    • Scatter Plot
+    • 6-Plot
+</code></pre><h4 id="Time-Series-and-Multivariate"><a href="#Time-Series-and-Multivariate" class="headerlink" title="Time Series and Multivariate"></a>Time Series and Multivariate</h4><h5 id="TIME-SERIES"><a href="#TIME-SERIES" class="headerlink" title="TIME SERIES"></a>TIME SERIES</h5><pre><code>Data:
+    A column of time dependent numbers, Y. In addition, time is an indpendent variable. The time variable can be either explicit or implied. If the data are not equi-spaced, the time variable should be explicitly provided.
+Model:
+    yt = f(t) + error 
+    The model can be either a time domain based or frequency domain based.
+Output:
+    A good model/prediction equation relating Y to previous values of Y.
+Techniques:
+    • Autocorrelation Plot
+    • Spectrum
+    • Complex Demodulation Amplitude Plot
+    • Complex Demodulation Phase Plot
+    • ARIMA Models
+</code></pre><h5 id="MULTIVARIATE"><a href="#MULTIVARIATE" class="headerlink" title="MULTIVARIATE"></a>MULTIVARIATE</h5><pre><code>Data:
+    k factor variables (X1, X2, ... , Xk).
+Model:
+    The model is not explicit.
+Output:
+    Identify underlying correlation structure in the data.
+Techniques:
+    • Star Plot
+    • Scatter Plot Matrix
+    • Conditioning Plot
+    • Profile Plot
+    • Principal Components
+    • Clustering
+    • Discrimination/Classification
+Note that multivarate analysis is only covered lightly in this Handbook.
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/win10的开始菜单点击没有反应/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/01/win10的开始菜单点击没有反应/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T19:03:13+08:00">
+                2018-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/01/win10的开始菜单点击没有反应/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/win10的开始菜单点击没有反应/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/01/win10的开始菜单点击没有反应/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、在键盘上按下win+R键，或在开始菜单图标上点击右键选择运行;<br>2、输入powershell，按下“确定”运行;<br>3、在窗口里输入或复制粘贴以下命令，注意只有一行：<br>Get-AppxPackage | % { Add-AppxPackage -DisableDevelopmentMode -Register “$($_.InstallLocation)\AppxManifest.xml” -verbose }<br>4、点击enter键，等待修复命令运行完成，重启电脑，完成之后BUG就被修复了</p>
+<p>via <a href="https://zhidao.baidu.com/question/1431600130289612979.html" target="_blank" rel="noopener"></a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/Received 500 Internal Server Error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/01/Received 500 Internal Server Error/" itemprop="url">Received "500 Internal Server Error"</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T16:53:12+08:00">
+                2018-03-01
               </time>
             
 
@@ -732,8 +2198,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/11/gitignore规则不生效的解决办法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/gitignore规则不生效的解决办法/" itemprop="commentCount"></span>
+                <a href="/2018/03/01/Received 500 Internal Server Error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/Received 500 Internal Server Error/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -741,7 +2207,7 @@
 
           
           
-             <span id="/2017/10/11/gitignore规则不生效的解决办法/" class="leancloud_visitors" data-flag-title="gitignore规则不生效的解决办法">
+             <span id="/2018/03/01/Received 500 Internal Server Error/" class="leancloud_visitors" data-flag-title="Received "500 Internal Server Error"">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -759,7 +2225,7 @@
 
           
               <div class="post-description">
-                  gitignore规则不生效的解决办法
+                  Received "500 Internal Server Error"
               </div>
           
 
@@ -777,20 +2243,14 @@
 
       
         
-          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>发现添加<code>.gitignore</code>文件后，本地做的修改仍被push到GitHub。<code>.gitignore</code>规则并没有生效。</p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>原因是如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p>
-<p>那么解决方法就是先把本地缓存删除（改变成未被追踪状态），然后再提交：</p>
-<p><code>git rm -r --cached .</code></p>
-<p><code>git add .</code></p>
-<p><code>git commit -m &#39;update .gitignore&#39;</code></p>
-<h1 id="如何避免"><a href="#如何避免" class="headerlink" title="如何避免"></a>如何避免</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/11/gitignore规则不生效的解决办法/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>使用twine在whl文件打包上传到pypi时，出现如下错误：</p>
+<p><img src="assets/python/20180301162329.png" alt=""></p>
+<p>换种方式上传：<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; python setup.py sdist upload</span><br><span class="line">running sdist</span><br><span class="line">running egg_info</span><br><span class="line">writing requirements to woe.egg-info<span class="symbol">\r</span>equires.txt</span><br><span class="line">writing woe.egg-info<span class="symbol">\P</span>KG-INFO</span><br><span class="line">writing top-level names to woe.egg-info<span class="symbol">\t</span>op_level.txt</span><br><span class="line">writing dependency_links to woe.egg-info<span class="symbol">\d</span>ependency_links.txt</span><br><span class="line">reading manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">reading manifest template 'MANIFEST.in'</span><br><span class="line">writing manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">running check</span><br><span class="line">creating woe-0.1.4</span><br><span class="line">creating woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">creating woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">creating woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying files to woe-0.1.4...</span><br><span class="line">copying LICENSE.txt -&gt; woe-0.1.4</span><br><span class="line">copying MANIFEST.in -&gt; woe-0.1.4</span><br><span class="line">copying README.rst -&gt; woe-0.1.4</span><br><span class="line">copying setup.py -&gt; woe-0.1.4</span><br><span class="line">copying examples<span class="symbol">\H</span>ereWeGo.py -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\R</span>EADME.rst -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\U</span>CI_Credit_Card.csv -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\c</span>onfig.csv -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying woe<span class="symbol">\G</span>ridSearch.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\_</span>_init__.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\c</span>onfig.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\e</span>val.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\f</span>eature_process.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\f</span>trl.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe.egg-info<span class="symbol">\P</span>KG-INFO -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\S</span>OURCES.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\d</span>ependency_links.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\r</span>equires.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\t</span>op_level.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">Writing woe-0.1.4<span class="symbol">\s</span>etup.cfg</span><br><span class="line">Creating tar archive</span><br><span class="line">removing 'woe-0.1.4' (and everything under it)</span><br><span class="line">running upload</span><br><span class="line">Password:</span><br><span class="line">Submitting dist<span class="symbol">\w</span>oe-0.1.4.tar.gz to https://upload.pypi.org/legacy/</span><br><span class="line">Upload failed (403): Invalid or non-existent authentication information.</span><br><span class="line">error: Upload failed (403): Invalid or non-existent authentication information.</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt;</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; python setup.py sdist upload</span><br><span class="line">running sdist</span><br><span class="line">running egg_info</span><br><span class="line">writing requirements to woe.egg-info<span class="symbol">\r</span>equires.txt</span><br><span class="line">writing woe.egg-info<span class="symbol">\P</span>KG-INFO</span><br><span class="line">writing top-level names to woe.egg-info<span class="symbol">\t</span>op_level.txt</span><br><span class="line">writing dependency_links to woe.egg-info<span class="symbol">\d</span>ependency_links.txt</span><br><span class="line">reading manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">reading manifest template 'MANIFEST.in'</span><br><span class="line">writing manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">running check</span><br><span class="line">creating woe-0.1.4</span><br><span class="line">creating woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">creating woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">creating woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying files to woe-0.1.4...</span><br><span class="line">copying LICENSE.txt -&gt; woe-0.1.4</span><br><span class="line">copying MANIFEST.in -&gt; woe-0.1.4</span><br><span class="line">copying README.rst -&gt; woe-0.1.4</span><br><span class="line">copying setup.py -&gt; woe-0.1.4</span><br><span class="line">copying examples<span class="symbol">\H</span>ereWeGo.py -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\R</span>EADME.rst -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\U</span>CI_Credit_Card.csv -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\c</span>onfig.csv -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying woe<span class="symbol">\G</span>ridSearch.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\_</span>_init__.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\c</span>onfig.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\e</span>val.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\f</span>eature_process.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\f</span>trl.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe.egg-info<span class="symbol">\P</span>KG-INFO -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\S</span>OURCES.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\d</span>ependency_links.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\r</span>equires.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\t</span>op_level.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">Writing woe-0.1.4<span class="symbol">\s</span>etup.cfg</span><br><span class="line">Creating tar archive</span><br><span class="line">removing 'woe-0.1.4' (and everything under it)</span><br><span class="line">running upload</span><br><span class="line">Submitting dist<span class="symbol">\w</span>oe-0.1.4.tar.gz to https://upload.pypi.org/legacy/</span><br><span class="line">Server response (200): OK</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; twine upload dist/*</span><br><span class="line">Uploading distributions to https://upload.pypi.org/legacy/</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 1 of 5</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 2 of 5</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 3 of 5</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 4 of 5</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 5 of 5</span><br><span class="line">HTTPError: 500 Server Error: Internal Server Error for url: https://upload.pypi.org/legacy/</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; python setup.py bdist_wheel upload</span><br><span class="line">running bdist_wheel</span><br><span class="line">running build</span><br><span class="line">running build_py</span><br><span class="line">installing to build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel</span><br><span class="line">running install</span><br><span class="line">running install_lib</span><br><span class="line">creating build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel</span><br><span class="line">creating build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\c</span>onfig.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\e</span>val.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\f</span>eature_process.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\f</span>trl.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\G</span>ridSearch.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\_</span>_init__.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">running install_egg_info</span><br><span class="line">running egg_info</span><br><span class="line">writing requirements to woe.egg-info<span class="symbol">\r</span>equires.txt</span><br><span class="line">writing woe.egg-info<span class="symbol">\P</span>KG-INFO</span><br><span class="line">writing top-level names to woe.egg-info<span class="symbol">\t</span>op_level.txt</span><br><span class="line">writing dependency_links to woe.egg-info<span class="symbol">\d</span>ependency_links.txt</span><br><span class="line">reading manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">reading manifest template 'MANIFEST.in'</span><br><span class="line">writing manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">Copying woe.egg-info to build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe-0.1.4-py2.7.egg-info</span><br><span class="line">running install_scripts</span><br><span class="line">creating build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\w</span>oe-0.1.4.dist-info<span class="symbol">\W</span>HEEL</span><br><span class="line">running upload</span><br><span class="line">Submitting E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe<span class="symbol">\d</span>ist<span class="symbol">\w</span>oe-0.1.4-py2-none-any.whl to https://upload.pypi.org/legacy/</span><br><span class="line">Server response (200): OK</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; twine upload dist/*</span><br><span class="line">Uploading distributions to https://upload.pypi.org/legacy/</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Uploading woe-0.1.4-py3-none-any.whl</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>如上，最后原来是没有.pypirc文件，在自己用户根路径下新建，内容如下：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[distutils]</span><br><span class="line">index-servers = pypi</span><br><span class="line"></span><br><span class="line">[pypi]</span><br><span class="line"><span class="symbol">repository:</span> https:<span class="comment">//upload.pypi.org/legacy/</span></span><br><span class="line"><span class="symbol">username:</span> boredbird</span><br><span class="line"><span class="symbol">password:</span> <span class="params">&lt;密码&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>最后，如上才上传成功（一开始用python setup.py 上传成功了一个文件，等了一会twine也可以用了，就能够批量上传到pypi了）。</p>
+
+          
         
       
     </div>
@@ -837,7 +2297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/Python环境设置默认编码为utf8的方法/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/py2转py3遇到的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -856,7 +2316,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/11/Python环境设置默认编码为utf8的方法/" itemprop="url">Python环境设置默认编码为utf8的方法</a></h2>
+                <a class="post-title-link" href="/2018/03/01/py2转py3遇到的问题/" itemprop="url">py2转py3遇到的问题</a></h2>
         
 
         <div class="post-meta">
@@ -868,8 +2328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T10:43:12+08:00">
-                2017-10-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T12:53:12+08:00">
+                2018-03-01
               </time>
             
 
@@ -909,8 +2369,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/11/Python环境设置默认编码为utf8的方法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/Python环境设置默认编码为utf8的方法/" itemprop="commentCount"></span>
+                <a href="/2018/03/01/py2转py3遇到的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/py2转py3遇到的问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -918,7 +2378,7 @@
 
           
           
-             <span id="/2017/10/11/Python环境设置默认编码为utf8的方法/" class="leancloud_visitors" data-flag-title="Python环境设置默认编码为utf8的方法">
+             <span id="/2018/03/01/py2转py3遇到的问题/" class="leancloud_visitors" data-flag-title="py2转py3遇到的问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -936,706 +2396,7 @@
 
           
               <div class="post-description">
-                  Python环境设置默认编码为utf8的方法
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>从网上fork了虫师的代码，发现每个文件都没有加头注释指定文件编码，我这一个一个改得什么时候。想着虫师也是老司机了，不可能连IDE自动添加头注释都不知道，应该是哪边统一设置的。果然他是直接修改的Python环境配置。</p>
-<p><strong>设置之前：</strong></p>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">D:\ProgramData\Anaconda2\python.exe <span class="string">"D:\Program Files (x86)\JetBrains\PyCharm 2016.3.3\helpers\pydev\pydevconsole.py"</span> <span class="number">52853</span> <span class="number">52854</span></span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">13</span> |Anaconda <span class="number">4.3</span>.<span class="number">1</span> (<span class="number">64</span>-<span class="built_in">bit</span>)| (<span class="keyword">default</span>, Dec <span class="number">19</span> <span class="number">2016</span>, <span class="number">13</span>:<span class="number">29</span>:<span class="number">36</span>) [MSC v.<span class="number">1500</span> <span class="number">64</span> <span class="built_in">bit</span> (AMD64)]</span><br><span class="line"><span class="keyword">Type</span> <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">IPython <span class="number">5.1</span>.<span class="number">0</span> <span class="comment">-- An enhanced Interactive Python.</span></span><br><span class="line">?         -&gt; Introduction <span class="keyword">and</span> overview <span class="keyword">of</span> IPython<span class="symbol">'s</span> features.</span><br><span class="line">%quickref -&gt; Quick reference.</span><br><span class="line">help      -&gt; Python<span class="symbol">'s</span> own help system.</span><br><span class="line">object?   -&gt; Details about <span class="symbol">'object</span>', <span class="keyword">use</span> <span class="symbol">'object</span>??' <span class="keyword">for</span> extra details.</span><br><span class="line">PyDev console: using IPython <span class="number">5.1</span>.<span class="number">0</span></span><br><span class="line">import sys; print(<span class="symbol">'Python</span> %s <span class="keyword">on</span> %s' % (sys.version, sys.platform))</span><br><span class="line">sys.path.extend([<span class="symbol">'E</span>:\\Code\\Python_Crawler', <span class="symbol">'E</span>:\\Code\\Python_Exercise_Code', <span class="symbol">'E</span>:\\Code\\Python_ML_Code', <span class="symbol">'E</span>:/Code/Python_Crawler'])</span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">13</span> |Anaconda <span class="number">4.3</span>.<span class="number">1</span> (<span class="number">64</span>-<span class="built_in">bit</span>)| (<span class="keyword">default</span>, Dec <span class="number">19</span> <span class="number">2016</span>, <span class="number">13</span>:<span class="number">29</span>:<span class="number">36</span>) [MSC v.<span class="number">1500</span> <span class="number">64</span> <span class="built_in">bit</span> (AMD64)] <span class="keyword">on</span> win32</span><br><span class="line">import sys</span><br><span class="line">sys.getdefaultencoding()</span><br><span class="line"><span class="keyword">Out</span>[<span class="number">3</span>]: </span><br><span class="line"><span class="symbol">'ascii</span>'</span><br></pre></td></tr></table></figure>
-<p><strong>设置之后：</strong></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/11/Python环境设置默认编码为utf8的方法/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/ImportError No module named functools/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/11/ImportError No module named functools/" itemprop="url">ImportError No module named functools</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T09:59:02+08:00">
-                2017-10-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/11/ImportError No module named functools/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/ImportError No module named functools/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/11/ImportError No module named functools/" class="leancloud_visitors" data-flag-title="ImportError No module named functools">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  ImportError No module named functools
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>今天早上从git pull代码后，启动本地的virtualenv,发现报错：</p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(myenvs) E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\s</span>rc&gt;python .<span class="symbol">\m</span>anage.py runserver</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\s</span>ite.py", line 703, in &lt;module&gt;</span><br><span class="line">    main()</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\s</span>ite.py", line 692, in main</span><br><span class="line">    aliasmbcs()</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\s</span>ite.py", line 515, in aliasmbcs</span><br><span class="line">    import locale, codecs</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\l</span>ocale.py", line 17, in &lt;module&gt;</span><br><span class="line">    import functools</span><br><span class="line"></span><br><span class="line">ImportError: No module named functools</span><br></pre></td></tr></table></figure>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p><strong>检查<code>ENV_FOLDER\Lib\orig-prefix.txt</code>文件发现：</strong></p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d:\<span class="function"><span class="keyword">program</span></span> files\anaconda2</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/11/ImportError No module named functools/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/RESTful API Design Guide/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/RESTful API Design Guide/" itemprop="url">RESTful API 设计指南-来自阮一峰</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T17:46:02+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/RESTful API Design Guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/RESTful API Design Guide/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/RESTful API Design Guide/" class="leancloud_visitors" data-flag-title="RESTful API 设计指南-来自阮一峰">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  RESTful API 设计指南-来自阮一峰
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这篇文章写的也很好，很<a href="http://zhangchunhui.cn/2017/10/10/Understanding%20RESTful%20Framework/">上一篇</a>有很大重复，甚至有些矛盾的地方。但是读下来，依然还是有启发的。</p>
-<h1 id="一、协议"><a href="#一、协议" class="headerlink" title="一、协议"></a>一、协议</h1><p>API与用户的通信协议，总是使用HTTPs协议。</p>
-<p>#二、域名<br>应该尽量将API部署在专用域名之下。<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//api.example.com</span></span><br></pre></td></tr></table></figure></p>
-<p>如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下。<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">https:</span>//example<span class="meta">.org</span>/api/</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/RESTful API Design Guide/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/Understanding RESTful Framework/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/Understanding RESTful Framework/" itemprop="url">理解RESTful架构-来自阮一峰</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T17:21:02+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/Understanding RESTful Framework/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/Understanding RESTful Framework/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/Understanding RESTful Framework/" class="leancloud_visitors" data-flag-title="理解RESTful架构-来自阮一峰">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  理解RESTful架构-来自阮一峰
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近在研究Python开发接口微服务，以便用Python开发出来的模型与服务能对接上，提供复杂模型上线的方案。看到了阮一峰的<a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="noopener">《理解RESTful架构》</a>这篇文章，写的真好，虽然我是还没入门的外外行。</p>
-<h1 id="什么是RESTful架构"><a href="#什么是RESTful架构" class="headerlink" title="什么是RESTful架构"></a>什么是RESTful架构</h1><h2 id="一、起源"><a href="#一、起源" class="headerlink" title="一、起源"></a>一、起源</h2><p>REST这个词，是<a href="http://en.wikipedia.org/wiki/Roy_Fielding" target="_blank" rel="noopener">Roy Thomas Fielding</a>在他2000年的博士论文中提出的。</p>
-<p>文中写到：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"本文研究计算机科学两大前沿----软件和网络----的交叉点。长期以来，软件研究主要关注软件设计的分类、设计方法的演化，很少客观地评估不同的设计选择对系统行为的影响。而相反地，网络研究主要关注系统之间通信行为的细节、如何改进特定通信机制的表现，常常忽视了一个事实，那就是改变应用程序的互动风格比改变互动协议，对整体表现有更大的影响。我这篇文章的写作目的，就是想在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。"</span></span><br><span class="line">(This dissertation explores a junction <span class="keyword">on</span> <span class="keyword">the</span> frontiers <span class="keyword">of</span> two research disciplines <span class="keyword">in</span> computer science: software <span class="keyword">and</span> networking. Software research has long been concerned <span class="keyword">with</span> <span class="keyword">the</span> categorization <span class="keyword">of</span> software designs <span class="keyword">and</span> <span class="keyword">the</span> development <span class="keyword">of</span> design methodologies, <span class="keyword">but</span> has rarely been able <span class="keyword">to</span> objectively evaluate <span class="keyword">the</span> impact <span class="keyword">of</span> various design choices <span class="keyword">on</span> system behavior. Networking research, <span class="keyword">in</span> contrast, <span class="keyword">is</span> focused <span class="keyword">on</span> <span class="keyword">the</span> details <span class="keyword">of</span> generic communication behavior <span class="keyword">between</span> systems <span class="keyword">and</span> improving <span class="keyword">the</span> performance <span class="keyword">of</span> particular communication techniques, often <span class="keyword">ignoring</span> <span class="keyword">the</span> fact <span class="keyword">that</span> changing <span class="keyword">the</span> interaction style <span class="keyword">of</span> an <span class="built_in">application</span> can have more impact <span class="keyword">on</span> performance than <span class="keyword">the</span> communication protocols used <span class="keyword">for</span> <span class="keyword">that</span> interaction. My work <span class="keyword">is</span> motivated <span class="keyword">by</span> <span class="keyword">the</span> desire <span class="keyword">to</span> understand <span class="keyword">and</span> evaluate <span class="keyword">the</span> architectural design <span class="keyword">of</span> network-based <span class="built_in">application</span> software <span class="keyword">through</span> principled use <span class="keyword">of</span> architectural constraints, thereby obtaining <span class="keyword">the</span> functional, performance, <span class="keyword">and</span> social properties desired <span class="keyword">of</span> an architecture. )</span><br></pre></td></tr></table></figure>
-<h2 id="二、名称"><a href="#二、名称" class="headerlink" title="二、名称"></a>二、名称</h2><p>Fielding将他对互联网软件的架构原则，定名为REST，即Representational State Transfer的缩写。我对这个词组的翻译是”表现层状态转化”。</p>
-<p>如果一个架构符合REST原则，就称它为RESTful架构。</p>
-<p>要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义。如果你把这个名称搞懂了，也就不难体会REST是一种什么样的设计。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/Understanding RESTful Framework/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/django flow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/django flow/" itemprop="url">django处理HTTP请求流程</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T16:29:02+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/django flow/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/django flow/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/django flow/" class="leancloud_visitors" data-flag-title="django处理HTTP请求流程">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  django处理HTTP请求流程
+                  py2转py3遇到的问题
               </div>
           
 
@@ -1654,30 +2415,25 @@
       
         
           
-            <div class="fig figcenter fighighlight"><br>  <img src="/assets/django/django_flow_en.png" width="60%"><br>  <img src="/assets/django/django_flow_cn.png" width="60%" style="border-left: 1px solid black;"><br>  <div class="figcaption">Based on @FULLSTACKCTO’s understanding of Django, this is how a user request is responded to.</div><br></div>
-
-
-<ul>
-<li><strong>1:</strong> User requests a page</li>
-<li><strong>2:</strong> Request reaches Request Middlewares, which could manipulate or answer the request</li>
-<li><strong>3:</strong> The URLConffinds the related View using urls.py</li>
-<li><strong>4:</strong> View Middlewares are called, which could manipulate or answer the request</li>
-<li><strong>5:</strong> The view function is invoked</li>
-<li><strong>6:</strong> The view could optionally access data through models</li>
-<li><strong>7:</strong> All model-to-DB interactions are done via a manager</li>
-<li><strong>8:</strong> Views could use a special context if needed</li>
-<li><strong>9:</strong> The context is passed to the Template for rendering</li>
-<li><strong>a:</strong> Template uses Filters and Tags to render the output</li>
-<li><strong>b:</strong> Output is returned to the view</li>
-<li><strong>c:</strong> HTTPResponse is sent to the Response Middlerwares</li>
-<li><strong>d:</strong> Any of the response middlewares can enrich the response or return a completely new response</li>
-<li><strong>e:</strong> The response is sent to the user’s browser.</li>
+            <h2 id="python2与python3在处理异常的区别："><a href="#python2与python3在处理异常的区别：" class="headerlink" title="python2与python3在处理异常的区别："></a>python2与python3在处理异常的区别：</h2><ul>
+<li>1.所以异常都从 BaseException继承，并删除了StardardError</li>
+<li>2.去除了异常类的序列行为和.message属性</li>
+<li>3.用 raise Exception(args)代替 raise Exception, args语法</li>
+<li>4.捕获异常的语法改变，引入了as关键字来标识异常实例，<br>在Py2中：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">try</span>:</span><br><span class="line"><span class="meta">... </span>   <span class="keyword">raise</span> NotImplementedError(<span class="string">'Error'</span>)</span><br><span class="line"><span class="meta">... </span><span class="keyword">except</span> NotImplementedError, error:</span><br><span class="line"></span><br><span class="line"><span class="meta">... </span>   <span class="keyword">print</span> error.message</span><br><span class="line">...</span><br><span class="line">Error</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>via </p>
+<p>在Py3中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">try</span>:</span><br><span class="line">      <span class="keyword">raise</span> NotImplementedError(<span class="string">'Error'</span>)</span><br><span class="line">    <span class="keyword">except</span> NotImplementedError <span class="keyword">as</span> error: <span class="comment">#注意这个 as</span></span><br><span class="line">      print(str(error))</span><br><span class="line">Error</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><a href="http://www.jianshu.com/p/a2bf34b89d01" target="_blank" rel="noopener">here</a></li>
-<li><a href="http://hitesh.in/2009/django-flow/" target="_blank" rel="noopener">Django Flowchart</a></li>
+<li>5.异常链，因为<code>__context__</code>在3.0a1版本中没有实现</li>
 </ul>
+<h2 id="tuple-parameter-unpacking-is-not-supported-in-Pyhton-3"><a href="#tuple-parameter-unpacking-is-not-supported-in-Pyhton-3" class="headerlink" title="tuple parameter unpacking is not supported in Pyhton 3"></a>tuple parameter unpacking is not supported in Pyhton 3</h2><p>As tuple parameters are used by lambdas because of the single expression limitation, they must also be supported. This is done by having the expected sequence argument bound to a single parameter and then indexing on that parameter:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> (x, y): x + y</span><br></pre></td></tr></table></figure></p>
+<p>will be translated into:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> x_y: x_y[<span class="number">0</span>] + x_y[<span class="number">1</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="py2与py3在map返回类型上的区别"><a href="#py2与py3在map返回类型上的区别" class="headerlink" title="py2与py3在map返回类型上的区别"></a>py2与py3在map返回类型上的区别</h2><p>py2：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Python <span class="number">2.7</span><span class="number">.13</span> |Anaconda <span class="number">4.3</span><span class="number">.1</span> (<span class="number">64</span>-bit)| (default, Dec <span class="number">19</span> <span class="number">2016</span>, <span class="number">13</span>:<span class="number">29</span>:<span class="number">36</span>) [MSC v<span class="number">.1500</span> <span class="number">64</span> bit (AMD64)] on win32</span><br><span class="line">In[<span class="number">2</span>]: list_a = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">In[<span class="number">3</span>]: list_b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">In[<span class="number">4</span>]: map(<span class="keyword">lambda</span> a: a[<span class="number">0</span>] / (a[<span class="number">1</span>]+<span class="number">0.000000001</span>), zip(list_a, list_b))</span><br><span class="line">Out[<span class="number">4</span>]:</span><br><span class="line">[<span class="number">1.9999999979999998</span>, <span class="number">1.49999999925</span>, <span class="number">1.3333333328888888</span>, <span class="number">1.2499999996875</span>]</span><br><span class="line">In[<span class="number">5</span>]: type(map(<span class="keyword">lambda</span> a: a[<span class="number">0</span>] / (a[<span class="number">1</span>]+<span class="number">0.000000001</span>), zip(list_a, list_b)))</span><br><span class="line">Out[<span class="number">5</span>]:</span><br><span class="line">list</span><br></pre></td></tr></table></figure></p>
+<p>py3:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Python <span class="number">3.5</span><span class="number">.2</span> |Anaconda custom (<span class="number">64</span>-bit)| (default, Jul  <span class="number">5</span> <span class="number">2016</span>, <span class="number">11</span>:<span class="number">41</span>:<span class="number">13</span>) [MSC v<span class="number">.1900</span> <span class="number">64</span> bit (AMD64)]</span><br><span class="line">In[<span class="number">2</span>]: list_a = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">In[<span class="number">3</span>]: list_b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">In[<span class="number">4</span>]: map(<span class="keyword">lambda</span> a: a[<span class="number">0</span>] / (a[<span class="number">1</span>]+<span class="number">0.000000001</span>), zip(list_a, list_b))</span><br><span class="line">Out[<span class="number">4</span>]:</span><br><span class="line">&lt;map at <span class="number">0x24dc066f160</span>&gt;</span><br><span class="line">In[<span class="number">5</span>]: type(map(<span class="keyword">lambda</span> a: a[<span class="number">0</span>] / (a[<span class="number">1</span>]+<span class="number">0.000000001</span>), zip(list_a, list_b)))</span><br><span class="line">Out[<span class="number">5</span>]:</span><br><span class="line">map</span><br></pre></td></tr></table></figure></p>
+<p>在py3中需要用list()转换一下。</p>
+<h2 id="windows下py2与py3共存切换问题"><a href="#windows下py2与py3共存切换问题" class="headerlink" title="windows下py2与py3共存切换问题"></a>windows下py2与py3共存切换问题</h2><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><img src="assets/python/20180301155811.png" alt=""></p>
+<h3 id="修改文件名称"><a href="#修改文件名称" class="headerlink" title="修改文件名称"></a>修改文件名称</h3><p><img src="assets/python/20180301155930.png" alt=""></p>
+<h3 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h3><p><img src="assets/python/20180301155650.png" alt=""></p>
 
           
         
@@ -1726,7 +2482,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/get or post/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/git切换分支报错Permission denied/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1745,7 +2501,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/10/get or post/" itemprop="url">POST和GET区别</a></h2>
+                <a class="post-title-link" href="/2018/03/01/git切换分支报错Permission denied/" itemprop="url">git切换分支报错Permission denied</a></h2>
         
 
         <div class="post-meta">
@@ -1757,8 +2513,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T16:04:02+08:00">
-                2017-10-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T12:53:12+08:00">
+                2018-03-01
               </time>
             
 
@@ -1780,8 +2536,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -1798,8 +2554,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/10/get or post/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/get or post/" itemprop="commentCount"></span>
+                <a href="/2018/03/01/git切换分支报错Permission denied/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/git切换分支报错Permission denied/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1807,7 +2563,7 @@
 
           
           
-             <span id="/2017/10/10/get or post/" class="leancloud_visitors" data-flag-title="POST和GET区别">
+             <span id="/2018/03/01/git切换分支报错Permission denied/" class="leancloud_visitors" data-flag-title="git切换分支报错Permission denied">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1825,7 +2581,7 @@
 
           
               <div class="post-description">
-                  POST和GET区别
+                  git切换分支报错Permission denied
               </div>
           
 
@@ -1844,195 +2600,10 @@
       
         
           
-            <p>HTTP协议定义了很多与服务器交互的方法，最基本的有4种，分别是GET,POST,PUT,DELETE. 一个URL地址用于描述一个网络上的资源，而HTTP中的GET, POST, PUT, DELETE就对应着对这个资源的查，改，增，删4个操作，其中最常见请求方式是GET和POST，并且现在浏览器一般只支持GET和POST方法。</p>
-<p><strong>GET一般用于获取/查询资源信息，而POST一般用于更新资源信息，他们之间主要区别如下：</strong></p>
-<p>1）根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的，这里安全是指该操作用于获取信息而非修改信息，幂等是指对同一URL的多个请求应该返回同样的结果（这一点在实质实现时，可能并不满足）；POST表示可能修改变服务器上的资源的请求。</p>
-<p>2）GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，参数之间以&amp;相连，如果数据是英文字母/数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，<br>则直接把字符串用BASE64编码；POST把提交的数据则放置在是HTTP包的包体中。</p>
-<p>3）因为GET是通过URL提交数据，那么GET可提交的数据量就跟URL的长度有直接关系，理论上URL长度是没有限制的，即HTTP协议没有规定URL的长度，但在实质中，特定的浏览器可能对这个长度做了限制；理论上POST也是没有大小限制的，HTTP协议规范也没有进行大小限制，但在服务端通常会对这个大小做一个限制，当然这个限制比GET宽松的多，即使用POST可以提交的数据量比GET大得多。</p>
-<p>最后，网上有人说，POST的安全性要比GET的安全性高，实质上POST跟GET都是明文传输，这可以通过类似WireShark工具看到。总之，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求。</p>
-<p>via </p>
-<ul>
-<li><a href="http://blog.csdn.net/kevin_darkelf/article/details/40979333" target="_blank" rel="noopener">浅析HTTP中POST和GET区别并用Python模拟其响应和请求</a></li>
-<li><a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">浅谈HTTP中Get与Post的区别</a></li>
-<li><a href="http://www.cnblogs.com/wswang/p/6054619.html" target="_blank" rel="noopener">GET和POST的区别</a></li>
-</ul>
+            <p>git切换分支报错，如下：<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">maomaochong@Boredbird MINGW64 /d/Program Files/nodejs/blog (master)</span><br><span class="line">$ git checkout source</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"></span><br><span class="line">maomaochong@Boredbird MINGW64 /d/Program Files/nodejs/blog (master)</span><br><span class="line">$ git checkout source</span><br><span class="line">warning: unable to rmdir .deploy_git: Directory not empty</span><br><span class="line">Checking out files: 100% (10345/10345), done.</span><br><span class="line">M       themes/next</span><br><span class="line">Switched to branch 'source'</span><br><span class="line">Your branch is up-to-date with 'origin/source'.</span><br><span class="line"></span><br><span class="line">maomaochong@Boredbird MINGW64 /d/Program Files/nodejs/blog (source)</span><br><span class="line">$</span><br></pre></td></tr></table></figure></p>
+<p>最后发现是文件占用问题，关掉后台的编辑器，顺利切换分支。</p>
 
           
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/understanding-cnn/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/understanding-cnn/" itemprop="url">understanding-cnn</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T14:28:12+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/understanding-cnn/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/understanding-cnn/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/understanding-cnn/" class="leancloud_visitors" data-flag-title="understanding-cnn">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  understanding-cnn
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a name="vis"></a></p>
-<p>(this page is currently in draft form)</p>
-<h2 id="Visualizing-what-ConvNets-learn"><a href="#Visualizing-what-ConvNets-learn" class="headerlink" title="Visualizing what ConvNets learn"></a>Visualizing what ConvNets learn</h2><p>Several approaches for understanding and visualizing Convolutional Networks have been developed in the literature, partly as a response the common criticism that the learned features in a Neural Network are not interpretable. In this section we briefly survey some of these approaches and related work.</p>
-<h3 id="Visualizing-the-activations-and-first-layer-weights"><a href="#Visualizing-the-activations-and-first-layer-weights" class="headerlink" title="Visualizing the activations and first-layer weights"></a>Visualizing the activations and first-layer weights</h3><p><strong>Layer Activations</strong>. The most straight-forward visualization technique is to show the activations of the network during the forward pass. For ReLU networks, the activations usually start out looking relatively blobby and dense, but as the training progresses the activations usually become more sparse and localized. One dangerous pitfall that can be easily noticed with this visualization is that some activation maps may be all zero for many different inputs, which can indicate <em>dead</em> filters, and can be a symptom of high learning rates.</p>
-<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/act1.jpeg" width="49%"><br>  <img src="/assets/cnnvis/act2.jpeg" width="49%"><br>  <div class="figcaption"><br>    Typical-looking activations on the first CONV layer (left), and the 5th CONV layer (right) of a trained AlexNet looking at a picture of a cat. Every box shows an activation map corresponding to some filter. Notice that the activations are sparse (most values are zero, in this visualization shown in black) and mostly local.<br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/understanding-cnn/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -2070,7 +2641,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2120,7 +2691,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">174</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2142,7 +2713,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">224</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

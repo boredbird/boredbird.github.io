@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/16/手撸LogisticRegression/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.6. Measures of Scale/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/16/手撸LogisticRegression/" itemprop="url">手撸LogisticRegression</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.6. Measures of Scale/" itemprop="url">EDA_1.3.5.6. Measures of Scale</a></h2>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T20:06:12+08:00">
-                2017-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:59:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/16/手撸LogisticRegression/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸LogisticRegression/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.6. Measures of Scale/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.6. Measures of Scale/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2017/11/16/手撸LogisticRegression/" class="leancloud_visitors" data-flag-title="手撸LogisticRegression">
+             <span id="/2018/03/12/EDA_1.3.5.6. Measures of Scale/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.6. Measures of Scale">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  手撸LogisticRegression
+                  EDA_1.3.5.6. Measures of Scale
               </div>
           
 
@@ -425,28 +425,467 @@
 
       
         
-          <h2 id="LogisticRegression算法概述："><a href="#LogisticRegression算法概述：" class="headerlink" title="LogisticRegression算法概述："></a>LogisticRegression算法概述：</h2><p>利用Logistic回归进行分类的主要思想是：根据现有数据对分类边界线建立回归公式，以此进行分类。</p>
-<ul>
-<li>优点：计算代价不高，易于理解和实现。</li>
-<li>缺点：容易欠拟合，分类精度可能不高。</li>
-<li>适用数据类型：数值型和标称型数据。</li>
+          
+            <h3 id="Scale-Variability-or-Spread"><a href="#Scale-Variability-or-Spread" class="headerlink" title="Scale, Variability, or Spread"></a>Scale, Variability, or Spread</h3><p>A fundamental task in many statistical analyses is to characterize the spread, or variability, of a data set. Measures of scale are simply attempts to estimate this variability.<br>When assessing the variability of a data set, there are two key components:</p>
+<pre><code>1. How spread out are the data values near the center?
+2. How spread out are the tails?
+</code></pre><p>Different numerical summaries will give different weight to these two elements. The choice of scale estimator is often driven by which of these components you want to emphasize.</p>
+<p>The histogram is an effective graphical technique for showing both of these components of the spread.</p>
+<h3 id="Definitions-of-Variability"><a href="#Definitions-of-Variability" class="headerlink" title="Definitions of Variability"></a>Definitions of Variability</h3><p>For univariate data, there are several common numerical measures of the spread:</p>
+<pre><code>1. variance - the variance is defined as
+s2=∑Ni=1(Yi−Y¯)2/(N−1)
+where Y¯ is the mean of the data.
+The variance is roughly the arithmetic average of the squared distance from the mean. Squaring the distance from the mean has the effect of giving greater weight to values that are further from the mean. For example, a point 2 units from the mean adds 4 to the above sum while a point 10 units from the mean adds 100 to the sum. Although the variance is intended to be an overall measure of spread, it can be greatly affected by the tail behavior.
+2. standard deviation - the standard deviation is the square root of the variance. That is,
+s=∑Ni=1(Yi−Y¯)2/(N−1)−−−−−−−−−−−−−−−−−−−√
+The standard deviation restores the units of the spread to the original data units (the variance squares the units).
+3. range - the range is the largest value minus the smallest value in a data set. Note that this measure is based only on the lowest and highest extreme values in the sample. The spread near the center of the data is not captured at all.
+4. average absolute deviation - the average absolute deviation (AAD) is defined as
+AAD=∑Ni=1(|Yi−Y¯|)/N
+where Y¯ is the mean of the data and |Y|is the absolute value of Y. This measure does not square the distance from the mean, so it is less affected by extreme observations than are the variance and standard deviation.
+5. median absolute deviation - the median absolute deviation (MAD) is defined as
+MAD=median(|Yi−Y~|)
+where Y~ is the median of the data and |Y|is the absolute value of Y. This is a variation of the average absolute deviation that is even less affected by extremes in the tail because the data in the tails have less influence on the calculation of the median than they do on the mean.
+6. interquartile range - this is the value of the 75th percentile minus the value of the 25th percentile. This measure of scale attempts to measure the variability of points near the center.
+</code></pre><p>In summary, the variance, standard deviation, average absolute deviation, and median absolute deviation measure both aspects of the variability; that is, the variability near the center and the variability in the tails. They differ in that the average absolute deviation and median absolute deviation do not give undue weight to the tail behavior. On the other hand, the range only uses the two most extreme points and the interquartile range only uses the middle portion of the data.</p>
+<h3 id="Why-Different-Measures"><a href="#Why-Different-Measures" class="headerlink" title="Why Different Measures?"></a>Why Different Measures?</h3><p>The following example helps to clarify why these alternative defintions of spread are useful and necessary.<br>This plot shows histograms for 10,000 random numbers generated from a normal, a double exponential, a Cauchy, and a Tukey-Lambda distribution.</p>
+<h3 id="Normal-Distribution"><a href="#Normal-Distribution" class="headerlink" title="Normal Distribution"></a>Normal Distribution</h3><p>The first histogram is a sample from a normal distribution. The standard deviation is 0.997, the median absolute deviation is 0.681, and the range is 7.87.</p>
+<p>The normal distribution is a symmetric distribution with well-behaved tails and a single peak at the center of the distribution. By symmetric, we mean that the distribution can be folded about an axis so that the two sides coincide. That is, it behaves the same to the left and right of some center point. In this case, the median absolute deviation is a bit less than the standard deviation due to the downweighting of the tails. The range of a little less than 8 indicates the extreme values fall within about 4 standard deviations of the mean. If a histogram or normal probability plot indicates that your data are approximated well by a normal distribution, then it is reasonable to use the standard deviation as the spread estimator.</p>
+<h3 id="Double-Exponential-Distribution"><a href="#Double-Exponential-Distribution" class="headerlink" title="Double Exponential Distribution"></a>Double Exponential Distribution</h3><p>The second histogram is a sample from a double exponential distribution. The standard deviation is 1.417, the median absolute deviation is 0.706, and the range is 17.556.</p>
+<p>Comparing the double exponential and the normal histograms shows that the double exponential has a stronger peak at the center, decays more rapidly near the center, and has much longer tails. Due to the longer tails, the standard deviation tends to be inflated compared to the normal. On the other hand, the median absolute deviation is only slightly larger than it is for the normal data. The longer tails are clearly reflected in the value of the range, which shows that the extremes fall about 6 standard deviations from the mean compared to about 4 for the normal data.</p>
+<h3 id="Cauchy-Distribution"><a href="#Cauchy-Distribution" class="headerlink" title="Cauchy Distribution"></a>Cauchy Distribution</h3><p>The third histogram is a sample from a Cauchy distribution. The standard deviation is 998.389, the median absolute deviation is 1.16, and the range is 118,953.6.</p>
+<p>The Cauchy distribution is a symmetric distribution with heavy tails and a single peak at the center of the distribution. The Cauchy distribution has the interesting property that collecting more data does not provide a more accurate estimate for the mean or standard deviation. That is, the sampling distribution of the means and standard deviation are equivalent to the sampling distribution of the original data. That means that for the Cauchy distribution the standard deviation is useless as a measure of the spread. From the histogram, it is clear that just about all the data are between about -5 and 5. However, a few very extreme values cause both the standard deviation and range to be extremely large. However, the median absolute deviation is only slightly larger than it is for the normal distribution. In this case, the median absolute deviation is clearly the better measure of spread.</p>
+<p>Although the Cauchy distribution is an extreme case, it does illustrate the importance of heavy tails in measuring the spread. Extreme values in the tails can distort the standard deviation. However, these extreme values do not distort the median absolute deviation since the median absolute deviation is based on ranks. In general, for data with extreme values in the tails, the median absolute deviation or interquartile range can provide a more stable estimate of spread than the standard deviation.</p>
+<h3 id="Tukey-Lambda-Distribution"><a href="#Tukey-Lambda-Distribution" class="headerlink" title="Tukey-Lambda Distribution"></a>Tukey-Lambda Distribution</h3><p>The fourth histogram is a sample from a Tukey lambda distribution with shape parameter λ = 1.2. The standard deviation is 0.49, the median absolute deviation is 0.427, and the range is 1.666.</p>
+<p>The Tukey lambda distribution has a range limited to (-1/λ,1/λ). That is, it has truncated tails. In this case the standard deviation and median absolute deviation have closer values than for the other three examples which have significant tails.</p>
+<h3 id="Robustness"><a href="#Robustness" class="headerlink" title="Robustness"></a>Robustness</h3><p>Tukey and Mosteller defined two types of robustness where robustness is a lack of susceptibility to the effects of nonnormality.</p>
+<pre><code>1. Robustness of validity means that the confidence intervals for a measure of the population spread (e.g., the standard deviation) have a 95 % chance of covering the true value (i.e., the population value) of that measure of spread regardless of the underlying distribution.
+2. Robustness of efficiency refers to high effectiveness in the face of non-normal tails. That is, confidence intervals for the measure of spread tend to be almost as narrow as the best that could be done if we knew the true shape of the distribution.
+</code></pre><p>The standard deviation is an example of an estimator that is the best we can do if the underlying distribution is normal. However, it lacks robustness of validity. That is, confidence intervals based on the standard deviation tend to lack precision if the underlying distribution is in fact not normal.</p>
+<p>The median absolute deviation and the interquartile range are estimates of scale that have robustness of validity. However, they are not particularly strong for robustness of efficiency.<br>If histograms and probability plots indicate that your data are in fact reasonably approximated by a normal distribution, then it makes sense to use the standard deviation as the estimate of scale. However, if your data are not normal, and in particular if there are long tails, then using an alternative measure such as the median absolute deviation, average absolute deviation, or interquartile range makes sense. The range is used in some applications, such as quality control, for its simplicity. In addition, comparing the range to the standard deviation gives an indication of the spread of the data in the tails.</p>
+<p>Since the range is determined by the two most extreme points in the data set, we should be cautious about its use for large values of N.</p>
+<p>Tukey and Mosteller give a scale estimator that has both robustness of validity and robustness of efficiency. However, it is more complicated and we do not give the formula here.</p>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.7. Bartlett's Test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" itemprop="url">EDA_1.3.5.7. Bartlett's Test</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:59:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.7. Bartlett's Test">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.7. Bartlett's Test
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Test-for-Homogeneity-of-Variances"><a href="#Purpose-Test-for-Homogeneity-of-Variances" class="headerlink" title="Purpose: Test for Homogeneity of Variances"></a>Purpose: Test for Homogeneity of Variances</h3><p>Bartlett’s test (Snedecor and Cochran, 1983) is used to test if k samples have equal variances. Equal variances across samples is called homogeneity of variances. Some statistical tests, for example the analysis of variance, assume that variances are equal across groups or samples. The Bartlett test can be used to verify that assumption.</p>
+<p>Bartlett’s test is sensitive to departures from normality. That is, if your samples come from non-normal distributions, then Bartlett’s test may simply be testing for non-normality. The Levene test is an alternative to the Bartlett test that is less sensitive to departures from normality.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Bartlett test is defined as:</p>
+<p><img src="assets/EDA/eda357_1.png" alt=""></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Bartlett’s test was performed for the GEAR.DATdata set. The data set contains 10 measurements of gear diameter for ten different batches for a total of 100 measurements.</p>
+<pre><code>H0:  σ12 = σ22 = ... = σ102
+Ha:  At least one σi2 is not equal to the others.
+Test statistic:  T = 20.78580
+Degrees of freedom:  k - 1 = 9
+Significance level:  α = 0.05
+Critical value:  Χ21-α,k-1 = 16.919
+Critical region: Reject H0 if T &gt; 16.919
+</code></pre><p>We are testing the null hypothesis that the batch variances are all equal. Because the test statistic is larger than the critical value, we reject the null hypotheses at the 0.05 significance level and conclude that at least one batch variance is different from the others.</p>
+<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Bartlett’s test can be used to answer the following question:</p>
+<pre><code>• Is the assumption of equal variances valid?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Bartlett’s test is useful whenever the assumption of equal variances is made. In particular, this assumption is made for the frequently used one-way analysis of variance. In this case, Bartlett’s or Levene’s test should be applied to verify the assumption.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Standard Deviation Plot</li>
+<li>Box Plot</li>
+<li>Levene Test</li>
+<li>Chi-Square Test</li>
+<li>Analysis of Variance</li>
 </ul>
-<h2 id="梯度下降法求最佳参数伪代码："><a href="#梯度下降法求最佳参数伪代码：" class="headerlink" title="梯度下降法求最佳参数伪代码："></a>梯度下降法求最佳参数伪代码：</h2><ol>
-<li>每个回归系数初始化为1</li>
-<li>重复R次：<ul>
-<li>a.计算整个数据集的梯度</li>
-<li>b.使用alpha*gradient更新回归系数的向量</li>
-<li>c.返回回归系数</li>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda357.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda357.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/" itemprop="url">EDA_1.3.5.4. One-Factor ANOVA</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:58:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.4. One-Factor ANOVA">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.4. One-Factor ANOVA
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Test-for-Equal-Means-Across-Groups"><a href="#Purpose-Test-for-Equal-Means-Across-Groups" class="headerlink" title="Purpose: Test for Equal Means Across Groups"></a>Purpose: Test for Equal Means Across Groups</h3><p>One factor analysis of variance (Snedecor and Cochran, 1989) is a special case of analysis of variance (ANOVA), for one factor of interest, and a generalization of the two-sample t-test.</p>
+<p>The two-sample t-test is used to decide whether two groups (levels) of a factor have the same mean. One-way analysis of variance generalizes this to levels where k, the number of levels, is greater than or equal to 2.</p>
+<p>For example, data collected on, say, five instruments have one factor (instruments) at five levels. The ANOVA tests whether instruments have a significant effect on the results.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Product and Process Comparisons chapter (chapter 7) contains a more extensive discussion of one-factor ANOVA, including the details for the mathematical computations of one-way analysis of variance.</p>
+<p>The model for the analysis of variance can be stated in two mathematically equivalent ways. In the following discussion, each level of each factor is called a cell. For the one-way case, a cell and a level are equivalent since there is only one factor. In the following, the subscripti refers to the level and the subscript j refers to the observation within a level. For example,Y23 refers to the third observation in the second level.</p>
+<p>The first model is</p>
+<pre><code>Yij=μi+Eij
+</code></pre><p>This model decomposes the response into a mean for each cell and an error term. The analysis of variance provides estimates for each cell mean. These estimated cell means are the predicted values of the model and the differences between the response variable and the estimated cell means are the residuals. That is</p>
+<pre><code>Yij^=μ^i
+Rij=Yij−μ^i
+</code></pre><p>The second model is</p>
+<pre><code>Yij=μ+αi+Eij
+</code></pre><p>This model decomposes the response into an overall (grand) mean, the effect of the ith factor level, and an error term. The analysis of variance provides estimates of the grand mean and the effect of the ith factor level. The predicted values and the residuals of the model are</p>
+<pre><code>Y^ij=μ^+α^i
+Rij=Yij−μ^−α^i
+</code></pre><p>The distinction between these models is that the second model divides the cell mean into an overall mean and the effect of the i-th factor level. This second model makes the factor effect more explicit, so we will emphasize this approach.</p>
+<h3 id="Model-Validation"><a href="#Model-Validation" class="headerlink" title="Model Validation"></a>Model Validation</h3><p>Note that the ANOVA model assumes that the error term, Eij, should follow the assumptions for a univariate measurement process. That is, after performing an analysis of variance, the model should be validated by analyzing the residuals.</p>
+<h3 id="One-Way-ANOVA-Example"><a href="#One-Way-ANOVA-Example" class="headerlink" title="One-Way ANOVA Example"></a>One-Way ANOVA Example</h3><p>A one-way analysis of variance was generated for theGEAR.DAT data set. The data set contains 10 measurements of gear diameter for ten different batches for a total of 100 measurements.</p>
+<pre><code>                   DEGREES OF     SUM OF      MEAN
+SOURCE              FREEDOM      SQUARES     SQUARE    F STATISTIC
+----------------   ----------   --------    --------   -----------
+BATCH                   9       0.000729    0.000081      2.2969   
+RESIDUAL               90       0.003174    0.000035
+TOTAL (CORRECTED)      99       0.003903    0.000039
+
+RESIDUAL STANDARD DEVIATION = 0.00594
+BATCH     N      MEAN    SD(MEAN)
+---------------------------------
+  1      10    0.99800    0.00188
+  2      10    0.99910    0.00188
+  3      10    0.99540    0.00188
+  4      10    0.99820    0.00188
+  5      10    0.99190    0.00188
+  6      10    0.99880    0.00188
+  7      10    1.00150    0.00188
+  8      10    1.00040    0.00188
+  9      10    0.99830    0.00188
+ 10      10    0.99480    0.00188
+</code></pre><p>The ANOVA table decomposes the variance into the following component sum of squares:</p>
+<pre><code>• Total sum of squares. The degrees of freedom for this entry is the number of observations minus one.
+• Sum of squares for the factor. The degrees of freedom for this entry is the number of levels minus one. The mean square is the sum of squares divided by the number of degrees of freedom.
+• Residual sum of squares. The degrees of freedom is the total degrees of freedom minus the factor degrees of freedom. The mean square is the sum of squares divided by the number of degrees of freedom.
+</code></pre><p>The sums of squares summarize how much of the variance in the data (total sum of squares) is accounted for by the factor effect (batch sum of squares) and how much is random error (residual sum of squares). Ideally, we would like most of the variance to be explained by the factor effect.</p>
+<p>The ANOVA table provides a formal F test for the factor effect. For our example, we are testing the following hypothesis.</p>
+<pre><code>H0: All individual batch means are equal. 
+Ha: At least one batch mean is not equal to the others.
+</code></pre><p>The F statistic is the batch mean square divided by the residual mean square. This statistic follows an Fdistribution with (k-1) and (N-k) degrees of freedom. For our example, the critical F value (upper tail) for α = 0.05, (k-1) = 9, and (N-k) = 90 is 1.9856. Since the Fstatistic, 2.2969, is greater than the critical value, we conclude that there is a significant batch effect at the 0.05 level of significance.</p>
+<p>Once we have determined that there is a significant batch effect, we might be interested in comparing individual batch means. The batch means and the standard errors of the batch means provide some information about the individual batches. However, we may want to employ multiple comparison methods for a more formal analysis. (See Box, Hunter, and Hunter for more information.)</p>
+<p>In addition to the quantitative ANOVA output, it is recommended that any analysis of variance be complemented with model validation. At a minimum, this should include:</p>
+<pre><code>1. a run sequence plot of the residuals,
+2. a normal probability plot of the residuals, and
+3. a scatter plot of the predicted values against the residuals.
+</code></pre><h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>The analysis of variance can be used to answer the following question</p>
+<pre><code>• Are means the same across groups in the data?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>The analysis of uncertainty depends on whether the factor significantly affects the outcome.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Two-sample t-test</li>
+<li>Multi-factor analysis of variance</li>
+<li>Regression</li>
+<li>Box plot</li>
 </ul>
-</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/手撸LogisticRegression/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda354.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda354.htm</a></p>
+
+          
         
       
     </div>
@@ -493,7 +932,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/16/手撸DecisionTree/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -512,7 +951,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/16/手撸DecisionTree/" itemprop="url">手撸DecisionTree</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" itemprop="url">EDA_1.3.5.5. Multi-factor Analysis of Variance</a></h2>
         
 
         <div class="post-meta">
@@ -524,8 +963,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T19:26:12+08:00">
-                2017-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:58:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -547,8 +986,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -565,8 +1004,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/16/手撸DecisionTree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸DecisionTree/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -574,7 +1013,7 @@
 
           
           
-             <span id="/2017/11/16/手撸DecisionTree/" class="leancloud_visitors" data-flag-title="手撸DecisionTree">
+             <span id="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.5. Multi-factor Analysis of Variance">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -592,7 +1031,7 @@
 
           
               <div class="post-description">
-                  手撸DecisionTree
+                  EDA_1.3.5.5. Multi-factor Analysis of Variance
               </div>
           
 
@@ -610,22 +1049,70 @@
 
       
         
-          <h2 id="DecisionTree算法概述："><a href="#DecisionTree算法概述：" class="headerlink" title="DecisionTree算法概述："></a>DecisionTree算法概述：</h2><ul>
-<li>优点：计算复杂度不高，输出结果易于理解，对中间值的缺失不敏感，可以处理不相关特征数据。</li>
-<li>缺点：可能会产生过度匹配问题。</li>
-<li>适用数据范围：数值型和标称型</li>
+          
+            <h3 id="Purpose-Detect-significant-factors"><a href="#Purpose-Detect-significant-factors" class="headerlink" title="Purpose: Detect significant factors"></a>Purpose: Detect significant factors</h3><p>The analysis of variance (ANOVA) (Neter, Wasserman, and Kutner, 1990) is used to detect significant factors in a multi-factor model. In the multi-factor model, there is a response (dependent) variable and one or more factor (independent) variables. This is a common model in designed experiments where the experimenter sets the values for each of the factor variables and then measures the response variable.</p>
+<p>Each factor can take on a certain number of values. These are referred to as the levels of a factor. The number of levels can vary betweeen factors. For designed experiments, the number of levels for a given factor tends to be small. Each factor and level combination is a cell. Balanced designs are those in which the cells have an equal number of observations and unbalanced designs are those in which the number of observations varies among cells. It is customary to use balanced designs in designed experiments.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Product and Process Comparisons chapter (chapter 7) contains a more extensive discussion of two-factor ANOVA, including the details for the mathematical computations.</p>
+<p>The model for the analysis of variance can be stated in two mathematically equivalent ways. We explain the model for a two-way ANOVA (the concepts are the same for additional factors). In the following discussion, each combination of factors and levels is called a cell. In the following, the subscript i refers to the level of factor 1, j refers to the level of factor 2, and the subscript k refers to thekth observation within the (i,j)th cell. For example, Y235refers to the fifth observation in the second level of factor 1 and the third level of factor 2.</p>
+<p>The first model is</p>
+<pre><code>Yijk=μij+Eijk
+</code></pre><p>This model decomposes the response into a mean for each cell and an error term. The analysis of variance provides estimates for each cell mean. These cell means are the predicted values of the model and the differences between the response variable and the estimated cell means are the residuals. That is</p>
+<pre><code>Y^ijk=μ^ij
+Rijk=Yijk−μ^ij
+</code></pre><p>The second model is</p>
+<pre><code>Yijk=μ+αi+βj+Eijk
+</code></pre><p>This model decomposes the response into an overall (grand) mean, factor effects (α^i and β^j represent the effects of the i-th level of the first factor and the j-th level of the second factor, respectively), and an error term. The analysis of variance provides estimates of the grand mean and the factor effects. The predicted values and the residuals of the model are</p>
+<pre><code>Y^ijk=μ^+α^i+β^j
+Rijk=Yijk−μ^−α^i−β^j
+</code></pre><p>The distinction between these models is that the second model divides the cell mean into an overall mean and factor effects. This second model makes the factor effect more explicit, so we will emphasize this approach.</p>
+<h3 id="Model-Validation"><a href="#Model-Validation" class="headerlink" title="Model Validation"></a>Model Validation</h3><p>Note that the ANOVA model assumes that the error term,Eijk, should follow the assumptions for a univariate measurement process. That is, after performing an analysis of variance, the model should be validated by analyzing the residuals.</p>
+<h3 id="Multi-Factor-ANOVA-Example"><a href="#Multi-Factor-ANOVA-Example" class="headerlink" title="Multi-Factor ANOVA Example"></a>Multi-Factor ANOVA Example</h3><p>An analysis of variance was performed for the JAHANMI2.DATdata set. The data contains four, two-level factors: table speed, down feed rate, wheel grit size, and batch. There are 30 measurements of ceramic strength for each factor combination for a total of 480 measurements.</p>
+<pre><code>SOURCE              DF SUM OF SQUARES    MEAN SQUARE   F STATISTIC
+------------------------------------------------------------------
+TABLE SPEED          1   26672.726562   26672.726562        6.7080
+DOWN FEED RATE       1   11524.053711   11524.053711        2.8982
+WHEEL GRIT SIZE      1   14380.633789   14380.633789        3.6166
+BATCH                1  727143.125000  727143.125000      182.8703
+RESIDUAL           475 1888731.500000    3976.276855
+TOTAL (CORRECTED)  479 2668446.000000    5570.868652
+
+RESIDUAL STANDARD DEVIATION = 63.05772781
+
+FACTOR          LEVEL   N      MEAN     SD(MEAN)
+------------------------------------------------
+TABLE SPEED      -1    240  657.53168    2.87818
+                  1    240  642.62286    2.87818
+DOWN FEED RATE   -1    240  645.17755    2.87818
+                  1    240  654.97723    2.87818
+WHEEL GRIT SIZE  -1    240  655.55084    2.87818
+                  1    240  644.60376    2.87818
+BATCH             1    240  688.99890    2.87818
+                  2    240  611.15594    2.87818
+</code></pre><p>The ANOVA decomposes the variance into the following component sum of squares:</p>
+<pre><code>• Total sum of squares. The degrees of freedom for this entry is the number of observations minus one.
+• Sum of squares for each of the factors. The degrees of freedom for these entries are the number of levels for the factor minus one. The mean square is the sum of squares divided by the number of degrees of freedom.
+• Residual sum of squares. The degrees of freedom is the total degrees of freedom minus the sum of the factor degrees of freedom. The mean square is the sum of squares divided by the number of degrees of freedom.
+</code></pre><p>The analysis of variance summarizes how much of the variance in the data (total sum of squares) is accounted for by the factor effects (factor sum of squares) and how much is due to random error (residual sum of squares). Ideally, we would like most of the variance to be explained by the factor effects. The ANOVA table provides a formal Ftest for the factor effects. To test the overall batch effect in our example we use the following hypotheses.</p>
+<pre><code>H0: All individual batch means are equal. 
+Ha: At least one batch mean is not equal to the others.
+</code></pre><p>The F statistic is the mean square for the factor divided by the residual mean square. This statistic follows an Fdistribution with (k-1) and (N-k) degrees of freedom wherek is the number of levels for the given factor. Here, we see that the size of the “direction” effect dominates the size of the other effects. For our example, the critical Fvalue (upper tail) for α = 0.05, (k-1) = 1, and (N-k) = 475 is 3.86111. Thus, “table speed” and “batch” are significant at the 5 % level while “down feed rate” and “wheel grit size” are not significant at the 5 % level.<br>In addition to the quantitative ANOVA output, it is recommended that any analysis of variance be complemented with model validation. At a minimum, this should include</p>
+<pre><code>1. A run sequence plot of the residuals.
+2. A normal probability plot of the residuals.
+3. A scatter plot of the predicted values against the residuals.
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The analysis of variance can be used to answer the following questions:</p>
+<pre><code>1. Do any of the factors have a significant effect?
+2. Which is the most important factor?
+3. Can we account for most of the variability in the data?
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>One-factor analysis of variance</li>
+<li>Two-sample t-test</li>
+<li>Box plot</li>
+<li>Block plot</li>
+<li>DOE mean plot</li>
 </ul>
-<h2 id="DecisionTree伪代码："><a href="#DecisionTree伪代码：" class="headerlink" title="DecisionTree伪代码："></a>DecisionTree伪代码：</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/tree/QQ截图20171116135703.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda355.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda355.htm</a></p>
 
-<h2 id="DecisionTree代码实现："><a href="#DecisionTree代码实现：" class="headerlink" title="DecisionTree代码实现："></a>DecisionTree代码实现：</h2><h3 id="创建数据集"><a href="#创建数据集" class="headerlink" title="创建数据集"></a>创建数据集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createDataSet</span><span class="params">()</span>:</span></span><br><span class="line">    dataSet = [[<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</span><br><span class="line">               [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</span><br><span class="line">               [<span class="number">1</span>, <span class="number">0</span>, <span class="string">'no'</span>],</span><br><span class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>],</span><br><span class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>]]</span><br><span class="line">    labels = [<span class="string">'no surfacing'</span>, <span class="string">'flippers'</span>]</span><br><span class="line">    <span class="comment"># change to discrete values</span></span><br><span class="line">    <span class="keyword">return</span> dataSet, labels</span><br></pre></td></tr></table></figure>
-<h3 id="计算给定数据集的香农熵"><a href="#计算给定数据集的香农熵" class="headerlink" title="计算给定数据集的香农熵"></a>计算给定数据集的香农熵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcShannonEnt</span><span class="params">(dataSet)</span>:</span></span><br><span class="line">    numEntries = len(dataSet)</span><br><span class="line">    labelCounts = &#123;&#125; <span class="comment"># 为所有可能分类创建字典</span></span><br><span class="line">    <span class="comment"># 循环遍历数据集的每一行</span></span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:  <span class="comment"># the the number of unique elements and their occurance</span></span><br><span class="line">        currentLabel = featVec[<span class="number">-1</span>] <span class="comment"># 假设最后一列是label</span></span><br><span class="line">        <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</span><br><span class="line">            labelCounts[currentLabel] = <span class="number">0</span></span><br><span class="line">        labelCounts[currentLabel] += <span class="number">1</span></span><br><span class="line">    shannonEnt = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">        prob = float(labelCounts[key]) / numEntries</span><br><span class="line">        shannonEnt -= prob * log(prob, <span class="number">2</span>)  <span class="comment"># log base 2</span></span><br><span class="line">    <span class="keyword">return</span> shannonEnt</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/手撸DecisionTree/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -672,7 +1159,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/16/手撸kNN/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -691,7 +1178,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/16/手撸kNN/" itemprop="url">手撸kNN</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/" itemprop="url">EDA_1.3.5.3. Two-Sample t-Test for Equal Means</a></h2>
         
 
         <div class="post-meta">
@@ -703,8 +1190,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T19:06:12+08:00">
-                2017-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:56:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -726,8 +1213,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -744,8 +1231,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/16/手撸kNN/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸kNN/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -753,7 +1240,7 @@
 
           
           
-             <span id="/2017/11/16/手撸kNN/" class="leancloud_visitors" data-flag-title="手撸kNN">
+             <span id="/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.3. Two-Sample t-Test for Equal Means">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -771,7 +1258,7 @@
 
           
               <div class="post-description">
-                  手撸kNN
+                  EDA_1.3.5.3. Two-Sample t-Test for Equal Means
               </div>
           
 
@@ -789,28 +1276,52 @@
 
       
         
-          <h2 id="k近邻算法概述："><a href="#k近邻算法概述：" class="headerlink" title="k近邻算法概述："></a>k近邻算法概述：</h2><p>k-近邻算法采用测量不同特征值之间的距离方法进行分类。</p>
-<ul>
-<li>优点：精度高、对异常值不敏感、无数据输入假定</li>
-<li>缺点：计算复杂度高、空间复杂度高</li>
-<li>适用数据范围：数值型和标称型</li>
+          
+            <h3 id="Purpose-Test-if-two-population-means-are-equal"><a href="#Purpose-Test-if-two-population-means-are-equal" class="headerlink" title="Purpose: Test if two population means are equal"></a>Purpose: Test if two population means are equal</h3><p>The two-sample t-test (Snedecor and Cochran, 1989) is used to determine if two population means are equal. A common application is to test if a new process or treatment is superior to a current process or treatment.</p>
+<p>There are several variations on this test.</p>
+<pre><code>1. The data may either be paired or not paired. By paired, we mean that there is a one-to-one correspondence between the values in the two samples. That is, if X1, X2, ..., Xn and Y1, Y2, ... , Yn are the two samples, then Xi corresponds to Yi. For paired samples, the differenceXi - Yi is usually calculated. For unpaired samples, the sample sizes for the two samples may or may not be equal. The formulas for paired data are somewhat simpler than the formulas for unpaired data.
+2. The variances of the two samples may be assumed to be equal or unequal. Equal variances yields somewhat simpler formulas, although with computers this is no longer a significant issue.
+3. In some applications, you may want to adopt a new process or treatment only if it exceeds the current treatment by some threshold. In this case, we can state the null hypothesis in the form that the difference between the two populations means is equal to some constant μ1−μ2=d0where the constant is the desired threshold.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The two-sample t-test for unpaired data is defined as:<br>    H0:    μ1=μ2<br>    Ha:    μ1≠μ2<br>    Test Statistic:    T=Y1¯−Y2¯s21/N1+s22/N2√<br>        where N1 and N2 are the sample sizes, Y1¯ and Y2¯ are the sample means, and s21 and s22 are the sample variances.<br>        If equal variances are assumed, then the formula reduces to:<br>                T=Y1¯−Y2¯sp1/N1+1/N2√<br>        where<br>                s2p=(N1−1)s21+(N2−1)s22N1+N2−2<br>    Significance Level:     α.<br>    Critical Region:    Reject the null hypothesis that the two means are equal if<br>                |T| &gt; t1-α/2,ν<br>        where t1-α/2,ν is the critical value of the t distributionwith ν degrees of freedom where<br>                υ=(s21/N1+s22/N2)2(s21/N1)2/(N1−1)+(s22/N2)2/(N2−1)<br>        If equal variances are assumed, then ν = N1 + N2 - 2</p>
+<h4 id="Two-Samplet-Test-Example"><a href="#Two-Samplet-Test-Example" class="headerlink" title="Two-Samplet-Test Example"></a>Two-Samplet-Test Example</h4><p>The following two-sample t-test was generated for the AUTO83B.DAT data set. The data set contains miles per gallon for U.S. cars (sample 1) and for Japanese cars (sample 2); the summary statistics for each sample are shown below.</p>
+<pre><code>SAMPLE 1:
+    NUMBER OF OBSERVATIONS      = 249
+    MEAN                        =  20.14458
+    STANDARD DEVIATION          =   6.41470
+    STANDARD ERROR OF THE MEAN  =   0.40652
+
+SAMPLE 2:
+    NUMBER OF OBSERVATIONS      = 79
+    MEAN                        = 30.48101
+    STANDARD DEVIATION          =  6.10771
+    STANDARD ERROR OF THE MEAN  =  0.68717
+</code></pre><p>We are testing the hypothesis that the population means are equal for the two samples. We assume that the variances for the two samples are equal.</p>
+<pre><code>H0:  μ1 = μ2
+Ha:  μ1 ≠ μ2
+Test statistic:  T = -12.62059
+Pooled standard deviation:  sp = 6.34260
+Degrees of freedom:  ν = 326
+Significance level:  α = 0.05
+Critical value (upper tail):  t1-α/2,ν = 1.9673
+Critical region: Reject H0 if |T| &gt; 1.9673
+</code></pre><p>The absolute value of the test statistic for our example, 12.62059, is greater than the critical value of 1.9673, so we reject the null hypothesis and conclude that the two population means are different at the 0.05 significance level.</p>
+<p>In general, there are three possible alternative hypotheses and rejection regions for the one-sample t-test:</p>
+<h4 id="Alternative-Hypothesis-Rejection-Region"><a href="#Alternative-Hypothesis-Rejection-Region" class="headerlink" title="Alternative Hypothesis    Rejection Region"></a>Alternative Hypothesis    Rejection Region</h4><pre><code>Ha: μ1 ≠ μ2    |T| &gt; t1-α/2,ν
+Ha: μ1 &gt; μ2    T &gt; t1-α,ν
+Ha: μ1 &lt; μ2    T &lt; tα,ν
+</code></pre><p>For our two-tailed t-test, the critical value is t1-α/2,ν = 1.9673, whereα = 0.05 and ν = 326. If we were to perform an upper, one-tailed test, the critical value would be t1-α,ν = 1.6495. The rejection regions for three posssible alternative hypotheses using our example data are shown below.</p>
+<p><img src="assets/EDA/eda353_r.gif" alt=""></p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Two-sample t-tests can be used to answer the following questions:</p>
+<pre><code>1. Is process 1 equivalent to process 2?
+2. Is the new process better than the current process?
+3. Is the new process better than the current process by at least some pre-determined threshold amount?
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Confidence Limits for the Mean</li>
+<li>Analysis of Variance</li>
 </ul>
-<h2 id="kNN伪代码："><a href="#kNN伪代码：" class="headerlink" title="kNN伪代码："></a>kNN伪代码：</h2><p>对未知类别属性的数据集中的每个点依次执行以下操作：</p>
-<ol>
-<li>计算已知类别数据集中的点与当前点之间的距离；</li>
-<li>按照距离递增次序排序；</li>
-<li>选取与当前点距离最小的k个点；</li>
-<li>确定前k个点所在类别的出现频率；</li>
-<li>返回前k个点出现频率最高的类别作为当前点的预测分类。</li>
-</ol>
-<h2 id="kNN代码实现："><a href="#kNN代码实现：" class="headerlink" title="kNN代码实现："></a>kNN代码实现：</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/手撸kNN/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm</a></p>
+
+          
         
       
     </div>
@@ -857,7 +1368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/15/Clustering with sklearn/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -876,7 +1387,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/15/Clustering with sklearn/" itemprop="url">Clustering with sklearn</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/" itemprop="url">EDA_1.3.5.2 Confidence Limits for the Mean</a></h2>
         
 
         <div class="post-meta">
@@ -888,8 +1399,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T19:06:12+08:00">
-                2017-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:46:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -911,8 +1422,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -929,8 +1440,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/15/Clustering with sklearn/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/15/Clustering with sklearn/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -938,7 +1449,7 @@
 
           
           
-             <span id="/2017/11/15/Clustering with sklearn/" class="leancloud_visitors" data-flag-title="Clustering with sklearn">
+             <span id="/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.2 Confidence Limits for the Mean">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -956,7 +1467,7 @@
 
           
               <div class="post-description">
-                  Clustering with sklearn
+                  EDA_1.3.5.2 Confidence Limits for the Mean
               </div>
           
 
@@ -974,26 +1485,62 @@
 
       
         
-          <h1 id="生成聚类数据集的方法"><a href="#生成聚类数据集的方法" class="headerlink" title="生成聚类数据集的方法"></a>生成聚类数据集的方法</h1><p><code>生成数据集方法</code>：sklearn.datasets.make_blobs(n_samples,n_featurs,centers)可以生成数据集,n_samples表示个数，n_features表示特征个数，centers表示y的种类数:</p>
-<ul>
-<li>make_blobs函数是为聚类产生数据集产生一个数据集和相应的标签</li>
-<li>n_samples:表示数据样本点个数,默认值100</li>
-<li>n_features:表示数据的维度，默认值是2</li>
-<li>centers:产生数据的中心点，默认值3</li>
-<li>cluster_std：数据集的标准差，浮点数或者浮点数序列，默认值1.0</li>
-<li>center_box：中心确定之后的数据边界，默认值(-10.0, 10.0)</li>
-<li>shuffle ：洗乱，默认值是True</li>
-<li>random_state:官网解释是随机生成器的种子</li>
+          
+            <h3 id="Purpose-Interval-Estimate-for-Mean"><a href="#Purpose-Interval-Estimate-for-Mean" class="headerlink" title="Purpose: Interval Estimate for Mean"></a>Purpose: Interval Estimate for Mean</h3><p>Confidence limits for the mean (Snedecor and Cochran, 1989) are an interval estimate for the mean. Interval estimates are often desirable because the estimate of the mean varies from sample to sample. Instead of a single estimate for the mean, a confidence interval generates a lower and upper limit for the mean. The interval estimate gives an indication of how much uncertainty there is in our estimate of the true mean. The narrower the interval, the more precise is our estimate.</p>
+<p>Confidence limits are expressed in terms of a confidence coefficient. Although the choice of confidence coefficient is somewhat arbitrary, in practice 90 %, 95 %, and 99 % intervals are often used, with 95 % being the most commonly used.</p>
+<p>As a technical note, a 95 % confidence interval does not mean that there is a 95 % probability that the interval contains the true mean. The interval computed from a given sample either contains the true mean or it does not. Instead, the level of confidence is associated with the method of calculating the interval. The confidence coefficient is simply the proportion of samples of a given size that may be expected to contain the true mean. That is, for a 95 % confidence interval, if many samples are collected and the confidence interval computed, in the long run about 95 % of these intervals would contain the true mean.</p>
+<h3 id="Definition-Confidence-Interval"><a href="#Definition-Confidence-Interval" class="headerlink" title="Definition: Confidence Interval"></a>Definition: Confidence Interval</h3><p>Confidence limits are defined as:</p>
+<pre><code>Y¯±t1−α/2,N−1sN−−√
+</code></pre><p>where Y¯ is the sample mean, s is the sample standard deviation, N is the sample size, α is the desired significance level, and t1-α/2,N-1 is the 100(1-α/2) percentile of the t distribution with N - 1 degrees of freedom. Note that the confidence coefficient is 1 - α.<br>From the formula, it is clear that the width of the interval is controlled by two factors:</p>
+<pre><code>1. As N increases, the interval gets narrower from the N−−√ term.
+That is, one way to obtain more precise estimates for the mean is to increase the sample size.
+2. The larger the sample standard deviation, the larger the confidence interval. This simply means that noisy data, i.e., data with a large standard deviation, are going to generate wider intervals than data with a smaller standard deviation.
+</code></pre><h4 id="Definition-Hypothesis-Test"><a href="#Definition-Hypothesis-Test" class="headerlink" title="Definition: Hypothesis Test"></a>Definition: Hypothesis Test</h4><p>To test whether the population mean has a specific value, μ0, against the two-sided alternative that it does not have a value μ0, the confidence interval is converted to hypothesis-test form. The test is a one-sample t-test, and it is defined as:</p>
+<pre><code>H0:    μ=μ0
+Ha:    μ≠μ0
+Test Statistic:    T=(Y¯−μ0)/(s/N−−√) 
+    where Y¯, N, and s are defined as above.
+Significance Level:    α. The most commonly used value for α is 0.05.
+Critical Region:    Reject the null hypothesis that the mean is a specified value, μ0, if
+            T&lt;tα/2,N−1
+    or
+            T&gt;t1−α/2,N−1
+Confidence Interval Example
+We generated a 95 %, two-sided confidence interval for the ZARR13.DAT data set based on the following information.
+N                          = 195
+MEAN                       =   9.261460
+STANDARD DEVIATION         =   0.022789
+t1-0.025,N-1                 =   1.9723
+LOWER LIMIT = 9.261460 - 1.9723*0.022789/√195 
+UPPER LIMIT = 9.261460 + 1.9723*0.022789/√195 
+Thus, a 95 % confidence interval for the mean is (9.258242, 9.264679).
+t-Test Example
+We performed a two-sided, one-sample t-test using the ZARR13.DAT data set to test the null hypothesis that the population mean is equal to 5.
+H0:  μ = 5
+Ha:  μ ≠ 5
+Test statistic:  T = 2611.284
+Degrees of freedom:  ν = 194
+Significance level:  α = 0.05
+Critical value:  t1-α/2,ν = 1.9723
+Critical region:  Reject H0 if |T| &gt; 1.9723
+</code></pre><p>We reject the null hypotheses for our two-tailed t-test because the absolute value of the test statistic is greater than the critical value. If we were to perform an upper, one-tailed test, the critical value would be t1-α,ν = 1.6527, and we would still reject the null hypothesis.<br>The confidence interval provides an alternative to the hypothesis test. If the confidence interval contains 5, then H0 cannot be rejected. In our example, the confidence interval (9.258242, 9.264679) does not contain 5, indicating that the population mean does not equal 5 at the 0.05 level of significance.</p>
+<p>In general, there are three possible alternative hypotheses and rejection regions for the one-sample t-test:</p>
+<h3 id="Alternative-Hypothesis-Rejection-Region"><a href="#Alternative-Hypothesis-Rejection-Region" class="headerlink" title="Alternative Hypothesis    Rejection Region"></a>Alternative Hypothesis    Rejection Region</h3><pre><code>Ha: μ ≠ μ0    |T| &gt; t1-α/2,ν
+Ha: μ &gt; μ0    T &gt; t1-α,ν
+Ha: μ &lt; μ0    T &lt; tα,ν
+</code></pre><p>The rejection regions for three posssible alternative hypotheses using our example data are shown in the following graphs.</p>
+<p><img src="assets/EDA/eda352_r.gif" alt=""></p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Confidence limits for the mean can be used to answer the following questions:</p>
+<pre><code>1. What is a reasonable estimate for the mean?
+2. How much variability is there in the estimate of the mean?
+3. Does a given target value fall within the confidence limits?
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Two-Sample t-Test</li>
+<li>Confidence intervals for other location estimators such as the median or mid-mean tend to be mathematically difficult or intractable. For these cases, confidence intervals can be obtained using the bootstrap.</li>
 </ul>
-<p>y3 = np.array([0]<em>100 + [1]</em>50 + [2]<em>20 + [3]</em>5)可以这样建立array数组</p>
-<p>k-means对于方差不相等和数据与坐标轴不平行时效果不理想；对于数据大小量纲敏感。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/15/Clustering with sklearn/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm</a></p>
+
+          
         
       
     </div>
@@ -1040,7 +1587,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/14/sklearn.svm/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.1. Measures of Location/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1059,7 +1606,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/14/sklearn.svm/" itemprop="url">sklearn.svm</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.1. Measures of Location/" itemprop="url">EDA_1.3.5.1. Measures of Location</a></h2>
         
 
         <div class="post-meta">
@@ -1071,8 +1618,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T22:06:12+08:00">
-                2017-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:36:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1094,8 +1641,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1112,8 +1659,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/14/sklearn.svm/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/sklearn.svm/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.1. Measures of Location/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.1. Measures of Location/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1121,7 +1668,7 @@
 
           
           
-             <span id="/2017/11/14/sklearn.svm/" class="leancloud_visitors" data-flag-title="sklearn.svm">
+             <span id="/2018/03/12/EDA_1.3.5.1. Measures of Location/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.1. Measures of Location">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1139,7 +1686,7 @@
 
           
               <div class="post-description">
-                  sklearn.svm
+                  EDA_1.3.5.1. Measures of Location
               </div>
           
 
@@ -1157,15 +1704,45 @@
 
       
         
-          <h3 id="SVC-ovr"><a href="#SVC-ovr" class="headerlink" title="SVC:ovr"></a>SVC:ovr</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 'sepal length', 'sepal width', 'petal length', 'petal width'</span></span><br><span class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_accuracy</span><span class="params">(a, b, tip)</span>:</span></span><br><span class="line">    acc = a.ravel() == b.ravel()</span><br><span class="line">    <span class="keyword">print</span> tip + <span class="string">'正确率：'</span>, np.mean(acc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分类器</span></span><br><span class="line"><span class="comment"># clf = svm.SVC(C=0.1, kernel='linear', decision_function_shape='ovr')</span></span><br><span class="line"><span class="comment"># ‘ovo’ 一对一, ‘ovr’ 多对多  or None 无, default=None</span></span><br><span class="line">clf = svm.SVC(C=<span class="number">0.8</span>, kernel=<span class="string">'rbf'</span>, gamma=<span class="number">20</span>, decision_function_shape=<span class="string">'ovr'</span>)</span><br><span class="line">clf.fit(x_train, y_train.ravel())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 准确率</span></span><br><span class="line"><span class="comment"># score(X, y, sample_weight=None) ：Returns the mean accuracy on the given test data and labels.</span></span><br><span class="line"><span class="keyword">print</span> clf.score(x_train, y_train)  <span class="comment"># 精度</span></span><br><span class="line">y_hat = clf.predict(x_train)</span><br><span class="line">show_accuracy(y_hat, y_train, <span class="string">'训练集'</span>)</span><br><span class="line"><span class="keyword">print</span> clf.score(x_test, y_test)</span><br><span class="line">y_hat = clf.predict(x_test)</span><br><span class="line">show_accuracy(y_hat, y_test, <span class="string">'测试集'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># decision_function</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'decision_function:\n'</span>, clf.decision_function(x_train)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'\npredict:\n'</span>, clf.predict(x_train)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># decision_function(): Distance of the samples X to the separating hyperplane.</span></span><br><span class="line"><span class="string"># 分类归属于距离数值最小的类别，距离有正有负只是平面的两侧而已</span></span><br><span class="line"><span class="string">decision_function:</span></span><br><span class="line"><span class="string">[[-0.25631211  0.80529378  2.45101833]</span></span><br><span class="line"><span class="string"> [ 2.35232967  0.82494155 -0.17727121]</span></span><br><span class="line"><span class="string"> [ 2.45418203  0.77495649 -0.22913852]</span></span><br><span class="line"><span class="string"> [ 2.45421283  0.77518383 -0.22939666]</span></span><br><span class="line"><span class="string"> [-0.24854074  2.39614366  0.85239708]</span></span><br><span class="line"><span class="string"> [ 2.46621083  0.76927647 -0.23548729]</span></span><br><span class="line"><span class="string"> [ 2.45410944  0.77775367 -0.2318631 ]</span></span><br><span class="line"><span class="string"> [-0.24677667  0.84905678  2.39771989]</span></span><br><span class="line"><span class="string"> [-0.46050688  1.21154683  2.24896005]</span></span><br><span class="line"><span class="string"> [-0.26893412  0.80449581  2.46443831]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">predict:</span></span><br><span class="line"><span class="string">[2 0 0 0 1 0 0 2 2 2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 画图</span></span><br><span class="line">x1_min, x1_max = X[:, <span class="number">0</span>].min(), X[:, <span class="number">0</span>].max()  <span class="comment"># 第0列的范围</span></span><br><span class="line">x2_min, x2_max = X[:, <span class="number">1</span>].min(), X[:, <span class="number">1</span>].max()  <span class="comment"># 第1列的范围</span></span><br><span class="line">x1, x2 = np.mgrid[x1_min:x1_max:<span class="number">200j</span>, x2_min:x2_max:<span class="number">200j</span>]  <span class="comment"># 生成网格采样点</span></span><br><span class="line"><span class="comment"># numpy.ndarray.flat : A 1-D iterator over the array.</span></span><br><span class="line"><span class="comment"># This is a numpy.flatiter instance, which acts similarly to,</span></span><br><span class="line"><span class="comment"># but is not a subclass of, Python’s built-in iterator object.</span></span><br><span class="line">grid_test = np.stack((x1.flat, x2.flat), axis=<span class="number">1</span>)  <span class="comment"># 测试点</span></span><br><span class="line"><span class="comment"># print 'grid_test = \n', grid_test</span></span><br><span class="line"><span class="comment"># Z = clf.decision_function(grid_test)    # 样本到决策面的距离</span></span><br><span class="line"><span class="comment"># print Z</span></span><br><span class="line">grid_hat = clf.predict(grid_test)       <span class="comment"># 预测分类值</span></span><br><span class="line"><span class="keyword">print</span> grid_hat</span><br><span class="line">grid_hat = grid_hat.reshape(x1.shape)  <span class="comment"># 使之与输入的形状相同</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">u'SimHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">cm_light = mpl.colors.ListedColormap([<span class="string">'#A0FFA0'</span>, <span class="string">'#FFA0A0'</span>, <span class="string">'#A0A0FF'</span>])</span><br><span class="line">cm_dark = mpl.colors.ListedColormap([<span class="string">'g'</span>, <span class="string">'r'</span>, <span class="string">'b'</span>])</span><br><span class="line">plt.pcolormesh(x1, x2, grid_hat, cmap=cm_light)</span><br><span class="line"></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, edgecolors=<span class="string">'k'</span>, s=<span class="number">50</span>, cmap=cm_dark)      <span class="comment"># 样本</span></span><br><span class="line">plt.scatter(x_test[:, <span class="number">0</span>], x_test[:, <span class="number">1</span>], s=<span class="number">120</span>, facecolors=<span class="string">'none'</span>, zorder=<span class="number">10</span>)     <span class="comment"># 圈中测试集样本</span></span><br><span class="line">plt.xlabel(iris_feature[<span class="number">0</span>], fontsize=<span class="number">13</span>)</span><br><span class="line">plt.ylabel(iris_feature[<span class="number">1</span>], fontsize=<span class="number">13</span>)</span><br><span class="line">plt.xlim(x1_min, x1_max)</span><br><span class="line">plt.ylim(x2_min, x2_max)</span><br><span class="line">plt.title(<span class="string">u'鸢尾花SVM二特征分类'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">plt.grid()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/Figure_1.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/14/sklearn.svm/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h3><p>A fundamental task in many statistical analyses is to estimate a location parameter for the distribution; i.e., to find a typical or central value that best describes the data.</p>
+<h3 id="Definition-of-Location"><a href="#Definition-of-Location" class="headerlink" title="Definition of Location"></a>Definition of Location</h3><p>The first step is to define what we mean by a typical value. For univariate data, there are three common definitions:</p>
+<pre><code>1. mean - the mean is the sum of the data points divided by the number of data points. That is,
+Y¯=∑i=1NYi/N
+The mean is that value that is most commonly referred to as the average. We will use the term average as a synonym for the mean and the term typical value to refer generically to measures of location.
+2. median - the median is the value of the point which has half the data smaller than that point and half the data larger than that point. That is, if X1, X2, ... ,XN is a random sample sorted from smallest value to largest value, then the median is defined as:
+Y~=Y(N+1)/2if N is odd
+Y~=(YN/2+Y(N/2)+1)/2if N is even
+3. mode - the mode is the value of the random sample that occurs with the greatest frequency. It is not necessarily unique. The mode is typically used in a qualitative fashion. For example, there may be a single dominant hump in the data perhaps two or more smaller humps in the data. This is usually evident from a histogram of the data.
+</code></pre><p>When taking samples from continuous populations, we need to be somewhat careful in how we define the mode. That is, any specific value may not occur more than once if the data are continuous. What may be a more meaningful, if less exact measure, is the midpoint of the class interval of the histogram with the highest peak.</p>
+<h3 id="Why-Different-Measures"><a href="#Why-Different-Measures" class="headerlink" title="Why Different Measures"></a>Why Different Measures</h3><p>A natural question is why we have more than one measure of the typical value. The following example helps to explain why these alternative definitions are useful and necessary.<br>This plot shows histograms for 10,000 random numbers generated from a normal, an exponential, a Cauchy, and a lognormal distribution.</p>
+<p><img src="assets/EDA/location.gif" alt=""></p>
+<h3 id="Normal-Distribution"><a href="#Normal-Distribution" class="headerlink" title="Normal Distribution"></a>Normal Distribution</h3><p>The first histogram is a sample from a normal distribution. The mean is 0.005, the median is -0.010, and the mode is -0.144 (the mode is computed as the midpoint of the histogram interval with the highest peak).</p>
+<p>The normal distribution is a symmetric distribution with well-behaved tails and a single peak at the center of the distribution. By symmetric, we mean that the distribution can be folded about an axis so that the 2 sides coincide. That is, it behaves the same to the left and right of some center point. For a normal distribution, the mean, median, and mode are actually equivalent. The histogram above generates similar estimates for the mean, median, and mode. Therefore, if a histogram or normal probability plot indicates that your data are approximated well by a normal distribution, then it is reasonable to use the mean as the location estimator.</p>
+<h3 id="Exponential-Distribution"><a href="#Exponential-Distribution" class="headerlink" title="Exponential Distribution"></a>Exponential Distribution</h3><p>The second histogram is a sample from anexponential distribution. The mean is 1.001, the median is 0.684, and the mode is 0.254 (the mode is computed as the midpoint of the histogram interval with the highest peak).</p>
+<p>The exponential distribution is a skewed, i. e., not symmetric, distribution. For skewed distributions, the mean and median are not the same. The mean will be pulled in the direction of the skewness. That is, if the right tail is heavier than the left tail, the mean will be greater than the median. Likewise, if the left tail is heavier than the right tail, the mean will be less than the median.</p>
+<p>For skewed distributions, it is not at all obvious whether the mean, the median, or the mode is the more meaningful measure of the typical value. In this case, all three measures are useful.</p>
+<h3 id="Cauchy-Distribution"><a href="#Cauchy-Distribution" class="headerlink" title="Cauchy Distribution"></a>Cauchy Distribution</h3><p>The third histogram is a sample from a Cauchy distribution. The mean is 3.70, the median is -0.016, and the mode is -0.362 (the mode is computed as the midpoint of the histogram interval with the highest peak).</p>
+<p>For better visual comparison with the other data sets, we restricted the histogram of the Cauchy distribution to values between -10 and 10. The full Cauchy data set in fact has a minimum of approximately -29,000 and a maximum of approximately 89,000.</p>
+<p>The Cauchy distribution is a symmetric distribution with heavy tails and a single peak at the center of the distribution. The Cauchy distribution has the interesting property that collecting more data does not provide a more accurate estimate of the mean. That is, the sampling distribution of the mean is equivalent to the sampling distribution of the original data. This means that for the Cauchy distribution the mean is useless as a measure of the typical value. For this histogram, the mean of 3.7 is well above the vast majority of the data. This is caused by a few very extreme values in the tail. However, the median does provide a useful measure for the typical value.</p>
+<p>Although the Cauchy distribution is an extreme case, it does illustrate the importance of heavy tails in measuring the mean. Extreme values in the tails distort the mean. However, these extreme values do not distort the median since the median is based on ranks. In general, for data with extreme values in the tails, the median provides a better estimate of location than does the mean.</p>
+<h3 id="Lognormal-Distribution"><a href="#Lognormal-Distribution" class="headerlink" title="Lognormal Distribution"></a>Lognormal Distribution</h3><p>The fourth histogram is a sample from alognormal distribution. The mean is 1.677, the median is 0.989, and the mode is 0.680 (the mode is computed as the midpoint of the histogram interval with the highest peak).</p>
+<p>The lognormal is also a skewed distribution. Therefore the mean and median do not provide similar estimates for the location. As with the exponential distribution, there is no obvious answer to the question of which is the more meaningful measure of location.</p>
+<h3 id="Robustness"><a href="#Robustness" class="headerlink" title="Robustness"></a>Robustness</h3><p>There are various alternatives to the mean and median for measuring location. These alternatives were developed to address non-normal data since the mean is an optimal estimator if in fact your data are normal.</p>
+<p>Tukey and Mosteller defined two types of robustness where robustness is a lack of susceptibility to the effects of nonnormality.</p>
+<pre><code>1. Robustness of validity means that the confidence intervals for the population location have a 95% chance of covering the population location regardless of what the underlying distribution is.
+2. Robustness of efficiency refers to high effectiveness in the face of non-normal tails. That is, confidence intervals for the population location tend to be almost as narrow as the best that could be done if we knew the true shape of the distributuion.
+</code></pre><p>The mean is an example of an estimator that is the best we can do if the underlying distribution is normal. However, it lacks robustness of validity. That is, confidence intervals based on the mean tend not to be precise if the underlying distribution is in fact not normal.<br>The median is an example of a an estimator that tends to have robustness of validity but not robustness of efficiency.</p>
+<p>The alternative measures of location try to balance these two concepts of robustness. That is, the confidence intervals for the case when the data are normal should be almost as narrow as the confidence intervals based on the mean. However, they should maintain their validity even if the underlying data are not normal. In particular, these alternatives address the problem of heavy-tailed distributions.</p>
+<h3 id="Alternative-Measures-of-Location"><a href="#Alternative-Measures-of-Location" class="headerlink" title="Alternative Measures of Location"></a>Alternative Measures of Location</h3><p>A few of the more common alternative location measures are:</p>
+<pre><code>1. Mid-Mean - computes a mean using the data between the 25th and 75th percentiles.
+2. Trimmed Mean - similar to the mid-mean except different percentile values are used. A common choice is to trim 5% of the points in both the lower and upper tails, i.e., calculate the mean for data between the 5th and 95th percentiles.
+3. Winsorized Mean - similar to the trimmed mean. However, instead of trimming the points, they are set to the lowest (or highest) value. For example, all data below the 5th percentile are set equal to the value of the 5th percentile and all data greater than the 95th percentile are set equal to the 95th percentile.
+4. Mid-range = (smallest + largest)/2.
+</code></pre><p>The first three alternative location estimators defined above have the advantage of the median in the sense that they are not unduly affected by extremes in the tails. However, they generate estimates that are closer to the mean for data that are normal (or nearly so).</p>
+<p>The mid-range, since it is based on the two most extreme points, is not robust. Its use is typically restricted to situations in which the behavior at the extreme points is relevant.</p>
+
+          
         
       
     </div>
@@ -1212,7 +1789,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/14/Bagging/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.6. Probability Distributions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1231,7 +1808,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/14/Bagging/" itemprop="url">Bagging</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.6. Probability Distributions/" itemprop="url">EDA_1.3.6. Probability Distributions</a></h2>
         
 
         <div class="post-meta">
@@ -1243,8 +1820,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T21:06:12+08:00">
-                2017-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:26:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1266,8 +1843,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1284,8 +1861,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/14/Bagging/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/Bagging/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.6. Probability Distributions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.6. Probability Distributions/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1293,7 +1870,7 @@
 
           
           
-             <span id="/2017/11/14/Bagging/" class="leancloud_visitors" data-flag-title="Bagging">
+             <span id="/2018/03/12/EDA_1.3.6. Probability Distributions/" class="leancloud_visitors" data-flag-title="EDA_1.3.6. Probability Distributions">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1311,7 +1888,7 @@
 
           
               <div class="post-description">
-                  Bagging
+                  EDA_1.3.6. Probability Distributions
               </div>
           
 
@@ -1329,16 +1906,24 @@
 
       
         
-          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>假设一个分类器分类正确的概率为0.6，如果有n个独立的分类器，选择其中的k个采用投票的方式，作为预测结果，则预测正确的概率为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"><span class="comment"># operator.__mul__(a, b)</span></span><br><span class="line"><span class="comment"># Return a * b, for a and b numbers.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">c</span><span class="params">(n, k)</span>:</span></span><br><span class="line">    <span class="comment"># 求组合数</span></span><br><span class="line">    <span class="keyword">return</span> reduce(operator.mul, range(n-k+<span class="number">1</span>, n+<span class="number">1</span>)) / reduce(operator.mul, range(<span class="number">1</span>, k+<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bagging</span><span class="params">(n, p)</span>:</span></span><br><span class="line">    s = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n / <span class="number">2</span> + <span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        s += c(n, i) * p ** i * (<span class="number">1</span> - p) ** (n - i)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">9</span>, <span class="number">100</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="comment"># 假设事件发生的概率为0.6</span></span><br><span class="line">    <span class="keyword">print</span> t, <span class="string">'次采样正确率：'</span>, bagging(t, <span class="number">0.6</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">9 </span>次采样正确率： <span class="number">0.73343232</span></span><br><span class="line"><span class="symbol">19 </span>次采样正确率： <span class="number">0.813907978585</span></span><br><span class="line"><span class="symbol">29 </span>次采样正确率： <span class="number">0.863787051336</span></span><br><span class="line"><span class="symbol">39 </span>次采样正确率： <span class="number">0.897941368711</span></span><br><span class="line"><span class="symbol">49 </span>次采样正确率： <span class="number">0.922424437652</span></span><br><span class="line"><span class="symbol">59 </span>次采样正确率： <span class="number">0.940447995732</span></span><br><span class="line"><span class="symbol">69 </span>次采样正确率： <span class="number">0.953949756505</span></span><br><span class="line"><span class="symbol">79 </span>次采样正确率： <span class="number">0.964189692839</span></span><br><span class="line"><span class="symbol">89 </span>次采样正确率： <span class="number">0.972027516007</span></span><br><span class="line"><span class="symbol">99 </span>次采样正确率： <span class="number">0.97806955787</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/14/Bagging/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="Probability-Distributions"><a href="#Probability-Distributions" class="headerlink" title="Probability Distributions"></a>Probability Distributions</h3><p>Probability distributions are a fundamental concept in statistics. They are used both on a theoretical level and a practical level.</p>
+<p>Some practical uses of probability distributions are:</p>
+<pre><code>• To calculate confidence intervals for parameters and to calculate critical regions for hypothesis tests.
+• For univariate data, it is often useful to determine a reasonable distributional model for the data.
+• Statistical intervals and hypothesis tests are often based on specific distributional assumptions. Before computing an interval or test based on a distributional assumption, we need to verify that the assumption is justified for the given data set. In this case, the distribution does not need to be the best-fitting distribution for the data, but an adequate enough model so that the statistical technique yields valid conclusions.
+• Simulation studies with random numbers generated from using a specific probability distribution are often needed.
+</code></pre><p>Table of Contents</p>
+<pre><code>1. What is a probability distribution?
+2. Related probability functions
+3. Families of distributions
+4. Location and scale parameters
+5. Estimating the parameters of a distribution
+6. A gallery of common distributions
+7. Tables for probability distributions
+</code></pre><p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda36.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda36.htm</a></p>
+
+          
         
       
     </div>
@@ -1385,7 +1970,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/14/sklearn.tree.DecisionTreeRegressor/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5. Quantitative Techniques/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1404,7 +1989,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" itemprop="url">sklearn.tree.DecisionTreeRegressor</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5. Quantitative Techniques/" itemprop="url">EDA_1.3.5. Quantitative Techniques</a></h2>
         
 
         <div class="post-meta">
@@ -1416,8 +2001,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T20:06:12+08:00">
-                2017-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:16:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1439,8 +2024,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1457,8 +2042,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5. Quantitative Techniques/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5. Quantitative Techniques/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1466,7 +2051,7 @@
 
           
           
-             <span id="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" class="leancloud_visitors" data-flag-title="sklearn.tree.DecisionTreeRegressor">
+             <span id="/2018/03/12/EDA_1.3.5. Quantitative Techniques/" class="leancloud_visitors" data-flag-title="EDA_1.3.5. Quantitative Techniques">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1484,7 +2069,7 @@
 
           
               <div class="post-description">
-                  sklearn.tree.DecisionTreeRegressor
+                  EDA_1.3.5. Quantitative Techniques
               </div>
           
 
@@ -1502,15 +2087,66 @@
 
       
         
-          <h3 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br></pre></td></tr></table></figure>
-<h3 id="生成数据集："><a href="#生成数据集：" class="headerlink" title="生成数据集："></a>生成数据集：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">N = <span class="number">100</span></span><br><span class="line">x = np.random.rand(N) * <span class="number">6</span> - <span class="number">3</span>     <span class="comment"># [-3,3)</span></span><br><span class="line">x.sort()</span><br><span class="line">y = np.sin(x) + np.random.randn(N) * <span class="number">0.05</span></span><br><span class="line"><span class="keyword">print</span> y</span><br><span class="line">x = x.reshape(<span class="number">-1</span>, <span class="number">1</span>)  <span class="comment"># 转置后，得到N个样本，每个样本都是1维的</span></span><br><span class="line"><span class="keyword">print</span> x</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="Confirmatory-Statistics"><a href="#Confirmatory-Statistics" class="headerlink" title="Confirmatory Statistics"></a>Confirmatory Statistics</h3><p>The techniques discussed in this section are classical statistical methods as opposed to EDA techniques. EDA and classical techniques are not mutually exclusive and can be used in a complementary fashion. For example, the analysis can start with some simple graphical techniques such as the 4-plot followed by the classical confirmatory methods discussed herein to provide more rigorous statements about the conclusions. If the classical methods yield different conclusions than the graphical analysis, then some effort should be invested to explain why. Often this is an indication that some of the assumptions of the classical techniques are violated.</p>
+<p>Many of the quantitative techniques fall into two broad categories:</p>
+<pre><code>1. Interval estimation
+2. Hypothesis tests
+</code></pre><h3 id="Interval-Estimates"><a href="#Interval-Estimates" class="headerlink" title="Interval Estimates"></a>Interval Estimates</h3><p>It is common in statistics to estimate a parameter from a sample of data. The value of the parameter using all of the possible data, not just the sample data, is called the population parameter or true value of the parameter. An estimate of the true parameter value is made using the sample data. This is called a point estimate or a sample estimate.</p>
+<p>For example, the most commonly used measure of location is the mean. The population, or true, mean is the sum of all the members of the given population divided by the number of members in the population. As it is typically impractical to measure every member of the population, a random sample is drawn from the population. The sample mean is calculated by summing the values in the sample and dividing by the number of values in the sample. This sample mean is then used as the point estimate of the population mean.</p>
+<p>Interval estimates expand on point estimates by incorporating the uncertainty of the point estimate. In the example for the mean above, different samples from the same population will generate different values for the sample mean. An interval estimate quantifies this uncertainty in the sample estimate by computing lower and upper values of an interval which will, with a given level of confidence (i.e., probability), contain the population parameter.</p>
+<h3 id="Hypothesis-Tests"><a href="#Hypothesis-Tests" class="headerlink" title="Hypothesis Tests"></a>Hypothesis Tests</h3><p>Hypothesis tests also address the uncertainty of the sample estimate. However, instead of providing an interval, a hypothesis test attempts to refute a specific claim about a population parameter based on the sample data. For example, the hypothesis might be one of the following:</p>
+<pre><code>• the population mean is equal to 10
+• the population standard deviation is equal to 5
+• the means from two populations are equal
+• the standard deviations from 5 populations are equal
+</code></pre><p>To reject a hypothesis is to conclude that it is false. However, to accept a hypothesis does not mean that it is true, only that we do not have evidence to believe otherwise. Thus hypothesis tests are usually stated in terms of both a condition that is doubted (null hypothesis) and a condition that is believed (alternative hypothesis).</p>
+<p>A common format for a hypothesis test is:</p>
+<pre><code>H0:    A statement of the null hypothesis, e.g., two population means are equal.
+
+Ha:    A statement of the alternative hypothesis, e.g., two population means are not equal.
+
+Test Statistic:    The test statistic is based on the specific hypothesis test.
+
+Significance Level:    The significance level, α,defines the sensitivity of the test. A value of α = 0.05 means that we inadvertently reject the null hypothesis 5% of the time when it is in fact true. This is also called the type I error. The choice of α is somewhat arbitrary, although in practice values of 0.1, 0.05, and 0.01 are commonly used.
+
+The probability of rejecting the null hypothesis when it is in fact false is called the power of the test and is denoted by 1 - β. Its complement, the probability of accepting the null hypothesis when the alternative hypothesis is, in fact, true (type II error), is called β and can only be computed for a specific alternative hypothesis.
+
+Critical Region:    The critical region encompasses those values of the test statistic that lead to a rejection of the null hypothesis. Based on the distribution of the test statistic and the significance level, a cut-off value for the test statistic is computed. Values either above or below or both (depending on the direction of the test) this cut-off define the critical region.
+</code></pre><h3 id="Practical-Versus-Statistical-Significance"><a href="#Practical-Versus-Statistical-Significance" class="headerlink" title="Practical Versus Statistical Significance"></a>Practical Versus Statistical Significance</h3><p>It is important to distinguish between statistical significance and practical significance. Statistical significance simply means that we reject the null hypothesis. The ability of the test to detect differences that lead to rejection of the null hypothesis depends on the sample size. For example, for a particularly large sample, the test may reject the null hypothesis that two process means are equivalent. However, in practice the difference between the two means may be relatively small to the point of having no real engineering significance.</p>
+<p>Similarly, if the sample size is small, a difference that is large in engineering terms may not lead to rejection of the null hypothesis. The analyst should not just blindly apply the tests, but should combine engineering judgement with statistical analysis.</p>
+<h3 id="Bootstrap-Uncertainty-Estimates"><a href="#Bootstrap-Uncertainty-Estimates" class="headerlink" title="Bootstrap Uncertainty Estimates"></a>Bootstrap Uncertainty Estimates</h3><p>In some cases, it is possible to mathematically derive appropriate uncertainty intervals. This is particularly true for intervals based on the assumption of a normal distribution. However, there are many cases in which it is not possible to mathematically derive the uncertainty. In these cases, the bootstrap provides a method for empirically determining an appropriate interval.</p>
+<h3 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h3><p>Some of the more common classical quantitative techniques are listed below. This list of quantitative techniques is by no means meant to be exhaustive. Additional discussions of classical statistical techniques are contained in the product comparisons chapter.</p>
+<pre><code>• Location
+    1. Measures of Location
+    2. Confidence Limits for the Mean and One Sample t-Test
+    3. Two Sample t-Test for Equal Means
+    4. One Factor Analysis of Variance
+    5. Multi-Factor Analysis of Variance
+• Scale (or variability or spread)
+    1. Measures of Scale
+    2. Bartlett&apos;s Test
+    3. Chi-Square Test
+    4. F-Test
+    5. Levene Test
+• Skewness and Kurtosis
+    1. Measures of Skewness and Kurtosis
+• Randomness
+    1. Autocorrelation
+    2. Runs Test
+• Distributional Measures
+    1. Anderson-Darling Test
+    2. Chi-Square Goodness-of-Fit Test
+    3. Kolmogorov-Smirnov Test
+• Outliers
+    1. Detection of Outliers
+    2. Grubbs Test
+    3. Tietjen-Moore Test
+    4. Generalized Extreme Deviate Test
+• 2-Level Factorial Designs
+    1. Yates Algorithm
+</code></pre>
+          
         
       
     </div>
@@ -1557,7 +2193,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/sklearn.tree.DecisionTreeClassifier/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.33. 6-Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1576,7 +2212,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" itemprop="url">sklearn.tree.DecisionTreeClassifier</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.33. 6-Plot/" itemprop="url">EDA_1.3.3.33. 6-Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1588,8 +2224,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T22:06:12+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:06:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1611,8 +2247,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1629,8 +2265,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.33. 6-Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.33. 6-Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1638,7 +2274,7 @@
 
           
           
-             <span id="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" class="leancloud_visitors" data-flag-title="sklearn.tree.DecisionTreeClassifier">
+             <span id="/2018/03/12/EDA_1.3.3.33. 6-Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.33. 6-Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1656,7 +2292,7 @@
 
           
               <div class="post-description">
-                  sklearn.tree.DecisionTreeClassifier
+                  EDA_1.3.3.33. 6-Plot
               </div>
           
 
@@ -1674,359 +2310,63 @@
 
       
         
-          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> pydotplus</span><br></pre></td></tr></table></figure>
-<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris=load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">iris_feature_E = <span class="string">'sepal length'</span>, <span class="string">'sepal width'</span>, <span class="string">'petal length'</span>, <span class="string">'petal width'</span></span><br><span class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></span><br><span class="line">iris_class = <span class="string">'Iris-setosa'</span>, <span class="string">'Iris-versicolor'</span>, <span class="string">'Iris-virginica'</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/插值/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/13/插值/" itemprop="url">插值</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T22:06:12+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
+          
+            <h3 id="Purpose-Graphical-Model-Validation"><a href="#Purpose-Graphical-Model-Validation" class="headerlink" title="Purpose: Graphical Model Validation"></a>Purpose: Graphical Model Validation</h3><p>The 6-plot is a collection of 6 specific graphical techniques whose purpose is to assess the validity of a Y versus X fit. The fit can be a linear fit, a non-linear fit, a LOWESS (locally weighted least squares) fit, a spline fit, or any other fit utilizing a single independent variable.</p>
+<p>The 6 plots are:</p>
+<pre><code>1. Scatter plot of the response and predicted values versus the independent variable;
+2. Scatter plot of the residuals versus the independent variable;
+3. Scatter plot of the residuals versus the predicted values;
+4. Lag plot of the residuals;
+5. Histogram of the residuals;
+6. Normal probability plot of the residuals.
+</code></pre><h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/6plot.gif" alt=""></p>
+<p>This 6-plot, which followed a linear fit, shows that the linear model is not adequate. It suggests that a quadratic model would be a better model.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>6 Component Plots</p>
+<p>The 6-plot consists of the following:</p>
+<pre><code>1. Response and predicted values
+        ○ Vertical axis: Response variable, predicted values
+        ○ Horizontal axis: Independent variable
+2. Residuals versus independent variable
+        ○ Vertical axis: Residuals
+        ○ Horizontal axis: Independent variable
+3. Residuals versus predicted values
+        ○ Vertical axis: Residuals
+        ○ Horizontal axis: Predicted values
+4. Lag plot of residuals
+        ○ Vertical axis: RES(I)
+        ○ Horizontal axis: RES(I-1)
+5. Histogram of residuals
+        ○ Vertical axis: Counts
+        ○ Horizontal axis: Residual values
+6. Normal probability plot of residuals
+        ○ Vertical axis: Ordered residuals
+        ○ Horizontal axis: Theoretical values from a normal N(0,1) distribution for ordered residuals
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The 6-plot can be used to answer the following questions:</p>
+<pre><code>1. Are the residuals approximately normally distributed with a fixed location and scale?
+2. Are there outliers?
+3. Is the fit adequate?
+4. Do the residuals suggest a better fit?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Validating Model</p>
+<p>A model involving a response variable and a single independent variable has the form:</p>
+<pre><code>Yi=f(Xi)+Ei
+</code></pre><p>where Y is the response variable, X is the independent variable, f is the linear or non-linear fit function, and E is the random component. For a good model, the error component should behave like:</p>
+<pre><code>1. random drawings (i.e., independent);
+2. from a fixed distribution;
+3. with fixed location; and
+4. with fixed variation.
+</code></pre><p>In addition, for fitting models it is usually further assumed that the fixed distribution is normal and the fixed location is zero. For a good model the fixed variation should be as small as possible. A necessary component of fitting models is to verify these assumptions for the error component and to assess whether the variation for the error component is sufficiently small. The histogram, lag plot, and normal probability plot are used to verify the fixed distribution, location, and variation assumptions on the error component. The plot of the response variable and the predicted values versus the independent variable is used to assess whether the variation is sufficiently small. The plots of the residuals versus the independent variable and the predicted values is used to assess the independence assumption.</p>
+<p>Assessing the validity and quality of the fit in terms of the above assumptions is an absolutely vital part of the model-fitting process. No fit should be considered complete without an adequate model validation step.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Linear Least Squares</li>
+<li>Non-Linear Least Squares</li>
+<li>Scatter Plot</li>
+<li>Run Sequence Plot</li>
+<li>Lag Plot</li>
+<li>Normal Probability Plot</li>
+<li>Histogram</li>
+</ul>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/13/插值/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/插值/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/11/13/插值/" class="leancloud_visitors" data-flag-title="插值">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  插值
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="插值的定义"><a href="#插值的定义" class="headerlink" title="插值的定义"></a>插值的定义</h1><p>插值法又称“内插法”，是利用函数f(x)在某区间中已知的若干点的函数值，作出适当的特定函数，在区间的其他点上用这特定函数的值作为函数f(x)的近似值，这种方法称为插值法。如果这特定函数是多项式，就称它为插值多项式。</p>
-<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/interpolation/QQ截图20171113112144.png" width="50%"><br>  <div class="figcaption"><br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/插值/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/ElasticNetCV/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/13/ElasticNetCV/" itemprop="url">ElasticNetCV</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T22:06:12+08:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/13/ElasticNetCV/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/ElasticNetCV/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/11/13/ElasticNetCV/" class="leancloud_visitors" data-flag-title="ElasticNetCV">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  ElasticNetCV
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> ElasticNetCV</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures, StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br></pre></td></tr></table></figure>
-<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_empty</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> s != <span class="string">''</span></span><br><span class="line"></span><br><span class="line">data = sklearn.datasets.load_boston()</span><br><span class="line">x = np.array(data.data)</span><br><span class="line">y = np.array(data.target)</span><br><span class="line"><span class="keyword">print</span> x.shape</span><br><span class="line"><span class="keyword">print</span> y.shape</span><br><span class="line"></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/ElasticNetCV/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -2064,7 +2404,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2114,7 +2454,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">174</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2136,7 +2476,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">224</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

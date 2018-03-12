@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/04/逻辑回归评分卡调优（二）之正则化/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/python读取文件数据的几种方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/04/逻辑回归评分卡调优（二）之正则化/" itemprop="url">逻辑回归评分卡调优（二）之正则化</a></h2>
+                <a class="post-title-link" href="/2017/11/13/python读取文件数据的几种方式/" itemprop="url">python读取文件数据的几种方式</a></h2>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-04T13:29:12+08:00">
-                2017-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T14:53:12+08:00">
+                2017-11-13
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/04/逻辑回归评分卡调优（二）之正则化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/04/逻辑回归评分卡调优（二）之正则化/" itemprop="commentCount"></span>
+                <a href="/2017/11/13/python读取文件数据的几种方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/python读取文件数据的几种方式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2017/10/04/逻辑回归评分卡调优（二）之正则化/" class="leancloud_visitors" data-flag-title="逻辑回归评分卡调优（二）之正则化">
+             <span id="/2017/11/13/python读取文件数据的几种方式/" class="leancloud_visitors" data-flag-title="python读取文件数据的几种方式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  逻辑回归评分卡调优（二）之正则化
+                  python读取文件数据的几种方式
               </div>
           
 
@@ -426,62 +426,10 @@
       
         
           
-            <p>在<a href="https://boredbird.github.io/2017/10/04/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E8%AF%84%E5%88%86%E5%8D%A1%E8%B0%83%E4%BC%98%EF%BC%88%E4%B8%80%EF%BC%89%E4%B9%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%9D%E6%8E%A2/" target="_blank" rel="noopener">上回</a>的基础上，可以看出特征之间存在多重共线性，自然的联想到L1正则化，这次主要尝试用sklearn.linear_model中正则化的<a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html" target="_blank" rel="noopener">LogisticRegression</a>去提升模型效果。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">X = dataset_train[candidate_var_list]</span><br><span class="line">y = dataset_train[<span class="string">'target'</span>]</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(</span><br><span class="line">X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">32</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">clf_l1_LR = LogisticRegression(C=<span class="number">0.1</span>, penalty=<span class="string">'l1'</span>, tol=<span class="number">0.01</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">clf_l1_LR.fit(X_train, y_train)</span><br><span class="line">proba = clf_l1_LR.predict_proba(X_train)[:,<span class="number">1</span>]</span><br><span class="line">get_ks(proba,y_train)</span><br><span class="line"><span class="comment"># 0.40141223793092612</span></span><br><span class="line"></span><br><span class="line">proba = clf_l1_LR.predict_proba(X_test)[:,<span class="number">1</span>]</span><br><span class="line">get_ks(proba,y_test)</span><br><span class="line"><span class="comment"># 0.39708735770404702</span></span><br></pre></td></tr></table></figure>
-<p>可以看出此时采用C=0.1正则化的模型已经有了很大的提升。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">C : float, default: <span class="number">1.0</span></span><br><span class="line"></span><br><span class="line">	Inverse of regularization strength; must be a positive float. </span><br><span class="line"></span><br><span class="line">	Like <span class="keyword">in</span> support vector machines, smaller values specify stronger regularization.</span><br></pre></td></tr></table></figure>
-<p>可是，c是个超参数，如何设置才能达到最优的效果呢？</p>
-<p>还是以结果为导向，一个一个试。虽然不是全局最优，那也大差不差。</p>
-<pre><code class="python">
-<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
-<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
-<span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model
-<span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> l1_min_c
-cs = l1_min_c(X_train, y_train, loss=<span class="string">'log'</span>) * np.logspace(<span class="number">0</span>, <span class="number">3</span>)
-
-print(<span class="string">"Computing regularization path ..."</span>)
-start = datetime.now()
-<span class="keyword">print</span> start
-clf_l1_LR = linear_model.LogisticRegression(C=<span class="number">1.0</span>, penalty=<span class="string">'l1'</span>, tol=<span class="number">1e-6</span>)
-coefs_ = []
-ks = []
-<span class="keyword">for</span> c <span class="keyword">in</span> cs:
-clf_l1_LR.set_params(C=c)
-clf_l1_LR.fit(X_train, y_train)
-coefs_.append(clf_l1_LR.coef_.ravel().copy())
-
-proba = clf_l1_LR.predict_proba(X_train)[:,<span class="number">1</span>]
-ks.append(get_ks(proba,y_train))
-
-end = datetime.now()
-<span class="keyword">print</span> end
-print(<span class="string">"This took "</span>, end - start)
-
-coef_cv_df = pd.DataFrame(coefs_,columns=X_train.columns)
-coef_cv_df.to_csv(<span class="string">'E:\\Code\\ScoreCard\\coef_cv_df.csv'</span>)
-
-coefs_ = np.array(coefs_)
-
-fig1 = plt.figure(<span class="string">'fig1'</span>)
-plt.plot(np.log10(cs), coefs_)
-ymin, ymax = plt.ylim()
-plt.xlabel(<span class="string">'log(C)'</span>)
-plt.ylabel(<span class="string">'Coefficients'</span>)
-plt.title(<span class="string">'Logistic Regression Path'</span>)
-plt.axis(<span class="string">'tight'</span>)
-plt.show()
-
-fig2 = plt.figure(<span class="string">'fig2'</span>)
-plt.plot(np.log10(cs), ks)
-plt.xlabel(<span class="string">'log(C)'</span>)
-plt.ylabel(<span class="string">'ks score'</span>)
-plt.title(<span class="string">'Logistic Regression Performance'</span>)
-plt.axis(<span class="string">'tight'</span>)
-plt.show()
-
-fig2.show()
-fig1.show()
-</code></pre>
+            <h1 id="方式一：f-file-path"><a href="#方式一：f-file-path" class="headerlink" title="方式一：f = file(path)"></a>方式一：f = file(path)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">f = file(path)</span><br><span class="line">x = []</span><br><span class="line">y = []</span><br><span class="line"><span class="keyword">for</span> i, d <span class="keyword">in</span> enumerate(f):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    d = d.strip()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> d:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    d = map(float, d.split(<span class="string">','</span>))</span><br><span class="line">    x.append(d[<span class="number">1</span>:<span class="number">-1</span>])</span><br><span class="line">    y.append(d[<span class="number">-1</span>])</span><br><span class="line">pprint(x)</span><br><span class="line">pprint(y)</span><br><span class="line">x = np.array(x)</span><br><span class="line">y = np.array(y)</span><br></pre></td></tr></table></figure>
+<h1 id="方式二：Python自带库csv"><a href="#方式二：Python自带库csv" class="headerlink" title="方式二：Python自带库csv"></a>方式二：Python自带库csv</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line">   f = file(path, <span class="string">'rb'</span>)</span><br><span class="line">   <span class="keyword">print</span> f</span><br><span class="line">   d = csv.reader(f)</span><br><span class="line">   <span class="keyword">for</span> line <span class="keyword">in</span> d:</span><br><span class="line">       <span class="keyword">print</span> line</span><br><span class="line">   f.close()</span><br></pre></td></tr></table></figure>
+<h1 id="方式三：Python自带库numpy"><a href="#方式三：Python自带库numpy" class="headerlink" title="方式三：Python自带库numpy"></a>方式三：Python自带库numpy</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">p = np.loadtxt(path, delimiter=<span class="string">','</span>, skiprows=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="方式四：Python自带库pandas"><a href="#方式四：Python自带库pandas" class="headerlink" title="方式四：Python自带库pandas"></a>方式四：Python自带库pandas</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data = pd.read_csv(path)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -530,7 +478,7 @@ fig1.show()
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/04/逻辑回归评分卡调优（一）之数据集初探/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/HMM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -549,7 +497,7 @@ fig1.show()
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/04/逻辑回归评分卡调优（一）之数据集初探/" itemprop="url">逻辑回归评分卡调优（一）之数据集初探</a></h2>
+                <a class="post-title-link" href="/2017/11/12/HMM/" itemprop="url">HMM</a></h2>
         
 
         <div class="post-meta">
@@ -561,8 +509,8 @@ fig1.show()
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-04T11:38:12+08:00">
-                2017-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T22:06:12+08:00">
+                2017-11-12
               </time>
             
 
@@ -602,8 +550,8 @@ fig1.show()
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/04/逻辑回归评分卡调优（一）之数据集初探/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/04/逻辑回归评分卡调优（一）之数据集初探/" itemprop="commentCount"></span>
+                <a href="/2017/11/12/HMM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/HMM/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -611,7 +559,7 @@ fig1.show()
 
           
           
-             <span id="/2017/10/04/逻辑回归评分卡调优（一）之数据集初探/" class="leancloud_visitors" data-flag-title="逻辑回归评分卡调优（一）之数据集初探">
+             <span id="/2017/11/12/HMM/" class="leancloud_visitors" data-flag-title="HMM">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -629,7 +577,7 @@ fig1.show()
 
           
               <div class="post-description">
-                  逻辑回归评分卡调优（一）
+                  隐马尔科夫模型
               </div>
           
 
@@ -647,14 +595,12 @@ fig1.show()
 
       
         
-          <p>本系列记录我在工作中针对同一个数据集，运用逻辑回归（评分卡）模型不断尝试去提升模型ks值表现的过程。并不是范例，更谈不上指导意义。主要是为了记录自己的思考与验证过程，怕随便零散的写在代码注释里过后就忘了。</p>
-<p>评分卡模型在数据处理过程中常用到woe转换，这部分的工作我采用了Python的包<a href="https://github.com/boredbird/woe" target="_blank" rel="noopener">woe</a>来完成。</p>
-<p><a href="https://github.com/boredbird/woe" target="_blank" rel="noopener">Woe</a> is a python package containing useful tools for WoE Transformation mostly used in ScoreCard Model for Credit Rating.</p>
-<p><a href="https://github.com/boredbird/woe" target="_blank" rel="noopener">woe</a>包中树节点的分裂方法，是一种Local近似算法。对于每个特征，只考察分位点，减少计算复杂度；每次分裂前，重新提出候选切分点。</p>
-<p>关于树节点分裂方法，<a href="https://boredbird.github.io/2017/10/02/GBDT%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E7%AE%80%E4%BB%8B-%E6%9D%A5%E8%87%AAwepon%E7%9A%84%E5%88%86%E4%BA%AB/" target="_blank" rel="noopener">这里</a>有简单的介绍。</p>
+          <h2 id="HMM定义"><a href="#HMM定义" class="headerlink" title="HMM定义"></a>HMM定义</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225447.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="隐马尔科夫模型的贝叶斯网络"><a href="#隐马尔科夫模型的贝叶斯网络" class="headerlink" title="隐马尔科夫模型的贝叶斯网络"></a>隐马尔科夫模型的贝叶斯网络</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/HMM/TIM截图20171112225714.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/04/逻辑回归评分卡调优（一）之数据集初探/" rel="contents">
+            <a class="btn" href="/2017/11/12/HMM/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -705,7 +651,7 @@ fig1.show()
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/02/LightGBM与XGBoost对比/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/主题模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -724,7 +670,7 @@ fig1.show()
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/02/LightGBM与XGBoost对比/" itemprop="url">LightGBM与XGBoost对比</a></h2>
+                <a class="post-title-link" href="/2017/11/12/主题模型/" itemprop="url">主题模型</a></h2>
         
 
         <div class="post-meta">
@@ -736,8 +682,8 @@ fig1.show()
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-02T17:47:44+08:00">
-                2017-10-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T22:06:12+08:00">
+                2017-11-12
               </time>
             
 
@@ -777,8 +723,8 @@ fig1.show()
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/02/LightGBM与XGBoost对比/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/02/LightGBM与XGBoost对比/" itemprop="commentCount"></span>
+                <a href="/2017/11/12/主题模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/主题模型/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -786,7 +732,7 @@ fig1.show()
 
           
           
-             <span id="/2017/10/02/LightGBM与XGBoost对比/" class="leancloud_visitors" data-flag-title="LightGBM与XGBoost对比">
+             <span id="/2017/11/12/主题模型/" class="leancloud_visitors" data-flag-title="主题模型">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -804,7 +750,7 @@ fig1.show()
 
           
               <div class="post-description">
-                  LightGBM与XGBoost对比
+                  主题模型
               </div>
           
 
@@ -822,755 +768,12 @@ fig1.show()
 
       
         
-          
-            <h1 id="XGBoost的系统设计"><a href="#XGBoost的系统设计" class="headerlink" title="XGBoost的系统设计"></a>XGBoost的系统设计</h1><p><img src="https://i.imgur.com/sLs0PPZ.png" alt=""></p>
-<h1 id="更高效的工具包LightGBM"><a href="#更高效的工具包LightGBM" class="headerlink" title="更高效的工具包LightGBM"></a>更高效的工具包LightGBM</h1><p><img src="https://i.imgur.com/xfWtQBO.png" alt=""></p>
-<h1 id="LightGBM的改进"><a href="#LightGBM的改进" class="headerlink" title="LightGBM的改进"></a>LightGBM的改进</h1><h2 id="直方图算法"><a href="#直方图算法" class="headerlink" title="直方图算法"></a>直方图算法</h2><p><img src="https://i.imgur.com/XBl65sA.png" alt=""></p>
-<h2 id="直方图加速"><a href="#直方图加速" class="headerlink" title="直方图加速"></a>直方图加速</h2><p><img src="https://i.imgur.com/W6FqpZs.png" alt=""></p>
-<h2 id="建树过程的两种方法：Level-wise和Leaf-wise"><a href="#建树过程的两种方法：Level-wise和Leaf-wise" class="headerlink" title="建树过程的两种方法：Level-wise和Leaf-wise"></a>建树过程的两种方法：Level-wise和Leaf-wise</h2><p><img src="https://i.imgur.com/4mPJwPo.png" alt=""></p>
-<h1 id="并行优化（Optimization-in-parallel-learning）"><a href="#并行优化（Optimization-in-parallel-learning）" class="headerlink" title="并行优化（Optimization in parallel learning）"></a>并行优化（Optimization in parallel learning）</h1><h2 id="特征并行"><a href="#特征并行" class="headerlink" title="特征并行"></a>特征并行</h2><p><img src="https://i.imgur.com/vKs8rii.png" alt=""><br><img src="https://i.imgur.com/9Va1E0U.png" alt=""></p>
-<h2 id="数据并行"><a href="#数据并行" class="headerlink" title="数据并行"></a>数据并行</h2><p><img src="https://i.imgur.com/X3rDw6X.png" alt=""><br><img src="https://i.imgur.com/xwZRzb1.png" alt=""></p>
-<h1 id="GOSS"><a href="#GOSS" class="headerlink" title="GOSS"></a>GOSS</h1><p><img src="https://i.imgur.com/l88Ro02.png" alt=""></p>
-<h1 id="EFB"><a href="#EFB" class="headerlink" title="EFB"></a>EFB</h1><p><img src="https://i.imgur.com/O1UNAhI.png" alt=""></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><img src="https://i.imgur.com/qKRFJ3c.png" alt=""></p>
+          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/主题模型/TIM截图20171112220821.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/" itemprop="url">GBDT算法原理与系统设计简介-来自wepon的分享</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-02T17:27:04+08:00">
-                2017-10-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/02/GBDT算法原理与系统设计简介-来自wepon的分享/" class="leancloud_visitors" data-flag-title="GBDT算法原理与系统设计简介-来自wepon的分享">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  GBDT算法原理与系统设计简介-来自wepon的分享
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、泰勒公式"><a href="#一、泰勒公式" class="headerlink" title="一、泰勒公式"></a>一、泰勒公式</h1><ul>
-<li>定义：泰勒公式是一个用函数在某点的信息描述其附近取值的公式。局部有效性<br><img src="https://i.imgur.com/nIrdPkM.png" alt=""><h1 id="二、最优化方法"><a href="#二、最优化方法" class="headerlink" title="二、最优化方法"></a>二、最优化方法</h1><h2 id="2-1-梯度下降法（Gradient-descend-method）"><a href="#2-1-梯度下降法（Gradient-descend-method）" class="headerlink" title="2.1 梯度下降法（Gradient descend method）"></a>2.1 梯度下降法（Gradient descend method）</h2><img src="https://i.imgur.com/OtJtsoy.png" alt=""><h2 id="2-2-牛顿法（Newton’s-method）"><a href="#2-2-牛顿法（Newton’s-method）" class="headerlink" title="2.2 牛顿法（Newton’s method）"></a>2.2 牛顿法（Newton’s method）</h2><img src="https://i.imgur.com/8zoVsFG.png" alt=""><h1 id="三、从参数空间到函数空间"><a href="#三、从参数空间到函数空间" class="headerlink" title="三、从参数空间到函数空间"></a>三、从参数空间到函数空间</h1><h2 id="3-1-从Gradient-descend-到-Gradient-Boosting"><a href="#3-1-从Gradient-descend-到-Gradient-Boosting" class="headerlink" title="3.1 从Gradient descend 到 Gradient Boosting"></a>3.1 从Gradient descend 到 Gradient Boosting</h2><img src="https://i.imgur.com/4TRkwMS.png" alt=""><br><img src="https://i.imgur.com/Jj8rUYo.png" alt=""><h2 id="3-2-从Newton’s-method-到-Newton-Boosting"><a href="#3-2-从Newton’s-method-到-Newton-Boosting" class="headerlink" title="3.2 从Newton’s method 到 Newton Boosting"></a>3.2 从Newton’s method 到 Newton Boosting</h2><img src="https://i.imgur.com/hJRvJer.png" alt=""><br><img src="https://i.imgur.com/lO7KTEr.png" alt=""><h1 id="四、Gradient-Boosting-Tree算法原理"><a href="#四、Gradient-Boosting-Tree算法原理" class="headerlink" title="四、Gradient Boosting Tree算法原理"></a>四、Gradient Boosting Tree算法原理</h1><img src="https://i.imgur.com/KclXmop.png" alt=""><br><img src="https://i.imgur.com/SISeq7n.png" alt=""><h1 id="五、Newton-Boosting-Tree算法原理：详解XGBoost"><a href="#五、Newton-Boosting-Tree算法原理：详解XGBoost" class="headerlink" title="五、Newton Boosting Tree算法原理：详解XGBoost"></a>五、Newton Boosting Tree算法原理：详解XGBoost</h1><h2 id="5-1-模型函数形式"><a href="#5-1-模型函数形式" class="headerlink" title="5.1 模型函数形式"></a>5.1 模型函数形式</h2><img src="https://i.imgur.com/SGENIVu.png" alt=""><br><img src="https://i.imgur.com/bEdk0hq.png" alt=""><h2 id="5-2-目标函数"><a href="#5-2-目标函数" class="headerlink" title="5.2 目标函数"></a>5.2 目标函数</h2><img src="https://i.imgur.com/TlInpcp.png" alt=""><h3 id="5-2-1-正则项"><a href="#5-2-1-正则项" class="headerlink" title="5.2.1 正则项"></a>5.2.1 正则项</h3><img src="https://i.imgur.com/fMlDTe1.png" alt=""><br><img src="https://i.imgur.com/uArASZT.png" alt=""><h3 id="5-2-2-误差函数的二阶泰勒展开"><a href="#5-2-2-误差函数的二阶泰勒展开" class="headerlink" title="5.2.2 误差函数的二阶泰勒展开"></a>5.2.2 误差函数的二阶泰勒展开</h3><img src="https://i.imgur.com/zpVimRg.png" alt=""><br><img src="https://i.imgur.com/dMkJkKI.png" alt=""><br><img src="https://i.imgur.com/9AQxjbh.png" alt=""><br><img src="https://i.imgur.com/omqUwQk.png" alt=""><h2 id="5-3-回归树的学习策略"><a href="#5-3-回归树的学习策略" class="headerlink" title="5.3 回归树的学习策略"></a>5.3 回归树的学习策略</h2><img src="https://i.imgur.com/RHJtO8t.png" alt=""><h3 id="5-3-1-打分函数"><a href="#5-3-1-打分函数" class="headerlink" title="5.3.1 打分函数"></a>5.3.1 打分函数</h3><img src="https://i.imgur.com/kFwfgpE.png" alt=""><h3 id="5-3-2-树节点分裂方法"><a href="#5-3-2-树节点分裂方法" class="headerlink" title="5.3.2 树节点分裂方法"></a>5.3.2 树节点分裂方法</h3><img src="https://i.imgur.com/nQDZs8n.png" alt=""><br><img src="https://i.imgur.com/vbKq7gi.png" alt=""><br><img src="https://i.imgur.com/zRVBwsj.png" alt=""><br><img src="https://i.imgur.com/WPdpamn.png" alt=""><h3 id="5-3-3-缺失值的处理"><a href="#5-3-3-缺失值的处理" class="headerlink" title="5.3.3 缺失值的处理"></a>5.3.3 缺失值的处理</h3><img src="https://i.imgur.com/TzC0Jgx.png" alt=""><h2 id="5-4-其它特性"><a href="#5-4-其它特性" class="headerlink" title="5.4 其它特性"></a>5.4 其它特性</h2><img src="https://i.imgur.com/6y8fXhr.png" alt=""></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/02/天池老司机天音的经验分享/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/02/天池老司机天音的经验分享/" itemprop="url">天池老司机天音的经验分享</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-02T16:47:02+08:00">
-                2017-10-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/02/天池老司机天音的经验分享/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/02/天池老司机天音的经验分享/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/02/天池老司机天音的经验分享/" class="leancloud_visitors" data-flag-title="天池老司机天音的经验分享">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  天池老司机天音的经验分享
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>化繁为简，各个突破</p>
-<h1 id="一、数据处理-25"><a href="#一、数据处理-25" class="headerlink" title="一、数据处理 25%"></a>一、数据处理 25%</h1><h2 id="1-1-缺失值填充"><a href="#1-1-缺失值填充" class="headerlink" title="1.1 缺失值填充"></a>1.1 缺失值填充</h2><p>某些场景中缺失值也是一个重要特征，如金融信贷，资料完善度不高的用户是潜在的违约对象</p>
-<ul>
-<li>数值型：均值，中位数</li>
-<li>类别型：众数</li>
-<li>通过关联信息补全<h2 id="1-2-数据清洗"><a href="#1-2-数据清洗" class="headerlink" title="1.2 数据清洗"></a>1.2 数据清洗</h2></li>
-<li>剔除缺失值比率大的字段</li>
-<li>离群点剔除<h2 id="1-3-数据处理"><a href="#1-3-数据处理" class="headerlink" title="1.3 数据处理"></a>1.3 数据处理</h2><h3 id="1-3-1-异常数据的处理"><a href="#1-3-1-异常数据的处理" class="headerlink" title="1.3.1 异常数据的处理"></a>1.3.1 异常数据的处理</h3></li>
-<li>log平滑</li>
-<li>局部加权<h3 id="1-3-2-数据划分，样本构造"><a href="#1-3-2-数据划分，样本构造" class="headerlink" title="1.3.2 数据划分，样本构造"></a>1.3.2 数据划分，样本构造</h3></li>
-<li>增：增加样本，滑窗采样</li>
-<li>减：去掉异常样本，可以借助模型判断</li>
-<li>采样：效率和效果的平衡</li>
-<li>根据需求构建可靠的验证集</li>
-</ul>
-<p>注：线上线下Label窗口大小要一致；<br>滑窗是为了增加样本量，一般把多个窗口的数据集合在一起训练；<br>各窗口构成的数据集Label Window无重叠，特征窗口可以重叠；</p>
-<p><img src="https://i.imgur.com/Rotp1qh.png" alt=""></p>
-<h3 id="1-3-3-噪声样本剔除"><a href="#1-3-3-噪声样本剔除" class="headerlink" title="1.3.3 噪声样本剔除"></a>1.3.3 噪声样本剔除</h3><p>用一个树模型去训练你的数据，然后用得到的模型去预测数据，同一个叶子节点下偏离叶子节点均值最大的认为它是一个噪声，然后对它的差值进行排序取出前top多少个，把它去掉，然后重新训练一个比较干净的模型</p>
-<p><img src="https://i.imgur.com/x73Fccz.png" alt=""></p>
-<h1 id="二、特征工程-50"><a href="#二、特征工程-50" class="headerlink" title="二、特征工程 50%"></a>二、特征工程 50%</h1><p>特征没做好，参数调到老</p>
-<h2 id="2-1-特征提取"><a href="#2-1-特征提取" class="headerlink" title="2.1 特征提取"></a>2.1 特征提取</h2><p>结合具体的业务场景思考问题</p>
-<ul>
-<li>特征统计：key拆分，组合（按照提供的数据集粒度，不同的维度去交叉组合出更多的指标）</li>
-<li>时间窗口统计：3/5/7/15/30</li>
-</ul>
-<p><img src="https://i.imgur.com/VsnzLxO.png" alt=""></p>
-<h2 id="2-2-特征处理"><a href="#2-2-特征处理" class="headerlink" title="2.2 特征处理"></a>2.2 特征处理</h2><ul>
-<li>归一化（加快训练速度并且更可能达到最优解，线性模型，对数值大小敏感的模型）</li>
-<li>onehot编码（增加哑变量）</li>
-<li>排序</li>
-</ul>
-<p><img src="https://i.imgur.com/XA0iZiX.png" alt=""></p>
-<h2 id="2-3-特征选择"><a href="#2-3-特征选择" class="headerlink" title="2.3 特征选择"></a>2.3 特征选择</h2><ul>
-<li>计算特征与标签相关度（按照相关性大小排序筛选特征）</li>
-<li>LR+L1正则</li>
-<li>树模型对特征打分（用的最多的是XGBoost，RF去对特征打分，然后筛选重要的变量再放到线性模型里面）<h2 id="2-4-特征组合"><a href="#2-4-特征组合" class="headerlink" title="2.4 特征组合"></a>2.4 特征组合</h2></li>
-<li>任意两两组合：维度大</li>
-<li>特征选择再组合<br><img src="https://i.imgur.com/ljfajAc.png" alt=""></li>
-<li>GBDT+LR（GBDT每棵树从根节点到叶子节点的路径是一种最优组合）<br><img src="https://i.imgur.com/6GYh4FX.png" alt=""></li>
-</ul>
-<h1 id="三、模型设计-20"><a href="#三、模型设计-20" class="headerlink" title="三、模型设计 20%"></a>三、模型设计 20%</h1><h2 id="3-1-分类-回归问题"><a href="#3-1-分类-回归问题" class="headerlink" title="3.1 分类-回归问题"></a>3.1 分类-回归问题</h2><ul>
-<li>Xgboost：速度快，效果好</li>
-<li>GBDT：拟合能力强，有过拟合风险</li>
-<li>RF：不容易过拟合</li>
-<li>LR：对稀疏特征效果较好；常用来做stacker<h2 id="3-2-Factorization-Machine"><a href="#3-2-Factorization-Machine" class="headerlink" title="3.2 Factorization Machine"></a>3.2 Factorization Machine</h2><img src="https://i.imgur.com/joZrTya.png" alt=""><br><img src="https://i.imgur.com/EZ4UBYE.png" alt=""><h2 id="3-3-基于统计的方法（规则）"><a href="#3-3-基于统计的方法（规则）" class="headerlink" title="3.3 基于统计的方法（规则）"></a>3.3 基于统计的方法（规则）</h2><img src="https://i.imgur.com/GKExOPP.png" alt=""><h2 id="3-4-时序问题"><a href="#3-4-时序问题" class="headerlink" title="3.4 时序问题"></a>3.4 时序问题</h2></li>
-<li>回归类模型</li>
-<li>规则函数<br><img src="https://i.imgur.com/yZHle8t.png" alt=""><h2 id="3-5-规则函数"><a href="#3-5-规则函数" class="headerlink" title="3.5 规则函数"></a>3.5 规则函数</h2><img src="https://i.imgur.com/Sz6n3Q6.png" alt=""></li>
-</ul>
-<h1 id="四、模型融合-5"><a href="#四、模型融合-5" class="headerlink" title="四、模型融合 5%"></a>四、模型融合 5%</h1><p><img src="https://i.imgur.com/t12qj2u.png" alt=""><br><img src="https://i.imgur.com/9nMKhTt.png" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/09/19/使用python连接hive/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/19/使用python连接hive/" itemprop="url">使用python连接hive</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-19T21:10:12+08:00">
-                2017-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/09/19/使用python连接hive/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/09/19/使用python连接hive/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/09/19/使用python连接hive/" class="leancloud_visitors" data-flag-title="使用python连接hive">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  使用python连接hive
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Python连接hive的包有很多，我没有一一尝试，只是演示了工作当中用到的方法。<br>本文主要采用<a href="https://github.com/dropbox/PyHive" target="_blank" rel="noopener">PyHive</a>来进行对hive的增删改查。<br>PyHive is a collection of Python DB-API and SQLAlchemy interfaces for Presto and Hive.</p>
-<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><h3 id="install-using"><a href="#install-using" class="headerlink" title="install using"></a>install using</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> SQLALchemy</span><br></pre></td></tr></table></figure>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyhive<span class="string">[presto]</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyhive<span class="string">[hive]</span></span><br></pre></td></tr></table></figure>
-<h2 id="Presto-engine"><a href="#Presto-engine" class="headerlink" title="Presto engine"></a>Presto engine</h2><h3 id="Create-engine"><a href="#Create-engine" class="headerlink" title="Create engine"></a>Create engine</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">### Presto Select</span><br><span class="line">```df = pd.read_sql(sql=(r&apos;select * from &apos;+ &apos;schema.tablename&apos;) , con=engine)</span><br></pre></td></tr></table></figure>
-<h3 id="Presto-Insert"><a href="#Presto-Insert" class="headerlink" title="Presto Insert"></a>Presto Insert</h3><figure class="highlight plain"><figcaption><span>con</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">### Presto Update</span><br><span class="line">Hive does not support update.</span><br><span class="line">### Presto Delete</span><br></pre></td></tr></table></figure>
-<p>engine.execute(“drop table schema.tablename”)<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Hive engine</span><br><span class="line"></span><br><span class="line">### Create engine</span><br><span class="line"></span><br><span class="line">``` engine = create_engine(<span class="string">'hive://url:port/hive/schema'</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="Hive-Select"><a href="#Hive-Select" class="headerlink" title="Hive Select"></a>Hive Select</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">### Hive Insert</span><br><span class="line">```df.to_sql(tablename, con=engine, flavor=None, if_exists=&apos;append&apos;, index=False, chunksize=2000000)</span><br></pre></td></tr></table></figure>
-<h3 id="Hive-Update"><a href="#Hive-Update" class="headerlink" title="Hive Update"></a>Hive Update</h3><p>Hive does not support update.</p>
-<h3 id="Hive-Delete"><a href="#Hive-Delete" class="headerlink" title="Hive Delete"></a>Hive Delete</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine.<span class="built_in">execute</span>(<span class="string">"drop table schema.tablename"</span>)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/01/02/xgboost安装与使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/02/xgboost安装与使用/" itemprop="url">xgboost安装与使用</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-02T15:00:12+08:00">
-                2017-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/01/02/xgboost安装与使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/01/02/xgboost安装与使用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/01/02/xgboost安装与使用/" class="leancloud_visitors" data-flag-title="xgboost安装与使用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  xgboost安装与使用
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>环境:</p>
-<ul>
-<li>win7 64位</li>
-<li>Python 2.7.13 </li>
-<li>MINGW：GNU Make 3.82.90 Built for i686-pc-mingw32</li>
-</ul>
-<p>首先，打开Git Shell，依次执行如下命令：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git clone --recursive http<span class="variable">s:</span>//github.<span class="keyword">com</span>/dmlc/xgboost</span><br><span class="line"><span class="keyword">cd</span> xgboost</span><br><span class="line">git checkout <span class="number">9</span>a48a40//新版本这一步可以省略</span><br><span class="line">git submodule init</span><br><span class="line">git submodule <span class="keyword">update</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">cp</span> <span class="keyword">make</span>/mingw64.<span class="keyword">mk</span> config.<span class="keyword">mk</span></span><br><span class="line"><span class="keyword">cp</span> <span class="keyword">make</span>/mingw64.<span class="keyword">mk</span> dmlc-core/config.<span class="keyword">mk</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> rabit</span><br><span class="line"><span class="keyword">make</span> lib/librabit_empty.<span class="keyword">a</span> -j4</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> ../dmlc-core</span><br><span class="line"><span class="keyword">make</span> -j4</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span>..</span><br><span class="line"><span class="keyword">make</span> -j4</span><br></pre></td></tr></table></figure>
-<p>然后，安装到Python包中</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">cd</span> <span class="keyword">python</span>-package</span><br><span class="line"><span class="keyword">python</span> setup.<span class="keyword">py</span> install</span><br></pre></td></tr></table></figure>
+<h1 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/主题模型/TIM截图20171112221007.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/01/02/xgboost安装与使用/" rel="contents">
+            <a class="btn" href="/2017/11/12/主题模型/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1621,7 +824,7 @@ fig1.show()
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/01/02/lightgbm安装与使用/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/贝叶斯网络/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1640,7 +843,7 @@ fig1.show()
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/01/02/lightgbm安装与使用/" itemprop="url">lightgbm安装与使用</a></h2>
+                <a class="post-title-link" href="/2017/11/12/贝叶斯网络/" itemprop="url">贝叶斯网络</a></h2>
         
 
         <div class="post-meta">
@@ -1652,8 +855,8 @@ fig1.show()
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-02T15:00:12+08:00">
-                2017-01-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T21:56:12+08:00">
+                2017-11-12
               </time>
             
 
@@ -1675,8 +878,8 @@ fig1.show()
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -1693,8 +896,8 @@ fig1.show()
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/02/lightgbm安装与使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/01/02/lightgbm安装与使用/" itemprop="commentCount"></span>
+                <a href="/2017/11/12/贝叶斯网络/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/贝叶斯网络/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1702,7 +905,7 @@ fig1.show()
 
           
           
-             <span id="/2017/01/02/lightgbm安装与使用/" class="leancloud_visitors" data-flag-title="lightgbm安装与使用">
+             <span id="/2017/11/12/贝叶斯网络/" class="leancloud_visitors" data-flag-title="贝叶斯网络">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1720,7 +923,7 @@ fig1.show()
 
           
               <div class="post-description">
-                  lightgbm安装与使用
+                  贝叶斯网络
               </div>
           
 
@@ -1738,30 +941,1054 @@ fig1.show()
 
       
         
-          
-            <p>环境:</p>
-<ul>
-<li>win7 64位</li>
-<li>Python 2.7.13 </li>
-<li>MINGW：GNU Make 3.82.90 Built for i686-pc-mingw32</li>
-<li>Visual Studio 2017</li>
-</ul>
-<h2 id="1、下载源代码"><a href="#1、下载源代码" class="headerlink" title="1、下载源代码"></a>1、下载源代码</h2><p>git clone –recursive <a href="https://github.com/Microsoft/LightGBM" target="_blank" rel="noopener">https://github.com/Microsoft/LightGBM</a></p>
-<h2 id="2、用VS编译"><a href="#2、用VS编译" class="headerlink" title="2、用VS编译"></a>2、用VS编译</h2><p>进入LightGBM目录，用VS打开windows/LightGBM.sln，选择DLL和x64，按Ctrl+Shift+B进行编译，dll文件就会在windows/x64/DLL/目录里 </p>
-<p><img src="assets/Python/light-gbm.png" alt=""></p>
-<p>编译成功后对应目录<code>E:\Code\LightGBM\windows\x64\DLL</code>下会生成一些文件，如果存在DLL这个文件夹就说明安装成功了。</p>
-<h2 id="3、安装Python包"><a href="#3、安装Python包" class="headerlink" title="3、安装Python包"></a>3、安装Python包</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">chunhui.zhang<span class="meta">@SZXH</span>3FFK041 MINGW64 <span class="regexp">/e/</span>Code/LightGBM (master)</span><br><span class="line">$ cd python-<span class="keyword">package</span>/</span><br><span class="line"></span><br><span class="line">chunhui.zhang<span class="meta">@SZXH</span>3FFK041 MINGW64 <span class="regexp">/e/</span>Code<span class="regexp">/LightGBM/</span>python-<span class="keyword">package</span> (master)</span><br><span class="line">$  python setup.py install</span><br></pre></td></tr></table></figure>
-<h2 id="4、测试"><a href="#4、测试" class="headerlink" title="4、测试"></a>4、测试</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">chunhui.zhang@SZXH3FFK041 MINGW64 /e/Code/LightGBM/python-<span class="keyword">package</span> <span class="title">(master)</span></span><br><span class="line">$ cd ../examples/python-guide/</span><br><span class="line"></span><br><span class="line">chunhui.zhang@SZXH3FFK041 MINGW64 /e/Code/LightGBM/examples/python-guide (master                                      )</span><br><span class="line">$ python ./simple_example.py</span><br><span class="line">Load data...</span><br><span class="line">Start training...</span><br><span class="line">[<span class="number">1</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.764496</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.24288</span></span><br><span class="line">Training until validation scores don<span class="symbol">'t</span> improve <span class="keyword">for</span> <span class="number">5</span> rounds.</span><br><span class="line">[<span class="number">2</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.766173</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.239307</span></span><br><span class="line">[<span class="number">3</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.785547</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.235559</span></span><br><span class="line">[<span class="number">4</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.797786</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.230771</span></span><br><span class="line">[<span class="number">5</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.805155</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.226297</span></span><br><span class="line">[<span class="number">6</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.800979</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.223692</span></span><br><span class="line">[<span class="number">7</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.806566</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.220941</span></span><br><span class="line">[<span class="number">8</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.808566</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.217982</span></span><br><span class="line">[<span class="number">9</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.809041</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.215351</span></span><br><span class="line">[<span class="number">10</span>]    valid_0<span class="symbol">'s</span> auc: <span class="number">0.805953</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.213064</span></span><br><span class="line">[<span class="number">11</span>]    valid_0<span class="symbol">'s</span> auc: <span class="number">0.804631</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.211053</span></span><br><span class="line">[<span class="number">12</span>]    valid_0<span class="symbol">'s</span> auc: <span class="number">0.802922</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.209336</span></span><br><span class="line">[<span class="number">13</span>]    valid_0<span class="symbol">'s</span> auc: <span class="number">0.802011</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.207492</span></span><br><span class="line">[<span class="number">14</span>]    valid_0<span class="symbol">'s</span> auc: <span class="number">0.80193</span>  valid_0<span class="symbol">'s</span> l2: <span class="number">0.206016</span></span><br><span class="line">Early stopping, best iteration <span class="keyword">is</span>:</span><br><span class="line">[<span class="number">9</span>]     valid_0<span class="symbol">'s</span> auc: <span class="number">0.809041</span> valid_0<span class="symbol">'s</span> l2: <span class="number">0.215351</span></span><br><span class="line">Save model...</span><br><span class="line">Start predicting...</span><br><span class="line">(<span class="symbol">'The</span> rmse <span class="keyword">of</span> prediction <span class="keyword">is</span>:', <span class="number">0.4640593794679212</span>)</span><br></pre></td></tr></table></figure>
-<p>或者直接通过pip安装。。。</p>
-<p>via</p>
-<ul>
-<li><p><a href="http://blog.csdn.net/jiaqiangbandongg/article/details/53814663" target="_blank" rel="noopener">在Windows下安装LightGBM的Python包</a></p>
-</li>
-<li><p><a href="http://blog.csdn.net/testcs_dn/article/details/54176824" target="_blank" rel="noopener">微软开源分布式高性能GB框架LightGBM安装使用</a></p>
-</li>
-</ul>
+          <h1 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/贝叶斯网络/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/PLSA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/PLSA/" itemprop="url">PLSA</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T20:56:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/PLSA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/PLSA/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/12/PLSA/" class="leancloud_visitors" data-flag-title="PLSA">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  主题模型
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="PLSA模型"><a href="#PLSA模型" class="headerlink" title="PLSA模型"></a>PLSA模型</h1><h2 id="PLSA模型概述"><a href="#PLSA模型概述" class="headerlink" title="PLSA模型概述"></a>PLSA模型概述</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/PLSA/TIM截图20171112205947.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="PLSA模型过程"><a href="#PLSA模型过程" class="headerlink" title="PLSA模型过程"></a>PLSA模型过程</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/PLSA/TIM截图20171112210114.png" width="80%"><br>  <img src="/assets/chinahadoop/PLSA/TIM截图20171112210128.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/PLSA/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/EM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/EM/" itemprop="url">EM</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T19:15:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/EM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/EM/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/12/EM/" class="leancloud_visitors" data-flag-title="EM">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  主题模型
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><h2 id="k-Means算法"><a href="#k-Means算法" class="headerlink" title="k-Means算法"></a>k-Means算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/EM/TIM截图20171112192635.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="对K-Means的思考"><a href="#对K-Means的思考" class="headerlink" title="对K-Means的思考"></a>对K-Means的思考</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/EM/TIM截图20171112192704.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/EM/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/聚类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/聚类/" itemprop="url">聚类</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T16:15:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/聚类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/聚类/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/12/聚类/" class="leancloud_visitors" data-flag-title="聚类">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  聚类
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="聚类的定义"><a href="#聚类的定义" class="headerlink" title="聚类的定义"></a>聚类的定义</h2><p>聚类就是对大量未知标注的数据集，按数据的内在相似性将数据集划分为多个类别，使类别内的数据相似度较大而类别间的数据相似度较小。</p>
+<h2 id="相似度-距离计算方法总结"><a href="#相似度-距离计算方法总结" class="headerlink" title="相似度/距离计算方法总结"></a>相似度/距离计算方法总结</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112160705.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Hellinger-distance"><a href="#Hellinger-distance" class="headerlink" title="Hellinger distance"></a>Hellinger distance</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112165344.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/聚类/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/AdaBoost/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/AdaBoost/" itemprop="url">AdaBoost</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T14:15:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/AdaBoost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/AdaBoost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/12/AdaBoost/" class="leancloud_visitors" data-flag-title="AdaBoost">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  提升
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Boosting的思想"><a href="#Boosting的思想" class="headerlink" title="Boosting的思想"></a>Boosting的思想</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142536.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="AdaBoost算法"><a href="#AdaBoost算法" class="headerlink" title="AdaBoost算法"></a>AdaBoost算法</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142651.png" width="80%"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142718.png" width="80%"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142731.png" width="80%"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142745.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/AdaBoost/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/SVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/SVM/" itemprop="url">SVM</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T14:15:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/SVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/SVM/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/12/SVM/" class="leancloud_visitors" data-flag-title="SVM">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  SVM
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="支持向量机SVM的原理和目标"><a href="#支持向量机SVM的原理和目标" class="headerlink" title="支持向量机SVM的原理和目标"></a>支持向量机SVM的原理和目标</h1><h2 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h2><p>硬间隔最大化hard margin maximization;硬间隔支持向量机</p>
+<h3 id="分割超平面"><a href="#分割超平面" class="headerlink" title="分割超平面"></a>分割超平面</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/SVM/TIM截图20171112145917.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="分割超平面的思考"><a href="#分割超平面的思考" class="headerlink" title="分割超平面的思考"></a>分割超平面的思考</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/SVM/TIM截图20171112145956.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/SVM/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/XGBoost/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/XGBoost/" itemprop="url">XGBoost</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T13:20:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/XGBoost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/XGBoost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/12/XGBoost/" class="leancloud_visitors" data-flag-title="XGBoost">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  提升
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="考虑使用二阶导信息"><a href="#考虑使用二阶导信息" class="headerlink" title="考虑使用二阶导信息"></a>考虑使用二阶导信息</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/XGBoost/TIM截图20171112115502.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="决策树的描述"><a href="#决策树的描述" class="headerlink" title="决策树的描述"></a>决策树的描述</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/XGBoost/TIM截图20171112125849.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/XGBoost/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1799,7 +2026,7 @@ fig1.show()
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1849,7 +2076,7 @@ fig1.show()
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">174</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1871,7 +2098,7 @@ fig1.show()
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">224</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

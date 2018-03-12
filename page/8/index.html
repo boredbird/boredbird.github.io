@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/optimization-1/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/ERROR Local hexo not found/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/10/optimization-1/" itemprop="url">optimization-1</a></h2>
+                <a class="post-title-link" href="/2018/03/01/ERROR Local hexo not found/" itemprop="url">ERROR Local hexo not found</a></h2>
         
 
         <div class="post-meta">
@@ -339,386 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T14:13:12+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/optimization-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/optimization-1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/optimization-1/" class="leancloud_visitors" data-flag-title="optimization-1">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  optimization-1
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Table of Contents:</p>
-<ul>
-<li><a href="#intro">Introduction</a></li>
-<li><a href="#vis">Visualizing the loss function</a></li>
-<li><a href="#optimization">Optimization</a><ul>
-<li><a href="#opt1">Strategy #1: Random Search</a></li>
-<li><a href="#opt2">Strategy #2: Random Local Search</a></li>
-<li><a href="#opt3">Strategy #3: Following the gradient</a></li>
-</ul>
-</li>
-<li><a href="#gradcompute">Computing the gradient</a><ul>
-<li><a href="#numerical">Numerically with finite differences</a></li>
-<li><a href="#analytic">Analytically with calculus</a></li>
-</ul>
-</li>
-<li><a href="#gd">Gradient descent</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>In the previous section we introduced two key components in context of the image classification task:</p>
-<ol>
-<li>A (parameterized) <strong>score function</strong> mapping the raw image pixels to class scores (e.g. a linear function)</li>
-<li>A <strong>loss function</strong> that measured the quality of a particular set of parameters based on how well the induced scores agreed with the ground truth labels in the training data. We saw that there are many ways and versions of this (e.g. Softmax/SVM).</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/optimization-1/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/optimization-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/optimization-2/" itemprop="url">optimization-2</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T14:13:12+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/optimization-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/optimization-2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/optimization-2/" class="leancloud_visitors" data-flag-title="optimization-2">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  optimization-2
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Table of Contents:</p>
-<ul>
-<li><a href="#intro">Introduction</a></li>
-<li><a href="#grad">Simple expressions, interpreting the gradient</a></li>
-<li><a href="#backprop">Compound expressions, chain rule, backpropagation</a></li>
-<li><a href="#intuitive">Intuitive understanding of backpropagation</a></li>
-<li><a href="#sigmoid">Modularity: Sigmoid example</a></li>
-<li><a href="#staged">Backprop in practice: Staged computation</a></li>
-<li><a href="#patters">Patterns in backward flow</a></li>
-<li><a href="#mat">Gradients for vectorized operations</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>Motivation</strong>. In this section we will develop expertise with an intuitive understanding of <strong>backpropagation</strong>, which is a way of computing gradients of expressions through recursive application of <strong>chain rule</strong>. Understanding of this process and its subtleties is critical for you to understand, and effectively develop, design and debug Neural Networks.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/optimization-2/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/09/python的-m参数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/09/python的-m参数/" itemprop="url">python的-m参数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T14:53:12+08:00">
-                2017-10-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T11:50:02+08:00">
+                2018-03-01
               </time>
             
 
@@ -758,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/09/python的-m参数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/09/python的-m参数/" itemprop="commentCount"></span>
+                <a href="/2018/03/01/ERROR Local hexo not found/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/ERROR Local hexo not found/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -767,7 +389,7 @@
 
           
           
-             <span id="/2017/10/09/python的-m参数/" class="leancloud_visitors" data-flag-title="python的-m参数">
+             <span id="/2018/03/01/ERROR Local hexo not found/" class="leancloud_visitors" data-flag-title="ERROR Local hexo not found">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -785,7 +407,7 @@
 
           
               <div class="post-description">
-                  python的-m参数
+                  ERROR Local hexo not found
               </div>
           
 
@@ -803,18 +425,10 @@
 
       
         
-          <h1 id="单个文件"><a href="#单个文件" class="headerlink" title="单个文件"></a>单个文件</h1><h2 id="创建测试文件："><a href="#创建测试文件：" class="headerlink" title="创建测试文件："></a>创建测试文件：</h2><p><code>E:\Code\ScoreCard&gt;</code>路径下创建<code>testm.py</code>文件，内容如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">print(sys.path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'This is main of module '</span>)</span><br></pre></td></tr></table></figure></p>
-<h2 id="在终端上运行："><a href="#在终端上运行：" class="headerlink" title="在终端上运行："></a>在终端上运行：</h2><p><img src="https://i.imgur.com/UGJcAPs.png" alt=""></p>
-<h2 id="查看帮助文档："><a href="#查看帮助文档：" class="headerlink" title="查看帮助文档："></a>查看帮助文档：</h2><p><img src="https://i.imgur.com/GXYAjii.png" alt=""></p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-m mod : <span class="builtin-name">run</span> library module as a<span class="built_in"> script </span>(terminates option list)</span><br></pre></td></tr></table></figure>
-<h1 id="创建模块测试-m作用"><a href="#创建模块测试-m作用" class="headerlink" title="创建模块测试-m作用"></a>创建模块测试-m作用</h1><h2 id="文档目录结构："><a href="#文档目录结构：" class="headerlink" title="文档目录结构："></a>文档目录结构：</h2><p><img src="https://i.imgur.com/z84nr20.png" alt=""></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/09/python的-m参数/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>via <img src="http://blog.csdn.net/burststar/article/details/45115905" alt=""></p>
+
+          
         
       
     </div>
@@ -861,7 +475,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Linear Classification/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/02/12/利用atom插件打造一套python的IDE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -880,7 +494,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/Linear Classification/" itemprop="url">linear-classify</a></h2>
+                <a class="post-title-link" href="/2018/02/12/利用atom插件打造一套python的IDE/" itemprop="url">利用atom插件打造一套python的IDE</a></h2>
         
 
         <div class="post-meta">
@@ -892,379 +506,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/Linear Classification/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Linear Classification/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Linear Classification/" class="leancloud_visitors" data-flag-title="linear-classify">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  linear-classify
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Table of Contents:</p>
-<ul>
-<li><a href="#intro">Intro to Linear classification</a></li>
-<li><a href="#score">Linear score function</a></li>
-<li><a href="#interpret">Interpreting a linear classifier</a></li>
-<li><a href="#loss">Loss function</a><ul>
-<li><a href="#svm">Multiclass SVM</a></li>
-<li><a href="#softmax">Softmax classifier</a></li>
-<li><a href="#svmvssoftmax">SVM vs Softmax</a></li>
-</ul>
-</li>
-<li><a href="#webdemo">Interactive Web Demo of Linear Classification</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>In the last section we introduced the problem of Image Classification, which is the task of assigning a single label to an image from a fixed set of categories. Morever, we described the k-Nearest Neighbor (kNN) classifier which labels images by comparing them to (annotated) images from the training set. As we saw, kNN has a number of disadvantages:</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Linear Classification/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Image Classification With KNN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Image Classification With KNN/" itemprop="url">Image Classification With KNN</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T19:08:12+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/Image Classification With KNN/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Image Classification With KNN/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Image Classification With KNN/" class="leancloud_visitors" data-flag-title="Image Classification With KNN">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Image Classification With KNN
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>This is an introductory lecture designed to introduce people from outside of Computer Vision to the Image Classification problem, and the data-driven approach. The Table of Contents:</p>
-<ul>
-<li><a href="#intro">Intro to Image Classification, data-driven approach, pipeline</a></li>
-<li><a href="#nn">Nearest Neighbor Classifier</a><ul>
-<li><a href="#knn">k-Nearest Neighbor</a></li>
-</ul>
-</li>
-<li><a href="#val">Validation sets, Cross-validation, hyperparameter tuning</a></li>
-<li><a href="#procon">Pros/Cons of Nearest Neighbor</a></li>
-<li><a href="#summary">Summary</a></li>
-<li><a href="#summaryapply">Summary: Applying kNN in practice</a></li>
-<li><a href="#reading">Further Reading</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h2 id="Image-Classification"><a href="#Image-Classification" class="headerlink" title="Image Classification"></a>Image Classification</h2><p><strong>Motivation</strong>. In this section we will introduce the Image Classification problem, which is the task of assigning an input image one label from a fixed set of categories. This is one of the core problems in Computer Vision that, despite its simplicity, has a large variety of practical applications. Moreover, as we will see later in the course, many other seemingly distinct Computer Vision tasks (such as object detection, segmentation) can be reduced to image classification.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Image Classification With KNN/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/ipython-tutorial/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/ipython-tutorial/" itemprop="url">IPython Tutorial</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T18:53:12+08:00">
-                2017-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-12T12:53:12+08:00">
+                2018-02-12
               </time>
             
 
@@ -1304,8 +547,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/08/ipython-tutorial/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/ipython-tutorial/" itemprop="commentCount"></span>
+                <a href="/2018/02/12/利用atom插件打造一套python的IDE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/12/利用atom插件打造一套python的IDE/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1313,7 +556,7 @@
 
           
           
-             <span id="/2017/10/08/ipython-tutorial/" class="leancloud_visitors" data-flag-title="IPython Tutorial">
+             <span id="/2018/02/12/利用atom插件打造一套python的IDE/" class="leancloud_visitors" data-flag-title="利用atom插件打造一套python的IDE">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1331,7 +574,7 @@
 
           
               <div class="post-description">
-                  IPython Tutorial
+                  利用atom插件打造一套python的IDE
               </div>
           
 
@@ -1349,18 +592,176 @@
 
       
         
-          <p>In this class, we will use <a href="http://ipython.org/" target="_blank" rel="noopener">IPython notebooks</a> for the<br>programming assignments. An IPython notebook lets you write and execute Python<br>code in your web browser. IPython notebooks make it very easy to tinker with<br>code and execute it in bits and pieces; for this reason IPython notebooks are<br>widely used in scientific computing.</p>
-<p>Installing and running IPython is easy. From the command line, the following<br>will install IPython:</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> <span class="string">"ipython[notebook]"</span></span><br></pre></td></tr></table></figure>
-<p>Once you have IPython installed, start it with this command:</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ipython notebook</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/ipython-tutorial/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="利用atom插件打造一套python的IDE"><a href="#利用atom插件打造一套python的IDE" class="headerlink" title="利用atom插件打造一套python的IDE"></a>利用atom插件打造一套python的IDE</h3><h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctrl-shift-P</td>
+<td>打开Command Palette</td>
+</tr>
+<tr>
+<td>Shift + Ctrl + M</td>
+<td>快速预览markdown</td>
+</tr>
+<tr>
+<td>ctrl+shift+F</td>
+<td>通过关键字段全项目检索目标代码文件</td>
+</tr>
+<tr>
+<td>ctrl+F</td>
+<td>通过关键字段在目标文件中定位目标代码</td>
+</tr>
+<tr>
+<td>ctrl+T</td>
+<td>直接通过文件名全局搜索目标文件</td>
+</tr>
+<tr>
+<td>alt+ctrl+shift+{</td>
+<td>代码折叠让代码看起来更加简洁（注意要依次按这四个键，不能同时按）</td>
+</tr>
+<tr>
+<td>cmd+shift+t</td>
+<td>开启新控制台</td>
+</tr>
+<tr>
+<td>ctrl+`</td>
+<td>打开或关闭控制台</td>
+</tr>
+<tr>
+<td>cmd+shift+j/k</td>
+<td>切换控制台</td>
+</tr>
+<tr>
+<td>shift+atl+e</td>
+<td>在多个文件中切换</td>
+</tr>
+<tr>
+<td>alt+shift+p</td>
+<td>Project Manager: List Projects (Projects can be filtered by title, group and template by typing group: atom which would give all projects with the atom group.)</td>
+</tr>
+<tr>
+<td>Project Manager: Edit Project</td>
+<td>在Command Palette输入这个命令，用于编辑配置文件</td>
+</tr>
+</tbody>
+</table>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><table>
+<thead>
+<tr>
+<th>插件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atom Runner</td>
+<td>运行python脚本</td>
+</tr>
+<tr>
+<td>autocomplete-python</td>
+<td>python代码自动补全</td>
+</tr>
+<tr>
+<td>hydrogen</td>
+<td>在写脚本的同时运行ipython notebook</td>
+</tr>
+<tr>
+<td>linter+linter-pylama</td>
+<td>代码错误提示</td>
+</tr>
+<tr>
+<td>platformio-ide-terminal</td>
+<td>Atom内置终端</td>
+</tr>
+<tr>
+<td>project-manager</td>
+<td>快速切换你的多个项目文件夹</td>
+</tr>
+<tr>
+<td>python-autopep8</td>
+<td>自动规范化python代码(使用pep8准则)</td>
+</tr>
+<tr>
+<td>isort+python-isort</td>
+<td>自动规范化代码中的import</td>
+</tr>
+<tr>
+<td>python-tools+hyperclick</td>
+<td>ctrl+单击转到源代码</td>
+</tr>
+<tr>
+<td>todo-show</td>
+<td>管理你代码中的TODO(在你没有完成的代码最后加上TODO即可)</td>
+</tr>
+<tr>
+<td>python-debugger</td>
+<td>调试python代码</td>
+</tr>
+<tr>
+<td>atom-python-test</td>
+<td>测试python代码</td>
+</tr>
+<tr>
+<td>atom-python-virtualenv</td>
+<td>python的虚拟环境</td>
+</tr>
+<tr>
+<td>minimap</td>
+<td>代码缩略图</td>
+</tr>
+<tr>
+<td>highlight-selected</td>
+<td>选择某段代码自动高亮相同代码</td>
+</tr>
+<tr>
+<td>minimap-highlight-selected</td>
+<td>实现minimap高亮选择内容</td>
+</tr>
+<tr>
+<td>terminal-plus</td>
+<td>代替系统控制台</td>
+</tr>
+<tr>
+<td>project-manager</td>
+<td>快速打开储存的项目,管理多个项目</td>
+</tr>
+<tr>
+<td>autocomplete-paths</td>
+<td>自动补全文件路径</td>
+</tr>
+<tr>
+<td>file-icons</td>
+<td>左侧树状图下，根据文件类型左侧显示不同图标</td>
+</tr>
+<tr>
+<td>expose</td>
+<td>在多个文件中切换</td>
+</tr>
+</tbody>
+</table>
+<h4 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h4><table>
+<thead>
+<tr>
+<th>主题</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>atom-material-ui</td>
+<td>A dynamic UI theme for Atom that (kinda) follows Google’s Material Design Guidelines. Best with Atom Material Syntax.</td>
+</tr>
+</tbody>
+</table>
+<p>以上是常用的python插件, 足够满足你的日常使用了</p>
+
+          
         
       
     </div>
@@ -1407,7 +808,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/python-numpy-tutorial/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/02/12/Visual Studio Tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1426,7 +827,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/python-numpy-tutorial/" itemprop="url">Python Numpy Tutorial</a></h2>
+                <a class="post-title-link" href="/2018/02/12/Visual Studio Tips/" itemprop="url">Visual Studio Tips</a></h2>
         
 
         <div class="post-meta">
@@ -1438,8 +839,192 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T18:53:12+08:00">
-                2017-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-12T11:35:12+08:00">
+                2018-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/12/Visual Studio Tips/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/12/Visual Studio Tips/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/02/12/Visual Studio Tips/" class="leancloud_visitors" data-flag-title="Visual Studio Tips">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Visual Studio Tips
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="在-Visual-Studio-中开发代码而无需创建项目或解决方案"><a href="#在-Visual-Studio-中开发代码而无需创建项目或解决方案" class="headerlink" title="在 Visual Studio 中开发代码而无需创建项目或解决方案"></a>在 Visual Studio 中开发代码而无需创建项目或解决方案</h3><p>在 Visual Studio 2017 中，你可以在 Visual Studio 中打开几乎任何类型的基于目录的项目的代码，而无需创建解决方案或者项目文件。 这意味着（例如，在 Git 上找到一个代码项目时）可以克隆该项目，然后在 Visual Studio 中直接打开并开始开发，而无需创建解决方案或项目。</p>
+<h4 id="在任意位置打开代码"><a href="#在任意位置打开代码" class="headerlink" title="在任意位置打开代码"></a>在任意位置打开代码</h4><p>可以通过以下方式，在 Visual Studio 中打开代码：</p>
+<ul>
+<li>在 Visual Studio 菜单栏上，依次选择“文件”、“打开”、“文件夹”，然后浏览到代码位置。</li>
+<li>在包含该代码的文件夹的上下文（右键单击）菜单上，选择“在 Visual Studio 中打开”命令。</li>
+<li>选择 Visual Studio“开始”页上的“打开文件夹”链接。</li>
+<li>打开从 GitHub 存储库中克隆的代码。</li>
+</ul>
+<p><img src="assets/C/vs_tourtial01.png" alt=""><br><img src="assets/C/vs_tourtial02.png" alt=""></p>
+<h3 id="调试代码"><a href="#调试代码" class="headerlink" title="调试代码"></a>调试代码</h3><p>不通过项目或解决方案即可在 Visual Studio 中调试代码。 对某些语言进行调试时，可能需要在代码项目中指定一个有效的启动文件，例如脚本、可执行文件或项目。 调试代码时，Visual Studio 会首先运行此指定代码。</p>
+<p>工具栏上“开始”按钮旁的下拉列表框中列出了 Visual Studio 检测到的所有启动项，以及你在文件夹中专门选择的项。<br><img src="assets/C/vs_tourtial03.png" alt=""></p>
+<p>Visual Studio 会自动识别项目，但是需要你将脚本（例如 Python 和 JavaScript）显式选择为启动项之后，项目才会出现在列表中。 此外，某些启动项（例如 MSBuild 和 CMake）可能有多个生成配置，这些生成配置会显示在运行按钮的下拉列表中。</p>
+<h4 id="调试可执行文件"><a href="#调试可执行文件" class="headerlink" title="调试可执行文件"></a>调试可执行文件</h4><ul>
+<li><p>在 Visual Studio 菜单上，选择“调试”。 在下拉菜单上，选择该项目，或者选择想要在解决方案资源管理器中显示为启动项的项目或文件。</p>
+</li>
+<li><p>选择 F5 键开始调试。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/26/cannot start process the working directory '' does not exist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/26/cannot start process the working directory '' does not exist/" itemprop="url">cannot start process the working directory '' does not exist</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T11:24:12+08:00">
+                2017-12-26
               </time>
             
 
@@ -1479,8 +1064,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/08/python-numpy-tutorial/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/python-numpy-tutorial/" itemprop="commentCount"></span>
+                <a href="/2017/12/26/cannot start process the working directory '' does not exist/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/26/cannot start process the working directory '' does not exist/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1488,7 +1073,7 @@
 
           
           
-             <span id="/2017/10/08/python-numpy-tutorial/" class="leancloud_visitors" data-flag-title="Python Numpy Tutorial">
+             <span id="/2017/12/26/cannot start process the working directory '' does not exist/" class="leancloud_visitors" data-flag-title="cannot start process the working directory '' does not exist">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1506,7 +1091,7 @@
 
           
               <div class="post-description">
-                  Python Numpy Tutorial
+                  cannot start process the working directory '' does not exist
               </div>
           
 
@@ -1524,77 +1109,189 @@
 
       
         
-          <!--
-Python:
-  Simple data types
-    integer, float, string
-  Compound data types
-    tuple, list, dictionary, set
-  Flow control
-    if, while, for, try, with
-  Comprehensions, generators
-  Functions
-  Classes
-  Standard library
-    json, collections, itertools
+          
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>突然有一天启动pycharm时，Python Console报出错误：cannot start process the working directory ‘’ does not exist</p>
+<p>如图所示：</p>
+<p><img src="https://i.imgur.com/TcOV8gw.png" alt=""></p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><h4 id="删除项目文件夹下面的两个文件"><a href="#删除项目文件夹下面的两个文件" class="headerlink" title="删除项目文件夹下面的两个文件:"></a>删除项目文件夹下面的两个文件:</h4><p><img src="https://i.imgur.com/FDK0PK2.png" alt=""></p>
+<h4 id="再次重启pycharm打开项目文件，则恢复正常。"><a href="#再次重启pycharm打开项目文件，则恢复正常。" class="headerlink" title="再次重启pycharm打开项目文件，则恢复正常。"></a>再次重启pycharm打开项目文件，则恢复正常。</h4><p><img src="https://i.imgur.com/NscYHl3.png" alt=""></p>
 
-Numpy
--->
-<p>This tutorial was contributed by <a href="http://cs.stanford.edu/people/jcjohns/" target="_blank" rel="noopener">Justin Johnson</a>.</p>
-<p>We will use the Python programming language for all assignments in this course.<br>Python is a great general-purpose programming language on its own, but with the<br>help of a few popular libraries (numpy, scipy, matplotlib) it becomes a powerful<br>environment for scientific computing.</p>
-<p>We expect that many of you will have some experience with Python and numpy;<br>for the rest of you, this section will serve as a quick crash course both on<br>the Python programming language and on the use of Python for scientific<br>computing.</p>
-<p>Some of you may have previous knowledge in Matlab, in which case we also recommend the <a href="http://wiki.scipy.org/NumPy_for_Matlab_Users" target="_blank" rel="noopener">numpy for Matlab users</a> page.</p>
-<p>You can also find an <a href="https://github.com/kuleshov/cs228-material/blob/master/tutorials/python/cs228-python-tutorial.ipynb" target="_blank" rel="noopener">IPython notebook version of this tutorial here</a> created by <a href="http://web.stanford.edu/~kuleshov/" target="_blank" rel="noopener">Volodymyr Kuleshov</a> and <a href="https://symsys.stanford.edu/viewing/symsysaffiliate/21335" target="_blank" rel="noopener">Isaac Caswell</a> for <a href="http://cs.stanford.edu/~ermon/cs228/index.html" target="_blank" rel="noopener">CS 228</a>.</p>
-<p>Table of contents:</p>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/04/Statistical Inference and Estimation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/04/Statistical Inference and Estimation/" itemprop="url">Statistical Inference and Estimation</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T20:26:12+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/04/Statistical Inference and Estimation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/04/Statistical Inference and Estimation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/04/Statistical Inference and Estimation/" class="leancloud_visitors" data-flag-title="Statistical Inference and Estimation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Statistical Inference and Estimation
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Statistical-Inference"><a href="#Statistical-Inference" class="headerlink" title="Statistical Inference"></a>Statistical Inference</h1><p>Recall, a <strong>statistical inference</strong> aims at learning characteristics of the population from a sample; the population characteristics are <em>parameters</em> and sample characteristics are <em>statistics</em>.</p>
+<p>A <strong>statistical model</strong> is a representation of a complex phenomena that generated the data.</p>
 <ul>
-<li><a href="#python">Python</a><ul>
-<li><a href="#python-basic">Basic data types</a></li>
-<li><a href="#python-containers">Containers</a><ul>
-<li><a href="#python-lists">Lists</a></li>
-<li><a href="#python-dicts">Dictionaries</a></li>
-<li><a href="#python-sets">Sets</a></li>
-<li><a href="#python-tuples">Tuples</a></li>
+<li>It has mathematical formulations that describe relationships between random variables and parameters.</li>
+<li>It makes assumptions about the random variables, and sometimes parameters.</li>
+<li>A general form: data = model + residuals</li>
+<li>Model should explain most of the variation in the data</li>
+<li>Residuals are a representation of a lack-of-fit, that is of the portion of the data unexplained by the model.</li>
 </ul>
-</li>
-<li><a href="#python-functions">Functions</a></li>
-<li><a href="#python-classes">Classes</a></li>
-</ul>
-</li>
-<li><a href="#numpy">Numpy</a><ul>
-<li><a href="#numpy-arrays">Arrays</a></li>
-<li><a href="#numpy-array-indexing">Array indexing</a></li>
-<li><a href="#numpy-datatypes">Datatypes</a></li>
-<li><a href="#numpy-math">Array math</a></li>
-<li><a href="#numpy-broadcasting">Broadcasting</a></li>
-</ul>
-</li>
-<li><a href="#scipy">SciPy</a><ul>
-<li><a href="#scipy-image">Image operations</a></li>
-<li><a href="#scipy-matlab">MATLAB files</a></li>
-<li><a href="#scipy-dist">Distance between points</a></li>
-</ul>
-</li>
-<li><a href="#matplotlib">Matplotlib</a><ul>
-<li><a href="#matplotlib-plotting">Plotting</a></li>
-<li><a href="#matplotlib-subplots">Subplots</a></li>
-<li><a href="#matplotlib-images">Images</a></li>
-</ul>
-</li>
-</ul>
-<p><a name="python"></a></p>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>Python is a high-level, dynamically typed multiparadigm programming language.<br>Python code is often said to be almost like pseudocode, since it allows you<br>to express very powerful ideas in very few lines of code while being very<br>readable. As an example, here is an implementation of the classic quicksort<br>algorithm in Python:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(arr) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    pivot = arr[len(arr) / <span class="number">2</span>]</span><br><span class="line">    left = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &lt; pivot]</span><br><span class="line">    middle = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x == pivot]</span><br><span class="line">    right = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &gt; pivot]</span><br><span class="line">    <span class="keyword">return</span> quicksort(left) + middle + quicksort(right)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">print</span> quicksort([<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>])</span><br><span class="line"><span class="comment"># Prints "[1, 1, 2, 3, 6, 8, 10]"</span></span><br></pre></td></tr></table></figure>
-<h3 id="Python-versions"><a href="#Python-versions" class="headerlink" title="Python versions"></a>Python versions</h3><p>There are currently two different supported versions of Python, 2.7 and 3.4.<br>Somewhat confusingly, Python 3.0 introduced many backwards-incompatible changes<br>to the language, so code written for 2.7 may not work under 3.4 and vice versa.<br>For this class all code will use Python 2.7.</p>
-<p>You can check your Python version at the command line by running<br><code>python --version</code>.</p>
-<p><a name="python-basic"></a></p>
-<h3 id="Basic-data-types"><a href="#Basic-data-types" class="headerlink" title="Basic data types"></a>Basic data types</h3><p>Like most languages, Python has a number of basic types including integers,<br>floats, booleans, and strings. These data types behave in ways that are<br>familiar from other programming languages.</p>
-<p><strong>Numbers:</strong> Integers and floats work as you would expect from other languages:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">3</span></span><br><span class="line"><span class="keyword">print</span> type(x) <span class="comment"># Prints "&lt;type 'int'&gt;"</span></span><br><span class="line"><span class="keyword">print</span> x       <span class="comment"># Prints "3"</span></span><br><span class="line"><span class="keyword">print</span> x + <span class="number">1</span>   <span class="comment"># Addition; prints "4"</span></span><br><span class="line"><span class="keyword">print</span> x - <span class="number">1</span>   <span class="comment"># Subtraction; prints "2"</span></span><br><span class="line"><span class="keyword">print</span> x * <span class="number">2</span>   <span class="comment"># Multiplication; prints "6"</span></span><br><span class="line"><span class="keyword">print</span> x ** <span class="number">2</span>  <span class="comment"># Exponentiation; prints "9"</span></span><br><span class="line">x += <span class="number">1</span></span><br><span class="line"><span class="keyword">print</span> x  <span class="comment"># Prints "4"</span></span><br><span class="line">x *= <span class="number">2</span></span><br><span class="line"><span class="keyword">print</span> x  <span class="comment"># Prints "8"</span></span><br><span class="line">y = <span class="number">2.5</span></span><br><span class="line"><span class="keyword">print</span> type(y) <span class="comment"># Prints "&lt;type 'float'&gt;"</span></span><br><span class="line"><span class="keyword">print</span> y, y + <span class="number">1</span>, y * <span class="number">2</span>, y ** <span class="number">2</span> <span class="comment"># Prints "2.5 3.5 5.0 6.25"</span></span><br></pre></td></tr></table></figure>
-<p>Note that unlike many languages, Python does not have unary increment (<code>x++</code>)<br>or decrement (<code>x--</code>) operators.</p>
-<p>Python also has built-in types for long integers and complex numbers;<br>you can find all of the details<br><a href="https://docs.python.org/2/library/stdtypes.html#numeric-types-int-float-long-complex" target="_blank" rel="noopener">in the documentation</a>.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/python-numpy-tutorial/" rel="contents">
+            <a class="btn" href="/2017/12/04/Statistical Inference and Estimation/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1645,7 +1342,7 @@ Numpy
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Django[15]反向解析路由/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/04/One-Way Tables and Goodness-of-Fit Test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1664,7 +1361,7 @@ Numpy
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/Django[15]反向解析路由/" itemprop="url">Django[15]反向解析路由</a></h2>
+                <a class="post-title-link" href="/2017/12/04/One-Way Tables and Goodness-of-Fit Test/" itemprop="url">One-Way Tables and Goodness-of-Fit Test</a></h2>
         
 
         <div class="post-meta">
@@ -1676,8 +1373,8 @@ Numpy
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T18:15:02+08:00">
-                2017-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T20:26:12+08:00">
+                2017-12-04
               </time>
             
 
@@ -1699,8 +1396,8 @@ Numpy
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1717,8 +1414,8 @@ Numpy
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/08/Django[15]反向解析路由/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[15]反向解析路由/" itemprop="commentCount"></span>
+                <a href="/2017/12/04/One-Way Tables and Goodness-of-Fit Test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/04/One-Way Tables and Goodness-of-Fit Test/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1726,7 +1423,7 @@ Numpy
 
           
           
-             <span id="/2017/10/08/Django[15]反向解析路由/" class="leancloud_visitors" data-flag-title="Django[15]反向解析路由">
+             <span id="/2017/12/04/One-Way Tables and Goodness-of-Fit Test/" class="leancloud_visitors" data-flag-title="One-Way Tables and Goodness-of-Fit Test">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1744,7 +1441,7 @@ Numpy
 
           
               <div class="post-description">
-                  Django[15]反向解析路由
+                  One-Way Tables and Goodness-of-Fit Test
               </div>
           
 
@@ -1762,24 +1459,22 @@ Numpy
 
       
         
-          
-            <h1 id="给url起一个名字"><a href="#给url起一个名字" class="headerlink" title="给url起一个名字"></a>给url起一个名字</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url(<span class="string">r'^(?P&lt;id&gt;\d+)/$'</span>, views.posts_detail, name=<span class="string">"detail"</span>),</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>Template中</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"</span></span></span><span class="template-tag">&#123;% <span class="name"><span class="name">url</span></span> 'detail' id=obj.id %&#125;</span><span class="xml"><span class="tag"><span class="string">"</span>&gt;</span></span><span class="template-variable">&#123;&#123; obj.title &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Python代码中</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> redirect  <span class="comment"># 调转请求</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse  <span class="comment"># 反向解析url的</span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="keyword">return</span> redirect(reverse(<span class="string">"detail"</span>, kwargs=&#123;<span class="string">"id"</span>: <span class="number">3</span>&#125;))</span><br></pre></td></tr></table></figure>
-<ol>
-<li>Model中 get_absolute_url()</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reverse(<span class="string">"detail"</span>, kwargs=&#123;<span class="string">"id"</span>: self.id&#125;)</span><br><span class="line">    <span class="comment"># return "/post/&#123;&#125;/".format(self.id)</span></span><br><span class="line">    <span class="comment"># return "/post/%s/" % (self.id)</span></span><br></pre></td></tr></table></figure>
-<h1 id="url的命令空间-namespace"><a href="#url的命令空间-namespace" class="headerlink" title="url的命令空间 namespace"></a>url的命令空间 namespace</h1><p>在一级的url设置的，用于区分不用的app，因为不同的app下面可能存在同名的 url<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">url(<span class="string">r'^post/'</span>, include(posts_urls, namespace=<span class="string">"post"</span>)),</span><br><span class="line"></span><br><span class="line">&lt;a href=<span class="string">"&#123;% url 'post:detail' id=obj.id %&#125;"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_absolute_url</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reverse(<span class="string">"post:detail"</span>, kwargs=&#123;<span class="string">"id"</span>: self.id&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMjYxMzI1ODE4MA==.html?spm=a2h0j.8191423.playlist_content.5!18~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.18" target="_blank" rel="noopener">Django1.10教程 -15 -反向解析路由</a></p>
-
-          
+          <h1 id="Statistical-Inference"><a href="#Statistical-Inference" class="headerlink" title="Statistical Inference"></a>Statistical Inference</h1><p>Recall, a <strong>statistical inference</strong> aims at learning characteristics of the population from a sample; the population characteristics are <em>parameters</em> and sample characteristics are <em>statistics</em>.</p>
+<p>A <strong>statistical model</strong> is a representation of a complex phenomena that generated the data.</p>
+<ul>
+<li>It has mathematical formulations that describe relationships between random variables and parameters.</li>
+<li>It makes assumptions about the random variables, and sometimes parameters.</li>
+<li>A general form: data = model + residuals</li>
+<li>Model should explain most of the variation in the data</li>
+<li>Residuals are a representation of a lack-of-fit, that is of the portion of the data unexplained by the model.</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/04/One-Way Tables and Goodness-of-Fit Test/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1826,7 +1521,7 @@ Numpy
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Django[14]动态路由/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/01/手撸LinearRegression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1845,7 +1540,7 @@ Numpy
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/Django[14]动态路由/" itemprop="url">Django[14]动态路由</a></h2>
+                <a class="post-title-link" href="/2017/12/01/手撸LinearRegression/" itemprop="url">手撸LinearRegression</a></h2>
         
 
         <div class="post-meta">
@@ -1857,8 +1552,8 @@ Numpy
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T17:35:02+08:00">
-                2017-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T20:26:12+08:00">
+                2017-12-01
               </time>
             
 
@@ -1880,8 +1575,8 @@ Numpy
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -1898,8 +1593,8 @@ Numpy
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/08/Django[14]动态路由/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[14]动态路由/" itemprop="commentCount"></span>
+                <a href="/2017/12/01/手撸LinearRegression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/01/手撸LinearRegression/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1907,7 +1602,7 @@ Numpy
 
           
           
-             <span id="/2017/10/08/Django[14]动态路由/" class="leancloud_visitors" data-flag-title="Django[14]动态路由">
+             <span id="/2017/12/01/手撸LinearRegression/" class="leancloud_visitors" data-flag-title="手撸LinearRegression">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1925,7 +1620,7 @@ Numpy
 
           
               <div class="post-description">
-                  Django[14]动态路由
+                  手撸LinearRegression
               </div>
           
 
@@ -1943,17 +1638,15 @@ Numpy
 
       
         
-          
-            <h1 id="Django中的URL介绍"><a href="#Django中的URL介绍" class="headerlink" title="Django中的URL介绍"></a>Django中的URL介绍</h1><p><strong>/bbs/urls.py</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> urls <span class="keyword">as</span> posts_urls</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    url(<span class="string">r'^post/'</span>, include(posts_urls)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p><strong>/posts/urls.py</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^$'</span>, views.posts_home),</span><br><span class="line">    url(<span class="string">r'^detail/$'</span>, views.posts_detail),</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<p><a href="http://127.0.0.1:8000/post/detail/" target="_blank" rel="noopener">http://127.0.0.1:8000/post/detail/</a></p>
-<h1 id="动态路由和参数传递"><a href="#动态路由和参数传递" class="headerlink" title="动态路由和参数传递"></a>动态路由和参数传递</h1><h2 id="页面点击是通过设置a标签来调转的"><a href="#页面点击是通过设置a标签来调转的" class="headerlink" title="页面点击是通过设置a标签来调转的 "></a>页面点击是通过设置a标签来调转的 <a href="/post/detail/id.../"></a></h2><h2 id="后端view中通过id来查询不同的帖子对象"><a href="#后端view中通过id来查询不同的帖子对象" class="headerlink" title="后端view中通过id来查询不同的帖子对象"></a>后端view中通过id来查询不同的帖子对象</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url(<span class="string">r'^detail/(?P&lt;id&gt;\d+)/$'</span>, views.posts_detail,),</span><br></pre></td></tr></table></figure>
-<h2 id="在模板中组合起来"><a href="#在模板中组合起来" class="headerlink" title="在模板中组合起来"></a>在模板中组合起来</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2 <span class="class"><span class="keyword">class</span></span>=<span class="string">"blog-post-title"</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/post/detail/&#123;&#123;obj.id&#125;&#125;/"</span>&gt;</span>&#123;&#123; obj.title &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>via <a href="http://v.youku.com/v_show/id_XMjYwNDA0MzIzNg==.html?spm=a2h0j.8191423.playlist_content.5!17~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.17" target="_blank" rel="noopener">Django1.10教程 -14 -动态路由</a></p>
-
-          
+          <h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><p>解析式求解：</p>
+<h3 id="线性回归解析式解Python代码实现"><a href="#线性回归解析式解Python代码实现" class="headerlink" title="线性回归解析式解Python代码实现"></a>线性回归解析式解Python代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loadDataSet</span><span class="params">(fileName)</span>:</span>      <span class="comment">#general function to parse tab -delimited floats</span></span><br><span class="line">    numFeat = len(open(fileName).readline().split(<span class="string">'\t'</span>)) - <span class="number">1</span> <span class="comment">#get number of fields </span></span><br><span class="line">    dataMat = []; labelMat = []</span><br><span class="line">    fr = open(fileName)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fr.readlines():</span><br><span class="line">        lineArr =[]</span><br><span class="line">        curLine = line.strip().split(<span class="string">'\t'</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(numFeat):</span><br><span class="line">            lineArr.append(float(curLine[i]))</span><br><span class="line">        dataMat.append(lineArr)</span><br><span class="line">        labelMat.append(float(curLine[<span class="number">-1</span>]))</span><br><span class="line">    <span class="keyword">return</span> dataMat,labelMat</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">standRegres</span><span class="params">(xArr,yArr)</span>:</span></span><br><span class="line">    xMat = mat(xArr); yMat = mat(yArr).T</span><br><span class="line">    xTx = xMat.T*xMat</span><br><span class="line">    <span class="keyword">if</span> linalg.det(xTx) == <span class="number">0.0</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"This matrix is singular, cannot do inverse"</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    ws = xTx.I * (xMat.T*yMat)</span><br><span class="line">    <span class="keyword">return</span> ws</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/01/手撸LinearRegression/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2000,7 +1693,7 @@ Numpy
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Django[13]从数据库中获取某个对象/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/01/手撸PCA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -2019,7 +1712,7 @@ Numpy
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/Django[13]从数据库中获取某个对象/" itemprop="url">Django[13]从数据库中获取某个对象</a></h2>
+                <a class="post-title-link" href="/2017/12/01/手撸PCA/" itemprop="url">手撸PCA</a></h2>
         
 
         <div class="post-meta">
@@ -2031,8 +1724,8 @@ Numpy
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T17:08:02+08:00">
-                2017-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T20:26:12+08:00">
+                2017-12-01
               </time>
             
 
@@ -2054,8 +1747,8 @@ Numpy
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -2072,8 +1765,8 @@ Numpy
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/08/Django[13]从数据库中获取某个对象/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[13]从数据库中获取某个对象/" itemprop="commentCount"></span>
+                <a href="/2017/12/01/手撸PCA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/01/手撸PCA/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2081,7 +1774,7 @@ Numpy
 
           
           
-             <span id="/2017/10/08/Django[13]从数据库中获取某个对象/" class="leancloud_visitors" data-flag-title="Django[13]从数据库中获取某个对象">
+             <span id="/2017/12/01/手撸PCA/" class="leancloud_visitors" data-flag-title="手撸PCA">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2099,7 +1792,7 @@ Numpy
 
           
               <div class="post-description">
-                  Django[13]从数据库中获取某个对象
+                  手撸PCA
               </div>
           
 
@@ -2117,16 +1810,363 @@ Numpy
 
       
         
-          
-            <h1 id="获取对象"><a href="#获取对象" class="headerlink" title="获取对象"></a>获取对象</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">models.Post.objects.get(id=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">models.Post.objects.get(title=<span class="string">"隔壁老王是谁？"</span>)  <span class="comment"># 获取 标题是隔壁老王是谁？的帖子</span></span><br><span class="line"></span><br><span class="line">models.Post.objects.get(title__icontains=<span class="string">"隔壁"</span>)  <span class="comment"># 获取 标题中包含隔壁两个字 的帖子</span></span><br></pre></td></tr></table></figure>
-<h1 id="404页面，get-object-or-404"><a href="#404页面，get-object-or-404" class="headerlink" title="404页面，get_object_or_404"></a>404页面，get_object_or_404</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> get_object_or_404</span><br><span class="line"></span><br><span class="line">get_object_or_404(models.Post, id=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="新建了一个detail-html页面"><a href="#新建了一个detail-html页面" class="headerlink" title="新建了一个detail.html页面"></a>新建了一个detail.html页面</h1><p>用于展示的是帖子详情</p>
-<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><span class="template-variable">&#123;&#123;obj.title&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span>&gt;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><span class="template-variable">&#123;&#123;obj.content&#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="comment">&lt;!-- /.row --&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h1 id="修改views-py"><a href="#修改views-py" class="headerlink" title="修改views.py"></a>修改views.py</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_detail</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="comment"># obj = models.Post.objects.get(id=3)</span></span><br><span class="line">	obj = get_object_or_404(models.Post,id=<span class="number">1</span>)</span><br><span class="line">	data = &#123;</span><br><span class="line">		<span class="string">"obj"</span>:obj</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> render(request,<span class="string">"detail.html"</span>,data)</span><br></pre></td></tr></table></figure>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/F2lHBVY.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMjUzMTM1NDM2MA==.html?spm=a2h0j.8191423.playlist_content.5!16~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.16" target="_blank" rel="noopener">Django1.10教程 -13 -从数据库中获取某个对象</a></p>
+          <h2 id="降维技术"><a href="#降维技术" class="headerlink" title="降维技术"></a>降维技术</h2><h3 id="PCA-Principal-Component-Analysis-主成分分析"><a href="#PCA-Principal-Component-Analysis-主成分分析" class="headerlink" title="PCA(Principal Component Analysis,主成分分析)"></a>PCA(Principal Component Analysis,主成分分析)</h3><p>在PCA中，数据从原来的坐标系转换到了新的坐标系，新坐标系的选择是由数据本身决定的。第一个新坐标轴选择的是原始数据中方差最大的方向，第二个新坐标轴的选择和第一个坐标轴正交且具有最大方差的方向。该过程一直重复，重复次数为原始数据中特征的数目。然后会发现，大部分方差都包含在最前面的几个新坐标轴中。因此，我们可以忽略余下的坐标轴，即对数据进行了降维处理。</p>
+<h3 id="FA-Factor-Analysis-因子分析"><a href="#FA-Factor-Analysis-因子分析" class="headerlink" title="FA(Factor Analysis,因子分析)"></a>FA(Factor Analysis,因子分析)</h3><p>在因子分析中，假设在观察数据的生成中有一些观察不到的隐变量(latent variable)。假设观察数据是这些隐变量和某些噪声的线性组合。那么隐变量的数据可能比观察数据的数目少，也就是说通过找到隐变量就可以实现数据的降维。</p>
+<h3 id="ICA-Independent-Component-Analysis-独立成分分析"><a href="#ICA-Independent-Component-Analysis-独立成分分析" class="headerlink" title="ICA(Independent Component Analysis,独立成分分析)"></a>ICA(Independent Component Analysis,独立成分分析)</h3><p>ICA假设数据是从N个数据源生成的，这额鹅鹅鹅一点和因子分析有些类似。假设数据为多个数据源的混合观察结果，这些数据源之间在统计上是相互独立的，而在PCA中只假设数据是不相关的。同因子分析一样，如果数据源的数目少于观察数据的数目，则可以实现降维过程。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/01/手撸PCA/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/01/手撸ModelTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/01/手撸ModelTree/" itemprop="url">手撸ModelTree</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T20:26:12+08:00">
+                2017-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/01/手撸ModelTree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/01/手撸ModelTree/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/01/手撸ModelTree/" class="leancloud_visitors" data-flag-title="手撸ModelTree">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  手撸ModelTree
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="模型树"><a href="#模型树" class="headerlink" title="模型树"></a>模型树</h2><p>用树来对数据建模，除了把叶节点简单地设定为常数值之外，还有一种方法是把也节点设定为分段线性函数，这里所谓的分段线性(piecewis linear)是指模型由多个线性片段组成。即分段线性模型。</p>
+<p>相比CART，叶节点误差的计算需要稍加变化，对于给定的数据集，应该先用线性的模型来对它进行拟合，然后计算真实值与预测值的差值。最后将这些差值的平方求和就得到了所需的误差。</p>
+<h3 id="叶节点误差的计算："><a href="#叶节点误差的计算：" class="headerlink" title="叶节点误差的计算："></a>叶节点误差的计算：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">linearSolve</span><span class="params">(dataSet)</span>:</span>   <span class="comment">#helper function used in two places</span></span><br><span class="line">    m,n = shape(dataSet)</span><br><span class="line">    X = mat(ones((m,n))); Y = mat(ones((m,<span class="number">1</span>)))<span class="comment">#create a copy of data with 1 in 0th postion</span></span><br><span class="line">    X[:,<span class="number">1</span>:n] = dataSet[:,<span class="number">0</span>:n<span class="number">-1</span>]; Y = dataSet[:,<span class="number">-1</span>]<span class="comment">#and strip out Y</span></span><br><span class="line">    xTx = X.T*X</span><br><span class="line">    <span class="keyword">if</span> linalg.det(xTx) == <span class="number">0.0</span>:</span><br><span class="line">        <span class="keyword">raise</span> NameError(<span class="string">'This matrix is singular, cannot do inverse,\n\</span></span><br><span class="line"><span class="string">        try increasing the second value of ops'</span>)</span><br><span class="line">    ws = xTx.I * (X.T * Y)</span><br><span class="line">    <span class="keyword">return</span> ws,X,Y</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modelLeaf</span><span class="params">(dataSet)</span>:</span><span class="comment">#create linear model and return coeficients</span></span><br><span class="line">    ws,X,Y = linearSolve(dataSet)</span><br><span class="line">    <span class="keyword">return</span> ws</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modelErr</span><span class="params">(dataSet)</span>:</span></span><br><span class="line">    ws,X,Y = linearSolve(dataSet)</span><br><span class="line">    yHat = X * ws</span><br><span class="line">    <span class="keyword">return</span> sum(power(Y - yHat,<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/01/手撸ModelTree/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/01/手撸CART/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/01/手撸CART/" itemprop="url">手撸CART</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T20:26:12+08:00">
+                2017-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/01/手撸CART/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/01/手撸CART/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/01/手撸CART/" class="leancloud_visitors" data-flag-title="手撸CART">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  手撸CART
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>CART(Classification And Regression Trees)既可以用于分类还可以用于回归。</p>
+<p>CART算法只做二元切分，所以这里可以固定树的数据结构。树包含左键和右键，可以存储另一棵子树或者单个值。字典还包含特征和特征值这两个键，它们给出切分算法所有的特征和特征值。</p>
+<h3 id="建立树节点："><a href="#建立树节点：" class="headerlink" title="建立树节点："></a>建立树节点：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">classtreeNode()：</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,feat,val,right,left)</span>：</span></span><br><span class="line">		featureToSplitOn = feat</span><br><span class="line">		valueOfSplit = val</span><br><span class="line">		rightBranch = right</span><br><span class="line">		leftBranch = left</span><br></pre></td></tr></table></figure>
+<h3 id="函数createTree-的伪代码大致如下："><a href="#函数createTree-的伪代码大致如下：" class="headerlink" title="函数createTree()的伪代码大致如下："></a>函数createTree()的伪代码大致如下：</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">找到最佳的待切分特征：</span><br><span class="line">	如果该节点不能再分，将该节点存为叶节点</span><br><span class="line">	执行二元切分</span><br><span class="line">	在右子树调用createTree<span class="comment">()</span>方法</span><br><span class="line">	在左子树调用createTree<span class="comment">()</span>方法</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/01/手撸CART/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2164,7 +2204,7 @@ Numpy
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2214,7 +2254,7 @@ Numpy
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">108</span>
+                  <span class="site-state-item-count">174</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2236,7 +2276,7 @@ Numpy
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">156</span>
+                  <span class="site-state-item-count">224</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
