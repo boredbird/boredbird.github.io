@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/14/sklearn.svm/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/Exploratory Data Analysis(一)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/14/sklearn.svm/" itemprop="url">sklearn.svm</a></h2>
+                <a class="post-title-link" href="/2018/03/02/Exploratory Data Analysis(一)/" itemprop="url">Exploratory Data Analysis(一)</a></h2>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T22:06:12+08:00">
-                2017-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T10:26:12+08:00">
+                2018-03-02
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/14/sklearn.svm/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/sklearn.svm/" itemprop="commentCount"></span>
+                <a href="/2018/03/02/Exploratory Data Analysis(一)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/Exploratory Data Analysis(一)/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2017/11/14/sklearn.svm/" class="leancloud_visitors" data-flag-title="sklearn.svm">
+             <span id="/2018/03/02/Exploratory Data Analysis(一)/" class="leancloud_visitors" data-flag-title="Exploratory Data Analysis(一)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  sklearn.svm
+                  Exploratory Data Analysis(一)
               </div>
           
 
@@ -425,15 +425,425 @@
 
       
         
-          <h3 id="SVC-ovr"><a href="#SVC-ovr" class="headerlink" title="SVC:ovr"></a>SVC:ovr</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 'sepal length', 'sepal width', 'petal length', 'petal width'</span></span><br><span class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_accuracy</span><span class="params">(a, b, tip)</span>:</span></span><br><span class="line">    acc = a.ravel() == b.ravel()</span><br><span class="line">    <span class="keyword">print</span> tip + <span class="string">'正确率：'</span>, np.mean(acc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分类器</span></span><br><span class="line"><span class="comment"># clf = svm.SVC(C=0.1, kernel='linear', decision_function_shape='ovr')</span></span><br><span class="line"><span class="comment"># ‘ovo’ 一对一, ‘ovr’ 多对多  or None 无, default=None</span></span><br><span class="line">clf = svm.SVC(C=<span class="number">0.8</span>, kernel=<span class="string">'rbf'</span>, gamma=<span class="number">20</span>, decision_function_shape=<span class="string">'ovr'</span>)</span><br><span class="line">clf.fit(x_train, y_train.ravel())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 准确率</span></span><br><span class="line"><span class="comment"># score(X, y, sample_weight=None) ：Returns the mean accuracy on the given test data and labels.</span></span><br><span class="line"><span class="keyword">print</span> clf.score(x_train, y_train)  <span class="comment"># 精度</span></span><br><span class="line">y_hat = clf.predict(x_train)</span><br><span class="line">show_accuracy(y_hat, y_train, <span class="string">'训练集'</span>)</span><br><span class="line"><span class="keyword">print</span> clf.score(x_test, y_test)</span><br><span class="line">y_hat = clf.predict(x_test)</span><br><span class="line">show_accuracy(y_hat, y_test, <span class="string">'测试集'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># decision_function</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'decision_function:\n'</span>, clf.decision_function(x_train)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'\npredict:\n'</span>, clf.predict(x_train)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># decision_function(): Distance of the samples X to the separating hyperplane.</span></span><br><span class="line"><span class="string"># 分类归属于距离数值最小的类别，距离有正有负只是平面的两侧而已</span></span><br><span class="line"><span class="string">decision_function:</span></span><br><span class="line"><span class="string">[[-0.25631211  0.80529378  2.45101833]</span></span><br><span class="line"><span class="string"> [ 2.35232967  0.82494155 -0.17727121]</span></span><br><span class="line"><span class="string"> [ 2.45418203  0.77495649 -0.22913852]</span></span><br><span class="line"><span class="string"> [ 2.45421283  0.77518383 -0.22939666]</span></span><br><span class="line"><span class="string"> [-0.24854074  2.39614366  0.85239708]</span></span><br><span class="line"><span class="string"> [ 2.46621083  0.76927647 -0.23548729]</span></span><br><span class="line"><span class="string"> [ 2.45410944  0.77775367 -0.2318631 ]</span></span><br><span class="line"><span class="string"> [-0.24677667  0.84905678  2.39771989]</span></span><br><span class="line"><span class="string"> [-0.46050688  1.21154683  2.24896005]</span></span><br><span class="line"><span class="string"> [-0.26893412  0.80449581  2.46443831]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">predict:</span></span><br><span class="line"><span class="string">[2 0 0 0 1 0 0 2 2 2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 画图</span></span><br><span class="line">x1_min, x1_max = X[:, <span class="number">0</span>].min(), X[:, <span class="number">0</span>].max()  <span class="comment"># 第0列的范围</span></span><br><span class="line">x2_min, x2_max = X[:, <span class="number">1</span>].min(), X[:, <span class="number">1</span>].max()  <span class="comment"># 第1列的范围</span></span><br><span class="line">x1, x2 = np.mgrid[x1_min:x1_max:<span class="number">200j</span>, x2_min:x2_max:<span class="number">200j</span>]  <span class="comment"># 生成网格采样点</span></span><br><span class="line"><span class="comment"># numpy.ndarray.flat : A 1-D iterator over the array.</span></span><br><span class="line"><span class="comment"># This is a numpy.flatiter instance, which acts similarly to,</span></span><br><span class="line"><span class="comment"># but is not a subclass of, Python’s built-in iterator object.</span></span><br><span class="line">grid_test = np.stack((x1.flat, x2.flat), axis=<span class="number">1</span>)  <span class="comment"># 测试点</span></span><br><span class="line"><span class="comment"># print 'grid_test = \n', grid_test</span></span><br><span class="line"><span class="comment"># Z = clf.decision_function(grid_test)    # 样本到决策面的距离</span></span><br><span class="line"><span class="comment"># print Z</span></span><br><span class="line">grid_hat = clf.predict(grid_test)       <span class="comment"># 预测分类值</span></span><br><span class="line"><span class="keyword">print</span> grid_hat</span><br><span class="line">grid_hat = grid_hat.reshape(x1.shape)  <span class="comment"># 使之与输入的形状相同</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">u'SimHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">cm_light = mpl.colors.ListedColormap([<span class="string">'#A0FFA0'</span>, <span class="string">'#FFA0A0'</span>, <span class="string">'#A0A0FF'</span>])</span><br><span class="line">cm_dark = mpl.colors.ListedColormap([<span class="string">'g'</span>, <span class="string">'r'</span>, <span class="string">'b'</span>])</span><br><span class="line">plt.pcolormesh(x1, x2, grid_hat, cmap=cm_light)</span><br><span class="line"></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, edgecolors=<span class="string">'k'</span>, s=<span class="number">50</span>, cmap=cm_dark)      <span class="comment"># 样本</span></span><br><span class="line">plt.scatter(x_test[:, <span class="number">0</span>], x_test[:, <span class="number">1</span>], s=<span class="number">120</span>, facecolors=<span class="string">'none'</span>, zorder=<span class="number">10</span>)     <span class="comment"># 圈中测试集样本</span></span><br><span class="line">plt.xlabel(iris_feature[<span class="number">0</span>], fontsize=<span class="number">13</span>)</span><br><span class="line">plt.ylabel(iris_feature[<span class="number">1</span>], fontsize=<span class="number">13</span>)</span><br><span class="line">plt.xlim(x1_min, x1_max)</span><br><span class="line">plt.ylim(x2_min, x2_max)</span><br><span class="line">plt.title(<span class="string">u'鸢尾花SVM二特征分类'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">plt.grid()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/Figure_1.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/14/sklearn.svm/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="1-Exploratory-Data-Analysis"><a href="#1-Exploratory-Data-Analysis" class="headerlink" title="1. Exploratory Data Analysis"></a>1. Exploratory Data Analysis</h1><p>This chapter presents the assumptions, principles, and techniques necessary to gain insight into data via EDA–exploratory data analysis.</p>
+<h2 id="1-1-EDA-Introduction"><a href="#1-1-EDA-Introduction" class="headerlink" title="1.1. EDA Introduction"></a>1.1. EDA Introduction</h2><p>What is exploratory data analysis? How did it begin? How and where did it originate? How is it differentiated from other data analysis approaches, such as classical and Bayesian? Is EDA the same as statistical graphics? What role does statistical graphics play in EDA? Is statistical graphics identical to EDA?<br>These questions and related questions are dealt with in this section. This section answers these questions and provides the necessary frame of reference for EDA assumptions, principles, and techniques.</p>
+<h3 id="1-1-1-What-is-EDA"><a href="#1-1-1-What-is-EDA" class="headerlink" title="1.1.1. What is EDA?"></a>1.1.1. What is EDA?</h3><h4 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h4><p>Exploratory Data Analysis (EDA) is an approach/philosophy for data analysis that employs a variety of techniques (mostly graphical) to</p>
+<blockquote>
+<ol>
+<li>maximize insight into a data set;</li>
+<li>uncover underlying structure;</li>
+<li>extract important variables;</li>
+<li>detect outliers and anomalies;</li>
+<li>test underlying assumptions;</li>
+<li>develop parsimonious models; and</li>
+<li>determine optimal factor settings.</li>
+</ol>
+</blockquote>
+<h4 id="Focus"><a href="#Focus" class="headerlink" title="Focus"></a>Focus</h4><p>The EDA approach is precisely that–an approach–not a set of techniques, but an attitude/philosophy about how a data analysis should be carried out.</p>
+<h4 id="Philosophy"><a href="#Philosophy" class="headerlink" title="Philosophy"></a>Philosophy</h4><p>EDA is not identical to statistical graphics although the two terms are used almost interchangeably. Statistical graphics is a collection of techniques–all graphically based and all focusing on one data characterization aspect. EDA encompasses a larger venue; EDA is an approach to data analysis that postpones the usual assumptions about what kind of model the data follow with the more direct approach of allowing the data itself to reveal its underlying structure and model. EDA is not a mere collection of techniques; EDA is a philosophy as to how we dissect a data set; what we look for; how we look; and how we interpret. It is true that EDA heavily uses the collection of techniques that we call “statistical graphics”, but it is not identical to statistical graphics per se.</p>
+<h4 id="History"><a href="#History" class="headerlink" title="History"></a>History</h4><p>The seminal work in EDA is Exploratory Data Analysis, Tukey, (1977). Over the years it has benefitted from other noteworthy publications such as Data Analysis and Regression, Mosteller and Tukey (1977), Interactive Data Analysis, Hoaglin (1977), The ABC’s of EDA, Velleman and Hoaglin (1981) and has gained a large following as “the” way to analyze a data set.</p>
+<h4 id="Techniques"><a href="#Techniques" class="headerlink" title="Techniques"></a>Techniques</h4><p>Most EDA techniques are graphical in nature with a few quantitative techniques. The reason for the heavy reliance on graphics is that by its very nature the main role of EDA is to open-mindedly explore, and graphics gives the analysts unparalleled power to do so, enticing the data to reveal its structural secrets, and being always ready to gain some new, often unsuspected, insight into the data. In combination with the natural pattern-recognition capabilities that we all possess, graphics provides, of course, unparalleled power to carry this out.<br>The particular graphical techniques employed in EDA are often quite simple, consisting of various techniques of:</p>
+<blockquote>
+<ol>
+<li>Plotting the raw data (such as data traces,histograms, bihistograms, probability plots,lag plots, block plots, and Youden plots.</li>
+<li>Plotting simple statistics such as mean plots, standard deviation plots, box plots, and main effects plots of the raw data.</li>
+<li>Positioning such plots so as to maximize our natural pattern-recognition abilities, such as using multiple plots per page.</li>
+</ol>
+</blockquote>
+<h3 id="1-1-2-How-Does-Exploratory-Data-Analysis-differ-from-Classical-Data-Analysis"><a href="#1-1-2-How-Does-Exploratory-Data-Analysis-differ-from-Classical-Data-Analysis" class="headerlink" title="1.1.2. How Does Exploratory Data Analysis differ from Classical Data Analysis?"></a>1.1.2. How Does Exploratory Data Analysis differ from Classical Data Analysis?</h3><h4 id="Data-Analysis-Approaches"><a href="#Data-Analysis-Approaches" class="headerlink" title="Data Analysis Approaches"></a>Data Analysis Approaches</h4><p>EDA is a data analysis approach. What other data analysis approaches exist and how does EDA differ from these other approaches?</p>
+<p>Three popular data analysis approaches are:</p>
+<blockquote>
+<ol>
+<li>Classical</li>
+<li>Exploratory (EDA)</li>
+<li>Bayesian</li>
+</ol>
+</blockquote>
+<h4 id="Paradigms-for-Analysis-Techniques"><a href="#Paradigms-for-Analysis-Techniques" class="headerlink" title="Paradigms for Analysis Techniques"></a>Paradigms for Analysis Techniques</h4><p>These three approaches are similar in that they all start with a general science/engineering problem and all yield science/engineering conclusions. The difference is the sequence and focus of the intermediate steps.</p>
+<ul>
+<li>For classical analysis, the sequence is<pre><code>Problem =&gt; Data =&gt; Model =&gt; Analysis =&gt; Conclusions
+</code></pre></li>
+<li>For EDA, the sequence is<pre><code>Problem =&gt; Data =&gt; Analysis =&gt; Model =&gt; Conclusions
+</code></pre></li>
+<li>For Bayesian, the sequence is<pre><code>Problem =&gt; Data =&gt; Model =&gt; Prior Distribution =&gt; Analysis =&gt; Conclusions
+</code></pre></li>
+</ul>
+<h4 id="Method-of-dealing-with-underlying-model-for-the-data-distinguishes-the-3-approaches"><a href="#Method-of-dealing-with-underlying-model-for-the-data-distinguishes-the-3-approaches" class="headerlink" title="Method of dealing with underlying model for the data distinguishes the 3 approaches"></a>Method of dealing with underlying model for the data distinguishes the 3 approaches</h4><p>Thus for classical analysis, the data collection is followed by the imposition of a model (normality, linearity, etc.) and the analysis, estimation, and testing that follows are focused on the parameters of that model.</p>
+<p>For EDA, the data collection is not followed by a model imposition; rather it is followed immediately by analysis with a goal of inferring what model would be appropriate.</p>
+<p>Finally, for a Bayesian analysis, the analyst attempts to incorporate scientific/engineering knowledge/expertise into the analysis by imposing a data-independent distribution on the parameters of the selected model; the analysis thus consists of formally combining both the prior distribution on the parameters and the collected data to jointly make inferences and/or test assumptions about the model parameters.</p>
+<p>In the real world, data analysts freely mix elements of all of the above three approaches (and other approaches). The above distinctions were made to emphasize the major differences among the three approaches.</p>
+<p>Further discussion of the distinction between the classical and EDA approaches    Focusing on EDA versus classical, these two approaches differ as follows:</p>
+<blockquote>
+<ol>
+<li>Models</li>
+<li>Focus</li>
+<li>Techniques</li>
+<li>Rigor</li>
+<li>Data Treatment</li>
+<li>Assumptions</li>
+</ol>
+</blockquote>
+<h3 id="1-1-3-How-Does-Exploratory-Data-Analysis-Differ-from-Summary-Analysis"><a href="#1-1-3-How-Does-Exploratory-Data-Analysis-Differ-from-Summary-Analysis" class="headerlink" title="1.1.3 How Does Exploratory Data Analysis Differ from Summary Analysis?"></a>1.1.3 How Does Exploratory Data Analysis Differ from Summary Analysis?</h3><h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>A summary analysis is simply a numeric reduction of a historical data set. It is quite passive. Its focus is in the past. Quite commonly, its purpose is to simply arrive at a few key statistics (for example, mean and standard deviation) which may then either replace the data set or be added to the data set in the form of a summary table.</p>
+<h4 id="Exploratory"><a href="#Exploratory" class="headerlink" title="Exploratory"></a>Exploratory</h4><p>In contrast, EDA has as its broadest goal the desire to gain insight into the engineering/scientific process behind the data. Whereas summary statistics are passive and historical, EDA is active and futuristic. In an attempt to “understand” the process and improve it in the future, EDA uses the data as a “window” to peer into the heart of the process that generated the data. There is an archival role in the research and manufacturing world for summary statistics, but there is an enormously larger role for the EDA approach.</p>
+<h3 id="1-1-4-What-are-the-EDA-Goals"><a href="#1-1-4-What-are-the-EDA-Goals" class="headerlink" title="1.1.4. What are the EDA Goals?"></a>1.1.4. What are the EDA Goals?</h3><h4 id="Primary-and-Secondary-Goals"><a href="#Primary-and-Secondary-Goals" class="headerlink" title="Primary and Secondary Goals"></a>Primary and Secondary Goals</h4><p>The primary goal of EDA is to maximize the analyst’s insight into a data set and into the underlying structure of a data set, while providing all of the specific items that an analyst would want to extract from a data set, such as:</p>
+<pre><code>1. a good-fitting, parsimonious model
+2. a list of outliers
+3. a sense of robustness of conclusions
+4. estimates for parameters
+5. uncertainties for those estimates
+6. a ranked list of important factors
+7. conclusions as to whether individual factors are statistically significant
+8. optimal settings
+</code></pre><h4 id="Insight-into-the-Data"><a href="#Insight-into-the-Data" class="headerlink" title="Insight into the Data"></a>Insight into the Data</h4><p>Insight implies detecting and uncovering underlying structure in the data. Such underlying structure may not be encapsulated in the list of items above; such items serve as the specific targets of an analysis, but the real insight and “feel” for a data set comes as the analyst judiciously probes and explores the various subtleties of the data. The “feel” for the data comes almost exclusively from the application of various graphical techniques, the collection of which serves as the window into the essence of the data. Graphics are irreplaceable–there are no quantitative analogues that will give the same insight as well-chosen graphics.</p>
+<p>To get a “feel” for the data, it is not enough for the analyst to know what is in the data; the analyst also must know what is not in the data, and the only way to do that is to draw on our own human pattern-recognition and comparative abilities in the context of a series of judicious graphical techniques applied to the data.</p>
+<h3 id="1-1-5-The-Role-of-Graphics"><a href="#1-1-5-The-Role-of-Graphics" class="headerlink" title="1.1.5.The Role of Graphics"></a>1.1.5.The Role of Graphics</h3><h4 id="Graphical"><a href="#Graphical" class="headerlink" title="Graphical"></a>Graphical</h4><p>Statistics and data analysis procedures can broadly be split into two parts:</p>
+<ol>
+<li>quantitative</li>
+<li>graphical</li>
+</ol>
+<h4 id="Quantitative"><a href="#Quantitative" class="headerlink" title="Quantitative"></a>Quantitative</h4><p>Quantitative techniques are the set of statistical procedures that yield numeric or tabular output. Examples of quantitative techniques include:</p>
+<ol>
+<li>hypothesis testing</li>
+<li>analysis of variance</li>
+<li>point estimates and confidence intervals</li>
+<li>least squares regression</li>
+</ol>
+<p>These and similar techniques are all valuable and are mainstream in terms of classical analysis.</p>
+<h4 id="Graphical-1"><a href="#Graphical-1" class="headerlink" title="Graphical"></a>Graphical</h4><p>On the other hand, there is a large collection of statistical tools that we generally refer to as graphical techniques. These include:</p>
+<ul>
+<li>scatter plots</li>
+<li>histograms</li>
+<li>probability plots</li>
+<li>residual plots</li>
+<li>box plots</li>
+<li>block plots</li>
+</ul>
+<h4 id="EDA-Approach-Relies-Heavily-on-Graphical-Techniques"><a href="#EDA-Approach-Relies-Heavily-on-Graphical-Techniques" class="headerlink" title="EDA Approach Relies Heavily on Graphical Techniques"></a>EDA Approach Relies Heavily on Graphical Techniques</h4><p>The EDA approach relies heavily on these and similar graphical techniques. Graphical procedures are not just tools that we could use in an EDA context, they are tools that we must use. Such graphical tools are the shortest path to gaining insight into a data set in terms of</p>
+<ul>
+<li>testing assumptions</li>
+<li>model selection</li>
+<li>model validation</li>
+<li>estimator selection</li>
+<li>relationship identification</li>
+<li>factor effect determination</li>
+<li>outlier detection</li>
+</ul>
+<p>If one is not using statistical graphics, then one is forfeiting insight into one or more aspects of the underlying structure of the data.</p>
+<h3 id="1-1-6-An-EDA-Graphics-Example"><a href="#1-1-6-An-EDA-Graphics-Example" class="headerlink" title="1.1.6. An EDA/Graphics Example"></a>1.1.6. An EDA/Graphics Example</h3><h4 id="Anscombe-Example"><a href="#Anscombe-Example" class="headerlink" title="Anscombe Example"></a>Anscombe Example</h4><p>A simple, classic (Anscombe) example of the central role that graphics play in terms of providing insight into a data set starts with the following data set:</p>
+<p><code>Data</code></p>
+<table>
+<thead>
+<tr>
+<th>X</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.00</td>
+<td>8.04</td>
+</tr>
+<tr>
+<td> 8.00</td>
+<td>6.95</td>
+</tr>
+<tr>
+<td>13.00</td>
+<td>7.58</td>
+</tr>
+<tr>
+<td> 9.00</td>
+<td>8.81</td>
+</tr>
+<tr>
+<td>11.00</td>
+<td>8.33</td>
+</tr>
+<tr>
+<td>14.00</td>
+<td>9.96</td>
+</tr>
+<tr>
+<td> 6.00</td>
+<td>7.24</td>
+</tr>
+<tr>
+<td> 4.00</td>
+<td>4.26</td>
+</tr>
+<tr>
+<td>12.00</td>
+<td>10.84</td>
+</tr>
+<tr>
+<td> 7.00</td>
+<td>4.82</td>
+</tr>
+<tr>
+<td> 5.00</td>
+<td>5.68</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Summary-Statistics"><a href="#Summary-Statistics" class="headerlink" title="Summary Statistics"></a>Summary Statistics</h4><p>If the goal of the analysis is to compute summary statistics plus determine the best linear fit for Y as a function of X, the results might be given as:</p>
+<pre><code>N = 11
+Mean of X = 9.0
+Mean of Y = 7.5
+Intercept = 3
+Slope = 0.5
+Residual standard deviation = 1.237
+Correlation = 0.816
+</code></pre><p>The above quantitative analysis, although valuable, gives us only limited insight into the data.</p>
+<h4 id="Scatter-Plot"><a href="#Scatter-Plot" class="headerlink" title="Scatter Plot"></a>Scatter Plot</h4><p>In contrast, the following simple scatter plotof the data</p>
+<p><img src="assets/EDA/anscomb1.gif" alt=""></p>
+<p>suggests the following:</p>
+<ul>
+<li><ol>
+<li>The data set “behaves like” a linear curve with some scatter;</li>
+</ol>
+</li>
+<li><ol>
+<li>there is no justification for a more complicated model (e.g., quadratic);</li>
+</ol>
+</li>
+<li><ol>
+<li>there are no outliers;</li>
+</ol>
+</li>
+<li><ol>
+<li>the vertical spread of the data appears to be of equal height irrespective of the X-value; this indicates that the data are equally-precise throughout and so a “regular” (that is, equi-weighted) fit is appropriate.</li>
+</ol>
+</li>
+</ul>
+<h4 id="Three-Additional-Data-Sets"><a href="#Three-Additional-Data-Sets" class="headerlink" title="Three Additional Data Sets"></a>Three Additional Data Sets</h4><p>This kind of characterization for the data serves as the core for getting insight/feel for the data. Such insight/feel does not come from the quantitative statistics; on the contrary, calculations of quantitative statistics such as intercept and slope should be subsequent to the characterization and will make sense only if the characterization is true. To illustrate the loss of information that results when the graphics insight step is skipped, consider the following three data sets [Anscombe data sets 2, 3, and 4]:</p>
+<table>
+<thead>
+<tr>
+<th>X2</th>
+<th>Y2</th>
+<th>X3</th>
+<th>Y3</th>
+<th>X4</th>
+<th>Y4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.00</td>
+<td>9.14</td>
+<td>10.00</td>
+<td>7.46</td>
+<td>8.00</td>
+<td>6.58</td>
+</tr>
+<tr>
+<td> 8.00</td>
+<td>8.14</td>
+<td>8.00</td>
+<td>6.77</td>
+<td>8.00</td>
+<td>5.76</td>
+</tr>
+<tr>
+<td>13.00</td>
+<td>8.74</td>
+<td>13.00</td>
+<td>12.74</td>
+<td>8.00</td>
+<td>7.71</td>
+</tr>
+<tr>
+<td> 9.00</td>
+<td>8.77</td>
+<td>9.00</td>
+<td>7.11</td>
+<td>8.00</td>
+<td>8.84</td>
+</tr>
+<tr>
+<td>11.00</td>
+<td>9.26</td>
+<td>11.00</td>
+<td>7.81</td>
+<td>8.00</td>
+<td>8.47</td>
+</tr>
+<tr>
+<td>14.00</td>
+<td>8.10</td>
+<td>14.00</td>
+<td>8.84</td>
+<td>8.00</td>
+<td>7.04</td>
+</tr>
+<tr>
+<td> 6.00</td>
+<td>6.13</td>
+<td>6.00</td>
+<td>6.08</td>
+<td>8.00</td>
+<td>5.25</td>
+</tr>
+<tr>
+<td> 4.00</td>
+<td>3.10</td>
+<td>4.00</td>
+<td>5.39</td>
+<td>19.00</td>
+<td>12.50</td>
+</tr>
+<tr>
+<td>12.00</td>
+<td>9.13</td>
+<td>12.00</td>
+<td>8.15</td>
+<td>8.00</td>
+<td>5.56</td>
+</tr>
+<tr>
+<td> 7.00</td>
+<td>7.26</td>
+<td>7.00</td>
+<td>6.42</td>
+<td>8.00</td>
+<td>7.91</td>
+</tr>
+<tr>
+<td> 5.00</td>
+<td>4.74</td>
+<td>5.00</td>
+<td>5.73</td>
+<td>8.00</td>
+<td>6.89</td>
+</tr>
+</tbody>
+</table>
+<h5 id="Quantitative-Statistics-for-Data-Set-2"><a href="#Quantitative-Statistics-for-Data-Set-2" class="headerlink" title="Quantitative Statistics for Data Set 2"></a>Quantitative Statistics for Data Set 2</h5><p> A quantitative analysis on data set 2 yields</p>
+<pre><code>N = 11
+Mean of X = 9.0
+Mean of Y = 7.5
+Intercept = 3
+Slope = 0.5
+Residual standard deviation = 1.237
+Correlation = 0.816
+</code></pre><p> which is identical to the analysis for data set 1. One might naively assume that the two data sets are “equivalent” since that is what the statistics tell us; but what do the statistics not tell us?</p>
+<h5 id="Quantitative-Statistics-for-Data-Sets-3-and-4"><a href="#Quantitative-Statistics-for-Data-Sets-3-and-4" class="headerlink" title="Quantitative Statistics for Data Sets 3 and 4"></a>Quantitative Statistics for Data Sets 3 and 4</h5><p> Remarkably, a quantitative analysis on data sets 3 and 4 also yields</p>
+<pre><code>N = 11
+Mean of X = 9.0
+Mean of Y = 7.5
+Intercept = 3
+Slope = 0.5
+Residual standard deviation = 1.236
+Correlation = 0.816 (0.817 for data set 4)
+</code></pre><p> which implies that in some quantitative sense, all four of the data sets are “equivalent”. In fact, the four data sets are far from “equivalent” and a scatter plot of each data set, which would be step 1 of any EDA approach, would tell us that immediately.</p>
+<h5 id="Scatter-Plots"><a href="#Scatter-Plots" class="headerlink" title="Scatter Plots"></a>Scatter Plots</h5><p><img src="assets/EDA/anscomb4.gif" alt=""></p>
+<h6 id="Interpretation-of-Scatter-Plots"><a href="#Interpretation-of-Scatter-Plots" class="headerlink" title="Interpretation of Scatter Plots"></a>Interpretation of Scatter Plots</h6><p>Conclusions from the scatter plots are:</p>
+<blockquote>
+<ol>
+<li>data set 1 is clearly linear with some scatter.</li>
+<li>data set 2 is clearly quadratic.</li>
+<li>data set 3 clearly has an outlier.</li>
+<li>data set 4 is obviously the victim of a poor experimental design with a single point far removed from the bulk of the data “wagging the dog”.</li>
+</ol>
+</blockquote>
+<h6 id="Importance-of-Exploratory-Analysis"><a href="#Importance-of-Exploratory-Analysis" class="headerlink" title="Importance of Exploratory Analysis"></a>Importance of Exploratory Analysis</h6><p>These points are exactly the substance that provide and define “insight” and “feel” for a data set. They are the goals and the fruits of an open exploratory data analysis (EDA) approach to the data.</p>
+<p> Quantitative statistics are not wrong per se, but they are incomplete. They are incomplete because they are numericsummaries which in the summarization operation do a good job of focusing on a particular aspect of the data (e.g., location, intercept, slope, degree of relatedness, etc.) by judiciously reducing the data to a few numbers. Doing so also filters the data, necessarily omitting and screening out other sometimes crucial information in the focusing operation. Quantitative statistics focus but also filter; and filtering is exactly what makes the quantitative approach incomplete at best and misleading at worst.</p>
+<p>The estimated intercepts (= 3) and slopes (= 0.5) for data sets 2, 3, and 4 are misleading because the estimation is done in the context of an assumed linear model and that linearity assumption is the fatal flaw in this analysis.</p>
+<p>The EDA approach of deliberately postponing the model selection until further along in the analysis has many rewards, not the least of which is the ultimate convergence to a much-improved model and the formulation of valid and supportable scientific and engineering conclusions.</p>
+<h3 id="1-1-7-General-Problem-Categories"><a href="#1-1-7-General-Problem-Categories" class="headerlink" title="1.1.7.General Problem Categories"></a>1.1.7.General Problem Categories</h3><h4 id="Problem-Classification"><a href="#Problem-Classification" class="headerlink" title="Problem Classification"></a>Problem Classification</h4><p>The following table is a convenient way to classify EDA problems.</p>
+<h5 id="Univariate-and-Control"><a href="#Univariate-and-Control" class="headerlink" title="Univariate and Control"></a>Univariate and Control</h5><h6 id="UNIVARIATE"><a href="#UNIVARIATE" class="headerlink" title="UNIVARIATE"></a>UNIVARIATE</h6><pre><code>Data:
+    A single column of numbers, Y.
+Model:
+    y = constant + error
+Output:
+    1. A number (the estimated constant in the model).
+    2. An estimate of uncertainty for the constant.
+    3. An estimate of the distribution for the error.
+Techniques:
+    • 4-Plot
+    • Probability Plot
+    • PPCC Plot
+</code></pre><h6 id="CONTROL"><a href="#CONTROL" class="headerlink" title="CONTROL"></a>CONTROL</h6><pre><code>Data:
+    A single column of numbers, Y.
+Model:
+    y = constant + error
+Output:
+    A &quot;yes&quot; or &quot;no&quot; to the question &quot;Is the system out of control?&quot;.
+Techniques:
+    • Control Charts
+</code></pre><h4 id="Comparative-and-Screening"><a href="#Comparative-and-Screening" class="headerlink" title="Comparative and Screening"></a>Comparative and Screening</h4><h5 id="COMPARATIVE"><a href="#COMPARATIVE" class="headerlink" title="COMPARATIVE"></a>COMPARATIVE</h5><pre><code>Data:
+    A single response variable and k independent variables (Y, X1, X2, ... , Xk), primary focus is onone (the primary factor) of these independent variables.
+Model:
+    y = f(x1, x2, ..., xk) + error
+Output:
+    A &quot;yes&quot; or &quot;no&quot; to the question &quot;Is the primary factor significant?&quot;.
+Techniques:
+    • Block Plot
+    • Scatter Plot
+    • Box Plot
+</code></pre><h5 id="SCREENING"><a href="#SCREENING" class="headerlink" title="SCREENING"></a>SCREENING</h5><pre><code>Data:
+    A single response variable and k independent variables (Y, X1, X2, ... , Xk).
+Model:
+    y = f(x1, x2, ..., xk) + error
+Output:
+    1. A ranked list (from most important to least important) of factors.
+    2. Best settings for the factors.
+    3. A good model/prediction equation relating Y to the factors.
+Techniques:
+    • Block Plot
+    • Probability Plot
+    • Bihistogram
+</code></pre><h4 id="Optimization-and-Regression"><a href="#Optimization-and-Regression" class="headerlink" title="Optimization and Regression"></a>Optimization and Regression</h4><h5 id="OPTIMIZATION"><a href="#OPTIMIZATION" class="headerlink" title="OPTIMIZATION"></a>OPTIMIZATION</h5><pre><code>Data:
+    A single response variable and k independent variables (Y, X1, X2, ... , Xk).
+Model:
+    y = f(x1, x2, ..., xk) + error
+Output:
+    Best settings for the factor variables.
+Techniques:
+    • Block Plot
+    • Least Squares Fitting
+    • Contour Plot
+</code></pre><h5 id="REGRESSION"><a href="#REGRESSION" class="headerlink" title="REGRESSION"></a>REGRESSION</h5><pre><code>Data:
+    A single response variable and k independent variables (Y, X1, X2, ... , Xk). The independent variables can be continuous.
+Model:
+    y = f(x1, x2, ..., xk) + error
+Output:
+    A good model/prediction equation relating Y to the factors.
+Techniques:
+    • Least Squares Fitting
+    • Scatter Plot
+    • 6-Plot
+</code></pre><h4 id="Time-Series-and-Multivariate"><a href="#Time-Series-and-Multivariate" class="headerlink" title="Time Series and Multivariate"></a>Time Series and Multivariate</h4><h5 id="TIME-SERIES"><a href="#TIME-SERIES" class="headerlink" title="TIME SERIES"></a>TIME SERIES</h5><pre><code>Data:
+    A column of time dependent numbers, Y. In addition, time is an indpendent variable. The time variable can be either explicit or implied. If the data are not equi-spaced, the time variable should be explicitly provided.
+Model:
+    yt = f(t) + error 
+    The model can be either a time domain based or frequency domain based.
+Output:
+    A good model/prediction equation relating Y to previous values of Y.
+Techniques:
+    • Autocorrelation Plot
+    • Spectrum
+    • Complex Demodulation Amplitude Plot
+    • Complex Demodulation Phase Plot
+    • ARIMA Models
+</code></pre><h5 id="MULTIVARIATE"><a href="#MULTIVARIATE" class="headerlink" title="MULTIVARIATE"></a>MULTIVARIATE</h5><pre><code>Data:
+    k factor variables (X1, X2, ... , Xk).
+Model:
+    The model is not explicit.
+Output:
+    Identify underlying correlation structure in the data.
+Techniques:
+    • Star Plot
+    • Scatter Plot Matrix
+    • Conditioning Plot
+    • Profile Plot
+    • Principal Components
+    • Clustering
+    • Discrimination/Classification
+Note that multivarate analysis is only covered lightly in this Handbook.
+</code></pre>
+          
         
       
     </div>
@@ -480,7 +890,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/14/Bagging/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/win10的开始菜单点击没有反应/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -499,7 +909,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/14/Bagging/" itemprop="url">Bagging</a></h2>
+                <a class="post-title-link" href="/2018/03/01/win10的开始菜单点击没有反应/" itemprop="url">未命名</a></h2>
         
 
         <div class="post-meta">
@@ -511,8 +921,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T21:06:12+08:00">
-                2017-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T19:03:13+08:00">
+                2018-03-01
               </time>
             
 
@@ -522,28 +932,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -552,8 +940,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/14/Bagging/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/Bagging/" itemprop="commentCount"></span>
+                <a href="/2018/03/01/win10的开始菜单点击没有反应/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/win10的开始菜单点击没有反应/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -561,7 +949,7 @@
 
           
           
-             <span id="/2017/11/14/Bagging/" class="leancloud_visitors" data-flag-title="Bagging">
+             <span id="/2018/03/01/win10的开始菜单点击没有反应/" class="leancloud_visitors" data-flag-title="">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -578,10 +966,6 @@
           
 
           
-              <div class="post-description">
-                  Bagging
-              </div>
-          
 
         </div>
       </header>
@@ -597,16 +981,11 @@
 
       
         
-          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>假设一个分类器分类正确的概率为0.6，如果有n个独立的分类器，选择其中的k个采用投票的方式，作为预测结果，则预测正确的概率为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"><span class="comment"># operator.__mul__(a, b)</span></span><br><span class="line"><span class="comment"># Return a * b, for a and b numbers.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">c</span><span class="params">(n, k)</span>:</span></span><br><span class="line">    <span class="comment"># 求组合数</span></span><br><span class="line">    <span class="keyword">return</span> reduce(operator.mul, range(n-k+<span class="number">1</span>, n+<span class="number">1</span>)) / reduce(operator.mul, range(<span class="number">1</span>, k+<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bagging</span><span class="params">(n, p)</span>:</span></span><br><span class="line">    s = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n / <span class="number">2</span> + <span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        s += c(n, i) * p ** i * (<span class="number">1</span> - p) ** (n - i)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">9</span>, <span class="number">100</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="comment"># 假设事件发生的概率为0.6</span></span><br><span class="line">    <span class="keyword">print</span> t, <span class="string">'次采样正确率：'</span>, bagging(t, <span class="number">0.6</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">9 </span>次采样正确率： <span class="number">0.73343232</span></span><br><span class="line"><span class="symbol">19 </span>次采样正确率： <span class="number">0.813907978585</span></span><br><span class="line"><span class="symbol">29 </span>次采样正确率： <span class="number">0.863787051336</span></span><br><span class="line"><span class="symbol">39 </span>次采样正确率： <span class="number">0.897941368711</span></span><br><span class="line"><span class="symbol">49 </span>次采样正确率： <span class="number">0.922424437652</span></span><br><span class="line"><span class="symbol">59 </span>次采样正确率： <span class="number">0.940447995732</span></span><br><span class="line"><span class="symbol">69 </span>次采样正确率： <span class="number">0.953949756505</span></span><br><span class="line"><span class="symbol">79 </span>次采样正确率： <span class="number">0.964189692839</span></span><br><span class="line"><span class="symbol">89 </span>次采样正确率： <span class="number">0.972027516007</span></span><br><span class="line"><span class="symbol">99 </span>次采样正确率： <span class="number">0.97806955787</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/14/Bagging/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>1、在键盘上按下win+R键，或在开始菜单图标上点击右键选择运行;<br>2、输入powershell，按下“确定”运行;<br>3、在窗口里输入或复制粘贴以下命令，注意只有一行：<br>Get-AppxPackage | % { Add-AppxPackage -DisableDevelopmentMode -Register “$($_.InstallLocation)\AppxManifest.xml” -verbose }<br>4、点击enter键，等待修复命令运行完成，重启电脑，完成之后BUG就被修复了</p>
+<p>via <a href="https://zhidao.baidu.com/question/1431600130289612979.html" target="_blank" rel="noopener"></a></p>
+
+          
         
       
     </div>
@@ -653,7 +1032,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/14/sklearn.tree.DecisionTreeRegressor/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/Received 500 Internal Server Error/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -672,7 +1051,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" itemprop="url">sklearn.tree.DecisionTreeRegressor</a></h2>
+                <a class="post-title-link" href="/2018/03/01/Received 500 Internal Server Error/" itemprop="url">Received "500 Internal Server Error"</a></h2>
         
 
         <div class="post-meta">
@@ -684,8 +1063,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T20:06:12+08:00">
-                2017-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T16:53:12+08:00">
+                2018-03-01
               </time>
             
 
@@ -707,8 +1086,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -725,8 +1104,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" itemprop="commentCount"></span>
+                <a href="/2018/03/01/Received 500 Internal Server Error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/Received 500 Internal Server Error/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -734,7 +1113,7 @@
 
           
           
-             <span id="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" class="leancloud_visitors" data-flag-title="sklearn.tree.DecisionTreeRegressor">
+             <span id="/2018/03/01/Received 500 Internal Server Error/" class="leancloud_visitors" data-flag-title="Received "500 Internal Server Error"">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -752,7 +1131,7 @@
 
           
               <div class="post-description">
-                  sklearn.tree.DecisionTreeRegressor
+                  Received "500 Internal Server Error"
               </div>
           
 
@@ -770,15 +1149,14 @@
 
       
         
-          <h3 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br></pre></td></tr></table></figure>
-<h3 id="生成数据集："><a href="#生成数据集：" class="headerlink" title="生成数据集："></a>生成数据集：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">N = <span class="number">100</span></span><br><span class="line">x = np.random.rand(N) * <span class="number">6</span> - <span class="number">3</span>     <span class="comment"># [-3,3)</span></span><br><span class="line">x.sort()</span><br><span class="line">y = np.sin(x) + np.random.randn(N) * <span class="number">0.05</span></span><br><span class="line"><span class="keyword">print</span> y</span><br><span class="line">x = x.reshape(<span class="number">-1</span>, <span class="number">1</span>)  <span class="comment"># 转置后，得到N个样本，每个样本都是1维的</span></span><br><span class="line"><span class="keyword">print</span> x</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>使用twine在whl文件打包上传到pypi时，出现如下错误：</p>
+<p><img src="assets/python/20180301162329.png" alt=""></p>
+<p>换种方式上传：<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; python setup.py sdist upload</span><br><span class="line">running sdist</span><br><span class="line">running egg_info</span><br><span class="line">writing requirements to woe.egg-info<span class="symbol">\r</span>equires.txt</span><br><span class="line">writing woe.egg-info<span class="symbol">\P</span>KG-INFO</span><br><span class="line">writing top-level names to woe.egg-info<span class="symbol">\t</span>op_level.txt</span><br><span class="line">writing dependency_links to woe.egg-info<span class="symbol">\d</span>ependency_links.txt</span><br><span class="line">reading manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">reading manifest template 'MANIFEST.in'</span><br><span class="line">writing manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">running check</span><br><span class="line">creating woe-0.1.4</span><br><span class="line">creating woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">creating woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">creating woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying files to woe-0.1.4...</span><br><span class="line">copying LICENSE.txt -&gt; woe-0.1.4</span><br><span class="line">copying MANIFEST.in -&gt; woe-0.1.4</span><br><span class="line">copying README.rst -&gt; woe-0.1.4</span><br><span class="line">copying setup.py -&gt; woe-0.1.4</span><br><span class="line">copying examples<span class="symbol">\H</span>ereWeGo.py -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\R</span>EADME.rst -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\U</span>CI_Credit_Card.csv -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\c</span>onfig.csv -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying woe<span class="symbol">\G</span>ridSearch.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\_</span>_init__.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\c</span>onfig.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\e</span>val.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\f</span>eature_process.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\f</span>trl.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe.egg-info<span class="symbol">\P</span>KG-INFO -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\S</span>OURCES.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\d</span>ependency_links.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\r</span>equires.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\t</span>op_level.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">Writing woe-0.1.4<span class="symbol">\s</span>etup.cfg</span><br><span class="line">Creating tar archive</span><br><span class="line">removing 'woe-0.1.4' (and everything under it)</span><br><span class="line">running upload</span><br><span class="line">Password:</span><br><span class="line">Submitting dist<span class="symbol">\w</span>oe-0.1.4.tar.gz to https://upload.pypi.org/legacy/</span><br><span class="line">Upload failed (403): Invalid or non-existent authentication information.</span><br><span class="line">error: Upload failed (403): Invalid or non-existent authentication information.</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt;</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; python setup.py sdist upload</span><br><span class="line">running sdist</span><br><span class="line">running egg_info</span><br><span class="line">writing requirements to woe.egg-info<span class="symbol">\r</span>equires.txt</span><br><span class="line">writing woe.egg-info<span class="symbol">\P</span>KG-INFO</span><br><span class="line">writing top-level names to woe.egg-info<span class="symbol">\t</span>op_level.txt</span><br><span class="line">writing dependency_links to woe.egg-info<span class="symbol">\d</span>ependency_links.txt</span><br><span class="line">reading manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">reading manifest template 'MANIFEST.in'</span><br><span class="line">writing manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">running check</span><br><span class="line">creating woe-0.1.4</span><br><span class="line">creating woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">creating woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">creating woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying files to woe-0.1.4...</span><br><span class="line">copying LICENSE.txt -&gt; woe-0.1.4</span><br><span class="line">copying MANIFEST.in -&gt; woe-0.1.4</span><br><span class="line">copying README.rst -&gt; woe-0.1.4</span><br><span class="line">copying setup.py -&gt; woe-0.1.4</span><br><span class="line">copying examples<span class="symbol">\H</span>ereWeGo.py -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\R</span>EADME.rst -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\U</span>CI_Credit_Card.csv -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying examples<span class="symbol">\c</span>onfig.csv -&gt; woe-0.1.4<span class="symbol">\e</span>xamples</span><br><span class="line">copying woe<span class="symbol">\G</span>ridSearch.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\_</span>_init__.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\c</span>onfig.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\e</span>val.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\f</span>eature_process.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe<span class="symbol">\f</span>trl.py -&gt; woe-0.1.4<span class="symbol">\w</span>oe</span><br><span class="line">copying woe.egg-info<span class="symbol">\P</span>KG-INFO -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\S</span>OURCES.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\d</span>ependency_links.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\r</span>equires.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">copying woe.egg-info<span class="symbol">\t</span>op_level.txt -&gt; woe-0.1.4<span class="symbol">\w</span>oe.egg-info</span><br><span class="line">Writing woe-0.1.4<span class="symbol">\s</span>etup.cfg</span><br><span class="line">Creating tar archive</span><br><span class="line">removing 'woe-0.1.4' (and everything under it)</span><br><span class="line">running upload</span><br><span class="line">Submitting dist<span class="symbol">\w</span>oe-0.1.4.tar.gz to https://upload.pypi.org/legacy/</span><br><span class="line">Server response (200): OK</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; twine upload dist/*</span><br><span class="line">Uploading distributions to https://upload.pypi.org/legacy/</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 1 of 5</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 2 of 5</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 3 of 5</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 4 of 5</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Received "500: Internal Server Error" Package upload appears to have failed.  Retry 5 of 5</span><br><span class="line">HTTPError: 500 Server Error: Internal Server Error for url: https://upload.pypi.org/legacy/</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; python setup.py bdist_wheel upload</span><br><span class="line">running bdist_wheel</span><br><span class="line">running build</span><br><span class="line">running build_py</span><br><span class="line">installing to build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel</span><br><span class="line">running install</span><br><span class="line">running install_lib</span><br><span class="line">creating build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel</span><br><span class="line">creating build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\c</span>onfig.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\e</span>val.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\f</span>eature_process.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\f</span>trl.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\G</span>ridSearch.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">copying build<span class="symbol">\l</span>ib<span class="symbol">\w</span>oe<span class="symbol">\_</span>_init__.py -&gt; build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe</span><br><span class="line">running install_egg_info</span><br><span class="line">running egg_info</span><br><span class="line">writing requirements to woe.egg-info<span class="symbol">\r</span>equires.txt</span><br><span class="line">writing woe.egg-info<span class="symbol">\P</span>KG-INFO</span><br><span class="line">writing top-level names to woe.egg-info<span class="symbol">\t</span>op_level.txt</span><br><span class="line">writing dependency_links to woe.egg-info<span class="symbol">\d</span>ependency_links.txt</span><br><span class="line">reading manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">reading manifest template 'MANIFEST.in'</span><br><span class="line">writing manifest file 'woe.egg-info<span class="symbol">\S</span>OURCES.txt'</span><br><span class="line">Copying woe.egg-info to build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\.</span><span class="symbol">\w</span>oe-0.1.4-py2.7.egg-info</span><br><span class="line">running install_scripts</span><br><span class="line">creating build<span class="symbol">\b</span>dist.win-amd64<span class="symbol">\w</span>heel<span class="symbol">\w</span>oe-0.1.4.dist-info<span class="symbol">\W</span>HEEL</span><br><span class="line">running upload</span><br><span class="line">Submitting E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe<span class="symbol">\d</span>ist<span class="symbol">\w</span>oe-0.1.4-py2-none-any.whl to https://upload.pypi.org/legacy/</span><br><span class="line">Server response (200): OK</span><br><span class="line">PS E:<span class="symbol">\C</span>ode<span class="symbol">\w</span>oe&gt; twine upload dist/*</span><br><span class="line">Uploading distributions to https://upload.pypi.org/legacy/</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.whl</span><br><span class="line">Uploading woe-0.1.4-py3-none-any.whl</span><br><span class="line">Uploading woe-0.1.4-py2-none-any.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>如上，最后原来是没有.pypirc文件，在自己用户根路径下新建，内容如下：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[distutils]</span><br><span class="line">index-servers = pypi</span><br><span class="line"></span><br><span class="line">[pypi]</span><br><span class="line"><span class="symbol">repository:</span> https:<span class="comment">//upload.pypi.org/legacy/</span></span><br><span class="line"><span class="symbol">username:</span> boredbird</span><br><span class="line"><span class="symbol">password:</span> <span class="params">&lt;密码&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>最后，如上才上传成功（一开始用python setup.py 上传成功了一个文件，等了一会twine也可以用了，就能够批量上传到pypi了）。</p>
+
+          
         
       
     </div>
@@ -825,7 +1203,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/sklearn.tree.DecisionTreeClassifier/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/py2转py3遇到的问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -844,7 +1222,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" itemprop="url">sklearn.tree.DecisionTreeClassifier</a></h2>
+                <a class="post-title-link" href="/2018/03/01/py2转py3遇到的问题/" itemprop="url">py2转py3遇到的问题</a></h2>
         
 
         <div class="post-meta">
@@ -856,8 +1234,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T22:06:12+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T12:53:12+08:00">
+                2018-03-01
               </time>
             
 
@@ -879,8 +1257,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -897,8 +1275,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" itemprop="commentCount"></span>
+                <a href="/2018/03/01/py2转py3遇到的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/py2转py3遇到的问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -906,7 +1284,7 @@
 
           
           
-             <span id="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" class="leancloud_visitors" data-flag-title="sklearn.tree.DecisionTreeClassifier">
+             <span id="/2018/03/01/py2转py3遇到的问题/" class="leancloud_visitors" data-flag-title="py2转py3遇到的问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -924,7 +1302,7 @@
 
           
               <div class="post-description">
-                  sklearn.tree.DecisionTreeClassifier
+                  py2转py3遇到的问题
               </div>
           
 
@@ -942,15 +1320,28 @@
 
       
         
-          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> pydotplus</span><br></pre></td></tr></table></figure>
-<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris=load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">iris_feature_E = <span class="string">'sepal length'</span>, <span class="string">'sepal width'</span>, <span class="string">'petal length'</span>, <span class="string">'petal width'</span></span><br><span class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></span><br><span class="line">iris_class = <span class="string">'Iris-setosa'</span>, <span class="string">'Iris-versicolor'</span>, <span class="string">'Iris-virginica'</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="python2与python3在处理异常的区别："><a href="#python2与python3在处理异常的区别：" class="headerlink" title="python2与python3在处理异常的区别："></a>python2与python3在处理异常的区别：</h2><ul>
+<li>1.所以异常都从 BaseException继承，并删除了StardardError</li>
+<li>2.去除了异常类的序列行为和.message属性</li>
+<li>3.用 raise Exception(args)代替 raise Exception, args语法</li>
+<li>4.捕获异常的语法改变，引入了as关键字来标识异常实例，<br>在Py2中：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">try</span>:</span><br><span class="line"><span class="meta">... </span>   <span class="keyword">raise</span> NotImplementedError(<span class="string">'Error'</span>)</span><br><span class="line"><span class="meta">... </span><span class="keyword">except</span> NotImplementedError, error:</span><br><span class="line"></span><br><span class="line"><span class="meta">... </span>   <span class="keyword">print</span> error.message</span><br><span class="line">...</span><br><span class="line">Error</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在Py3中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">try</span>:</span><br><span class="line">      <span class="keyword">raise</span> NotImplementedError(<span class="string">'Error'</span>)</span><br><span class="line">    <span class="keyword">except</span> NotImplementedError <span class="keyword">as</span> error: <span class="comment">#注意这个 as</span></span><br><span class="line">      print(str(error))</span><br><span class="line">Error</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>5.异常链，因为<code>__context__</code>在3.0a1版本中没有实现</li>
+</ul>
+<h2 id="tuple-parameter-unpacking-is-not-supported-in-Pyhton-3"><a href="#tuple-parameter-unpacking-is-not-supported-in-Pyhton-3" class="headerlink" title="tuple parameter unpacking is not supported in Pyhton 3"></a>tuple parameter unpacking is not supported in Pyhton 3</h2><p>As tuple parameters are used by lambdas because of the single expression limitation, they must also be supported. This is done by having the expected sequence argument bound to a single parameter and then indexing on that parameter:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> (x, y): x + y</span><br></pre></td></tr></table></figure></p>
+<p>will be translated into:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> x_y: x_y[<span class="number">0</span>] + x_y[<span class="number">1</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="py2与py3在map返回类型上的区别"><a href="#py2与py3在map返回类型上的区别" class="headerlink" title="py2与py3在map返回类型上的区别"></a>py2与py3在map返回类型上的区别</h2><p>py2：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Python <span class="number">2.7</span><span class="number">.13</span> |Anaconda <span class="number">4.3</span><span class="number">.1</span> (<span class="number">64</span>-bit)| (default, Dec <span class="number">19</span> <span class="number">2016</span>, <span class="number">13</span>:<span class="number">29</span>:<span class="number">36</span>) [MSC v<span class="number">.1500</span> <span class="number">64</span> bit (AMD64)] on win32</span><br><span class="line">In[<span class="number">2</span>]: list_a = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">In[<span class="number">3</span>]: list_b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">In[<span class="number">4</span>]: map(<span class="keyword">lambda</span> a: a[<span class="number">0</span>] / (a[<span class="number">1</span>]+<span class="number">0.000000001</span>), zip(list_a, list_b))</span><br><span class="line">Out[<span class="number">4</span>]:</span><br><span class="line">[<span class="number">1.9999999979999998</span>, <span class="number">1.49999999925</span>, <span class="number">1.3333333328888888</span>, <span class="number">1.2499999996875</span>]</span><br><span class="line">In[<span class="number">5</span>]: type(map(<span class="keyword">lambda</span> a: a[<span class="number">0</span>] / (a[<span class="number">1</span>]+<span class="number">0.000000001</span>), zip(list_a, list_b)))</span><br><span class="line">Out[<span class="number">5</span>]:</span><br><span class="line">list</span><br></pre></td></tr></table></figure></p>
+<p>py3:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Python <span class="number">3.5</span><span class="number">.2</span> |Anaconda custom (<span class="number">64</span>-bit)| (default, Jul  <span class="number">5</span> <span class="number">2016</span>, <span class="number">11</span>:<span class="number">41</span>:<span class="number">13</span>) [MSC v<span class="number">.1900</span> <span class="number">64</span> bit (AMD64)]</span><br><span class="line">In[<span class="number">2</span>]: list_a = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">In[<span class="number">3</span>]: list_b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">In[<span class="number">4</span>]: map(<span class="keyword">lambda</span> a: a[<span class="number">0</span>] / (a[<span class="number">1</span>]+<span class="number">0.000000001</span>), zip(list_a, list_b))</span><br><span class="line">Out[<span class="number">4</span>]:</span><br><span class="line">&lt;map at <span class="number">0x24dc066f160</span>&gt;</span><br><span class="line">In[<span class="number">5</span>]: type(map(<span class="keyword">lambda</span> a: a[<span class="number">0</span>] / (a[<span class="number">1</span>]+<span class="number">0.000000001</span>), zip(list_a, list_b)))</span><br><span class="line">Out[<span class="number">5</span>]:</span><br><span class="line">map</span><br></pre></td></tr></table></figure></p>
+<p>在py3中需要用list()转换一下。</p>
+<h2 id="windows下py2与py3共存切换问题"><a href="#windows下py2与py3共存切换问题" class="headerlink" title="windows下py2与py3共存切换问题"></a>windows下py2与py3共存切换问题</h2><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p><img src="assets/python/20180301155811.png" alt=""></p>
+<h3 id="修改文件名称"><a href="#修改文件名称" class="headerlink" title="修改文件名称"></a>修改文件名称</h3><p><img src="assets/python/20180301155930.png" alt=""></p>
+<h3 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h3><p><img src="assets/python/20180301155650.png" alt=""></p>
+
+          
         
       
     </div>
@@ -997,7 +1388,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/插值/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/git切换分支报错Permission denied/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1016,7 +1407,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/插值/" itemprop="url">插值</a></h2>
+                <a class="post-title-link" href="/2018/03/01/git切换分支报错Permission denied/" itemprop="url">git切换分支报错Permission denied</a></h2>
         
 
         <div class="post-meta">
@@ -1028,8 +1419,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T22:06:12+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T12:53:12+08:00">
+                2018-03-01
               </time>
             
 
@@ -1051,8 +1442,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -1069,8 +1460,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/插值/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/插值/" itemprop="commentCount"></span>
+                <a href="/2018/03/01/git切换分支报错Permission denied/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/git切换分支报错Permission denied/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1078,7 +1469,7 @@
 
           
           
-             <span id="/2017/11/13/插值/" class="leancloud_visitors" data-flag-title="插值">
+             <span id="/2018/03/01/git切换分支报错Permission denied/" class="leancloud_visitors" data-flag-title="git切换分支报错Permission denied">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1096,7 +1487,7 @@
 
           
               <div class="post-description">
-                  插值
+                  git切换分支报错Permission denied
               </div>
           
 
@@ -1114,15 +1505,11 @@
 
       
         
-          <h1 id="插值的定义"><a href="#插值的定义" class="headerlink" title="插值的定义"></a>插值的定义</h1><p>插值法又称“内插法”，是利用函数f(x)在某区间中已知的若干点的函数值，作出适当的特定函数，在区间的其他点上用这特定函数的值作为函数f(x)的近似值，这种方法称为插值法。如果这特定函数是多项式，就称它为插值多项式。</p>
-<div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/interpolation/QQ截图20171113112144.png" width="50%"><br>  <div class="figcaption"><br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/插值/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>git切换分支报错，如下：<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">maomaochong@Boredbird MINGW64 /d/Program Files/nodejs/blog (master)</span><br><span class="line">$ git checkout source</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"><span class="keyword">error: </span>cannot stat 'source/_posts': Permission denied</span><br><span class="line"></span><br><span class="line">maomaochong@Boredbird MINGW64 /d/Program Files/nodejs/blog (master)</span><br><span class="line">$ git checkout source</span><br><span class="line">warning: unable to rmdir .deploy_git: Directory not empty</span><br><span class="line">Checking out files: 100% (10345/10345), done.</span><br><span class="line">M       themes/next</span><br><span class="line">Switched to branch 'source'</span><br><span class="line">Your branch is up-to-date with 'origin/source'.</span><br><span class="line"></span><br><span class="line">maomaochong@Boredbird MINGW64 /d/Program Files/nodejs/blog (source)</span><br><span class="line">$</span><br></pre></td></tr></table></figure></p>
+<p>最后发现是文件占用问题，关掉后台的编辑器，顺利切换分支。</p>
+
+          
         
       
     </div>
@@ -1169,7 +1556,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/ElasticNetCV/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/01/ERROR Local hexo not found/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1188,7 +1575,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/ElasticNetCV/" itemprop="url">ElasticNetCV</a></h2>
+                <a class="post-title-link" href="/2018/03/01/ERROR Local hexo not found/" itemprop="url">ERROR Local hexo not found</a></h2>
         
 
         <div class="post-meta">
@@ -1200,8 +1587,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T22:06:12+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-01T11:50:02+08:00">
+                2018-03-01
               </time>
             
 
@@ -1223,8 +1610,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -1241,8 +1628,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/ElasticNetCV/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/ElasticNetCV/" itemprop="commentCount"></span>
+                <a href="/2018/03/01/ERROR Local hexo not found/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/01/ERROR Local hexo not found/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1250,7 +1637,7 @@
 
           
           
-             <span id="/2017/11/13/ElasticNetCV/" class="leancloud_visitors" data-flag-title="ElasticNetCV">
+             <span id="/2018/03/01/ERROR Local hexo not found/" class="leancloud_visitors" data-flag-title="ERROR Local hexo not found">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1268,7 +1655,7 @@
 
           
               <div class="post-description">
-                  ElasticNetCV
+                  ERROR Local hexo not found
               </div>
           
 
@@ -1286,15 +1673,10 @@
 
       
         
-          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> ElasticNetCV</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures, StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br></pre></td></tr></table></figure>
-<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_empty</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> s != <span class="string">''</span></span><br><span class="line"></span><br><span class="line">data = sklearn.datasets.load_boston()</span><br><span class="line">x = np.array(data.data)</span><br><span class="line">y = np.array(data.target)</span><br><span class="line"><span class="keyword">print</span> x.shape</span><br><span class="line"><span class="keyword">print</span> y.shape</span><br><span class="line"></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/ElasticNetCV/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>via <img src="http://blog.csdn.net/burststar/article/details/45115905" alt=""></p>
+
+          
         
       
     </div>
@@ -1341,7 +1723,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/scipy.optimize/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/02/12/利用atom插件打造一套python的IDE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1360,7 +1742,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/scipy.optimize/" itemprop="url">scipy.optimize使用</a></h2>
+                <a class="post-title-link" href="/2018/02/12/利用atom插件打造一套python的IDE/" itemprop="url">利用atom插件打造一套python的IDE</a></h2>
         
 
         <div class="post-meta">
@@ -1372,8 +1754,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-12T12:53:12+08:00">
+                2018-02-12
               </time>
             
 
@@ -1395,8 +1777,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -1413,8 +1795,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/scipy.optimize/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/scipy.optimize/" itemprop="commentCount"></span>
+                <a href="/2018/02/12/利用atom插件打造一套python的IDE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/12/利用atom插件打造一套python的IDE/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1422,7 +1804,7 @@
 
           
           
-             <span id="/2017/11/13/scipy.optimize/" class="leancloud_visitors" data-flag-title="scipy.optimize使用">
+             <span id="/2018/02/12/利用atom插件打造一套python的IDE/" class="leancloud_visitors" data-flag-title="利用atom插件打造一套python的IDE">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1440,7 +1822,7 @@
 
           
               <div class="post-description">
-                  scipy.optimize使用
+                  利用atom插件打造一套python的IDE
               </div>
           
 
@@ -1458,14 +1840,176 @@
 
       
         
-          <h1 id="定义损失函数"><a href="#定义损失函数" class="headerlink" title="定义损失函数"></a>定义损失函数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入NumPy函数库，一般都是用这样的形式(包括别名np，几乎是约定俗成的)</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> leastsq</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">residual</span><span class="params">(t, x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> y - (t[<span class="number">0</span>] * x ** <span class="number">2</span> + t[<span class="number">1</span>] * x + t[<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">residual2</span><span class="params">(t, x, y)</span>:</span></span><br><span class="line">    <span class="keyword">print</span> t[<span class="number">0</span>], t[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> y - t[<span class="number">0</span>]*np.sin(t[<span class="number">1</span>]*x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># x ** x        x &gt; 0</span></span><br><span class="line"><span class="comment"># (-x) ** (-x)  x &lt; 0</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x)</span>:</span></span><br><span class="line">    y = np.ones_like(x)</span><br><span class="line">    i = x &gt; <span class="number">0</span></span><br><span class="line">    y[i] = np.power(x[i], x[i])</span><br><span class="line">    i = x &lt; <span class="number">0</span></span><br><span class="line">    y[i] = np.power(-x[i], -x[i])</span><br><span class="line">    <span class="keyword">return</span> y</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/scipy.optimize/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="利用atom插件打造一套python的IDE"><a href="#利用atom插件打造一套python的IDE" class="headerlink" title="利用atom插件打造一套python的IDE"></a>利用atom插件打造一套python的IDE</h3><h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ctrl-shift-P</td>
+<td>打开Command Palette</td>
+</tr>
+<tr>
+<td>Shift + Ctrl + M</td>
+<td>快速预览markdown</td>
+</tr>
+<tr>
+<td>ctrl+shift+F</td>
+<td>通过关键字段全项目检索目标代码文件</td>
+</tr>
+<tr>
+<td>ctrl+F</td>
+<td>通过关键字段在目标文件中定位目标代码</td>
+</tr>
+<tr>
+<td>ctrl+T</td>
+<td>直接通过文件名全局搜索目标文件</td>
+</tr>
+<tr>
+<td>alt+ctrl+shift+{</td>
+<td>代码折叠让代码看起来更加简洁（注意要依次按这四个键，不能同时按）</td>
+</tr>
+<tr>
+<td>cmd+shift+t</td>
+<td>开启新控制台</td>
+</tr>
+<tr>
+<td>ctrl+`</td>
+<td>打开或关闭控制台</td>
+</tr>
+<tr>
+<td>cmd+shift+j/k</td>
+<td>切换控制台</td>
+</tr>
+<tr>
+<td>shift+atl+e</td>
+<td>在多个文件中切换</td>
+</tr>
+<tr>
+<td>alt+shift+p</td>
+<td>Project Manager: List Projects (Projects can be filtered by title, group and template by typing group: atom which would give all projects with the atom group.)</td>
+</tr>
+<tr>
+<td>Project Manager: Edit Project</td>
+<td>在Command Palette输入这个命令，用于编辑配置文件</td>
+</tr>
+</tbody>
+</table>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><table>
+<thead>
+<tr>
+<th>插件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atom Runner</td>
+<td>运行python脚本</td>
+</tr>
+<tr>
+<td>autocomplete-python</td>
+<td>python代码自动补全</td>
+</tr>
+<tr>
+<td>hydrogen</td>
+<td>在写脚本的同时运行ipython notebook</td>
+</tr>
+<tr>
+<td>linter+linter-pylama</td>
+<td>代码错误提示</td>
+</tr>
+<tr>
+<td>platformio-ide-terminal</td>
+<td>Atom内置终端</td>
+</tr>
+<tr>
+<td>project-manager</td>
+<td>快速切换你的多个项目文件夹</td>
+</tr>
+<tr>
+<td>python-autopep8</td>
+<td>自动规范化python代码(使用pep8准则)</td>
+</tr>
+<tr>
+<td>isort+python-isort</td>
+<td>自动规范化代码中的import</td>
+</tr>
+<tr>
+<td>python-tools+hyperclick</td>
+<td>ctrl+单击转到源代码</td>
+</tr>
+<tr>
+<td>todo-show</td>
+<td>管理你代码中的TODO(在你没有完成的代码最后加上TODO即可)</td>
+</tr>
+<tr>
+<td>python-debugger</td>
+<td>调试python代码</td>
+</tr>
+<tr>
+<td>atom-python-test</td>
+<td>测试python代码</td>
+</tr>
+<tr>
+<td>atom-python-virtualenv</td>
+<td>python的虚拟环境</td>
+</tr>
+<tr>
+<td>minimap</td>
+<td>代码缩略图</td>
+</tr>
+<tr>
+<td>highlight-selected</td>
+<td>选择某段代码自动高亮相同代码</td>
+</tr>
+<tr>
+<td>minimap-highlight-selected</td>
+<td>实现minimap高亮选择内容</td>
+</tr>
+<tr>
+<td>terminal-plus</td>
+<td>代替系统控制台</td>
+</tr>
+<tr>
+<td>project-manager</td>
+<td>快速打开储存的项目,管理多个项目</td>
+</tr>
+<tr>
+<td>autocomplete-paths</td>
+<td>自动补全文件路径</td>
+</tr>
+<tr>
+<td>file-icons</td>
+<td>左侧树状图下，根据文件类型左侧显示不同图标</td>
+</tr>
+<tr>
+<td>expose</td>
+<td>在多个文件中切换</td>
+</tr>
+</tbody>
+</table>
+<h4 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h4><table>
+<thead>
+<tr>
+<th>主题</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>atom-material-ui</td>
+<td>A dynamic UI theme for Atom that (kinda) follows Google’s Material Design Guidelines. Best with Atom Material Syntax.</td>
+</tr>
+</tbody>
+</table>
+<p>以上是常用的python插件, 足够满足你的日常使用了</p>
+
+          
         
       
     </div>
@@ -1512,7 +2056,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/Ridge_Lasso_ElasticNet/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/02/12/Visual Studio Tips/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1531,7 +2075,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/Ridge_Lasso_ElasticNet/" itemprop="url">sklearn.linear_model中的Ridge、Lasso、ElasticNet回归</a></h2>
+                <a class="post-title-link" href="/2018/02/12/Visual Studio Tips/" itemprop="url">Visual Studio Tips</a></h2>
         
 
         <div class="post-meta">
@@ -1543,8 +2087,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-12T11:35:12+08:00">
+                2018-02-12
               </time>
             
 
@@ -1566,8 +2110,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
                   </a>
                 </span>
 
@@ -1584,8 +2128,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/Ridge_Lasso_ElasticNet/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/Ridge_Lasso_ElasticNet/" itemprop="commentCount"></span>
+                <a href="/2018/02/12/Visual Studio Tips/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/12/Visual Studio Tips/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1593,7 +2137,7 @@
 
           
           
-             <span id="/2017/11/13/Ridge_Lasso_ElasticNet/" class="leancloud_visitors" data-flag-title="sklearn.linear_model中的Ridge、Lasso、ElasticNet回归">
+             <span id="/2018/02/12/Visual Studio Tips/" class="leancloud_visitors" data-flag-title="Visual Studio Tips">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1611,7 +2155,7 @@
 
           
               <div class="post-description">
-                  sklearn.linear_model中的Ridge、Lasso、ElasticNet回归
+                  Visual Studio Tips
               </div>
           
 
@@ -1629,15 +2173,27 @@
 
       
         
-          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression, RidgeCV, LassoCV, ElasticNetCV</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> warnings</span><br></pre></td></tr></table></figure>
-<h1 id="定义模型评价函数："><a href="#定义模型评价函数：" class="headerlink" title="定义模型评价函数："></a>定义模型评价函数：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xss</span><span class="params">(y, y_hat)</span>:</span></span><br><span class="line">    y = y.ravel()</span><br><span class="line">    y_hat = y_hat.ravel()</span><br><span class="line">    tss = np.var(y)</span><br><span class="line">    rss = np.average((y_hat - y) ** <span class="number">2</span>)</span><br><span class="line">    r2 = <span class="number">1</span> - rss / tss</span><br><span class="line">    corr_coef = np.corrcoef(y, y_hat)[<span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> r2, corr_coef</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/Ridge_Lasso_ElasticNet/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="在-Visual-Studio-中开发代码而无需创建项目或解决方案"><a href="#在-Visual-Studio-中开发代码而无需创建项目或解决方案" class="headerlink" title="在 Visual Studio 中开发代码而无需创建项目或解决方案"></a>在 Visual Studio 中开发代码而无需创建项目或解决方案</h3><p>在 Visual Studio 2017 中，你可以在 Visual Studio 中打开几乎任何类型的基于目录的项目的代码，而无需创建解决方案或者项目文件。 这意味着（例如，在 Git 上找到一个代码项目时）可以克隆该项目，然后在 Visual Studio 中直接打开并开始开发，而无需创建解决方案或项目。</p>
+<h4 id="在任意位置打开代码"><a href="#在任意位置打开代码" class="headerlink" title="在任意位置打开代码"></a>在任意位置打开代码</h4><p>可以通过以下方式，在 Visual Studio 中打开代码：</p>
+<ul>
+<li>在 Visual Studio 菜单栏上，依次选择“文件”、“打开”、“文件夹”，然后浏览到代码位置。</li>
+<li>在包含该代码的文件夹的上下文（右键单击）菜单上，选择“在 Visual Studio 中打开”命令。</li>
+<li>选择 Visual Studio“开始”页上的“打开文件夹”链接。</li>
+<li>打开从 GitHub 存储库中克隆的代码。</li>
+</ul>
+<p><img src="assets/C/vs_tourtial01.png" alt=""><br><img src="assets/C/vs_tourtial02.png" alt=""></p>
+<h3 id="调试代码"><a href="#调试代码" class="headerlink" title="调试代码"></a>调试代码</h3><p>不通过项目或解决方案即可在 Visual Studio 中调试代码。 对某些语言进行调试时，可能需要在代码项目中指定一个有效的启动文件，例如脚本、可执行文件或项目。 调试代码时，Visual Studio 会首先运行此指定代码。</p>
+<p>工具栏上“开始”按钮旁的下拉列表框中列出了 Visual Studio 检测到的所有启动项，以及你在文件夹中专门选择的项。<br><img src="assets/C/vs_tourtial03.png" alt=""></p>
+<p>Visual Studio 会自动识别项目，但是需要你将脚本（例如 Python 和 JavaScript）显式选择为启动项之后，项目才会出现在列表中。 此外，某些启动项（例如 MSBuild 和 CMake）可能有多个生成配置，这些生成配置会显示在运行按钮的下拉列表中。</p>
+<h4 id="调试可执行文件"><a href="#调试可执行文件" class="headerlink" title="调试可执行文件"></a>调试可执行文件</h4><ul>
+<li><p>在 Visual Studio 菜单上，选择“调试”。 在下拉菜单上，选择该项目，或者选择想要在解决方案资源管理器中显示为启动项的项目或文件。</p>
+</li>
+<li><p>选择 F5 键开始调试。</p>
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -1684,7 +2240,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/sklearn.linear_model.LogisticRegression/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/26/cannot start process the working directory '' does not exist/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1703,7 +2259,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/sklearn.linear_model.LogisticRegression/" itemprop="url">sklearn.linear_model.LogisticRegression</a></h2>
+                <a class="post-title-link" href="/2017/12/26/cannot start process the working directory '' does not exist/" itemprop="url">cannot start process the working directory '' does not exist</a></h2>
         
 
         <div class="post-meta">
@@ -1715,8 +2271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T11:24:12+08:00">
+                2017-12-26
               </time>
             
 
@@ -1738,8 +2294,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -1756,8 +2312,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/sklearn.linear_model.LogisticRegression/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/sklearn.linear_model.LogisticRegression/" itemprop="commentCount"></span>
+                <a href="/2017/12/26/cannot start process the working directory '' does not exist/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/26/cannot start process the working directory '' does not exist/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1765,7 +2321,7 @@
 
           
           
-             <span id="/2017/11/13/sklearn.linear_model.LogisticRegression/" class="leancloud_visitors" data-flag-title="sklearn.linear_model.LogisticRegression">
+             <span id="/2017/12/26/cannot start process the working directory '' does not exist/" class="leancloud_visitors" data-flag-title="cannot start process the working directory '' does not exist">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1783,7 +2339,7 @@
 
           
               <div class="post-description">
-                  sklearn.linear_model.LogisticRegression
+                  cannot start process the working directory '' does not exist
               </div>
           
 
@@ -1801,15 +2357,14 @@
 
       
         
-          <h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br></pre></td></tr></table></figure>
-<h1 id="数据处理与模型拟合Pipeline"><a href="#数据处理与模型拟合Pipeline" class="headerlink" title="数据处理与模型拟合Pipeline"></a>数据处理与模型拟合Pipeline</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line">lr = Pipeline([(<span class="string">'sc'</span>, StandardScaler()),</span><br><span class="line">               (<span class="string">'clf'</span>, LogisticRegression()) ])</span><br><span class="line">lr.fit(X, y.ravel())</span><br><span class="line">y_hat = lr.predict(X)</span><br><span class="line">y_hat_prob = lr.predict_proba(X)</span><br><span class="line">np.set_printoptions(suppress=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'y_hat = \n'</span>, y_hat</span><br><span class="line"><span class="keyword">print</span> <span class="string">'y_hat_prob = \n'</span>, y_hat_prob</span><br><span class="line"><span class="keyword">print</span> <span class="string">u'准确度：%.2f%%'</span> % (<span class="number">100</span>*np.mean(y_hat == y.ravel()))</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/sklearn.linear_model.LogisticRegression/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>突然有一天启动pycharm时，Python Console报出错误：cannot start process the working directory ‘’ does not exist</p>
+<p>如图所示：</p>
+<p><img src="https://i.imgur.com/TcOV8gw.png" alt=""></p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><h4 id="删除项目文件夹下面的两个文件"><a href="#删除项目文件夹下面的两个文件" class="headerlink" title="删除项目文件夹下面的两个文件:"></a>删除项目文件夹下面的两个文件:</h4><p><img src="https://i.imgur.com/FDK0PK2.png" alt=""></p>
+<h4 id="再次重启pycharm打开项目文件，则恢复正常。"><a href="#再次重启pycharm打开项目文件，则恢复正常。" class="headerlink" title="再次重启pycharm打开项目文件，则恢复正常。"></a>再次重启pycharm打开项目文件，则恢复正常。</h4><p><img src="https://i.imgur.com/NscYHl3.png" alt=""></p>
+
+          
         
       
     </div>
@@ -1856,7 +2411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/sklearn.linear_model/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/12/04/Statistical Inference and Estimation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1875,7 +2430,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/13/sklearn.linear_model/" itemprop="url">sklearn.linear_model</a></h2>
+                <a class="post-title-link" href="/2017/12/04/Statistical Inference and Estimation/" itemprop="url">Statistical Inference and Estimation</a></h2>
         
 
         <div class="post-meta">
@@ -1887,8 +2442,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T21:06:12+08:00">
-                2017-11-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T20:26:12+08:00">
+                2017-12-04
               </time>
             
 
@@ -1910,8 +2465,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
                   </a>
                 </span>
 
@@ -1928,8 +2483,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/13/sklearn.linear_model/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/sklearn.linear_model/" itemprop="commentCount"></span>
+                <a href="/2017/12/04/Statistical Inference and Estimation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/04/Statistical Inference and Estimation/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1937,7 +2492,7 @@
 
           
           
-             <span id="/2017/11/13/sklearn.linear_model/" class="leancloud_visitors" data-flag-title="sklearn.linear_model">
+             <span id="/2017/12/04/Statistical Inference and Estimation/" class="leancloud_visitors" data-flag-title="Statistical Inference and Estimation">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1955,7 +2510,7 @@
 
           
               <div class="post-description">
-                  sklearn.linear_model
+                  Statistical Inference and Estimation
               </div>
           
 
@@ -1973,11 +2528,18 @@
 
       
         
-          <h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">X = boston.data</span><br><span class="line">y = boston.target</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">划分数据集</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, random_state=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="GridSearchCV寻参"><a href="#GridSearchCV寻参" class="headerlink" title="GridSearchCV寻参"></a>GridSearchCV寻参</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">lr = linear_model.LinearRegression()</span><br><span class="line">model = Lasso()</span><br><span class="line"><span class="comment"># model = Ridge()</span></span><br><span class="line"></span><br><span class="line">alpha_can = np.logspace(<span class="number">-3</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line">lasso_model = GridSearchCV(model, param_grid=&#123;<span class="string">'alpha'</span>: alpha_can&#125;, cv=<span class="number">5</span>)</span><br><span class="line">lasso_model.fit(x_train, y_train)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'超参数：\n'</span>, lasso_model.best_params_</span><br></pre></td></tr></table></figure>
+          <h1 id="Statistical-Inference"><a href="#Statistical-Inference" class="headerlink" title="Statistical Inference"></a>Statistical Inference</h1><p>Recall, a <strong>statistical inference</strong> aims at learning characteristics of the population from a sample; the population characteristics are <em>parameters</em> and sample characteristics are <em>statistics</em>.</p>
+<p>A <strong>statistical model</strong> is a representation of a complex phenomena that generated the data.</p>
+<ul>
+<li>It has mathematical formulations that describe relationships between random variables and parameters.</li>
+<li>It makes assumptions about the random variables, and sometimes parameters.</li>
+<li>A general form: data = model + residuals</li>
+<li>Model should explain most of the variation in the data</li>
+<li>Residuals are a representation of a lack-of-fit, that is of the portion of the data unexplained by the model.</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/13/sklearn.linear_model/" rel="contents">
+            <a class="btn" href="/2017/12/04/Statistical Inference and Estimation/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2019,7 +2581,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2069,7 +2631,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">199</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2091,7 +2653,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">224</span>
+                  <span class="site-state-item-count">246</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

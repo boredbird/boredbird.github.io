@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.13. DOE Standard Deviation Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.13. DOE Standard Deviation Plot/" itemprop="url">EDA_1.3.3.13. DOE Standard Deviation Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/" itemprop="url">EDA_1.3.5.2 Confidence Limits for the Mean</a></h2>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T19:26:12+08:00">
-                2018-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:46:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/02/EDA_1.3.3.13. DOE Standard Deviation Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.13. DOE Standard Deviation Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2018/03/02/EDA_1.3.3.13. DOE Standard Deviation Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.13. DOE Standard Deviation Plot">
+             <span id="/2018/03/12/EDA_1.3.5.2 Confidence Limits for the Mean/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.2 Confidence Limits for the Mean">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.13. DOE Standard Deviation Plot
+                  EDA_1.3.5.2 Confidence Limits for the Mean
               </div>
           
 
@@ -426,34 +426,59 @@
       
         
           
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Detect Important Factors With Respect to Scale</p>
-<p>The DOE standard deviation plot is appropriate for analyzing data from a designed experiment, with respect to important factors, where the factors are at two or more levels and there are repeated values at each level. The plot shows standard deviation values for the two or more levels of each factor plotted by factor. The standard deviations for a single factor are connected by a straight line. The DOE standard deviation plot is a complement to the traditional analysis of varianceof designed experiments.</p>
-<p>This plot is typically generated for the standard deviation. However, it can also be generated for other scale statistics such as the range, the median absolute deviation, or the average absolute deviation.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/eda_dexboxbike_r03.gif" alt=""></p>
-<p>This sample DOE standard deviation plot shows that:</p>
-<pre><code>1. factor 1 has the greatest difference in standard deviations between factor levels;
-2. factor 4 has a significantly lower average standard deviation than the average standard deviations of other factors (but the level 1 standard deviation for factor 1 is about the same as the level 1 standard deviation for factor 4);
-3. for all factors, the level 1 standard deviation is smaller than the level 2 standard deviation.
-</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Response Standard Deviations Versus Factor Variables</p>
-<p>DOE standard deviation plots are formed by:</p>
-<ul>
-<li>Vertical axis: Standard deviation of the response variable for each level of the factor</li>
-<li>Horizontal axis: Factor variable</li>
+            <h3 id="Purpose-Interval-Estimate-for-Mean"><a href="#Purpose-Interval-Estimate-for-Mean" class="headerlink" title="Purpose: Interval Estimate for Mean"></a>Purpose: Interval Estimate for Mean</h3><p>Confidence limits for the mean (Snedecor and Cochran, 1989) are an interval estimate for the mean. Interval estimates are often desirable because the estimate of the mean varies from sample to sample. Instead of a single estimate for the mean, a confidence interval generates a lower and upper limit for the mean. The interval estimate gives an indication of how much uncertainty there is in our estimate of the true mean. The narrower the interval, the more precise is our estimate.</p>
+<p>Confidence limits are expressed in terms of a confidence coefficient. Although the choice of confidence coefficient is somewhat arbitrary, in practice 90 %, 95 %, and 99 % intervals are often used, with 95 % being the most commonly used.</p>
+<p>As a technical note, a 95 % confidence interval does not mean that there is a 95 % probability that the interval contains the true mean. The interval computed from a given sample either contains the true mean or it does not. Instead, the level of confidence is associated with the method of calculating the interval. The confidence coefficient is simply the proportion of samples of a given size that may be expected to contain the true mean. That is, for a 95 % confidence interval, if many samples are collected and the confidence interval computed, in the long run about 95 % of these intervals would contain the true mean.</p>
+<h3 id="Definition-Confidence-Interval"><a href="#Definition-Confidence-Interval" class="headerlink" title="Definition: Confidence Interval"></a>Definition: Confidence Interval</h3><p>Confidence limits are defined as:</p>
+<pre><code>Y¯±t1−α/2,N−1sN−−√
+</code></pre><p>where Y¯ is the sample mean, s is the sample standard deviation, N is the sample size, α is the desired significance level, and t1-α/2,N-1 is the 100(1-α/2) percentile of the t distribution with N - 1 degrees of freedom. Note that the confidence coefficient is 1 - α.<br>From the formula, it is clear that the width of the interval is controlled by two factors:</p>
+<pre><code>1. As N increases, the interval gets narrower from the N−−√ term.
+That is, one way to obtain more precise estimates for the mean is to increase the sample size.
+2. The larger the sample standard deviation, the larger the confidence interval. This simply means that noisy data, i.e., data with a large standard deviation, are going to generate wider intervals than data with a smaller standard deviation.
+</code></pre><h4 id="Definition-Hypothesis-Test"><a href="#Definition-Hypothesis-Test" class="headerlink" title="Definition: Hypothesis Test"></a>Definition: Hypothesis Test</h4><p>To test whether the population mean has a specific value, μ0, against the two-sided alternative that it does not have a value μ0, the confidence interval is converted to hypothesis-test form. The test is a one-sample t-test, and it is defined as:</p>
+<pre><code>H0:    μ=μ0
+Ha:    μ≠μ0
+Test Statistic:    T=(Y¯−μ0)/(s/N−−√) 
+    where Y¯, N, and s are defined as above.
+Significance Level:    α. The most commonly used value for α is 0.05.
+Critical Region:    Reject the null hypothesis that the mean is a specified value, μ0, if
+            T&lt;tα/2,N−1
+    or
+            T&gt;t1−α/2,N−1
+Confidence Interval Example
+We generated a 95 %, two-sided confidence interval for the ZARR13.DAT data set based on the following information.
+N                          = 195
+MEAN                       =   9.261460
+STANDARD DEVIATION         =   0.022789
+t1-0.025,N-1                 =   1.9723
+LOWER LIMIT = 9.261460 - 1.9723*0.022789/√195 
+UPPER LIMIT = 9.261460 + 1.9723*0.022789/√195 
+Thus, a 95 % confidence interval for the mean is (9.258242, 9.264679).
+t-Test Example
+We performed a two-sided, one-sample t-test using the ZARR13.DAT data set to test the null hypothesis that the population mean is equal to 5.
+H0:  μ = 5
+Ha:  μ ≠ 5
+Test statistic:  T = 2611.284
+Degrees of freedom:  ν = 194
+Significance level:  α = 0.05
+Critical value:  t1-α/2,ν = 1.9723
+Critical region:  Reject H0 if |T| &gt; 1.9723
+</code></pre><p>We reject the null hypotheses for our two-tailed t-test because the absolute value of the test statistic is greater than the critical value. If we were to perform an upper, one-tailed test, the critical value would be t1-α,ν = 1.6527, and we would still reject the null hypothesis.<br>The confidence interval provides an alternative to the hypothesis test. If the confidence interval contains 5, then H0 cannot be rejected. In our example, the confidence interval (9.258242, 9.264679) does not contain 5, indicating that the population mean does not equal 5 at the 0.05 level of significance.</p>
+<p>In general, there are three possible alternative hypotheses and rejection regions for the one-sample t-test:</p>
+<h3 id="Alternative-Hypothesis-Rejection-Region"><a href="#Alternative-Hypothesis-Rejection-Region" class="headerlink" title="Alternative Hypothesis    Rejection Region"></a>Alternative Hypothesis    Rejection Region</h3><pre><code>Ha: μ ≠ μ0    |T| &gt; t1-α/2,ν
+Ha: μ &gt; μ0    T &gt; t1-α,ν
+Ha: μ &lt; μ0    T &lt; tα,ν
+</code></pre><p>The rejection regions for three posssible alternative hypotheses using our example data are shown in the following graphs.</p>
+<p><img src="assets/EDA/eda352_r.gif" alt=""></p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Confidence limits for the mean can be used to answer the following questions:</p>
+<pre><code>1. What is a reasonable estimate for the mean?
+2. How much variability is there in the estimate of the mean?
+3. Does a given target value fall within the confidence limits?
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Two-Sample t-Test</li>
+<li>Confidence intervals for other location estimators such as the median or mid-mean tend to be mathematically difficult or intractable. For these cases, confidence intervals can be obtained using the bootstrap.</li>
 </ul>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The DOE standard deviation plot can be used to answer the following questions:</p>
-<pre><code>1. How do the standard deviations vary across factors?
-2. How do the standard deviations vary within a factor?
-3. Which are the most important factors with respect to scale?
-4. What is the ranked list of the important factors with respect to scale?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Assess Variability</p>
-<p>The goal with many designed experiments is to determine which factors are significant. This is usually determined from the means of the factor levels (which can be conveniently shown with a DOE mean plot). A secondary goal is to assess the variability of the responses both within a factor and between factors. The DOE standard deviation plot is a convenient way to do this.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>DOE scatter plot</li>
-<li>DOE mean plot</li>
-<li>Block plot</li>
-<li>Box plot</li>
-<li>Analysis of variance</li>
-</ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda352.htm</a></p>
 
           
         
@@ -502,7 +527,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.12. DOE Mean Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.1. Measures of Location/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -521,7 +546,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.12. DOE Mean Plot/" itemprop="url">EDA_1.3.3.12. DOE Mean Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.1. Measures of Location/" itemprop="url">EDA_1.3.5.1. Measures of Location</a></h2>
         
 
         <div class="post-meta">
@@ -533,8 +558,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T18:26:12+08:00">
-                2018-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:36:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -574,8 +599,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/02/EDA_1.3.3.12. DOE Mean Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.12. DOE Mean Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.1. Measures of Location/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.1. Measures of Location/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -583,7 +608,7 @@
 
           
           
-             <span id="/2018/03/02/EDA_1.3.3.12. DOE Mean Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.12. DOE Mean Plot">
+             <span id="/2018/03/12/EDA_1.3.5.1. Measures of Location/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.1. Measures of Location">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -601,7 +626,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.12. DOE Mean Plot
+                  EDA_1.3.5.1. Measures of Location
               </div>
           
 
@@ -620,37 +645,42 @@
       
         
           
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Detect Important Factors With Respect to Location</p>
-<p>The DOE mean plot is appropriate for analyzing data from a designed experiment, with respect to important factors, where the factors are at two or more levels. The plot shows mean values for the two or more levels of each factor plotted by factor. The means for a single factor are connected by a straight line. The DOE mean plot is a complement to the traditional analysis of variance of designed experiments.</p>
-<p>This plot is typically generated for the mean. However, it can be generated for other location statistics such as the median.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>Factors 4, 2, and 1 Are the Most Important Factors</p>
-<p><img src="assets/EDA/eda_dexboxbike_r02.gif" alt=""></p>
-<p>This sample DOE mean plot shows that:</p>
-<pre><code>1. factor 4 is the most important;
-2. factor 2 is the second most important;
-3. factor 1 is the third most important;
-4. factor 7 is the fourth most important;
-5. factor 6 is the fifth most important;
-6. factors 3 and 5 are relatively unimportant.
-</code></pre><p>In summary, factors 4, 2, and 1 seem to be clearly important, factors 3 and 5 seem to be clearly unimportant, and factors 6 and 7 are borderline factors whose inclusion in any subsequent models will be determined by further analyses.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Mean Response Versus Factor Variables</p>
-<p>DOE mean plots are formed by:<br>    • Vertical axis: Mean of the response variable for each level of the factor<br>    • Horizontal axis: Factor variable</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The DOE mean plot can be used to answer the following questions:</p>
-<pre><code>1. Which factors are important? The DOE mean plot does not provide a definitive answer to this question, but it does help categorize factors as &quot;clearly important&quot;, &quot;clearly not important&quot;, and &quot;borderline importance&quot;.
-2. What is the ranking list of the important factors?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Determine Significant Factors</p>
-<p>The goal of many designed experiments is to determine which factors are significant. A ranked order listing of the important factors is also often of interest. The DOE mean plot is ideally suited for answering these types of questions and we recommend its routine use in analyzing designed experiments.</p>
-<h3 id="Extension-for-Interaction-Effects"><a href="#Extension-for-Interaction-Effects" class="headerlink" title="Extension for Interaction Effects"></a>Extension for Interaction Effects</h3><p>Using the concept of the scatter plot matrix, the DOE mean plot can be extended to display first-order interaction effects.</p>
-<p>Specifically, if there are k factors, we create a matrix of plots with k rows and k columns. On the diagonal, the plot is simply a DOE mean plot with a single factor. For the off-diagonal plots, measurements at each level of the interaction are plotted versus level, where level is Xi times Xj and Xi is the code for the ith main effect level and Xj is the code for the jth main effect. For the common 2-level designs (i.e., each factor has two levels) the values are typically coded as -1 and 1, so the multiplied values are also -1 and 1. We then generate a DOE mean plot for this interaction variable. This plot is called a DOE interaction effects plot and an example is shown below.</p>
-<h3 id="DOE-Interaction-Effects-Plot"><a href="#DOE-Interaction-Effects-Plot" class="headerlink" title="DOE Interaction Effects Plot"></a>DOE Interaction Effects Plot</h3><p><img src="assets/EDA/dexint1.gif" alt=""></p>
-<p>This plot shows that the most significant factor is X1 and the most significant interaction is between X1 and X3.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>DOE scatter plot</li>
-<li>DOE standard deviation plot</li>
-<li>Block plot</li>
-<li>Box plot</li>
-<li>Analysis of variance</li>
-</ul>
+            <h3 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h3><p>A fundamental task in many statistical analyses is to estimate a location parameter for the distribution; i.e., to find a typical or central value that best describes the data.</p>
+<h3 id="Definition-of-Location"><a href="#Definition-of-Location" class="headerlink" title="Definition of Location"></a>Definition of Location</h3><p>The first step is to define what we mean by a typical value. For univariate data, there are three common definitions:</p>
+<pre><code>1. mean - the mean is the sum of the data points divided by the number of data points. That is,
+Y¯=∑i=1NYi/N
+The mean is that value that is most commonly referred to as the average. We will use the term average as a synonym for the mean and the term typical value to refer generically to measures of location.
+2. median - the median is the value of the point which has half the data smaller than that point and half the data larger than that point. That is, if X1, X2, ... ,XN is a random sample sorted from smallest value to largest value, then the median is defined as:
+Y~=Y(N+1)/2if N is odd
+Y~=(YN/2+Y(N/2)+1)/2if N is even
+3. mode - the mode is the value of the random sample that occurs with the greatest frequency. It is not necessarily unique. The mode is typically used in a qualitative fashion. For example, there may be a single dominant hump in the data perhaps two or more smaller humps in the data. This is usually evident from a histogram of the data.
+</code></pre><p>When taking samples from continuous populations, we need to be somewhat careful in how we define the mode. That is, any specific value may not occur more than once if the data are continuous. What may be a more meaningful, if less exact measure, is the midpoint of the class interval of the histogram with the highest peak.</p>
+<h3 id="Why-Different-Measures"><a href="#Why-Different-Measures" class="headerlink" title="Why Different Measures"></a>Why Different Measures</h3><p>A natural question is why we have more than one measure of the typical value. The following example helps to explain why these alternative definitions are useful and necessary.<br>This plot shows histograms for 10,000 random numbers generated from a normal, an exponential, a Cauchy, and a lognormal distribution.</p>
+<p><img src="assets/EDA/location.gif" alt=""></p>
+<h3 id="Normal-Distribution"><a href="#Normal-Distribution" class="headerlink" title="Normal Distribution"></a>Normal Distribution</h3><p>The first histogram is a sample from a normal distribution. The mean is 0.005, the median is -0.010, and the mode is -0.144 (the mode is computed as the midpoint of the histogram interval with the highest peak).</p>
+<p>The normal distribution is a symmetric distribution with well-behaved tails and a single peak at the center of the distribution. By symmetric, we mean that the distribution can be folded about an axis so that the 2 sides coincide. That is, it behaves the same to the left and right of some center point. For a normal distribution, the mean, median, and mode are actually equivalent. The histogram above generates similar estimates for the mean, median, and mode. Therefore, if a histogram or normal probability plot indicates that your data are approximated well by a normal distribution, then it is reasonable to use the mean as the location estimator.</p>
+<h3 id="Exponential-Distribution"><a href="#Exponential-Distribution" class="headerlink" title="Exponential Distribution"></a>Exponential Distribution</h3><p>The second histogram is a sample from anexponential distribution. The mean is 1.001, the median is 0.684, and the mode is 0.254 (the mode is computed as the midpoint of the histogram interval with the highest peak).</p>
+<p>The exponential distribution is a skewed, i. e., not symmetric, distribution. For skewed distributions, the mean and median are not the same. The mean will be pulled in the direction of the skewness. That is, if the right tail is heavier than the left tail, the mean will be greater than the median. Likewise, if the left tail is heavier than the right tail, the mean will be less than the median.</p>
+<p>For skewed distributions, it is not at all obvious whether the mean, the median, or the mode is the more meaningful measure of the typical value. In this case, all three measures are useful.</p>
+<h3 id="Cauchy-Distribution"><a href="#Cauchy-Distribution" class="headerlink" title="Cauchy Distribution"></a>Cauchy Distribution</h3><p>The third histogram is a sample from a Cauchy distribution. The mean is 3.70, the median is -0.016, and the mode is -0.362 (the mode is computed as the midpoint of the histogram interval with the highest peak).</p>
+<p>For better visual comparison with the other data sets, we restricted the histogram of the Cauchy distribution to values between -10 and 10. The full Cauchy data set in fact has a minimum of approximately -29,000 and a maximum of approximately 89,000.</p>
+<p>The Cauchy distribution is a symmetric distribution with heavy tails and a single peak at the center of the distribution. The Cauchy distribution has the interesting property that collecting more data does not provide a more accurate estimate of the mean. That is, the sampling distribution of the mean is equivalent to the sampling distribution of the original data. This means that for the Cauchy distribution the mean is useless as a measure of the typical value. For this histogram, the mean of 3.7 is well above the vast majority of the data. This is caused by a few very extreme values in the tail. However, the median does provide a useful measure for the typical value.</p>
+<p>Although the Cauchy distribution is an extreme case, it does illustrate the importance of heavy tails in measuring the mean. Extreme values in the tails distort the mean. However, these extreme values do not distort the median since the median is based on ranks. In general, for data with extreme values in the tails, the median provides a better estimate of location than does the mean.</p>
+<h3 id="Lognormal-Distribution"><a href="#Lognormal-Distribution" class="headerlink" title="Lognormal Distribution"></a>Lognormal Distribution</h3><p>The fourth histogram is a sample from alognormal distribution. The mean is 1.677, the median is 0.989, and the mode is 0.680 (the mode is computed as the midpoint of the histogram interval with the highest peak).</p>
+<p>The lognormal is also a skewed distribution. Therefore the mean and median do not provide similar estimates for the location. As with the exponential distribution, there is no obvious answer to the question of which is the more meaningful measure of location.</p>
+<h3 id="Robustness"><a href="#Robustness" class="headerlink" title="Robustness"></a>Robustness</h3><p>There are various alternatives to the mean and median for measuring location. These alternatives were developed to address non-normal data since the mean is an optimal estimator if in fact your data are normal.</p>
+<p>Tukey and Mosteller defined two types of robustness where robustness is a lack of susceptibility to the effects of nonnormality.</p>
+<pre><code>1. Robustness of validity means that the confidence intervals for the population location have a 95% chance of covering the population location regardless of what the underlying distribution is.
+2. Robustness of efficiency refers to high effectiveness in the face of non-normal tails. That is, confidence intervals for the population location tend to be almost as narrow as the best that could be done if we knew the true shape of the distributuion.
+</code></pre><p>The mean is an example of an estimator that is the best we can do if the underlying distribution is normal. However, it lacks robustness of validity. That is, confidence intervals based on the mean tend not to be precise if the underlying distribution is in fact not normal.<br>The median is an example of a an estimator that tends to have robustness of validity but not robustness of efficiency.</p>
+<p>The alternative measures of location try to balance these two concepts of robustness. That is, the confidence intervals for the case when the data are normal should be almost as narrow as the confidence intervals based on the mean. However, they should maintain their validity even if the underlying data are not normal. In particular, these alternatives address the problem of heavy-tailed distributions.</p>
+<h3 id="Alternative-Measures-of-Location"><a href="#Alternative-Measures-of-Location" class="headerlink" title="Alternative Measures of Location"></a>Alternative Measures of Location</h3><p>A few of the more common alternative location measures are:</p>
+<pre><code>1. Mid-Mean - computes a mean using the data between the 25th and 75th percentiles.
+2. Trimmed Mean - similar to the mid-mean except different percentile values are used. A common choice is to trim 5% of the points in both the lower and upper tails, i.e., calculate the mean for data between the 5th and 95th percentiles.
+3. Winsorized Mean - similar to the trimmed mean. However, instead of trimming the points, they are set to the lowest (or highest) value. For example, all data below the 5th percentile are set equal to the value of the 5th percentile and all data greater than the 95th percentile are set equal to the 95th percentile.
+4. Mid-range = (smallest + largest)/2.
+</code></pre><p>The first three alternative location estimators defined above have the advantage of the median in the sense that they are not unduly affected by extremes in the tails. However, they generate estimates that are closer to the mean for data that are normal (or nearly so).</p>
+<p>The mid-range, since it is based on the two most extreme points, is not robust. Its use is typically restricted to situations in which the behavior at the extreme points is relevant.</p>
 
           
         
@@ -699,7 +729,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.6. Probability Distributions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -718,7 +748,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/" itemprop="url">EDA_1.3.3.11. DOE Scatter Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.6. Probability Distributions/" itemprop="url">EDA_1.3.6. Probability Distributions</a></h2>
         
 
         <div class="post-meta">
@@ -730,8 +760,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T17:26:12+08:00">
-                2018-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:26:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -771,8 +801,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.6. Probability Distributions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.6. Probability Distributions/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -780,7 +810,7 @@
 
           
           
-             <span id="/2018/03/02/EDA_1.3.3.11. DOE Scatter Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.11. DOE Scatter Plot">
+             <span id="/2018/03/12/EDA_1.3.6. Probability Distributions/" class="leancloud_visitors" data-flag-title="EDA_1.3.6. Probability Distributions">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -798,7 +828,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.11. DOE Scatter Plot
+                  EDA_1.3.6. Probability Distributions
               </div>
           
 
@@ -817,35 +847,463 @@
       
         
           
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Determine Important Factors with Respect to Location and Scale</p>
-<p>The DOE scatter plot shows the response values for each level of each factor (i.e., independent) variable. This graphically shows how the location and scale vary for both within a factor variable and between different factor variables. This graphically shows which are the important factors and can help provide a ranked list of important factors from a designed experiment. The DOE scatter plot is a complement to the traditional analyis of variance of designed experiments.</p>
-<p>DOE scatter plots are typically used in conjunction with the DOE mean plotand the DOE standard deviation plot. The DOE mean plot replaces the raw response values with mean response values while the DOE standard deviation plot replaces the raw response values with the standard deviation of the response values. There is value in generating all 3 of these plots. The DOE mean and standard deviation plots are useful in that the summary measures of location and spread stand out (they can sometimes get lost with the raw plot). However, the raw data points can reveal subtleties, such as the presence of outliers, that might get lost with the summary statistics.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>Factors 4, 2, 3, and 7 are the Important Factors.</p>
-<p><img src="assets/EDA/eda_dexboxbike_r01.gif" alt=""></p>
-<h3 id="Description-of-the-Plot"><a href="#Description-of-the-Plot" class="headerlink" title="Description of the Plot"></a>Description of the Plot</h3><p>For this sample plot, there are seven factors and each factor has two levels. For each factor, we define a distinct x coordinate for each level of the factor. For example, for factor 1, level 1 is coded as 0.8 and level 2 is coded as 1.2. The y coordinate is simply the value of the response variable. The solid horizontal line is drawn at the overall mean of the response variable. The vertical dotted lines are added for clarity.</p>
-<p>Although the plot can be drawn with an arbitrary number of levels for a factor, it is really only useful when there are two or three levels for a factor.</p>
-<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>This sample DOE scatter plot shows that:</p>
-<pre><code>1. there does not appear to be any outliers;
-2. the levels of factors 2 and 4 show distinct location differences; and
-3. the levels of factor 1 show distinct scale differences.
-</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Response Values Versus Factor Variables<br>DOE scatter plots are formed by:<br>    • Vertical axis: Value of the response variable<br>    • Horizontal axis: Factor variable (with each level of the factor coded with a slightly offset x coordinate)</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The DOE scatter plot can be used to answer the following questions:</p>
-<pre><code>1. Which factors are important with respect to location and scale?
+            <h3 id="Probability-Distributions"><a href="#Probability-Distributions" class="headerlink" title="Probability Distributions"></a>Probability Distributions</h3><p>Probability distributions are a fundamental concept in statistics. They are used both on a theoretical level and a practical level.</p>
+<p>Some practical uses of probability distributions are:</p>
+<pre><code>• To calculate confidence intervals for parameters and to calculate critical regions for hypothesis tests.
+• For univariate data, it is often useful to determine a reasonable distributional model for the data.
+• Statistical intervals and hypothesis tests are often based on specific distributional assumptions. Before computing an interval or test based on a distributional assumption, we need to verify that the assumption is justified for the given data set. In this case, the distribution does not need to be the best-fitting distribution for the data, but an adequate enough model so that the statistical technique yields valid conclusions.
+• Simulation studies with random numbers generated from using a specific probability distribution are often needed.
+</code></pre><p>Table of Contents</p>
+<pre><code>1. What is a probability distribution?
+2. Related probability functions
+3. Families of distributions
+4. Location and scale parameters
+5. Estimating the parameters of a distribution
+6. A gallery of common distributions
+7. Tables for probability distributions
+</code></pre><p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda36.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda36.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5. Quantitative Techniques/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5. Quantitative Techniques/" itemprop="url">EDA_1.3.5. Quantitative Techniques</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:16:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5. Quantitative Techniques/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5. Quantitative Techniques/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5. Quantitative Techniques/" class="leancloud_visitors" data-flag-title="EDA_1.3.5. Quantitative Techniques">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5. Quantitative Techniques
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Confirmatory-Statistics"><a href="#Confirmatory-Statistics" class="headerlink" title="Confirmatory Statistics"></a>Confirmatory Statistics</h3><p>The techniques discussed in this section are classical statistical methods as opposed to EDA techniques. EDA and classical techniques are not mutually exclusive and can be used in a complementary fashion. For example, the analysis can start with some simple graphical techniques such as the 4-plot followed by the classical confirmatory methods discussed herein to provide more rigorous statements about the conclusions. If the classical methods yield different conclusions than the graphical analysis, then some effort should be invested to explain why. Often this is an indication that some of the assumptions of the classical techniques are violated.</p>
+<p>Many of the quantitative techniques fall into two broad categories:</p>
+<pre><code>1. Interval estimation
+2. Hypothesis tests
+</code></pre><h3 id="Interval-Estimates"><a href="#Interval-Estimates" class="headerlink" title="Interval Estimates"></a>Interval Estimates</h3><p>It is common in statistics to estimate a parameter from a sample of data. The value of the parameter using all of the possible data, not just the sample data, is called the population parameter or true value of the parameter. An estimate of the true parameter value is made using the sample data. This is called a point estimate or a sample estimate.</p>
+<p>For example, the most commonly used measure of location is the mean. The population, or true, mean is the sum of all the members of the given population divided by the number of members in the population. As it is typically impractical to measure every member of the population, a random sample is drawn from the population. The sample mean is calculated by summing the values in the sample and dividing by the number of values in the sample. This sample mean is then used as the point estimate of the population mean.</p>
+<p>Interval estimates expand on point estimates by incorporating the uncertainty of the point estimate. In the example for the mean above, different samples from the same population will generate different values for the sample mean. An interval estimate quantifies this uncertainty in the sample estimate by computing lower and upper values of an interval which will, with a given level of confidence (i.e., probability), contain the population parameter.</p>
+<h3 id="Hypothesis-Tests"><a href="#Hypothesis-Tests" class="headerlink" title="Hypothesis Tests"></a>Hypothesis Tests</h3><p>Hypothesis tests also address the uncertainty of the sample estimate. However, instead of providing an interval, a hypothesis test attempts to refute a specific claim about a population parameter based on the sample data. For example, the hypothesis might be one of the following:</p>
+<pre><code>• the population mean is equal to 10
+• the population standard deviation is equal to 5
+• the means from two populations are equal
+• the standard deviations from 5 populations are equal
+</code></pre><p>To reject a hypothesis is to conclude that it is false. However, to accept a hypothesis does not mean that it is true, only that we do not have evidence to believe otherwise. Thus hypothesis tests are usually stated in terms of both a condition that is doubted (null hypothesis) and a condition that is believed (alternative hypothesis).</p>
+<p>A common format for a hypothesis test is:</p>
+<pre><code>H0:    A statement of the null hypothesis, e.g., two population means are equal.
+
+Ha:    A statement of the alternative hypothesis, e.g., two population means are not equal.
+
+Test Statistic:    The test statistic is based on the specific hypothesis test.
+
+Significance Level:    The significance level, α,defines the sensitivity of the test. A value of α = 0.05 means that we inadvertently reject the null hypothesis 5% of the time when it is in fact true. This is also called the type I error. The choice of α is somewhat arbitrary, although in practice values of 0.1, 0.05, and 0.01 are commonly used.
+
+The probability of rejecting the null hypothesis when it is in fact false is called the power of the test and is denoted by 1 - β. Its complement, the probability of accepting the null hypothesis when the alternative hypothesis is, in fact, true (type II error), is called β and can only be computed for a specific alternative hypothesis.
+
+Critical Region:    The critical region encompasses those values of the test statistic that lead to a rejection of the null hypothesis. Based on the distribution of the test statistic and the significance level, a cut-off value for the test statistic is computed. Values either above or below or both (depending on the direction of the test) this cut-off define the critical region.
+</code></pre><h3 id="Practical-Versus-Statistical-Significance"><a href="#Practical-Versus-Statistical-Significance" class="headerlink" title="Practical Versus Statistical Significance"></a>Practical Versus Statistical Significance</h3><p>It is important to distinguish between statistical significance and practical significance. Statistical significance simply means that we reject the null hypothesis. The ability of the test to detect differences that lead to rejection of the null hypothesis depends on the sample size. For example, for a particularly large sample, the test may reject the null hypothesis that two process means are equivalent. However, in practice the difference between the two means may be relatively small to the point of having no real engineering significance.</p>
+<p>Similarly, if the sample size is small, a difference that is large in engineering terms may not lead to rejection of the null hypothesis. The analyst should not just blindly apply the tests, but should combine engineering judgement with statistical analysis.</p>
+<h3 id="Bootstrap-Uncertainty-Estimates"><a href="#Bootstrap-Uncertainty-Estimates" class="headerlink" title="Bootstrap Uncertainty Estimates"></a>Bootstrap Uncertainty Estimates</h3><p>In some cases, it is possible to mathematically derive appropriate uncertainty intervals. This is particularly true for intervals based on the assumption of a normal distribution. However, there are many cases in which it is not possible to mathematically derive the uncertainty. In these cases, the bootstrap provides a method for empirically determining an appropriate interval.</p>
+<h3 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h3><p>Some of the more common classical quantitative techniques are listed below. This list of quantitative techniques is by no means meant to be exhaustive. Additional discussions of classical statistical techniques are contained in the product comparisons chapter.</p>
+<pre><code>• Location
+    1. Measures of Location
+    2. Confidence Limits for the Mean and One Sample t-Test
+    3. Two Sample t-Test for Equal Means
+    4. One Factor Analysis of Variance
+    5. Multi-Factor Analysis of Variance
+• Scale (or variability or spread)
+    1. Measures of Scale
+    2. Bartlett&apos;s Test
+    3. Chi-Square Test
+    4. F-Test
+    5. Levene Test
+• Skewness and Kurtosis
+    1. Measures of Skewness and Kurtosis
+• Randomness
+    1. Autocorrelation
+    2. Runs Test
+• Distributional Measures
+    1. Anderson-Darling Test
+    2. Chi-Square Goodness-of-Fit Test
+    3. Kolmogorov-Smirnov Test
+• Outliers
+    1. Detection of Outliers
+    2. Grubbs Test
+    3. Tietjen-Moore Test
+    4. Generalized Extreme Deviate Test
+• 2-Level Factorial Designs
+    1. Yates Algorithm
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.33. 6-Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.33. 6-Plot/" itemprop="url">EDA_1.3.3.33. 6-Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:06:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.33. 6-Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.33. 6-Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.33. 6-Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.33. 6-Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.33. 6-Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Graphical-Model-Validation"><a href="#Purpose-Graphical-Model-Validation" class="headerlink" title="Purpose: Graphical Model Validation"></a>Purpose: Graphical Model Validation</h3><p>The 6-plot is a collection of 6 specific graphical techniques whose purpose is to assess the validity of a Y versus X fit. The fit can be a linear fit, a non-linear fit, a LOWESS (locally weighted least squares) fit, a spline fit, or any other fit utilizing a single independent variable.</p>
+<p>The 6 plots are:</p>
+<pre><code>1. Scatter plot of the response and predicted values versus the independent variable;
+2. Scatter plot of the residuals versus the independent variable;
+3. Scatter plot of the residuals versus the predicted values;
+4. Lag plot of the residuals;
+5. Histogram of the residuals;
+6. Normal probability plot of the residuals.
+</code></pre><h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/6plot.gif" alt=""></p>
+<p>This 6-plot, which followed a linear fit, shows that the linear model is not adequate. It suggests that a quadratic model would be a better model.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>6 Component Plots</p>
+<p>The 6-plot consists of the following:</p>
+<pre><code>1. Response and predicted values
+        ○ Vertical axis: Response variable, predicted values
+        ○ Horizontal axis: Independent variable
+2. Residuals versus independent variable
+        ○ Vertical axis: Residuals
+        ○ Horizontal axis: Independent variable
+3. Residuals versus predicted values
+        ○ Vertical axis: Residuals
+        ○ Horizontal axis: Predicted values
+4. Lag plot of residuals
+        ○ Vertical axis: RES(I)
+        ○ Horizontal axis: RES(I-1)
+5. Histogram of residuals
+        ○ Vertical axis: Counts
+        ○ Horizontal axis: Residual values
+6. Normal probability plot of residuals
+        ○ Vertical axis: Ordered residuals
+        ○ Horizontal axis: Theoretical values from a normal N(0,1) distribution for ordered residuals
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The 6-plot can be used to answer the following questions:</p>
+<pre><code>1. Are the residuals approximately normally distributed with a fixed location and scale?
 2. Are there outliers?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Identify Important Factors with Respect to Location and Scale</p>
-<p>The goal of many designed experiments is to determine which factors are important with respect to location and scale. A ranked list of the important factors is also often of interest. DOE scatter, mean, and standard deviation plots show this graphically. The DOE scatter plot additionally shows if outliers may potentially be distorting the results.</p>
-<p>DOE scatter plots were designed primarily for analyzing designed experiments. However, they are useful for any type of multi-factor data (i.e., a response variable with two or more factor variables having a small number of distinct levels) whether or not the data were generated from a designed experiment.</p>
-<h3 id="Extension-for-Interaction-Effects"><a href="#Extension-for-Interaction-Effects" class="headerlink" title="Extension for Interaction Effects"></a>Extension for Interaction Effects</h3><p>Using the concept of the scatterplot matrix, the DOE scatter plot can be extended to display first order interaction effects.</p>
-<p>Specifically, if there are k factors, we create a matrix of plots with krows and k columns. On the diagonal, the plot is simply a DOE scatter plot with a single factor. For the off-diagonal plots, we multiply the values ofXi and Xj. For the common 2-level designs (i.e., each factor has two levels) the values are typically coded as -1 and 1, so the multiplied values are also -1 and 1. We then generate a DOE scatter plot for this interaction variable. This plot is called a DOE interaction effects plot and an example is shown below.</p>
-<p><img src="assets/EDA/dexscat1.gif" alt=""></p>
-<h3 id="Interpretation-of-the-DOE-Interaction-Effects-Plot"><a href="#Interpretation-of-the-DOE-Interaction-Effects-Plot" class="headerlink" title="Interpretation of the DOE Interaction Effects Plot"></a>Interpretation of the DOE Interaction Effects Plot</h3><p>We can first examine the diagonal elements for the main effects. These diagonal plots show a great deal of overlap between the levels for all three factors. This indicates that location and scale effects will be relatively small.</p>
-<p>We can then examine the off-diagonal plots for the first order interaction effects. For example, the plot in the first row and second column is the interaction between factors X1 and X2. As with the main effect plots, no clear patterns are evident.</p>
+3. Is the fit adequate?
+4. Do the residuals suggest a better fit?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Validating Model</p>
+<p>A model involving a response variable and a single independent variable has the form:</p>
+<pre><code>Yi=f(Xi)+Ei
+</code></pre><p>where Y is the response variable, X is the independent variable, f is the linear or non-linear fit function, and E is the random component. For a good model, the error component should behave like:</p>
+<pre><code>1. random drawings (i.e., independent);
+2. from a fixed distribution;
+3. with fixed location; and
+4. with fixed variation.
+</code></pre><p>In addition, for fitting models it is usually further assumed that the fixed distribution is normal and the fixed location is zero. For a good model the fixed variation should be as small as possible. A necessary component of fitting models is to verify these assumptions for the error component and to assess whether the variation for the error component is sufficiently small. The histogram, lag plot, and normal probability plot are used to verify the fixed distribution, location, and variation assumptions on the error component. The plot of the response variable and the predicted values versus the independent variable is used to assess whether the variation is sufficiently small. The plots of the residuals versus the independent variable and the predicted values is used to assess the independence assumption.</p>
+<p>Assessing the validity and quality of the fit in terms of the above assumptions is an absolutely vital part of the model-fitting process. No fit should be considered complete without an adequate model validation step.</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>DOE mean plot</li>
-<li>DOE standard deviation plot</li>
-<li>Block plot</li>
-<li>Box plot</li>
-<li>Analysis of variance</li>
+<li>Linear Least Squares</li>
+<li>Non-Linear Least Squares</li>
+<li>Scatter Plot</li>
+<li>Run Sequence Plot</li>
+<li>Lag Plot</li>
+<li>Normal Probability Plot</li>
+<li>Histogram</li>
 </ul>
 
           
@@ -895,7 +1353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.10. Contour Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.31. Youden Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -914,7 +1372,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.10. Contour Plot/" itemprop="url">EDA_1.3.3.10. Contour Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.31. Youden Plot/" itemprop="url">EDA_1.3.3.31. Youden Plot</a></h2>
         
 
         <div class="post-meta">
@@ -926,8 +1384,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T17:26:12+08:00">
-                2018-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:56:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -967,8 +1425,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/02/EDA_1.3.3.10. Contour Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.10. Contour Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.31. Youden Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.31. Youden Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -976,7 +1434,7 @@
 
           
           
-             <span id="/2018/03/02/EDA_1.3.3.10. Contour Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.10. Contour Plot">
+             <span id="/2018/03/12/EDA_1.3.3.31. Youden Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.31. Youden Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -994,7 +1452,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.10. Contour Plot
+                  EDA_1.3.3.31. Youden Plot
               </div>
           
 
@@ -1013,27 +1471,27 @@
       
         
           
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Display 3-d surface on 2-d plot</p>
-<p>A contour plot is a graphical technique for representing a 3-dimensional surface by plotting constant z slices, called contours, on a 2-dimensional format. That is, given a value for z, lines are drawn for connecting the (x,y) coordinates where that z value occurs.</p>
-<p>The contour plot is an alternative to a 3-D surface plot.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/contourp.gif" alt=""></p>
-<p>This contour plot shows that the surface is symmetric and peaks in the center.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The contour plot is formed by:</p>
-<ul>
-<li>Vertical axis: Independent variable 2</li>
-<li>Horizontal axis: Independent variable 1</li>
-<li>Lines: iso-response values</li>
-</ul>
-<p>The independent variables are usually restricted to a regular grid. The actual techniques for determining the correct iso-response values are rather complex and are almost always computer generated.</p>
-<p>An additional variable may be required to specify the Z values for drawing the iso-lines. Some software packages require explicit values. Other software packages will determine them automatically.</p>
-<p>If the data (or function) do not form a regular grid, you typically need to perform a 2-D interpolation to form a regular grid.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The contour plot is used to answer the question</p>
-<pre><code>How does Z change as a function of X and Y?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Visualizing 3-dimensional data</p>
-<p>For univariate data, a run sequence plot and ahistogram are considered necessary first steps in understanding the data. For 2-dimensional data, ascatter plot is a necessary first step in understanding the data.</p>
-<p>In a similar manner, 3-dimensional data should be plotted. Small data sets, such as result from designed experiments, can typically be represented by block plots, DOE mean plots, and the like (“DOE” stands for “Design of Experiments”). For large data sets, a contour plot or a 3-D surface plot should be considered a necessary first step in understanding the data.</p>
-<h3 id="DOE-Contour-Plot"><a href="#DOE-Contour-Plot" class="headerlink" title="DOE Contour Plot"></a>DOE Contour Plot</h3><p>The DOE contour plot is a specialized contour plot used in the design of experiments. In particular, it is useful for full and fractionaldesigns.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>3-D Plot</p>
+            <h3 id="Purpose-Interlab-Comparisons"><a href="#Purpose-Interlab-Comparisons" class="headerlink" title="Purpose: Interlab Comparisons"></a>Purpose: Interlab Comparisons</h3><p>Youden plots are a graphical technique for analyzing interlab data when each lab has made two runs on the same product or one run on two different products.<br>The Youden plot is a simple but effective method for comparing both the within-laboratory variability and the between-laboratory variability.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/youdenpl.gif" alt=""></p>
+<p>This plot shows:</p>
+<pre><code>1. Not all labs are equivalent.
+2. Lab 4 is biased low.
+3. Lab 3 has within-lab variability problems.
+4. Lab 5 has an outlying run.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Response 1 Versus Response 2 Coded by Lab</p>
+<p>Youden plots are formed by:</p>
+<pre><code>1. Vertical axis: Response variable 1 (i.e., run 1 or product 1 response value)
+2. Horizontal axis: Response variable 2 (i.e., run 2 or product 2 response value)
+</code></pre><p>In addition, the plot symbol is the lab id (typically an integer from 1 to k where k is the number of labs). Sometimes a 45-degree reference line is drawn. Ideally, a lab generating two runs of the same product should produce reasonably similar results. Departures from this reference line indicate inconsistency from the lab. If two different products are being tested, then a 45-degree line may not be appropriate. However, if the labs are consistent, the points should lie near some fitted straight line.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Youden plot can be used to answer the following questions:</p>
+<pre><code>1. Are all labs equivalent?
+2. What labs have between-lab problems (reproducibility)?
+3. What labs have within-lab problems (repeatability)?
+4. What labs are outliers?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>In interlaboratory studies or in comparing two runs from the same lab, it is useful to know if consistent results are generated. Youden plots should be a routine plot for analyzing this type of data.</p>
+<p>DOE Youden Plot</p>
+<p>The DOE Youden plot is a specialized Youden plot used in the design of experiments. In particular, it is useful for full and fractional designs.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>Scatter Plot</p>
 
           
         
@@ -1082,7 +1540,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.30. Weibull Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1101,7 +1559,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/" itemprop="url">EDA_1.3.3.9. Complex Demodulation Phase Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.30. Weibull Plot/" itemprop="url">EDA_1.3.3.30. Weibull Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1113,8 +1571,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T16:26:12+08:00">
-                2018-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:56:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1154,8 +1612,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.30. Weibull Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.30. Weibull Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1163,7 +1621,7 @@
 
           
           
-             <span id="/2018/03/02/EDA_1.3.3.9. Complex Demodulation Phase Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.9. Complex Demodulation Phase Plot">
+             <span id="/2018/03/12/EDA_1.3.3.30. Weibull Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.30. Weibull Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1181,7 +1639,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.9. Complex Demodulation Phase Plot
+                  EDA_1.3.3.30. Weibull Plot
               </div>
           
 
@@ -1200,31 +1658,276 @@
       
         
           
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Improve the estimate of frequency in sinusoidal time series models<br>As stated previously, in the frequency analysis of time series models, a common model is the sinusoidal model:</p>
-<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
-</code></pre><p>In this equation, α is the amplitude, φ is the phase shift, and ω is the dominant frequency. In the above model, α and φ are constant, that is they do not vary with time ti.<br>The complex demodulation phase plot (Granger, 1964) is used to improve the estimate of the frequency (i.e., ω) in this model.</p>
-<p>If the complex demodulation phase plot shows lines sloping from left to right, then the estimate of the frequency should be increased. If it shows lines sloping right to left, then the frequency should be decreased. If there is essentially zero slope, then the frequency estimate does not need to be modified.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/cdphasep.gif" alt=""></p>
-<p>This complex demodulation phase plot shows that:</p>
-<ul>
-<li>the specified demodulation frequency is incorrect;</li>
-<li>the demodulation frequency should be increased.</li>
-</ul>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The complex demodulation phase plot is formed by:</p>
-<ul>
-<li>Vertical axis: Phase</li>
-<li>Horizontal axis: Time</li>
-</ul>
-<p>The mathematical computations for the phase plot are beyond the scope of the Handbook. Consult Granger (Granger, 1964) for details.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The complex demodulation phase plot answers the following question:</p>
-<pre><code>Is the specified demodulation frequency correct?
-</code></pre><h3 id="Importance-of-a-Good-Initial-Estimate-for-the-Frequency"><a href="#Importance-of-a-Good-Initial-Estimate-for-the-Frequency" class="headerlink" title="Importance of a Good Initial Estimate for the Frequency"></a>Importance of a Good Initial Estimate for the Frequency</h3><p>The non-linear fitting for the sinusoidal model:</p>
-<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
-</code></pre><p>is usually quite sensitive to the choice of good starting values. The initial estimate of the frequency, ω, is obtained from a spectral plot. The complex demodulation phase plot is used to assess whether this estimate is adequate, and if it is not, whether it should be increased or decreased. Using the complex demodulation phase plot with the spectral plot can significantly improve the quality of the non-linear fits obtained.</p>
+            <h3 id="Purpose-Graphical-Check-To-See-If-Data-Come-From-a-Population-That-Would-Be-Fit-by-a-Weibull-Distribution"><a href="#Purpose-Graphical-Check-To-See-If-Data-Come-From-a-Population-That-Would-Be-Fit-by-a-Weibull-Distribution" class="headerlink" title="Purpose: Graphical Check To See If Data Come From a Population That Would Be Fit by a Weibull Distribution"></a>Purpose: Graphical Check To See If Data Come From a Population That Would Be Fit by a Weibull Distribution</h3><p>The Weibull plot (Nelson 1982) is a graphical technique for determining if a data set comes from a population that would logically be fit by a 2-parameter Weibull distribution (the location is assumed to be zero).</p>
+<p>The Weibull plot has special scales that are designed so that if the data do in fact follow a Weibull distribution, the points will be linear (or nearly linear). The least squares fit of this line yields estimates for the shape and scale parameters of the Weibull distribution (the location is assumed to be zero).</p>
+<p>Specifically, the shape parameter is the reciprocal of the slope of the fitted line and the scale parameter is the exponent of the intercept of the fitted line.<br>The Weibull distribution also has the property that the scale parameter falls at the 63.2% point irrespective of the value of the shape parameter. The plot shows a horizontal line at this 63.2% point and a vertical line where the horizontal line intersects the least squares fitted line. This vertical line shows the value of scale parameter.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/weibullp.gif" alt=""></p>
+<p>This Weibull plot shows that:</p>
+<pre><code>1. the assumption of a Weibull distribution is reasonable;
+2. the scale parameter estimate is computed to be 33.32;
+3. the shape parameter estimate is computed to be 5.28; and
+4. there are no outliers.
+</code></pre><p>Note that the values on the x-axis (“0”, “1”, and “2”) are the exponents. These actually denote the value 100 = 1, 101 = 10, and 102 = 100.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Weibull Cumulative Probability Versus LN(Ordered Response)</p>
+<p>The Weibull plot is formed by:</p>
+<pre><code>• Vertical axis: Weibull cumulative probability expressed as a percentage
+• Horizontal axis: ordered failure times (in a LOG10 scale)
+</code></pre><p>The vertical scale is ln(-ln(1-p)) where p=(i-0.3)/(n+0.4) and i is the rank of the observation. This scale is chosen in order to linearize the resulting plot for Weibull data.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Weibull plot can be used to answer the following questions:</p>
+<pre><code>1. Do the data follow a 2-parameter Weibull distribution?
+2. What is the best estimate of the shape parameter for the 2-parameter Weibull distribution?
+3. What is the best estimate of the scale (= variation) parameter for the 2-parameter Weibull distribution?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Check Distributional Assumptions</p>
+<p>Many statistical analyses, particularly in the field of reliability, are based on the assumption that the data follow a Weibull distribution. If the analysis assumes the data follow a Weibull distribution, it is important to verify this assumption and, if verified, find good estimates of the Weibull parameters.</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Spectral Plot</li>
-<li>Complex Demodulation Phase Plot</li>
-<li>Non-Linear Fitting</li>
+<li>Weibull Probability Plot</li>
+<li>Weibull PPCC Plot</li>
+<li>Weibull Hazard Plot</li>
+</ul>
+<p>The Weibull probability plot (in conjunction with the Weibull PPCC plot), the Weibull hazard plot, and the Weibull plot are all similar techniques that can be used for assessing the adequacy of the Weibull distribution as a model for the data, and additionally providing estimation for the shape, scale, or location parameters.<br>The Weibull hazard plot and Weibull plot are designed to handle censored data (which the Weibull probability plot does not).</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.32. 4-Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.32. 4-Plot/" itemprop="url">EDA_1.3.3.32. 4-Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:56:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.32. 4-Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.32. 4-Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.32. 4-Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.32. 4-Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.32. 4-Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Check-Underlying-Statistical-Assumptions"><a href="#Purpose-Check-Underlying-Statistical-Assumptions" class="headerlink" title="Purpose: Check Underlying Statistical Assumptions"></a>Purpose: Check Underlying Statistical Assumptions</h3><p>The 4-plot is a collection of 4 specific EDA graphical techniques whose purpose is to test the assumptions that underlie most measurement processes. A 4-plot consists of a</p>
+<pre><code>1. run sequence plot;
+2. lag plot;
+3. histogram;
+4. normal probability plot.
+</code></pre><p>If the 4 underlying assumptions of a typical measurement process hold, then the above 4 plots will have a characteristic appearance (see the normal random numbers case study below); if any of the underlying assumptions fail to hold, then it will be revealed by an anomalous appearance in one or more of the plots. Several commonly encountered situations are demonstrated in the case studies below.<br>Although the 4-plot has an obvious use for univariate and time series data, its usefulness extends far beyond that. Many statisticalmodels of the form</p>
+<pre><code>Yi=f(X1,...,Xk)+Ei
+</code></pre><p>have the same underlying assumptions for the error term. That is, no matter how complicated the functional fit, the assumptions on the underlying error term are still the same. The 4-plot can and should be routinely applied to the residuals when fitting models regardless of whether the model is simple or complicated.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/4-plot.gif" alt=""></p>
+<p>Process Has Fixed Location, Fixed Variation, Non-Random (Oscillatory), Non-Normal U-Shaped Distribution, and Has 3 Outliers.</p>
+<p>This 4-plot reveals the following:</p>
+<pre><code>1. the fixed location assumption is justified as shown by the run sequence plot in the upper left corner.
+2. the fixed variation assumption is justified as shown by the run sequence plot in the upper left corner.
+3. the randomness assumption is violated as shown by the non-random (oscillatory) lag plot in the upper right corner.
+4. the assumption of a common, normal distribution is violated as shown by the histogram in the lower left corner and the normal probability plot in the lower right corner. The distribution is non-normal and is a U-shaped distribution.
+5. there are several outliers apparent in the lag plot in the upper right corner.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><ol>
+<li>Run Sequence Plot;</li>
+<li>Lag Plot;</li>
+<li>Histogram;</li>
+<li>Normal Probability Plot</li>
+</ol>
+<p>The 4-plot consists of the following:</p>
+<pre><code>1. Run sequence plot to test fixed location and variation.
+    ○ Vertically: Yi
+    ○ Horizontally: i
+2. Lag Plot to test randomness.
+    ○ Vertically: Yi
+    ○ Horizontally: Yi-1
+3. Histogram to test (normal) distribution.
+    ○ Vertically: Counts
+    ○ Horizontally: Y
+4. Normal probability plot to test normal distribution.
+    ○ Vertically: Ordered Yi
+    ○ Horizontally: Theoretical values from a normal N(0,1) distribution for ordered Yi
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>4-plots can provide answers to many questions:</p>
+<pre><code>1. Is the process in-control, stable, and predictable?
+2. Is the process drifting with respect to location?
+3. Is the process drifting with respect to variation?
+4. Are the data random?
+5. Is an observation related to an adjacent observation?
+6. If the data are a time series, is is white noise?
+7. If the data are a time series and not white noise, is it sinusoidal, autoregressive, etc.?
+8. If the data are non-random, what is a better model?
+9. Does the process follow a normal distribution?
+10. If non-normal, what distribution does the process follow?
+11. Is the model
+    Yi=A0+Ei
+    valid and sufficient?
+12. If the default model is insufficient, what is a better model?
+13. Is the formula
+    sY¯=s/N−−√
+    valid?
+14. Is the sample mean a good estimator of the process location?
+15. If not, what would be a better estimator?
+16. Are there any outliers?
+</code></pre><h3 id="Importance-Testing-Underlying-Assumptions-Helps-Ensure-the-Validity-of-the-Final-Scientific-and-Engineering-Conclusions"><a href="#Importance-Testing-Underlying-Assumptions-Helps-Ensure-the-Validity-of-the-Final-Scientific-and-Engineering-Conclusions" class="headerlink" title="Importance: Testing Underlying Assumptions Helps Ensure the Validity of the Final Scientific and Engineering Conclusions"></a>Importance: Testing Underlying Assumptions Helps Ensure the Validity of the Final Scientific and Engineering Conclusions</h3><p>There are 4 assumptions that typically underlie all measurement processes; namely, that the data from the process at hand “behave like”:</p>
+<pre><code>1. random drawings;
+2. from a fixed distribution;
+3. with that distribution having a fixed location; and
+4. with that distribution having fixed variation.
+</code></pre><p>Predictability is an all-important goal in science and engineering. If the above 4 assumptions hold, then we have achieved probabilistic predictability–the ability to make probability statements not only about the process in the past, but also about the process in the future. In short, such processes are said to be “statistically in control”. If the 4 assumptions do not hold, then we have a process that is drifting (with respect to location, variation, or distribution), is unpredictable, and is out of control. A simple characterization of such processes by a location estimate, a variation estimate, or a distribution “estimate” inevitably leads to optimistic and grossly invalid engineering conclusions.</p>
+<p>Inasmuch as the validity of the final scientific and engineering conclusions is inextricably linked to the validity of these same 4 underlying assumptions, it naturally follows that there is a real necessity for all 4 assumptions to be routinely tested. The 4-plot (run sequence plot, lag plot, histogram, and normal probability plot) is seen as a simple, efficient, and powerful way of carrying out this routine checking.</p>
+<p>Interpretation:<br>Flat, Equi-Banded, Random, Bell-Shaped, and Linear<br>Of the 4 underlying assumptions:</p>
+<pre><code>1. If the fixed location assumption holds, then the run sequence plot will be flat and non-drifting.
+2. If the fixed variation assumption holds, then the vertical spread in the run sequence plot will be approximately the same over the entire horizontal axis.
+3. If the randomness assumption holds, then the lag plot will be structureless and random.
+4. If the fixed distribution assumption holds (in particular, if the fixed normal distribution assumption holds), then the histogram will be bell-shaped and the normal probability plot will be approximatelylinear.
+</code></pre><p>If all 4 of the assumptions hold, then the process is “statistically in control”. In practice, many processes fall short of achieving this ideal.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Run Sequence Plot </li>
+<li>Lag Plot </li>
+<li>Histogram </li>
+<li>Normal Probability Plot </li>
+<li>Autocorrelation Plot </li>
+<li>Spectral Plot </li>
+<li>PPCC Plot </li>
 </ul>
 
           
@@ -1274,7 +1977,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.7. Box Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.29. Star Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1293,7 +1996,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.7. Box Plot/" itemprop="url">EDA_1.3.3.7. Box Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.29. Star Plot/" itemprop="url">EDA_1.3.3.29. Star Plot</a></h2>
         
 
         <div class="post-meta">
@@ -1305,8 +2008,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T16:26:12+08:00">
-                2018-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:46:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -1346,8 +2049,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/02/EDA_1.3.3.7. Box Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.7. Box Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.3.29. Star Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.29. Star Plot/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1355,7 +2058,7 @@
 
           
           
-             <span id="/2018/03/02/EDA_1.3.3.7. Box Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.7. Box Plot">
+             <span id="/2018/03/12/EDA_1.3.3.29. Star Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.29. Star Plot">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1373,7 +2076,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.7. Box Plot
+                  EDA_1.3.3.29. Star Plot
               </div>
           
 
@@ -1392,812 +2095,216 @@
       
         
           
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Check location and variation shifts</p>
-<p>Box plots (Chambers 1983) are an excellent tool for conveying location and variation information in data sets, particularly for detecting and illustrating location and variation changes between different groups of data.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>This box plot reveals that machine has a significant effect on energy with respect to location and possibly variation</p>
-<p><img src="assets/EDA/boxplot0.gif" alt=""></p>
-<p>This box plot, comparing four machines for energy output, shows that machine has a significant effect on energy with respect to both location and variation. Machine 3 has the highest energy response (about 72.5); machine 4 has the least variable energy response with about 50% of its readings being within 1 energy unit.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Box plots are formed by</p>
-<ul>
-<li>Vertical axis: Response variable</li>
-<li>Horizontal axis: The factor of interest</li>
-</ul>
-<p>More specifically, we</p>
-<pre><code>1. Calculate the median and the quartiles (the lower quartile is the 25th percentile and the upper quartile is the 75th percentile).
-2. Plot a symbol at the median (or draw a line) and draw a box (hence the name--box plot) between the lower and upper quartiles; this box represents the middle 50% of the data--the &quot;body&quot; of the data.
-3. Draw a line from the lower quartile to the minimum point and another line from the upper quartile to the maximum point. Typically a symbol is drawn at these minimum and maximum points, although this is optional.
-</code></pre><p>Thus the box plot identifies the middle 50% of the data, the median, and the extreme points.</p>
-<h3 id="Single-or-multiple-box-plots-can-be-drawn"><a href="#Single-or-multiple-box-plots-can-be-drawn" class="headerlink" title="Single or multiple box plots can be drawn"></a>Single or multiple box plots can be drawn</h3><p>A single box plot can be drawn for one batch of data with no distinct groups. Alternatively, multiple box plots can be drawn together to compare multiple data sets or to compare groups in a single data set. For a single box plot, the width of the box is arbitrary. For multiple box plots, the width of the box plot can be set proportional to the number of points in the given group or sample (some software implementations of the box plot simply set all the boxes to the same width).</p>
-<h3 id="Box-plots-with-fences"><a href="#Box-plots-with-fences" class="headerlink" title="Box plots with fences"></a>Box plots with fences</h3><p>There is a useful variation of the box plot that more specifically identifies outliers. To create this variation:</p>
-<pre><code>1. Calculate the median and the lower and upper quartiles.
-2. Plot a symbol at the median and draw a box between the lower and upper quartiles.
-3. Calculate the interquartile range (the difference between the upper and lower quartile) and call it IQ.
-4. Calculate the following points:
-    L1 = lower quartile - 1.5*IQ
-    L2 = lower quartile - 3.0*IQ
-    U1 = upper quartile + 1.5*IQ
-    U2 = upper quartile + 3.0*IQ
-5. The line from the lower quartile to the minimum is now drawn from the lower quartile to the smallest point that is greater than L1. Likewise, the line from the upper quartile to the maximum is now drawn to the largest point smaller than U1.
-6. Points between L1 and L2 or between U1 and U2 are drawn as small circles. Points less than L2 or greater than U2 are drawn as large circles.
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The box plot can provide answers to the following questions:</p>
-<pre><code>1. Is a factor significant?
-2. Does the location differ between subgroups?
-3. Does the variation differ between subgroups?
-4. Are there any outliers?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Check the significance of a factor<br>The box plot is an important EDA tool for determining if a factor has a significant effect on the response with respect to either location or variation.<br>The box plot is also an effective tool for summarizing large quantities of information.</p>
+            <h3 id="Purpose-Display-Multivariate-Data"><a href="#Purpose-Display-Multivariate-Data" class="headerlink" title="Purpose: Display Multivariate Data"></a>Purpose: Display Multivariate Data</h3><p>The star plot (Chambers 1983) is a method of displaying multivariate data. Each star represents a single observation. Typically, star plots are generated in a multi-plot format with many stars on each page and each star representing one observation.</p>
+<p>Star plots are used to examine the relative values for a single data point (e.g., point 3 is large for variables 2 and 4, small for variables 1, 3, 5, and 6) and to locate similar points or dissimilar points.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/starplot.gif" alt=""></p>
+<p>The plot below contains the star plots of 16 cars. The data file actually contains 74 cars, but we restrict the plot to what can reasonably be shown on one page. The variable list for the sample star plot is</p>
+<pre><code>1. Price
+2. Mileage (MPG)
+3. 1978 Repair Record (1 = Worst, 5 = Best)
+4. 1977 Repair Record (1 = Worst, 5 = Best)
+5. Headroom
+6. Rear Seat Room
+7. Trunk Space
+8. Weight
+9. 9
+10. Length
+</code></pre><p>We can look at these plots individually or we can use them to identify clusters of cars with similar features. For example, we can look at the star plot of the Cadillac Seville and see that it is one of the most expensive cars, gets below average (but not among the worst) gas mileage, has an average repair record, and has average-to-above-average roominess and size. We can then compare the Cadillac models (the last three plots) with the AMC models (the first three plots). This comparison shows distinct patterns. The AMC models tend to be inexpensive, have below average gas mileage, and are small in both height and weight and in roominess. The Cadillac models are expensive, have poor gas mileage, and are large in both size and roominess.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The star plot consists of a sequence of equi-angular spokes, called radii, with each spoke representing one of the variables. The data length of a spoke is proportional to the magnitude of the variable for the data point relative to the maximum magnitude of the variable across all data points. A line is drawn connecting the data values for each spoke. This gives the plot a star-like appearance and the origin of the name of this plot.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The star plot can be used to answer the following questions:</p>
+<pre><code>1. What variables are dominant for a given observation?
+2. Which observations are most similar, i.e., are there clusters of observations?
+3. Are there outliers?
+</code></pre><h3 id="Weakness-in-Technique"><a href="#Weakness-in-Technique" class="headerlink" title="Weakness in Technique"></a>Weakness in Technique</h3><p>Star plots are helpful for small-to-moderate-sized multivariate data sets. Their primary weakness is that their effectiveness is limited to data sets with less than a few hundred points. After that, they tend to be overwhelming.</p>
+<p>Graphical techniques suited for large data sets are discussed by Scott.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>Alternative ways to plot multivariate data are discussed in Chambers, du Toit, and Everitt.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/" itemprop="url">EDA_1.3.3.28. Standard Deviation Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:46:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.28. Standard Deviation Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.28. Standard Deviation Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Detect-Changes-in-Scale-Between-Groups"><a href="#Purpose-Detect-Changes-in-Scale-Between-Groups" class="headerlink" title="Purpose: Detect Changes in Scale Between Groups"></a>Purpose: Detect Changes in Scale Between Groups</h3><p>Standard deviation plots are used to see if the standard deviation varies between different groups of the data. The grouping is determined by the analyst. In most cases, the data provide a specific grouping variable. For example, the groups may be the levels of a factor variable. In the sample plot below, the months of the year provide the grouping.</p>
+<p>Standard deviation plots can be used with ungrouped data to determine if the standard deviation is changing over time. In this case, the data are broken into an arbitrary number of equal-sized groups. For example, a data series with 400 points can be divided into 10 groups of 40 points each. A standard deviation plot can then be generated with these groups to see if the standard deviation is increasing or decreasing over time.</p>
+<p>Although the standard deviation is the most commonly used measure of scale, the same concept applies to other measures of scale. For example, instead of plotting the standard deviation of each group, the median absolute deviation or theaverage absolute deviation might be plotted instead. This might be done if there were significant outliers in the data and a more robust measure of scale than the standard deviation was desired.</p>
+<p>Standard deviation plots are typically used in conjunction with mean plots. The mean plot would be used to check for shifts in location while the standard deviation plot would be used to check for shifts in scale.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/sdplot.gif" alt=""></p>
+<p>This sample standard deviation plot shows</p>
+<pre><code>1. there is a shift in variation;
+2. greatest variation is during the summer months.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Standard Deviations Versus Group ID</p>
+<p>Standard deviation plots are formed by:</p>
+<pre><code>• Vertical axis: Group standard deviations
+• Horizontal axis: Group identifier
+</code></pre><p>A reference line is plotted at the overall standard deviation.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The standard deviation plot can be used to answer the following questions.</p>
+<pre><code>1. Are there any shifts in variation?
+2. What is the magnitude of the shifts in variation?
+3. Is there a distinct pattern in the shifts in variation?
+</code></pre><h3 id="Importance-Checking-Assumptions"><a href="#Importance-Checking-Assumptions" class="headerlink" title="Importance: Checking Assumptions"></a>Importance: Checking Assumptions</h3><p>A common assumption in 1-factor analyses is that of equal variances. That is, the variance is the same for different levels of the factor variable. The standard deviation plot provides a graphical check for that assumption. A common assumption for univariate data is that the variance is constant. By grouping the data into equi-sized intervals, the standard deviation plot can provide a graphical test of this assumption.</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
 <li>Mean Plot</li>
-<li>Analysis of Variance</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.8. Complex Demodulation Amplitude Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.8. Complex Demodulation Amplitude Plot/" itemprop="url">EDA_1.3.3.8. Complex Demodulation Amplitude Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T16:26:12+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/02/EDA_1.3.3.8. Complex Demodulation Amplitude Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.8. Complex Demodulation Amplitude Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/02/EDA_1.3.3.8. Complex Demodulation Amplitude Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.8. Complex Demodulation Amplitude Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.8. Complex Demodulation Amplitude Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Detect Changing Amplitude in Sinusoidal Models</p>
-<p>In the frequency analysis of time series models, a common model is the sinusoidal model:</p>
-<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
-</code></pre><p>In this equation, α is the amplitude, φ is the phase shift, and ω is the dominant frequency. In the above model, α and φ are constant, that is they do not vary with time, ti.</p>
-<p>The complex demodulation amplitude plot (Granger, 1964) is used to determine if the assumption of constant amplitude is justifiable. If the slope of the complex demodulation amplitude plot is not zero, then the above model is typically replaced with the model:</p>
-<pre><code>Yi=C+αisin(2πωti+ϕ)+Ei
-</code></pre><p>where α^i is some type of linear model fit with standard least squares. The most common case is a linear fit, that is the model becomes</p>
-<pre><code>Yi=C+(B0+B1∗ti)sin(2πωti+ϕ)+Ei
-</code></pre><p>Quadratic models are sometimes used. Higher order models are relatively rare.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/cdampplo.gif" alt=""></p>
-<p>This complex demodulation amplitude plot shows that:</p>
-<ul>
-<li>the amplitude is fixed at approximately 390;</li>
-<li>there is a start-up effect; and</li>
-<li>there is a change in amplitude at around x = 160 that should be investigated for an outlier.</li>
-</ul>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>The complex demodulation amplitude plot is formed by:</p>
-<ul>
-<li>Vertical axis: Amplitude</li>
-<li>Horizontal axis: Time</li>
-</ul>
-<p>The mathematical computations for determining the amplitude are beyond the scope of the Handbook. Consult Granger (Granger, 1964) for details.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The complex demodulation amplitude plot answers the following questions:</p>
-<pre><code>1. Does the amplitude change over time?
-2. Are there any outliers that need to be investigated?
-3. Is the amplitude different at the beginning of the series (i.e., is there a start-up effect)?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Assumption Checking</p>
-<p>As stated previously, in the frequency analysis of time series models, a common model is the sinusoidal model:<br>    Yi=C+αsin(2πωti+ϕ)+Ei<br>In this equation, α is assumed to be constant, that is it does not vary with time. It is important to check whether or not this assumption is reasonable.</p>
-<p>The complex demodulation amplitude plot can be used to verify this assumption. If the slope of this plot is essentially zero, then the assumption of constant amplitude is justified. If it is not, α should be replaced with some type of time-varying model. The most common cases are linear (B0 + B1<em>t) and quadratic (B0 + B1</em>t +B2*t2).</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Spectral Plot</li>
-<li>Complex Demodulation Phase Plot</li>
-<li>Non-Linear Fitting</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.6. Box-Cox Normality Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.6. Box-Cox Normality Plot/" itemprop="url">EDA_1.3.3.6. Box-Cox Normality Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T15:26:12+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/02/EDA_1.3.3.6. Box-Cox Normality Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.6. Box-Cox Normality Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/02/EDA_1.3.3.6. Box-Cox Normality Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.6. Box-Cox Normality Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.6. Box-Cox Normality Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Find transformation to normalize data</p>
-<p>Many statistical tests and intervals are based on the assumption of normality. The assumption of normality often leads to tests that are simple, mathematically tractable, and powerful compared to tests that do not make the normality assumption. Unfortunately, many real data sets are in fact not normal. However, an appropriate transformation of a data set can often yield a data set that does follow a normal distribution. This increases the applicability and usefulness of statistical techniques based on the normality assumption.<br>The Box-Cox transformation is a particulary useful family of transformations. It is defined as:</p>
-<p><img src="assets/EDA/boxcoxeq.gif" alt=""></p>
-<p>where X is the response variable and </p>
-<p>lamda is the transformation parameter. For<br>lamda = 0, the log of the data is taken instead of using the above formula.<br>Given a particular transformation, it is helpful to define a measure of the normality of the resulting transformation. One measure is to compute the correlation coefficient of a normal probability plot. The correlation is computed between the vertical and horizontal axis variables of the probability plot and is a convenient measure of the linearity of the probability plot (the more linear the probability plot, the better a normal distribution fits the data).<br>The Box-Cox normality plot is a plot of these correlation coefficients for various values of the lambda parameter. The value of lambda corresponding to the maximum correlation on the plot is then the optimal choice for </p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/boxcox.gif" alt=""></p>
-<p>The histogram in the upper left-hand shows a data set that has significant right skewness (and so does not follow a normal distribution).</p>
-<p>The Box-Cox normality plot shows that the maximum value of the correlation coefficient is at<br>lamda = -0.3.<br>The histogram of the data after applying the Box-Cox transformation with lamda = -0.3. shows a data set for which the normality assumption is reasonable. This is verified with a normal probability plot of the transformed data.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Box-Cox normality plots are formed by:</p>
-<ul>
-<li>Vertical axis: Correlation coefficient from the normal probability plot after applying Box-Cox transformation</li>
-<li>Horizontal axis: Value for </li>
-</ul>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Box-Cox normality plot can provide answers to the following questions:</p>
-<pre><code>1. Is there a transformation that will normalize my data?
-2. What is the optimal value of the transformation parameter?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Normalization improves validity of tests</p>
-<p>Normality assumptions are critical for many univariate intervals and tests. It is important to test this normality assumption. If the data are in fact not normal, the Box-Cox normality plot can often be used to find a transformation that will normalize the data.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Normal Probability Plot </li>
-<li>Box-Cox Linearity Plot</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.4. Bootstrap Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.4. Bootstrap Plot/" itemprop="url">EDA_1.3.3.4. Bootstrap Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T14:26:12+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/02/EDA_1.3.3.4. Bootstrap Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.4. Bootstrap Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/02/EDA_1.3.3.4. Bootstrap Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.4. Bootstrap Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.4. Bootstrap Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Estimate uncertainty</p>
-<p>The bootstrap (Efron and Gong) plot is used to estimate the uncertainty of a statistic.</p>
-<h3 id="Generate-subsamples-with-replacement"><a href="#Generate-subsamples-with-replacement" class="headerlink" title="Generate subsamples with replacement"></a>Generate subsamples with replacement</h3><p>To generate a bootstrap uncertainty estimate for a given statistic from a set of data, a subsample of a size less than or equal to the size of the data set is generated from the data, and the statistic is calculated. This subsample is generated with replacement so that any data point can be sampled multiple times or not sampled at all. This process is repeated for many subsamples, typically between 500 and 1000. The computed values for the statistic form an estimate of the sampling distribution of the statistic.</p>
-<p>For example, to estimate the uncertainty of the median from a dataset with 50 elements, we generate a subsample of 50 elements and calculate the median. This is repeated at least 500 times so that we have at least 500 values for the median. Although the number of bootstrap samples to use is somewhat arbitrary, 500 subsamples is usually sufficient. To calculate a 90% confidence interval for the median, the sample medians are sorted into ascending order and the value of the 25th median (assuming exactly 500 subsamples were taken) is the lower confidence limit while the value of the 475th median (assuming exactly 500 subsamples were taken) is the upper confidence limit.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/bootstra.gif" alt=""></p>
-<p>This bootstrap plot was generated from 500 uniform random numbers. Bootstrap plots and corresponding histograms were generated for the mean, median, and mid-range. The histograms for the corresponding statistics clearly show that for uniform random numbers the mid-range has the smallest variance and is, therefore, a superior location estimator to the mean or the median.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The bootstrap plot is formed by:</p>
-<ul>
-<li>Vertical axis: Computed value of the desired statistic for a given subsample.</li>
-<li>Horizontal axis: Subsample number.</li>
-</ul>
-<p>The bootstrap plot is simply the computed value of the statistic versus the subsample number. That is, the bootstrap plot generates the values for the desired statistic. This is usually immediately followed by a histogram or some other distributional plot to show the location and variation of the sampling distribution of the statistic.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The bootstrap plot is used to answer the following questions:</p>
-<ul>
-<li>What does the sampling distribution for the statistic look like?</li>
-<li>What is a 95% confidence interval for the statistic?</li>
-<li>Which statistic has a sampling distribution with the smallest variance? That is, which statistic generates the narrowest confidence interval?</li>
-</ul>
-<h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>The most common uncertainty calculation is generating a confidence interval for the mean. In this case, the uncertainty formula can be derived mathematically. However, there are many situations in which the uncertainty formulas are mathematically intractable. The bootstrap provides a method for calculating the uncertainty in these cases.</p>
-<h3 id="Cautuion-on-use-of-the-bootstrap"><a href="#Cautuion-on-use-of-the-bootstrap" class="headerlink" title="Cautuion on use of the bootstrap"></a>Cautuion on use of the bootstrap</h3><p>The bootstrap is not appropriate for all distributions and statistics (Efron and Tibrashani). For example, because of the shape of the uniform distribution, the bootstrap is not appropriate for estimating the distribution of statistics that are heavily dependent on the tails, such as the range.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Histogram</li>
-<li><p>Jackknife</p>
-<p>  The jacknife is a technique that is closely related to the bootstrap. The jackknife is beyond the scope of this handbook. See the Efron and Gong article for a discussion of the jackknife.</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/" itemprop="url">EDA_1.3.3.5. Box-Cox Linearity Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T14:26:12+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/02/EDA_1.3.3.5. Box-Cox Linearity Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.5. Box-Cox Linearity Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.5. Box-Cox Linearity Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Find the transformation of the X variable that maximizes the correlation between a Y and an X variable</p>
-<p>When performing a linear fit of Y against X, an appropriate transformation of X can often significantly improve the fit. The Box-Cox transformation (Box and Cox, 1964) is a particularly useful family of transformations. It is defined as:</p>
-<blockquote>
-<p>   T(X)=(Xλ−1)/λ</p>
-</blockquote>
-<p>where X is the variable being transformed and λis the transformation parameter. For λ = 0, the natural log of the data is taken instead of using the above formula.</p>
-<p>The Box-Cox linearity plot is a plot of the correlation between Y and the transformed X for given values of λ. That is, λ is the coordinate for the horizontal axis variable and the value of the correlation between Y and the transformed X is the coordinate for the vertical axis of the plot. The value of λcorresponding to the maximum correlation (or minimum for negative correlation) on the plot is then the optimal choice for λ.</p>
-<p>Transforming X is used to improve the fit. The Box-Cox transformation applied to Y can be used as the basis for meeting the error assumptions. That case is not covered here. See page 225 of (Draper and Smith, 1981) or page 77 of (Ryan, 1997) for a discussion of this case.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/bootstra.gif" alt=""></p>
-<p>The plot of the original data with the predicted values from a linear fit indicate that a quadratic fit might be preferable. The Box-Cox linearity plot shows a value of λ = 2.0. The plot of the transformed data with the predicted values from a linear fit with the transformed data shows a better fit (verified by the significant reduction in the residual standard deviation).</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Box-Cox linearity plots are formed by</p>
-<ul>
-<li>Vertical axis: Correlation coefficient from the transformed X and Y</li>
-<li>Horizontal axis: Value for λ</li>
-</ul>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Box-Cox linearity plot can provide answers to the following questions:</p>
-<pre><code>1. Would a suitable transformation improve my fit?
-2. What is the optimal value of the transformation parameter?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Find a suitable transformation</p>
-<p>Transformations can often significantly improve a fit. The Box-Cox linearity plot provides a convenient way to find a suitable transformation without engaging in a lot of trial and error fitting.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Linear Regression </li>
-<li>Box-Cox Normality Plot</li>
+<li>DOE Standard Deviation Plot</li>
 </ul>
 
           
@@ -2238,7 +2345,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2288,7 +2395,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">199</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2310,7 +2417,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">224</span>
+                  <span class="site-state-item-count">246</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/使用tf.app.flags定义命令行参数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/" itemprop="url">EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test</a></h2>
+                <a class="post-title-link" href="/2018/07/16/使用tf.app.flags定义命令行参数/" itemprop="url">使用tf.app.flags定义命令行参数</a></h2>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:04:12+08:00">
-                2018-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T14:28:12+08:00">
+                2018-07-16
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/" itemprop="commentCount"></span>
+                <a href="/2018/07/16/使用tf.app.flags定义命令行参数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/使用tf.app.flags定义命令行参数/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test">
+             <span id="/2018/07/16/使用tf.app.flags定义命令行参数/" class="leancloud_visitors" data-flag-title="使用tf.app.flags定义命令行参数">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test
+                  使用tf.app.flags定义命令行参数
               </div>
           
 
@@ -425,50 +425,885 @@
 
       
         
+          <p>tf定义了tf.app.flags，用于支持接受命令行传递参数，相当于接受argv。</p>
+<p>新建test_tf_flags.py文件内容如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment">#第一个是参数名称，第二个参数是默认值，第三个是参数描述</span></span><br><span class="line">tf.app.flags.DEFINE_string(<span class="string">'str_name'</span>, <span class="string">'def_v_1'</span>,<span class="string">"descrip1"</span>)</span><br><span class="line">tf.app.flags.DEFINE_integer(<span class="string">'int_name'</span>, <span class="number">10</span>,<span class="string">"descript2"</span>)</span><br><span class="line">tf.app.flags.DEFINE_boolean(<span class="string">'bool_name'</span>, <span class="keyword">False</span>, <span class="string">"descript3"</span>)</span><br><span class="line"></span><br><span class="line">FLAGS = tf.app.flags.FLAGS</span><br><span class="line"></span><br><span class="line"><span class="comment">#必须带参数，否则：'TypeError: main() takes no arguments (1 given)';   main的参数名随意定义，无要求</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(_)</span>:</span></span><br><span class="line">    print(FLAGS.str_name)</span><br><span class="line">    print(FLAGS.int_name)</span><br><span class="line">    print(FLAGS.bool_name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    tf.app.run()  <span class="comment">#执行main函数</span></span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/使用tf.app.flags定义命令行参数/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/Self Attention原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/16/Self Attention原理/" itemprop="url">Self Attention原理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T14:28:12+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-            <h3 id="Purpose-Test-for-Distributional-Adequacy"><a href="#Purpose-Test-for-Distributional-Adequacy" class="headerlink" title="Purpose: Test for Distributional Adequacy"></a>Purpose: Test for Distributional Adequacy</h3><p>The Kolmogorov-Smirnov test (Chakravart, Laha, and Roy, 1967) is used to decide if a sample comes from a population with a specific distribution.</p>
-<p>The Kolmogorov-Smirnov (K-S) test is based on the empirical distribution function (ECDF). Given Nordered data points Y1, Y2, …, YN, the ECDF is defined as</p>
-<pre><code>EN=n(i)/N
-</code></pre><p>where n(i) is the number of points less than Yi and the Yi are ordered from smallest to largest value. This is a step function that increases by 1/N at the value of each ordered data point.<br>The graph below is a plot of the empirical distribution function with a normal cumulative distribution function for 100 normal random numbers. The K-S test is based on the maximum distance between these two curves.</p>
-<h3 id="Characteristics-and-Limitations-of-the-K-S-Test"><a href="#Characteristics-and-Limitations-of-the-K-S-Test" class="headerlink" title="Characteristics and Limitations of the K-S Test"></a>Characteristics and Limitations of the K-S Test</h3><p>An attractive feature of this test is that the distribution of the K-S test statistic itself does not depend on the underlying cumulative distribution function being tested. Another advantage is that it is an exact test (the chi-square goodness-of-fit test depends on an adequate sample size for the approximations to be valid). Despite these advantages, the K-S test has several important limitations:</p>
-<pre><code>1. It only applies to continuous distributions.
-2. It tends to be more sensitive near the center of the distribution than at the tails.
-3. Perhaps the most serious limitation is that the distribution must be fully specified. That is, if location, scale, and shape parameters are estimated from the data, the critical region of the K-S test is no longer valid. It typically must be determined by simulation.
-</code></pre><p>Several goodness-of-fit tests, such as the Anderson-Darling test and the Cramer Von-Mises test, are refinements of the K-S test. As these refined tests are generally considered to be more powerful than the original K-S test, many analysts prefer them. Also, the advantage for the K-S test of having the critical values be indpendendent of the underlying distribution is not as much of an advantage as first appears. This is due to limitation 3 above (i.e., the distribution parameters are typically not known and have to be estimated from the data). So in practice, the critical values for the K-S test have to be determined by simulation just as for the Anderson-Darling and Cramer Von-Mises (and related) tests.</p>
-<p>Note that although the K-S test is typically developed in the context of continuous distributions for uncensored and ungrouped data, the test has in fact been extended to discrete distributions and to censored and grouped data. We do not discuss those cases here.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><img src="assets/EDA/eda35g_1.png" alt=""></p>
-<h3 id="Technical-Note"><a href="#Technical-Note" class="headerlink" title="Technical Note"></a>Technical Note</h3><p><img src="assets/EDA/eda35g_2.png" alt=""></p>
-<h3 id="Kolmogorov-Smirnov-Test-Example"><a href="#Kolmogorov-Smirnov-Test-Example" class="headerlink" title="Kolmogorov-Smirnov Test Example"></a>Kolmogorov-Smirnov Test Example</h3><p>We generated 1,000 random numbers for normal, double exponential, t with 3 degrees of freedom, and lognormal distributions. In all cases, the Kolmogorov-Smirnov test was applied to test for a normal distribution.</p>
-<p>The normal random numbers were stored in the variable Y1, the double exponential random numbers were stored in the variable Y2, the t random numbers were stored in the variable Y3, and the lognormal random numbers were stored in the variable Y4.</p>
-<pre><code>H0:  the data are normally distributed
-Ha:  the data are not normally distributed
-Y1 test statistic:  D = 0.0241492  
-Y2 test statistic:  D = 0.0514086
-Y3 test statistic:  D = 0.0611935
-Y4 test statistic:  D = 0.5354889
-Significance level:  α = 0.05
-Critical value:  0.04301    
-Critical region:  Reject H0 if D &gt; 0.04301
-</code></pre><p>As expected, the null hypothesis is not rejected for the normally distributed data, but is rejected for the remaining three data sets that are not normally distributed.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Kolmogorov-Smirnov test can be used to answer the following types of questions:</p>
-<pre><code>• Are the data from a normal distribution?
-• Are the data from a log-normal distribution?
-• Are the data from a Weibull distribution?
-• Are the data from an exponential distribution?
-• Are the data from a logistic distribution?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical tests and procedures are based on specific distributional assumptions. The assumption of normality is particularly common in classical statistical tests. Much reliability modeling is based on the assumption that the data follow a Weibull distribution.</p>
-<p>There are many non-parametric and robust techniques that are not based on strong distributional assumptions. By non-parametric, we mean a technique, such as the sign test, that is not based on a specific distributional assumption. By robust, we mean a statistical technique that performs well under a wide range of distributional assumptions. However, techniques based on specific distributional assumptions are in general more powerful than these non-parametric and robust techniques. By power, we mean the ability to detect a difference when that difference actually exists. Therefore, if the distributional assumptions can be confirmed, the parametric techniques are generally preferred.</p>
-<p>If you are using a technique that makes a normality (or some other type of distributional) assumption, it is important to confirm that this assumption is in fact justified. If it is, the more powerful parametric techniques can be used. If the distributional assumption is not justified, using a non-parametric or robust technique may be required.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Anderson-Darling goodness-of-fit Test</li>
-<li>Chi-Square goodness-of-fit Test</li>
-<li>Shapiro-Wilk Normality Test</li>
-<li>Probability Plots</li>
-<li>Probability Plot Correlation Coefficient Plot</li>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/Self Attention原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/Self Attention原理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/16/Self Attention原理/" class="leancloud_visitors" data-flag-title="Self Attention原理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Self Attention原理
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="https://www.cnblogs.com/robert-dlut/p/8638283.html" target="_blank" rel="noopener">https://www.cnblogs.com/robert-dlut/p/8638283.html</a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>视觉注意力机制是人类视觉所特有的大脑信号处理机制。人类视觉通过快速扫描全局图像，获得需要重点关注的目标区域，也就是一般所说的注意力焦点，而后对这一区域投入更多注意力资源，以获取更多所需要关注目标的细节信息，而抑制其他无用信息。</p>
+<p>这是人类利用有限的注意力资源从大量信息中快速筛选出高价值信息的手段，是人类在长期进化中形成的一种生存机制，人类视觉注意力机制极大地提高了视觉信息处理的效率与准确性。</p>
+<p>图1形象化展示了人类在看到一副图像时是如何高效分配有限的注意力资源的，其中红色区域表明视觉系统更关注的目标，很明显对于图1所示的场景，人们会把注意力更多投入到人的脸部，文本的标题以及文章首句等位置。</p>
+<p>深度学习中的注意力机制从本质上讲和人类的选择性视觉注意力机制类似，核心目标也是从众多信息中选择出对当前任务目标更关键的信息。</p>
+<p>注意力模型可以看作一种通用的思想，本身并不依赖于特定框架。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/Self Attention原理/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/TensorFlow图变量tf.Variable的用法解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/16/TensorFlow图变量tf.Variable的用法解析/" itemprop="url">TensorFlow图变量tf.Variable的用法解析</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T14:28:12+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/TensorFlow图变量tf.Variable的用法解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/TensorFlow图变量tf.Variable的用法解析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/16/TensorFlow图变量tf.Variable的用法解析/" class="leancloud_visitors" data-flag-title="TensorFlow图变量tf.Variable的用法解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  TensorFlow图变量tf.Variable的用法解析
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="图变量的初始化方法"><a href="#图变量的初始化方法" class="headerlink" title="图变量的初始化方法"></a>图变量的初始化方法</h2><p>对于一般的Python代码，变量的初始化就是变量的定义，向下面这样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: x = <span class="number">3</span></span><br><span class="line">In [<span class="number">2</span>]: y = <span class="number">3</span> * <span class="number">5</span></span><br><span class="line">In [<span class="number">3</span>]: y</span><br><span class="line">Out[<span class="number">3</span>]: <span class="number">15</span></span><br></pre></td></tr></table></figure></p>
+<p>如果我们模仿上面的写法来进行TensorFlow编程，就会出现下面的”怪现象”：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: x = tf.Variable(<span class="number">3</span>, name=<span class="string">'x'</span>)</span><br><span class="line">In [<span class="number">3</span>]: y = x * <span class="number">5</span></span><br><span class="line">In [<span class="number">4</span>]: print(y)</span><br><span class="line">Tensor(<span class="string">"mul:0"</span>, shape=(), dtype=int32)</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/TensorFlow图变量tf.Variable的用法解析/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/gensim word2vec参数说明/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/16/gensim word2vec参数说明/" itemprop="url">gensim word2vec参数说明</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T14:28:12+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/gensim word2vec参数说明/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/gensim word2vec参数说明/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/16/gensim word2vec参数说明/" class="leancloud_visitors" data-flag-title="gensim word2vec参数说明">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  gensim word2vec参数说明
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>class gensim.models.word2vec.Word2Vec(sentences=None,size=100,alpha=0.025,window=5, min_count=5,max_vocab_size=None, sample=0.001,seed=1, workers=3,min_alpha=0.0001, sg=0, hs=0, negative=5, cbow_mean=1,hashfxn=<built-in function="" hash="">,iter=5,null_word=0, trim_rule=None, sorted_vocab=1, batch_words=10000)</built-in></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/gensim word2vec参数说明/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/tf.summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/16/tf.summary/" itemprop="url">tf.summary</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T14:28:12+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/tf.summary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/tf.summary/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/16/tf.summary/" class="leancloud_visitors" data-flag-title="tf.summary">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  tf.summary
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>TensorBoard可以将训练过程中的各种绘制数据展示出来，包括标量（scalars），图片（images），音频（Audio）,计算图（graph）,数据分布，直方图（histograms）和嵌入式向量。</p>
+<p>使用TensorBoard展示数据，需要在执行Tensorflow就算图的过程中，将各种类型的数据汇总并记录到日志文件中。然后使用TensorBoard读取这些日志文件，解析数据并生产数据可视化的Web页面，让我们可以在浏览器中观察各种汇总数据。</p>
+<p>summary_op包括了summary.scalar、summary.histogram、summary.image等操作，这些操作输出的是各种summary protobuf，最后通过summary.writer写入到event文件中。<br>Tensorflow API中包含系列生成summary数据的API接口，这些函数将汇总信息存放在protobuf中，以字符串形式表达。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/tf.summary/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/Critical Reading/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/16/Critical Reading/" itemprop="url">Critical Reading</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T13:53:12+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/Critical Reading/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/Critical Reading/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/16/Critical Reading/" class="leancloud_visitors" data-flag-title="Critical Reading">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Critical Reading
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="What-is-critical-reading"><a href="#What-is-critical-reading" class="headerlink" title="What is critical reading?"></a>What is critical reading?</h3><p>The most characteristic features of critical reading are that you will:</p>
+<ul>
+<li>examine the evidence or arguments presented;</li>
+<li>check out any influences on the evidence or arguments;</li>
+<li>check out the limitations of study design or focus;</li>
+<li>examine the interpretations made; and</li>
+<li>decide to what extent you are prepared to accept the authors’ arguments, opinions, or conclusions.</li>
 </ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35g.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35g.htm</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/Critical Reading/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -515,7 +1350,7 @@ Critical region:  Reject H0 if D &gt; 0.04301
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.17. Detection of Outliers/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/linux建文件夹软链/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -534,7 +1369,7 @@ Critical region:  Reject H0 if D &gt; 0.04301
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.17. Detection of Outliers/" itemprop="url">EDA_1.3.5.17. Detection of Outliers</a></h2>
+                <a class="post-title-link" href="/2018/07/16/linux建文件夹软链/" itemprop="url">linux建文件夹软链</a></h2>
         
 
         <div class="post-meta">
@@ -546,8 +1381,8 @@ Critical region:  Reject H0 if D &gt; 0.04301
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:04:12+08:00">
-                2018-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T12:54:12+08:00">
+                2018-07-16
               </time>
             
 
@@ -569,8 +1404,8 @@ Critical region:  Reject H0 if D &gt; 0.04301
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -587,8 +1422,8 @@ Critical region:  Reject H0 if D &gt; 0.04301
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.5.17. Detection of Outliers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.17. Detection of Outliers/" itemprop="commentCount"></span>
+                <a href="/2018/07/16/linux建文件夹软链/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/linux建文件夹软链/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -596,7 +1431,7 @@ Critical region:  Reject H0 if D &gt; 0.04301
 
           
           
-             <span id="/2018/03/12/EDA_1.3.5.17. Detection of Outliers/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.17. Detection of Outliers">
+             <span id="/2018/07/16/linux建文件夹软链/" class="leancloud_visitors" data-flag-title="linux建文件夹软链">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -614,7 +1449,7 @@ Critical region:  Reject H0 if D &gt; 0.04301
 
           
               <div class="post-description">
-                  EDA_1.3.5.17. Detection of Outliers
+                  linux建文件夹软链
               </div>
           
 
@@ -632,249 +1467,18 @@ Critical region:  Reject H0 if D &gt; 0.04301
 
       
         
-          
-            <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>An outlier is an observation that appears to deviate markedly from other observations in the sample.</p>
-<p>Identification of potential outliers is important for the following reasons.</p>
-<pre><code>1. An outlier may indicate bad data. For example, the data may have been coded incorrectly or an experiment may not have been run correctly. If it can be determined that an outlying point is in fact erroneous, then the outlying value should be deleted from the analysis (or corrected if possible).
-2. In some cases, it may not be possible to determine if an outlying point is bad data. Outliers may be due to random variation or may indicate something scientifically interesting. In any event, we typically do not want to simply delete the outlying observation. However, if the data contains significant outliers, we may need to consider the use of robust statistical techniques.
-</code></pre><h3 id="Labeling-Accomodation-Identification"><a href="#Labeling-Accomodation-Identification" class="headerlink" title="Labeling, Accomodation, Identification"></a>Labeling, Accomodation, Identification</h3><p>Iglewicz and Hoaglin distinguish the three following issues with regards to outliers.</p>
-<pre><code>1. outlier labeling - flag potential outliers for further investigation (i.e., are the potential outliers erroneous data, indicative of an inappropriate distributional model, and so on).
-2. outlier accomodation - use robust statistical techniques that will not be unduly affected by outliers. That is, if we cannot determine that potential outliers are erroneous observations, do we need modify our statistical analysis to more appropriately account for these observations?
-3. outlier identification - formally test whether observations are outliers.
-</code></pre><h3 id="This-section-focuses-on-the-labeling-and-identification-issues"><a href="#This-section-focuses-on-the-labeling-and-identification-issues" class="headerlink" title="This section focuses on the labeling and identification issues."></a>This section focuses on the labeling and identification issues.</h3><h4 id="Normality-Assumption"><a href="#Normality-Assumption" class="headerlink" title="Normality Assumption"></a>Normality Assumption</h4><p>Identifying an observation as an outlier depends on the underlying distribution of the data. In this section, we limit the discussion to univariate data sets that are assumed to follow an approximately normal distribution. If the normality assumption for the data being tested is not valid, then a determination that there is an outlier may in fact be due to the non-normality of the data rather than the prescence of an outlier.</p>
-<p>For this reason, it is recommended that you generate a normal probability plot of the data before applying an outlier test. Although you can also perform formal tests for normality, the prescence of one or more outliers may cause the tests to reject normality when it is in fact a reasonable assumption for applying the outlier test.</p>
-<p>In addition to checking the normality assumption, the lower and upper tails of the normal probability plot can be a useful graphical technique for identifying potential outliers. In particular, the plot can help determine whether we need to check for a single outlier or whether we need to check for multiple outliers.</p>
-<p>The box plot and the histogram can also be useful graphical tools in checking the normality assumption and in identifying potential outliers.</p>
-<h4 id="Single-Versus-Multiple-Outliers"><a href="#Single-Versus-Multiple-Outliers" class="headerlink" title="Single Versus Multiple Outliers"></a>Single Versus Multiple Outliers</h4><p>Some outlier tests are designed to detect the prescence of a single outlier while other tests are designed to detect the prescence of multiple outliers. It is not appropriate to apply a test for a single outlier sequentially in order to detect multiple outliers.</p>
-<p>In addition, some tests that detect multiple outliers may require that you specify the number of suspected outliers exactly.</p>
-<h3 id="Masking-and-Swamping"><a href="#Masking-and-Swamping" class="headerlink" title="Masking and Swamping"></a>Masking and Swamping</h3><p>Masking can occur when we specify too few outliers in the test. For example, if we are testing for a single outlier when there are in fact two (or more) outliers, these additional outliers may influence the value of the test statistic enough so that no points are declared as outliers.<br>On the other hand, swamping can occur when we specify too many outliers in the test. For example, if we are testing for two or more outliers when there is in fact only a single outlier, both points may be declared outliers (many tests will declare either all or none of the tested points as outliers).</p>
-<p>Due to the possibility of masking and swamping, it is useful to complement formal outlier tests with graphical methods. Graphics can often help identify cases where masking or swamping may be an issue. Swamping and masking are also the reason that many tests require that the exact number of outliers being tested must be specified.</p>
-<p>Also, masking is one reason that trying to apply a single outlier test sequentially can fail. For example, if there are multiple outliers, masking may cause the outlier test for the first outlier to return a conclusion of no outliers (and so the testing for any additional outliers is not performed).</p>
-<h3 id="Z-Scores-and-Modified-Z-Scores"><a href="#Z-Scores-and-Modified-Z-Scores" class="headerlink" title="Z-Scores and Modified Z-Scores"></a>Z-Scores and Modified Z-Scores</h3><p>The Z-score of an observation is defined as</p>
-<p><img src="assets/EDA/eda35h_1.png" alt=""></p>
-<p>with Y¯ and s denoting the sample mean and sample standard deviation, respectively. In other words, data is given in units of how many standard deviations it is from the mean.</p>
-<p>Although it is common practice to use Z-scores to identify possible outliers, this can be misleading (partiucarly for small sample sizes) due to the fact that the maximum Z-score is at most <img src="assets/EDA/eda35h_2.png" alt=""></p>
-<p>Iglewicz and Hoaglin recommend using the modified Z-score</p>
-<p><img src="assets/EDA/eda35h_3.png" alt=""></p>
-<p>with MAD denoting the median absolute deviation and x~ denoting the median.</p>
-<p>These authors recommend that modified Z-scores with an absolute value of greater than 3.5 be labeled as potential outliers.</p>
-<h3 id="Formal-Outlier-Tests"><a href="#Formal-Outlier-Tests" class="headerlink" title="Formal Outlier Tests"></a>Formal Outlier Tests</h3><p>A number of formal outlier tests have proposed in the literature. These can be grouped by the following characteristics:</p>
-<pre><code>• What is the distributional model for the data? We restrict our discussion to tests that assume the data follow an approximately normal distribution.
-• Is the test designed for a single outlier or is it designed for multiple outliers?
-• If the test is designed for multiple outliers, does the number of outliers need to be specified exactly or can we specify an upper bound for the number of outliers?
-</code></pre><p>The following are a few of the more commonly used outlier tests for normally distributed data. This list is not exhaustive (a large number of outlier tests have been proposed in the literature). The tests given here are essentially based on the criterion of “distance from the mean”. This is not the only criterion that could be used. For example, the Dixon test, which is not discussed here, is based a value being too large (or small) compared to its nearest neighbor.</p>
-<pre><code>1. Grubbs&apos; Test - this is the recommended test when testing for a single outlier.
-2. Tietjen-Moore Test - this is a generalization of the Grubbs&apos; test to the case of more than one outlier. It has the limitation that the number of outliers must be specified exactly.
-3. Generalized Extreme Studentized Deviate (ESD) Test - this test requires only an upper bound on the suspected number of outliers and is the recommended test when the exact number of outliers is not known.
-</code></pre><h3 id="Lognormal-Distribution"><a href="#Lognormal-Distribution" class="headerlink" title="Lognormal Distribution"></a>Lognormal Distribution</h3><p>The tests discussed here are specifically based on the assumption that the data follow an approximately normal disribution. If your data follow an approximately lognormal distribution, you can transform the data to normality by taking the logarithms of the data and then applying the outlier tests discussed here.</p>
-<h3 id="Further-Information"><a href="#Further-Information" class="headerlink" title="Further Information"></a>Further Information</h3><p>Iglewicz and Hoaglin provide an extensive discussion of the outlier tests given above (as well as some not given above) and also give a good tutorial on the subject of outliers. Barnett and Lewis provide a book length treatment of the subject.</p>
-<p>In addition to discussing additional tests for data that follow an approximately normal distribution, these sources also discuss the case where the data are not normally distributed.</p>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h.htm</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/" itemprop="url">EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:03:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Test-for-distributional-adequacy"><a href="#Purpose-Test-for-distributional-adequacy" class="headerlink" title="Purpose: Test for distributional adequacy"></a>Purpose: Test for distributional adequacy</h3><p>The chi-square test (Snedecor and Cochran, 1989) is used to test if a sample of data came from a population with a specific distribution.</p>
-<p>An attractive feature of the chi-square goodness-of-fit test is that it can be applied to any univariate distribution for which you can calculate the cumulative distribution function. The chi-square goodness-of-fit test is applied to binned data (i.e., data put into classes). This is actually not a restriction since for non-binned data you can simply calculate a histogram or frequency table before generating the chi-square test. However, the value of the chi-square test statistic are dependent on how the data is binned. Another disadvantage of the chi-square test is that it requires a sufficient sample size in order for the chi-square approximation to be valid.</p>
-<p>The chi-square test is an alternative to theAnderson-Darling and Kolmogorov-Smirnovgoodness-of-fit tests. The chi-square goodness-of-fit test can be applied to discrete distributions such as the binomialand the Poisson. The Kolmogorov-Smirnov and Anderson-Darling tests are restricted to continuous distributions.</p>
-<p>Additional discussion of the chi-square goodness-of-fit test is contained in theproduct and process comparisons chapter (chapter 7).</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The chi-square test is defined for the hypothesis:</p>
-<p><img src="assets/EDA/eda35f_1.png" alt=""><br><img src="assets/EDA/eda35f_2.png" alt=""></p>
-<h3 id="Chi-Square-Test-Example"><a href="#Chi-Square-Test-Example" class="headerlink" title="Chi-Square Test Example"></a>Chi-Square Test Example</h3><p>We generated 1,000 random numbers for normal, double exponential, t with 3 degrees of freedom, and lognormal distributions. In all cases, a chi-square test with k = 32 bins was applied to test for normally distributed data. Because the normal distribution has two parameters, c = 2 + 1 = 3</p>
-<p>The normal random numbers were stored in the variable Y1, the double exponential random numbers were stored in the variable Y2, the trandom numbers were stored in the variable Y3, and the lognormal random numbers were stored in the variable Y4.</p>
-<pre><code>H0:  the data are normally distributed
-Ha:  the data are not normally distributed  
-Y1 Test statistic:  Χ2 =   32.256
-Y2 Test statistic:  Χ2 =   91.776
-Y3 Test statistic:  Χ2 =  101.488
-Y4 Test statistic:  Χ2 = 1085.104
-Significance level:  α = 0.05
-Degrees of freedom:  k - c = 32 - 3 = 29
-Critical value:  Χ21-α,k-c = 42.557
-Critical region: Reject H0 if Χ2 &gt; 42.557
-</code></pre><p>As we would hope, the chi-square test fails to reject the null hypothesis for the normally distributed data set and rejects the null hypothesis for the three non-normal data sets.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The chi-square test can be used to answer the following types of questions:</p>
-<pre><code>• Are the data from a normal distribution?
-• Are the data from a log-normal distribution?
-• Are the data from a Weibull distribution?
-• Are the data from an exponential distribution?
-• Are the data from a logistic distribution?
-• Are the data from a binomial distribution?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical tests and procedures are based on specific distributional assumptions. The assumption of normality is particularly common in classical statistical tests. Much reliability modeling is based on the assumption that the distribution of the data follows a Weibull distribution.</p>
-<p>There are many non-parametric and robust techniques that are not based on strong distributional assumptions. By non-parametric, we mean a technique, such as the sign test, that is not based on a specific distributional assumption. By robust, we mean a statistical technique that performs well under a wide range of distributional assumptions. However, techniques based on specific distributional assumptions are in general more powerful than these non-parametric and robust techniques. By power, we mean the ability to detect a difference when that difference actually exists. Therefore, if the distributional assumption can be confirmed, the parametric techniques are generally preferred.</p>
-<p>If you are using a technique that makes a normality (or some other type of distributional) assumption, it is important to confirm that this assumption is in fact justified. If it is, the more powerful parametric techniques can be used. If the distributional assumption is not justified, a non-parametric or robust technique may be required.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Anderson-Darling Goodness-of-Fit Test</li>
-<li>Kolmogorov-Smirnov Test</li>
-<li>Shapiro-Wilk Normality Test</li>
-<li>Probability Plots</li>
-<li>Probability Plot Correlation Coefficient Plot</li>
+          <p>当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在其它的 目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。例如：ln -s /bin/less /usr/local/bin/less<br>-s 是代号（symbolic）的意思。<br>这 里有两点要注意：</p>
+<ul>
+<li>第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；</li>
+<li>第二，ln的链接又软链接 和硬链接两种，软链接就是ln -s <strong> </strong>,它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，硬链接ln <strong> </strong>,没有参数-s, 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。</li>
 </ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/linux建文件夹软链/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -921,7 +1525,7 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.12. Autocorrelation/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/from __future__ import print_function/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -940,7 +1544,7 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.12. Autocorrelation/" itemprop="url">EDA_1.3.5.12. Autocorrelation</a></h2>
+                <a class="post-title-link" href="/2018/07/16/from __future__ import print_function/" itemprop="url">from __future__ import print_function</a></h2>
         
 
         <div class="post-meta">
@@ -952,8 +1556,8 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:02:12+08:00">
-                2018-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T12:53:12+08:00">
+                2018-07-16
               </time>
             
 
@@ -975,8 +1579,8 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -993,8 +1597,8 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.5.12. Autocorrelation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.12. Autocorrelation/" itemprop="commentCount"></span>
+                <a href="/2018/07/16/from __future__ import print_function/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/from __future__ import print_function/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1002,7 +1606,7 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
 
           
           
-             <span id="/2018/03/12/EDA_1.3.5.12. Autocorrelation/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.12. Autocorrelation">
+             <span id="/2018/07/16/from __future__ import print_function/" class="leancloud_visitors" data-flag-title="from __future__ import print_function">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1020,7 +1624,7 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
 
           
               <div class="post-description">
-                  EDA_1.3.5.12. Autocorrelation
+                  from __future__ import print_function
               </div>
           
 
@@ -1038,81 +1642,15 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
 
       
         
-          
-            <h3 id="Purpose-Detect-Non-Randomness-Time-Series-Modeling"><a href="#Purpose-Detect-Non-Randomness-Time-Series-Modeling" class="headerlink" title="Purpose: Detect Non-Randomness, Time Series Modeling"></a>Purpose: Detect Non-Randomness, Time Series Modeling</h3><p>The autocorrelation ( Box and Jenkins, 1976) function can be used for the following two purposes:</p>
-<pre><code>1. To detect non-randomness in data.
-2. To identify an appropriate time series model if the data are not random.
-</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Given measurements, Y1, Y2, …, YN at timeX1, X2, …, XN, the lag k autocorrelation function is defined as</p>
-<pre><code>rk=∑N−ki=1(Yi−Y¯)(Yi+k−Y¯)∑Ni=1(Yi−Y¯)2
-</code></pre><p>Although the time variable, X, is not used in the formula for autocorrelation, the assumption is that the observations are equi-spaced.</p>
-<p>Autocorrelation is a correlation coefficient. However, instead of correlation between two different variables, the correlation is between two values of the same variable at times Xi and Xi+k.<br>When the autocorrelation is used to detect non-randomness, it is usually only the first (lag 1) autocorrelation that is of interest. When the autocorrelation is used to identify an appropriate time series model, the autocorrelations are usually plotted for many lags.</p>
-<h3 id="Autocorrelation-Example"><a href="#Autocorrelation-Example" class="headerlink" title="Autocorrelation Example"></a>Autocorrelation Example</h3><p>Lag-one autocorrelations were computed for the the LEW.DAT data set.</p>
-<pre><code>lag     autocorrelation
- 0.      1.00
- 1.     -0.31
- 2.     -0.74
- 3.      0.77
- 4.      0.21
- 5.     -0.90
- 6.      0.38
- 7.      0.63
- 8.     -0.77
- 9.     -0.12
-10.      0.82
-11.     -0.40
-12.     -0.55
-13.      0.73
-14.      0.07
-15.     -0.76
-16.      0.40
-17.      0.48
-18.     -0.70
-19.     -0.03
-20.      0.70
-21.     -0.41
-22.     -0.43
-23.      0.67
-24.      0.00
-25.     -0.66
-26.      0.42
-27.      0.39
-28.     -0.65
-29.      0.03
-30.      0.63
-31.     -0.42
-32.     -0.36
-33.      0.64
-34.     -0.05
-35.     -0.60
-36.      0.43
-37.      0.32
-38.     -0.64
-39.      0.08
-40.      0.58
-41.     -0.45
-42.     -0.28
-43.      0.62
-44.     -0.10
-45.     -0.55
-46.      0.45
-47.      0.25
-48.     -0.61
-49.      0.14
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The autocorrelation function can be used to answer the following questions.</p>
-<pre><code>1. Was this sample data set generated from a random process?
-2. Would a non-linear or time series model be a more appropriate model for these data than a simple constant plus error model?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Randomness is one of the key assumptions in determining if a univariate statistical process is in control. If the assumptions of constant location and scale, randomness, and fixed distribution are reasonable, then the univariate process can be modeled as:</p>
-<pre><code>Yi=A0+Ei
-</code></pre><p>where Ei is an error term.</p>
-<p>If the randomness assumption is not valid, then a different model needs to be used. This will typically be either a time series modelor a non-linear model (with time as the independent variable).</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Autocorrelation Plot</li>
-<li>Run Sequence Plot</li>
-<li>Lag Plot</li>
-<li>Runs Test</li>
-</ul>
-
-          
+          <p>Python提供了<strong>future</strong>模块,把下一个新版本的特性导入到当前版本,于是我们就可以在当前版本中测试一些新版本的特性。</p>
+<p>下面从<strong>future</strong>引入对于python2来说比较先进的模块print_function接口参数:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">print</span>(*values, <span class="attribute">sep</span>=<span class="string">' '</span>, <span class="attribute">end</span>=<span class="string">'/n'</span>, <span class="attribute">file</span>=sys.stdout)</span><br><span class="line"><span class="builtin-name">print</span>(value1, value2, value3, <span class="attribute">sep</span>=<span class="string">' '</span>, <span class="attribute">end</span>=<span class="string">'/n'</span>, <span class="attribute">file</span>=sys.stdout)</span><br><span class="line"></span><br><span class="line">这里,输出的变量可以是一个序列或者多个变量,可以像上面一样用逗号分开每个变量。 参数sep,end,file是三个可选参数。</span><br><span class="line">sep:</span><br><span class="line">指每个输出变量之间的分隔符,默认是一个空格</span><br><span class="line">end:</span><br><span class="line">指的是输出结束后的内容,默认是换行</span><br><span class="line">file:</span><br><span class="line">指的是输出流要输出的目的文件,默认sys.stdout(标准输出)</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/from __future__ import print_function/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1159,7 +1697,7 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/Sublime查看设置文件编码格式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1178,7 +1716,7 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/" itemprop="url">EDA_1.3.5.14. Anderson-Darling Test</a></h2>
+                <a class="post-title-link" href="/2018/07/16/Sublime查看设置文件编码格式/" itemprop="url">Sublime查看设置文件编码格式</a></h2>
         
 
         <div class="post-meta">
@@ -1190,8 +1728,8 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:02:12+08:00">
-                2018-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T12:04:12+08:00">
+                2018-07-16
               </time>
             
 
@@ -1213,8 +1751,8 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -1231,8 +1769,8 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/" itemprop="commentCount"></span>
+                <a href="/2018/07/16/Sublime查看设置文件编码格式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/Sublime查看设置文件编码格式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1240,7 +1778,7 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
 
           
           
-             <span id="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.14. Anderson-Darling Test">
+             <span id="/2018/07/16/Sublime查看设置文件编码格式/" class="leancloud_visitors" data-flag-title="Sublime查看设置文件编码格式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1258,7 +1796,7 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
 
           
               <div class="post-description">
-                  EDA_1.3.5.14. Anderson-Darling Test
+                  Sublime查看设置文件编码格式
               </div>
           
 
@@ -1276,45 +1814,15 @@ Critical region: Reject H0 if Χ2 &gt; 42.557
 
       
         
-          
-            <h3 id="Purpose-Test-for-Distributional-Adequacy"><a href="#Purpose-Test-for-Distributional-Adequacy" class="headerlink" title="Purpose: Test for Distributional Adequacy"></a>Purpose: Test for Distributional Adequacy</h3><p>The Anderson-Darling test (Stephens, 1974) is used to test if a sample of data came from a population with a specific distribution. It is a modification of theKolmogorov-Smirnov (K-S) test and gives more weight to the tails than does the K-S test. The K-S test is distribution free in the sense that the critical values do not depend on the specific distribution being tested (note that this is true only for a fully specified distribution, i.e. the parameters are known). The Anderson-Darling test makes use of the specific distribution in calculating critical values. This has the advantage of allowing a more sensitive test and the disadvantage that critical values must be calculated for each distribution. Currently, tables of critical values are available for the normal, uniform, lognormal,exponential, Weibull, extreme value type I, generalized Pareto, and logistic distributions. We do not provide the tables of critical values in this Handbook (seeStephens 1974, 1976, 1977, and 1979) since this test is usually applied with a statistical software program that will print the relevant critical values.<br>The Anderson-Darling test is an alternative to the chi-square and Kolmogorov-Smirnov goodness-of-fit tests.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><img src="assets/EDA/eda35e_1.png" alt=""></p>
-<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>We generated 1,000 random numbers for normal, double exponential, Cauchy, and lognormal distributions. In all four cases, the Anderson-Darling test was applied to test for a normal distribution.<br>The normal random numbers were stored in the variable Y1, the double exponential random numbers were stored in the variable Y2, the Cauchy random numbers were stored in the variable Y3, and the lognormal random numbers were stored in the variable Y4.</p>
-<pre><code>Distribution                 Mean       Standard Deviation
-------------               --------     ------------------
-Normal (Y1)                0.004360          1.001816
-Double Exponential (Y2)    0.020349          1.321627
-Cauchy (Y3)                1.503854         35.130590
-Lognormal (Y4)             1.518372          1.719969
-
-H0:  the data are normally distributed
-Ha:  the data are not normally distributed
-Y1 adjusted test statistic:  A2 =   0.2576
-Y2 adjusted test statistic:  A2 =   5.8492
-Y3 adjusted test statistic:  A2 = 288.7863
-Y4 adjusted test statistic:  A2 =  83.3935
-Significance level:  α = 0.05
-Critical value:  0.752   
-Critical region:  Reject H0 if A2 &gt; 0.752
-</code></pre><p>When the data were generated using a normal distribution, the test statistic was small and the hypothesis of normality was not rejected. When the data were generated using the double exponential, Cauchy, and lognormal distributions, the test statistics were large, and the hypothesis of an underlying normal distribution was rejected at the 0.05 significance level.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Anderson-Darling test can be used to answer the following questions:</p>
-<pre><code>• Are the data from a normal distribution?
-• Are the data from a log-normal distribution?
-• Are the data from a Weibull distribution?
-• Are the data from an exponential distribution?
-• Are the data from a logistic distribution?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical tests and procedures are based on specific distributional assumptions. The assumption of normality is particularly common in classical statistical tests. Much reliability modeling is based on the assumption that the data follow a Weibull distribution.</p>
-<p>There are many non-parametric and robust techniques that do not make strong distributional assumptions. However, techniques based on specific distributional assumptions are in general more powerful than non-parametric and robust techniques. Therefore, if the distributional assumptions can be validated, they are generally preferred.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Chi-Square goodness-of-fit Test</li>
-<li>Kolmogorov-Smirnov Test</li>
-<li>Shapiro-Wilk Normality Test</li>
-<li>Probability Plot</li>
-<li>Probability Plot Correlation Coefficient Plot</li>
-</ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35e.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35e.htm</a></p>
-
-          
+          <p>Sublime Text的默认设置是不开启显示编码的，<br>如果想开启，可通过菜单Perference → Settings – User，<br>在打开的配置文件里 ，在大括号后面，增加以下内容：<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Display <span class="built_in">file</span> encoding <span class="keyword">in</span> <span class="keyword">the</span> status bar</span><br><span class="line"><span class="string">"show_encoding"</span>: <span class="literal">true</span>,</span><br><span class="line">// Display <span class="built_in">line</span> endings <span class="keyword">in</span> <span class="keyword">the</span> status bar</span><br><span class="line"><span class="string">"show_line_endings"</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>,此时保存该配置文件，就能够看到sublime最底下一行会显示文件编码格式了。<br>以上的配置内容在Perference → Setting─Default都是false的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/Sublime查看设置文件编码格式/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1361,7 +1869,7 @@ Critical region:  Reject H0 if A2 &gt; 0.752
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/vmware虚拟环境搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1380,7 +1888,7 @@ Critical region:  Reject H0 if A2 &gt; 0.752
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/" itemprop="url">EDA_1.3.5.13. Runs Test for Detecting Non-randomness</a></h2>
+                <a class="post-title-link" href="/2018/07/16/vmware虚拟环境搭建/" itemprop="url">vmware虚拟环境搭建</a></h2>
         
 
         <div class="post-meta">
@@ -1392,8 +1900,8 @@ Critical region:  Reject H0 if A2 &gt; 0.752
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:02:12+08:00">
-                2018-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T11:55:12+08:00">
+                2018-07-16
               </time>
             
 
@@ -1415,8 +1923,8 @@ Critical region:  Reject H0 if A2 &gt; 0.752
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
 
@@ -1433,8 +1941,8 @@ Critical region:  Reject H0 if A2 &gt; 0.752
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/" itemprop="commentCount"></span>
+                <a href="/2018/07/16/vmware虚拟环境搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/vmware虚拟环境搭建/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1442,7 +1950,7 @@ Critical region:  Reject H0 if A2 &gt; 0.752
 
           
           
-             <span id="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.13. Runs Test for Detecting Non-randomness">
+             <span id="/2018/07/16/vmware虚拟环境搭建/" class="leancloud_visitors" data-flag-title="vmware虚拟环境搭建">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1460,7 +1968,7 @@ Critical region:  Reject H0 if A2 &gt; 0.752
 
           
               <div class="post-description">
-                  EDA_1.3.5.13. Runs Test for Detecting Non-randomness
+                  vmware虚拟环境搭建
               </div>
           
 
@@ -1478,798 +1986,18 @@ Critical region:  Reject H0 if A2 &gt; 0.752
 
       
         
-          
-            <h3 id="Purpose-Detect-Non-Randomness"><a href="#Purpose-Detect-Non-Randomness" class="headerlink" title="Purpose: Detect Non-Randomness"></a>Purpose: Detect Non-Randomness</h3><p>The runs test (Bradley, 1968) can be used to decide if a data set is from a random process.</p>
-<p>A run is defined as a series of increasing values or a series of decreasing values. The number of increasing, or decreasing, values is the length of the run. In a random data set, the probability that the (I+1)th value is larger or smaller than the Ith value follows a binomial distribution, which forms the basis of the runs test.</p>
-<h3 id="Typical-Analysis-and-Test-Statistics"><a href="#Typical-Analysis-and-Test-Statistics" class="headerlink" title="Typical Analysis and Test Statistics"></a>Typical Analysis and Test Statistics</h3><p>The first step in the runs test is to count the number of runs in the data sequence. There are several ways to define runs in the literature, however, in all cases the formulation must produce a dichotomous sequence of values. For example, a series of 20 coin tosses might produce the following sequence of heads (H) and tails (T).</p>
-<pre><code>H H T T H T H H H H T H H T T T T T H H
-</code></pre><p>The number of runs for this series is nine. There are 11 heads and 9 tails in the sequence.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>We will code values above the median as positive and values below the median as negative. A run is defined as a series of consecutive positive (or negative) values. The runs test is defined as:</p>
-<p><img src="assets/EDA/eda35d_1.png" alt=""></p>
-<h3 id="Runs-Test-Example"><a href="#Runs-Test-Example" class="headerlink" title="Runs Test Example"></a>Runs Test Example</h3><p>A runs test was performed for 200 measurements of beam deflection contained in the LEW.DAT data set.</p>
-<p><img src="assets/EDA/eda35d_2.png" alt=""></p>
-<p>Since the test statistic is greater than the critical value, we conclude that the data are not random at the 0.05 significance level.</p>
-<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>The runs test can be used to answer the following question:</p>
-<pre><code>• Were these sample data generated from a random process?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Randomness is one of the key assumptions in determining if a univariate statistical process is in control. If the assumptions of constant location and scale, randomness, and fixed distribution are reasonable, then the univariate process can be modeled as:</p>
-<pre><code>Yi=A0+Ei
-</code></pre><p>where Ei is an error term.</p>
-<p>If the randomness assumption is not valid, then a different model needs to be used. This will typically be either a times series model or a non-linear model (with time as the independent variable).</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Autocorrelation</li>
-<li>Run Sequence Plot</li>
-<li>Lag Plot</li>
-</ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35d.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35d.htm</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/" itemprop="url">EDA_1.3.5.11. Measures of Skewness and Kurtosis</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:01:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.11. Measures of Skewness and Kurtosis">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.5.11. Measures of Skewness and Kurtosis
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Skewness-and-Kurtosis"><a href="#Skewness-and-Kurtosis" class="headerlink" title="Skewness and Kurtosis"></a>Skewness and Kurtosis</h3><p>A fundamental task in many statistical analyses is to characterize the location and variability of a data set. A further characterization of the data includes skewness and kurtosis.</p>
-<p>Skewness is a measure of symmetry, or more precisely, the lack of symmetry. A distribution, or data set, is symmetric if it looks the same to the left and right of the center point.</p>
-<p>Kurtosis is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution. That is, data sets with high kurtosis tend to have heavy tails, or outliers. Data sets with low kurtosis tend to have light tails, or lack of outliers. A uniform distribution would be the extreme case.</p>
-<p>The histogram is an effective graphical technique for showing both the skewness and kurtosis of data set.</p>
-<h3 id="Definition-of-Skewness"><a href="#Definition-of-Skewness" class="headerlink" title="Definition of Skewness"></a>Definition of Skewness</h3><p>For univariate data Y1, Y2, …, YN, the formula for skewness is:</p>
-<p><img src="assets/EDA/eda35b_1.png" alt=""></p>
-<p>This is an adjustment for sample size. The adjustment approaches 1 as N gets large. For reference, the adjustment factor is 1.49 for N = 5, 1.19 for N = 10, 1.08 for N = 20, 1.05 for N = 30, and 1.02 for N = 100.</p>
-<p>The skewness for a normal distribution is zero, and any symmetric data should have a skewness near zero. Negative values for the skewness indicate data that are skewed left and positive values for the skewness indicate data that are skewed right. By skewed left, we mean that the left tail is long relative to the right tail. Similarly, skewed right means that the right tail is long relative to the left tail. If the data are multi-modal, then this may affect the sign of the skewness.</p>
-<p>Some measurements have a lower bound and are skewed right. For example, in reliability studies, failure times cannot be negative.</p>
-<p>It should be noted that there are alternative definitions of skewness in the literature. For example, the Galton skewness (also known as Bowley’s skewness) is defined as<br><img src="assets/EDA/eda35b_2.png" alt=""></p>
-<h3 id="Definition-of-Kurtosis"><a href="#Definition-of-Kurtosis" class="headerlink" title="Definition of Kurtosis"></a>Definition of Kurtosis</h3><p><img src="assets/EDA/eda35b_3.png" alt=""></p>
-<h3 id="Alternative-Definition-of-Kurtosis"><a href="#Alternative-Definition-of-Kurtosis" class="headerlink" title="Alternative Definition of Kurtosis"></a>Alternative Definition of Kurtosis</h3><p><img src="assets/EDA/eda35b_4.png" alt=""></p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p><img src="assets/EDA/skewness.png" alt=""></p>
-<p>The following example shows histograms for 10,000 random numbers generated from a normal, a double exponential, a Cauchy, and a Weibull distribution.</p>
-<h3 id="Normal-Distribution"><a href="#Normal-Distribution" class="headerlink" title="Normal Distribution"></a>Normal Distribution</h3><p>The first histogram is a sample from a normal distribution. The normal distribution is a symmetric distribution with well-behaved tails. This is indicated by the skewness of 0.03. The kurtosis of 2.96 is near the expected value of 3. The histogram verifies the symmetry.</p>
-<h3 id="Double-Exponential-Distribution"><a href="#Double-Exponential-Distribution" class="headerlink" title="Double Exponential Distribution"></a>Double Exponential Distribution</h3><p>The second histogram is a sample from a double exponential distribution. The double exponential is a symmetric distribution. Compared to the normal, it has a stronger peak, more rapid decay, and heavier tails. That is, we would expect a skewness near zero and a kurtosis higher than 3. The skewness is 0.06 and the kurtosis is 5.9.</p>
-<h3 id="Cauchy-Distribution"><a href="#Cauchy-Distribution" class="headerlink" title="Cauchy Distribution"></a>Cauchy Distribution</h3><p>The third histogram is a sample from a Cauchy distribution.</p>
-<p>For better visual comparison with the other data sets, we restricted the histogram of the Cauchy distribution to values between -10 and 10. The full data set for the Cauchy data in fact has a minimum of approximately -29,000 and a maximum of approximately 89,000.</p>
-<p>The Cauchy distribution is a symmetric distribution with heavy tails and a single peak at the center of the distribution. Since it is symmetric, we would expect a skewness near zero. Due to the heavier tails, we might expect the kurtosis to be larger than for a normal distribution. In fact the skewness is 69.99 and the kurtosis is 6,693. These extremely high values can be explained by the heavy tails. Just as the mean and standard deviation can be distorted by extreme values in the tails, so too can the skewness and kurtosis measures.</p>
-<h3 id="Weibull-Distribution"><a href="#Weibull-Distribution" class="headerlink" title="Weibull Distribution"></a>Weibull Distribution</h3><p>The fourth histogram is a sample from a Weibull distribution with shape parameter 1.5. The Weibull distribution is a skewed distribution with the amount of skewness depending on the value of the shape parameter. The degree of decay as we move away from the center also depends on the value of the shape parameter. For this data set, the skewness is 1.08 and the kurtosis is 4.46, which indicates moderate skewness and kurtosis.</p>
-<h3 id="Dealing-with-Skewness-and-Kurtosis"><a href="#Dealing-with-Skewness-and-Kurtosis" class="headerlink" title="Dealing with Skewness and Kurtosis"></a>Dealing with Skewness and Kurtosis</h3><p>Many classical statistical tests and intervals depend on normality assumptions. Significant skewness and kurtosis clearly indicate that data are not normal. If a data set exhibits significant skewness or kurtosis (as indicated by a histogram or the numerical measures), what can we do about it?</p>
-<p>One approach is to apply some type of transformation to try to make the data normal, or more nearly normal. The Box-Cox transformation is a useful technique for trying to normalize a data set. In particular, taking the log or square root of a data set is often useful for data that exhibit moderate right skewness.</p>
-<p>Another approach is to use techniques based on distributions other than the normal. For example, in reliability studies, the exponential, Weibull, and lognormal distributions are typically used as a basis for modeling rather than using the normal distribution. The probability plot correlation coefficient plot and the probability plot are useful tools for determining a good distributional model for the data.</p>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/" itemprop="url">EDA_1.3.5.9. F-Test for Equality of Two Variances</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:00:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.9. F-Test for Equality of Two Variances">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.5.9. F-Test for Equality of Two Variances
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Test-if-variances-from-two-populations-are-equal"><a href="#Purpose-Test-if-variances-from-two-populations-are-equal" class="headerlink" title="Purpose: Test if variances from two populations are equal"></a>Purpose: Test if variances from two populations are equal</h3><p>An F-test (Snedecor and Cochran, 1983) is used to test if the variances of two populations are equal. This test can be a two-tailed test or a one-tailed test. The two-tailed version tests against the alternative that the variances are not equal. The one-tailed version only tests in one direction, that is the variance from the first population is either greater than or less than (but not both) the second population variance. The choice is determined by the problem. For example, if we are testing a new process, we may only be interested in knowing if the new process is less variable than the old process.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The F hypothesis test is defined as:</p>
-<p><img src="assets/EDA/eda359_1.png" alt=""></p>
-<h3 id="F-Test-Example"><a href="#F-Test-Example" class="headerlink" title="F Test Example"></a>F Test Example</h3><p>The following F-test was generated for theAUTO83B.DAT data set. The data set contains 480 ceramic strength measurements for two batches of material. The summary statistics for each batch are shown below.</p>
-<pre><code>BATCH 1:
-   NUMBER OF OBSERVATIONS      =      240
-   MEAN                        =    688.9987
-   STANDARD DEVIATION          =    65.54909
-
-BATCH 2:
-   NUMBER OF OBSERVATIONS      =      240
-   MEAN                        =    611.1559
-   STANDARD DEVIATION          =    61.85425
-We are testing the null hypothesis that the variances for the two batches are equal.
-H0:  σ12 = σ22
-Ha:  σ12 ≠ σ22
-Test statistic:  F = 1.123037
-Numerator degrees of freedom:  N1 - 1 = 239
-Denominator degrees of freedom:  N2 - 1 = 239
-Significance level:  α = 0.05
-Critical values:  F(1-α/2,N1-1,N2-1) = 0.7756
-                  F(α/2,N1-1,N2-1) = 1.2894
-Rejection region:  Reject H0 if F &lt; 0.7756 or F &gt; 1.2894
-The F test indicates that there is not enough evidence to reject the null hypothesis that the two batch variancess are equal at the 0.05 significance level.
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The F-test can be used to answer the following questions:</p>
-<pre><code>1. Do two samples come from populations with equal variancess?
-2. Does a new process, treatment, or test reduce the variability of the current process?
-</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Quantile-Quantile Plot</li>
-<li>Bihistogram</li>
-<li>Chi-Square Test</li>
-<li>Bartlett’s Test</li>
-<li>Levene Test</li>
-</ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda359.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda359.htm</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/" itemprop="url">EDA_1.3.5.8. Chi-Square Test for the Variance</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:00:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.8. Chi-Square Test for the Variance">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.5.8. Chi-Square Test for the Variance
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Test-if-the-variance-is-equal-to-a-specified-value"><a href="#Purpose-Test-if-the-variance-is-equal-to-a-specified-value" class="headerlink" title="Purpose: Test if the variance is equal to a specified value"></a>Purpose: Test if the variance is equal to a specified value</h3><p>A chi-square test ( Snedecor and Cochran, 1983) can be used to test if the variance of a population is equal to a specified value. This test can be either a two-sided test or a one-sided test. The two-sided version tests against the alternative that the true variance is either less than or greater than the specified value. The one-sided version only tests in one direction. The choice of a two-sided or one-sided test is determined by the problem. For example, if we are testing a new process, we may only be concerned if its variability is greater than the variability of the current process.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The chi-square hypothesis test is defined as:</p>
-<p><img src="assets/EDA/eda358_1.png" alt=""></p>
-<h3 id="Chi-Square-Test-Example"><a href="#Chi-Square-Test-Example" class="headerlink" title="Chi-Square Test Example"></a>Chi-Square Test Example</h3><p>A chi-square test was performed for the GEAR.DAT data set. The observed variance for the 100 measurements of gear diameter is 0.00003969 (the standard deviation is 0.0063). We will test the null hypothesis that the true variance is equal to 0.01.</p>
-<p><img src="assets/EDA/eda358_2.png" alt=""></p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The chi-square test can be used to answer the following questions:</p>
-<pre><code>Is the variance equal to some pre-determined threshold value?
-Is the variance greater than some pre-determined threshold value?
-Is the variance less than some pre-determined threshold value?
-</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>F Test</li>
-<li>Bartlett Test</li>
-<li>Levene Test</li>
-</ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda358.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda358.htm</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/" itemprop="url">EDA_1.3.5.10. Levene Test for Equality of Variances</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:00:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.10. Levene Test for Equality of Variances">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.5.10. Levene Test for Equality of Variances
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Test-for-Homogeneity-of-Variances"><a href="#Purpose-Test-for-Homogeneity-of-Variances" class="headerlink" title="Purpose: Test for Homogeneity of Variances"></a>Purpose: Test for Homogeneity of Variances</h3><p>Levene’s test ( Levene 1960) is used to test if ksamples have equal variances. Equal variances across samples is called homogeneity of variance. Some statistical tests, for example the analysis of variance, assume that variances are equal across groups or samples. The Levene test can be used to verify that assumption.</p>
-<p>Levene’s test is an alternative to the Bartlett test. The Levene test is less sensitive than the Bartlett test to departures from normality. If you have strong evidence that your data do in fact come from a normal, or nearly normal, distribution, then Bartlett’s test has better performance.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Levene test is defined as:</p>
-<p><img src="assets/EDA/eda35a_1.png" alt=""></p>
-<p>The three choices for defining Zijdetermine the robustness and power of Levene’s test. By robustness, we mean the ability of the test to not falsely detect unequal variances when the underlying data are not normally distributed and the variables are in fact equal. By power, we mean the ability of the test to detect unequal variances when the variances are in fact unequal.</p>
-<p>Levene’s original paper only proposed using the mean. Brown and Forsythe (1974)) extended Levene’s test to use either the median or the trimmed mean in addition to the mean. They performed Monte Carlo studies that indicated that using the trimmed mean performed best when the underlying data followed a Cauchy distribution (i.e., heavy-tailed) and the median performed best when the underlying data followed a χ24 (i.e., skewed) distribution. Using the mean provided the best power for symmetric, moderate-tailed, distributions.</p>
-<p>Although the optimal choice depends on the underlying distribution, the definition based on the median is recommended as the choice that provides good robustness against many types of non-normal data while retaining good power. If you have knowledge of the underlying distribution of the data, this may indicate using one of the other choices.</p>
-<p>Significance Level:      α</p>
-<p><img src="assets/EDA/eda35a_2.png" alt=""></p>
-<h3 id="Levene’s-Test-Example"><a href="#Levene’s-Test-Example" class="headerlink" title="Levene’s Test Example"></a>Levene’s Test Example</h3><p>Levene’s test, based on the median, was performed for the GEAR.DAT data set. The data set includes ten measurements of gear diameter for each of ten batches for a total of 100 measurements.</p>
-<pre><code>H0:  σ12 = ... = σ102
-Ha:  σ12 ≠ ... ≠ σ102
-Test statistic:  W = 1.705910
-Degrees of freedom:  k-1 = 10-1 = 9
-                     N-k = 100-10 = 90
-Significance level:  α = 0.05
-Critical value (upper tail):  Fα,k-1,N-k = 1.9855
-Critical region: Reject H0 if F &gt; 1.9855
-</code></pre><p>We are testing the hypothesis that the group variances are equal. We fail to reject the null hypothesis at the 0.05 significance level since the value of the Levene test statistic is less than the critical value. We conclude that there is insufficient evidence to claim that the variances are not equal.</p>
-<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Levene’s test can be used to answer the following question:</p>
-<pre><code>• Is the assumption of equal variances valid?
-</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Standard Deviation Plot</li>
-<li>Box Plot</li>
-<li>Bartlett Test</li>
-<li>Chi-Square Test</li>
-<li>Analysis of Variance</li>
-</ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35a.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35a.htm</a></p>
-
-          
+          <p>虚拟机环境安装：</p>
+<pre><code>1. VMware workstation 12 pro
+2. ubuntu-16.04-desktop-amd64.iso
+3. Boredbird,zch,zch0302
+</code></pre><p>系统菜单》设置》软件和更新》切换成清华的源<br>sudo apt-get update<br>sudo apt-get upgrade<br>sudo apt-get install ssh</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/16/vmware虚拟环境搭建/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2307,7 +2035,7 @@ Critical region: Reject H0 if F &gt; 1.9855
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2357,7 +2085,7 @@ Critical region: Reject H0 if F &gt; 1.9855
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">199</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2379,7 +2107,7 @@ Critical region: Reject H0 if F &gt; 1.9855
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">224</span>
+                  <span class="site-state-item-count">246</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

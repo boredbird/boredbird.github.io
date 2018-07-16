@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="Pl2GAjqhdU" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="crf++," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="crf++ 官方tutorial">
+<meta name="keywords" content="crf++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="crf++ 官方tutorial">
+<meta property="og:url" content="http://zhangchunhui.cn/2018/07/16/crf++ 官方tutorial/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="crf++ 官方tutorial">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-16T12:32:25.334Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="crf++ 官方tutorial">
+<meta name="twitter:description" content="crf++ 官方tutorial">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2018/07/16/crf++ 官方tutorial/"/>
+
+
+
+
+
+  <title>crf++ 官方tutorial | boredbird</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bd5a63e2d0d6f11fcae1d6b1506b54ef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/crf++ 官方tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">crf++ 官方tutorial</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T11:38:12+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/crf++ 官方tutorial/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/crf++ 官方tutorial/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/16/crf++ 官方tutorial/" class="leancloud_visitors" data-flag-title="crf++ 官方tutorial">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+              <div class="post-description">
+                  crf++ 官方tutorial
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Training-and-Test-file-formats"><a href="#Training-and-Test-file-formats" class="headerlink" title="Training and Test file formats"></a>Training and Test file formats</h3><p>Both the training file and the test file need to be in a particular format for CRF++ to work properly. Generally speaking, training and test file must consist of multiple tokens. In addition, a token consists of multiple (but fixed-numbers) columns. The definition of tokens depends on tasks, however, in most of typical cases, they simply correspond to words. Each token must be represented in one line, with the columns separated by white space (spaces or tabular characters). A sequence of token becomes a sentence. To identify the boundary between sentences, an empty line is put.</p>
+<p>You can give as many columns as you like, however the number of columns must be fixed through all tokens. Furthermore, there are some kinds of “semantics” among the columns. For example, 1st column is ‘word’, second column is ‘POS tag’ third column is ‘sub-category of POS’ and so on.</p>
+<p>The last column represents a true answer tag which is going to be trained by CRF.</p>
+<p>Here’s an example of such a file: (data for CoNLL shared task)</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">He        PRP  <span class="keyword">B-NP</span></span><br><span class="line"><span class="keyword">reckons </span>  VBZ  <span class="keyword">B-VP</span></span><br><span class="line"><span class="keyword">the </span>      DT   <span class="keyword">B-NP</span></span><br><span class="line"><span class="keyword">current </span>  <span class="keyword">JJ </span>  I-NP</span><br><span class="line">account   NN   I-NP</span><br><span class="line">deficit   NN   I-NP</span><br><span class="line">will      MD   <span class="keyword">B-VP</span></span><br><span class="line"><span class="keyword">narrow </span>   VB   I-VP</span><br><span class="line">to        TO   <span class="keyword">B-PP</span></span><br><span class="line"><span class="keyword">only </span>     RB   <span class="keyword">B-NP</span></span><br><span class="line"><span class="keyword"># </span>        <span class="comment">#    I-NP</span></span><br><span class="line"><span class="number">1</span>.<span class="number">8</span>       CD   I-NP</span><br><span class="line"><span class="keyword">billion </span>  CD   I-NP</span><br><span class="line">in        IN   <span class="keyword">B-PP</span></span><br><span class="line"><span class="keyword">September </span>NNP  <span class="keyword">B-NP</span></span><br><span class="line"><span class="keyword">. </span>        .    O</span><br><span class="line"></span><br><span class="line">He        PRP  <span class="keyword">B-NP</span></span><br><span class="line"><span class="keyword">reckons </span>  VBZ  <span class="keyword">B-VP</span></span><br><span class="line"><span class="keyword">..</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>There are 3 columns for each token.</p>
+<ul>
+<li>The word itself (e.g. reckons);</li>
+<li>part-of-speech associated with the word (e.g. VBZ);</li>
+<li>Chunk(answer) tag represented in IOB2 format;</li>
+</ul>
+<p>The following data is invalid, since the number of columns of second and third are 2. (They have no POS column.) The number of columns should be fixed.</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">He        PRP  <span class="keyword">B-NP</span></span><br><span class="line"><span class="keyword">reckons </span>  <span class="keyword">B-VP</span></span><br><span class="line"><span class="keyword">the </span>      <span class="keyword">B-NP</span></span><br><span class="line"><span class="keyword">current </span>  <span class="keyword">JJ </span>  I-NP</span><br><span class="line">account   NN   I-NP</span><br><span class="line">..</span><br></pre></td></tr></table></figure>
+<h3 id="Preparing-feature-templates"><a href="#Preparing-feature-templates" class="headerlink" title="Preparing feature templates"></a>Preparing feature templates</h3><p>As CRF++ is designed as a general purpose tool, you have to specify the feature templates in advance. This file describes which features are used in training and testing.</p>
+<h4 id="Template-basic-and-macro"><a href="#Template-basic-and-macro" class="headerlink" title="Template basic and macro"></a>Template basic and macro</h4><p>Each line in the template file denotes one template. In each template, special macro %x[row,col] will be used to specify a token in the input data. row specfies the relative position from the current focusing token and col specifies the absolute position of the column.</p>
+<p>Here you can find some examples for the replacements<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input</span>: <span class="meta">Data</span></span><br><span class="line"><span class="symbol">He</span>        PRP  <span class="keyword">B-NP</span></span><br><span class="line"><span class="keyword">reckons </span>  VBZ  <span class="keyword">B-VP</span></span><br><span class="line"><span class="keyword">the </span>      DT   <span class="keyword">B-NP </span>&lt;&lt; CURRENT TOKEN</span><br><span class="line"><span class="symbol">current</span>   JJ   I-NP</span><br><span class="line"><span class="symbol">account</span>   NN   I-NP</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>template</th>
+<th>expanded feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%x[0,0]</td>
+<td>the</td>
+</tr>
+<tr>
+<td>%x[0,1]</td>
+<td>DT</td>
+</tr>
+<tr>
+<td>%x[-1,0]</td>
+<td>reckons</td>
+</tr>
+<tr>
+<td>%x[-2,1]</td>
+<td>PRP</td>
+</tr>
+<tr>
+<td>%x[0,0]/%x[0,1]</td>
+<td>the/DT</td>
+</tr>
+<tr>
+<td>ABC%x[0,1]123</td>
+<td>ABCDT123</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Template-type"><a href="#Template-type" class="headerlink" title="Template type"></a>Template type</h4><p>Note also that there are two types of templates. The types are specified with the first character of templates.</p>
+<ul>
+<li><p>Unigram template: first character, ‘U’</p>
+<p>This is a template to describe unigram features. When you give a template “U01:%x[0,1]”, CRF++ automatically generates a set of feature functions (func1 … funcN) like:</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func1 = <span class="keyword">if</span> (<span class="keyword">output</span> = B-NP <span class="keyword">and</span> feature=<span class="string">"U01:DT"</span>) <span class="keyword">return</span> <span class="number">1</span> <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">func2 = <span class="keyword">if</span> (<span class="keyword">output</span> = I-NP <span class="keyword">and</span> feature=<span class="string">"U01:DT"</span>) <span class="keyword">return</span> <span class="number">1</span> <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">func3 = <span class="keyword">if</span> (<span class="keyword">output</span> = O <span class="keyword">and</span> feature=<span class="string">"U01:DT"</span>) <span class="keyword">return</span> <span class="number">1</span>  <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">....</span><br><span class="line">funcXX = <span class="keyword">if</span> (<span class="keyword">output</span> = B-NP <span class="keyword">and</span> feature=<span class="string">"U01:NN"</span>) <span class="keyword">return</span> <span class="number">1</span>  <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">funcXY = <span class="keyword">if</span> (<span class="keyword">output</span> = O <span class="keyword">and</span> feature=<span class="string">"U01:NN"</span>) <span class="keyword">return</span> <span class="number">1</span>  <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>The number of feature functions generated by a template amounts to (L * N), where L is the number of output classes and N is the number of unique string expanded from the given template.</p>
+</li>
+<li><p>Bigram template: first character, ‘B’</p>
+<p>This is a template to describe bigram features. With this template, a combination of the current output token and previous output token (bigram) is automatically generated. Note that this type of template generates a total of (L <em> L </em> N) distinct features, where L is the number of output classes and N is the number of unique features generated by the templates. When the number of classes is large, this type of templates would produce a tons of distinct features that would cause inefficiency both in training/testing.</p>
+</li>
+<li><p>What is the diffrence between unigram and bigram features?</p>
+<p>  The words unigram/bigram are confusing, since a macro for unigram-features does allow you to write word-level bigram like %x[-1,0]%x[0,0]. Here, unigram and bigram features mean uni/bigrams of output tags.</p>
+<ul>
+<li>unigram: |output tag| x |all possible strings expanded with a macro|</li>
+<li>bigram: |output tag| x |output tag| x |all possible strings expanded with a macro|</li>
+</ul>
+</li>
+<li><p>Identifiers for distinguishing relative positions</p>
+<p>You also need to put an identifier in templates when relative positions of tokens must be distinguished.</p>
+<p>In the following case, the macro “%x[-2,1]” and “%x[1,1]” will be replaced into “DT”. But they indicates different “DT”.    </p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">The</span>       DT  <span class="keyword">B-NP</span></span><br><span class="line"><span class="keyword">pen </span>      NN  I-NP</span><br><span class="line"><span class="symbol">is</span>        VB  <span class="keyword">B-VP </span>&lt;&lt; CURRENT TOKEN</span><br><span class="line">a         DT  <span class="keyword">B-NP</span></span><br></pre></td></tr></table></figure>
+<p>To distinguish both two, put an unique identifier (U01: or U02:) in the template:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U01:%x<span class="string">[-2,1]</span></span><br><span class="line">U02:%x<span class="string">[1,1]</span></span><br></pre></td></tr></table></figure>
+<p>In this case both two templates are regarded as different ones, as they are expanded into different features, “U01:DT” and “U02:DT”. You can use any identifier whatever you like, but it is useful to use numerical numbers to manage them, because they simply correspond to feature IDs.</p>
+<p>If you want to use “bag-of-words” feature, in other words, not to care the relative position of features, You don’t need to put such identifiers.</p>
+</li>
+<li><p>Example<br>Here is the template example for CoNLL 2000 shared task and Base-NP chunking task. Only one bigram template (‘B’) is used. This means that only combinations of previous output token and current token are used as bigram features. The lines starting from # or empty lines are discarded as comments</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Unigram</span></span><br><span class="line"><span class="symbol">U00:</span><span class="string">%x[-2,0]</span></span><br><span class="line"><span class="symbol">U01:</span><span class="string">%x[-1,0]</span></span><br><span class="line"><span class="symbol">U02:</span><span class="string">%x[0,0]</span></span><br><span class="line"><span class="symbol">U03:</span><span class="string">%x[1,0]</span></span><br><span class="line"><span class="symbol">U04:</span><span class="string">%x[2,0]</span></span><br><span class="line"><span class="symbol">U05:</span><span class="string">%x[-1,0]</span>/<span class="string">%x[0,0]</span></span><br><span class="line"><span class="symbol">U06:</span><span class="string">%x[0,0]</span>/<span class="string">%x[1,0]</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">U10:</span><span class="string">%x[-2,1]</span></span><br><span class="line"><span class="symbol">U11:</span><span class="string">%x[-1,1]</span></span><br><span class="line"><span class="symbol">U12:</span><span class="string">%x[0,1]</span></span><br><span class="line"><span class="symbol">U13:</span><span class="string">%x[1,1]</span></span><br><span class="line"><span class="symbol">U14:</span><span class="string">%x[2,1]</span></span><br><span class="line"><span class="symbol">U15:</span><span class="string">%x[-2,1]</span>/<span class="string">%x[-1,1]</span></span><br><span class="line"><span class="symbol">U16:</span><span class="string">%x[-1,1]</span>/<span class="string">%x[0,1]</span></span><br><span class="line"><span class="symbol">U17:</span><span class="string">%x[0,1]</span>/<span class="string">%x[1,1]</span></span><br><span class="line"><span class="symbol">U18:</span><span class="string">%x[1,1]</span>/<span class="string">%x[2,1]</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">U20:</span><span class="string">%x[-2,1]</span>/<span class="string">%x[-1,1]</span>/<span class="string">%x[0,1]</span></span><br><span class="line"><span class="symbol">U21:</span><span class="string">%x[-1,1]</span>/<span class="string">%x[0,1]</span>/<span class="string">%x[1,1]</span></span><br><span class="line"><span class="symbol">U22:</span><span class="string">%x[0,1]</span>/<span class="string">%x[1,1]</span>/<span class="string">%x[2,1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Bigram</span></span><br><span class="line">B</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Training-encoding"><a href="#Training-encoding" class="headerlink" title="Training (encoding)"></a>Training (encoding)</h3><p>  Use crf_learn command:<br>  <code>% crf_learn template_file train_file model_file</code>,<br>  where template_file and train_file are the files you need to prepare in advance. crf_learn generates the trained model file in model_file.</p>
+<p>  crf_learn outputs the following information.<br>  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">CRF++: Yet Another CRF<span class="built_in"> Tool </span>Kit</span><br><span class="line">Copyright(C) 2005 Taku Kudo, All rights reserved.</span><br><span class="line"></span><br><span class="line">reading training data: 100<span class="built_in">..</span> 200<span class="built_in">..</span> 300<span class="built_in">..</span> 400<span class="built_in">..</span> 500<span class="built_in">..</span> 600<span class="built_in">..</span> 700<span class="built_in">..</span> 800<span class="built_in">..</span></span><br><span class="line">Done! 1.94 s</span><br><span class="line"></span><br><span class="line">Number of sentences: 823</span><br><span class="line">Number of features:  1075862</span><br><span class="line">Number of thread(s): 1</span><br><span class="line">Freq:                1</span><br><span class="line">eta:                 0.00010</span><br><span class="line">C:                   1.00000</span><br><span class="line">shrinking size:      20</span><br><span class="line">Algorithm:           CRF</span><br><span class="line"></span><br><span class="line"><span class="attribute">iter</span>=0 <span class="attribute">terr</span>=0.99103 <span class="attribute">serr</span>=1.00000 <span class="attribute">obj</span>=54318.36623 <span class="attribute">diff</span>=1.00000</span><br><span class="line"><span class="attribute">iter</span>=1 <span class="attribute">terr</span>=0.35260 <span class="attribute">serr</span>=0.98177 <span class="attribute">obj</span>=44996.53537 <span class="attribute">diff</span>=0.17161</span><br><span class="line"><span class="attribute">iter</span>=2 <span class="attribute">terr</span>=0.35260 <span class="attribute">serr</span>=0.98177 <span class="attribute">obj</span>=21032.70195 <span class="attribute">diff</span>=0.53257</span><br><span class="line"><span class="attribute">iter</span>=3 <span class="attribute">terr</span>=0.23879 <span class="attribute">serr</span>=0.94532 <span class="attribute">obj</span>=13642.32067 <span class="attribute">diff</span>=0.35138</span><br><span class="line"><span class="attribute">iter</span>=4 <span class="attribute">terr</span>=0.15324 <span class="attribute">serr</span>=0.88700 <span class="attribute">obj</span>=8985.70071 <span class="attribute">diff</span>=0.34134</span><br><span class="line"><span class="attribute">iter</span>=5 <span class="attribute">terr</span>=0.11605 <span class="attribute">serr</span>=0.80680 <span class="attribute">obj</span>=7118.89846 <span class="attribute">diff</span>=0.20775</span><br><span class="line"><span class="attribute">iter</span>=6 <span class="attribute">terr</span>=0.09305 <span class="attribute">serr</span>=0.72175 <span class="attribute">obj</span>=5531.31015 <span class="attribute">diff</span>=0.22301</span><br><span class="line"><span class="attribute">iter</span>=7 <span class="attribute">terr</span>=0.08132 <span class="attribute">serr</span>=0.68408 <span class="attribute">obj</span>=4618.24644 <span class="attribute">diff</span>=0.16507</span><br><span class="line"><span class="attribute">iter</span>=8 <span class="attribute">terr</span>=0.06228 <span class="attribute">serr</span>=0.59174 <span class="attribute">obj</span>=3742.93171 <span class="attribute">diff</span>=0.18953</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>iter: number of iterations processed</li>
+<li>terr: error rate with respect to tags. (# of error tags/# of all tag)</li>
+<li>serr: error rate with respect to sentences. (# of error sentences/# of all sentences)</li>
+<li>obj: current object value. When this value converges to a fixed point, CRF++ stops the iteration.</li>
+<li><p>diff: relative difference from the previous object value.</p>
+<p>There are 4 major parameters to control the training condition</p>
+</li>
+<li>-a CRF-L2 or CRF-L1:<br>Changing the regularization algorithm. Default setting is L2. Generally speaking, L2 performs slightly better than L1, while the number of non-zero features in L1 is drastically smaller than that in L2.</li>
+<li>-c float:<br>With this option, you can change the hyper-parameter for the CRFs. With larger C value, CRF tends to overfit to the give training corpus. This parameter trades the balance between overfitting and underfitting. The results will significantly be influenced by this parameter. You can find an optimal value by using held-out data or more general model selection method such as cross validation.</li>
+<li>-f NUM:<br>This parameter sets the cut-off threshold for the features. CRF++ uses the features that occurs no less than NUM times in the given training data. The default value is 1. When you apply CRF++ to large data, the number of unique features would amount to several millions. This option is useful in such cases.</li>
+<li><p>-p NUM:<br>If the PC has multiple CPUs, you can make the training faster by using multi-threading. NUM is the number of threads.</p>
+<p>Here is the example where these two parameters are used.</p>
+<blockquote>
+<p><code>% crf_learn -f 3 -c 1.5 template_file train_file model_file</code></p>
+</blockquote>
+<p>Since version 0.45, CRF++ supports single-best MIRA training. MIRA training is used when -a MIRA option is set.</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">% crf_learn -a MIRA template train.data model</span><br><span class="line">CRF++: Yet Another CRF<span class="built_in"> Tool </span>Kit</span><br><span class="line">Copyright(C) 2005 Taku Kudo, All rights reserved.</span><br><span class="line"></span><br><span class="line">reading training data: 100<span class="built_in">..</span> 200<span class="built_in">..</span> 300<span class="built_in">..</span> 400<span class="built_in">..</span> 500<span class="built_in">..</span> 600<span class="built_in">..</span> 700<span class="built_in">..</span> 800<span class="built_in">..</span></span><br><span class="line">Done! 1.92 s</span><br><span class="line"></span><br><span class="line">Number of sentences: 823</span><br><span class="line">Number of features:  1075862</span><br><span class="line">Number of thread(s): 1</span><br><span class="line">Freq:                1</span><br><span class="line">eta:                 0.00010</span><br><span class="line">C:                   1.00000</span><br><span class="line">shrinking size:      20</span><br><span class="line">Algorithm:           MIRA</span><br><span class="line"></span><br><span class="line"><span class="attribute">iter</span>=0 <span class="attribute">terr</span>=0.11381 <span class="attribute">serr</span>=0.74605 <span class="attribute">act</span>=823 <span class="attribute">uact</span>=0 <span class="attribute">obj</span>=24.13498 <span class="attribute">kkt</span>=28.00000</span><br><span class="line"><span class="attribute">iter</span>=1 <span class="attribute">terr</span>=0.04710 <span class="attribute">serr</span>=0.49818 <span class="attribute">act</span>=823 <span class="attribute">uact</span>=0 <span class="attribute">obj</span>=35.42289 <span class="attribute">kkt</span>=7.60929</span><br><span class="line"><span class="attribute">iter</span>=2 <span class="attribute">terr</span>=0.02352 <span class="attribute">serr</span>=0.30741 <span class="attribute">act</span>=823 <span class="attribute">uact</span>=0 <span class="attribute">obj</span>=41.86775 <span class="attribute">kkt</span>=5.74464</span><br><span class="line"><span class="attribute">iter</span>=3 <span class="attribute">terr</span>=0.01836 <span class="attribute">serr</span>=0.25881 <span class="attribute">act</span>=823 <span class="attribute">uact</span>=0 <span class="attribute">obj</span>=47.29565 <span class="attribute">kkt</span>=6.64895</span><br><span class="line"><span class="attribute">iter</span>=4 <span class="attribute">terr</span>=0.01106 <span class="attribute">serr</span>=0.17011 <span class="attribute">act</span>=823 <span class="attribute">uact</span>=0 <span class="attribute">obj</span>=50.68792 <span class="attribute">kkt</span>=3.81902</span><br><span class="line"><span class="attribute">iter</span>=5 <span class="attribute">terr</span>=0.00610 <span class="attribute">serr</span>=0.10085 <span class="attribute">act</span>=823 <span class="attribute">uact</span>=0 <span class="attribute">obj</span>=52.58096 <span class="attribute">kkt</span>=3.98915</span><br><span class="line"><span class="attribute">iter</span>=0 <span class="attribute">terr</span>=0.11381 <span class="attribute">serr</span>=0.74605 <span class="attribute">act</span>=823 <span class="attribute">uact</span>=0 <span class="attribute">obj</span>=24.13498 <span class="attribute">kkt</span>=28.00000</span><br><span class="line"><span class="built_in">..</span>.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>iter, terr, serror: same as CRF training</p>
+</li>
+<li>act: number of active examples in working set</li>
+<li>uact: number of examples whose dual parameters reach soft margin upper-bound C. 0 uact suggests that given training data was linear separable</li>
+<li>obj: current object value, ||w||^2</li>
+<li><p>kkt: max kkt violation value. When it gets 0.0, MIRA training finishes</p>
+<p>There are some parameters to control the MIRA training condition</p>
+</li>
+<li><p>-c float:</p>
+<p>Changes soft margin parameter, which is an analogue to the soft margin parameter C in Support Vector Machines. The definition is basically the same as -c option in CRF training. With larger C value, MIRA tends to overfit to the give training corpus.</p>
+</li>
+<li><p>-f NUM:</p>
+<p>Same as CRF</p>
+</li>
+<li><p>-H NUM:</p>
+<p>Changes shrinking size. When a training sentence is not used in updating parameter vector NUM times, we can consider that the instance doesn’t contribute training any more. MIRA tries to remove such instances. The process is called “shrinking”. When setting smaller NUM, shrinking occurs in early stage, which drastically reduces training time. However, too small NUM is not recommended. When training finishes, MIRA tries to go through all training examples again to know whether or not all KKT conditions are really satisfied. Too small NUM would increase the chances of recheck.</p>
+</li>
+</ul>
+<h3 id="Testing-decoding"><a href="#Testing-decoding" class="headerlink" title="Testing (decoding)"></a>Testing (decoding)</h3><p>Use crf_test command:<code>% crf_test -m model_file test_files ...</code>,where model_file is the file crf_learncreates. In the testing, you don’t need to specify the template file, because the model file has the same information for the template. test_file is the test data you want to assign sequential tags. This file has to be written in the same format as training file.</p>
+<p>Here is an output of crf_test:<br><figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">% crf_test -m model test.data</span><br><span class="line">Rockwell        NNP     B       B</span><br><span class="line">International   NNP     <span class="literal">I</span>       <span class="literal">I</span></span><br><span class="line">Corp.   NNP     <span class="literal">I</span>       <span class="literal">I</span></span><br><span class="line">'s      POS     B       B</span><br><span class="line">Tulsa   NNP     <span class="literal">I</span>       <span class="literal">I</span></span><br><span class="line">unit    NN      <span class="literal">I</span>       <span class="literal">I</span></span><br><span class="line">..</span><br></pre></td></tr></table></figure></p>
+<p>The last column is given (estimated) tag. If the 3rd column is true answer tag , you can evaluate the accuracy by simply seeing the difference between the 3rd and 4th columns.</p>
+<ul>
+<li><p>verbose level<br>The -v option sets verbose level. default value is 0. By increasing the level, you can have an extra information from CRF++</p>
+<ul>
+<li><p>level 1</p>
+<p>You can also have marginal probabilities for each tag (a kind of confidece measure for each output tag) and a conditional probably for the output (confidence measure for the entire output).</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">% crf_test -v1 -m model test.data| head</span><br><span class="line"><span class="comment"># 0.478113</span></span><br><span class="line">Rockwell        NNP     B       B/<span class="number">0.992465</span></span><br><span class="line">International   NNP     <span class="literal">I</span>       <span class="literal">I</span>/<span class="number">0.979089</span></span><br><span class="line">Corp.   NNP     <span class="literal">I</span>       <span class="literal">I</span>/<span class="number">0.954883</span></span><br><span class="line">'s      POS     B       B/<span class="number">0.986396</span></span><br><span class="line">Tulsa   NNP     <span class="literal">I</span>       <span class="literal">I</span>/<span class="number">0.991966</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>The first line “# 0.478113” shows the conditional probably for the output. Also, each output tag has a probability represented like “B/0.992465”.</p>
+</li>
+<li>level 2<br>You can also have marginal probabilities for all other candidates.<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">% crf_test -v2 -m model test.data</span><br><span class="line"># <span class="number">0.478113</span></span><br><span class="line">Rockwell        NNP     B       B/<span class="number">0.992465</span>      B/<span class="number">0.992465</span>      I/<span class="number">0.00144946</span>    O/<span class="number">0.00608594</span></span><br><span class="line">International   NNP     I       I/<span class="number">0.979089</span>      B/<span class="number">0.0105273</span>     I/<span class="number">0.979089</span>      O/<span class="number">0.0103833</span></span><br><span class="line">Corp.   NNP     I       I/<span class="number">0.954883</span>      B/<span class="number">0.00477976</span>    I/<span class="number">0.954883</span>      O/<span class="number">0.040337</span></span><br><span class="line">'s      POS     B       B/<span class="number">0.986396</span>      B/<span class="number">0.986396</span>      I/<span class="number">0.00655976</span>    O/<span class="number">0.00704426</span></span><br><span class="line">Tulsa   NNP     I       I/<span class="number">0.991966</span>      B/<span class="number">0.00787494</span>    I/<span class="number">0.991966</span>      O/<span class="number">0.00015949</span></span><br><span class="line">unit    NN      I       I/<span class="number">0.996169</span>      B/<span class="number">0.00283111</span>    I/<span class="number">0.996169</span>      O/<span class="number">0</span>.<span class="number">000999975</span></span><br><span class="line">..</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>N-best outputs</p>
+<p>With the -n option, you can obtain N-best results sorted by the conditional probability of CRF. With n-best output mode, CRF++ first gives one additional line like “# N prob”, where N means that rank of the output starting from 0 and prob denotes the conditional probability for the output.</p>
+<p>Note that CRF++ sometimes discards enumerating N-best results if it cannot find candidates any more. This is the case when you give CRF++ a short sentence.</p>
+<p>CRF++ uses a combination of forward Viterbi and backward A* search. This combination yields the exact list of n-best results.</p>
+<p>Here is the example of the N-best results.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">% crf_test -n <span class="number">20</span> -m model test.data</span><br><span class="line"><span class="comment"># 0 0.478113</span></span><br><span class="line">Rockwell        NNP     B       B</span><br><span class="line">International   NNP     <span class="literal">I</span>       <span class="literal">I</span></span><br><span class="line">Corp.   NNP     <span class="literal">I</span>       <span class="literal">I</span></span><br><span class="line">'s      POS     B       B</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1 0.194335</span></span><br><span class="line">Rockwell        NNP     B       B</span><br><span class="line">International   NNP     <span class="literal">I</span>       <span class="literal">I</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Case-studies"><a href="#Case-studies" class="headerlink" title="Case studies"></a>Case studies</h3><p>In the example directories, you can find three case studies, baseNP chunking, Text Chunking, and Japanese named entity recognition, to use CRF++.</p>
+<p>In each directory, please try the following commands<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">%</span><span class="bash"> crf_learn template train model</span></span><br><span class="line"><span class="meta">%</span><span class="bash"> crf_test  -m model <span class="built_in">test</span></span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/crf/" rel="tag"># crf++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/16/crf/" rel="next" title="crf">
+                <i class="fa fa-chevron-left"></i> crf
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/16/vmware虚拟环境搭建/" rel="prev" title="vmware虚拟环境搭建">
+                vmware虚拟环境搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/pic_avatar.jpg"
+                alt="boredbird" />
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">199</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">246</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/boredbird" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/boredbird" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-and-Test-file-formats"><span class="nav-number">1.</span> <span class="nav-text">Training and Test file formats</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preparing-feature-templates"><span class="nav-number">2.</span> <span class="nav-text">Preparing feature templates</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Template-basic-and-macro"><span class="nav-number">2.1.</span> <span class="nav-text">Template basic and macro</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Template-type"><span class="nav-number">2.2.</span> <span class="nav-text">Template type</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-encoding"><span class="nav-number">3.</span> <span class="nav-text">Training (encoding)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Testing-decoding"><span class="nav-number">4.</span> <span class="nav-text">Testing (decoding)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Case-studies"><span class="nav-number">5.</span> <span class="nav-text">Case studies</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+	
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+  
+</body>
+</html>

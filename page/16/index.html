@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Django[08]第一个view（视图）/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/14/python类属性和方法的封装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/08/Django[08]第一个view（视图）/" itemprop="url">Django[08]第一个view（视图）</a></h2>
+                <a class="post-title-link" href="/2017/10/14/python类属性和方法的封装/" itemprop="url">python类属性和方法的封装</a></h2>
         
 
         <div class="post-meta">
@@ -339,1686 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T08:43:02+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/Django[08]第一个view（视图）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[08]第一个view（视图）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Django[08]第一个view（视图）/" class="leancloud_visitors" data-flag-title="Django[08]第一个view（视图）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Django[08]第一个view（视图）
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="定义我们第一个视图"><a href="#定义我们第一个视图" class="headerlink" title="定义我们第一个视图"></a>定义我们第一个视图</h1><p>修改posts[app]下views.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">posts_home</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> HttpResponse(<span class="string">"Hello World!"</span>)</span><br></pre></td></tr></table></figure></p>
-<h1 id="url建立映射到view"><a href="#url建立映射到view" class="headerlink" title="url建立映射到view"></a>url建立映射到view</h1><p>修改bbs[project]下urls.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</span><br><span class="line">    url(<span class="string">r'^home/'</span>, views.posts_home),</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.imgur.com/9QePi8q.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMjQ3MzA0NzAxNg==.html?spm=a2h0j.8191423.playlist_content.5!11~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.11" target="_blank" rel="noopener">Django1.10教程 -08 -第一个view（视图）</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Django[07]增删改查（CRUD）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Django[07]增删改查（CRUD）/" itemprop="url">Django[07]增删改查（CRUD）</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T08:27:02+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/Django[07]增删改查（CRUD）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[07]增删改查（CRUD）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Django[07]增删改查（CRUD）/" class="leancloud_visitors" data-flag-title="Django[07]增删改查（CRUD）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Django[07]增删改查（CRUD）
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h1><table>
-<thead>
-<tr>
-<th>缩写</th>
-<th style="text-align:center">动作名称</th>
-<th style="text-align:center">SQL</th>
-<th style="text-align:center">HTTP</th>
-<th style="text-align:right">实际动作</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C</td>
-<td style="text-align:center">Create</td>
-<td style="text-align:center">INSERT</td>
-<td style="text-align:center">PUT/POST</td>
-<td style="text-align:right">增加</td>
-</tr>
-<tr>
-<td>R</td>
-<td style="text-align:center">Retrieve</td>
-<td style="text-align:center">SELECT</td>
-<td style="text-align:center">GET</td>
-<td style="text-align:right">查询</td>
-</tr>
-<tr>
-<td>U</td>
-<td style="text-align:center">Update</td>
-<td style="text-align:center">UPDATE</td>
-<td style="text-align:center">POST/PUT/PATCH</td>
-<td style="text-align:right">更新</td>
-</tr>
-<tr>
-<td>D</td>
-<td style="text-align:center">Delete</td>
-<td style="text-align:center">DELETE</td>
-<td style="text-align:center">DELETE</td>
-<td style="text-align:right">删除</td>
-</tr>
-</tbody>
-</table>
-<h1 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h1><table>
-<thead>
-<tr>
-<th>序号</th>
-<th style="text-align:center">方法</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td style="text-align:center">GET</td>
-<td style="text-align:right">请求指定的页面信息，并返回实体主体。</td>
-</tr>
-<tr>
-<td>2</td>
-<td style="text-align:center">HEAD</td>
-<td style="text-align:right">类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
-</tr>
-<tr>
-<td>3</td>
-<td style="text-align:center">POST</td>
-<td style="text-align:right">向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</td>
-</tr>
-<tr>
-<td>4</td>
-<td style="text-align:center">PUT</td>
-<td style="text-align:right">从客户端向服务器传送的数据取代指定的文档的内容。</td>
-</tr>
-<tr>
-<td>5</td>
-<td style="text-align:center">DELETE</td>
-<td style="text-align:right">请求服务器删除指定的页面。</td>
-</tr>
-<tr>
-<td>6</td>
-<td style="text-align:center">CONNECT</td>
-<td style="text-align:right">HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</td>
-</tr>
-<tr>
-<td>7</td>
-<td style="text-align:center">OPTIONS</td>
-<td style="text-align:right">允许客户端查看服务器的性能。</td>
-</tr>
-<tr>
-<td>8</td>
-<td style="text-align:center">TRACE</td>
-<td style="text-align:right">回显服务器收到的请求，主要用于测试或诊断。</td>
-</tr>
-</tbody>
-</table>
-<p>via <a href="http://v.youku.com/v_show/id_XMjQ3MzA0NDY5Mg==.html?spm=a2h0j.8191423.playlist_content.5!10~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.10" target="_blank" rel="noopener">Django1.10教程 -07 -增删改查（CRUD）</a></p>
-<p>via <a href="http://www.runoob.com/http/http-methods.html" target="_blank" rel="noopener">HTTP请求方法</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Django[06]定制admin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Django[06]定制admin/" itemprop="url">Django[06]定制admin</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T07:44:02+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/Django[06]定制admin/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[06]定制admin/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Django[06]定制admin/" class="leancloud_visitors" data-flag-title="Django[06]定制admin">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Django[06]定制admin
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="在post-admin-py文件中添加如下代码："><a href="#在post-admin-py文件中添加如下代码：" class="headerlink" title="在post/admin.py文件中添加如下代码："></a>在post/admin.py文件中添加如下代码：</h1><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class PostAdmin(admin.ModelAdmin):</span><br><span class="line"></span><br><span class="line">    <span class="attr">list_display</span> = [,]  <span class="comment"># 控制页面展示哪些字段</span></span><br><span class="line">    <span class="attr">list_display_links</span> = [,]  <span class="comment"># 控制哪些字段是超链接</span></span><br><span class="line">    <span class="attr">list_filter</span> = [,]  <span class="comment"># 支持在右侧过滤的字段</span></span><br><span class="line">    <span class="attr">search_fields</span> = [,]  <span class="comment"># 支持搜索的字段</span></span><br><span class="line">    <span class="attr">list_editable</span> = [,]  <span class="comment"># 支持直接编辑的字段，注意！不能与list_display_links重复！</span></span><br><span class="line"></span><br><span class="line">    class Meta:</span><br><span class="line">        <span class="attr">model</span> = model.Post</span><br></pre></td></tr></table></figure>
-<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>如何修改admin中显示的app名字？</p>
-<h2 id="1-在posts-apps-py中"><a href="#1-在posts-apps-py中" class="headerlink" title="1. 在posts/apps.py中"></a>1. 在posts/apps.py中</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">PostsConfig类中添加</span><br><span class="line">verbose_name = <span class="string">"帖子"</span></span><br></pre></td></tr></table></figure>
-<h2 id="2-posts-init-py"><a href="#2-posts-init-py" class="headerlink" title="2. posts/init.py"></a>2. posts/<strong>init</strong>.py</h2><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">default_app_config</span> = <span class="string">"posts.apps.PostsConfig"</span></span><br></pre></td></tr></table></figure>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="1、修改posts-app-下admin-py"><a href="#1、修改posts-app-下admin-py" class="headerlink" title="1、修改posts[app]下admin.py"></a>1、修改posts[app]下admin.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># Register your models here.</span></span><br><span class="line"><span class="keyword">from</span> posts <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostAdmin</span><span class="params">(admin.ModelAdmin)</span>:</span></span><br><span class="line">	<span class="string">"""docstring for PostAdmin"""</span></span><br><span class="line">	list_display = [<span class="string">"title"</span>,<span class="string">"content"</span>]</span><br><span class="line">	list_display_links = [<span class="string">"title"</span>]</span><br><span class="line">	list_filter = [<span class="string">"timestamp"</span>,<span class="string">"content"</span>]</span><br><span class="line">	search_fields = [<span class="string">"title"</span>,<span class="string">"content"</span>]</span><br><span class="line">	list_editable = [<span class="string">"content"</span>]</span><br><span class="line">	<span class="comment"># def __init__(self, arg):</span></span><br><span class="line">	<span class="comment"># 	super(PostAdmin, self).__init__()</span></span><br><span class="line">	<span class="comment"># 	self.arg = arg</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">		model = models.Post</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">admin.site.register(models.Post,PostAdmin)</span><br></pre></td></tr></table></figure>
-<h2 id="2、修改posts-app-下apps-py"><a href="#2、修改posts-app-下apps-py" class="headerlink" title="2、修改posts[app]下apps.py"></a>2、修改posts[app]下apps.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostsConfig</span><span class="params">(AppConfig)</span>:</span></span><br><span class="line">    name = <span class="string">'posts'</span></span><br><span class="line">    verbose_name = <span class="string">"帖子"</span></span><br></pre></td></tr></table></figure>
-<h2 id="3、修改posts-app-下init-py"><a href="#3、修改posts-app-下init-py" class="headerlink" title="3、修改posts[app]下init.py"></a>3、修改posts[app]下<strong>init</strong>.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">default_app_config = <span class="string">"posts.apps.PostsConfig"</span></span><br></pre></td></tr></table></figure>
-<h2 id="4、查看效果"><a href="#4、查看效果" class="headerlink" title="4、查看效果"></a>4、查看效果</h2><p><img src="https://i.imgur.com/Z5dk0nf.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTk5MzkwMTI5Mg==.html?spm=a2h0j.8191423.playlist_content.5!9~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.9" target="_blank" rel="noopener">Django1.10教程[06]_定制admin</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Django[05]model与admin的关系/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Django[05]model与admin的关系/" itemprop="url">Django[05]model与admin的关系</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T07:31:02+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/Django[05]model与admin的关系/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[05]model与admin的关系/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Django[05]model与admin的关系/" class="leancloud_visitors" data-flag-title="Django[05]model与admin的关系">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Django[05]model与admin的关系
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="修改app的models中class名称"><a href="#修改app的models中class名称" class="headerlink" title="修改app的models中class名称"></a>修改app的models中class名称</h1><p>尝试去掉models.py里面 把class Posts改成 class Post<br><img src="https://i.imgur.com/N7Qk5BR.png" alt=""></p>
-<h1 id="一行代码让model在admin中可见"><a href="#一行代码让model在admin中可见" class="headerlink" title="一行代码让model在admin中可见"></a>一行代码让model在admin中可见</h1><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(myenvs) E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\s</span>rc&gt;python .<span class="symbol">\m</span>anage.py runserver</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/gyFUpT9.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTk5MTAzODk0NA==.html?spm=a2h0j.8191423.playlist_content.5!8~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.8" target="_blank" rel="noopener">Django1.10教程[05]_model与admin的关系</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Django[04]App和Model/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Django[04]App和Model/" itemprop="url">Django[04]App和Model</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T06:52:02+08:00">
-                2017-10-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/08/Django[04]App和Model/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Django[04]App和Model/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/08/Django[04]App和Model/" class="leancloud_visitors" data-flag-title="Django[04]App和Model">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Django[04]App和Model
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Django中project和app分别是什么？"><a href="#Django中project和app分别是什么？" class="headerlink" title="Django中project和app分别是什么？"></a>Django中project和app分别是什么？</h1><ul>
-<li>Project：python manage.py startproject [你的project名]</li>
-<li>app: python manage.py startapp [你的app名字]</li>
-<li>project是项目，project下面分一个或多个app</li>
-</ul>
-<h1 id="我们的第一个App"><a href="#我们的第一个App" class="headerlink" title="我们的第一个App"></a>我们的第一个App</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-tag">python</span> <span class="selector-tag">manage</span><span class="selector-class">.py</span> <span class="selector-tag">startapp</span> <span class="selector-attr">[app的名字]</span></span><br></pre></td></tr></table></figure>
-<h1 id="一定要注意："><a href="#一定要注意：" class="headerlink" title="一定要注意："></a>一定要注意：</h1><p>把你的app在project的settings.py里面的INSTALLED_APPS加上</p>
-<h1 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h1><p>models.py里面创建类（与数据库建立联系的）</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">python manage<span class="selector-class">.py</span> makemigrations（告诉Django我设计了一些表结构，你去准备一下）</span><br><span class="line"></span><br><span class="line">python manage<span class="selector-class">.py</span> migrate（告诉Django去数据库里操作一下刚才的动作）</span><br></pre></td></tr></table></figure>
-<p>MVC:Model View Controllers</p>
-<p>MTV:Model View Template</p>
-<h1 id="1、创建一个app"><a href="#1、创建一个app" class="headerlink" title="1、创建一个app"></a>1、创建一个app</h1><p><img src="https://i.imgur.com/bSC8Op9.png" alt=""></p>
-<h1 id="2、修改app目录下的models-py文件"><a href="#2、修改app目录下的models-py文件" class="headerlink" title="2、修改app目录下的models.py文件"></a>2、修改app目录下的models.py文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Posts</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">	title = models.CharField(max_length=<span class="number">256</span>) <span class="comment"># 标题，存文字的</span></span><br><span class="line">	content = models.TextField() <span class="comment"># 内容</span></span><br><span class="line">	update = models.DateTimeField(auto_now=<span class="keyword">True</span>,auto_now_add=<span class="keyword">False</span>) <span class="comment"># 更新时间</span></span><br><span class="line">	timestamp = models.DateTimeField(auto_now=<span class="keyword">False</span>,auto_now_add=<span class="keyword">True</span>) <span class="comment">#创建时间</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">()</span>:</span> <span class="comment"># python3</span></span><br><span class="line">		<span class="keyword">return</span> self.title</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">()</span>:</span> <span class="comment">#python2</span></span><br><span class="line">		<span class="keyword">return</span> self.title</span><br></pre></td></tr></table></figure>
-<h1 id="3、修改project目录下的setting-py文件"><a href="#3、修改project目录下的setting-py文件" class="headerlink" title="3、修改project目录下的setting.py文件"></a>3、修改project目录下的setting.py文件</h1><pre><code>INSTALLED_APPS 中添加你刚创建的app名称。
-</code></pre><p><img src="https://i.imgur.com/JLFyqiJ.png" alt=""></p>
-<h1 id="4、提交修改至数据库"><a href="#4、提交修改至数据库" class="headerlink" title="4、提交修改至数据库"></a>4、提交修改至数据库</h1><p><img src="https://i.imgur.com/VgFExeq.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTkwMzgxNzY1Ng==.html?spm=a2h0j.8191423.playlist_content.5!6~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.6" target="_blank" rel="noopener">Django1.10教程[04]之App和Model</a></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTk1MDY2MzA0OA==.html?spm=a2h0j.8191423.playlist_content.5!7~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.7" target="_blank" rel="noopener">Django1.10教程[04]_APPandModel补录</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[02]第一个django程序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/07/Django[02]第一个django程序/" itemprop="url">Django[02]第一个django程序</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T22:47:02+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/07/Django[02]第一个django程序/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[02]第一个django程序/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/07/Django[02]第一个django程序/" class="leancloud_visitors" data-flag-title="Django[02]第一个django程序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Django[02]第一个django程序
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>创建一个bbs项目</strong></p>
-<p><img src="https://i.imgur.com/2KEqYgu.png" alt=""></p>
-<p><strong>bbs可以作为一个独立的app部署，重命名文件名为src</strong></p>
-<p><img src="https://i.imgur.com/1hJclPe.png" alt=""></p>
-<p><strong>同步数据表：python .\manage.py migrate</strong></p>
-<p><img src="https://i.imgur.com/jxOPiG9.png" alt=""></p>
-<p><strong>修改setting.py配置文件</strong></p>
-<p><img src="https://i.imgur.com/Z75TCOq.png" alt=""></p>
-<p><strong>创建超级用户：python .\manage.py createsuperuser</strong><br><img src="https://i.imgur.com/XSlVyFQ.png" alt=""></p>
-<p><strong>启动服务：python .\manage.py runserver</strong></p>
-<p>浏览器中输入<a href="http://127.0.0.1:8000/admin/进入django的管理后台" target="_blank" rel="noopener">http://127.0.0.1:8000/admin/进入django的管理后台</a><br><img src="https://i.imgur.com/DjTCMZc.png" alt=""><br><img src="https://i.imgur.com/XQF0M6q.png" alt=""></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg3NDg4MDEzMg==.html?spm=a2h0j.8191423.playlist_content.5!3~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.3" target="_blank" rel="noopener">Django1.10教程[02]之第一个Django程序</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[03]DjangoAdmin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/07/Django[03]DjangoAdmin/" itemprop="url">Django[03]DjangoAdmin</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T22:47:02+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/07/Django[03]DjangoAdmin/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[03]DjangoAdmin/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/07/Django[03]DjangoAdmin/" class="leancloud_visitors" data-flag-title="Django[03]DjangoAdmin">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Django[03]DjangoAdmin
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="WSGI"><a href="#WSGI" class="headerlink" title="WSGI"></a>WSGI</h1><p>WSGI(Web  server gateway interface)：Web服务器网关接口是为Python语言定义的Web服务器和Web应用程序或框架之间的一种简单而通用的接口。自从WSGI被开发出来以后，许多其它语言中也出现了类似接口。</p>
-<p>web app <-wsgi->web server(nginx/tomcat)</-wsgi-></p>
-<h1 id="createsuperuser注意事项"><a href="#createsuperuser注意事项" class="headerlink" title="createsuperuser注意事项"></a>createsuperuser注意事项</h1><p>注：至少八个字符，不能是简单的数字</p>
-<h1 id="Django-admin使用的介绍"><a href="#Django-admin使用的介绍" class="headerlink" title="Django admin使用的介绍"></a>Django admin使用的介绍</h1><ul>
-<li>python manage.py runserver 127.0.0.1:8000</li>
-<li>浏览器里面输入：<a href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener">http://127.0.0.1:8000/admin/</a></li>
-<li>输入用户名、密码登录即可。</li>
-</ul>
-<h1 id="urls-py使用的介绍"><a href="#urls-py使用的介绍" class="headerlink" title="urls.py使用的介绍"></a>urls.py使用的介绍</h1><p>django的路由是通过正则表达式来匹配的。</p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg4NDk0NzA3Mg==.html?spm=a2h0j.8191423.playlist_content.5!4~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.4" target="_blank" rel="noopener">Django1.10教程[03]之DjangoAdmin</a></p>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg5Nzk3NTczNg==.html?spm=a2h0j.8191423.playlist_content.5!5~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.5" target="_blank" rel="noopener">Django1.10教程[03]之DjangoAdmin</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Django[01]Virtualenv&Django/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="url">Django[01]Virtualenv&Django</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T22:47:02+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/07/Django[01]Virtualenv&Django/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Django[01]Virtualenv&Django/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/07/Django[01]Virtualenv&Django/" class="leancloud_visitors" data-flag-title="Django[01]Virtualenv&Django">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Django[01]Virtualenv&Django
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="配置虚拟环境"><a href="#配置虚拟环境" class="headerlink" title="配置虚拟环境"></a>配置虚拟环境</h1><h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv:"></a>安装virtualenv:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
-<h2 id="使用virtualenv"><a href="#使用virtualenv" class="headerlink" title="使用virtualenv"></a>使用virtualenv</h2><h3 id="创建虚拟环境："><a href="#创建虚拟环境：" class="headerlink" title="创建虚拟环境："></a>创建虚拟环境：</h3><p><strong>virtualenv [环境（文件夹）名]</strong></p>
-<p><img src="https://i.imgur.com/91qxDdD.png" alt=""></p>
-<h3 id="启用虚拟环境："><a href="#启用虚拟环境：" class="headerlink" title="启用虚拟环境："></a>启用虚拟环境：</h3><p><strong>.\Scripts\activate</strong></p>
-<p><img src="https://i.imgur.com/vAZWmfe.png" alt=""></p>
-<h3 id="退出虚拟环境："><a href="#退出虚拟环境：" class="headerlink" title="退出虚拟环境："></a>退出虚拟环境：</h3><p><strong>deactivate</strong></p>
-<p><img src="https://i.imgur.com/crvhBNX.png" alt=""></p>
-<h1 id="安装Django"><a href="#安装Django" class="headerlink" title="安装Django"></a>安装Django</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install django</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/7aXfWWO.png" alt=""></p>
-<h1 id="第一个Django项目"><a href="#第一个Django项目" class="headerlink" title="第一个Django项目"></a>第一个Django项目</h1><p><strong>1、python manage.py startproject my_first(我们的项目名)</strong><br><img src="https://i.imgur.com/OAE9fFY.png" alt=""></p>
-<p><strong>2、python manage.py runserver 127.0.0.1:8000</strong></p>
-<p><img src="https://i.imgur.com/rf21gwg.png" alt=""></p>
-<p><img src="https://i.imgur.com/eNM2lYU.png" alt=""></p>
-<p>补充：</p>
-<p>1、PowerShell里面执行activate失败？</p>
-<p>输入：</p>
-<pre><code>set-executionpolicy RemoteSigned
-</code></pre><p>2、pip freeze命令使用</p>
-<ul>
-<li>1、pip freeze &gt; requirements.txt (保存依赖包到requirements.txt)</li>
-<li>2、pip install -r requirements.txt (批量安装项目需要的所有依赖包)</li>
-</ul>
-<p>via <a href="http://v.youku.com/v_show/id_XMTg3MTU2NDU0NA==.html?spm=a2h0j.8191423.playlist_content.5!2~5~5~A&amp;&amp;f=28961906&amp;from=y1.2-3.4.2" target="_blank" rel="noopener">Django1.10教程[01]之virtualenv使用</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/Error Analysis (Post-Modeling)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/07/Error Analysis (Post-Modeling)/" itemprop="url">Error Analysis (Post-Modeling)</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T14:44:02+08:00">
-                2017-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/07/Error Analysis (Post-Modeling)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/Error Analysis (Post-Modeling)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/07/Error Analysis (Post-Modeling)/" class="leancloud_visitors" data-flag-title="Error Analysis (Post-Modeling)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Error Analysis (Post-Modeling)
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Error analysis</strong> is a broad term that refers to analyzing the misclassified or high error observations from your model and deciding on your next steps for improvement. This is performed after training your first model.</p>
-<p>Possible next steps include collecting more data, splitting the problem apart, or engineering new features that address the errors. To use error analysis for feature engineering, you’ll need to understand why your model missed its mark.</p>
-<p>Here’s how:</p>
-<ul>
-<li><strong>Start with larger errors:</strong> Error analysis is typically a manual process. You won’t have time to scrutinize every observation. We recommend starting with those that had higher error scores. Look for patterns that you can formalize into new features.</li>
-<li><strong>Segment by classes:</strong> Another technique is to segment your observations and compare the average error within each segment. You can try creating indicator variables for the segments with the highest errors.</li>
-<li><strong>Unsupervised clustering:</strong> If you have trouble spotting patterns, you can run an unsupervised clustering algorithm on the misclassified observations. We don’t recommend blindly using those clusters as a new feature, but they can make it easier to spot patterns. Remember, the goal is to understand why observations were misclassified.</li>
-<li><strong>Ask colleagues or domain experts:</strong> This is a great complement to any of the other three techniques. Asking a domain expert is especially useful if you’ve identified a pattern of poor performance (e.g. through segmentations) but don’t yet understand why.</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/07/5 Tips for Writing Better Python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/07/5 Tips for Writing Better Python/" itemprop="url">5 Tips for Writing Better Python</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T12:53:12+08:00">
-                2017-10-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T15:00:12+08:00">
+                2017-10-14
               </time>
             
 
@@ -2058,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/07/5 Tips for Writing Better Python/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/07/5 Tips for Writing Better Python/" itemprop="commentCount"></span>
+                <a href="/2017/10/14/python类属性和方法的封装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/14/python类属性和方法的封装/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2067,7 +389,7 @@
 
           
           
-             <span id="/2017/10/07/5 Tips for Writing Better Python/" class="leancloud_visitors" data-flag-title="5 Tips for Writing Better Python">
+             <span id="/2017/10/14/python类属性和方法的封装/" class="leancloud_visitors" data-flag-title="python类属性和方法的封装">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2085,7 +407,7 @@
 
           
               <div class="post-description">
-                  5 Tips for Writing Better Python
+                  python类属性和方法的封装
               </div>
           
 
@@ -2103,17 +425,211 @@
 
       
         
-          <h1 id="1-Make-your-code-a-PIP-installable-Package"><a href="#1-Make-your-code-a-PIP-installable-Package" class="headerlink" title="1. Make your code a PIP-installable Package"></a>1. Make your code a PIP-installable Package</h1><p>When you come across a new Python package, it’s always easier to start using it if all you have to do is run “pip install” followed by the package name or location.</p>
-<p>There are a number of ways to do this, my “go to” being to create a setup.py file for my project.</p>
-<p>Assume we have a simple Flask program in “flask_example.py”:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">'Hello, World!'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">	app.run()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == ‘__main__’:</span><br><span class="line">	main()</span><br></pre></td></tr></table></figure>
-<p>We can turn this into an installable Python package by first moving it into a separate folder (let’s call this “flask_example/”. Then, we can make a setup.py file in the root project folder that looks like this:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> distutils.core <span class="keyword">import</span> setup</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name=<span class="string">'flask_example'</span>,</span><br><span class="line">    version=<span class="string">'1.0'</span>,</span><br><span class="line">    description=<span class="string">'Hello, World! in flask.'</span>,</span><br><span class="line">    packages=[<span class="string">'flask_example'</span>],</span><br><span class="line">    install_requires=[</span><br><span class="line">        <span class="string">'Flask==0.12.2'</span></span><br><span class="line">    ],</span><br><span class="line">    entry_points = &#123;</span><br><span class="line">        <span class="string">'console_scripts'</span>: <span class="string">'runserver=flask_example.flask_example:main'</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>This has a few advantages that comes with it. First, you can now install your app locally using “pip install -e .” This makes it easier for developers to clone and install your project because the setup.py file will take care of all the heavy lifting.</p>
-<p>Second, with the setup.py file comes dependency management. The install_requires variable allows you to define packages and specific versions to use. If you’re not sure what packages and versions you are using, run “pip freeze” to view them.</p>
+          
+            <p>封装是一种限制直接访问目标属性和方法的机制，但同时它又有利于对数据（对象的方法）进行操作。</p>
+<p>封装是一种将抽象性函数接口的实现细节部分包装、隐藏起来的方法。同时，它也是一种防止外界调用端，去访问对象内部实现细节的手段，这个手段是由编程语言本身来提供的。</p>
+<p>对象所有的内部表征对于外部来说都是隐藏的，只有对象能直接与内部数据交互。首先，我们需要理解公开（public）和私有（non-public）实例变量和方法。</p>
+<h1 id="公开实例变量"><a href="#公开实例变量" class="headerlink" title="公开实例变量"></a>公开实例变量</h1><p>对于 Python 的类，我们可以使用 constructor 方法初始化公开实例变量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,first_name)</span>:</span></span><br><span class="line">		self.first_name = first_name</span><br></pre></td></tr></table></figure>
+<p>下面我们应用 first_name 的值作为公开实例变量的变元。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>)</span><br><span class="line"><span class="keyword">print</span> a.first_name  <span class="comment"># -&gt; zhang</span></span><br></pre></td></tr></table></figure>
+<p>在类别内：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	first_name = <span class="string">'zhang'</span></span><br></pre></td></tr></table></figure>
+<p>现在我们不需要再对 first_name 赋值，所有赋值到 a 的目标都将有类的属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Person()</span><br><span class="line"><span class="keyword">print</span> a.first_name <span class="comment"># -&gt; zhang</span></span><br></pre></td></tr></table></figure>
+<p>现在我们已经学会如何使用公开实例变量和类属性。除此之外，我们还能管理公开部分的变量值，即对象可以管理其变量的值：Get 和 Set 变量值。保留 Person 类，我们希望能给 first_name 变量赋另外一个值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>)</span><br><span class="line">a.first_name = <span class="string">'Z'</span></span><br><span class="line"><span class="keyword">print</span> a.first_name <span class="comment"># -&gt; Z</span></span><br></pre></td></tr></table></figure>
+<p>如上我们将另外一个值赋予了 first_name 实例变量，因为它又是一个公开变量，所以会更新变量值。</p>
+<h1 id="私有实例变量"><a href="#私有实例变量" class="headerlink" title="私有实例变量"></a>私有实例变量</h1><p>和公开实例变量一样，我们可以使用 constructor 方法或在类的内部声明而定义一个私有实例变量。语法上的不同在于私有实例变量在变量名前面加一个下划线：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,first_name,email)</span>:</span></span><br><span class="line">		self.first_name = first_name</span><br><span class="line">		self._email = email</span><br></pre></td></tr></table></figure>
+<p>上述定义的 email 变量就是私有变量。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>,<span class="string">'zhang@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a._email <span class="comment"># -&gt; zhang@mail.com</span></span><br></pre></td></tr></table></figure></p>
+<p>我们可以访问并且更新它，私有变量仅是一个约定，即他们需要被视为 API 非公开的部分。所以我们可以使用方法在类的定义中完成操作，例如使用两种方法展示私有实例的值与更新实例的值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,first_name,email)</span>:</span></span><br><span class="line">		self.first_name = first_name</span><br><span class="line">		self.__email = email</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">update_email</span><span class="params">(self,new_email)</span>:</span></span><br><span class="line">		self.__email = new_email</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">email</span><span class="params">(self)</span>:</span></span><br><span class="line">		<span class="keyword">return</span> self.__email</span><br></pre></td></tr></table></figure>
+<p>现在我们可以使用方法更新或访问私有变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>,<span class="string">'zhang@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; zhang@mail.com</span></span><br><span class="line"></span><br><span class="line">a.__email = <span class="string">'new_email@mail.com'</span></span><br><span class="line"><span class="keyword">print</span> a.__email <span class="comment"># -&gt; new_email@mail.com</span></span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; zhang@mail.com</span></span><br><span class="line"></span><br><span class="line">a.update_email(<span class="string">'update_email@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a.__email <span class="comment"># -&gt; new_email@mail.com</span></span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; update_email@mail.com</span></span><br></pre></td></tr></table></figure>
+<p><img src="/assets/python/private1.png" alt=""></p>
+<p>从上面可见，以双下划线打头的名称会导致出现名称重整的行为。具体来说就是上面的这个类中的私有属性会被分别重命名为_C__private 和 _C__private_name。<br>但是为啥两个值不一样？？</p>
+<p><img src="/assets/python/private3.png" alt=""></p>
+<p><img src="/assets/python/private4.png" alt=""></p>
+<p><img src="/assets/python/private5.png" alt=""></p>
+<p><img src="/assets/python/private6.png" alt=""></p>
+<p>豁然开朗！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = Person(<span class="string">'zhang'</span>,<span class="string">'zhang@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; zhang@mail.com</span></span><br><span class="line"></span><br><span class="line">a._email = <span class="string">'new_email@mail.com'</span></span><br><span class="line"><span class="keyword">print</span> a._email <span class="comment"># -&gt; new_email@mail.com</span></span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; new_email@mail.com</span></span><br><span class="line"></span><br><span class="line">a.update_email(<span class="string">'update_email@mail.com'</span>)</span><br><span class="line"><span class="keyword">print</span> a._email <span class="comment"># -&gt; update_email@mail.com</span></span><br><span class="line"><span class="keyword">print</span> a.email() <span class="comment"># -&gt; update_email@mail.com</span></span><br></pre></td></tr></table></figure>
+<p><img src="/assets/python/private2.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/django自带的server局域网访问/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/11/django自带的server局域网访问/" itemprop="url">django自带的server局域网访问</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T16:03:02+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/11/django自带的server局域网访问/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/django自带的server局域网访问/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/11/django自带的server局域网访问/" class="leancloud_visitors" data-flag-title="django自带的server局域网访问">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  django自带的server局域网访问
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>用<code>(myenvs) E:\Code\virtualenvs\myenvs\src&gt;python .\manage.py runserver</code>启动服务，对应的访问地址为：</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Starting development server <span class="meta">at</span> http://<span class="number">127.0</span><span class="meta">.0</span><span class="meta">.1</span>:<span class="number">8000</span>/</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/django/django_get.png" alt=""></p>
+<p>然后，我把<code>127.0.0.1</code>改为本机的地址发现居然不能访问。</p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>使用<code>python .\manage.py runserver 0.0.0.0:8000</code>启动服务：</p>
+<h2 id="又出现新的错误："><a href="#又出现新的错误：" class="headerlink" title="又出现新的错误："></a><strong>又出现新的错误：</strong></h2>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/07/5 Tips for Writing Better Python/" rel="contents">
+            <a class="btn" href="/2017/10/11/django自带的server局域网访问/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2151,11 +667,1431 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/Forbidden (CSRF cookie not set.)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/11/Forbidden (CSRF cookie not set.)/" itemprop="url">Forbidden (CSRF cookie not set.)</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T15:03:02+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/11/Forbidden (CSRF cookie not set.)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/Forbidden (CSRF cookie not set.)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/11/Forbidden (CSRF cookie not set.)/" class="leancloud_visitors" data-flag-title="Forbidden (CSRF cookie not set.)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Forbidden (CSRF cookie not set.)
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>用postman提交post请求时，终端打印错误<code>Forbidden (CSRF cookie not set.)</code>：</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">[11/Oct/2017 14:55:00]</span> <span class="string">"<span class="keyword">GET</span> /post/post/ HTTP/1.1"</span> <span class="number">200</span> <span class="number">47</span></span><br><span class="line">Forbidden (CSRF cookie not set.): /post/post/</span><br><span class="line"><span class="string">[11/Oct/2017 14:55:16]</span> <span class="string">"<span class="keyword">POST</span> /post/post/ HTTP/1.1"</span> <span class="number">403</span> <span class="number">2829</span></span><br><span class="line">Forbidden (CSRF cookie not set.): /post/post/</span><br><span class="line"><span class="string">[11/Oct/2017 15:00:06]</span> <span class="string">"<span class="keyword">POST</span> /post/post/ HTTP/1.1"</span> <span class="number">403</span> <span class="number">2829</span></span><br><span class="line">Performing system checks...</span><br></pre></td></tr></table></figure>
+<p>情况如下图所示：</p>
+<div class="fig figcenter fighighlight"><br>  <img src="/assets/django/django_post_forbiden.png"><br></div>
+
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p><strong>修改settings.py文件，注释掉</strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/11/Forbidden (CSRF cookie not set.)/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/gitignore规则不生效的解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/11/gitignore规则不生效的解决办法/" itemprop="url">gitignore规则不生效的解决办法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T11:50:02+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/11/gitignore规则不生效的解决办法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/gitignore规则不生效的解决办法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/11/gitignore规则不生效的解决办法/" class="leancloud_visitors" data-flag-title="gitignore规则不生效的解决办法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  gitignore规则不生效的解决办法
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>发现添加<code>.gitignore</code>文件后，本地做的修改仍被push到GitHub。<code>.gitignore</code>规则并没有生效。</p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>原因是如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p>
+<p>那么解决方法就是先把本地缓存删除（改变成未被追踪状态），然后再提交：</p>
+<p><code>git rm -r --cached .</code></p>
+<p><code>git add .</code></p>
+<p><code>git commit -m &#39;update .gitignore&#39;</code></p>
+<h1 id="如何避免"><a href="#如何避免" class="headerlink" title="如何避免"></a>如何避免</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/11/gitignore规则不生效的解决办法/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/Python环境设置默认编码为utf8的方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/11/Python环境设置默认编码为utf8的方法/" itemprop="url">Python环境设置默认编码为utf8的方法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T10:43:12+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/11/Python环境设置默认编码为utf8的方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/Python环境设置默认编码为utf8的方法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/11/Python环境设置默认编码为utf8的方法/" class="leancloud_visitors" data-flag-title="Python环境设置默认编码为utf8的方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Python环境设置默认编码为utf8的方法
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>从网上fork了虫师的代码，发现每个文件都没有加头注释指定文件编码，我这一个一个改得什么时候。想着虫师也是老司机了，不可能连IDE自动添加头注释都不知道，应该是哪边统一设置的。果然他是直接修改的Python环境配置。</p>
+<p><strong>设置之前：</strong></p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">D:\ProgramData\Anaconda2\python.exe <span class="string">"D:\Program Files (x86)\JetBrains\PyCharm 2016.3.3\helpers\pydev\pydevconsole.py"</span> <span class="number">52853</span> <span class="number">52854</span></span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">13</span> |Anaconda <span class="number">4.3</span>.<span class="number">1</span> (<span class="number">64</span>-<span class="built_in">bit</span>)| (<span class="keyword">default</span>, Dec <span class="number">19</span> <span class="number">2016</span>, <span class="number">13</span>:<span class="number">29</span>:<span class="number">36</span>) [MSC v.<span class="number">1500</span> <span class="number">64</span> <span class="built_in">bit</span> (AMD64)]</span><br><span class="line"><span class="keyword">Type</span> <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">IPython <span class="number">5.1</span>.<span class="number">0</span> <span class="comment">-- An enhanced Interactive Python.</span></span><br><span class="line">?         -&gt; Introduction <span class="keyword">and</span> overview <span class="keyword">of</span> IPython<span class="symbol">'s</span> features.</span><br><span class="line">%quickref -&gt; Quick reference.</span><br><span class="line">help      -&gt; Python<span class="symbol">'s</span> own help system.</span><br><span class="line">object?   -&gt; Details about <span class="symbol">'object</span>', <span class="keyword">use</span> <span class="symbol">'object</span>??' <span class="keyword">for</span> extra details.</span><br><span class="line">PyDev console: using IPython <span class="number">5.1</span>.<span class="number">0</span></span><br><span class="line">import sys; print(<span class="symbol">'Python</span> %s <span class="keyword">on</span> %s' % (sys.version, sys.platform))</span><br><span class="line">sys.path.extend([<span class="symbol">'E</span>:\\Code\\Python_Crawler', <span class="symbol">'E</span>:\\Code\\Python_Exercise_Code', <span class="symbol">'E</span>:\\Code\\Python_ML_Code', <span class="symbol">'E</span>:/Code/Python_Crawler'])</span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">13</span> |Anaconda <span class="number">4.3</span>.<span class="number">1</span> (<span class="number">64</span>-<span class="built_in">bit</span>)| (<span class="keyword">default</span>, Dec <span class="number">19</span> <span class="number">2016</span>, <span class="number">13</span>:<span class="number">29</span>:<span class="number">36</span>) [MSC v.<span class="number">1500</span> <span class="number">64</span> <span class="built_in">bit</span> (AMD64)] <span class="keyword">on</span> win32</span><br><span class="line">import sys</span><br><span class="line">sys.getdefaultencoding()</span><br><span class="line"><span class="keyword">Out</span>[<span class="number">3</span>]: </span><br><span class="line"><span class="symbol">'ascii</span>'</span><br></pre></td></tr></table></figure>
+<p><strong>设置之后：</strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/11/Python环境设置默认编码为utf8的方法/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/ImportError No module named functools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/11/ImportError No module named functools/" itemprop="url">ImportError No module named functools</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T09:59:02+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/11/ImportError No module named functools/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/ImportError No module named functools/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/11/ImportError No module named functools/" class="leancloud_visitors" data-flag-title="ImportError No module named functools">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  ImportError No module named functools
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>今天早上从git pull代码后，启动本地的virtualenv,发现报错：</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(myenvs) E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\s</span>rc&gt;python .<span class="symbol">\m</span>anage.py runserver</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\s</span>ite.py", line 703, in &lt;module&gt;</span><br><span class="line">    main()</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\s</span>ite.py", line 692, in main</span><br><span class="line">    aliasmbcs()</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\s</span>ite.py", line 515, in aliasmbcs</span><br><span class="line">    import locale, codecs</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\l</span>ocale.py", line 17, in &lt;module&gt;</span><br><span class="line">    import functools</span><br><span class="line"></span><br><span class="line">ImportError: No module named functools</span><br></pre></td></tr></table></figure>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p><strong>检查<code>ENV_FOLDER\Lib\orig-prefix.txt</code>文件发现：</strong></p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d:\<span class="function"><span class="keyword">program</span></span> files\anaconda2</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/11/ImportError No module named functools/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/RESTful API Design Guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/10/RESTful API Design Guide/" itemprop="url">RESTful API 设计指南-来自阮一峰</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T17:46:02+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/10/RESTful API Design Guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/RESTful API Design Guide/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/10/RESTful API Design Guide/" class="leancloud_visitors" data-flag-title="RESTful API 设计指南-来自阮一峰">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  RESTful API 设计指南-来自阮一峰
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这篇文章写的也很好，很<a href="http://zhangchunhui.cn/2017/10/10/Understanding%20RESTful%20Framework/">上一篇</a>有很大重复，甚至有些矛盾的地方。但是读下来，依然还是有启发的。</p>
+<h1 id="一、协议"><a href="#一、协议" class="headerlink" title="一、协议"></a>一、协议</h1><p>API与用户的通信协议，总是使用HTTPs协议。</p>
+<p>#二、域名<br>应该尽量将API部署在专用域名之下。<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//api.example.com</span></span><br></pre></td></tr></table></figure></p>
+<p>如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下。<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">https:</span>//example<span class="meta">.org</span>/api/</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/10/RESTful API Design Guide/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/Understanding RESTful Framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/10/Understanding RESTful Framework/" itemprop="url">理解RESTful架构-来自阮一峰</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T17:21:02+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/10/Understanding RESTful Framework/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/Understanding RESTful Framework/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/10/Understanding RESTful Framework/" class="leancloud_visitors" data-flag-title="理解RESTful架构-来自阮一峰">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  理解RESTful架构-来自阮一峰
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>最近在研究Python开发接口微服务，以便用Python开发出来的模型与服务能对接上，提供复杂模型上线的方案。看到了阮一峰的<a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="noopener">《理解RESTful架构》</a>这篇文章，写的真好，虽然我是还没入门的外外行。</p>
+<h1 id="什么是RESTful架构"><a href="#什么是RESTful架构" class="headerlink" title="什么是RESTful架构"></a>什么是RESTful架构</h1><h2 id="一、起源"><a href="#一、起源" class="headerlink" title="一、起源"></a>一、起源</h2><p>REST这个词，是<a href="http://en.wikipedia.org/wiki/Roy_Fielding" target="_blank" rel="noopener">Roy Thomas Fielding</a>在他2000年的博士论文中提出的。</p>
+<p>文中写到：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"本文研究计算机科学两大前沿----软件和网络----的交叉点。长期以来，软件研究主要关注软件设计的分类、设计方法的演化，很少客观地评估不同的设计选择对系统行为的影响。而相反地，网络研究主要关注系统之间通信行为的细节、如何改进特定通信机制的表现，常常忽视了一个事实，那就是改变应用程序的互动风格比改变互动协议，对整体表现有更大的影响。我这篇文章的写作目的，就是想在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。"</span></span><br><span class="line">(This dissertation explores a junction <span class="keyword">on</span> <span class="keyword">the</span> frontiers <span class="keyword">of</span> two research disciplines <span class="keyword">in</span> computer science: software <span class="keyword">and</span> networking. Software research has long been concerned <span class="keyword">with</span> <span class="keyword">the</span> categorization <span class="keyword">of</span> software designs <span class="keyword">and</span> <span class="keyword">the</span> development <span class="keyword">of</span> design methodologies, <span class="keyword">but</span> has rarely been able <span class="keyword">to</span> objectively evaluate <span class="keyword">the</span> impact <span class="keyword">of</span> various design choices <span class="keyword">on</span> system behavior. Networking research, <span class="keyword">in</span> contrast, <span class="keyword">is</span> focused <span class="keyword">on</span> <span class="keyword">the</span> details <span class="keyword">of</span> generic communication behavior <span class="keyword">between</span> systems <span class="keyword">and</span> improving <span class="keyword">the</span> performance <span class="keyword">of</span> particular communication techniques, often <span class="keyword">ignoring</span> <span class="keyword">the</span> fact <span class="keyword">that</span> changing <span class="keyword">the</span> interaction style <span class="keyword">of</span> an <span class="built_in">application</span> can have more impact <span class="keyword">on</span> performance than <span class="keyword">the</span> communication protocols used <span class="keyword">for</span> <span class="keyword">that</span> interaction. My work <span class="keyword">is</span> motivated <span class="keyword">by</span> <span class="keyword">the</span> desire <span class="keyword">to</span> understand <span class="keyword">and</span> evaluate <span class="keyword">the</span> architectural design <span class="keyword">of</span> network-based <span class="built_in">application</span> software <span class="keyword">through</span> principled use <span class="keyword">of</span> architectural constraints, thereby obtaining <span class="keyword">the</span> functional, performance, <span class="keyword">and</span> social properties desired <span class="keyword">of</span> an architecture. )</span><br></pre></td></tr></table></figure>
+<h2 id="二、名称"><a href="#二、名称" class="headerlink" title="二、名称"></a>二、名称</h2><p>Fielding将他对互联网软件的架构原则，定名为REST，即Representational State Transfer的缩写。我对这个词组的翻译是”表现层状态转化”。</p>
+<p>如果一个架构符合REST原则，就称它为RESTful架构。</p>
+<p>要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义。如果你把这个名称搞懂了，也就不难体会REST是一种什么样的设计。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/10/Understanding RESTful Framework/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/django flow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/10/django flow/" itemprop="url">django处理HTTP请求流程</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T16:29:02+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/10/django flow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/django flow/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/10/django flow/" class="leancloud_visitors" data-flag-title="django处理HTTP请求流程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  django处理HTTP请求流程
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div class="fig figcenter fighighlight"><br>  <img src="/assets/django/django_flow_en.png" width="60%"><br>  <img src="/assets/django/django_flow_cn.png" width="60%" style="border-left: 1px solid black;"><br>  <div class="figcaption">Based on @FULLSTACKCTO’s understanding of Django, this is how a user request is responded to.</div><br></div>
+
+
+<ul>
+<li><strong>1:</strong> User requests a page</li>
+<li><strong>2:</strong> Request reaches Request Middlewares, which could manipulate or answer the request</li>
+<li><strong>3:</strong> The URLConffinds the related View using urls.py</li>
+<li><strong>4:</strong> View Middlewares are called, which could manipulate or answer the request</li>
+<li><strong>5:</strong> The view function is invoked</li>
+<li><strong>6:</strong> The view could optionally access data through models</li>
+<li><strong>7:</strong> All model-to-DB interactions are done via a manager</li>
+<li><strong>8:</strong> Views could use a special context if needed</li>
+<li><strong>9:</strong> The context is passed to the Template for rendering</li>
+<li><strong>a:</strong> Template uses Filters and Tags to render the output</li>
+<li><strong>b:</strong> Output is returned to the view</li>
+<li><strong>c:</strong> HTTPResponse is sent to the Response Middlerwares</li>
+<li><strong>d:</strong> Any of the response middlewares can enrich the response or return a completely new response</li>
+<li><strong>e:</strong> The response is sent to the user’s browser.</li>
+</ul>
+<p>via </p>
+<ul>
+<li><a href="http://www.jianshu.com/p/a2bf34b89d01" target="_blank" rel="noopener">here</a></li>
+<li><a href="http://hitesh.in/2009/django-flow/" target="_blank" rel="noopener">Django Flowchart</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/get or post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/10/get or post/" itemprop="url">POST和GET区别</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T16:04:02+08:00">
+                2017-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/django/" itemprop="url" rel="index">
+                    <span itemprop="name">django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/10/get or post/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/get or post/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/10/10/get or post/" class="leancloud_visitors" data-flag-title="POST和GET区别">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  POST和GET区别
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>HTTP协议定义了很多与服务器交互的方法，最基本的有4种，分别是GET,POST,PUT,DELETE. 一个URL地址用于描述一个网络上的资源，而HTTP中的GET, POST, PUT, DELETE就对应着对这个资源的查，改，增，删4个操作，其中最常见请求方式是GET和POST，并且现在浏览器一般只支持GET和POST方法。</p>
+<p><strong>GET一般用于获取/查询资源信息，而POST一般用于更新资源信息，他们之间主要区别如下：</strong></p>
+<p>1）根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的，这里安全是指该操作用于获取信息而非修改信息，幂等是指对同一URL的多个请求应该返回同样的结果（这一点在实质实现时，可能并不满足）；POST表示可能修改变服务器上的资源的请求。</p>
+<p>2）GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，参数之间以&amp;相连，如果数据是英文字母/数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，<br>则直接把字符串用BASE64编码；POST把提交的数据则放置在是HTTP包的包体中。</p>
+<p>3）因为GET是通过URL提交数据，那么GET可提交的数据量就跟URL的长度有直接关系，理论上URL长度是没有限制的，即HTTP协议没有规定URL的长度，但在实质中，特定的浏览器可能对这个长度做了限制；理论上POST也是没有大小限制的，HTTP协议规范也没有进行大小限制，但在服务端通常会对这个大小做一个限制，当然这个限制比GET宽松的多，即使用POST可以提交的数据量比GET大得多。</p>
+<p>最后，网上有人说，POST的安全性要比GET的安全性高，实质上POST跟GET都是明文传输，这可以通过类似WireShark工具看到。总之，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求。</p>
+<p>via </p>
+<ul>
+<li><a href="http://blog.csdn.net/kevin_darkelf/article/details/40979333" target="_blank" rel="noopener">浅析HTTP中POST和GET区别并用Python模拟其响应和请求</a></li>
+<li><a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">浅谈HTTP中Get与Post的区别</a></li>
+<li><a href="http://www.cnblogs.com/wswang/p/6054619.html" target="_blank" rel="noopener">GET和POST的区别</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2205,7 +2141,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">199</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2227,7 +2163,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">224</span>
+                  <span class="site-state-item-count">246</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

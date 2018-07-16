@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="Pl2GAjqhdU" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Tensorflow," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="TensorFlow图变量tf.Variable的用法解析">
+<meta name="keywords" content="Tensorflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlow图变量tf.Variable的用法解析">
+<meta property="og:url" content="http://zhangchunhui.cn/2018/07/16/TensorFlow图变量tf.Variable的用法解析/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="TensorFlow图变量tf.Variable的用法解析">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://zhangchunhui.cn/2018/07/16/TensorFlow图变量tf.Variable的用法解析/assets/tf.variable_scope.jpg">
+<meta property="og:updated_time" content="2018-07-16T12:34:47.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TensorFlow图变量tf.Variable的用法解析">
+<meta name="twitter:description" content="TensorFlow图变量tf.Variable的用法解析">
+<meta name="twitter:image" content="http://zhangchunhui.cn/2018/07/16/TensorFlow图变量tf.Variable的用法解析/assets/tf.variable_scope.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2018/07/16/TensorFlow图变量tf.Variable的用法解析/"/>
+
+
+
+
+
+  <title>TensorFlow图变量tf.Variable的用法解析 | boredbird</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bd5a63e2d0d6f11fcae1d6b1506b54ef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/TensorFlow图变量tf.Variable的用法解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">TensorFlow图变量tf.Variable的用法解析</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T14:28:12+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/TensorFlow图变量tf.Variable的用法解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/TensorFlow图变量tf.Variable的用法解析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/16/TensorFlow图变量tf.Variable的用法解析/" class="leancloud_visitors" data-flag-title="TensorFlow图变量tf.Variable的用法解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+              <div class="post-description">
+                  TensorFlow图变量tf.Variable的用法解析
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="图变量的初始化方法"><a href="#图变量的初始化方法" class="headerlink" title="图变量的初始化方法"></a>图变量的初始化方法</h2><p>对于一般的Python代码，变量的初始化就是变量的定义，向下面这样：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: x = <span class="number">3</span></span><br><span class="line">In [<span class="number">2</span>]: y = <span class="number">3</span> * <span class="number">5</span></span><br><span class="line">In [<span class="number">3</span>]: y</span><br><span class="line">Out[<span class="number">3</span>]: <span class="number">15</span></span><br></pre></td></tr></table></figure></p>
+<p>如果我们模仿上面的写法来进行TensorFlow编程，就会出现下面的”怪现象”：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: x = tf.Variable(<span class="number">3</span>, name=<span class="string">'x'</span>)</span><br><span class="line">In [<span class="number">3</span>]: y = x * <span class="number">5</span></span><br><span class="line">In [<span class="number">4</span>]: print(y)</span><br><span class="line">Tensor(<span class="string">"mul:0"</span>, shape=(), dtype=int32)</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>y的值并不是我们预想中的15，而是一个莫名其妙的输出。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: x = tf.Variable(<span class="number">3</span>, name=<span class="string">'x'</span>)</span><br><span class="line">In [<span class="number">3</span>]: y = x * <span class="number">5</span></span><br><span class="line">In [<span class="number">4</span>]: sess = tf.InteractiveSession()</span><br><span class="line">In [<span class="number">5</span>]: sess.run(tf.global_variables_initializer())</span><br><span class="line">In [<span class="number">6</span>]: sess.run(y)</span><br><span class="line">Out[<span class="number">6</span>]: <span class="number">15</span></span><br></pre></td></tr></table></figure></p>
+<p>在TensorFlow的世界里，变量的定义和初始化是分开的，所有关于图变量的赋值和计算都要通过tf.Session的run来进行。想要将所有图变量进行集体初始化时应该使用tf.global_variables_initializer。</p>
+<h2 id="两种定义图变量的方法"><a href="#两种定义图变量的方法" class="headerlink" title="两种定义图变量的方法"></a>两种定义图变量的方法</h2><h3 id="tf-Variable"><a href="#tf-Variable" class="headerlink" title="tf.Variable"></a>tf.Variable</h3><p>tf.Variable.init(initial_value, trainable=True, collections=None, validate_shape=True, name=None)</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initial_value</td>
+<td>所有可以转换为Tensor的类型</td>
+<td>变量的初始值</td>
+</tr>
+<tr>
+<td>trainable</td>
+<td>bool</td>
+<td>如果为True，会把它加入到GraphKeys.TRAINABLE_VARIABLES，才能对它使用Optimizer</td>
+</tr>
+<tr>
+<td>collections</td>
+<td>list</td>
+<td>指定该图变量的类型、默认为[GraphKeys.GLOBAL_VARIABLES]</td>
+</tr>
+<tr>
+<td>validate_shape</td>
+<td>bool</td>
+<td>如果为False，则不进行类型和维度检查</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>变量的名称，如果没有指定则系统会自动分配一个唯一的值</td>
+</tr>
+</tbody>
+</table>
+<p>虽然有一堆参数，但只有第一个参数initial_value是必需的，用法如下（assign函数用于给图变量赋值）：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: v = tf.Variable(<span class="number">3</span>, name=<span class="string">'v'</span>)</span><br><span class="line">In [<span class="number">3</span>]: v2 = v.assign(<span class="number">5</span>)</span><br><span class="line">In [<span class="number">4</span>]: sess = tf.InteractiveSession()</span><br><span class="line">In [<span class="number">5</span>]: sess.run(v.initializer)</span><br><span class="line">In [<span class="number">6</span>]: sess.run(v)</span><br><span class="line">Out[<span class="number">6</span>]: <span class="number">3</span></span><br><span class="line">In [<span class="number">7</span>]: sess.run(v2)</span><br><span class="line">Out[<span class="number">7</span>]: <span class="number">5</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Args"><a href="#Args" class="headerlink" title="Args:"></a>Args:</h3><ul>
+<li><code>initial_value</code>: A Tensor, or Python object convertible to a Tensor, which is the initial value for the Variable. The initial value must have a shape specified unless validate_shape is set to False. Can also be a callable with no argument that returns the initial value when called. In that case, dtype must be specified. (Note that initializer functions from init_ops.py must first be bound to a shape before being used here.)</li>
+<li><code>trainable</code>: If True, the default, also adds the variable to the graph collection GraphKeys.TRAINABLE_VARIABLES. This collection is used as the default list of variables to use by the Optimizer classes.</li>
+<li><code>collections</code>: List of graph collections keys. The new variable is added to these collections. Defaults to [GraphKeys.GLOBAL_VARIABLES].</li>
+<li><code>validate_shape</code>: If False, allows the variable to be initialized with a value of unknown shape. If True, the default, the shape of initial_value must be known.</li>
+<li><code>caching_device</code>: Optional device string describing where the Variable should be cached for reading. Defaults to the Variable’s device. If not None, caches on another device. Typical use is to cache on the device where the Ops using the Variable reside, to deduplicate copying through Switch and other conditional statements.</li>
+<li><code>name</code>: Optional name for the variable. Defaults to ‘Variable’ and gets uniquified automatically.<br>variable_def: VariableDef protocol buffer. If not None, recreates the Variable object with its contents, referencing the variable’s nodes in the graph, which must already exist. The graph is not changed. variable_def and the other arguments are mutually exclusive.</li>
+<li><code>dtype</code>: If set, initial_value will be converted to the given type. If None, either the datatype will be kept (if initial_value is a Tensor), or convert_to_tensor will decide.</li>
+<li><code>expected_shape</code>: A TensorShape. If set, initial_value is expected to have this shape.<br>import_scope: Optional string. Name scope to add to the Variable. Only used when initializing from protocol buffer.</li>
+<li><code>constraint</code>: An optional projection function to be applied to the variable after being updated by an Optimizer (e.g. used to implement norm constraints or value constraints for layer weights). The function must take as input the unprojected Tensor representing the value of the variable and return the Tensor for the projected value (which must have the same shape). Constraints are not safe to use when doing asynchronous distributed training.</li>
+</ul>
+<h3 id="tf-get-variable"><a href="#tf-get-variable" class="headerlink" title="tf.get_variable"></a>tf.get_variable</h3><p>tf.get_variable跟tf.Variable都可以用来定义图变量，但是前者的必需参数（即第一个参数）并不是图变量的初始值，而是图变量的名称。</p>
+<p>tf.Variable的用法要更丰富一点，当指定名称的图变量已经存在时表示获取它，当指定名称的图变量不存在时表示定义它，用法如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: init = tf.constant_initializer([<span class="number">5</span>])</span><br><span class="line">In [<span class="number">3</span>]: x = tf.get_variable(<span class="string">'x'</span>, shape=[<span class="number">1</span>], initializer=init)</span><br><span class="line">In [<span class="number">4</span>]: sess = tf.InteractiveSession()</span><br><span class="line">In [<span class="number">5</span>]: sess.run(x.initializer)</span><br><span class="line">In [<span class="number">6</span>]: sess.run(x)</span><br><span class="line">Out[<span class="number">6</span>]: array([ <span class="number">5.</span>], dtype=float32)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">tf.get_variable(</span><br><span class="line">    name,</span><br><span class="line">    <span class="attribute">shape</span>=None,</span><br><span class="line">    <span class="attribute">dtype</span>=None,</span><br><span class="line">    <span class="attribute">initializer</span>=None,</span><br><span class="line">    <span class="attribute">regularizer</span>=None,</span><br><span class="line">    <span class="attribute">trainable</span>=<span class="literal">True</span>,</span><br><span class="line">    <span class="attribute">collections</span>=None,</span><br><span class="line">    <span class="attribute">caching_device</span>=None,</span><br><span class="line">    <span class="attribute">partitioner</span>=None,</span><br><span class="line">    <span class="attribute">validate_shape</span>=<span class="literal">True</span>,</span><br><span class="line">    <span class="attribute">use_resource</span>=None,</span><br><span class="line">    <span class="attribute">custom_getter</span>=None,</span><br><span class="line">    <span class="attribute">constraint</span>=None</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="scope如何划分命名空间"><a href="#scope如何划分命名空间" class="headerlink" title="scope如何划分命名空间"></a>scope如何划分命名空间</h2><p>一个深度学习模型的参数变量往往是成千上万的，不加上命名空间加以分组整理，将会成为可怕的灾难。TensorFlow的命名空间分为两种，tf.variable_scope和tf.name_scope。</p>
+<p>下面示范使用tf.variable_scope把图变量划分为4组：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">'scope-&#123;&#125;'</span>.format(i)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">25</span>):</span><br><span class="line">             v = tf.Variable(<span class="number">1</span>, name=str(j))</span><br></pre></td></tr></table></figure></p>
+<p>可视化输出的结果如下：<br><img src="assets/tf.variable_scope.jpg" alt="tf.variable_scope"></p>
+<p>下面让我们来分析tf.variable_scope和tf.name_scope的区别：</p>
+<h3 id="tf-variable-scope"><a href="#tf-variable-scope" class="headerlink" title="tf.variable_scope"></a>tf.variable_scope</h3><p>当使用tf.get_variable定义变量时，如果出现同名的情况将会引起报错<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: <span class="keyword">with</span> tf.variable_scope(<span class="string">'scope'</span>):</span><br><span class="line">   ...:     v1 = tf.get_variable(<span class="string">'var'</span>, [<span class="number">1</span>])</span><br><span class="line">   ...:     v2 = tf.get_variable(<span class="string">'var'</span>, [<span class="number">1</span>])</span><br><span class="line">ValueError: Variable scope/var already exists, disallowed. Did you mean to set reuse=True in VarScope? Originally defined at:</span><br></pre></td></tr></table></figure></p>
+<p>而对于tf.Variable来说，却可以定义“同名”变量<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: <span class="keyword">with</span> tf.variable_scope(<span class="string">'scope'</span>):</span><br><span class="line">   ...:     v1 = tf.Variable(<span class="number">1</span>, name=<span class="string">'var'</span>)</span><br><span class="line">   ...:     v2 = tf.Variable(<span class="number">2</span>, name=<span class="string">'var'</span>)</span><br><span class="line">   ...:</span><br><span class="line">In [<span class="number">3</span>]: v1.name, v2.name</span><br><span class="line">Out[<span class="number">3</span>]: (<span class="string">'scope/var:0'</span>, <span class="string">'scope/var_1:0'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>但是把这些图变量的name属性打印出来，就可以发现它们的名称并不是一样的。</p>
+<p>如果想使用tf.get_variable来定义另一个同名图变量，可以考虑加入新一层scope，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: <span class="keyword">with</span> tf.variable_scope(<span class="string">'scope1'</span>):</span><br><span class="line">   ...:     v1 = tf.get_variable(<span class="string">'var'</span>, shape=[<span class="number">1</span>])</span><br><span class="line">   ...:     <span class="keyword">with</span> tf.variable_scope(<span class="string">'scope2'</span>):</span><br><span class="line">   ...:         v2 = tf.get_variable(<span class="string">'var'</span>, shape=[<span class="number">1</span>])</span><br><span class="line">   ...:</span><br><span class="line">In [<span class="number">3</span>]: v1.name, v2.name</span><br><span class="line">Out[<span class="number">3</span>]: (<span class="string">'scope1/var:0'</span>, <span class="string">'scope1/scope2/var:0'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="tf-name-scope"><a href="#tf-name-scope" class="headerlink" title="tf.name_scope"></a>tf.name_scope</h3><p>当tf.get_variable遇上tf.name_scope，它定义的变量的最终完整名称将不受这个tf.name_scope的影响，如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: <span class="keyword">with</span> tf.variable_scope(<span class="string">'v_scope'</span>):</span><br><span class="line">   ...:     <span class="keyword">with</span> tf.name_scope(<span class="string">'n_scope'</span>):</span><br><span class="line">   ...:         x = tf.Variable([<span class="number">1</span>], name=<span class="string">'x'</span>)</span><br><span class="line">   ...:         y = tf.get_variable(<span class="string">'x'</span>, shape=[<span class="number">1</span>], dtype=tf.int32)</span><br><span class="line">   ...:         z = x + y</span><br><span class="line">   ...:</span><br><span class="line">In [<span class="number">3</span>]: x.name, y.name, z.name</span><br><span class="line">Out[<span class="number">3</span>]: (<span class="string">'v_scope/n_scope/x:0'</span>, <span class="string">'v_scope/x:0'</span>, <span class="string">'v_scope/n_scope/add:0'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="图变量的复用"><a href="#图变量的复用" class="headerlink" title="图变量的复用"></a>图变量的复用</h2><p>想象一下，如果我们正在定义一个循环神经网络RNN，想复用上一层的参数以提高模型最终的表现效果，应该怎么做呢？</p>
+<h3 id="做法一："><a href="#做法一：" class="headerlink" title="做法一："></a>做法一：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: <span class="keyword">with</span> tf.variable_scope(<span class="string">'scope'</span>):</span><br><span class="line">   ...:     v1 = tf.get_variable(<span class="string">'var'</span>, [<span class="number">1</span>])</span><br><span class="line">   ...:     tf.get_variable_scope().reuse_variables()</span><br><span class="line">   ...:     v2 = tf.get_variable(<span class="string">'var'</span>, [<span class="number">1</span>])</span><br><span class="line">   ...:</span><br><span class="line">In [<span class="number">3</span>]: v1.name, v2.name</span><br><span class="line">Out[<span class="number">3</span>]: (<span class="string">'scope/var:0'</span>, <span class="string">'scope/var:0'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="做法二："><a href="#做法二：" class="headerlink" title="做法二："></a>做法二：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">In [<span class="number">2</span>]: <span class="keyword">with</span> tf.variable_scope(<span class="string">'scope'</span>):</span><br><span class="line">   ...:     v1 = tf.get_variable(<span class="string">'x'</span>, [<span class="number">1</span>])</span><br><span class="line">   ...:</span><br><span class="line">In [<span class="number">3</span>]: <span class="keyword">with</span> tf.variable_scope(<span class="string">'scope'</span>, reuse=<span class="keyword">True</span>):</span><br><span class="line">   ...:     v2 = tf.get_variable(<span class="string">'x'</span>, [<span class="number">1</span>])</span><br><span class="line">   ...:</span><br><span class="line">In [<span class="number">4</span>]: v1.name, v2.name</span><br><span class="line">Out[<span class="number">4</span>]: (<span class="string">'scope/x:0'</span>, <span class="string">'scope/x:0'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="图变量的种类"><a href="#图变量的种类" class="headerlink" title="图变量的种类"></a>图变量的种类</h2><p>TensorFlow的图变量分为两类：local_variables和global_variables。</p>
+<p>如果我们想定义一个不需要长期保存的临时图变量，可以向下面这样定义它：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">"increment"</span>):</span><br><span class="line">    zero64 = tf.constant(<span class="number">0</span>, dtype=tf.int64)</span><br><span class="line">    current = tf.Variable(zero64, name=<span class="string">"incr"</span>, trainable=<span class="keyword">False</span>, collections=[ops.GraphKeys.LOCAL_VARIABLES])</span><br></pre></td></tr></table></figure></p>
+<h2 id="tf-trainable-variables方法"><a href="#tf-trainable-variables方法" class="headerlink" title="tf.trainable_variables方法"></a>tf.trainable_variables方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">v1 = tf.get_variable(<span class="string">'v1'</span>, shape=[<span class="number">1</span>])</span><br><span class="line">v2 = tf.get_variable(<span class="string">'v2'</span>, shape=[<span class="number">1</span>], trainable=<span class="keyword">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">'scope1'</span>):</span><br><span class="line">    s1 = tf.get_variable(<span class="string">'s1'</span>, shape=[<span class="number">1</span>], initializer=tf.random_normal_initializer())</span><br><span class="line">g1=tf.Graph()</span><br><span class="line">g2=tf.Graph()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> g1.as_default():</span><br><span class="line">    g1v1 = tf.get_variable(<span class="string">'g1v1'</span>, shape=[<span class="number">1</span>])</span><br><span class="line">    g1v2 = tf.get_variable(<span class="string">'g1v2'</span>, shape=[<span class="number">1</span>], trainable=<span class="keyword">False</span>)</span><br><span class="line">    g1vs = tf.trainable_variables()</span><br><span class="line">    <span class="comment"># [&lt;tf.Variable 'g1v1:0' shape=(1,) dtype=float32_ref&gt;]</span></span><br><span class="line">    print(g1vs)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> g2.as_default():</span><br><span class="line">    g2v1 = tf.get_variable(<span class="string">'g2v1'</span>, shape=[<span class="number">1</span>])</span><br><span class="line">    g2v2 = tf.get_variable(<span class="string">'g2v2'</span>, shape=[<span class="number">1</span>], trainable=<span class="keyword">False</span>)</span><br><span class="line">    g2vs = tf.trainable_variables()</span><br><span class="line">    <span class="comment"># [&lt;tf.Variable 'g2v1:0' shape=(1,) dtype=float32_ref&gt;]</span></span><br><span class="line">    print(g2vs)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    vs = tf.trainable_variables()</span><br><span class="line">    <span class="comment"># [&lt;tf.Variable 'v1:0' shape=(1,) dtype=float32_ref&gt;, &lt;tf.Variable 'scope1/s1:0' shape=(1,) dtype=float32_ref&gt;]</span></span><br><span class="line">    print(vs)</span><br></pre></td></tr></table></figure>
+<p>tf.trainable_variables 返回所有 当前计算图中 在获取变量时未标记 trainable=False 的变量集合</p>
+<p>从1.4版本开始可以支持传入scope，来获取指定scope中的变量集合</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tensorflow/" rel="tag"># Tensorflow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/16/gensim word2vec参数说明/" rel="next" title="gensim word2vec参数说明">
+                <i class="fa fa-chevron-left"></i> gensim word2vec参数说明
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/16/Self Attention原理/" rel="prev" title="Self Attention原理">
+                Self Attention原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/pic_avatar.jpg"
+                alt="boredbird" />
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">199</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">246</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/boredbird" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/boredbird" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#图变量的初始化方法"><span class="nav-number">1.</span> <span class="nav-text">图变量的初始化方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两种定义图变量的方法"><span class="nav-number">2.</span> <span class="nav-text">两种定义图变量的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-Variable"><span class="nav-number">2.1.</span> <span class="nav-text">tf.Variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Args"><span class="nav-number">2.2.</span> <span class="nav-text">Args:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-get-variable"><span class="nav-number">2.3.</span> <span class="nav-text">tf.get_variable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scope如何划分命名空间"><span class="nav-number">3.</span> <span class="nav-text">scope如何划分命名空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-variable-scope"><span class="nav-number">3.1.</span> <span class="nav-text">tf.variable_scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-name-scope"><span class="nav-number">3.2.</span> <span class="nav-text">tf.name_scope</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图变量的复用"><span class="nav-number">4.</span> <span class="nav-text">图变量的复用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#做法一："><span class="nav-number">4.1.</span> <span class="nav-text">做法一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法二："><span class="nav-number">4.2.</span> <span class="nav-text">做法二：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图变量的种类"><span class="nav-number">5.</span> <span class="nav-text">图变量的种类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-trainable-variables方法"><span class="nav-number">6.</span> <span class="nav-text">tf.trainable_variables方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+	
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+  
+</body>
+</html>

@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/提升GBDT/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/16/手撸SVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/11/提升GBDT/" itemprop="url">提升GBDT</a></h2>
+                <a class="post-title-link" href="/2017/11/16/手撸SVM/" itemprop="url">手撸SVM</a></h2>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T16:15:12+08:00">
-                2017-11-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T20:26:12+08:00">
+                2017-11-16
               </time>
             
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/11/提升GBDT/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/提升GBDT/" itemprop="commentCount"></span>
+                <a href="/2017/11/16/手撸SVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸SVM/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2017/11/11/提升GBDT/" class="leancloud_visitors" data-flag-title="提升GBDT">
+             <span id="/2017/11/16/手撸SVM/" class="leancloud_visitors" data-flag-title="手撸SVM">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  提升
+                  手撸SVM
               </div>
           
 
@@ -425,26 +425,15 @@
 
       
         
-          <h1 id="由决策树和随机森林的关系的思考"><a href="#由决策树和随机森林的关系的思考" class="headerlink" title="由决策树和随机森林的关系的思考"></a>由决策树和随机森林的关系的思考</h1><ul>
-<li>随机森林的决策树分别采样建立，相对独立。</li>
-<li>思考：</li>
-<li><ul>
-<li>假定当前已经得到了m-1棵决策树，是否可以通过现有样本和决策树的信息，对第m棵决策树的建立产生有益的影响呢？</li>
+          <h2 id="基于最大间隔分隔数据"><a href="#基于最大间隔分隔数据" class="headerlink" title="基于最大间隔分隔数据"></a>基于最大间隔分隔数据</h2><ul>
+<li>优点：泛化错误率低，计算开销不大，结果易解释。</li>
+<li>缺点：对参数调节和核函数的选择敏感，原始分类器不加修改仅适用于处理二类问题。</li>
+<li>适用数据类型：数值型和标称型数据。</li>
 </ul>
-</li>
-<li><ul>
-<li>各个决策树组成随机森林后，最后的投票过程可否在建立决策树时即确定呢？</li>
-</ul>
-</li>
-</ul>
-<h1 id="提升的概念"><a href="#提升的概念" class="headerlink" title="提升的概念"></a>提升的概念</h1><ul>
-<li>提升是一个机器学习技术，可以用于回归和分类问题，它每一步产生一个弱预测模型（如决策树），并加权累加到总模型中；如果每一步的弱预测模型生成都是依据损失函数的梯度方向，则称之为梯度提升（Gradient Boosting）</li>
-<li>梯度提升算法首先给定一个目标损失函数，它的定义域是所有可行的弱函数集合（基函数）；提升算法通过迭代的选择一个负梯度方向上的基函数来逐渐逼近局部极小值。这种在函数域的梯度提升观点对机器学习的很多领域有深刻影响。</li>
-<li>提升的理论意义：如果一个问题存在弱分类器，则可以通过提升的办法得到强分类器。</li>
-</ul>
+<h2 id="SMO伪代码"><a href="#SMO伪代码" class="headerlink" title="SMO伪代码"></a>SMO伪代码</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">创建一个alpha向量并将其初始化为<span class="number">0</span>向量</span><br><span class="line">当迭代次数小于最大迭代次数时（外循环）</span><br><span class="line">	对数据集中的每个数据向量（内循环）：</span><br><span class="line">		如果该数据向量可以被优化：</span><br><span class="line">			随机选择另外一个数据向量</span><br><span class="line">			同时优化这两个向量</span><br><span class="line">			如果两个向量都不能被优化，退出内循环</span><br><span class="line">	如果所有向量都没被优化，增加迭代数目，继续下一次循环</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/提升GBDT/" rel="contents">
+            <a class="btn" href="/2017/11/16/手撸SVM/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -495,7 +484,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/随机森林/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/16/手撸LogisticRegression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -514,7 +503,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/11/随机森林/" itemprop="url">随机森林</a></h2>
+                <a class="post-title-link" href="/2017/11/16/手撸LogisticRegression/" itemprop="url">手撸LogisticRegression</a></h2>
         
 
         <div class="post-meta">
@@ -526,8 +515,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T14:25:12+08:00">
-                2017-11-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T20:06:12+08:00">
+                2017-11-16
               </time>
             
 
@@ -567,8 +556,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/11/随机森林/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/随机森林/" itemprop="commentCount"></span>
+                <a href="/2017/11/16/手撸LogisticRegression/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸LogisticRegression/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -576,7 +565,7 @@
 
           
           
-             <span id="/2017/11/11/随机森林/" class="leancloud_visitors" data-flag-title="随机森林">
+             <span id="/2017/11/16/手撸LogisticRegression/" class="leancloud_visitors" data-flag-title="手撸LogisticRegression">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -594,7 +583,7 @@
 
           
               <div class="post-description">
-                  随机森林
+                  手撸LogisticRegression
               </div>
           
 
@@ -612,196 +601,24 @@
 
       
         
-          <h1 id="Bootstraping"><a href="#Bootstraping" class="headerlink" title="Bootstraping"></a>Bootstraping</h1><p>Bootstraping的名称来自成语“pull up by your own bootstraps”,意思是依靠你自己的资源，称为自助法，它是一种有放回的抽样方法。本意是通过拉靴子让自己上升，不可能发生的事情。后来意思发生了转变，隐喻不需要外界帮助，仅依靠自身力量让自己变得更好。</p>
-<h1 id="Bagging的策略"><a href="#Bagging的策略" class="headerlink" title="Bagging的策略"></a>Bagging的策略</h1><ul>
-<li>bootstrap aggregation</li>
-<li>从样本集中重采样（有重复的）选出n个样本</li>
-<li>在所有属性上，对这n个样本建立分类器（ID3，C4.5，CART,SVM,Logistic回归等）</li>
-<li>重复以上两部m次，即获得了m个分类器</li>
-<li>将数据放在这m个分类器上，最后根据这m个分类器的投票结果，决定数据属于哪一类</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/随机森林/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/决策树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/11/决策树/" itemprop="url">决策树</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T13:25:12+08:00">
-                2017-11-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/11/决策树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/决策树/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/11/11/决策树/" class="leancloud_visitors" data-flag-title="决策树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  决策树
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="决策树的概念"><a href="#决策树的概念" class="headerlink" title="决策树的概念"></a>决策树的概念</h2><p>决策树是一种树型结构，其中每个内部结点表示在一个属性上的测试，每个分支代表一个测试输出，每个叶节点代表一种类别。<br>决策树学习是以实例为基础的归纳学习。<br>决策树学习采用的是自顶向下的递归方法，其基本思想是以信息熵为度量构造一棵熵值下降最快的树，到叶子节点处的熵值为零，此时每个叶节点中的实例都属于同一类。</p>
-<h2 id="决策树学习的生成算法"><a href="#决策树学习的生成算法" class="headerlink" title="决策树学习的生成算法"></a>决策树学习的生成算法</h2><p>建立决策树的关键，即在当前状态下选择哪个属性作为分类依据。根据不同的目标函数，建立决策树主要有以下三种算法：</p>
+          <h2 id="LogisticRegression算法概述："><a href="#LogisticRegression算法概述：" class="headerlink" title="LogisticRegression算法概述："></a>LogisticRegression算法概述：</h2><p>利用Logistic回归进行分类的主要思想是：根据现有数据对分类边界线建立回归公式，以此进行分类。</p>
 <ul>
-<li>ID3(Iterative Dichotomiser)</li>
-<li>C4.5</li>
-<li>CART(Classification And Regression Tree)</li>
+<li>优点：计算代价不高，易于理解和实现。</li>
+<li>缺点：容易欠拟合，分类精度可能不高。</li>
+<li>适用数据类型：数值型和标称型数据。</li>
 </ul>
-<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵和条件熵分别称为经验熵和经验条件熵。</p>
-<p>信息增益表示得知特征A的信息而使得类X的信息的不确定性减少的程度。</p>
+<h2 id="梯度下降法求最佳参数伪代码："><a href="#梯度下降法求最佳参数伪代码：" class="headerlink" title="梯度下降法求最佳参数伪代码："></a>梯度下降法求最佳参数伪代码：</h2><ol>
+<li>每个回归系数初始化为1</li>
+<li>重复R次：<ul>
+<li>a.计算整个数据集的梯度</li>
+<li>b.使用alpha*gradient更新回归系数的向量</li>
+<li>c.返回回归系数</li>
+</ul>
+</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/决策树/" rel="contents">
+            <a class="btn" href="/2017/11/16/手撸LogisticRegression/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -852,7 +669,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/Logistic回归/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/16/手撸DecisionTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -871,7 +688,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/11/Logistic回归/" itemprop="url">Logistic回归</a></h2>
+                <a class="post-title-link" href="/2017/11/16/手撸DecisionTree/" itemprop="url">手撸DecisionTree</a></h2>
         
 
         <div class="post-meta">
@@ -883,8 +700,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T11:25:12+08:00">
-                2017-11-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T19:26:12+08:00">
+                2017-11-16
               </time>
             
 
@@ -924,8 +741,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/11/Logistic回归/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/Logistic回归/" itemprop="commentCount"></span>
+                <a href="/2017/11/16/手撸DecisionTree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸DecisionTree/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -933,7 +750,7 @@
 
           
           
-             <span id="/2017/11/11/Logistic回归/" class="leancloud_visitors" data-flag-title="Logistic回归">
+             <span id="/2017/11/16/手撸DecisionTree/" class="leancloud_visitors" data-flag-title="手撸DecisionTree">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -951,7 +768,7 @@
 
           
               <div class="post-description">
-                  Logistic回归
+                  手撸DecisionTree
               </div>
           
 
@@ -969,16 +786,18 @@
 
       
         
-          <h1 id="Logistic回归"><a href="#Logistic回归" class="headerlink" title="Logistic回归"></a>Logistic回归</h1><p>分类问题的首选算法;</p>
-<p>线性回归：最大似然估计+高斯分布；</p>
-<p>Logistic回归：最大似然估计+伯努利分布；</p>
-<p>Logistic回归是事件发生几率取对数下的线性回归。高斯分布和伯努利分布都是属于指数族分布，所以说逻辑回归是广义线性模型GLM回归。</p>
-<h2 id="Logistic-Sigmoid函数"><a href="#Logistic-Sigmoid函数" class="headerlink" title="Logistic/Sigmoid函数"></a>Logistic/Sigmoid函数</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111113157.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <h2 id="DecisionTree算法概述："><a href="#DecisionTree算法概述：" class="headerlink" title="DecisionTree算法概述："></a>DecisionTree算法概述：</h2><ul>
+<li>优点：计算复杂度不高，输出结果易于理解，对中间值的缺失不敏感，可以处理不相关特征数据。</li>
+<li>缺点：可能会产生过度匹配问题。</li>
+<li>适用数据范围：数值型和标称型</li>
+</ul>
+<h2 id="DecisionTree伪代码："><a href="#DecisionTree伪代码：" class="headerlink" title="DecisionTree伪代码："></a>DecisionTree伪代码：</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/tree/QQ截图20171116135703.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
 
-<h2 id="Logistic回归参数估计"><a href="#Logistic回归参数估计" class="headerlink" title="Logistic回归参数估计"></a>Logistic回归参数估计</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111114625.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+<h2 id="DecisionTree代码实现："><a href="#DecisionTree代码实现：" class="headerlink" title="DecisionTree代码实现："></a>DecisionTree代码实现：</h2><h3 id="创建数据集"><a href="#创建数据集" class="headerlink" title="创建数据集"></a>创建数据集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">createDataSet</span><span class="params">()</span>:</span></span><br><span class="line">    dataSet = [[<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</span><br><span class="line">               [<span class="number">1</span>, <span class="number">1</span>, <span class="string">'yes'</span>],</span><br><span class="line">               [<span class="number">1</span>, <span class="number">0</span>, <span class="string">'no'</span>],</span><br><span class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>],</span><br><span class="line">               [<span class="number">0</span>, <span class="number">1</span>, <span class="string">'no'</span>]]</span><br><span class="line">    labels = [<span class="string">'no surfacing'</span>, <span class="string">'flippers'</span>]</span><br><span class="line">    <span class="comment"># change to discrete values</span></span><br><span class="line">    <span class="keyword">return</span> dataSet, labels</span><br></pre></td></tr></table></figure>
+<h3 id="计算给定数据集的香农熵"><a href="#计算给定数据集的香农熵" class="headerlink" title="计算给定数据集的香农熵"></a>计算给定数据集的香农熵</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calcShannonEnt</span><span class="params">(dataSet)</span>:</span></span><br><span class="line">    numEntries = len(dataSet)</span><br><span class="line">    labelCounts = &#123;&#125; <span class="comment"># 为所有可能分类创建字典</span></span><br><span class="line">    <span class="comment"># 循环遍历数据集的每一行</span></span><br><span class="line">    <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:  <span class="comment"># the the number of unique elements and their occurance</span></span><br><span class="line">        currentLabel = featVec[<span class="number">-1</span>] <span class="comment"># 假设最后一列是label</span></span><br><span class="line">        <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</span><br><span class="line">            labelCounts[currentLabel] = <span class="number">0</span></span><br><span class="line">        labelCounts[currentLabel] += <span class="number">1</span></span><br><span class="line">    shannonEnt = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">        prob = float(labelCounts[key]) / numEntries</span><br><span class="line">        shannonEnt -= prob * log(prob, <span class="number">2</span>)  <span class="comment"># log base 2</span></span><br><span class="line">    <span class="keyword">return</span> shannonEnt</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/Logistic回归/" rel="contents">
+            <a class="btn" href="/2017/11/16/手撸DecisionTree/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1029,7 +848,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/回归与特征选择/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/16/手撸kNN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1048,7 +867,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/11/回归与特征选择/" itemprop="url">回归与特征选择</a></h2>
+                <a class="post-title-link" href="/2017/11/16/手撸kNN/" itemprop="url">手撸kNN</a></h2>
         
 
         <div class="post-meta">
@@ -1060,8 +879,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T09:20:12+08:00">
-                2017-11-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T19:06:12+08:00">
+                2017-11-16
               </time>
             
 
@@ -1101,8 +920,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/11/回归与特征选择/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/回归与特征选择/" itemprop="commentCount"></span>
+                <a href="/2017/11/16/手撸kNN/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/16/手撸kNN/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1110,7 +929,7 @@
 
           
           
-             <span id="/2017/11/11/回归与特征选择/" class="leancloud_visitors" data-flag-title="回归与特征选择">
+             <span id="/2017/11/16/手撸kNN/" class="leancloud_visitors" data-flag-title="手撸kNN">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1128,7 +947,7 @@
 
           
               <div class="post-description">
-                  回归与特征选择
+                  手撸kNN
               </div>
           
 
@@ -1146,888 +965,1072 @@
 
       
         
-          <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><p>可以对样本是非线性的，只要对参数线性。</p>
-<h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>在做特征选择的时候，可以看回归的残差图，真正理想状态下，经过模型回归后的残差应该是服从正态分布的，而不是均匀的随机分布；此时可以画个单变量与残差的关系图，直观的看一下是不是有什么明显的一阶、高阶趋势在里面，则需要进一步特征加工。</p>
-<p>大数定理指的是事件发生的概率在N取无穷大的时候趋近于事件发生的概率。频率的极限是概率。</p>
-<h3 id="使用极大似然估计解释最小二乘"><a href="#使用极大似然估计解释最小二乘" class="headerlink" title="使用极大似然估计解释最小二乘"></a>使用极大似然估计解释最小二乘</h3><p><img src="https://i.imgur.com/BLDhXge.png" alt=""></p>
-<h2 id="最大似然估计MLE"><a href="#最大似然估计MLE" class="headerlink" title="最大似然估计MLE"></a>最大似然估计MLE</h2><h3 id="最大似然函数的假设"><a href="#最大似然函数的假设" class="headerlink" title="最大似然函数的假设"></a>最大似然函数的假设</h3><p>似然函数假设每个样本出现的概率是独立的，因此整体出现的概率就是各个样本出现的概率的累计。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/11/回归与特征选择/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/08/Python基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/08/Python基础/" itemprop="url">Python基础</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T21:15:12+08:00">
-                2017-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/08/Python基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/08/Python基础/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/11/08/Python基础/" class="leancloud_visitors" data-flag-title="Python基础">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  Python基础
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="intro"><a href="#intro" class="headerlink" title="intro"></a>intro</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/08/Python基础/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/08/凸优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/08/凸优化/" itemprop="url">凸优化</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-08T19:42:12+08:00">
-                2017-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/08/凸优化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/08/凸优化/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/11/08/凸优化/" class="leancloud_visitors" data-flag-title="凸优化">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  凸优化
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="凸集基本概念"><a href="#凸集基本概念" class="headerlink" title="凸集基本概念"></a>凸集基本概念</h1><h2 id="凸集保凸运算"><a href="#凸集保凸运算" class="headerlink" title="凸集保凸运算"></a>凸集保凸运算</h2><h3 id="凸集和凸函数"><a href="#凸集和凸函数" class="headerlink" title="凸集和凸函数"></a>凸集和凸函数</h3><p>凸函数图像的上方区域，一定是凸集；<br>一个函数图像的上方区域为凸集，则该函数是凸函数。</p>
-<h4 id="仿射集（Affine-Set）"><a href="#仿射集（Affine-Set）" class="headerlink" title="仿射集（Affine Set）"></a>仿射集（Affine Set）</h4><p>定义：通过集合C中任意两个不同点的直线仍然在集合C内，则称集合C为仿射集。</p>
-<p><img src="https://i.imgur.com/Ik2mJaU.png" alt=""></p>
-<h4 id="仿射集的例子："><a href="#仿射集的例子：" class="headerlink" title="仿射集的例子："></a>仿射集的例子：</h4><p>直线、平面、超平面</p>
-<h4 id="凸集"><a href="#凸集" class="headerlink" title="凸集"></a>凸集</h4><p>集合C内任意两点间的线段均在集合C内，则称集合C为凸集。<br><img src="https://i.imgur.com/Q6GhpAw.png" alt=""></p>
-<p>两个点和k个点的表达版本内涵是一样的。</p>
-<h4 id="仿射集和凸集的关系"><a href="#仿射集和凸集的关系" class="headerlink" title="仿射集和凸集的关系"></a>仿射集和凸集的关系</h4><p>因为仿射集的条件比凸集的条件强，所以，仿射集必然是凸集。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/08/凸优化/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/24/vscode 调试适配器进程已意外终止/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/24/vscode 调试适配器进程已意外终止/" itemprop="url">vscode 调试适配器进程已意外终止</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T11:35:12+08:00">
-                2017-10-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/24/vscode 调试适配器进程已意外终止/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/24/vscode 调试适配器进程已意外终止/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/24/vscode 调试适配器进程已意外终止/" class="leancloud_visitors" data-flag-title="vscode 调试适配器进程已意外终止">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  vscode 调试适配器进程已意外终止
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>隔了N天以后，重新打开，一进来就重新下载C依赖，然后提示reload。<br>然后莫名的就可以用了。我晕。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/24/李德荃关于偏度与峰度的讲解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/24/李德荃关于偏度与峰度的讲解/" itemprop="url">李德荃关于偏度与峰度的讲解</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-24T10:39:12+08:00">
-                2017-10-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/24/李德荃关于偏度与峰度的讲解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/24/李德荃关于偏度与峰度的讲解/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/24/李德荃关于偏度与峰度的讲解/" class="leancloud_visitors" data-flag-title="李德荃关于偏度与峰度的讲解">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  李德荃关于偏度与峰度的讲解
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>偏度这一指标，又称偏斜系数、偏态系数，是用来帮助判断数据序列的分布规律性的指标。</p>
-<p>在数据序列呈对称分布（正态分布）的状态下，其均值、中位数和众数重合。且在这三个数的两侧，其它所有的数据完全以对称的方式左右分布。</p>
-<p>如果数据序列的分布不对称，则均值、中位数和众数必定分处不同的位置。这时，若以均值为参照点，则要么位于均值左侧的数据较多，称之为右偏；要么位于均值右侧的数据较多，称之为左偏；除此无它。<br>考虑到所有数据与均值之间的离差之和应为零这一约束，则当均值左侧数据较多的时候，均值的右侧必定存在数值较大的“离群”数据；同理，当均值右侧数据较多的时候，均值的左侧必定存在数值较小的“离群”数据。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/24/李德荃关于偏度与峰度的讲解/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/21/记一次python数据处理性能调优/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/21/记一次python数据处理性能调优/" itemprop="url">记一次python数据处理性能调优</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-21T11:24:12+08:00">
-                2017-10-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/21/记一次python数据处理性能调优/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/21/记一次python数据处理性能调优/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/21/记一次python数据处理性能调优/" class="leancloud_visitors" data-flag-title="记一次python数据处理性能调优">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  记一次python数据处理性能调优
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Python垃圾回收机制<br>根据官方的描叙，Python中，有2中方式将会触发垃圾回收：<br>1、用户显示调用gc.collect()<br>2、每次Python为新对象分配内存时，检查threshold阀值，当对象数量超过threshold设置的阀值就开始进行垃圾回收。</p>
-<p>因为数据量太大，处理过程中留下太多暂时不能清除的变量，而python的垃圾回收却在一遍一遍地扫这些不断在增长的列表，导致程序受到的影响越来越大。赶紧证实一下，import gc，然后在数据载入模块前gc.disable（）,结束后再gc.enable()。结果原来要跑将近两个小时的程序，这下不用5分钟就跑完了。cool~！用gc.get_count()也证明了之前的猜想，在第一次运行之后临时变量数目就从几百上升到百万，并一直在涨。</p>
-<p>如果你的python程序在处理大数据量的问题，并且出现某个子程序在做同样量的工作，却越跑越慢的情况。</p>
-<p>程序代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">series_trans</span><span class="params">(dataset)</span>:</span></span><br><span class="line">    <span class="comment"># 一行转多行</span></span><br><span class="line">    dataset_trans = pd.DataFrame(&#123;<span class="string">'user_id'</span>:dataset[<span class="string">'user_id'</span>],</span><br><span class="line">                                   <span class="string">'shop_id'</span>:dataset[<span class="string">'shop_id'</span>],</span><br><span class="line">                                   <span class="string">'time_stamp'</span>:dataset[<span class="string">'time_stamp'</span>],</span><br><span class="line">                                   <span class="string">'longitude'</span>:dataset[<span class="string">'longitude'</span>],</span><br><span class="line">                                   <span class="string">'latitude'</span>:dataset[<span class="string">'latitude'</span>],</span><br><span class="line">                                   <span class="string">'wifi_infos'</span>:dataset[<span class="string">'wifi_splits'</span>]&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>  dataset_trans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</span><br><span class="line">dataset_trans = series_trans(dataset.loc[<span class="number">0</span>,:])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>,dataset.shape[<span class="number">0</span>]):</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">10000</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">print</span> i</span><br><span class="line">        <span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</span><br><span class="line"></span><br><span class="line">    dataset_trans = dataset_trans.append(series_trans(dataset.loc[i,:]))</span><br></pre></td></tr></table></figure>
-<p>程序的性能表现如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:01</span><span class="selector-pseudo">:30</span> 2017</span><br><span class="line">10000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:02</span><span class="selector-pseudo">:07</span> 2017</span><br><span class="line">20000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:03</span><span class="selector-pseudo">:41</span> 2017</span><br><span class="line">30000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:06</span><span class="selector-pseudo">:12</span> 2017</span><br><span class="line">40000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:09</span><span class="selector-pseudo">:37</span> 2017</span><br><span class="line">50000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:13</span><span class="selector-pseudo">:55</span> 2017</span><br><span class="line">60000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:19</span><span class="selector-pseudo">:10</span> 2017</span><br><span class="line">70000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:25</span><span class="selector-pseudo">:26</span> 2017</span><br><span class="line">80000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:33</span><span class="selector-pseudo">:03</span> 2017</span><br><span class="line">90000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:41</span><span class="selector-pseudo">:21</span> 2017</span><br><span class="line">100000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 11<span class="selector-pseudo">:50</span><span class="selector-pseudo">:33</span> 2017</span><br><span class="line">110000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:00</span><span class="selector-pseudo">:41</span> 2017</span><br><span class="line">120000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:11</span><span class="selector-pseudo">:45</span> 2017</span><br><span class="line">130000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:23</span><span class="selector-pseudo">:43</span> 2017</span><br><span class="line">140000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:36</span><span class="selector-pseudo">:37</span> 2017</span><br><span class="line">150000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 12<span class="selector-pseudo">:50</span><span class="selector-pseudo">:25</span> 2017</span><br><span class="line">160000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:05</span><span class="selector-pseudo">:10</span> 2017</span><br><span class="line">170000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:20</span><span class="selector-pseudo">:46</span> 2017</span><br><span class="line">180000</span><br><span class="line"><span class="selector-tag">Sat</span> <span class="selector-tag">Oct</span> 21 13<span class="selector-pseudo">:37</span><span class="selector-pseudo">:18</span> 2017</span><br></pre></td></tr></table></figure>
-<p>采用：dataset_trans.loc[10:19,] = dataset_trans<br>会提示错误：<br>info_idx = indexer[info_axis]<br>IndexError: tuple index out of range</p>
-<p>DataFrame is a 2-dimensional labeled data structure with columns of potentially different types.所以一般说来dataframe就是a set of columns, each column is an array of values. In pandas, the array is one way or another a (maybe variant of) numpy ndarray. 而ndarray本身不存在一种in place append的操作。。。因为它实际上是一段连续内存。。。任何需要改变ndarray长度的操作都涉及分配一段长度合适的新的内存，然后copy。。。这是这类操作慢的原因。。。如果pandas dataframe没有用其他设计减少copy的话，我相信Bren说的”That’s probably as efficient as any”是很对的。。。所以in general, 正如Bren说的。。。Pandas/numpy structures are fundamentally not suited for efficiently growing.Matti 和 arynaq说的是两种常见的对付这个问题的方法。。。我想Matti实际的意思是把要加的rows收集成起来然后concatenate, 这样只copy一次。arynaq的方法就是预先分配内存比较好理解。。。如果你真的需要incrementally build a dataframe的话，估计你需要实际测试一下两种方法。。。我的建议是，如有可能，尽力避免incrementally build a dataframe, 比如用其他data structure 收集齐所有data然后转变成dataframe做分析。。。</p>
-<p>via</p>
+          <h2 id="k近邻算法概述："><a href="#k近邻算法概述：" class="headerlink" title="k近邻算法概述："></a>k近邻算法概述：</h2><p>k-近邻算法采用测量不同特征值之间的距离方法进行分类。</p>
 <ul>
-<li><p><a href="http://blog.csdn.net/overstack/article/details/11603893" target="_blank" rel="noopener">Python垃圾回收(gc)拖累了程序执行性能？</a></p>
-</li>
-<li><p><a href="https://www.zhihu.com/question/36170252?sort=created" target="_blank" rel="noopener">python pandas 怎样高效地添加一行数据？</a></p>
-</li>
+<li>优点：精度高、对异常值不敏感、无数据输入假定</li>
+<li>缺点：计算复杂度高、空间复杂度高</li>
+<li>适用数据范围：数值型和标称型</li>
 </ul>
+<h2 id="kNN伪代码："><a href="#kNN伪代码：" class="headerlink" title="kNN伪代码："></a>kNN伪代码：</h2><p>对未知类别属性的数据集中的每个点依次执行以下操作：</p>
+<ol>
+<li>计算已知类别数据集中的点与当前点之间的距离；</li>
+<li>按照距离递增次序排序；</li>
+<li>选取与当前点距离最小的k个点；</li>
+<li>确定前k个点所在类别的出现频率；</li>
+<li>返回前k个点出现频率最高的类别作为当前点的预测分类。</li>
+</ol>
+<h2 id="kNN代码实现："><a href="#kNN代码实现：" class="headerlink" title="kNN代码实现："></a>kNN代码实现：</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/16/手撸kNN/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/15/Clustering with sklearn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/15/Clustering with sklearn/" itemprop="url">Clustering with sklearn</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-15T19:06:12+08:00">
+                2017-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/15/Clustering with sklearn/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/15/Clustering with sklearn/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/15/Clustering with sklearn/" class="leancloud_visitors" data-flag-title="Clustering with sklearn">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Clustering with sklearn
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="生成聚类数据集的方法"><a href="#生成聚类数据集的方法" class="headerlink" title="生成聚类数据集的方法"></a>生成聚类数据集的方法</h1><p><code>生成数据集方法</code>：sklearn.datasets.make_blobs(n_samples,n_featurs,centers)可以生成数据集,n_samples表示个数，n_features表示特征个数，centers表示y的种类数:</p>
+<ul>
+<li>make_blobs函数是为聚类产生数据集产生一个数据集和相应的标签</li>
+<li>n_samples:表示数据样本点个数,默认值100</li>
+<li>n_features:表示数据的维度，默认值是2</li>
+<li>centers:产生数据的中心点，默认值3</li>
+<li>cluster_std：数据集的标准差，浮点数或者浮点数序列，默认值1.0</li>
+<li>center_box：中心确定之后的数据边界，默认值(-10.0, 10.0)</li>
+<li>shuffle ：洗乱，默认值是True</li>
+<li>random_state:官网解释是随机生成器的种子</li>
+</ul>
+<p>y3 = np.array([0]<em>100 + [1]</em>50 + [2]<em>20 + [3]</em>5)可以这样建立array数组</p>
+<p>k-means对于方差不相等和数据与坐标轴不平行时效果不理想；对于数据大小量纲敏感。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/15/Clustering with sklearn/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/14/sklearn.svm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/14/sklearn.svm/" itemprop="url">sklearn.svm</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T22:06:12+08:00">
+                2017-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/14/sklearn.svm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/sklearn.svm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/14/sklearn.svm/" class="leancloud_visitors" data-flag-title="sklearn.svm">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  sklearn.svm
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="SVC-ovr"><a href="#SVC-ovr" class="headerlink" title="SVC:ovr"></a>SVC:ovr</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris = load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 'sepal length', 'sepal width', 'petal length', 'petal width'</span></span><br><span class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_accuracy</span><span class="params">(a, b, tip)</span>:</span></span><br><span class="line">    acc = a.ravel() == b.ravel()</span><br><span class="line">    <span class="keyword">print</span> tip + <span class="string">'正确率：'</span>, np.mean(acc)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分类器</span></span><br><span class="line"><span class="comment"># clf = svm.SVC(C=0.1, kernel='linear', decision_function_shape='ovr')</span></span><br><span class="line"><span class="comment"># ‘ovo’ 一对一, ‘ovr’ 多对多  or None 无, default=None</span></span><br><span class="line">clf = svm.SVC(C=<span class="number">0.8</span>, kernel=<span class="string">'rbf'</span>, gamma=<span class="number">20</span>, decision_function_shape=<span class="string">'ovr'</span>)</span><br><span class="line">clf.fit(x_train, y_train.ravel())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 准确率</span></span><br><span class="line"><span class="comment"># score(X, y, sample_weight=None) ：Returns the mean accuracy on the given test data and labels.</span></span><br><span class="line"><span class="keyword">print</span> clf.score(x_train, y_train)  <span class="comment"># 精度</span></span><br><span class="line">y_hat = clf.predict(x_train)</span><br><span class="line">show_accuracy(y_hat, y_train, <span class="string">'训练集'</span>)</span><br><span class="line"><span class="keyword">print</span> clf.score(x_test, y_test)</span><br><span class="line">y_hat = clf.predict(x_test)</span><br><span class="line">show_accuracy(y_hat, y_test, <span class="string">'测试集'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># decision_function</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'decision_function:\n'</span>, clf.decision_function(x_train)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'\npredict:\n'</span>, clf.predict(x_train)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># decision_function(): Distance of the samples X to the separating hyperplane.</span></span><br><span class="line"><span class="string"># 分类归属于距离数值最小的类别，距离有正有负只是平面的两侧而已</span></span><br><span class="line"><span class="string">decision_function:</span></span><br><span class="line"><span class="string">[[-0.25631211  0.80529378  2.45101833]</span></span><br><span class="line"><span class="string"> [ 2.35232967  0.82494155 -0.17727121]</span></span><br><span class="line"><span class="string"> [ 2.45418203  0.77495649 -0.22913852]</span></span><br><span class="line"><span class="string"> [ 2.45421283  0.77518383 -0.22939666]</span></span><br><span class="line"><span class="string"> [-0.24854074  2.39614366  0.85239708]</span></span><br><span class="line"><span class="string"> [ 2.46621083  0.76927647 -0.23548729]</span></span><br><span class="line"><span class="string"> [ 2.45410944  0.77775367 -0.2318631 ]</span></span><br><span class="line"><span class="string"> [-0.24677667  0.84905678  2.39771989]</span></span><br><span class="line"><span class="string"> [-0.46050688  1.21154683  2.24896005]</span></span><br><span class="line"><span class="string"> [-0.26893412  0.80449581  2.46443831]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">predict:</span></span><br><span class="line"><span class="string">[2 0 0 0 1 0 0 2 2 2</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 画图</span></span><br><span class="line">x1_min, x1_max = X[:, <span class="number">0</span>].min(), X[:, <span class="number">0</span>].max()  <span class="comment"># 第0列的范围</span></span><br><span class="line">x2_min, x2_max = X[:, <span class="number">1</span>].min(), X[:, <span class="number">1</span>].max()  <span class="comment"># 第1列的范围</span></span><br><span class="line">x1, x2 = np.mgrid[x1_min:x1_max:<span class="number">200j</span>, x2_min:x2_max:<span class="number">200j</span>]  <span class="comment"># 生成网格采样点</span></span><br><span class="line"><span class="comment"># numpy.ndarray.flat : A 1-D iterator over the array.</span></span><br><span class="line"><span class="comment"># This is a numpy.flatiter instance, which acts similarly to,</span></span><br><span class="line"><span class="comment"># but is not a subclass of, Python’s built-in iterator object.</span></span><br><span class="line">grid_test = np.stack((x1.flat, x2.flat), axis=<span class="number">1</span>)  <span class="comment"># 测试点</span></span><br><span class="line"><span class="comment"># print 'grid_test = \n', grid_test</span></span><br><span class="line"><span class="comment"># Z = clf.decision_function(grid_test)    # 样本到决策面的距离</span></span><br><span class="line"><span class="comment"># print Z</span></span><br><span class="line">grid_hat = clf.predict(grid_test)       <span class="comment"># 预测分类值</span></span><br><span class="line"><span class="keyword">print</span> grid_hat</span><br><span class="line">grid_hat = grid_hat.reshape(x1.shape)  <span class="comment"># 使之与输入的形状相同</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">u'SimHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">cm_light = mpl.colors.ListedColormap([<span class="string">'#A0FFA0'</span>, <span class="string">'#FFA0A0'</span>, <span class="string">'#A0A0FF'</span>])</span><br><span class="line">cm_dark = mpl.colors.ListedColormap([<span class="string">'g'</span>, <span class="string">'r'</span>, <span class="string">'b'</span>])</span><br><span class="line">plt.pcolormesh(x1, x2, grid_hat, cmap=cm_light)</span><br><span class="line"></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y, edgecolors=<span class="string">'k'</span>, s=<span class="number">50</span>, cmap=cm_dark)      <span class="comment"># 样本</span></span><br><span class="line">plt.scatter(x_test[:, <span class="number">0</span>], x_test[:, <span class="number">1</span>], s=<span class="number">120</span>, facecolors=<span class="string">'none'</span>, zorder=<span class="number">10</span>)     <span class="comment"># 圈中测试集样本</span></span><br><span class="line">plt.xlabel(iris_feature[<span class="number">0</span>], fontsize=<span class="number">13</span>)</span><br><span class="line">plt.ylabel(iris_feature[<span class="number">1</span>], fontsize=<span class="number">13</span>)</span><br><span class="line">plt.xlim(x1_min, x1_max)</span><br><span class="line">plt.ylim(x2_min, x2_max)</span><br><span class="line">plt.title(<span class="string">u'鸢尾花SVM二特征分类'</span>, fontsize=<span class="number">15</span>)</span><br><span class="line">plt.grid()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><div class="fig figcenter fighighlight"><br>  <img src="/assets/ML/svm/Figure_1.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/14/sklearn.svm/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/14/Bagging/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/14/Bagging/" itemprop="url">Bagging</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T21:06:12+08:00">
+                2017-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/14/Bagging/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/Bagging/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/14/Bagging/" class="leancloud_visitors" data-flag-title="Bagging">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Bagging
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>假设一个分类器分类正确的概率为0.6，如果有n个独立的分类器，选择其中的k个采用投票的方式，作为预测结果，则预测正确的概率为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"><span class="comment"># operator.__mul__(a, b)</span></span><br><span class="line"><span class="comment"># Return a * b, for a and b numbers.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">c</span><span class="params">(n, k)</span>:</span></span><br><span class="line">    <span class="comment"># 求组合数</span></span><br><span class="line">    <span class="keyword">return</span> reduce(operator.mul, range(n-k+<span class="number">1</span>, n+<span class="number">1</span>)) / reduce(operator.mul, range(<span class="number">1</span>, k+<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bagging</span><span class="params">(n, p)</span>:</span></span><br><span class="line">    s = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n / <span class="number">2</span> + <span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        s += c(n, i) * p ** i * (<span class="number">1</span> - p) ** (n - i)</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">9</span>, <span class="number">100</span>, <span class="number">10</span>):</span><br><span class="line">    <span class="comment"># 假设事件发生的概率为0.6</span></span><br><span class="line">    <span class="keyword">print</span> t, <span class="string">'次采样正确率：'</span>, bagging(t, <span class="number">0.6</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">9 </span>次采样正确率： <span class="number">0.73343232</span></span><br><span class="line"><span class="symbol">19 </span>次采样正确率： <span class="number">0.813907978585</span></span><br><span class="line"><span class="symbol">29 </span>次采样正确率： <span class="number">0.863787051336</span></span><br><span class="line"><span class="symbol">39 </span>次采样正确率： <span class="number">0.897941368711</span></span><br><span class="line"><span class="symbol">49 </span>次采样正确率： <span class="number">0.922424437652</span></span><br><span class="line"><span class="symbol">59 </span>次采样正确率： <span class="number">0.940447995732</span></span><br><span class="line"><span class="symbol">69 </span>次采样正确率： <span class="number">0.953949756505</span></span><br><span class="line"><span class="symbol">79 </span>次采样正确率： <span class="number">0.964189692839</span></span><br><span class="line"><span class="symbol">89 </span>次采样正确率： <span class="number">0.972027516007</span></span><br><span class="line"><span class="symbol">99 </span>次采样正确率： <span class="number">0.97806955787</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/14/Bagging/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/14/sklearn.tree.DecisionTreeRegressor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" itemprop="url">sklearn.tree.DecisionTreeRegressor</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T20:06:12+08:00">
+                2017-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" class="leancloud_visitors" data-flag-title="sklearn.tree.DecisionTreeRegressor">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  sklearn.tree.DecisionTreeRegressor
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br></pre></td></tr></table></figure>
+<h3 id="生成数据集："><a href="#生成数据集：" class="headerlink" title="生成数据集："></a>生成数据集：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">N = <span class="number">100</span></span><br><span class="line">x = np.random.rand(N) * <span class="number">6</span> - <span class="number">3</span>     <span class="comment"># [-3,3)</span></span><br><span class="line">x.sort()</span><br><span class="line">y = np.sin(x) + np.random.randn(N) * <span class="number">0.05</span></span><br><span class="line"><span class="keyword">print</span> y</span><br><span class="line">x = x.reshape(<span class="number">-1</span>, <span class="number">1</span>)  <span class="comment"># 转置后，得到N个样本，每个样本都是1维的</span></span><br><span class="line"><span class="keyword">print</span> x</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/14/sklearn.tree.DecisionTreeRegressor/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/sklearn.tree.DecisionTreeClassifier/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" itemprop="url">sklearn.tree.DecisionTreeClassifier</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T22:06:12+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" class="leancloud_visitors" data-flag-title="sklearn.tree.DecisionTreeClassifier">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  sklearn.tree.DecisionTreeClassifier
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> tree</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> pydotplus</span><br></pre></td></tr></table></figure>
+<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iris_type</span><span class="params">(s)</span>:</span></span><br><span class="line">    it = &#123;<span class="string">'Iris-setosa'</span>: <span class="number">0</span>, <span class="string">'Iris-versicolor'</span>: <span class="number">1</span>, <span class="string">'Iris-virginica'</span>: <span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> it[s]</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris=load_iris()</span><br><span class="line">X = iris.data[:, :<span class="number">2</span>]</span><br><span class="line">y = iris.target</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">iris_feature_E = <span class="string">'sepal length'</span>, <span class="string">'sepal width'</span>, <span class="string">'petal length'</span>, <span class="string">'petal width'</span></span><br><span class="line">iris_feature = <span class="string">u'花萼长度'</span>, <span class="string">u'花萼宽度'</span>, <span class="string">u'花瓣长度'</span>, <span class="string">u'花瓣宽度'</span></span><br><span class="line">iris_class = <span class="string">'Iris-setosa'</span>, <span class="string">'Iris-versicolor'</span>, <span class="string">'Iris-virginica'</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/13/sklearn.tree.DecisionTreeClassifier/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/13/ElasticNetCV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/13/ElasticNetCV/" itemprop="url">ElasticNetCV</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T22:06:12+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/13/ElasticNetCV/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/13/ElasticNetCV/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/13/ElasticNetCV/" class="leancloud_visitors" data-flag-title="ElasticNetCV">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  ElasticNetCV
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="导入包："><a href="#导入包：" class="headerlink" title="导入包："></a>导入包：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> ElasticNetCV</span><br><span class="line"><span class="keyword">import</span> sklearn.datasets</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures, StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br></pre></td></tr></table></figure>
+<h1 id="导入数据集："><a href="#导入数据集：" class="headerlink" title="导入数据集："></a>导入数据集：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_empty</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> s != <span class="string">''</span></span><br><span class="line"></span><br><span class="line">data = sklearn.datasets.load_boston()</span><br><span class="line">x = np.array(data.data)</span><br><span class="line">y = np.array(data.target)</span><br><span class="line"><span class="keyword">print</span> x.shape</span><br><span class="line"><span class="keyword">print</span> y.shape</span><br><span class="line"></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/13/ElasticNetCV/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2065,7 +2068,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2115,7 +2118,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">199</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2137,7 +2140,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">224</span>
+                  <span class="site-state-item-count">246</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

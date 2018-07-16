@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.23. Probability Plot Correlation Coefficient Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.23. Probability Plot Correlation Coefficient Plot/" itemprop="url">EDA_1.3.3.23. Probability Plot Correlation Coefficient Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/" itemprop="url">EDA_1.3.5.13. Runs Test for Detecting Non-randomness</a></h2>
         
 
         <div class="post-meta">
@@ -339,7 +339,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:02:12+08:00">
                 2018-03-12
               </time>
             
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.23. Probability Plot Correlation Coefficient Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.23. Probability Plot Correlation Coefficient Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.23. Probability Plot Correlation Coefficient Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.23. Probability Plot Correlation Coefficient Plot">
+             <span id="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.13. Runs Test for Detecting Non-randomness">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.23. Probability Plot Correlation Coefficient Plot
+                  EDA_1.3.5.13. Runs Test for Detecting Non-randomness
               </div>
           
 
@@ -426,42 +426,28 @@
       
         
           
-            <h3 id="Purpose"><a href="#Purpose" class="headerlink" title="Purpose:"></a>Purpose:</h3><p>Graphical Technique for Finding the Shape Parameter of a Distributional Family that Best Fits a<br>Data Set</p>
-<p>The probability plot correlation coefficient (PPCC) plot (Filliben 1975) is a graphical technique for identifying the shape parameterfor a distributional family that best describes the data set. This technique is appropriate for families, such as the Weibull, that are defined by a single shape parameter and location and scale parameters, and it is not appropriate for distributions, such as the normal, that are defined only by location and scale parameters.</p>
-<p>The PPCC plot is generated as follows. For a series of values for the shape parameter, the correlation coefficient is computed for theprobability plot associated with a given value of the shape parameter. These correlation coefficients are plotted against their corresponding shape parameters. The maximum correlation coefficient corresponds to the optimal value of the shape parameter. For better precision, two iterations of the PPCC plot can be generated; the first is for finding the right neighborhood and the second is for fine tuning the estimate.</p>
-<p>The PPCC plot is used first to find a good value of the shape parameter. The probability plot is then generated to find estimates of the location and scale parameters and in addition to provide a graphical assessment of the adequacy of the distributional fit.</p>
-<h3 id="Compare-Distributions"><a href="#Compare-Distributions" class="headerlink" title="Compare Distributions"></a>Compare Distributions</h3><p>In addition to finding a good choice for estimating the shape parameter of a given distribution, the PPCC plot can be useful in deciding which distributional family is most appropriate. For example, given a set of reliabilty data, you might generate PPCC plots for a Weibull, lognormal, gamma, and inverse Gaussian distributions, and possibly others, on a single page. This one page would show the best value for the shape parameter for several distributions and would additionally indicate which of these distributional families provides the best fit (as measured by the maximum probability plot correlation coefficient). That is, if the maximum PPCC value for the Weibull is 0.99 and only 0.94 for the lognormal, then we could reasonably conclude that the Weibull family is the better choice.</p>
-<h3 id="Tukey-Lambda-PPCC-Plot-for-Symmetric-Distributions"><a href="#Tukey-Lambda-PPCC-Plot-for-Symmetric-Distributions" class="headerlink" title="Tukey-Lambda PPCC Plot for Symmetric Distributions"></a>Tukey-Lambda PPCC Plot for Symmetric Distributions</h3><p>The Tukey Lambda PPCC plot, with shape parameter λ, is particularly useful for symmetric distributions. It indicates whether a distribution is short or long tailed and it can further indicate several common distributions. Specifically,</p>
-<pre><code>1. λ = -1: distribution is approximately Cauchy
-2. λ = 0: distribution is exactly logistic
-3. λ = 0.14: distribution is approximately normal
-4. λ = 0.5: distribution is U-shaped
-5. λ = 1: distribution is exactly uniform
-</code></pre><p>If the Tukey Lambda PPCC plot gives a maximum value near 0.14, we can reasonably conclude that the normal distribution is a good model for the data. If the maximum value is less than 0.14, a long-tailed distribution such as the double exponential or logistic would be a better choice. If the maximum value is near -1, this implies the selection of very long-tailed distribution, such as the Cauchy. If the maximum value is greater than 0.14, this implies a short-tailed distribution such as the Beta or uniform.</p>
-<p>The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution. You should follow-up with PPCC and probability plots of the appropriate alternatives.</p>
-<h3 id="Use-Judgement-When-Selecting-An-Appropriate-Distributional-Family"><a href="#Use-Judgement-When-Selecting-An-Appropriate-Distributional-Family" class="headerlink" title="Use Judgement When Selecting An Appropriate Distributional Family"></a>Use Judgement When Selecting An Appropriate Distributional Family</h3><p>When comparing distributional models, do not simply choose the one with the maximum PPCC value. In many cases, several distributional fits provide comparable PPCC values. For example, a lognormal and Weibull may both fit a given set of reliability data quite well. Typically, we would consider the complexity of the distribution. That is, a simpler distribution with a marginally smaller PPCC value may be preferred over a more complex distribution. Likewise, there may be theoretical justification in terms of the underlying scientific model for preferring a distribution with a marginally smaller PPCC value in some cases. In other cases, we may not need to know if the distributional model is optimal, only that it is adequate for our purposes. That is, we may be able to use techniques designed for normally distributed data even if other distributions fit the data somewhat better.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/ppccplot.gif" alt=""></p>
-<p>The following is a PPCC plot of 100 normal random numbers. The maximum value of the correlation coefficient = 0.997 at λ = 0.099.</p>
-<p>This PPCC plot shows that:</p>
-<pre><code>1. the best-fit symmetric distribution is nearly normal;
-2. the data are not long tailed;
-3. the sample mean would be an appropriate estimator of location.
-</code></pre><p>We can follow-up this PPCC plot with a normal probability plot to verify the normality model for the data.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>The PPCC plot is formed by:</p>
-<pre><code>• Vertical axis: Probability plot correlation coefficient;
-• Horizontal axis: Value of shape parameter.
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The PPCC plot answers the following questions:</p>
-<pre><code>1. What is the best-fit member within a distributional family?
-2. Does the best-fit member provide a good fit (in terms of generating a probability plot with a high correlation coefficient)?
-3. Does this distributional family provide a good fit compared to other distributions?
-4. How sensitive is the choice of the shape parameter?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical analyses are based on distributional assumptions about the population from which the data have been obtained. However, distributional families can have radically different shapes depending on the value of the shape parameter. Therefore, finding a reasonable choice for the shape parameter is a necessary step in the analysis. In many analyses, finding a good distributional model for the data is the primary focus of the analysis. In both of these cases, the PPCC plot is a valuable tool.</p>
+            <h3 id="Purpose-Detect-Non-Randomness"><a href="#Purpose-Detect-Non-Randomness" class="headerlink" title="Purpose: Detect Non-Randomness"></a>Purpose: Detect Non-Randomness</h3><p>The runs test (Bradley, 1968) can be used to decide if a data set is from a random process.</p>
+<p>A run is defined as a series of increasing values or a series of decreasing values. The number of increasing, or decreasing, values is the length of the run. In a random data set, the probability that the (I+1)th value is larger or smaller than the Ith value follows a binomial distribution, which forms the basis of the runs test.</p>
+<h3 id="Typical-Analysis-and-Test-Statistics"><a href="#Typical-Analysis-and-Test-Statistics" class="headerlink" title="Typical Analysis and Test Statistics"></a>Typical Analysis and Test Statistics</h3><p>The first step in the runs test is to count the number of runs in the data sequence. There are several ways to define runs in the literature, however, in all cases the formulation must produce a dichotomous sequence of values. For example, a series of 20 coin tosses might produce the following sequence of heads (H) and tails (T).</p>
+<pre><code>H H T T H T H H H H T H H T T T T T H H
+</code></pre><p>The number of runs for this series is nine. There are 11 heads and 9 tails in the sequence.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>We will code values above the median as positive and values below the median as negative. A run is defined as a series of consecutive positive (or negative) values. The runs test is defined as:</p>
+<p><img src="assets/EDA/eda35d_1.png" alt=""></p>
+<h3 id="Runs-Test-Example"><a href="#Runs-Test-Example" class="headerlink" title="Runs Test Example"></a>Runs Test Example</h3><p>A runs test was performed for 200 measurements of beam deflection contained in the LEW.DAT data set.</p>
+<p><img src="assets/EDA/eda35d_2.png" alt=""></p>
+<p>Since the test statistic is greater than the critical value, we conclude that the data are not random at the 0.05 significance level.</p>
+<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>The runs test can be used to answer the following question:</p>
+<pre><code>• Were these sample data generated from a random process?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Randomness is one of the key assumptions in determining if a univariate statistical process is in control. If the assumptions of constant location and scale, randomness, and fixed distribution are reasonable, then the univariate process can be modeled as:</p>
+<pre><code>Yi=A0+Ei
+</code></pre><p>where Ei is an error term.</p>
+<p>If the randomness assumption is not valid, then a different model needs to be used. This will typically be either a times series model or a non-linear model (with time as the independent variable).</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Probability Plot</li>
-<li>Maximum Likelihood Estimation</li>
-<li>Least Squares Estimation</li>
-<li>Method of Moments Estimation</li>
+<li>Autocorrelation</li>
+<li>Run Sequence Plot</li>
+<li>Lag Plot</li>
 </ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35d.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35d.htm</a></p>
 
           
         
@@ -510,7 +496,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -529,7 +515,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/" itemprop="url">EDA_1.3.3.21. Normal Probability Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/" itemprop="url">EDA_1.3.5.11. Measures of Skewness and Kurtosis</a></h2>
         
 
         <div class="post-meta">
@@ -541,7 +527,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:01:12+08:00">
                 2018-03-12
               </time>
             
@@ -582,8 +568,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -591,7 +577,7 @@
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.21. Normal Probability Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.21. Normal Probability Plot">
+             <span id="/2018/03/12/EDA_1.3.5.11. Measures of Skewness and Kurtosis/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.11. Measures of Skewness and Kurtosis">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -609,7 +595,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.21. Normal Probability Plot
+                  EDA_1.3.5.11. Measures of Skewness and Kurtosis
               </div>
           
 
@@ -628,47 +614,225 @@
       
         
           
-            <h3 id="Purpose-Check-If-Data-Are-Approximately-Normally-Distributed"><a href="#Purpose-Check-If-Data-Are-Approximately-Normally-Distributed" class="headerlink" title="Purpose: Check If Data Are Approximately Normally Distributed"></a>Purpose: Check If Data Are Approximately Normally Distributed</h3><p>The normal probability plot (Chambers et al., 1983) is a graphical technique for assessing whether or not a data set is approximatelynormally distributed.</p>
-<p>The data are plotted against a theoretical normal distribution in such a way that the points should form an approximate straight line. Departures from this straight line indicate departures from normality.</p>
-<p>The normal probability plot is a special case of the probability plot. We cover the normal probability plot separately due to its importance in many applications.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/normprpl.gif" alt=""></p>
-<p>The points on this plot form a nearly linear pattern, which indicates that the normal distribution is a good model for this data set.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Ordered Response Values Versus Normal Order Statistic Medians<br>The normal probability plot is formed by:</p>
-<pre><code>• Vertical axis: Ordered response values
-• Horizontal axis: Normal order statistic medians
-</code></pre><p>The observations are plotted as a function of the corresponding normal order statistic medians which are defined as:</p>
-<pre><code>Ni = G(Ui)
-</code></pre><p>where Ui are the uniform order statistic medians (defined below) and G is the percent point function of the normal distribution. The percent point function is the inverse of thecumulative distribution function (probability that x is less than or equal to some value). That is, given a probability, we want the corresponding x of the cumulative distribution function.</p>
-<p>The uniform order statistic medians (seeFilliben 1975) can be approximated by:</p>
-<pre><code>Ui = 1 - Un    for i = 1
-Ui = (i - 0.3175)/(n + 0.365)    for i = 2, 3, ..., n-1 
-Ui = 0.5(1/n)    for i = n
-</code></pre><p>In addition, a straight line can be fit to the points and added as a reference line. The further the points vary from this line, the greater the indication of departures from normality.</p>
-<p>Probability plots for distributions other than the normal are computed in exactly the same way. The normal percent point function (the G) is simply replaced by the percent point function of the desired distribution. That is, a probability plot can easily be generated for any distribution for which you have the percent point function.</p>
-<p>One advantage of this method of computing probability plots is that the intercept and slope estimates of the fitted line are in fact estimates for the location and scale parameters of the distribution. Although this is not too important for the normal distribution since the location and scale are estimated by the mean and standard deviation, respectively, it can be useful for many other distributions.</p>
-<p>The correlation coefficient of the points on the normal probability plot can be compared to a table of critical values to provide a formal test of the hypothesis that the data come from a normal distribution.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The normal probability plot is used to answer the following questions.</p>
-<pre><code>1. Are the data normally distributed?
-2. What is the nature of the departure from normality (data skewed, shorter than expected tails, longer than expected tails)?
-</code></pre><h3 id="Importance-Check-Normality-Assumption"><a href="#Importance-Check-Normality-Assumption" class="headerlink" title="Importance: Check Normality Assumption"></a>Importance: Check Normality Assumption</h3><p>The underlying assumptions for a measurement process are that the data should behave like:</p>
-<pre><code>1. random drawings;
-2. from a fixed distribution;
-3. with fixed location;
-4. with fixed scale.
-</code></pre><p>Probability plots are used to assess the assumption of a fixed distribution. In particular, most statistical models are of the form:</p>
-<pre><code>response = deterministic + random
-</code></pre><p>where the deterministic part is the fit and the random part is error. This error component in most common statistical models is specifically assumed to be normally distributed with fixed location and scale. This is the most frequent application of normal probability plots. That is, a model is fit and a normal probability plot is generated for the residuals from the fitted model. If the residuals from the fitted model are not normally distributed, then one of the major assumptions of the model has been violated.</p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. Data are normally distributed
-2. Data have short tails
-3. Data have fat tails
-4. Data are skewed right
+            <h3 id="Skewness-and-Kurtosis"><a href="#Skewness-and-Kurtosis" class="headerlink" title="Skewness and Kurtosis"></a>Skewness and Kurtosis</h3><p>A fundamental task in many statistical analyses is to characterize the location and variability of a data set. A further characterization of the data includes skewness and kurtosis.</p>
+<p>Skewness is a measure of symmetry, or more precisely, the lack of symmetry. A distribution, or data set, is symmetric if it looks the same to the left and right of the center point.</p>
+<p>Kurtosis is a measure of whether the data are heavy-tailed or light-tailed relative to a normal distribution. That is, data sets with high kurtosis tend to have heavy tails, or outliers. Data sets with low kurtosis tend to have light tails, or lack of outliers. A uniform distribution would be the extreme case.</p>
+<p>The histogram is an effective graphical technique for showing both the skewness and kurtosis of data set.</p>
+<h3 id="Definition-of-Skewness"><a href="#Definition-of-Skewness" class="headerlink" title="Definition of Skewness"></a>Definition of Skewness</h3><p>For univariate data Y1, Y2, …, YN, the formula for skewness is:</p>
+<p><img src="assets/EDA/eda35b_1.png" alt=""></p>
+<p>This is an adjustment for sample size. The adjustment approaches 1 as N gets large. For reference, the adjustment factor is 1.49 for N = 5, 1.19 for N = 10, 1.08 for N = 20, 1.05 for N = 30, and 1.02 for N = 100.</p>
+<p>The skewness for a normal distribution is zero, and any symmetric data should have a skewness near zero. Negative values for the skewness indicate data that are skewed left and positive values for the skewness indicate data that are skewed right. By skewed left, we mean that the left tail is long relative to the right tail. Similarly, skewed right means that the right tail is long relative to the left tail. If the data are multi-modal, then this may affect the sign of the skewness.</p>
+<p>Some measurements have a lower bound and are skewed right. For example, in reliability studies, failure times cannot be negative.</p>
+<p>It should be noted that there are alternative definitions of skewness in the literature. For example, the Galton skewness (also known as Bowley’s skewness) is defined as<br><img src="assets/EDA/eda35b_2.png" alt=""></p>
+<h3 id="Definition-of-Kurtosis"><a href="#Definition-of-Kurtosis" class="headerlink" title="Definition of Kurtosis"></a>Definition of Kurtosis</h3><p><img src="assets/EDA/eda35b_3.png" alt=""></p>
+<h3 id="Alternative-Definition-of-Kurtosis"><a href="#Alternative-Definition-of-Kurtosis" class="headerlink" title="Alternative Definition of Kurtosis"></a>Alternative Definition of Kurtosis</h3><p><img src="assets/EDA/eda35b_4.png" alt=""></p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p><img src="assets/EDA/skewness.png" alt=""></p>
+<p>The following example shows histograms for 10,000 random numbers generated from a normal, a double exponential, a Cauchy, and a Weibull distribution.</p>
+<h3 id="Normal-Distribution"><a href="#Normal-Distribution" class="headerlink" title="Normal Distribution"></a>Normal Distribution</h3><p>The first histogram is a sample from a normal distribution. The normal distribution is a symmetric distribution with well-behaved tails. This is indicated by the skewness of 0.03. The kurtosis of 2.96 is near the expected value of 3. The histogram verifies the symmetry.</p>
+<h3 id="Double-Exponential-Distribution"><a href="#Double-Exponential-Distribution" class="headerlink" title="Double Exponential Distribution"></a>Double Exponential Distribution</h3><p>The second histogram is a sample from a double exponential distribution. The double exponential is a symmetric distribution. Compared to the normal, it has a stronger peak, more rapid decay, and heavier tails. That is, we would expect a skewness near zero and a kurtosis higher than 3. The skewness is 0.06 and the kurtosis is 5.9.</p>
+<h3 id="Cauchy-Distribution"><a href="#Cauchy-Distribution" class="headerlink" title="Cauchy Distribution"></a>Cauchy Distribution</h3><p>The third histogram is a sample from a Cauchy distribution.</p>
+<p>For better visual comparison with the other data sets, we restricted the histogram of the Cauchy distribution to values between -10 and 10. The full data set for the Cauchy data in fact has a minimum of approximately -29,000 and a maximum of approximately 89,000.</p>
+<p>The Cauchy distribution is a symmetric distribution with heavy tails and a single peak at the center of the distribution. Since it is symmetric, we would expect a skewness near zero. Due to the heavier tails, we might expect the kurtosis to be larger than for a normal distribution. In fact the skewness is 69.99 and the kurtosis is 6,693. These extremely high values can be explained by the heavy tails. Just as the mean and standard deviation can be distorted by extreme values in the tails, so too can the skewness and kurtosis measures.</p>
+<h3 id="Weibull-Distribution"><a href="#Weibull-Distribution" class="headerlink" title="Weibull Distribution"></a>Weibull Distribution</h3><p>The fourth histogram is a sample from a Weibull distribution with shape parameter 1.5. The Weibull distribution is a skewed distribution with the amount of skewness depending on the value of the shape parameter. The degree of decay as we move away from the center also depends on the value of the shape parameter. For this data set, the skewness is 1.08 and the kurtosis is 4.46, which indicates moderate skewness and kurtosis.</p>
+<h3 id="Dealing-with-Skewness-and-Kurtosis"><a href="#Dealing-with-Skewness-and-Kurtosis" class="headerlink" title="Dealing with Skewness and Kurtosis"></a>Dealing with Skewness and Kurtosis</h3><p>Many classical statistical tests and intervals depend on normality assumptions. Significant skewness and kurtosis clearly indicate that data are not normal. If a data set exhibits significant skewness or kurtosis (as indicated by a histogram or the numerical measures), what can we do about it?</p>
+<p>One approach is to apply some type of transformation to try to make the data normal, or more nearly normal. The Box-Cox transformation is a useful technique for trying to normalize a data set. In particular, taking the log or square root of a data set is often useful for data that exhibit moderate right skewness.</p>
+<p>Another approach is to use techniques based on distributions other than the normal. For example, in reliability studies, the exponential, Weibull, and lognormal distributions are typically used as a basis for modeling rather than using the normal distribution. The probability plot correlation coefficient plot and the probability plot are useful tools for determining a good distributional model for the data.</p>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/" itemprop="url">EDA_1.3.5.10. Levene Test for Equality of Variances</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:00:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.10. Levene Test for Equality of Variances/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.10. Levene Test for Equality of Variances">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.10. Levene Test for Equality of Variances
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Test-for-Homogeneity-of-Variances"><a href="#Purpose-Test-for-Homogeneity-of-Variances" class="headerlink" title="Purpose: Test for Homogeneity of Variances"></a>Purpose: Test for Homogeneity of Variances</h3><p>Levene’s test ( Levene 1960) is used to test if ksamples have equal variances. Equal variances across samples is called homogeneity of variance. Some statistical tests, for example the analysis of variance, assume that variances are equal across groups or samples. The Levene test can be used to verify that assumption.</p>
+<p>Levene’s test is an alternative to the Bartlett test. The Levene test is less sensitive than the Bartlett test to departures from normality. If you have strong evidence that your data do in fact come from a normal, or nearly normal, distribution, then Bartlett’s test has better performance.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Levene test is defined as:</p>
+<p><img src="assets/EDA/eda35a_1.png" alt=""></p>
+<p>The three choices for defining Zijdetermine the robustness and power of Levene’s test. By robustness, we mean the ability of the test to not falsely detect unequal variances when the underlying data are not normally distributed and the variables are in fact equal. By power, we mean the ability of the test to detect unequal variances when the variances are in fact unequal.</p>
+<p>Levene’s original paper only proposed using the mean. Brown and Forsythe (1974)) extended Levene’s test to use either the median or the trimmed mean in addition to the mean. They performed Monte Carlo studies that indicated that using the trimmed mean performed best when the underlying data followed a Cauchy distribution (i.e., heavy-tailed) and the median performed best when the underlying data followed a χ24 (i.e., skewed) distribution. Using the mean provided the best power for symmetric, moderate-tailed, distributions.</p>
+<p>Although the optimal choice depends on the underlying distribution, the definition based on the median is recommended as the choice that provides good robustness against many types of non-normal data while retaining good power. If you have knowledge of the underlying distribution of the data, this may indicate using one of the other choices.</p>
+<p>Significance Level:      α</p>
+<p><img src="assets/EDA/eda35a_2.png" alt=""></p>
+<h3 id="Levene’s-Test-Example"><a href="#Levene’s-Test-Example" class="headerlink" title="Levene’s Test Example"></a>Levene’s Test Example</h3><p>Levene’s test, based on the median, was performed for the GEAR.DAT data set. The data set includes ten measurements of gear diameter for each of ten batches for a total of 100 measurements.</p>
+<pre><code>H0:  σ12 = ... = σ102
+Ha:  σ12 ≠ ... ≠ σ102
+Test statistic:  W = 1.705910
+Degrees of freedom:  k-1 = 10-1 = 9
+                     N-k = 100-10 = 90
+Significance level:  α = 0.05
+Critical value (upper tail):  Fα,k-1,N-k = 1.9855
+Critical region: Reject H0 if F &gt; 1.9855
+</code></pre><p>We are testing the hypothesis that the group variances are equal. We fail to reject the null hypothesis at the 0.05 significance level since the value of the Levene test statistic is less than the critical value. We conclude that there is insufficient evidence to claim that the variances are not equal.</p>
+<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Levene’s test can be used to answer the following question:</p>
+<pre><code>• Is the assumption of equal variances valid?
 </code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Histogram</li>
-<li>Probability plots for other distributions (e.g., Weibull)</li>
-<li>Probability plot correlation coefficient plot (PPCC plot) Anderson-Darling Goodness-of-Fit Test</li>
-<li>Chi-Square Goodness-of-Fit Test</li>
-<li>Kolmogorov-Smirnov Goodness-of-Fit Test</li>
+<li>Standard Deviation Plot</li>
+<li>Box Plot</li>
+<li>Bartlett Test</li>
+<li>Chi-Square Test</li>
+<li>Analysis of Variance</li>
 </ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35a.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35a.htm</a></p>
 
           
         
@@ -717,7 +881,7 @@ Ui = 0.5(1/n)    for i = n
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.20. Mean Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -736,7 +900,7 @@ Ui = 0.5(1/n)    for i = n
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.20. Mean Plot/" itemprop="url">EDA_1.3.3.20. Mean Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/" itemprop="url">EDA_1.3.5.9. F-Test for Equality of Two Variances</a></h2>
         
 
         <div class="post-meta">
@@ -748,7 +912,7 @@ Ui = 0.5(1/n)    for i = n
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T14:26:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:00:12+08:00">
                 2018-03-12
               </time>
             
@@ -789,8 +953,8 @@ Ui = 0.5(1/n)    for i = n
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.20. Mean Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.20. Mean Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -798,7 +962,7 @@ Ui = 0.5(1/n)    for i = n
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.20. Mean Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.20. Mean Plot">
+             <span id="/2018/03/12/EDA_1.3.5.9. F-Test for Equality of Two Variances/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.9. F-Test for Equality of Two Variances">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -816,7 +980,7 @@ Ui = 0.5(1/n)    for i = n
 
           
               <div class="post-description">
-                  EDA_1.3.3.20. Mean Plot
+                  EDA_1.3.5.9. F-Test for Equality of Two Variances
               </div>
           
 
@@ -835,27 +999,412 @@ Ui = 0.5(1/n)    for i = n
       
         
           
-            <h3 id="Purpose-Detect-changes-in-location-between-groups"><a href="#Purpose-Detect-changes-in-location-between-groups" class="headerlink" title="Purpose: Detect changes in location between groups"></a>Purpose: Detect changes in location between groups</h3><p>Mean plots are used to see if the mean varies between different groups of the data. The grouping is determined by the analyst. In most cases, the data set contains a specific grouping variable. For example, the groups may be the levels of a factor variable. In the sample plot below, the months of the year provide the grouping.</p>
-<p>Mean plots can be used with ungrouped data to determine if the mean is changing over time. In this case, the data are split into an arbitrary number of equal-sized groups. For example, a data series with 400 points can be divided into 10 groups of 40 points each. A mean plot can then be generated with these groups to see if the mean is increasing or decreasing over time.</p>
-<p>Although the mean is the most commonly used measure of location, the same concept applies to other measures of location. For example, instead of plotting the mean of each group, the median or the trimmed mean might be plotted instead. This might be done if there were significant outliers in the data and a more robust measure of location than the mean was desired.</p>
-<p>Mean plots are typically used in conjunction with standard deviation plots. The mean plot checks for shifts in location while the standard deviation plot checks for shifts in scale.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/meanplot.gif" alt=""></p>
-<p>This sample mean plot shows a shift of location after the 6th month.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Means Versus Group ID</p>
-<p>Mean plots are formed by:</p>
-<pre><code>• Vertical axis: Group mean
-• Horizontal axis: Group identifier
-</code></pre><p>A reference line is plotted at the overall mean.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The mean plot can be used to answer the following questions.</p>
-<pre><code>1. Are there any shifts in location?
-2. What is the magnitude of the shifts in location?
-3. Is there a distinct pattern in the shifts in location?
-</code></pre><h3 id="Importance-Checking-Assumptions"><a href="#Importance-Checking-Assumptions" class="headerlink" title="Importance: Checking Assumptions"></a>Importance: Checking Assumptions</h3><p>A common assumption in 1-factor analyses is that of constant location. That is, the location is the same for different levels of the factor variable. The mean plot provides a graphical check for that assumption. A common assumption for univariate data is that the location is constant. By grouping the data into equal intervals, the mean plot can provide a graphical test of this assumption.</p>
+            <h3 id="Purpose-Test-if-variances-from-two-populations-are-equal"><a href="#Purpose-Test-if-variances-from-two-populations-are-equal" class="headerlink" title="Purpose: Test if variances from two populations are equal"></a>Purpose: Test if variances from two populations are equal</h3><p>An F-test (Snedecor and Cochran, 1983) is used to test if the variances of two populations are equal. This test can be a two-tailed test or a one-tailed test. The two-tailed version tests against the alternative that the variances are not equal. The one-tailed version only tests in one direction, that is the variance from the first population is either greater than or less than (but not both) the second population variance. The choice is determined by the problem. For example, if we are testing a new process, we may only be interested in knowing if the new process is less variable than the old process.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The F hypothesis test is defined as:</p>
+<p><img src="assets/EDA/eda359_1.png" alt=""></p>
+<h3 id="F-Test-Example"><a href="#F-Test-Example" class="headerlink" title="F Test Example"></a>F Test Example</h3><p>The following F-test was generated for theAUTO83B.DAT data set. The data set contains 480 ceramic strength measurements for two batches of material. The summary statistics for each batch are shown below.</p>
+<pre><code>BATCH 1:
+   NUMBER OF OBSERVATIONS      =      240
+   MEAN                        =    688.9987
+   STANDARD DEVIATION          =    65.54909
+
+BATCH 2:
+   NUMBER OF OBSERVATIONS      =      240
+   MEAN                        =    611.1559
+   STANDARD DEVIATION          =    61.85425
+We are testing the null hypothesis that the variances for the two batches are equal.
+H0:  σ12 = σ22
+Ha:  σ12 ≠ σ22
+Test statistic:  F = 1.123037
+Numerator degrees of freedom:  N1 - 1 = 239
+Denominator degrees of freedom:  N2 - 1 = 239
+Significance level:  α = 0.05
+Critical values:  F(1-α/2,N1-1,N2-1) = 0.7756
+                  F(α/2,N1-1,N2-1) = 1.2894
+Rejection region:  Reject H0 if F &lt; 0.7756 or F &gt; 1.2894
+The F test indicates that there is not enough evidence to reject the null hypothesis that the two batch variancess are equal at the 0.05 significance level.
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The F-test can be used to answer the following questions:</p>
+<pre><code>1. Do two samples come from populations with equal variancess?
+2. Does a new process, treatment, or test reduce the variability of the current process?
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Quantile-Quantile Plot</li>
+<li>Bihistogram</li>
+<li>Chi-Square Test</li>
+<li>Bartlett’s Test</li>
+<li>Levene Test</li>
+</ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda359.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda359.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/" itemprop="url">EDA_1.3.5.8. Chi-Square Test for the Variance</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:00:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.8. Chi-Square Test for the Variance/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.8. Chi-Square Test for the Variance">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.8. Chi-Square Test for the Variance
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Test-if-the-variance-is-equal-to-a-specified-value"><a href="#Purpose-Test-if-the-variance-is-equal-to-a-specified-value" class="headerlink" title="Purpose: Test if the variance is equal to a specified value"></a>Purpose: Test if the variance is equal to a specified value</h3><p>A chi-square test ( Snedecor and Cochran, 1983) can be used to test if the variance of a population is equal to a specified value. This test can be either a two-sided test or a one-sided test. The two-sided version tests against the alternative that the true variance is either less than or greater than the specified value. The one-sided version only tests in one direction. The choice of a two-sided or one-sided test is determined by the problem. For example, if we are testing a new process, we may only be concerned if its variability is greater than the variability of the current process.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The chi-square hypothesis test is defined as:</p>
+<p><img src="assets/EDA/eda358_1.png" alt=""></p>
+<h3 id="Chi-Square-Test-Example"><a href="#Chi-Square-Test-Example" class="headerlink" title="Chi-Square Test Example"></a>Chi-Square Test Example</h3><p>A chi-square test was performed for the GEAR.DAT data set. The observed variance for the 100 measurements of gear diameter is 0.00003969 (the standard deviation is 0.0063). We will test the null hypothesis that the true variance is equal to 0.01.</p>
+<p><img src="assets/EDA/eda358_2.png" alt=""></p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The chi-square test can be used to answer the following questions:</p>
+<pre><code>Is the variance equal to some pre-determined threshold value?
+Is the variance greater than some pre-determined threshold value?
+Is the variance less than some pre-determined threshold value?
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>F Test</li>
+<li>Bartlett Test</li>
+<li>Levene Test</li>
+</ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda358.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda358.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.7. Bartlett's Test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" itemprop="url">EDA_1.3.5.7. Bartlett's Test</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:59:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.7. Bartlett's Test">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.7. Bartlett's Test
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Test-for-Homogeneity-of-Variances"><a href="#Purpose-Test-for-Homogeneity-of-Variances" class="headerlink" title="Purpose: Test for Homogeneity of Variances"></a>Purpose: Test for Homogeneity of Variances</h3><p>Bartlett’s test (Snedecor and Cochran, 1983) is used to test if k samples have equal variances. Equal variances across samples is called homogeneity of variances. Some statistical tests, for example the analysis of variance, assume that variances are equal across groups or samples. The Bartlett test can be used to verify that assumption.</p>
+<p>Bartlett’s test is sensitive to departures from normality. That is, if your samples come from non-normal distributions, then Bartlett’s test may simply be testing for non-normality. The Levene test is an alternative to the Bartlett test that is less sensitive to departures from normality.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Bartlett test is defined as:</p>
+<p><img src="assets/EDA/eda357_1.png" alt=""></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Bartlett’s test was performed for the GEAR.DATdata set. The data set contains 10 measurements of gear diameter for ten different batches for a total of 100 measurements.</p>
+<pre><code>H0:  σ12 = σ22 = ... = σ102
+Ha:  At least one σi2 is not equal to the others.
+Test statistic:  T = 20.78580
+Degrees of freedom:  k - 1 = 9
+Significance level:  α = 0.05
+Critical value:  Χ21-α,k-1 = 16.919
+Critical region: Reject H0 if T &gt; 16.919
+</code></pre><p>We are testing the null hypothesis that the batch variances are all equal. Because the test statistic is larger than the critical value, we reject the null hypotheses at the 0.05 significance level and conclude that at least one batch variance is different from the others.</p>
+<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Bartlett’s test can be used to answer the following question:</p>
+<pre><code>• Is the assumption of equal variances valid?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Bartlett’s test is useful whenever the assumption of equal variances is made. In particular, this assumption is made for the frequently used one-way analysis of variance. In this case, Bartlett’s or Levene’s test should be applied to verify the assumption.</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
 <li>Standard Deviation Plot</li>
-<li>DOE Mean Plot</li>
 <li>Box Plot</li>
+<li>Levene Test</li>
+<li>Chi-Square Test</li>
+<li>Analysis of Variance</li>
 </ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda357.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda357.htm</a></p>
 
           
         
@@ -904,7 +1453,7 @@ Ui = 0.5(1/n)    for i = n
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.19. Linear Residual Standard Deviation Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.6. Measures of Scale/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -923,7 +1472,7 @@ Ui = 0.5(1/n)    for i = n
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.19. Linear Residual Standard Deviation Plot/" itemprop="url">EDA_1.3.3.19. Linear Residual Standard Deviation Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.6. Measures of Scale/" itemprop="url">EDA_1.3.5.6. Measures of Scale</a></h2>
         
 
         <div class="post-meta">
@@ -935,7 +1484,7 @@ Ui = 0.5(1/n)    for i = n
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T13:26:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:59:12+08:00">
                 2018-03-12
               </time>
             
@@ -976,8 +1525,8 @@ Ui = 0.5(1/n)    for i = n
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.19. Linear Residual Standard Deviation Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.19. Linear Residual Standard Deviation Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.6. Measures of Scale/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.6. Measures of Scale/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -985,7 +1534,7 @@ Ui = 0.5(1/n)    for i = n
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.19. Linear Residual Standard Deviation Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.19. Linear Residual Standard Deviation Plot">
+             <span id="/2018/03/12/EDA_1.3.5.6. Measures of Scale/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.6. Measures of Scale">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1003,7 +1552,7 @@ Ui = 0.5(1/n)    for i = n
 
           
               <div class="post-description">
-                  EDA_1.3.3.19. Linear Residual Standard Deviation Plot
+                  EDA_1.3.5.6. Measures of Scale
               </div>
           
 
@@ -1022,27 +1571,46 @@ Ui = 0.5(1/n)    for i = n
       
         
           
-            <h3 id="Purpose-Detect-Changes-in-Linear-Residual-Standard-Deviation-Between-Groups"><a href="#Purpose-Detect-Changes-in-Linear-Residual-Standard-Deviation-Between-Groups" class="headerlink" title="Purpose: Detect Changes in Linear Residual Standard Deviation Between Groups"></a>Purpose: Detect Changes in Linear Residual Standard Deviation Between Groups</h3><p>Linear residual standard deviation (RESSD) plots are used to graphically assess whether or not linear fits are consistent across groups. That is, if your data have groups, you may want to know if a single fit can be used across all the groups or whether separate fits are required for each group.</p>
-<p>The residual standard deviation is a goodness-of-fit measure. That is, the smaller the residual standard deviation, the closer is the fit to the data.</p>
-<p>Linear RESSD plots are typically used in conjunction with linear intercept and linear slope plots. The linear intercept and slope plots convey whether or not the fits are consistent across groups while the linear RESSD plot conveys whether the adequacy of the fit is consistent across groups.</p>
-<p>In some cases you might not have groups. Instead, you have different data sets and you want to know if the same fit can be adequately applied to each of the data sets. In this case, simply think of each distinct data set as a group and apply the linear RESSD plot as for groups.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/linressd.gif" alt=""></p>
-<p>This linear RESSD plot shows that the residual standard deviations from a linear fit are about 0.0025 for all the groups.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Residual Standard Deviation Versus Group ID</p>
-<p>Linear RESSD plots are formed by:</p>
-<pre><code>• Vertical axis: Group residual standard deviations from linear fits
-• Horizontal axis: Group identifier
-</code></pre><p>A reference line is plotted at the residual standard deviation from a linear fit using all the data. This reference line will typically be much greater than any of the individual residual standard deviations.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The linear RESSD plot can be used to answer the following questions.</p>
-<pre><code>1. Is the residual standard deviation from a linear fit constant across groups?
-2. If the residual standard deviations vary, is there a discernible pattern across the groups?
-</code></pre><h3 id="Importance-Checking-Group-Homogeneity"><a href="#Importance-Checking-Group-Homogeneity" class="headerlink" title="Importance: Checking Group Homogeneity"></a>Importance: Checking Group Homogeneity</h3><p>For grouped data, it may be important to know whether the different groups are homogeneous (i.e., similar) or heterogeneous (i.e., different). Linear RESSD plots help answer this question in the context of linear fitting.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Linear Intercept Plot</li>
-<li>Linear Slope Plot</li>
-<li>Linear Correlation Plot</li>
-<li>Linear Fitting</li>
-</ul>
+            <h3 id="Scale-Variability-or-Spread"><a href="#Scale-Variability-or-Spread" class="headerlink" title="Scale, Variability, or Spread"></a>Scale, Variability, or Spread</h3><p>A fundamental task in many statistical analyses is to characterize the spread, or variability, of a data set. Measures of scale are simply attempts to estimate this variability.<br>When assessing the variability of a data set, there are two key components:</p>
+<pre><code>1. How spread out are the data values near the center?
+2. How spread out are the tails?
+</code></pre><p>Different numerical summaries will give different weight to these two elements. The choice of scale estimator is often driven by which of these components you want to emphasize.</p>
+<p>The histogram is an effective graphical technique for showing both of these components of the spread.</p>
+<h3 id="Definitions-of-Variability"><a href="#Definitions-of-Variability" class="headerlink" title="Definitions of Variability"></a>Definitions of Variability</h3><p>For univariate data, there are several common numerical measures of the spread:</p>
+<pre><code>1. variance - the variance is defined as
+s2=∑Ni=1(Yi−Y¯)2/(N−1)
+where Y¯ is the mean of the data.
+The variance is roughly the arithmetic average of the squared distance from the mean. Squaring the distance from the mean has the effect of giving greater weight to values that are further from the mean. For example, a point 2 units from the mean adds 4 to the above sum while a point 10 units from the mean adds 100 to the sum. Although the variance is intended to be an overall measure of spread, it can be greatly affected by the tail behavior.
+2. standard deviation - the standard deviation is the square root of the variance. That is,
+s=∑Ni=1(Yi−Y¯)2/(N−1)−−−−−−−−−−−−−−−−−−−√
+The standard deviation restores the units of the spread to the original data units (the variance squares the units).
+3. range - the range is the largest value minus the smallest value in a data set. Note that this measure is based only on the lowest and highest extreme values in the sample. The spread near the center of the data is not captured at all.
+4. average absolute deviation - the average absolute deviation (AAD) is defined as
+AAD=∑Ni=1(|Yi−Y¯|)/N
+where Y¯ is the mean of the data and |Y|is the absolute value of Y. This measure does not square the distance from the mean, so it is less affected by extreme observations than are the variance and standard deviation.
+5. median absolute deviation - the median absolute deviation (MAD) is defined as
+MAD=median(|Yi−Y~|)
+where Y~ is the median of the data and |Y|is the absolute value of Y. This is a variation of the average absolute deviation that is even less affected by extremes in the tail because the data in the tails have less influence on the calculation of the median than they do on the mean.
+6. interquartile range - this is the value of the 75th percentile minus the value of the 25th percentile. This measure of scale attempts to measure the variability of points near the center.
+</code></pre><p>In summary, the variance, standard deviation, average absolute deviation, and median absolute deviation measure both aspects of the variability; that is, the variability near the center and the variability in the tails. They differ in that the average absolute deviation and median absolute deviation do not give undue weight to the tail behavior. On the other hand, the range only uses the two most extreme points and the interquartile range only uses the middle portion of the data.</p>
+<h3 id="Why-Different-Measures"><a href="#Why-Different-Measures" class="headerlink" title="Why Different Measures?"></a>Why Different Measures?</h3><p>The following example helps to clarify why these alternative defintions of spread are useful and necessary.<br>This plot shows histograms for 10,000 random numbers generated from a normal, a double exponential, a Cauchy, and a Tukey-Lambda distribution.</p>
+<h3 id="Normal-Distribution"><a href="#Normal-Distribution" class="headerlink" title="Normal Distribution"></a>Normal Distribution</h3><p>The first histogram is a sample from a normal distribution. The standard deviation is 0.997, the median absolute deviation is 0.681, and the range is 7.87.</p>
+<p>The normal distribution is a symmetric distribution with well-behaved tails and a single peak at the center of the distribution. By symmetric, we mean that the distribution can be folded about an axis so that the two sides coincide. That is, it behaves the same to the left and right of some center point. In this case, the median absolute deviation is a bit less than the standard deviation due to the downweighting of the tails. The range of a little less than 8 indicates the extreme values fall within about 4 standard deviations of the mean. If a histogram or normal probability plot indicates that your data are approximated well by a normal distribution, then it is reasonable to use the standard deviation as the spread estimator.</p>
+<h3 id="Double-Exponential-Distribution"><a href="#Double-Exponential-Distribution" class="headerlink" title="Double Exponential Distribution"></a>Double Exponential Distribution</h3><p>The second histogram is a sample from a double exponential distribution. The standard deviation is 1.417, the median absolute deviation is 0.706, and the range is 17.556.</p>
+<p>Comparing the double exponential and the normal histograms shows that the double exponential has a stronger peak at the center, decays more rapidly near the center, and has much longer tails. Due to the longer tails, the standard deviation tends to be inflated compared to the normal. On the other hand, the median absolute deviation is only slightly larger than it is for the normal data. The longer tails are clearly reflected in the value of the range, which shows that the extremes fall about 6 standard deviations from the mean compared to about 4 for the normal data.</p>
+<h3 id="Cauchy-Distribution"><a href="#Cauchy-Distribution" class="headerlink" title="Cauchy Distribution"></a>Cauchy Distribution</h3><p>The third histogram is a sample from a Cauchy distribution. The standard deviation is 998.389, the median absolute deviation is 1.16, and the range is 118,953.6.</p>
+<p>The Cauchy distribution is a symmetric distribution with heavy tails and a single peak at the center of the distribution. The Cauchy distribution has the interesting property that collecting more data does not provide a more accurate estimate for the mean or standard deviation. That is, the sampling distribution of the means and standard deviation are equivalent to the sampling distribution of the original data. That means that for the Cauchy distribution the standard deviation is useless as a measure of the spread. From the histogram, it is clear that just about all the data are between about -5 and 5. However, a few very extreme values cause both the standard deviation and range to be extremely large. However, the median absolute deviation is only slightly larger than it is for the normal distribution. In this case, the median absolute deviation is clearly the better measure of spread.</p>
+<p>Although the Cauchy distribution is an extreme case, it does illustrate the importance of heavy tails in measuring the spread. Extreme values in the tails can distort the standard deviation. However, these extreme values do not distort the median absolute deviation since the median absolute deviation is based on ranks. In general, for data with extreme values in the tails, the median absolute deviation or interquartile range can provide a more stable estimate of spread than the standard deviation.</p>
+<h3 id="Tukey-Lambda-Distribution"><a href="#Tukey-Lambda-Distribution" class="headerlink" title="Tukey-Lambda Distribution"></a>Tukey-Lambda Distribution</h3><p>The fourth histogram is a sample from a Tukey lambda distribution with shape parameter λ = 1.2. The standard deviation is 0.49, the median absolute deviation is 0.427, and the range is 1.666.</p>
+<p>The Tukey lambda distribution has a range limited to (-1/λ,1/λ). That is, it has truncated tails. In this case the standard deviation and median absolute deviation have closer values than for the other three examples which have significant tails.</p>
+<h3 id="Robustness"><a href="#Robustness" class="headerlink" title="Robustness"></a>Robustness</h3><p>Tukey and Mosteller defined two types of robustness where robustness is a lack of susceptibility to the effects of nonnormality.</p>
+<pre><code>1. Robustness of validity means that the confidence intervals for a measure of the population spread (e.g., the standard deviation) have a 95 % chance of covering the true value (i.e., the population value) of that measure of spread regardless of the underlying distribution.
+2. Robustness of efficiency refers to high effectiveness in the face of non-normal tails. That is, confidence intervals for the measure of spread tend to be almost as narrow as the best that could be done if we knew the true shape of the distribution.
+</code></pre><p>The standard deviation is an example of an estimator that is the best we can do if the underlying distribution is normal. However, it lacks robustness of validity. That is, confidence intervals based on the standard deviation tend to lack precision if the underlying distribution is in fact not normal.</p>
+<p>The median absolute deviation and the interquartile range are estimates of scale that have robustness of validity. However, they are not particularly strong for robustness of efficiency.<br>If histograms and probability plots indicate that your data are in fact reasonably approximated by a normal distribution, then it makes sense to use the standard deviation as the estimate of scale. However, if your data are not normal, and in particular if there are long tails, then using an alternative measure such as the median absolute deviation, average absolute deviation, or interquartile range makes sense. The range is used in some applications, such as quality control, for its simplicity. In addition, comparing the range to the standard deviation gives an indication of the spread of the data in the tails.</p>
+<p>Since the range is determined by the two most extreme points in the data set, we should be cautious about its use for large values of N.</p>
+<p>Tukey and Mosteller give a scale estimator that has both robustness of validity and robustness of efficiency. However, it is more complicated and we do not give the formula here.</p>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm</a></p>
 
           
         
@@ -1091,7 +1659,7 @@ Ui = 0.5(1/n)    for i = n
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1110,7 +1678,7 @@ Ui = 0.5(1/n)    for i = n
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/" itemprop="url">EDA_1.3.3.18. Linear Slope Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" itemprop="url">EDA_1.3.5.5. Multi-factor Analysis of Variance</a></h2>
         
 
         <div class="post-meta">
@@ -1122,7 +1690,7 @@ Ui = 0.5(1/n)    for i = n
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T13:26:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:58:12+08:00">
                 2018-03-12
               </time>
             
@@ -1163,8 +1731,8 @@ Ui = 0.5(1/n)    for i = n
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1172,7 +1740,7 @@ Ui = 0.5(1/n)    for i = n
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.18. Linear Slope Plot">
+             <span id="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.5. Multi-factor Analysis of Variance">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1190,7 +1758,7 @@ Ui = 0.5(1/n)    for i = n
 
           
               <div class="post-description">
-                  EDA_1.3.3.18. Linear Slope Plot
+                  EDA_1.3.5.5. Multi-factor Analysis of Variance
               </div>
           
 
@@ -1209,583 +1777,67 @@ Ui = 0.5(1/n)    for i = n
       
         
           
-            <h3 id="Purpose-Detect-changes-in-linear-slopes-between-groups"><a href="#Purpose-Detect-changes-in-linear-slopes-between-groups" class="headerlink" title="Purpose: Detect changes in linear slopes between groups"></a>Purpose: Detect changes in linear slopes between groups</h3><p>Linear slope plots are used to graphically assess whether or not linear fits are consistent across groups. That is, if your data have groups, you may want to know if a single fit can be used across all the groups or whether separate fits are required for each group.</p>
-<p>Linear slope plots are typically used in conjunction with linear intercept and linear residual standard deviation plots.</p>
-<p>In some cases you might not have groups. Instead, you have different data sets and you want to know if the same fit can be adequately applied to each of the data sets. In this case, simply think of each distinct data set as a group and apply the linear slope plot as for groups.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/linslopl.gif" alt=""></p>
-<p>This linear slope plot shows that the slopes are about 0.174 (plus or minus 0.002) for all groups. There does not appear to be a pattern in the variation of the slopes. This implies that a single fit may be adequate.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Slopes Versus Group ID</p>
-<p>Linear slope plots are formed by:</p>
-<pre><code>• Vertical axis: Group slopes from linear fits
-• Horizontal axis: Group identifier
-</code></pre><p>A reference line is plotted at the slope from a linear fit using all the data.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The linear slope plot can be used to answer the following questions.</p>
-<pre><code>1. Do you get the same slope across groups for linear fits?
-2. If the slopes differ, is there a discernible pattern in the slopes?
-</code></pre><h3 id="Importance-Checking-Group-Homogeneity"><a href="#Importance-Checking-Group-Homogeneity" class="headerlink" title="Importance: Checking Group Homogeneity"></a>Importance: Checking Group Homogeneity</h3><p>For grouped data, it may be important to know whether the different groups are homogeneous (i.e., similar) or heterogeneous (i.e., different). Linear slope plots help answer this question in the context of linear fitting.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Linear Intercept Plot</li>
-<li>Linear Correlation Plot</li>
-<li>Linear Residual Standard Deviation Plot </li>
-<li>Linear Fitting</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.17. Linear Intercept Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.17. Linear Intercept Plot/" itemprop="url">EDA_1.3.3.17. Linear Intercept Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T12:26:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.17. Linear Intercept Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.17. Linear Intercept Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.17. Linear Intercept Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.17. Linear Intercept Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.17. Linear Intercept Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Detect-changes-in-linear-intercepts-between-groups"><a href="#Purpose-Detect-changes-in-linear-intercepts-between-groups" class="headerlink" title="Purpose: Detect changes in linear intercepts between groups"></a>Purpose: Detect changes in linear intercepts between groups</h3><p>Linear intercept plots are used to graphically assess whether or not linear fits are consistent across groups. That is, if your data have groups, you may want to know if a single fit can be used across all the groups or whether separate fits are required for each group.</p>
-<p>Linear intercept plots are typically used in conjunction with linear slope and linear residual standard deviation plots.</p>
-<p>In some cases you might not have groups. Instead, you have different data sets and you want to know if the same fit can be adequately applied to each of the data sets. In this case, simply think of each distinct data set as a group and apply the linear intercept plot as for groups.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/linintpl.gif" alt=""></p>
-<p>This linear intercept plot shows that there is a shift in intercepts. Specifically, the first three intercepts are lower than the intercepts for the other groups. Note that these are small differences in the intercepts.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Intercepts Versus Group ID</p>
-<p>Linear intercept plots are formed by:</p>
-<pre><code>• Vertical axis: Group intercepts from linear fits
-• Horizontal axis: Group identifier
-</code></pre><p>A reference line is plotted at the intercept from a linear fit using all the data.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The linear intercept plot can be used to answer the following questions.</p>
-<pre><code>1. Is the intercept from linear fits relatively constant across groups?
-2. If the intercepts vary across groups, is there a discernible pattern?
-</code></pre><h3 id="Importance-Checking-Group-Homogeneity"><a href="#Importance-Checking-Group-Homogeneity" class="headerlink" title="Importance:Checking Group Homogeneity"></a>Importance:Checking Group Homogeneity</h3><p>For grouped data, it may be important to know whether the different groups are homogeneous (i.e., similar) or heterogeneous (i.e., different). Linear intercept plots help answer this question in the context of linear fitting.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Linear Correlation Plot</li>
-<li>Linear Slope Plot</li>
-<li>Linear Residual Standard Deviation Plot </li>
-<li>Linear Fitting</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.16. Linear Correlation Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.16. Linear Correlation Plot/" itemprop="url">EDA_1.3.3.16. Linear Correlation Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T11:26:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.16. Linear Correlation Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.16. Linear Correlation Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.16. Linear Correlation Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.16. Linear Correlation Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.16. Linear Correlation Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Detect-changes-in-correlation-between-groups"><a href="#Purpose-Detect-changes-in-correlation-between-groups" class="headerlink" title="Purpose:Detect changes in correlation between groups"></a>Purpose:Detect changes in correlation between groups</h3><p>Linear correlation plots are used to assess whether or not correlations are consistent across groups. That is, if your data is in groups, you may want to know if a single correlation can be used across all the groups or whether separate correlations are required for each group.</p>
-<p>Linear correlation plots are often used in conjunction with linear slope, linear intercept, and linear residual standard deviation plots. A linear correlation plot could be generated intially to see if linear fitting would be a fruitful direction. If the correlations are high, this implies it is worthwhile to continue with the linear slope, intercept, and residual standard deviation plots. If the correlations are weak, a different model needs to be pursued.</p>
-<p>In some cases, you might not have groups. Instead you may have different data sets and you want to know if the same correlation can be adequately applied to each of the data sets. In this case, simply think of each distinct data set as a group and apply the linear slope plot as for groups.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/lincorrp.gif" alt=""></p>
-<p>This linear correlation plot shows that the correlations are high for all groups. This implies that linear fits could provide a good model for each of these groups.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Correlations Versus Group ID</p>
-<p>Linear correlation plots are formed by:</p>
-<pre><code>• Vertical axis: Group correlations
-• Horizontal axis: Group identifier
-</code></pre><p>A reference line is plotted at the correlation between the full data sets.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The linear correlation plot can be used to answer the following questions.</p>
-<pre><code>1. Are there linear relationships across groups?
-2. Are the strength of the linear relationships relatively constant across the groups?
-</code></pre><h3 id="Importance-Checking-Group-Homogeneity"><a href="#Importance-Checking-Group-Homogeneity" class="headerlink" title="Importance:Checking Group Homogeneity"></a>Importance:Checking Group Homogeneity</h3><p>For grouped data, it may be important to know whether the different groups are homogeneous (i.e., similar) or heterogeneous (i.e., different). Linear correlation plots help answer this question in the context of linear fitting.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Linear Intercept Plot</li>
-<li>Linear Slope Plot</li>
-<li>Linear Residual Standard Deviation Plot </li>
-<li>Linear Fitting</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.15. Lag Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.15. Lag Plot/" itemprop="url">EDA_1.3.3.15. Lag Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T11:26:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.15. Lag Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.15. Lag Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.15. Lag Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.15. Lag Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.15. Lag Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Check-for-randomness"><a href="#Purpose-Check-for-randomness" class="headerlink" title="Purpose: Check for randomness"></a>Purpose: Check for randomness</h3><p>A lag plot checks whether a data set or time series is random or not. Random data should not exhibit any identifiable structure in the lag plot. Non-random structure in the lag plot indicates that the underlying data are not random. Several common patterns for lag plots are shown in the examples below.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/lagplot0.gif" alt=""></p>
-<p>This sample lag plot exhibits a linear pattern. This shows that the data are strongly non-random and further suggests that an autoregressive model might be appropriate.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>A lag is a fixed time displacement. For example, given a data set Y1, Y2 …, Yn, Y2 and Y7 have lag 5 since 7 - 2 = 5. Lag plots can be generated for any arbitrary lag, although the most commonly used lag is 1.<br>A plot of lag 1 is a plot of the values of Yiversus Yi-1<br>    • Vertical axis: Yi for all i<br>    • Horizontal axis: Yi-1 for all i</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Lag plots can provide answers to the following questions:</p>
-<pre><code>1. Are the data random?
-2. Is there serial correlation in the data?
-3. What is a suitable model for the data?
-4. Are there outliers in the data?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Inasmuch as randomness is an underlying assumption for most statistical estimation and testing techniques, the lag plot should be a routine tool for researchers.</p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>• Random (White Noise) 
-• Weak autocorrelation 
-• Strong autocorrelation and autoregressive model 
-• Sinusoidal model and outliers 
+            <h3 id="Purpose-Detect-significant-factors"><a href="#Purpose-Detect-significant-factors" class="headerlink" title="Purpose: Detect significant factors"></a>Purpose: Detect significant factors</h3><p>The analysis of variance (ANOVA) (Neter, Wasserman, and Kutner, 1990) is used to detect significant factors in a multi-factor model. In the multi-factor model, there is a response (dependent) variable and one or more factor (independent) variables. This is a common model in designed experiments where the experimenter sets the values for each of the factor variables and then measures the response variable.</p>
+<p>Each factor can take on a certain number of values. These are referred to as the levels of a factor. The number of levels can vary betweeen factors. For designed experiments, the number of levels for a given factor tends to be small. Each factor and level combination is a cell. Balanced designs are those in which the cells have an equal number of observations and unbalanced designs are those in which the number of observations varies among cells. It is customary to use balanced designs in designed experiments.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Product and Process Comparisons chapter (chapter 7) contains a more extensive discussion of two-factor ANOVA, including the details for the mathematical computations.</p>
+<p>The model for the analysis of variance can be stated in two mathematically equivalent ways. We explain the model for a two-way ANOVA (the concepts are the same for additional factors). In the following discussion, each combination of factors and levels is called a cell. In the following, the subscript i refers to the level of factor 1, j refers to the level of factor 2, and the subscript k refers to thekth observation within the (i,j)th cell. For example, Y235refers to the fifth observation in the second level of factor 1 and the third level of factor 2.</p>
+<p>The first model is</p>
+<pre><code>Yijk=μij+Eijk
+</code></pre><p>This model decomposes the response into a mean for each cell and an error term. The analysis of variance provides estimates for each cell mean. These cell means are the predicted values of the model and the differences between the response variable and the estimated cell means are the residuals. That is</p>
+<pre><code>Y^ijk=μ^ij
+Rijk=Yijk−μ^ij
+</code></pre><p>The second model is</p>
+<pre><code>Yijk=μ+αi+βj+Eijk
+</code></pre><p>This model decomposes the response into an overall (grand) mean, factor effects (α^i and β^j represent the effects of the i-th level of the first factor and the j-th level of the second factor, respectively), and an error term. The analysis of variance provides estimates of the grand mean and the factor effects. The predicted values and the residuals of the model are</p>
+<pre><code>Y^ijk=μ^+α^i+β^j
+Rijk=Yijk−μ^−α^i−β^j
+</code></pre><p>The distinction between these models is that the second model divides the cell mean into an overall mean and factor effects. This second model makes the factor effect more explicit, so we will emphasize this approach.</p>
+<h3 id="Model-Validation"><a href="#Model-Validation" class="headerlink" title="Model Validation"></a>Model Validation</h3><p>Note that the ANOVA model assumes that the error term,Eijk, should follow the assumptions for a univariate measurement process. That is, after performing an analysis of variance, the model should be validated by analyzing the residuals.</p>
+<h3 id="Multi-Factor-ANOVA-Example"><a href="#Multi-Factor-ANOVA-Example" class="headerlink" title="Multi-Factor ANOVA Example"></a>Multi-Factor ANOVA Example</h3><p>An analysis of variance was performed for the JAHANMI2.DATdata set. The data contains four, two-level factors: table speed, down feed rate, wheel grit size, and batch. There are 30 measurements of ceramic strength for each factor combination for a total of 480 measurements.</p>
+<pre><code>SOURCE              DF SUM OF SQUARES    MEAN SQUARE   F STATISTIC
+------------------------------------------------------------------
+TABLE SPEED          1   26672.726562   26672.726562        6.7080
+DOWN FEED RATE       1   11524.053711   11524.053711        2.8982
+WHEEL GRIT SIZE      1   14380.633789   14380.633789        3.6166
+BATCH                1  727143.125000  727143.125000      182.8703
+RESIDUAL           475 1888731.500000    3976.276855
+TOTAL (CORRECTED)  479 2668446.000000    5570.868652
+
+RESIDUAL STANDARD DEVIATION = 63.05772781
+
+FACTOR          LEVEL   N      MEAN     SD(MEAN)
+------------------------------------------------
+TABLE SPEED      -1    240  657.53168    2.87818
+                  1    240  642.62286    2.87818
+DOWN FEED RATE   -1    240  645.17755    2.87818
+                  1    240  654.97723    2.87818
+WHEEL GRIT SIZE  -1    240  655.55084    2.87818
+                  1    240  644.60376    2.87818
+BATCH             1    240  688.99890    2.87818
+                  2    240  611.15594    2.87818
+</code></pre><p>The ANOVA decomposes the variance into the following component sum of squares:</p>
+<pre><code>• Total sum of squares. The degrees of freedom for this entry is the number of observations minus one.
+• Sum of squares for each of the factors. The degrees of freedom for these entries are the number of levels for the factor minus one. The mean square is the sum of squares divided by the number of degrees of freedom.
+• Residual sum of squares. The degrees of freedom is the total degrees of freedom minus the sum of the factor degrees of freedom. The mean square is the sum of squares divided by the number of degrees of freedom.
+</code></pre><p>The analysis of variance summarizes how much of the variance in the data (total sum of squares) is accounted for by the factor effects (factor sum of squares) and how much is due to random error (residual sum of squares). Ideally, we would like most of the variance to be explained by the factor effects. The ANOVA table provides a formal Ftest for the factor effects. To test the overall batch effect in our example we use the following hypotheses.</p>
+<pre><code>H0: All individual batch means are equal. 
+Ha: At least one batch mean is not equal to the others.
+</code></pre><p>The F statistic is the mean square for the factor divided by the residual mean square. This statistic follows an Fdistribution with (k-1) and (N-k) degrees of freedom wherek is the number of levels for the given factor. Here, we see that the size of the “direction” effect dominates the size of the other effects. For our example, the critical Fvalue (upper tail) for α = 0.05, (k-1) = 1, and (N-k) = 475 is 3.86111. Thus, “table speed” and “batch” are significant at the 5 % level while “down feed rate” and “wheel grit size” are not significant at the 5 % level.<br>In addition to the quantitative ANOVA output, it is recommended that any analysis of variance be complemented with model validation. At a minimum, this should include</p>
+<pre><code>1. A run sequence plot of the residuals.
+2. A normal probability plot of the residuals.
+3. A scatter plot of the predicted values against the residuals.
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The analysis of variance can be used to answer the following questions:</p>
+<pre><code>1. Do any of the factors have a significant effect?
+2. Which is the most important factor?
+3. Can we account for most of the variability in the data?
 </code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Autocorrelation Plot</li>
-<li>Spectrum</li>
-<li>Runs Test</li>
+<li>One-factor analysis of variance</li>
+<li>Two-sample t-test</li>
+<li>Box plot</li>
+<li>Block plot</li>
+<li>DOE mean plot</li>
 </ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda355.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda355.htm</a></p>
 
           
         
@@ -1834,7 +1886,7 @@ Ui = 0.5(1/n)    for i = n
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/05/pip和pip3的共存问题/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1853,7 +1905,7 @@ Ui = 0.5(1/n)    for i = n
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/05/pip和pip3的共存问题/" itemprop="url">pip和pip3的共存问题</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/" itemprop="url">EDA_1.3.5.4. One-Factor ANOVA</a></h2>
         
 
         <div class="post-meta">
@@ -1865,192 +1917,8 @@ Ui = 0.5(1/n)    for i = n
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T14:53:12+08:00">
-                2018-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/05/pip和pip3的共存问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/05/pip和pip3的共存问题/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/05/pip和pip3的共存问题/" class="leancloud_visitors" data-flag-title="pip和pip3的共存问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  pip和pip3的共存问题
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在win电脑同时装了python2和python3，为了同时共存，将python3环境下的python.exe改为了python3.exe。<br>但是导致对应的pip3无法使用。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\maomaochong&gt; pip3</span><br><span class="line">Fatal error <span class="keyword">in</span> launcher: Unable <span class="built_in">to</span> <span class="built_in">create</span> <span class="built_in">process</span> <span class="keyword">using</span> <span class="string">'"'</span></span><br></pre></td></tr></table></figure>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><blockquote>
-<p>官方的解法是什么？<br>事实上这个问题几年以前Python社区就给出了官方解决方案，只不过国内一直没有注意到罢了。<br>我们在安装Python3（&gt;=3.3）时，Python的安装包实际上在系统中安装了一个启动器py.exe，默认放置在文件夹C:\Windows\下面。这个启动器允许我们指定使用Python2还是Python3来运行代码（当然前提是你已经成功安装了Python2和Python3）。</p>
-</blockquote>
-<p>使用pip当Python2和Python3同时存在于windows上时，它们对应的pip都叫pip.exe，所以不能够直接使用 pip install 命令来安装软件包。而是要使用启动器py.exe来指定pip的版本。命令如下：</p>
-<blockquote>
-<p>py -2 -m pip install XXXX-2</p>
-</blockquote>
-<p>还是表示使用 Python2，-m pip 表示运行 pip 模块，也就是运行pip命令了。</p>
-<p>如果是为Python3安装软件，那么命令类似的变成</p>
-<blockquote>
-<p>py -3 -m pip install XXXX</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/05/pip和pip3的共存问题/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/02/EDA_1.3.3.14. Histogram/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/EDA_1.3.3.14. Histogram/" itemprop="url">EDA_1.3.3.14. Histogram</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T19:26:12+08:00">
-                2018-03-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:58:12+08:00">
+                2018-03-12
               </time>
             
 
@@ -2090,8 +1958,8 @@ Ui = 0.5(1/n)    for i = n
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/02/EDA_1.3.3.14. Histogram/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/02/EDA_1.3.3.14. Histogram/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2099,7 +1967,7 @@ Ui = 0.5(1/n)    for i = n
 
           
           
-             <span id="/2018/03/02/EDA_1.3.3.14. Histogram/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.14. Histogram">
+             <span id="/2018/03/12/EDA_1.3.5.4. One-Factor ANOVA/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.4. One-Factor ANOVA">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2117,7 +1985,7 @@ Ui = 0.5(1/n)    for i = n
 
           
               <div class="post-description">
-                  EDA_1.3.3.14. Histogram
+                  EDA_1.3.5.4. One-Factor ANOVA
               </div>
           
 
@@ -2136,24 +2004,278 @@ Ui = 0.5(1/n)    for i = n
       
         
           
-            <h3 id="Purpose-Summarize-a-Univariate-Data-Set"><a href="#Purpose-Summarize-a-Univariate-Data-Set" class="headerlink" title="Purpose: Summarize a Univariate Data Set"></a>Purpose: Summarize a Univariate Data Set</h3><p>The purpose of a histogram (Chambers) is to graphically summarize the distribution of a univariate data set.<br>The histogram graphically shows the following:</p>
-<pre><code>1. center (i.e., the location) of the data;
-2. spread (i.e., the scale) of the data;
-3. skewness of the data;
-4. presence of outliers; and
-5. presence of multiple modes in the data.
-</code></pre><p>These features provide strong indications of the proper distributional model for the data. Theprobability plot or a goodness-of-fit test can be used to verify the distributional model.</p>
-<p>The examples section shows the appearance of a number of common features revealed by histograms.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/histogr0.gif" alt=""></p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The most common form of the histogram is obtained by splitting the range of the data into equal-sized bins (called classes). Then for each bin, the number of points from the data set that fall into each bin are counted. That is</p>
-<ul>
-<li>Vertical axis: Frequency (i.e., counts for each bin)</li>
-<li>Horizontal axis: Response variable</li>
+            <h3 id="Purpose-Test-for-Equal-Means-Across-Groups"><a href="#Purpose-Test-for-Equal-Means-Across-Groups" class="headerlink" title="Purpose: Test for Equal Means Across Groups"></a>Purpose: Test for Equal Means Across Groups</h3><p>One factor analysis of variance (Snedecor and Cochran, 1989) is a special case of analysis of variance (ANOVA), for one factor of interest, and a generalization of the two-sample t-test.</p>
+<p>The two-sample t-test is used to decide whether two groups (levels) of a factor have the same mean. One-way analysis of variance generalizes this to levels where k, the number of levels, is greater than or equal to 2.</p>
+<p>For example, data collected on, say, five instruments have one factor (instruments) at five levels. The ANOVA tests whether instruments have a significant effect on the results.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Product and Process Comparisons chapter (chapter 7) contains a more extensive discussion of one-factor ANOVA, including the details for the mathematical computations of one-way analysis of variance.</p>
+<p>The model for the analysis of variance can be stated in two mathematically equivalent ways. In the following discussion, each level of each factor is called a cell. For the one-way case, a cell and a level are equivalent since there is only one factor. In the following, the subscripti refers to the level and the subscript j refers to the observation within a level. For example,Y23 refers to the third observation in the second level.</p>
+<p>The first model is</p>
+<pre><code>Yij=μi+Eij
+</code></pre><p>This model decomposes the response into a mean for each cell and an error term. The analysis of variance provides estimates for each cell mean. These estimated cell means are the predicted values of the model and the differences between the response variable and the estimated cell means are the residuals. That is</p>
+<pre><code>Yij^=μ^i
+Rij=Yij−μ^i
+</code></pre><p>The second model is</p>
+<pre><code>Yij=μ+αi+Eij
+</code></pre><p>This model decomposes the response into an overall (grand) mean, the effect of the ith factor level, and an error term. The analysis of variance provides estimates of the grand mean and the effect of the ith factor level. The predicted values and the residuals of the model are</p>
+<pre><code>Y^ij=μ^+α^i
+Rij=Yij−μ^−α^i
+</code></pre><p>The distinction between these models is that the second model divides the cell mean into an overall mean and the effect of the i-th factor level. This second model makes the factor effect more explicit, so we will emphasize this approach.</p>
+<h3 id="Model-Validation"><a href="#Model-Validation" class="headerlink" title="Model Validation"></a>Model Validation</h3><p>Note that the ANOVA model assumes that the error term, Eij, should follow the assumptions for a univariate measurement process. That is, after performing an analysis of variance, the model should be validated by analyzing the residuals.</p>
+<h3 id="One-Way-ANOVA-Example"><a href="#One-Way-ANOVA-Example" class="headerlink" title="One-Way ANOVA Example"></a>One-Way ANOVA Example</h3><p>A one-way analysis of variance was generated for theGEAR.DAT data set. The data set contains 10 measurements of gear diameter for ten different batches for a total of 100 measurements.</p>
+<pre><code>                   DEGREES OF     SUM OF      MEAN
+SOURCE              FREEDOM      SQUARES     SQUARE    F STATISTIC
+----------------   ----------   --------    --------   -----------
+BATCH                   9       0.000729    0.000081      2.2969   
+RESIDUAL               90       0.003174    0.000035
+TOTAL (CORRECTED)      99       0.003903    0.000039
+
+RESIDUAL STANDARD DEVIATION = 0.00594
+BATCH     N      MEAN    SD(MEAN)
+---------------------------------
+  1      10    0.99800    0.00188
+  2      10    0.99910    0.00188
+  3      10    0.99540    0.00188
+  4      10    0.99820    0.00188
+  5      10    0.99190    0.00188
+  6      10    0.99880    0.00188
+  7      10    1.00150    0.00188
+  8      10    1.00040    0.00188
+  9      10    0.99830    0.00188
+ 10      10    0.99480    0.00188
+</code></pre><p>The ANOVA table decomposes the variance into the following component sum of squares:</p>
+<pre><code>• Total sum of squares. The degrees of freedom for this entry is the number of observations minus one.
+• Sum of squares for the factor. The degrees of freedom for this entry is the number of levels minus one. The mean square is the sum of squares divided by the number of degrees of freedom.
+• Residual sum of squares. The degrees of freedom is the total degrees of freedom minus the factor degrees of freedom. The mean square is the sum of squares divided by the number of degrees of freedom.
+</code></pre><p>The sums of squares summarize how much of the variance in the data (total sum of squares) is accounted for by the factor effect (batch sum of squares) and how much is random error (residual sum of squares). Ideally, we would like most of the variance to be explained by the factor effect.</p>
+<p>The ANOVA table provides a formal F test for the factor effect. For our example, we are testing the following hypothesis.</p>
+<pre><code>H0: All individual batch means are equal. 
+Ha: At least one batch mean is not equal to the others.
+</code></pre><p>The F statistic is the batch mean square divided by the residual mean square. This statistic follows an Fdistribution with (k-1) and (N-k) degrees of freedom. For our example, the critical F value (upper tail) for α = 0.05, (k-1) = 9, and (N-k) = 90 is 1.9856. Since the Fstatistic, 2.2969, is greater than the critical value, we conclude that there is a significant batch effect at the 0.05 level of significance.</p>
+<p>Once we have determined that there is a significant batch effect, we might be interested in comparing individual batch means. The batch means and the standard errors of the batch means provide some information about the individual batches. However, we may want to employ multiple comparison methods for a more formal analysis. (See Box, Hunter, and Hunter for more information.)</p>
+<p>In addition to the quantitative ANOVA output, it is recommended that any analysis of variance be complemented with model validation. At a minimum, this should include:</p>
+<pre><code>1. a run sequence plot of the residuals,
+2. a normal probability plot of the residuals, and
+3. a scatter plot of the predicted values against the residuals.
+</code></pre><h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>The analysis of variance can be used to answer the following question</p>
+<pre><code>• Are means the same across groups in the data?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>The analysis of uncertainty depends on whether the factor significantly affects the outcome.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Two-sample t-test</li>
+<li>Multi-factor analysis of variance</li>
+<li>Regression</li>
+<li>Box plot</li>
 </ul>
-<p>The classes can either be defined arbitrarily by the user or via some systematic rule. A number of theoretically derived rules have been proposed by Scott (Scott 1992).<br>The cumulative histogram is a variation of the histogram in which the vertical axis gives not just the counts for a single bin, but rather gives the counts for that bin plus all bins for smaller values of the response variable.<br>Both the histogram and cumulative histogram have an additional variant whereby the counts are replaced by the normalized counts. The names for these variants are the relative histogram and the relative cumulative histogram.<br>There are two common ways to normalize the counts.</p>
-<pre><code>1. The normalized count is the count in a class divided by the total number of observations. In this case the relative counts are normalized to sum to one (or 100 if a percentage scale is used). This is the intuitive case where the height of the histogram bar represents the proportion of the data in each class.
-2. The normalized count is the count in the class divided by the number of observations times the class width. For this normalization, the area (or integral) under the histogram is equal to one. From a probabilistic point of view, this normalization results in a relative histogram that is most akin to the probability density function and a relative cumulative histogram that is most akin to the cumulative distribution function. If you want to overlay a probability density or cumulative distribution function on top of the histogram, use this normalization. Although this normalization is less intuitive (relative frequencies greater than 1 are quite permissible), it is the appropriate normalization if you are using the histogram to model a probability density function.
-</code></pre>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda354.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda354.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/" itemprop="url">EDA_1.3.5.3. Two-Sample t-Test for Equal Means</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:56:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.3. Two-Sample t-Test for Equal Means/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.3. Two-Sample t-Test for Equal Means">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.3. Two-Sample t-Test for Equal Means
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Test-if-two-population-means-are-equal"><a href="#Purpose-Test-if-two-population-means-are-equal" class="headerlink" title="Purpose: Test if two population means are equal"></a>Purpose: Test if two population means are equal</h3><p>The two-sample t-test (Snedecor and Cochran, 1989) is used to determine if two population means are equal. A common application is to test if a new process or treatment is superior to a current process or treatment.</p>
+<p>There are several variations on this test.</p>
+<pre><code>1. The data may either be paired or not paired. By paired, we mean that there is a one-to-one correspondence between the values in the two samples. That is, if X1, X2, ..., Xn and Y1, Y2, ... , Yn are the two samples, then Xi corresponds to Yi. For paired samples, the differenceXi - Yi is usually calculated. For unpaired samples, the sample sizes for the two samples may or may not be equal. The formulas for paired data are somewhat simpler than the formulas for unpaired data.
+2. The variances of the two samples may be assumed to be equal or unequal. Equal variances yields somewhat simpler formulas, although with computers this is no longer a significant issue.
+3. In some applications, you may want to adopt a new process or treatment only if it exceeds the current treatment by some threshold. In this case, we can state the null hypothesis in the form that the difference between the two populations means is equal to some constant μ1−μ2=d0where the constant is the desired threshold.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The two-sample t-test for unpaired data is defined as:<br>    H0:    μ1=μ2<br>    Ha:    μ1≠μ2<br>    Test Statistic:    T=Y1¯−Y2¯s21/N1+s22/N2√<br>        where N1 and N2 are the sample sizes, Y1¯ and Y2¯ are the sample means, and s21 and s22 are the sample variances.<br>        If equal variances are assumed, then the formula reduces to:<br>                T=Y1¯−Y2¯sp1/N1+1/N2√<br>        where<br>                s2p=(N1−1)s21+(N2−1)s22N1+N2−2<br>    Significance Level:     α.<br>    Critical Region:    Reject the null hypothesis that the two means are equal if<br>                |T| &gt; t1-α/2,ν<br>        where t1-α/2,ν is the critical value of the t distributionwith ν degrees of freedom where<br>                υ=(s21/N1+s22/N2)2(s21/N1)2/(N1−1)+(s22/N2)2/(N2−1)<br>        If equal variances are assumed, then ν = N1 + N2 - 2</p>
+<h4 id="Two-Samplet-Test-Example"><a href="#Two-Samplet-Test-Example" class="headerlink" title="Two-Samplet-Test Example"></a>Two-Samplet-Test Example</h4><p>The following two-sample t-test was generated for the AUTO83B.DAT data set. The data set contains miles per gallon for U.S. cars (sample 1) and for Japanese cars (sample 2); the summary statistics for each sample are shown below.</p>
+<pre><code>SAMPLE 1:
+    NUMBER OF OBSERVATIONS      = 249
+    MEAN                        =  20.14458
+    STANDARD DEVIATION          =   6.41470
+    STANDARD ERROR OF THE MEAN  =   0.40652
+
+SAMPLE 2:
+    NUMBER OF OBSERVATIONS      = 79
+    MEAN                        = 30.48101
+    STANDARD DEVIATION          =  6.10771
+    STANDARD ERROR OF THE MEAN  =  0.68717
+</code></pre><p>We are testing the hypothesis that the population means are equal for the two samples. We assume that the variances for the two samples are equal.</p>
+<pre><code>H0:  μ1 = μ2
+Ha:  μ1 ≠ μ2
+Test statistic:  T = -12.62059
+Pooled standard deviation:  sp = 6.34260
+Degrees of freedom:  ν = 326
+Significance level:  α = 0.05
+Critical value (upper tail):  t1-α/2,ν = 1.9673
+Critical region: Reject H0 if |T| &gt; 1.9673
+</code></pre><p>The absolute value of the test statistic for our example, 12.62059, is greater than the critical value of 1.9673, so we reject the null hypothesis and conclude that the two population means are different at the 0.05 significance level.</p>
+<p>In general, there are three possible alternative hypotheses and rejection regions for the one-sample t-test:</p>
+<h4 id="Alternative-Hypothesis-Rejection-Region"><a href="#Alternative-Hypothesis-Rejection-Region" class="headerlink" title="Alternative Hypothesis    Rejection Region"></a>Alternative Hypothesis    Rejection Region</h4><pre><code>Ha: μ1 ≠ μ2    |T| &gt; t1-α/2,ν
+Ha: μ1 &gt; μ2    T &gt; t1-α,ν
+Ha: μ1 &lt; μ2    T &lt; tα,ν
+</code></pre><p>For our two-tailed t-test, the critical value is t1-α/2,ν = 1.9673, whereα = 0.05 and ν = 326. If we were to perform an upper, one-tailed test, the critical value would be t1-α,ν = 1.6495. The rejection regions for three posssible alternative hypotheses using our example data are shown below.</p>
+<p><img src="assets/EDA/eda353_r.gif" alt=""></p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Two-sample t-tests can be used to answer the following questions:</p>
+<pre><code>1. Is process 1 equivalent to process 2?
+2. Is the new process better than the current process?
+3. Is the new process better than the current process by at least some pre-determined threshold amount?
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Confidence Limits for the Mean</li>
+<li>Analysis of Variance</li>
+</ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda353.htm</a></p>
+
           
         
       
@@ -2192,7 +2314,7 @@ Ui = 0.5(1/n)    for i = n
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2242,7 +2364,7 @@ Ui = 0.5(1/n)    for i = n
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">199</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2264,7 +2386,7 @@ Ui = 0.5(1/n)    for i = n
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">224</span>
+                  <span class="site-state-item-count">246</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

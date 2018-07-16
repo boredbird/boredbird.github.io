@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/11/ImportError No module named functools/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/EM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/11/ImportError No module named functools/" itemprop="url">ImportError No module named functools</a></h2>
+                <a class="post-title-link" href="/2017/11/12/EM/" itemprop="url">EM</a></h2>
         
 
         <div class="post-meta">
@@ -339,1076 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T09:59:02+08:00">
-                2017-10-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/11/ImportError No module named functools/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/11/ImportError No module named functools/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/11/ImportError No module named functools/" class="leancloud_visitors" data-flag-title="ImportError No module named functools">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  ImportError No module named functools
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>今天早上从git pull代码后，启动本地的virtualenv,发现报错：</p>
-<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">(myenvs) E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\s</span>rc&gt;python .<span class="symbol">\m</span>anage.py runserver</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\s</span>ite.py", line 703, in &lt;module&gt;</span><br><span class="line">    main()</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\s</span>ite.py", line 692, in main</span><br><span class="line">    aliasmbcs()</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\s</span>ite.py", line 515, in aliasmbcs</span><br><span class="line">    import locale, codecs</span><br><span class="line">  File "E:<span class="symbol">\C</span>ode<span class="symbol">\v</span>irtualenvs<span class="symbol">\m</span>yenvs<span class="symbol">\l</span>ib<span class="symbol">\l</span>ocale.py", line 17, in &lt;module&gt;</span><br><span class="line">    import functools</span><br><span class="line"></span><br><span class="line">ImportError: No module named functools</span><br></pre></td></tr></table></figure>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p><strong>检查<code>ENV_FOLDER\Lib\orig-prefix.txt</code>文件发现：</strong></p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d:\<span class="function"><span class="keyword">program</span></span> files\anaconda2</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/11/ImportError No module named functools/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/RESTful API Design Guide/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/RESTful API Design Guide/" itemprop="url">RESTful API 设计指南-来自阮一峰</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T17:46:02+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/RESTful API Design Guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/RESTful API Design Guide/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/RESTful API Design Guide/" class="leancloud_visitors" data-flag-title="RESTful API 设计指南-来自阮一峰">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  RESTful API 设计指南-来自阮一峰
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这篇文章写的也很好，很<a href="http://zhangchunhui.cn/2017/10/10/Understanding%20RESTful%20Framework/">上一篇</a>有很大重复，甚至有些矛盾的地方。但是读下来，依然还是有启发的。</p>
-<h1 id="一、协议"><a href="#一、协议" class="headerlink" title="一、协议"></a>一、协议</h1><p>API与用户的通信协议，总是使用HTTPs协议。</p>
-<p>#二、域名<br>应该尽量将API部署在专用域名之下。<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//api.example.com</span></span><br></pre></td></tr></table></figure></p>
-<p>如果确定API很简单，不会有进一步扩展，可以考虑放在主域名下。<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="symbol">https:</span>//example<span class="meta">.org</span>/api/</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/RESTful API Design Guide/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/Understanding RESTful Framework/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/Understanding RESTful Framework/" itemprop="url">理解RESTful架构-来自阮一峰</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T17:21:02+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/Understanding RESTful Framework/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/Understanding RESTful Framework/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/Understanding RESTful Framework/" class="leancloud_visitors" data-flag-title="理解RESTful架构-来自阮一峰">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  理解RESTful架构-来自阮一峰
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近在研究Python开发接口微服务，以便用Python开发出来的模型与服务能对接上，提供复杂模型上线的方案。看到了阮一峰的<a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="noopener">《理解RESTful架构》</a>这篇文章，写的真好，虽然我是还没入门的外外行。</p>
-<h1 id="什么是RESTful架构"><a href="#什么是RESTful架构" class="headerlink" title="什么是RESTful架构"></a>什么是RESTful架构</h1><h2 id="一、起源"><a href="#一、起源" class="headerlink" title="一、起源"></a>一、起源</h2><p>REST这个词，是<a href="http://en.wikipedia.org/wiki/Roy_Fielding" target="_blank" rel="noopener">Roy Thomas Fielding</a>在他2000年的博士论文中提出的。</p>
-<p>文中写到：</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">"本文研究计算机科学两大前沿----软件和网络----的交叉点。长期以来，软件研究主要关注软件设计的分类、设计方法的演化，很少客观地评估不同的设计选择对系统行为的影响。而相反地，网络研究主要关注系统之间通信行为的细节、如何改进特定通信机制的表现，常常忽视了一个事实，那就是改变应用程序的互动风格比改变互动协议，对整体表现有更大的影响。我这篇文章的写作目的，就是想在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。"</span></span><br><span class="line">(This dissertation explores a junction <span class="keyword">on</span> <span class="keyword">the</span> frontiers <span class="keyword">of</span> two research disciplines <span class="keyword">in</span> computer science: software <span class="keyword">and</span> networking. Software research has long been concerned <span class="keyword">with</span> <span class="keyword">the</span> categorization <span class="keyword">of</span> software designs <span class="keyword">and</span> <span class="keyword">the</span> development <span class="keyword">of</span> design methodologies, <span class="keyword">but</span> has rarely been able <span class="keyword">to</span> objectively evaluate <span class="keyword">the</span> impact <span class="keyword">of</span> various design choices <span class="keyword">on</span> system behavior. Networking research, <span class="keyword">in</span> contrast, <span class="keyword">is</span> focused <span class="keyword">on</span> <span class="keyword">the</span> details <span class="keyword">of</span> generic communication behavior <span class="keyword">between</span> systems <span class="keyword">and</span> improving <span class="keyword">the</span> performance <span class="keyword">of</span> particular communication techniques, often <span class="keyword">ignoring</span> <span class="keyword">the</span> fact <span class="keyword">that</span> changing <span class="keyword">the</span> interaction style <span class="keyword">of</span> an <span class="built_in">application</span> can have more impact <span class="keyword">on</span> performance than <span class="keyword">the</span> communication protocols used <span class="keyword">for</span> <span class="keyword">that</span> interaction. My work <span class="keyword">is</span> motivated <span class="keyword">by</span> <span class="keyword">the</span> desire <span class="keyword">to</span> understand <span class="keyword">and</span> evaluate <span class="keyword">the</span> architectural design <span class="keyword">of</span> network-based <span class="built_in">application</span> software <span class="keyword">through</span> principled use <span class="keyword">of</span> architectural constraints, thereby obtaining <span class="keyword">the</span> functional, performance, <span class="keyword">and</span> social properties desired <span class="keyword">of</span> an architecture. )</span><br></pre></td></tr></table></figure>
-<h2 id="二、名称"><a href="#二、名称" class="headerlink" title="二、名称"></a>二、名称</h2><p>Fielding将他对互联网软件的架构原则，定名为REST，即Representational State Transfer的缩写。我对这个词组的翻译是”表现层状态转化”。</p>
-<p>如果一个架构符合REST原则，就称它为RESTful架构。</p>
-<p>要理解RESTful架构，最好的方法就是去理解Representational State Transfer这个词组到底是什么意思，它的每一个词代表了什么涵义。如果你把这个名称搞懂了，也就不难体会REST是一种什么样的设计。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/Understanding RESTful Framework/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/django flow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/django flow/" itemprop="url">django处理HTTP请求流程</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T16:29:02+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/django flow/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/django flow/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/django flow/" class="leancloud_visitors" data-flag-title="django处理HTTP请求流程">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  django处理HTTP请求流程
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <div class="fig figcenter fighighlight"><br>  <img src="/assets/django/django_flow_en.png" width="60%"><br>  <img src="/assets/django/django_flow_cn.png" width="60%" style="border-left: 1px solid black;"><br>  <div class="figcaption">Based on @FULLSTACKCTO’s understanding of Django, this is how a user request is responded to.</div><br></div>
-
-
-<ul>
-<li><strong>1:</strong> User requests a page</li>
-<li><strong>2:</strong> Request reaches Request Middlewares, which could manipulate or answer the request</li>
-<li><strong>3:</strong> The URLConffinds the related View using urls.py</li>
-<li><strong>4:</strong> View Middlewares are called, which could manipulate or answer the request</li>
-<li><strong>5:</strong> The view function is invoked</li>
-<li><strong>6:</strong> The view could optionally access data through models</li>
-<li><strong>7:</strong> All model-to-DB interactions are done via a manager</li>
-<li><strong>8:</strong> Views could use a special context if needed</li>
-<li><strong>9:</strong> The context is passed to the Template for rendering</li>
-<li><strong>a:</strong> Template uses Filters and Tags to render the output</li>
-<li><strong>b:</strong> Output is returned to the view</li>
-<li><strong>c:</strong> HTTPResponse is sent to the Response Middlerwares</li>
-<li><strong>d:</strong> Any of the response middlewares can enrich the response or return a completely new response</li>
-<li><strong>e:</strong> The response is sent to the user’s browser.</li>
-</ul>
-<p>via </p>
-<ul>
-<li><a href="http://www.jianshu.com/p/a2bf34b89d01" target="_blank" rel="noopener">here</a></li>
-<li><a href="http://hitesh.in/2009/django-flow/" target="_blank" rel="noopener">Django Flowchart</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/get or post/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/get or post/" itemprop="url">POST和GET区别</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T16:04:02+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/django/" itemprop="url" rel="index">
-                    <span itemprop="name">django</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/get or post/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/get or post/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/get or post/" class="leancloud_visitors" data-flag-title="POST和GET区别">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  POST和GET区别
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>HTTP协议定义了很多与服务器交互的方法，最基本的有4种，分别是GET,POST,PUT,DELETE. 一个URL地址用于描述一个网络上的资源，而HTTP中的GET, POST, PUT, DELETE就对应着对这个资源的查，改，增，删4个操作，其中最常见请求方式是GET和POST，并且现在浏览器一般只支持GET和POST方法。</p>
-<p><strong>GET一般用于获取/查询资源信息，而POST一般用于更新资源信息，他们之间主要区别如下：</strong></p>
-<p>1）根据HTTP规范，GET用于信息获取，而且应该是安全的和幂等的，这里安全是指该操作用于获取信息而非修改信息，幂等是指对同一URL的多个请求应该返回同样的结果（这一点在实质实现时，可能并不满足）；POST表示可能修改变服务器上的资源的请求。</p>
-<p>2）GET请求的数据会附在URL之后（就是把数据放置在HTTP协议头中），以?分割URL和传输数据，参数之间以&amp;相连，如果数据是英文字母/数字，原样发送，如果是空格，转换为+，如果是中文/其他字符，<br>则直接把字符串用BASE64编码；POST把提交的数据则放置在是HTTP包的包体中。</p>
-<p>3）因为GET是通过URL提交数据，那么GET可提交的数据量就跟URL的长度有直接关系，理论上URL长度是没有限制的，即HTTP协议没有规定URL的长度，但在实质中，特定的浏览器可能对这个长度做了限制；理论上POST也是没有大小限制的，HTTP协议规范也没有进行大小限制，但在服务端通常会对这个大小做一个限制，当然这个限制比GET宽松的多，即使用POST可以提交的数据量比GET大得多。</p>
-<p>最后，网上有人说，POST的安全性要比GET的安全性高，实质上POST跟GET都是明文传输，这可以通过类似WireShark工具看到。总之，Get是向服务器发索取数据的一种请求，而Post是向服务器提交数据的一种请求。</p>
-<p>via </p>
-<ul>
-<li><a href="http://blog.csdn.net/kevin_darkelf/article/details/40979333" target="_blank" rel="noopener">浅析HTTP中POST和GET区别并用Python模拟其响应和请求</a></li>
-<li><a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="noopener">浅谈HTTP中Get与Post的区别</a></li>
-<li><a href="http://www.cnblogs.com/wswang/p/6054619.html" target="_blank" rel="noopener">GET和POST的区别</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/understanding-cnn/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/understanding-cnn/" itemprop="url">understanding-cnn</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T14:28:12+08:00">
-                2017-10-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/10/understanding-cnn/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/understanding-cnn/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/10/understanding-cnn/" class="leancloud_visitors" data-flag-title="understanding-cnn">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  understanding-cnn
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a name="vis"></a></p>
-<p>(this page is currently in draft form)</p>
-<h2 id="Visualizing-what-ConvNets-learn"><a href="#Visualizing-what-ConvNets-learn" class="headerlink" title="Visualizing what ConvNets learn"></a>Visualizing what ConvNets learn</h2><p>Several approaches for understanding and visualizing Convolutional Networks have been developed in the literature, partly as a response the common criticism that the learned features in a Neural Network are not interpretable. In this section we briefly survey some of these approaches and related work.</p>
-<h3 id="Visualizing-the-activations-and-first-layer-weights"><a href="#Visualizing-the-activations-and-first-layer-weights" class="headerlink" title="Visualizing the activations and first-layer weights"></a>Visualizing the activations and first-layer weights</h3><p><strong>Layer Activations</strong>. The most straight-forward visualization technique is to show the activations of the network during the forward pass. For ReLU networks, the activations usually start out looking relatively blobby and dense, but as the training progresses the activations usually become more sparse and localized. One dangerous pitfall that can be easily noticed with this visualization is that some activation maps may be all zero for many different inputs, which can indicate <em>dead</em> filters, and can be a symptom of high learning rates.</p>
-<div class="fig figcenter fighighlight"><br>  <img src="/assets/cnnvis/act1.jpeg" width="49%"><br>  <img src="/assets/cnnvis/act2.jpeg" width="49%"><br>  <div class="figcaption"><br>    Typical-looking activations on the first CONV layer (left), and the 5th CONV layer (right) of a trained AlexNet looking at a picture of a cat. Every box shows an activation map corresponding to some filter. Notice that the activations are sparse (most values are zero, in this visualization shown in black) and mostly local.<br>  </div><br></div>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/understanding-cnn/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/optimization-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/optimization-1/" itemprop="url">optimization-1</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T14:13:12+08:00">
-                2017-10-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T19:15:12+08:00">
+                2017-11-12
               </time>
             
 
@@ -1448,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/10/optimization-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/optimization-1/" itemprop="commentCount"></span>
+                <a href="/2017/11/12/EM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/EM/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1457,7 +389,7 @@
 
           
           
-             <span id="/2017/10/10/optimization-1/" class="leancloud_visitors" data-flag-title="optimization-1">
+             <span id="/2017/11/12/EM/" class="leancloud_visitors" data-flag-title="EM">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1475,7 +407,7 @@
 
           
               <div class="post-description">
-                  optimization-1
+                  主题模型
               </div>
           
 
@@ -1493,33 +425,12 @@
 
       
         
-          <p>Table of Contents:</p>
-<ul>
-<li><a href="#intro">Introduction</a></li>
-<li><a href="#vis">Visualizing the loss function</a></li>
-<li><a href="#optimization">Optimization</a><ul>
-<li><a href="#opt1">Strategy #1: Random Search</a></li>
-<li><a href="#opt2">Strategy #2: Random Local Search</a></li>
-<li><a href="#opt3">Strategy #3: Following the gradient</a></li>
-</ul>
-</li>
-<li><a href="#gradcompute">Computing the gradient</a><ul>
-<li><a href="#numerical">Numerically with finite differences</a></li>
-<li><a href="#analytic">Analytically with calculus</a></li>
-</ul>
-</li>
-<li><a href="#gd">Gradient descent</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>In the previous section we introduced two key components in context of the image classification task:</p>
-<ol>
-<li>A (parameterized) <strong>score function</strong> mapping the raw image pixels to class scores (e.g. a linear function)</li>
-<li>A <strong>loss function</strong> that measured the quality of a particular set of parameters based on how well the induced scores agreed with the ground truth labels in the training data. We saw that there are many ways and versions of this (e.g. Softmax/SVM).</li>
-</ol>
+          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><h2 id="k-Means算法"><a href="#k-Means算法" class="headerlink" title="k-Means算法"></a>k-Means算法</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/EM/TIM截图20171112192635.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="对K-Means的思考"><a href="#对K-Means的思考" class="headerlink" title="对K-Means的思考"></a>对K-Means的思考</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/EM/TIM截图20171112192704.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/optimization-1/" rel="contents">
+            <a class="btn" href="/2017/11/12/EM/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1570,7 +481,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/10/optimization-2/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/聚类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1589,7 +500,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/10/optimization-2/" itemprop="url">optimization-2</a></h2>
+                <a class="post-title-link" href="/2017/11/12/聚类/" itemprop="url">聚类</a></h2>
         
 
         <div class="post-meta">
@@ -1601,8 +512,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-10T14:13:12+08:00">
-                2017-10-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T16:15:12+08:00">
+                2017-11-12
               </time>
             
 
@@ -1642,8 +553,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/10/optimization-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/10/optimization-2/" itemprop="commentCount"></span>
+                <a href="/2017/11/12/聚类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/聚类/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1651,7 +562,7 @@
 
           
           
-             <span id="/2017/10/10/optimization-2/" class="leancloud_visitors" data-flag-title="optimization-2">
+             <span id="/2017/11/12/聚类/" class="leancloud_visitors" data-flag-title="聚类">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1669,7 +580,7 @@
 
           
               <div class="post-description">
-                  optimization-2
+                  聚类
               </div>
           
 
@@ -1687,23 +598,13 @@
 
       
         
-          <p>Table of Contents:</p>
-<ul>
-<li><a href="#intro">Introduction</a></li>
-<li><a href="#grad">Simple expressions, interpreting the gradient</a></li>
-<li><a href="#backprop">Compound expressions, chain rule, backpropagation</a></li>
-<li><a href="#intuitive">Intuitive understanding of backpropagation</a></li>
-<li><a href="#sigmoid">Modularity: Sigmoid example</a></li>
-<li><a href="#staged">Backprop in practice: Staged computation</a></li>
-<li><a href="#patters">Patterns in backward flow</a></li>
-<li><a href="#mat">Gradients for vectorized operations</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p><strong>Motivation</strong>. In this section we will develop expertise with an intuitive understanding of <strong>backpropagation</strong>, which is a way of computing gradients of expressions through recursive application of <strong>chain rule</strong>. Understanding of this process and its subtleties is critical for you to understand, and effectively develop, design and debug Neural Networks.</p>
+          <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="聚类的定义"><a href="#聚类的定义" class="headerlink" title="聚类的定义"></a>聚类的定义</h2><p>聚类就是对大量未知标注的数据集，按数据的内在相似性将数据集划分为多个类别，使类别内的数据相似度较大而类别间的数据相似度较小。</p>
+<h2 id="相似度-距离计算方法总结"><a href="#相似度-距离计算方法总结" class="headerlink" title="相似度/距离计算方法总结"></a>相似度/距离计算方法总结</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112160705.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="Hellinger-distance"><a href="#Hellinger-distance" class="headerlink" title="Hellinger distance"></a>Hellinger distance</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/聚类/TIM截图20171112165344.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/10/optimization-2/" rel="contents">
+            <a class="btn" href="/2017/11/12/聚类/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1754,7 +655,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/09/python的-m参数/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/SVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1773,7 +674,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/09/python的-m参数/" itemprop="url">python的-m参数</a></h2>
+                <a class="post-title-link" href="/2017/11/12/SVM/" itemprop="url">SVM</a></h2>
         
 
         <div class="post-meta">
@@ -1785,183 +686,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-09T14:53:12+08:00">
-                2017-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/10/09/python的-m参数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/09/python的-m参数/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/10/09/python的-m参数/" class="leancloud_visitors" data-flag-title="python的-m参数">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  python的-m参数
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="单个文件"><a href="#单个文件" class="headerlink" title="单个文件"></a>单个文件</h1><h2 id="创建测试文件："><a href="#创建测试文件：" class="headerlink" title="创建测试文件："></a>创建测试文件：</h2><p><code>E:\Code\ScoreCard&gt;</code>路径下创建<code>testm.py</code>文件，内容如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">print(sys.path)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'This is main of module '</span>)</span><br></pre></td></tr></table></figure></p>
-<h2 id="在终端上运行："><a href="#在终端上运行：" class="headerlink" title="在终端上运行："></a>在终端上运行：</h2><p><img src="https://i.imgur.com/UGJcAPs.png" alt=""></p>
-<h2 id="查看帮助文档："><a href="#查看帮助文档：" class="headerlink" title="查看帮助文档："></a>查看帮助文档：</h2><p><img src="https://i.imgur.com/GXYAjii.png" alt=""></p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-m mod : <span class="builtin-name">run</span> library module as a<span class="built_in"> script </span>(terminates option list)</span><br></pre></td></tr></table></figure>
-<h1 id="创建模块测试-m作用"><a href="#创建模块测试-m作用" class="headerlink" title="创建模块测试-m作用"></a>创建模块测试-m作用</h1><h2 id="文档目录结构："><a href="#文档目录结构：" class="headerlink" title="文档目录结构："></a>文档目录结构：</h2><p><img src="https://i.imgur.com/z84nr20.png" alt=""></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/09/python的-m参数/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/10/08/Linear Classification/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/08/Linear Classification/" itemprop="url">linear-classify</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-08T21:06:12+08:00">
-                2017-10-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T14:15:12+08:00">
+                2017-11-12
               </time>
             
 
@@ -2001,8 +727,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/10/08/Linear Classification/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/10/08/Linear Classification/" itemprop="commentCount"></span>
+                <a href="/2017/11/12/SVM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/SVM/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2010,7 +736,7 @@
 
           
           
-             <span id="/2017/10/08/Linear Classification/" class="leancloud_visitors" data-flag-title="linear-classify">
+             <span id="/2017/11/12/SVM/" class="leancloud_visitors" data-flag-title="SVM">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2028,7 +754,7 @@
 
           
               <div class="post-description">
-                  linear-classify
+                  SVM
               </div>
           
 
@@ -2046,25 +772,1255 @@
 
       
         
-          <p>Table of Contents:</p>
-<ul>
-<li><a href="#intro">Intro to Linear classification</a></li>
-<li><a href="#score">Linear score function</a></li>
-<li><a href="#interpret">Interpreting a linear classifier</a></li>
-<li><a href="#loss">Loss function</a><ul>
-<li><a href="#svm">Multiclass SVM</a></li>
-<li><a href="#softmax">Softmax classifier</a></li>
-<li><a href="#svmvssoftmax">SVM vs Softmax</a></li>
-</ul>
-</li>
-<li><a href="#webdemo">Interactive Web Demo of Linear Classification</a></li>
-<li><a href="#summary">Summary</a></li>
-</ul>
-<p><a name="intro"></a></p>
-<h2 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h2><p>In the last section we introduced the problem of Image Classification, which is the task of assigning a single label to an image from a fixed set of categories. Morever, we described the k-Nearest Neighbor (kNN) classifier which labels images by comparing them to (annotated) images from the training set. As we saw, kNN has a number of disadvantages:</p>
+          <h1 id="支持向量机SVM的原理和目标"><a href="#支持向量机SVM的原理和目标" class="headerlink" title="支持向量机SVM的原理和目标"></a>支持向量机SVM的原理和目标</h1><h2 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h2><p>硬间隔最大化hard margin maximization;硬间隔支持向量机</p>
+<h3 id="分割超平面"><a href="#分割超平面" class="headerlink" title="分割超平面"></a>分割超平面</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/SVM/TIM截图20171112145917.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h3 id="分割超平面的思考"><a href="#分割超平面的思考" class="headerlink" title="分割超平面的思考"></a>分割超平面的思考</h3><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/SVM/TIM截图20171112145956.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/10/08/Linear Classification/" rel="contents">
+            <a class="btn" href="/2017/11/12/SVM/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/AdaBoost/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/AdaBoost/" itemprop="url">AdaBoost</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T14:15:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/AdaBoost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/AdaBoost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/12/AdaBoost/" class="leancloud_visitors" data-flag-title="AdaBoost">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  提升
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Boosting的思想"><a href="#Boosting的思想" class="headerlink" title="Boosting的思想"></a>Boosting的思想</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142536.png" width="60%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="AdaBoost算法"><a href="#AdaBoost算法" class="headerlink" title="AdaBoost算法"></a>AdaBoost算法</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142651.png" width="80%"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142718.png" width="80%"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142731.png" width="80%"><br>  <img src="/assets/chinahadoop/AdaBoost/TIM截图20171112142745.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/AdaBoost/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/12/XGBoost/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/XGBoost/" itemprop="url">XGBoost</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T13:20:12+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/XGBoost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/12/XGBoost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/12/XGBoost/" class="leancloud_visitors" data-flag-title="XGBoost">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  提升
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="考虑使用二阶导信息"><a href="#考虑使用二阶导信息" class="headerlink" title="考虑使用二阶导信息"></a>考虑使用二阶导信息</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/XGBoost/TIM截图20171112115502.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h1 id="决策树的描述"><a href="#决策树的描述" class="headerlink" title="决策树的描述"></a>决策树的描述</h1><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/XGBoost/TIM截图20171112125849.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/XGBoost/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/提升GBDT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/11/提升GBDT/" itemprop="url">提升GBDT</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T16:15:12+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/提升GBDT/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/提升GBDT/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/11/提升GBDT/" class="leancloud_visitors" data-flag-title="提升GBDT">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  提升
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="由决策树和随机森林的关系的思考"><a href="#由决策树和随机森林的关系的思考" class="headerlink" title="由决策树和随机森林的关系的思考"></a>由决策树和随机森林的关系的思考</h1><ul>
+<li>随机森林的决策树分别采样建立，相对独立。</li>
+<li>思考：</li>
+<li><ul>
+<li>假定当前已经得到了m-1棵决策树，是否可以通过现有样本和决策树的信息，对第m棵决策树的建立产生有益的影响呢？</li>
+</ul>
+</li>
+<li><ul>
+<li>各个决策树组成随机森林后，最后的投票过程可否在建立决策树时即确定呢？</li>
+</ul>
+</li>
+</ul>
+<h1 id="提升的概念"><a href="#提升的概念" class="headerlink" title="提升的概念"></a>提升的概念</h1><ul>
+<li>提升是一个机器学习技术，可以用于回归和分类问题，它每一步产生一个弱预测模型（如决策树），并加权累加到总模型中；如果每一步的弱预测模型生成都是依据损失函数的梯度方向，则称之为梯度提升（Gradient Boosting）</li>
+<li>梯度提升算法首先给定一个目标损失函数，它的定义域是所有可行的弱函数集合（基函数）；提升算法通过迭代的选择一个负梯度方向上的基函数来逐渐逼近局部极小值。这种在函数域的梯度提升观点对机器学习的很多领域有深刻影响。</li>
+<li>提升的理论意义：如果一个问题存在弱分类器，则可以通过提升的办法得到强分类器。</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/11/提升GBDT/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/随机森林/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/11/随机森林/" itemprop="url">随机森林</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T14:25:12+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/随机森林/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/随机森林/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/11/随机森林/" class="leancloud_visitors" data-flag-title="随机森林">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  随机森林
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Bootstraping"><a href="#Bootstraping" class="headerlink" title="Bootstraping"></a>Bootstraping</h1><p>Bootstraping的名称来自成语“pull up by your own bootstraps”,意思是依靠你自己的资源，称为自助法，它是一种有放回的抽样方法。本意是通过拉靴子让自己上升，不可能发生的事情。后来意思发生了转变，隐喻不需要外界帮助，仅依靠自身力量让自己变得更好。</p>
+<h1 id="Bagging的策略"><a href="#Bagging的策略" class="headerlink" title="Bagging的策略"></a>Bagging的策略</h1><ul>
+<li>bootstrap aggregation</li>
+<li>从样本集中重采样（有重复的）选出n个样本</li>
+<li>在所有属性上，对这n个样本建立分类器（ID3，C4.5，CART,SVM,Logistic回归等）</li>
+<li>重复以上两部m次，即获得了m个分类器</li>
+<li>将数据放在这m个分类器上，最后根据这m个分类器的投票结果，决定数据属于哪一类</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/11/随机森林/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/决策树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/11/决策树/" itemprop="url">决策树</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T13:25:12+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/决策树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/决策树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/11/决策树/" class="leancloud_visitors" data-flag-title="决策树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  决策树
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="决策树的概念"><a href="#决策树的概念" class="headerlink" title="决策树的概念"></a>决策树的概念</h2><p>决策树是一种树型结构，其中每个内部结点表示在一个属性上的测试，每个分支代表一个测试输出，每个叶节点代表一种类别。<br>决策树学习是以实例为基础的归纳学习。<br>决策树学习采用的是自顶向下的递归方法，其基本思想是以信息熵为度量构造一棵熵值下降最快的树，到叶子节点处的熵值为零，此时每个叶节点中的实例都属于同一类。</p>
+<h2 id="决策树学习的生成算法"><a href="#决策树学习的生成算法" class="headerlink" title="决策树学习的生成算法"></a>决策树学习的生成算法</h2><p>建立决策树的关键，即在当前状态下选择哪个属性作为分类依据。根据不同的目标函数，建立决策树主要有以下三种算法：</p>
+<ul>
+<li>ID3(Iterative Dichotomiser)</li>
+<li>C4.5</li>
+<li>CART(Classification And Regression Tree)</li>
+</ul>
+<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>当熵和条件熵中的概率由数据估计（特别是极大似然估计）得到时，所对应的熵和条件熵分别称为经验熵和经验条件熵。</p>
+<p>信息增益表示得知特征A的信息而使得类X的信息的不确定性减少的程度。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/11/决策树/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/Logistic回归/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/11/Logistic回归/" itemprop="url">Logistic回归</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T11:25:12+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/Logistic回归/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/Logistic回归/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/11/Logistic回归/" class="leancloud_visitors" data-flag-title="Logistic回归">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Logistic回归
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Logistic回归"><a href="#Logistic回归" class="headerlink" title="Logistic回归"></a>Logistic回归</h1><p>分类问题的首选算法;</p>
+<p>线性回归：最大似然估计+高斯分布；</p>
+<p>Logistic回归：最大似然估计+伯努利分布；</p>
+<p>Logistic回归是事件发生几率取对数下的线性回归。高斯分布和伯努利分布都是属于指数族分布，所以说逻辑回归是广义线性模型GLM回归。</p>
+<h2 id="Logistic-Sigmoid函数"><a href="#Logistic-Sigmoid函数" class="headerlink" title="Logistic/Sigmoid函数"></a>Logistic/Sigmoid函数</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111113157.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+
+<h2 id="Logistic回归参数估计"><a href="#Logistic回归参数估计" class="headerlink" title="Logistic回归参数估计"></a>Logistic回归参数估计</h2><div class="fig figcenter fighighlight"><br>  <img src="/assets/chinahadoop/Logistic回归/TIM截图20171111114625.png" width="80%"><br>  <div class="figcaption"><br>  </div><br></div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/11/Logistic回归/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2017/11/11/回归与特征选择/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/11/回归与特征选择/" itemprop="url">回归与特征选择</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T09:20:12+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/回归与特征选择/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/11/回归与特征选择/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/11/11/回归与特征选择/" class="leancloud_visitors" data-flag-title="回归与特征选择">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  回归与特征选择
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h1><p>可以对样本是非线性的，只要对参数线性。</p>
+<h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>在做特征选择的时候，可以看回归的残差图，真正理想状态下，经过模型回归后的残差应该是服从正态分布的，而不是均匀的随机分布；此时可以画个单变量与残差的关系图，直观的看一下是不是有什么明显的一阶、高阶趋势在里面，则需要进一步特征加工。</p>
+<p>大数定理指的是事件发生的概率在N取无穷大的时候趋近于事件发生的概率。频率的极限是概率。</p>
+<h3 id="使用极大似然估计解释最小二乘"><a href="#使用极大似然估计解释最小二乘" class="headerlink" title="使用极大似然估计解释最小二乘"></a>使用极大似然估计解释最小二乘</h3><p><img src="https://i.imgur.com/BLDhXge.png" alt=""></p>
+<h2 id="最大似然估计MLE"><a href="#最大似然估计MLE" class="headerlink" title="最大似然估计MLE"></a>最大似然估计MLE</h2><h3 id="最大似然函数的假设"><a href="#最大似然函数的假设" class="headerlink" title="最大似然函数的假设"></a>最大似然函数的假设</h3><p>似然函数假设每个样本出现的概率是独立的，因此整体出现的概率就是各个样本出现的概率的累计。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/11/回归与特征选择/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2106,7 +2062,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2156,7 +2112,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">199</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2178,7 +2134,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">224</span>
+                  <span class="site-state-item-count">246</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

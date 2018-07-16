@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.30. Weibull Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.6.1 What is a Probability Distribution/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.30. Weibull Plot/" itemprop="url">EDA_1.3.3.30. Weibull Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.6.1 What is a Probability Distribution/" itemprop="url">EDA_1.3.6.1 What is a Probability Distribution</a></h2>
         
 
         <div class="post-meta">
@@ -339,7 +339,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:56:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:08:12+08:00">
                 2018-03-12
               </time>
             
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.30. Weibull Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.30. Weibull Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.6.1 What is a Probability Distribution/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.6.1 What is a Probability Distribution/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.30. Weibull Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.30. Weibull Plot">
+             <span id="/2018/03/12/EDA_1.3.6.1 What is a Probability Distribution/" class="leancloud_visitors" data-flag-title="EDA_1.3.6.1 What is a Probability Distribution">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.30. Weibull Plot
+                  EDA_1.3.6.1 What is a Probability Distribution
               </div>
           
 
@@ -426,33 +426,24 @@
       
         
           
-            <h3 id="Purpose-Graphical-Check-To-See-If-Data-Come-From-a-Population-That-Would-Be-Fit-by-a-Weibull-Distribution"><a href="#Purpose-Graphical-Check-To-See-If-Data-Come-From-a-Population-That-Would-Be-Fit-by-a-Weibull-Distribution" class="headerlink" title="Purpose: Graphical Check To See If Data Come From a Population That Would Be Fit by a Weibull Distribution"></a>Purpose: Graphical Check To See If Data Come From a Population That Would Be Fit by a Weibull Distribution</h3><p>The Weibull plot (Nelson 1982) is a graphical technique for determining if a data set comes from a population that would logically be fit by a 2-parameter Weibull distribution (the location is assumed to be zero).</p>
-<p>The Weibull plot has special scales that are designed so that if the data do in fact follow a Weibull distribution, the points will be linear (or nearly linear). The least squares fit of this line yields estimates for the shape and scale parameters of the Weibull distribution (the location is assumed to be zero).</p>
-<p>Specifically, the shape parameter is the reciprocal of the slope of the fitted line and the scale parameter is the exponent of the intercept of the fitted line.<br>The Weibull distribution also has the property that the scale parameter falls at the 63.2% point irrespective of the value of the shape parameter. The plot shows a horizontal line at this 63.2% point and a vertical line where the horizontal line intersects the least squares fitted line. This vertical line shows the value of scale parameter.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/weibullp.gif" alt=""></p>
-<p>This Weibull plot shows that:</p>
-<pre><code>1. the assumption of a Weibull distribution is reasonable;
-2. the scale parameter estimate is computed to be 33.32;
-3. the shape parameter estimate is computed to be 5.28; and
-4. there are no outliers.
-</code></pre><p>Note that the values on the x-axis (“0”, “1”, and “2”) are the exponents. These actually denote the value 100 = 1, 101 = 10, and 102 = 100.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Weibull Cumulative Probability Versus LN(Ordered Response)</p>
-<p>The Weibull plot is formed by:</p>
-<pre><code>• Vertical axis: Weibull cumulative probability expressed as a percentage
-• Horizontal axis: ordered failure times (in a LOG10 scale)
-</code></pre><p>The vertical scale is ln(-ln(1-p)) where p=(i-0.3)/(n+0.4) and i is the rank of the observation. This scale is chosen in order to linearize the resulting plot for Weibull data.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Weibull plot can be used to answer the following questions:</p>
-<pre><code>1. Do the data follow a 2-parameter Weibull distribution?
-2. What is the best estimate of the shape parameter for the 2-parameter Weibull distribution?
-3. What is the best estimate of the scale (= variation) parameter for the 2-parameter Weibull distribution?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance:"></a>Importance:</h3><p>Check Distributional Assumptions</p>
-<p>Many statistical analyses, particularly in the field of reliability, are based on the assumption that the data follow a Weibull distribution. If the analysis assumes the data follow a Weibull distribution, it is important to verify this assumption and, if verified, find good estimates of the Weibull parameters.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Weibull Probability Plot</li>
-<li>Weibull PPCC Plot</li>
-<li>Weibull Hazard Plot</li>
-</ul>
-<p>The Weibull probability plot (in conjunction with the Weibull PPCC plot), the Weibull hazard plot, and the Weibull plot are all similar techniques that can be used for assessing the adequacy of the Weibull distribution as a model for the data, and additionally providing estimation for the shape, scale, or location parameters.<br>The Weibull hazard plot and Weibull plot are designed to handle censored data (which the Weibull probability plot does not).</p>
+            <h3 id="Discrete-Distributions"><a href="#Discrete-Distributions" class="headerlink" title="Discrete Distributions"></a>Discrete Distributions</h3><p>The mathematical definition of a discrete probability function, p(x), is a function that satisfies the following properties.</p>
+<pre><code>1. The probability that x can take a specific value is p(x). That is
+P[X=x]=p(x)=px
+2. p(x) is non-negative for all real x.
+3. The sum of p(x) over all possible values of x is 1, that is
+∑jpj=1
+where j represents all possible values that x can have and pj is the probability at xj.
+One consequence of properties 2 and 3 is that 0 &lt;= p(x) &lt;= 1.
+</code></pre><p>What does this actually mean? A discrete probability function is a function that can take a discrete number of values (not necessarily finite). This is most often the non-negative integers or some subset of the non-negative integers. There is no mathematical restriction that discrete probability functions only be defined at integers, but in practice this is usually what makes sense. For example, if you toss a coin 6 times, you can get 2 heads or 3 heads but not 2 1/2 heads. Each of the discrete values has a certain probability of occurrence that is between zero and one. That is, a discrete function that allows negative values or values greater than one is not a probability function. The condition that the probabilities sum to one means that at least one of the values has to occur.</p>
+<h3 id="Continuous-Distributions"><a href="#Continuous-Distributions" class="headerlink" title="Continuous Distributions"></a>Continuous Distributions</h3><p>The mathematical definition of a continuous probability function, f(x), is a function that satisfies the following properties.</p>
+<pre><code>1. The probability that x is between two points a and b is
+p[a≤x≤b]=∫baf(x)dx
+2. It is non-negative for all real x.
+3. The integral of the probability function is one, that is
+∫∞−∞f(x)dx=1
+</code></pre><p>What does this actually mean? Since continuous probability functions are defined for an infinite number of points over a continuous interval, the probability at a single point is always zero. Probabilities are measured over intervals, not single points. That is, the area under the curve between two distinct points defines the probability for that interval. This means that the height of the probability function can in fact be greater than one. The property that the integral must equal one is equivalent to the property for discrete distributions that the sum of all the probabilities must equal one.</p>
+<h3 id="Probability-Mass-Functions-Versus-Probability-Density-Functions"><a href="#Probability-Mass-Functions-Versus-Probability-Density-Functions" class="headerlink" title="Probability Mass Functions Versus Probability Density Functions"></a>Probability Mass Functions Versus Probability Density Functions</h3><p>Discrete probability functions are referred to as probability mass functions and continuous probability functions are referred to as probability density functions. The term probability functions covers both discrete and continuous distributions.</p>
+<p>There are a few occasions in the e-Handbook when we use the term probability density function in a generic sense where it may apply to either probability density or probability mass functions. It should be clear from the context whether we are referring only to continuous distributions or to either continuous or discrete distributions.</p>
 
           
         
@@ -501,7 +492,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.32. 4-Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.18. Yates Algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -520,7 +511,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.32. 4-Plot/" itemprop="url">EDA_1.3.3.32. 4-Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.18. Yates Algorithm/" itemprop="url">EDA_1.3.5.18. Yates Algorithm</a></h2>
         
 
         <div class="post-meta">
@@ -532,7 +523,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:56:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:07:12+08:00">
                 2018-03-12
               </time>
             
@@ -573,8 +564,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.32. 4-Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.32. 4-Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.18. Yates Algorithm/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.18. Yates Algorithm/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -582,7 +573,7 @@
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.32. 4-Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.32. 4-Plot">
+             <span id="/2018/03/12/EDA_1.3.5.18. Yates Algorithm/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.18. Yates Algorithm">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -600,7 +591,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.32. 4-Plot
+                  EDA_1.3.5.18. Yates Algorithm
               </div>
           
 
@@ -619,1033 +610,1499 @@
       
         
           
-            <h3 id="Purpose-Check-Underlying-Statistical-Assumptions"><a href="#Purpose-Check-Underlying-Statistical-Assumptions" class="headerlink" title="Purpose: Check Underlying Statistical Assumptions"></a>Purpose: Check Underlying Statistical Assumptions</h3><p>The 4-plot is a collection of 4 specific EDA graphical techniques whose purpose is to test the assumptions that underlie most measurement processes. A 4-plot consists of a</p>
-<pre><code>1. run sequence plot;
-2. lag plot;
-3. histogram;
-4. normal probability plot.
-</code></pre><p>If the 4 underlying assumptions of a typical measurement process hold, then the above 4 plots will have a characteristic appearance (see the normal random numbers case study below); if any of the underlying assumptions fail to hold, then it will be revealed by an anomalous appearance in one or more of the plots. Several commonly encountered situations are demonstrated in the case studies below.<br>Although the 4-plot has an obvious use for univariate and time series data, its usefulness extends far beyond that. Many statisticalmodels of the form</p>
-<pre><code>Yi=f(X1,...,Xk)+Ei
-</code></pre><p>have the same underlying assumptions for the error term. That is, no matter how complicated the functional fit, the assumptions on the underlying error term are still the same. The 4-plot can and should be routinely applied to the residuals when fitting models regardless of whether the model is simple or complicated.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/4-plot.gif" alt=""></p>
-<p>Process Has Fixed Location, Fixed Variation, Non-Random (Oscillatory), Non-Normal U-Shaped Distribution, and Has 3 Outliers.</p>
-<p>This 4-plot reveals the following:</p>
-<pre><code>1. the fixed location assumption is justified as shown by the run sequence plot in the upper left corner.
-2. the fixed variation assumption is justified as shown by the run sequence plot in the upper left corner.
-3. the randomness assumption is violated as shown by the non-random (oscillatory) lag plot in the upper right corner.
-4. the assumption of a common, normal distribution is violated as shown by the histogram in the lower left corner and the normal probability plot in the lower right corner. The distribution is non-normal and is a U-shaped distribution.
-5. there are several outliers apparent in the lag plot in the upper right corner.
-</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><ol>
-<li>Run Sequence Plot;</li>
-<li>Lag Plot;</li>
-<li>Histogram;</li>
-<li>Normal Probability Plot</li>
-</ol>
-<p>The 4-plot consists of the following:</p>
-<pre><code>1. Run sequence plot to test fixed location and variation.
-    ○ Vertically: Yi
-    ○ Horizontally: i
-2. Lag Plot to test randomness.
-    ○ Vertically: Yi
-    ○ Horizontally: Yi-1
-3. Histogram to test (normal) distribution.
-    ○ Vertically: Counts
-    ○ Horizontally: Y
-4. Normal probability plot to test normal distribution.
-    ○ Vertically: Ordered Yi
-    ○ Horizontally: Theoretical values from a normal N(0,1) distribution for ordered Yi
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>4-plots can provide answers to many questions:</p>
-<pre><code>1. Is the process in-control, stable, and predictable?
-2. Is the process drifting with respect to location?
-3. Is the process drifting with respect to variation?
-4. Are the data random?
-5. Is an observation related to an adjacent observation?
-6. If the data are a time series, is is white noise?
-7. If the data are a time series and not white noise, is it sinusoidal, autoregressive, etc.?
-8. If the data are non-random, what is a better model?
-9. Does the process follow a normal distribution?
-10. If non-normal, what distribution does the process follow?
-11. Is the model
-    Yi=A0+Ei
-    valid and sufficient?
-12. If the default model is insufficient, what is a better model?
-13. Is the formula
-    sY¯=s/N−−√
-    valid?
-14. Is the sample mean a good estimator of the process location?
-15. If not, what would be a better estimator?
-16. Are there any outliers?
-</code></pre><h3 id="Importance-Testing-Underlying-Assumptions-Helps-Ensure-the-Validity-of-the-Final-Scientific-and-Engineering-Conclusions"><a href="#Importance-Testing-Underlying-Assumptions-Helps-Ensure-the-Validity-of-the-Final-Scientific-and-Engineering-Conclusions" class="headerlink" title="Importance: Testing Underlying Assumptions Helps Ensure the Validity of the Final Scientific and Engineering Conclusions"></a>Importance: Testing Underlying Assumptions Helps Ensure the Validity of the Final Scientific and Engineering Conclusions</h3><p>There are 4 assumptions that typically underlie all measurement processes; namely, that the data from the process at hand “behave like”:</p>
-<pre><code>1. random drawings;
-2. from a fixed distribution;
-3. with that distribution having a fixed location; and
-4. with that distribution having fixed variation.
-</code></pre><p>Predictability is an all-important goal in science and engineering. If the above 4 assumptions hold, then we have achieved probabilistic predictability–the ability to make probability statements not only about the process in the past, but also about the process in the future. In short, such processes are said to be “statistically in control”. If the 4 assumptions do not hold, then we have a process that is drifting (with respect to location, variation, or distribution), is unpredictable, and is out of control. A simple characterization of such processes by a location estimate, a variation estimate, or a distribution “estimate” inevitably leads to optimistic and grossly invalid engineering conclusions.</p>
-<p>Inasmuch as the validity of the final scientific and engineering conclusions is inextricably linked to the validity of these same 4 underlying assumptions, it naturally follows that there is a real necessity for all 4 assumptions to be routinely tested. The 4-plot (run sequence plot, lag plot, histogram, and normal probability plot) is seen as a simple, efficient, and powerful way of carrying out this routine checking.</p>
-<p>Interpretation:<br>Flat, Equi-Banded, Random, Bell-Shaped, and Linear<br>Of the 4 underlying assumptions:</p>
-<pre><code>1. If the fixed location assumption holds, then the run sequence plot will be flat and non-drifting.
-2. If the fixed variation assumption holds, then the vertical spread in the run sequence plot will be approximately the same over the entire horizontal axis.
-3. If the randomness assumption holds, then the lag plot will be structureless and random.
-4. If the fixed distribution assumption holds (in particular, if the fixed normal distribution assumption holds), then the histogram will be bell-shaped and the normal probability plot will be approximatelylinear.
-</code></pre><p>If all 4 of the assumptions hold, then the process is “statistically in control”. In practice, many processes fall short of achieving this ideal.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Run Sequence Plot </li>
-<li>Lag Plot </li>
-<li>Histogram </li>
-<li>Normal Probability Plot </li>
-<li>Autocorrelation Plot </li>
-<li>Spectral Plot </li>
-<li>PPCC Plot </li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.31. Youden Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.31. Youden Plot/" itemprop="url">EDA_1.3.3.31. Youden Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:56:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.31. Youden Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.31. Youden Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.31. Youden Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.31. Youden Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.31. Youden Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Interlab-Comparisons"><a href="#Purpose-Interlab-Comparisons" class="headerlink" title="Purpose: Interlab Comparisons"></a>Purpose: Interlab Comparisons</h3><p>Youden plots are a graphical technique for analyzing interlab data when each lab has made two runs on the same product or one run on two different products.<br>The Youden plot is a simple but effective method for comparing both the within-laboratory variability and the between-laboratory variability.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/youdenpl.gif" alt=""></p>
-<p>This plot shows:</p>
-<pre><code>1. Not all labs are equivalent.
-2. Lab 4 is biased low.
-3. Lab 3 has within-lab variability problems.
-4. Lab 5 has an outlying run.
-</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Response 1 Versus Response 2 Coded by Lab</p>
-<p>Youden plots are formed by:</p>
-<pre><code>1. Vertical axis: Response variable 1 (i.e., run 1 or product 1 response value)
-2. Horizontal axis: Response variable 2 (i.e., run 2 or product 2 response value)
-</code></pre><p>In addition, the plot symbol is the lab id (typically an integer from 1 to k where k is the number of labs). Sometimes a 45-degree reference line is drawn. Ideally, a lab generating two runs of the same product should produce reasonably similar results. Departures from this reference line indicate inconsistency from the lab. If two different products are being tested, then a 45-degree line may not be appropriate. However, if the labs are consistent, the points should lie near some fitted straight line.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Youden plot can be used to answer the following questions:</p>
-<pre><code>1. Are all labs equivalent?
-2. What labs have between-lab problems (reproducibility)?
-3. What labs have within-lab problems (repeatability)?
-4. What labs are outliers?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>In interlaboratory studies or in comparing two runs from the same lab, it is useful to know if consistent results are generated. Youden plots should be a routine plot for analyzing this type of data.</p>
-<p>DOE Youden Plot</p>
-<p>The DOE Youden plot is a specialized Youden plot used in the design of experiments. In particular, it is useful for full and fractional designs.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>Scatter Plot</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/" itemprop="url">EDA_1.3.3.28. Standard Deviation Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:46:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.28. Standard Deviation Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.28. Standard Deviation Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.28. Standard Deviation Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Detect-Changes-in-Scale-Between-Groups"><a href="#Purpose-Detect-Changes-in-Scale-Between-Groups" class="headerlink" title="Purpose: Detect Changes in Scale Between Groups"></a>Purpose: Detect Changes in Scale Between Groups</h3><p>Standard deviation plots are used to see if the standard deviation varies between different groups of the data. The grouping is determined by the analyst. In most cases, the data provide a specific grouping variable. For example, the groups may be the levels of a factor variable. In the sample plot below, the months of the year provide the grouping.</p>
-<p>Standard deviation plots can be used with ungrouped data to determine if the standard deviation is changing over time. In this case, the data are broken into an arbitrary number of equal-sized groups. For example, a data series with 400 points can be divided into 10 groups of 40 points each. A standard deviation plot can then be generated with these groups to see if the standard deviation is increasing or decreasing over time.</p>
-<p>Although the standard deviation is the most commonly used measure of scale, the same concept applies to other measures of scale. For example, instead of plotting the standard deviation of each group, the median absolute deviation or theaverage absolute deviation might be plotted instead. This might be done if there were significant outliers in the data and a more robust measure of scale than the standard deviation was desired.</p>
-<p>Standard deviation plots are typically used in conjunction with mean plots. The mean plot would be used to check for shifts in location while the standard deviation plot would be used to check for shifts in scale.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/sdplot.gif" alt=""></p>
-<p>This sample standard deviation plot shows</p>
-<pre><code>1. there is a shift in variation;
-2. greatest variation is during the summer months.
-</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Standard Deviations Versus Group ID</p>
-<p>Standard deviation plots are formed by:</p>
-<pre><code>• Vertical axis: Group standard deviations
-• Horizontal axis: Group identifier
-</code></pre><p>A reference line is plotted at the overall standard deviation.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The standard deviation plot can be used to answer the following questions.</p>
-<pre><code>1. Are there any shifts in variation?
-2. What is the magnitude of the shifts in variation?
-3. Is there a distinct pattern in the shifts in variation?
-</code></pre><h3 id="Importance-Checking-Assumptions"><a href="#Importance-Checking-Assumptions" class="headerlink" title="Importance: Checking Assumptions"></a>Importance: Checking Assumptions</h3><p>A common assumption in 1-factor analyses is that of equal variances. That is, the variance is the same for different levels of the factor variable. The standard deviation plot provides a graphical check for that assumption. A common assumption for univariate data is that the variance is constant. By grouping the data into equi-sized intervals, the standard deviation plot can provide a graphical test of this assumption.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Mean Plot</li>
-<li>DOE Standard Deviation Plot</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.29. Star Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.29. Star Plot/" itemprop="url">EDA_1.3.3.29. Star Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:46:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.29. Star Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.29. Star Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.29. Star Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.29. Star Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.29. Star Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Display-Multivariate-Data"><a href="#Purpose-Display-Multivariate-Data" class="headerlink" title="Purpose: Display Multivariate Data"></a>Purpose: Display Multivariate Data</h3><p>The star plot (Chambers 1983) is a method of displaying multivariate data. Each star represents a single observation. Typically, star plots are generated in a multi-plot format with many stars on each page and each star representing one observation.</p>
-<p>Star plots are used to examine the relative values for a single data point (e.g., point 3 is large for variables 2 and 4, small for variables 1, 3, 5, and 6) and to locate similar points or dissimilar points.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/starplot.gif" alt=""></p>
-<p>The plot below contains the star plots of 16 cars. The data file actually contains 74 cars, but we restrict the plot to what can reasonably be shown on one page. The variable list for the sample star plot is</p>
-<pre><code>1. Price
-2. Mileage (MPG)
-3. 1978 Repair Record (1 = Worst, 5 = Best)
-4. 1977 Repair Record (1 = Worst, 5 = Best)
-5. Headroom
-6. Rear Seat Room
-7. Trunk Space
-8. Weight
-9. 9
-10. Length
-</code></pre><p>We can look at these plots individually or we can use them to identify clusters of cars with similar features. For example, we can look at the star plot of the Cadillac Seville and see that it is one of the most expensive cars, gets below average (but not among the worst) gas mileage, has an average repair record, and has average-to-above-average roominess and size. We can then compare the Cadillac models (the last three plots) with the AMC models (the first three plots). This comparison shows distinct patterns. The AMC models tend to be inexpensive, have below average gas mileage, and are small in both height and weight and in roominess. The Cadillac models are expensive, have poor gas mileage, and are large in both size and roominess.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The star plot consists of a sequence of equi-angular spokes, called radii, with each spoke representing one of the variables. The data length of a spoke is proportional to the magnitude of the variable for the data point relative to the maximum magnitude of the variable across all data points. A line is drawn connecting the data values for each spoke. This gives the plot a star-like appearance and the origin of the name of this plot.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The star plot can be used to answer the following questions:</p>
-<pre><code>1. What variables are dominant for a given observation?
-2. Which observations are most similar, i.e., are there clusters of observations?
-3. Are there outliers?
-</code></pre><h3 id="Weakness-in-Technique"><a href="#Weakness-in-Technique" class="headerlink" title="Weakness in Technique"></a>Weakness in Technique</h3><p>Star plots are helpful for small-to-moderate-sized multivariate data sets. Their primary weakness is that their effectiveness is limited to data sets with less than a few hundred points. After that, they tend to be overwhelming.</p>
-<p>Graphical techniques suited for large data sets are discussed by Scott.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>Alternative ways to plot multivariate data are discussed in Chambers, du Toit, and Everitt.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" itemprop="url">EDA_1.3.3.25 Run-Sequence Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:36:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.25 Run-Sequence Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.25 Run-Sequence Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Check-for-Shifts-in-Location-and-Scale-and-Outliers"><a href="#Purpose-Check-for-Shifts-in-Location-and-Scale-and-Outliers" class="headerlink" title="Purpose: Check for Shifts in Location and Scale and Outliers"></a>Purpose: Check for Shifts in Location and Scale and Outliers</h3><p>Run sequence plots (Chambers 1983) are an easy way to graphically summarize a univariate data set. A common assumption of univariate data sets is that they behave like:</p>
-<pre><code>1. random drawings;
-2. from a fixed distribution;
-3. with a common location; and
-4. with a common scale.
-</code></pre><p>With run sequence plots, shifts in location and scale are typically quite evident. Also, outliers can easily be detected.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p><img src="assets/EDA/runseq.gif" alt=""></p>
-<p>Last Third of Data Shows a Shift of Location</p>
-<p>This sample run sequence plot shows that the location shifts up for the last third of the data.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><pre><code>y(i) Versus i
-</code></pre><p>Run sequence plots are formed by:</p>
-<pre><code>• Vertical axis: Response variable Yi
-• Horizontal axis: Index i (i = 1, 2, 3, ... )
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The run sequence plot can be used to answer the following questions</p>
-<pre><code>1. Are there any shifts in location?
-2. Are there any shifts in variation?
-3. Are there any outliers?
-</code></pre><p>The run sequence plot can also give the analyst an excellent feel for the data.</p>
-<h3 id="Importance-Check-Univariate-Assumptions"><a href="#Importance-Check-Univariate-Assumptions" class="headerlink" title="Importance: Check Univariate Assumptions"></a>Importance: Check Univariate Assumptions</h3><p>For univariate data, the default model is</p>
-<pre><code>Y = constant + error
-</code></pre><p>where the error is assumed to be random, from a fixed distribution, and with constant location and scale. The validity of this model depends on the validity of these assumptions. The run sequence plot is useful for checking for constant location and scale.</p>
-<p>Even for more complex models, the assumptions on the error term are still often the same. That is, a run sequence plot of the residuals (even from very complex models) is still vital for checking for outliers and for detecting shifts in location and scale.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Scatter Plot</li>
-<li>Histogram</li>
-<li>Autocorrelation Plot</li>
-<li>Lag Plot</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.27. Spectral Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" itemprop="url">EDA_1.3.3.27. Spectral Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:36:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.27. Spectral Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.27. Spectral Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.27. Spectral Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Examine-Cyclic-Structure"><a href="#Purpose-Examine-Cyclic-Structure" class="headerlink" title="Purpose: Examine Cyclic Structure"></a>Purpose: Examine Cyclic Structure</h3><p>A spectral plot ( Jenkins and Watts 1968 orBloomfield 1976) is a graphical technique for examining cyclic structure in the frequency domain. It is a smoothed Fourier transform of the autocovariance function.</p>
-<p>The frequency is measured in cycles per unit time where unit time is defined to be the distance between 2 points. A frequency of 0 corresponds to an infinite cycle while a frequency of 0.5 corresponds to a cycle of 2 data points. Equi-spaced time series are inherently limited to detecting frequencies between 0 and 0.5.</p>
-<p>Trends should typically be removed from the time series before applying the spectral plot. Trends can be detected from a run sequence plot. Trends are typically removed by differencing the series or by fitting a straight line (or some other polynomial curve) and applying the spectral analysis to the residuals.</p>
-<p>Spectral plots are often used to find a starting value for the frequency, ω, in the sinusoidal model</p>
-<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
-</code></pre><p>See the beam deflection case study for an example of this.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/spectrum.gif" alt=""></p>
-<p>This spectral plot shows one dominant frequency of approximately 0.3 cycles per observation.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Variance Versus Frequency</p>
-<p>The spectral plot is formed by:</p>
-<pre><code>• Vertical axis: Smoothed variance (power)
-• Horizontal axis: Frequency (cycles per observation)
-</code></pre><p>The computations for generating the smoothed variances can be involved and are not discussed further here. The details can be found in the Jenkins and Bloomfield references and in most texts that discuss the frequency analysis of time series.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The spectral plot can be used to answer the following questions:</p>
-<pre><code>1. How many cyclic components are there?
-2. Is there a dominant cyclic frequency?
-3. If there is a dominant cyclic frequency, what is it?
-</code></pre><h3 id="Importance-Check-Cyclic-Behavior-of-Time-Series"><a href="#Importance-Check-Cyclic-Behavior-of-Time-Series" class="headerlink" title="Importance: Check Cyclic Behavior of Time Series"></a>Importance: Check Cyclic Behavior of Time Series</h3><p>The spectral plot is the primary technique for assessing the cyclic nature of univariate time series in the frequency domain. It is almost always the second plot (after a run sequence plot) generated in a frequency domain analysis of a time series.</p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. Random (= White Noise)
-2. Strong autocorrelation and autoregressive model 
-3. Sinusoidal model
+            <h3 id="Purpose-Estimate-Factor-Effects-in-a-2-Level-Factorial-Design"><a href="#Purpose-Estimate-Factor-Effects-in-a-2-Level-Factorial-Design" class="headerlink" title="Purpose: Estimate Factor Effects in a 2-Level Factorial Design"></a>Purpose: Estimate Factor Effects in a 2-Level Factorial Design</h3><p>Full factorial and fractional factorial designs are common in designed experiments for engineering and scientific applications.</p>
+<p>In these designs, each factor is assigned two levels. These are typically called the low and high levels. For computational purposes, the factors are scaled so that the low level is assigned a value of -1 and the high level is assigned a value of +1. These are also commonly referred to as “-“ and “+”.</p>
+<p>A full factorial design contains all possible combinations of low/high levels for all the factors. A fractional factorial design contains a carefully chosen subset of these combinations. The criterion for choosing the subsets is discussed in detail in the process improvement chapter.</p>
+<p>The Yates algorithm exploits the special structure of these designs to generate least squares estimates for factor effects for all factors and all relevant interactions.</p>
+<p>The mathematical details of the Yates algorithm are given in chapter 10 of Box, Hunter, and Hunter (1978). Natrella (1963) also provides a procedure for testing the significance of effect estimates.<br>The effect estimates are typically complemented by a number of graphical techniques such as theDOE mean plot and the DOE contour plot (“DOE” represents “design of experiments”). These are demonstrated in the eddy current case study.</p>
+<h3 id="Yates-Order"><a href="#Yates-Order" class="headerlink" title="Yates Order"></a>Yates Order</h3><p>Before performing the Yates algorithm, the data should be arranged in “Yates order”. That is, given k factors, the kth column consists of 2k-1minus signs (i.e., the low level of the factor) followed by 2k-1 plus signs (i.e., the high level of the factor). For example, for a full factorial design with three factors, the design matrix is</p>
+<pre><code>- - -
++ - -
+- + -
++ + -
+- - +
++ - +
+- + +
++ + +
+</code></pre><p>Determining the Yates order for fractional factorial designs requires knowledge of theconfounding structure of the fractional factorial design.</p>
+<h3 id="Yates-Algorithm"><a href="#Yates-Algorithm" class="headerlink" title="Yates Algorithm"></a>Yates Algorithm</h3><p>The Yates algorithm is demonstrated for the eddy current data set. The data set contains eight measurements from a two-level, full factorial design with three factors. The purpose of the experiment is to identify factors that have the most effect on eddy current measurements.</p>
+<p>In the “Effect” column, we list the main effects and interactions from our factorial experiment in standard order. In the “Response” column, we list the measurement results from our experiment in Yates order.</p>
+<pre><code>Effect    Response  Col 1    Col 2    Col 3  Estimate
+------    --------  -----    -----    -----  --------
+Mean       1.70      6.27    10.21    21.27   2.65875
+X1         4.57      3.94    11.06    12.41   1.55125
+X2         0.55      6.10     5.71    -3.47  -0.43375
+X1*X2      3.39      4.96     6.70     0.51   0.06375
+X3         1.51      2.87    -2.33     0.85   0.10625
+X1*X3      4.59      2.84    -1.14     0.99   0.12375
+X2*X3      0.67      3.08    -0.03     1.19   0.14875
+X1*X2*X3   4.29      3.62     0.54     0.57   0.07125
+Sum of responses:           21.27            
+Sum-of-squared responses:   77.7707
+Sum-of-squared Col 3:      622.1656
+</code></pre><p>The first four values in Col 1 are obtained by adding adjacent pairs of responses, for example 4.57 + 1.70 = 6.27, and 3.39 + 0.55 = 3.94. The second four values in Col 1 are obtained by subtracting the same adjacent pairs of responses, for example, 4.57 - 1.70 = 2.87, and 3.39 - 0.55 = 2.84. The values in Col 2 are calculated in the same way, except that we are adding and subtracting adjacent values from Col 1. Col 3 is computed using adjacent values from Col 2. Finally, we obtain the “Estimate” column by dividing the values in Col 3 by the total number of responses, 8.<br>We can check our calculations by making sure that the first value in Col 3 (21.27) is the sum of all the responses. In addition, the sum-of-squared responses (77.7707) should equal the sum-of-squared Col 3 values divided by 8 (622.1656/8 = 77.7707).</p>
+<h3 id="Practical-Considerations"><a href="#Practical-Considerations" class="headerlink" title="Practical Considerations"></a>Practical Considerations</h3><p>The Yates algorithm provides a convenient method for computing effect estimates; however, the same information is easily obtained from statistical software using either an analysis of variance or regression procedure. The methods for analyzing data from a designed experiment are discussed more fully in the chapter on Process Improvement.</p>
+<h3 id="Graphical-Presentation"><a href="#Graphical-Presentation" class="headerlink" title="Graphical Presentation"></a>Graphical Presentation</h3><p>The following plots may be useful to complement the quantitative information from the Yates algorithm.</p>
+<pre><code>1. Ordered data plot
+2. Ordered absolute effects plot
+3. Cumulative residual standard deviation plot
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Yates algorithm can be used to answer the following question.</p>
+<pre><code>1. What is the estimated effect of a factor on the response?
 </code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Multi-factor analysis of variance</li>
+<li>DOE mean plot</li>
+<li>Block plot</li>
+<li>DOE contour plot</li>
+</ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35i.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35i.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.17.2. Tietjen-Moore Test for Outliers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.17.2. Tietjen-Moore Test for Outliers/" itemprop="url">EDA_1.3.5.17.2. Tietjen-Moore Test for Outliers</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:06:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.17.2. Tietjen-Moore Test for Outliers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.17.2. Tietjen-Moore Test for Outliers/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.17.2. Tietjen-Moore Test for Outliers/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.17.2. Tietjen-Moore Test for Outliers">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.17.2. Tietjen-Moore Test for Outliers
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Detection-of-Outliers"><a href="#Purpose-Detection-of-Outliers" class="headerlink" title="Purpose: Detection of Outliers"></a>Purpose: Detection of Outliers</h3><p>The Tietjen-Moore test (Tietjen-Moore 1972) is used to detect multiple outliersin a univariate data set that follows an approximately normal distribution.</p>
+<p>The Tietjen-Moore test is a generalization of the Grubbs’ test to the case of multiple outliers. If testing for a single outlier, the Tietjen-Moore test is equivalent to the Grubbs’ test.<br>It is important to note that the Tietjen-Moore test requires that the suspected number of outliers be specified exactly. If this is not known, it is recommended that the generalized extreme studentized deviate test be used instead (this test only requires an upper bound on the number of suspected outliers).</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><img src="assets/EDA/eda35h2_1.png" alt=""><br><img src="assets/EDA/eda35h2_2.png" alt=""></p>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>The Tietjen-Moore paper gives the following 15 observations of vertical semi-diameters of the planet Venus (this example originally appeared in Grubbs’ 1950paper):</p>
+<pre><code>-1.40 -0.44 -0.30 -0.24 -0.22 -0.13 -0.05 0.06 0.10 0.18 0.20 0.39 0.48 0.63 1.01
+</code></pre><p>As a first step, a normal probability plot was generated.</p>
+<p><img src="assets/EDA/tm.gif" alt=""></p>
+<p>This plot indicates that the normality assumption is reasonable. The minimum value appears to be an outlier. To a lesser extent, the maximum value may also be an outlier. The Tietjen-Moore test of the two most extreme points (-1.40 and 1.01) is shown below.</p>
+<pre><code>H0:  there are no outliers in the data
+Ha:  the two most extreme points are outliers
+Test statistic:  Ek = 0.292
+Significance level:  α = 0.05
+Critical value for lower tail:  0.317
+Critical region:  Reject H0 if Ek &lt; 0.317
+</code></pre><p>The Tietjen-Moore test is a lower, one-tailed test, so we reject the null hypothesis that there are no outliers when the value of the test statistic is less than the critical value. For our example, the null hypothesis is rejected at the 0.05 level of significance and we conclude that the two most extreme points are outliers.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Tietjen-Moore test can be used to answer the following question:</p>
+<pre><code>1. Does the data set contain k outliers?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical techniques are sensitive to the presence of outliers. For example, simple calculations of the mean and standard deviation may be distorted by a single grossly inaccurate data point.<br>Checking for outliers should be a routine part of any data analysis. Potential outliers should be examined to see if they are possibly erroneous. If the data point is in error, it should be corrected if possible and deleted if it is not possible. If there is no reason to believe that the outlying point is in error, it should not be deleted without careful consideration. However, the use of more robust techniques may be warranted. Robust techniques will often downweight the effect of outlying points without deleting them.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>Several graphical techniques can, and should, be used to help detect outliers. A simple normal probability plot, run sequence plot, a box plot, or a histogram should show any obviously outlying points. In addition to showing potential outliers, several of these graphics also help assess whether the data follow an approximately normal distribution.</p>
+<pre><code>Normal Probability Plot
+Run Sequence Plot
+Histogram
+Box Plot
+Lag Plot
+</code></pre><p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h2.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h2.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.17.3. Generalized ESD Test for Outliers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.17.3. Generalized ESD Test for Outliers/" itemprop="url">EDA_1.3.5.17.3. Generalized ESD Test for Outliers</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:06:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.17.3. Generalized ESD Test for Outliers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.17.3. Generalized ESD Test for Outliers/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.17.3. Generalized ESD Test for Outliers/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.17.3. Generalized ESD Test for Outliers">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.17.3. Generalized ESD Test for Outliers
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Detection-of-Outliers"><a href="#Purpose-Detection-of-Outliers" class="headerlink" title="Purpose: Detection of Outliers"></a>Purpose: Detection of Outliers</h3><p>The generalized (extreme Studentized deviate) ESD test (Rosner 1983) is used to detect one or more outliers in a univariate data set that follows an approximately normal distribution.<br>The primary limitation of the Grubbs test and the Tietjen-Moore test is that the suspected number of outliers, k, must be specified exactly. If kis not specified correctly, this can distort the conclusions of these tests. On the other hand, the generalized ESD test (Rosner 1983) only requires that an upper bound for the suspected number of outliers be specified.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><img src="assets/EDA/eda35h3_1.png" alt=""></p>
+<p>Note that although the generalized ESD is essentially Grubbs test applied sequentially, there are a few important distinctions:</p>
+<pre><code>• The generalized ESD test makes approriate adjustments for the critical values based on the number of outliers being tested for that the sequential application of Grubbs test does not.
+• If there is significant masking, applying Grubbs test sequentially may stop too soon. The example below identifies three outliers at the 5 % level when using the generalized ESD test. However, trying to use Grubbs test sequentially would stop at the first iteration and declare no outliers.
+</code></pre><h3 id="Generalized-ESD-Test-Example"><a href="#Generalized-ESD-Test-Example" class="headerlink" title="Generalized ESD Test Example"></a>Generalized ESD Test Example</h3><p>The Rosner paper gives an example with the following data.</p>
+<pre><code>-0.25 0.68 0.94 1.15 1.20 1.26 1.26
+ 1.34 1.38 1.43 1.49 1.49 1.55 1.56
+ 1.58 1.65 1.69 1.70 1.76 1.77 1.81
+ 1.91 1.94 1.96 1.99 2.06 2.09 2.10
+ 2.14 2.15 2.23 2.24 2.26 2.35 2.37
+ 2.40 2.47 2.54 2.62 2.64 2.90 2.92
+ 2.92 2.93 3.21 3.26 3.30 3.59 3.68
+ 4.30 4.64 5.34 5.42 6.01
+</code></pre><p>As a first step, a normal probability plot was generated<br><img src="assets/EDA/gesd.gif" alt=""></p>
+<p>This plot indicates that the normality assumption is questionable.<br>Following the Rosner paper, we test for up to 10 outliers:</p>
+<pre><code>H0:  there are no outliers in the data
+Ha:  there are up to 10 outliers in the data
+Significance level:  α = 0.05
+Critical region:  Reject H0 if Ri &gt; critical value
+
+Summary Table for Two-Tailed Test
+---------------------------------------
+      Exact           Test     Critical  
+  Number of      Statistic    Value, λi  
+Outliers, i      Value, Ri          5 %  
+---------------------------------------
+        1          3.118          3.158  
+        2          2.942          3.151  
+        3          3.179          3.143 *
+        4          2.810          3.136  
+        5          2.815          3.128  
+        6          2.848          3.120  
+        7          2.279          3.111  
+        8          2.310          3.103  
+        9          2.101          3.094  
+       10          2.067          3.085  
+</code></pre><p>For the generalized ESD test above, there are essentially 10 separate tests being performed. For this example, the largest number of outliers for which the test statistic is greater than the critical value (at the 5 % level) is three. We therefore conclude that there are three outliers in this data set.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The generalized ESD test can be used to answer the following question:</p>
+<pre><code>1. How many outliers does the data set contain?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical techniques are sensitive to the presence of outliers. For example, simple calculations of the mean and standard deviation may be distorted by a single grossly inaccurate data point.<br>Checking for outliers should be a routine part of any data analysis. Potential outliers should be examined to see if they are possibly erroneous. If the data point is in error, it should be corrected if possible and deleted if it is not possible. If there is no reason to believe that the outlying point is in error, it should not be deleted without careful consideration. However, the use of more robust techniques may be warranted. Robust techniques will often downweight the effect of outlying points without deleting them.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>Several graphical techniques can, and should, be used to help detect outliers. A simple normal probability plot, run sequence plot, a box plot, or a histogram should show any obviously outlying points. In addition to showing potential outliers, several of these graphics also help assess whether the data follow an approximately normal distribution.</p>
+<pre><code>Run Sequence Plot
+Histogram
+Box Plot
+Normal Probability Plot
+Lag Plot
+</code></pre><p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.17.1.  Grubbs' Test for Outliers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.17.1.  Grubbs' Test for Outliers/" itemprop="url">EDA_1.3.5.17.1.  Grubbs' Test for Outliers</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:05:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.17.1.  Grubbs' Test for Outliers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.17.1.  Grubbs' Test for Outliers/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.17.1.  Grubbs' Test for Outliers/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.17.1.  Grubbs' Test for Outliers">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.17.1.  Grubbs' Test for Outliers
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Detection-of-Outliers"><a href="#Purpose-Detection-of-Outliers" class="headerlink" title="Purpose: Detection of Outliers"></a>Purpose: Detection of Outliers</h3><p>Grubbs’ test (Grubbs 1969 and Stefansky 1972) is used to detect a single outlierin a univariate data set that follows an approximately normal distribution.</p>
+<p>If you suspect more than one outlier may be present, it is recommended that you use either the Tietjen-Moore test or the generalized extreme studentized deviate test instead of the Grubbs’ test.</p>
+<p>Grubbs’ test is also known as the maximum normed residual test.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><img src="assets/EDA/eda35h1_1.png" alt=""></p>
+<h3 id="Grubbs’-Test-Example"><a href="#Grubbs’-Test-Example" class="headerlink" title="Grubbs’ Test Example"></a>Grubbs’ Test Example</h3><p>The Tietjen and Moore paper gives the following set of 8 mass spectrometer measurements on a uranium isotope:</p>
+<pre><code>199.31 199.53 200.19 200.82 201.92 201.95 202.18 245.57
+</code></pre><p>As a first step, a normal probability plot was generated<br><img src="assets/EDA/grubb.gif" alt=""></p>
+<p>This plot indicates that the normality assumption is reasonable with the exception of the maximum value. We therefore compute Grubbs’ test for the case that the maximum value, 245.57, is an outlier.</p>
+<pre><code>H0:  there are no outliers in the data
+Ha:  the maximum value is an outlier
+Test statistic:  G = 2.4687
+Significance level:  α = 0.05
+Critical value for an upper one-tailed test:  2.032          
+Critical region:  Reject H0 if G &gt; 2.032    
+</code></pre><p>For this data set, we reject the null hypothesis and conclude that the maximum value is in fact an outlier at the 0.05 significance level.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Grubbs’ test can be used to answer the following questions:</p>
+<pre><code>1. Is the maximum value an outlier?
+2. Is the minimum value an outlier?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical techniques are sensitive to the presence of outliers. For example, simple calculations of the mean and standard deviation may be distorted by a single grossly inaccurate data point.</p>
+<p>Checking for outliers should be a routine part of any data analysis. Potential outliers should be examined to see if they are possibly erroneous. If the data point is in error, it should be corrected if possible and deleted if it is not possible. If there is no reason to believe that the outlying point is in error, it should not be deleted without careful consideration. However, the use of more robust techniques may be warranted. Robust techniques will often downweight the effect of outlying points without deleting them.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><p>Several graphical techniques can, and should, be used to help detect outliers. A simple normal probability plot, run sequence plot, a box plot, or a histogram should show any obviously outlying points. In addition to showing potential outliers, several of these graphics also help assess whether the data follow an approximately normal distribution.</p>
+<pre><code>Normal Probability Plot
+Run Sequence Plot
+Histogram
+Box Plot
+Lag Plot
+</code></pre><p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h1.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h1.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.17. Detection of Outliers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.17. Detection of Outliers/" itemprop="url">EDA_1.3.5.17. Detection of Outliers</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:04:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.17. Detection of Outliers/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.17. Detection of Outliers/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.17. Detection of Outliers/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.17. Detection of Outliers">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.17. Detection of Outliers
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>An outlier is an observation that appears to deviate markedly from other observations in the sample.</p>
+<p>Identification of potential outliers is important for the following reasons.</p>
+<pre><code>1. An outlier may indicate bad data. For example, the data may have been coded incorrectly or an experiment may not have been run correctly. If it can be determined that an outlying point is in fact erroneous, then the outlying value should be deleted from the analysis (or corrected if possible).
+2. In some cases, it may not be possible to determine if an outlying point is bad data. Outliers may be due to random variation or may indicate something scientifically interesting. In any event, we typically do not want to simply delete the outlying observation. However, if the data contains significant outliers, we may need to consider the use of robust statistical techniques.
+</code></pre><h3 id="Labeling-Accomodation-Identification"><a href="#Labeling-Accomodation-Identification" class="headerlink" title="Labeling, Accomodation, Identification"></a>Labeling, Accomodation, Identification</h3><p>Iglewicz and Hoaglin distinguish the three following issues with regards to outliers.</p>
+<pre><code>1. outlier labeling - flag potential outliers for further investigation (i.e., are the potential outliers erroneous data, indicative of an inappropriate distributional model, and so on).
+2. outlier accomodation - use robust statistical techniques that will not be unduly affected by outliers. That is, if we cannot determine that potential outliers are erroneous observations, do we need modify our statistical analysis to more appropriately account for these observations?
+3. outlier identification - formally test whether observations are outliers.
+</code></pre><h3 id="This-section-focuses-on-the-labeling-and-identification-issues"><a href="#This-section-focuses-on-the-labeling-and-identification-issues" class="headerlink" title="This section focuses on the labeling and identification issues."></a>This section focuses on the labeling and identification issues.</h3><h4 id="Normality-Assumption"><a href="#Normality-Assumption" class="headerlink" title="Normality Assumption"></a>Normality Assumption</h4><p>Identifying an observation as an outlier depends on the underlying distribution of the data. In this section, we limit the discussion to univariate data sets that are assumed to follow an approximately normal distribution. If the normality assumption for the data being tested is not valid, then a determination that there is an outlier may in fact be due to the non-normality of the data rather than the prescence of an outlier.</p>
+<p>For this reason, it is recommended that you generate a normal probability plot of the data before applying an outlier test. Although you can also perform formal tests for normality, the prescence of one or more outliers may cause the tests to reject normality when it is in fact a reasonable assumption for applying the outlier test.</p>
+<p>In addition to checking the normality assumption, the lower and upper tails of the normal probability plot can be a useful graphical technique for identifying potential outliers. In particular, the plot can help determine whether we need to check for a single outlier or whether we need to check for multiple outliers.</p>
+<p>The box plot and the histogram can also be useful graphical tools in checking the normality assumption and in identifying potential outliers.</p>
+<h4 id="Single-Versus-Multiple-Outliers"><a href="#Single-Versus-Multiple-Outliers" class="headerlink" title="Single Versus Multiple Outliers"></a>Single Versus Multiple Outliers</h4><p>Some outlier tests are designed to detect the prescence of a single outlier while other tests are designed to detect the prescence of multiple outliers. It is not appropriate to apply a test for a single outlier sequentially in order to detect multiple outliers.</p>
+<p>In addition, some tests that detect multiple outliers may require that you specify the number of suspected outliers exactly.</p>
+<h3 id="Masking-and-Swamping"><a href="#Masking-and-Swamping" class="headerlink" title="Masking and Swamping"></a>Masking and Swamping</h3><p>Masking can occur when we specify too few outliers in the test. For example, if we are testing for a single outlier when there are in fact two (or more) outliers, these additional outliers may influence the value of the test statistic enough so that no points are declared as outliers.<br>On the other hand, swamping can occur when we specify too many outliers in the test. For example, if we are testing for two or more outliers when there is in fact only a single outlier, both points may be declared outliers (many tests will declare either all or none of the tested points as outliers).</p>
+<p>Due to the possibility of masking and swamping, it is useful to complement formal outlier tests with graphical methods. Graphics can often help identify cases where masking or swamping may be an issue. Swamping and masking are also the reason that many tests require that the exact number of outliers being tested must be specified.</p>
+<p>Also, masking is one reason that trying to apply a single outlier test sequentially can fail. For example, if there are multiple outliers, masking may cause the outlier test for the first outlier to return a conclusion of no outliers (and so the testing for any additional outliers is not performed).</p>
+<h3 id="Z-Scores-and-Modified-Z-Scores"><a href="#Z-Scores-and-Modified-Z-Scores" class="headerlink" title="Z-Scores and Modified Z-Scores"></a>Z-Scores and Modified Z-Scores</h3><p>The Z-score of an observation is defined as</p>
+<p><img src="assets/EDA/eda35h_1.png" alt=""></p>
+<p>with Y¯ and s denoting the sample mean and sample standard deviation, respectively. In other words, data is given in units of how many standard deviations it is from the mean.</p>
+<p>Although it is common practice to use Z-scores to identify possible outliers, this can be misleading (partiucarly for small sample sizes) due to the fact that the maximum Z-score is at most <img src="assets/EDA/eda35h_2.png" alt=""></p>
+<p>Iglewicz and Hoaglin recommend using the modified Z-score</p>
+<p><img src="assets/EDA/eda35h_3.png" alt=""></p>
+<p>with MAD denoting the median absolute deviation and x~ denoting the median.</p>
+<p>These authors recommend that modified Z-scores with an absolute value of greater than 3.5 be labeled as potential outliers.</p>
+<h3 id="Formal-Outlier-Tests"><a href="#Formal-Outlier-Tests" class="headerlink" title="Formal Outlier Tests"></a>Formal Outlier Tests</h3><p>A number of formal outlier tests have proposed in the literature. These can be grouped by the following characteristics:</p>
+<pre><code>• What is the distributional model for the data? We restrict our discussion to tests that assume the data follow an approximately normal distribution.
+• Is the test designed for a single outlier or is it designed for multiple outliers?
+• If the test is designed for multiple outliers, does the number of outliers need to be specified exactly or can we specify an upper bound for the number of outliers?
+</code></pre><p>The following are a few of the more commonly used outlier tests for normally distributed data. This list is not exhaustive (a large number of outlier tests have been proposed in the literature). The tests given here are essentially based on the criterion of “distance from the mean”. This is not the only criterion that could be used. For example, the Dixon test, which is not discussed here, is based a value being too large (or small) compared to its nearest neighbor.</p>
+<pre><code>1. Grubbs&apos; Test - this is the recommended test when testing for a single outlier.
+2. Tietjen-Moore Test - this is a generalization of the Grubbs&apos; test to the case of more than one outlier. It has the limitation that the number of outliers must be specified exactly.
+3. Generalized Extreme Studentized Deviate (ESD) Test - this test requires only an upper bound on the suspected number of outliers and is the recommended test when the exact number of outliers is not known.
+</code></pre><h3 id="Lognormal-Distribution"><a href="#Lognormal-Distribution" class="headerlink" title="Lognormal Distribution"></a>Lognormal Distribution</h3><p>The tests discussed here are specifically based on the assumption that the data follow an approximately normal disribution. If your data follow an approximately lognormal distribution, you can transform the data to normality by taking the logarithms of the data and then applying the outlier tests discussed here.</p>
+<h3 id="Further-Information"><a href="#Further-Information" class="headerlink" title="Further Information"></a>Further Information</h3><p>Iglewicz and Hoaglin provide an extensive discussion of the outlier tests given above (as well as some not given above) and also give a good tutorial on the subject of outliers. Barnett and Lewis provide a book length treatment of the subject.</p>
+<p>In addition to discussing additional tests for data that follow an approximately normal distribution, these sources also discuss the case where the data are not normally distributed.</p>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/" itemprop="url">EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:04:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.16. Kolmogorov-Smirnov Goodness-of-Fit Test
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Test-for-Distributional-Adequacy"><a href="#Purpose-Test-for-Distributional-Adequacy" class="headerlink" title="Purpose: Test for Distributional Adequacy"></a>Purpose: Test for Distributional Adequacy</h3><p>The Kolmogorov-Smirnov test (Chakravart, Laha, and Roy, 1967) is used to decide if a sample comes from a population with a specific distribution.</p>
+<p>The Kolmogorov-Smirnov (K-S) test is based on the empirical distribution function (ECDF). Given Nordered data points Y1, Y2, …, YN, the ECDF is defined as</p>
+<pre><code>EN=n(i)/N
+</code></pre><p>where n(i) is the number of points less than Yi and the Yi are ordered from smallest to largest value. This is a step function that increases by 1/N at the value of each ordered data point.<br>The graph below is a plot of the empirical distribution function with a normal cumulative distribution function for 100 normal random numbers. The K-S test is based on the maximum distance between these two curves.</p>
+<h3 id="Characteristics-and-Limitations-of-the-K-S-Test"><a href="#Characteristics-and-Limitations-of-the-K-S-Test" class="headerlink" title="Characteristics and Limitations of the K-S Test"></a>Characteristics and Limitations of the K-S Test</h3><p>An attractive feature of this test is that the distribution of the K-S test statistic itself does not depend on the underlying cumulative distribution function being tested. Another advantage is that it is an exact test (the chi-square goodness-of-fit test depends on an adequate sample size for the approximations to be valid). Despite these advantages, the K-S test has several important limitations:</p>
+<pre><code>1. It only applies to continuous distributions.
+2. It tends to be more sensitive near the center of the distribution than at the tails.
+3. Perhaps the most serious limitation is that the distribution must be fully specified. That is, if location, scale, and shape parameters are estimated from the data, the critical region of the K-S test is no longer valid. It typically must be determined by simulation.
+</code></pre><p>Several goodness-of-fit tests, such as the Anderson-Darling test and the Cramer Von-Mises test, are refinements of the K-S test. As these refined tests are generally considered to be more powerful than the original K-S test, many analysts prefer them. Also, the advantage for the K-S test of having the critical values be indpendendent of the underlying distribution is not as much of an advantage as first appears. This is due to limitation 3 above (i.e., the distribution parameters are typically not known and have to be estimated from the data). So in practice, the critical values for the K-S test have to be determined by simulation just as for the Anderson-Darling and Cramer Von-Mises (and related) tests.</p>
+<p>Note that although the K-S test is typically developed in the context of continuous distributions for uncensored and ungrouped data, the test has in fact been extended to discrete distributions and to censored and grouped data. We do not discuss those cases here.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><img src="assets/EDA/eda35g_1.png" alt=""></p>
+<h3 id="Technical-Note"><a href="#Technical-Note" class="headerlink" title="Technical Note"></a>Technical Note</h3><p><img src="assets/EDA/eda35g_2.png" alt=""></p>
+<h3 id="Kolmogorov-Smirnov-Test-Example"><a href="#Kolmogorov-Smirnov-Test-Example" class="headerlink" title="Kolmogorov-Smirnov Test Example"></a>Kolmogorov-Smirnov Test Example</h3><p>We generated 1,000 random numbers for normal, double exponential, t with 3 degrees of freedom, and lognormal distributions. In all cases, the Kolmogorov-Smirnov test was applied to test for a normal distribution.</p>
+<p>The normal random numbers were stored in the variable Y1, the double exponential random numbers were stored in the variable Y2, the t random numbers were stored in the variable Y3, and the lognormal random numbers were stored in the variable Y4.</p>
+<pre><code>H0:  the data are normally distributed
+Ha:  the data are not normally distributed
+Y1 test statistic:  D = 0.0241492  
+Y2 test statistic:  D = 0.0514086
+Y3 test statistic:  D = 0.0611935
+Y4 test statistic:  D = 0.5354889
+Significance level:  α = 0.05
+Critical value:  0.04301    
+Critical region:  Reject H0 if D &gt; 0.04301
+</code></pre><p>As expected, the null hypothesis is not rejected for the normally distributed data, but is rejected for the remaining three data sets that are not normally distributed.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Kolmogorov-Smirnov test can be used to answer the following types of questions:</p>
+<pre><code>• Are the data from a normal distribution?
+• Are the data from a log-normal distribution?
+• Are the data from a Weibull distribution?
+• Are the data from an exponential distribution?
+• Are the data from a logistic distribution?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical tests and procedures are based on specific distributional assumptions. The assumption of normality is particularly common in classical statistical tests. Much reliability modeling is based on the assumption that the data follow a Weibull distribution.</p>
+<p>There are many non-parametric and robust techniques that are not based on strong distributional assumptions. By non-parametric, we mean a technique, such as the sign test, that is not based on a specific distributional assumption. By robust, we mean a statistical technique that performs well under a wide range of distributional assumptions. However, techniques based on specific distributional assumptions are in general more powerful than these non-parametric and robust techniques. By power, we mean the ability to detect a difference when that difference actually exists. Therefore, if the distributional assumptions can be confirmed, the parametric techniques are generally preferred.</p>
+<p>If you are using a technique that makes a normality (or some other type of distributional) assumption, it is important to confirm that this assumption is in fact justified. If it is, the more powerful parametric techniques can be used. If the distributional assumption is not justified, using a non-parametric or robust technique may be required.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Anderson-Darling goodness-of-fit Test</li>
+<li>Chi-Square goodness-of-fit Test</li>
+<li>Shapiro-Wilk Normality Test</li>
+<li>Probability Plots</li>
+<li>Probability Plot Correlation Coefficient Plot</li>
+</ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35g.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35g.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/" itemprop="url">EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:03:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.15. Chi-Square Goodness-of-Fit Test
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Test-for-distributional-adequacy"><a href="#Purpose-Test-for-distributional-adequacy" class="headerlink" title="Purpose: Test for distributional adequacy"></a>Purpose: Test for distributional adequacy</h3><p>The chi-square test (Snedecor and Cochran, 1989) is used to test if a sample of data came from a population with a specific distribution.</p>
+<p>An attractive feature of the chi-square goodness-of-fit test is that it can be applied to any univariate distribution for which you can calculate the cumulative distribution function. The chi-square goodness-of-fit test is applied to binned data (i.e., data put into classes). This is actually not a restriction since for non-binned data you can simply calculate a histogram or frequency table before generating the chi-square test. However, the value of the chi-square test statistic are dependent on how the data is binned. Another disadvantage of the chi-square test is that it requires a sufficient sample size in order for the chi-square approximation to be valid.</p>
+<p>The chi-square test is an alternative to theAnderson-Darling and Kolmogorov-Smirnovgoodness-of-fit tests. The chi-square goodness-of-fit test can be applied to discrete distributions such as the binomialand the Poisson. The Kolmogorov-Smirnov and Anderson-Darling tests are restricted to continuous distributions.</p>
+<p>Additional discussion of the chi-square goodness-of-fit test is contained in theproduct and process comparisons chapter (chapter 7).</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The chi-square test is defined for the hypothesis:</p>
+<p><img src="assets/EDA/eda35f_1.png" alt=""><br><img src="assets/EDA/eda35f_2.png" alt=""></p>
+<h3 id="Chi-Square-Test-Example"><a href="#Chi-Square-Test-Example" class="headerlink" title="Chi-Square Test Example"></a>Chi-Square Test Example</h3><p>We generated 1,000 random numbers for normal, double exponential, t with 3 degrees of freedom, and lognormal distributions. In all cases, a chi-square test with k = 32 bins was applied to test for normally distributed data. Because the normal distribution has two parameters, c = 2 + 1 = 3</p>
+<p>The normal random numbers were stored in the variable Y1, the double exponential random numbers were stored in the variable Y2, the trandom numbers were stored in the variable Y3, and the lognormal random numbers were stored in the variable Y4.</p>
+<pre><code>H0:  the data are normally distributed
+Ha:  the data are not normally distributed  
+Y1 Test statistic:  Χ2 =   32.256
+Y2 Test statistic:  Χ2 =   91.776
+Y3 Test statistic:  Χ2 =  101.488
+Y4 Test statistic:  Χ2 = 1085.104
+Significance level:  α = 0.05
+Degrees of freedom:  k - c = 32 - 3 = 29
+Critical value:  Χ21-α,k-c = 42.557
+Critical region: Reject H0 if Χ2 &gt; 42.557
+</code></pre><p>As we would hope, the chi-square test fails to reject the null hypothesis for the normally distributed data set and rejects the null hypothesis for the three non-normal data sets.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The chi-square test can be used to answer the following types of questions:</p>
+<pre><code>• Are the data from a normal distribution?
+• Are the data from a log-normal distribution?
+• Are the data from a Weibull distribution?
+• Are the data from an exponential distribution?
+• Are the data from a logistic distribution?
+• Are the data from a binomial distribution?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical tests and procedures are based on specific distributional assumptions. The assumption of normality is particularly common in classical statistical tests. Much reliability modeling is based on the assumption that the distribution of the data follows a Weibull distribution.</p>
+<p>There are many non-parametric and robust techniques that are not based on strong distributional assumptions. By non-parametric, we mean a technique, such as the sign test, that is not based on a specific distributional assumption. By robust, we mean a statistical technique that performs well under a wide range of distributional assumptions. However, techniques based on specific distributional assumptions are in general more powerful than these non-parametric and robust techniques. By power, we mean the ability to detect a difference when that difference actually exists. Therefore, if the distributional assumption can be confirmed, the parametric techniques are generally preferred.</p>
+<p>If you are using a technique that makes a normality (or some other type of distributional) assumption, it is important to confirm that this assumption is in fact justified. If it is, the more powerful parametric techniques can be used. If the distributional assumption is not justified, a non-parametric or robust technique may be required.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Anderson-Darling Goodness-of-Fit Test</li>
+<li>Kolmogorov-Smirnov Test</li>
+<li>Shapiro-Wilk Normality Test</li>
+<li>Probability Plots</li>
+<li>Probability Plot Correlation Coefficient Plot</li>
+</ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35f.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.12. Autocorrelation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.12. Autocorrelation/" itemprop="url">EDA_1.3.5.12. Autocorrelation</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:02:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.12. Autocorrelation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.12. Autocorrelation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.12. Autocorrelation/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.12. Autocorrelation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.12. Autocorrelation
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Detect-Non-Randomness-Time-Series-Modeling"><a href="#Purpose-Detect-Non-Randomness-Time-Series-Modeling" class="headerlink" title="Purpose: Detect Non-Randomness, Time Series Modeling"></a>Purpose: Detect Non-Randomness, Time Series Modeling</h3><p>The autocorrelation ( Box and Jenkins, 1976) function can be used for the following two purposes:</p>
+<pre><code>1. To detect non-randomness in data.
+2. To identify an appropriate time series model if the data are not random.
+</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>Given measurements, Y1, Y2, …, YN at timeX1, X2, …, XN, the lag k autocorrelation function is defined as</p>
+<pre><code>rk=∑N−ki=1(Yi−Y¯)(Yi+k−Y¯)∑Ni=1(Yi−Y¯)2
+</code></pre><p>Although the time variable, X, is not used in the formula for autocorrelation, the assumption is that the observations are equi-spaced.</p>
+<p>Autocorrelation is a correlation coefficient. However, instead of correlation between two different variables, the correlation is between two values of the same variable at times Xi and Xi+k.<br>When the autocorrelation is used to detect non-randomness, it is usually only the first (lag 1) autocorrelation that is of interest. When the autocorrelation is used to identify an appropriate time series model, the autocorrelations are usually plotted for many lags.</p>
+<h3 id="Autocorrelation-Example"><a href="#Autocorrelation-Example" class="headerlink" title="Autocorrelation Example"></a>Autocorrelation Example</h3><p>Lag-one autocorrelations were computed for the the LEW.DAT data set.</p>
+<pre><code>lag     autocorrelation
+ 0.      1.00
+ 1.     -0.31
+ 2.     -0.74
+ 3.      0.77
+ 4.      0.21
+ 5.     -0.90
+ 6.      0.38
+ 7.      0.63
+ 8.     -0.77
+ 9.     -0.12
+10.      0.82
+11.     -0.40
+12.     -0.55
+13.      0.73
+14.      0.07
+15.     -0.76
+16.      0.40
+17.      0.48
+18.     -0.70
+19.     -0.03
+20.      0.70
+21.     -0.41
+22.     -0.43
+23.      0.67
+24.      0.00
+25.     -0.66
+26.      0.42
+27.      0.39
+28.     -0.65
+29.      0.03
+30.      0.63
+31.     -0.42
+32.     -0.36
+33.      0.64
+34.     -0.05
+35.     -0.60
+36.      0.43
+37.      0.32
+38.     -0.64
+39.      0.08
+40.      0.58
+41.     -0.45
+42.     -0.28
+43.      0.62
+44.     -0.10
+45.     -0.55
+46.      0.45
+47.      0.25
+48.     -0.61
+49.      0.14
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The autocorrelation function can be used to answer the following questions.</p>
+<pre><code>1. Was this sample data set generated from a random process?
+2. Would a non-linear or time series model be a more appropriate model for these data than a simple constant plus error model?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Randomness is one of the key assumptions in determining if a univariate statistical process is in control. If the assumptions of constant location and scale, randomness, and fixed distribution are reasonable, then the univariate process can be modeled as:</p>
+<pre><code>Yi=A0+Ei
+</code></pre><p>where Ei is an error term.</p>
+<p>If the randomness assumption is not valid, then a different model needs to be used. This will typically be either a time series modelor a non-linear model (with time as the independent variable).</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
 <li>Autocorrelation Plot</li>
-<li>Complex Demodulation Amplitude Plot</li>
-<li>Complex Demodulation Phase Plot</li>
+<li>Run Sequence Plot</li>
+<li>Lag Plot</li>
+<li>Runs Test</li>
 </ul>
 
           
@@ -1695,7 +2152,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.26. Scatter Plot/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1714,7 +2171,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" itemprop="url">EDA_1.3.3.26. Scatter Plot</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/" itemprop="url">EDA_1.3.5.14. Anderson-Darling Test</a></h2>
         
 
         <div class="post-meta">
@@ -1726,7 +2183,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:36:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T17:02:12+08:00">
                 2018-03-12
               </time>
             
@@ -1767,8 +2224,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.3.26. Scatter Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1776,7 +2233,7 @@
 
           
           
-             <span id="/2018/03/12/EDA_1.3.3.26. Scatter Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.26. Scatter Plot">
+             <span id="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.14. Anderson-Darling Test">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1794,7 +2251,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.3.26. Scatter Plot
+                  EDA_1.3.5.14. Anderson-Darling Test
               </div>
           
 
@@ -1813,446 +2270,42 @@
       
         
           
-            <h3 id="Purpose-Check-for-Relationship"><a href="#Purpose-Check-for-Relationship" class="headerlink" title="Purpose: Check for Relationship"></a>Purpose: Check for Relationship</h3><p>A scatter plot (Chambers 1983) reveals relationships or association between two variables. Such relationships manifest themselves by any non-random structure in the plot. Various common types of patterns are demonstrated in the examples.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot:"></a>Sample Plot:</h3><p>Linear Relationship Between Variables Y and X</p>
-<p><img src="assets/EDA/scatterp.gif" alt=""></p>
-<p>This sample plot reveals a linear relationship between the two variables indicating that alinear regression model might be appropriate.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><pre><code>Y Versus X
-</code></pre><p>A scatter plot is a plot of the values of Yversus the corresponding values of X:</p>
-<pre><code>• Vertical axis: variable Y--usually the response variable
-• Horizontal axis: variable X--usually some variable we suspect may ber related to the response
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>Scatter plots can provide answers to the following questions:</p>
-<pre><code>1. Are variables X and Y related?
-2. Are variables X and Y linearly related?
-3. Are variables X and Y non-linearly related?
-4. Does the variation in Y change depending onX?
-5. Are there outliers?
-</code></pre><h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. No relationship
-2. Strong linear (positive correlation)
-3. Strong linear (negative correlation)
-4. Exact linear (positive correlation)
-5. Quadratic relationship
-6. Exponential relationship
-7. Sinusoidal relationship (damped)
-8. Variation of Y doesn&apos;t depend on X(homoscedastic)
-9. Variation of Y does depend on X(heteroscedastic)
-10. Outlier
-</code></pre><h3 id="Combining-Scatter-Plots"><a href="#Combining-Scatter-Plots" class="headerlink" title="Combining Scatter Plots"></a>Combining Scatter Plots</h3><p>Scatter plots can also be combined in multiple plots per page to help understand higher-level structure in data sets with more than two variables.</p>
-<p>The scatterplot matrix generates all pairwise scatter plots on a single page. The conditioning plot, also called a co-plot or subset plot, generates scatter plots of Y versus X dependent on the value of a third variable.</p>
-<h3 id="Causality-Is-Not-Proved-By-Association"><a href="#Causality-Is-Not-Proved-By-Association" class="headerlink" title="Causality Is Not Proved By Association"></a>Causality Is Not Proved By Association</h3><p>The scatter plot uncovers relationships in data. “Relationships” means that there is some structured association (linear, quadratic, etc.) between X and Y. Note, however, that even though</p>
-<pre><code>causality implies association
-association does NOT imply causality.
-</code></pre><p>Scatter plots are a useful diagnostic tool for determining association, but if such association exists, the plot may or may not suggest an underlying cause-and-effect mechanism. A scatter plot can never “prove” cause and effect–it is ultimately only the researcher (relying on the underlying science/engineering) who can conclude that causality actually exists.</p>
-<h3 id="Appearance"><a href="#Appearance" class="headerlink" title="Appearance"></a>Appearance</h3><p>The most popular rendition of a scatter plot is</p>
-<pre><code>1. some plot character (e.g., X) at the data points, and
-2. no line connecting data points.
-</code></pre><p>Other scatter plot format variants include</p>
-<pre><code>1. an optional plot character (e.g, X) at the data points, but
-2. a solid line connecting data points.
-</code></pre><p>In both cases, the resulting plot is referred to as a scatter plot, although the former (discrete and disconnected) is the author’s personal preference since nothing makes it onto the screen except the data–there are no interpolative artifacts to bias the interpretation.</p>
+            <h3 id="Purpose-Test-for-Distributional-Adequacy"><a href="#Purpose-Test-for-Distributional-Adequacy" class="headerlink" title="Purpose: Test for Distributional Adequacy"></a>Purpose: Test for Distributional Adequacy</h3><p>The Anderson-Darling test (Stephens, 1974) is used to test if a sample of data came from a population with a specific distribution. It is a modification of theKolmogorov-Smirnov (K-S) test and gives more weight to the tails than does the K-S test. The K-S test is distribution free in the sense that the critical values do not depend on the specific distribution being tested (note that this is true only for a fully specified distribution, i.e. the parameters are known). The Anderson-Darling test makes use of the specific distribution in calculating critical values. This has the advantage of allowing a more sensitive test and the disadvantage that critical values must be calculated for each distribution. Currently, tables of critical values are available for the normal, uniform, lognormal,exponential, Weibull, extreme value type I, generalized Pareto, and logistic distributions. We do not provide the tables of critical values in this Handbook (seeStephens 1974, 1976, 1977, and 1979) since this test is usually applied with a statistical software program that will print the relevant critical values.<br>The Anderson-Darling test is an alternative to the chi-square and Kolmogorov-Smirnov goodness-of-fit tests.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><img src="assets/EDA/eda35e_1.png" alt=""></p>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>We generated 1,000 random numbers for normal, double exponential, Cauchy, and lognormal distributions. In all four cases, the Anderson-Darling test was applied to test for a normal distribution.<br>The normal random numbers were stored in the variable Y1, the double exponential random numbers were stored in the variable Y2, the Cauchy random numbers were stored in the variable Y3, and the lognormal random numbers were stored in the variable Y4.</p>
+<pre><code>Distribution                 Mean       Standard Deviation
+------------               --------     ------------------
+Normal (Y1)                0.004360          1.001816
+Double Exponential (Y2)    0.020349          1.321627
+Cauchy (Y3)                1.503854         35.130590
+Lognormal (Y4)             1.518372          1.719969
+
+H0:  the data are normally distributed
+Ha:  the data are not normally distributed
+Y1 adjusted test statistic:  A2 =   0.2576
+Y2 adjusted test statistic:  A2 =   5.8492
+Y3 adjusted test statistic:  A2 = 288.7863
+Y4 adjusted test statistic:  A2 =  83.3935
+Significance level:  α = 0.05
+Critical value:  0.752   
+Critical region:  Reject H0 if A2 &gt; 0.752
+</code></pre><p>When the data were generated using a normal distribution, the test statistic was small and the hypothesis of normality was not rejected. When the data were generated using the double exponential, Cauchy, and lognormal distributions, the test statistics were large, and the hypothesis of an underlying normal distribution was rejected at the 0.05 significance level.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Anderson-Darling test can be used to answer the following questions:</p>
+<pre><code>• Are the data from a normal distribution?
+• Are the data from a log-normal distribution?
+• Are the data from a Weibull distribution?
+• Are the data from an exponential distribution?
+• Are the data from a logistic distribution?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical tests and procedures are based on specific distributional assumptions. The assumption of normality is particularly common in classical statistical tests. Much reliability modeling is based on the assumption that the data follow a Weibull distribution.</p>
+<p>There are many non-parametric and robust techniques that do not make strong distributional assumptions. However, techniques based on specific distributional assumptions are in general more powerful than non-parametric and robust techniques. Therefore, if the distributional assumptions can be validated, they are generally preferred.</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Run Sequence Plot </li>
-<li>Box Plot </li>
-<li>Block Plot </li>
+<li>Chi-Square goodness-of-fit Test</li>
+<li>Kolmogorov-Smirnov Test</li>
+<li>Shapiro-Wilk Normality Test</li>
+<li>Probability Plot</li>
+<li>Probability Plot Correlation Coefficient Plot</li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.22. Probability Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.22. Probability Plot/" itemprop="url">EDA_1.3.3.22. Probability Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.22. Probability Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.22. Probability Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.22. Probability Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.22. Probability Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.22. Probability Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Check-If-Data-Follow-a-Given-Distribution"><a href="#Purpose-Check-If-Data-Follow-a-Given-Distribution" class="headerlink" title="Purpose: Check If Data Follow a Given Distribution"></a>Purpose: Check If Data Follow a Given Distribution</h3><p>The probability plot (Chambers et al., 1983) is a graphical technique for assessing whether or not a data set follows a given distribution such as the normal or Weibull.</p>
-<p>The data are plotted against a theoretical distribution in such a way that the points should form approximately a straight line. Departures from this straight line indicate departures from the specified distribution.</p>
-<p>The correlation coefficient associated with the linear fit to the data in the probability plot is a measure of the goodness of the fit. Estimates of the location and scale parametersof the distribution are given by the intercept and slope. Probability plots can be generated for several competing distributions to see which provides the best fit, and the probability plot generating the highest correlation coefficient is the best choice since it generates the straightest probability plot.</p>
-<p>For distributions with shape parameters (not counting location and scale parameters), the shape parameters must be known in order to generate the probability plot. For distributions with a single shape parameter, the probability plot correlation coefficient(PPCC) plot provides an excellent method for estimating the shape parameter.</p>
-<p>We cover the special case of the normal probability plot separately due to its importance in many statistical applications.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/probplot.gif" alt=""></p>
-<p>This data is a set of 500 Weibull random numbers with a shape parameter = 2, location parameter = 0, and scale parameter = 1. The Weibull probability plot indicates that the Weibull distribution does in fact fit these data well.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Ordered Response Values Versus Order Statistic Medians for the Given Distribution<br>The probability plot is formed by:</p>
-<pre><code>• Vertical axis: Ordered response values
-• Horizontal axis: Order statistic medians for the given distribution
-</code></pre><p>The order statistic medians (see Filliben 1975)can be approximated by:</p>
-<pre><code>Ni = G(Ui)
-</code></pre><p>where Ui are the uniform order statistic medians (defined below) and G is the percent point function for the desired distribution. The percent point function is the inverse of the cumulative distribution function(probability that x is less than or equal to some value). That is, given a probability, we want the corresponding x of the cumulative distribution function.</p>
-<p>The uniform order statistic medians are defined as:</p>
-<pre><code>mi = 1 - mn    for i = 1
-mi = (i - 0.3175)/(n + 0.365)    for i = 2, 3, ..., n-1 
-mi = 0.5(1/n)    for i = n
-</code></pre><p>In addition, a straight line can be fit to the points and added as a reference line. The further the points vary from this line, the greater the indication of a departure from the specified distribution.</p>
-<p>This definition implies that a probability plot can be easily generated for any distribution for which the percent point function can be computed.</p>
-<p>One advantage of this method of computing proability plots is that the intercept and slope estimates of the fitted line are in fact estimates for the location and scale parameters of the distribution. Although this is not too important for the normal distribution (the location and scale are estimated by the mean and standard deviation, respectively), it can be useful for many other distributions.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The probability plot is used to answer the following questions:</p>
-<pre><code>• Does a given distribution, such as the Weibull, provide a good fit to my data?
-• What distribution best fits my data?
-• What are good estimates for the location and scale parameters of the chosen distribution?
-</code></pre><h3 id="Importance-Check-distributional-assumption"><a href="#Importance-Check-distributional-assumption" class="headerlink" title="Importance: Check distributional assumption"></a>Importance: Check distributional assumption</h3><p>The discussion for the normal probability plotcovers the use of probability plots for checking the fixed distribution assumption.</p>
-<p>Some statistical models assume data have come from a population with a specific type of distribution. For example, in reliability applications, the Weibull, lognormal, and exponential are commonly used distributional models. Probability plots can be useful for checking this distributional assumption.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Histogram</li>
-<li>Probability Plot Correlation Coefficient (PPCC) Plot</li>
-<li>Hazard Plot</li>
-<li>Quantile-Quantile Plot</li>
-<li>Anderson-Darling Goodness of Fit</li>
-<li>Chi-Square Goodness of Fit</li>
-<li>Kolmogorov-Smirnov Goodness of Fit</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/" itemprop="url">EDA_1.3.3.24. Quantile-Quantile Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.24. Quantile-Quantile Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.24. Quantile-Quantile Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.24. Quantile-Quantile Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Check-If-Two-Data-Sets-Can-Be-Fit-With-the-Same-Distribution"><a href="#Purpose-Check-If-Two-Data-Sets-Can-Be-Fit-With-the-Same-Distribution" class="headerlink" title="Purpose: Check If Two Data Sets Can Be Fit With the Same Distribution"></a>Purpose: Check If Two Data Sets Can Be Fit With the Same Distribution</h3><p>The quantile-quantile (q-q) plot is a graphical technique for determining if two data sets come from populations with a common distribution.</p>
-<p>A q-q plot is a plot of the quantiles of the first data set against the quantiles of the second data set. By a quantile, we mean the fraction (or percent) of points below the given value. That is, the 0.3 (or 30%) quantile is the point at which 30% percent of the data fall below and 70% fall above that value.</p>
-<p>A 45-degree reference line is also plotted. If the two sets come from a population with the same distribution, the points should fall approximately along this reference line. The greater the departure from this reference line, the greater the evidence for the conclusion that the two data sets have come from populations with different distributions.</p>
-<p>The advantages of the q-q plot are:</p>
-<pre><code>1. The sample sizes do not need to be equal.
-2. Many distributional aspects can be simultaneously tested. For example, shifts in location, shifts in scale, changes in symmetry, and the presence of outliers can all be detected from this plot. For example, if the two data sets come from populations whose distributions differ only by a shift in location, the points should lie along a straight line that is displaced either up or down from the 45-degree reference line.
-</code></pre><p>The q-q plot is similar to a probability plot. For a probability plot, the quantiles for one of the data samples are replaced with the quantiles of a theoretical distribution.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/qqplot.gif" alt=""></p>
-<p>This q-q plot shows that</p>
-<pre><code>1. These 2 batches do not appear to have come from populations with a common distribution.
-2. The batch 1 values are significantly higher than the corresponding batch 2 values.
-3. The differences are increasing from values 525 to 625. Then the values for the 2 batches get closer again.
-</code></pre><h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Quantiles for Data Set 1 Versus Quantiles of Data Set 2</p>
-<p>The q-q plot is formed by:</p>
-<pre><code>• Vertical axis: Estimated quantiles from data set 1
-• Horizontal axis: Estimated quantiles from data set 2
-</code></pre><p>Both axes are in units of their respective data sets. That is, the actual quantile level is not plotted. For a given point on the q-q plot, we know that the quantile level is the same for both points, but not what that quantile level actually is.</p>
-<p>If the data sets have the same size, the q-q plot is essentially a plot of sorted data set 1 against sorted data set 2. If the data sets are not of equal size, the quantiles are usually picked to correspond to the sorted values from the smaller data set and then the quantiles for the larger data set are interpolated.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The q-q plot is used to answer the following questions:</p>
-<pre><code>• Do two data sets come from populations with a common distribution?
-• Do two data sets have common location and scale?
-• Do two data sets have similar distributional shapes?
-• Do two data sets have similar tail behavior?
-</code></pre><h3 id="Importance-Check-for-Common-Distribution"><a href="#Importance-Check-for-Common-Distribution" class="headerlink" title="Importance: Check for Common Distribution"></a>Importance: Check for Common Distribution</h3><p>When there are two data samples, it is often desirable to know if the assumption of a common distribution is justified. If so, then location and scale estimators can pool both data sets to obtain estimates of the common location and scale. If two samples do differ, it is also useful to gain some understanding of the differences. The q-q plot can provide more insight into the nature of the difference than analytical methods such as the chi-square and Kolmogorov-Smirnov 2-sample tests.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Bihistogram</li>
-<li>T Test</li>
-<li>F Test</li>
-<li>2-Sample Chi-Square Test</li>
-<li>2-Sample Kolmogorov-Smirnov Test</li>
-</ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35e.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35e.htm</a></p>
 
           
         
@@ -2292,7 +2345,7 @@ mi = 0.5(1/n)    for i = n
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2342,7 +2395,7 @@ mi = 0.5(1/n)    for i = n
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">174</span>
+                  <span class="site-state-item-count">199</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2364,7 +2417,7 @@ mi = 0.5(1/n)    for i = n
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">224</span>
+                  <span class="site-state-item-count">246</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

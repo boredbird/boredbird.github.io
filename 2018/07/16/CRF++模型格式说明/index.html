@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="Pl2GAjqhdU" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="crf++," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CRF++模型格式说明">
+<meta name="keywords" content="crf++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CRF++模型格式说明">
+<meta property="og:url" content="http://zhangchunhui.cn/2018/07/16/CRF++模型格式说明/index.html">
+<meta property="og:site_name" content="boredbird">
+<meta property="og:description" content="CRF++模型格式说明">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-16T12:32:34.651Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CRF++模型格式说明">
+<meta name="twitter:description" content="CRF++模型格式说明">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhangchunhui.cn/2018/07/16/CRF++模型格式说明/"/>
+
+
+
+
+
+  <title>CRF++模型格式说明 | boredbird</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bd5a63e2d0d6f11fcae1d6b1506b54ef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">boredbird</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/07/16/CRF++模型格式说明/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">CRF++模型格式说明</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-16T11:38:12+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/16/CRF++模型格式说明/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/16/CRF++模型格式说明/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/16/CRF++模型格式说明/" class="leancloud_visitors" data-flag-title="CRF++模型格式说明">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+              <div class="post-description">
+                  CRF++模型格式说明
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://www.hankcs.com/nlp/the-crf-model-format-description.html" target="_blank" rel="noopener">CRF++模型格式说明</a><br>通过追加-t, –textmodel参数可以输出文本格式的CRF模型文件，通过该模型文本，可以加深对条件随机场的理解或为其他应用所利用。</p>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><h4 id="语料"><a href="#语料" class="headerlink" title="语料"></a>语料</h4><p>以BMES标注语料为例：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">那	<span class="built_in">S</span></span><br><span class="line">音	B</span><br><span class="line">韵	<span class="built_in">E</span></span><br><span class="line">如	<span class="built_in">S</span></span><br><span class="line">轻	B</span><br><span class="line">柔	<span class="built_in">E</span></span><br><span class="line">的	<span class="built_in">S</span></span><br><span class="line">夜	B</span><br><span class="line">风	<span class="built_in">E</span></span><br><span class="line">，	<span class="built_in">S</span></span><br><span class="line"></span><br><span class="line">惊	<span class="built_in">S</span></span><br><span class="line">溅	<span class="built_in">S</span></span><br><span class="line">起	<span class="built_in">S</span></span><br><span class="line">不	B</span><br><span class="line">可	<span class="built_in">M</span></span><br><span class="line">言	<span class="built_in">M</span></span><br><span class="line">传	<span class="built_in">E</span></span><br><span class="line">的	<span class="built_in">S</span></span><br><span class="line">天	B</span><br><span class="line">籁	<span class="built_in">E</span></span><br><span class="line">。	<span class="built_in">S</span></span><br></pre></td></tr></table></figure></p>
+<p>注意字与标签之间的分隔符为制表符\t，否则会导致feature_index.cpp(86) [max_size == size] inconsistent column size错误。</p>
+<a id="more"></a>
+<h4 id="特征模板"><a href="#特征模板" class="headerlink" title="特征模板"></a>特征模板</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Unigram</span></span><br><span class="line"><span class="symbol">U00:</span><span class="string">%x[-2,0]</span></span><br><span class="line"><span class="symbol">U01:</span><span class="string">%x[-1,0]</span></span><br><span class="line"><span class="symbol">U02:</span><span class="string">%x[0,0]</span></span><br><span class="line"><span class="symbol">U03:</span><span class="string">%x[1,0]</span></span><br><span class="line"><span class="symbol">U04:</span><span class="string">%x[2,0]</span></span><br><span class="line"><span class="symbol">U05:</span><span class="string">%x[-2,0]</span>/<span class="string">%x[-1,0]</span>/<span class="string">%x[0,0]</span></span><br><span class="line"><span class="symbol">U06:</span><span class="string">%x[-1,0]</span>/<span class="string">%x[0,0]</span>/<span class="string">%x[1,0]</span></span><br><span class="line"><span class="symbol">U07:</span><span class="string">%x[0,0]</span>/<span class="string">%x[1,0]</span>/<span class="string">%x[2,0]</span></span><br><span class="line"><span class="symbol">U08:</span><span class="string">%x[-1,0]</span>/<span class="string">%x[0,0]</span></span><br><span class="line"><span class="symbol">U09:</span><span class="string">%x[0,0]</span>/<span class="string">%x[1,0]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Bigram</span></span><br><span class="line">B</span><br></pre></td></tr></table></figure>
+<p>T**:%x[#,#]中的T表示模板类型，两个”#”分别表示相对的行偏移与列偏移。</p>
+<p>一共有两种模板：</p>
+<ul>
+<li><p>第一种是Unigram template:第一个字符是U，这是用于描述unigram feature的模板。每一行%x[#,#]生成一个CRFs中的点(state)函数: f(s, o), 其中s为t时刻的的标签(output)，o为t时刻的上下文.如CRF++说明文件中的示例函数:</p>
+<p>  func1 = if (output = B and feature=”U02:那”) return 1 else return 0</p>
+<p>  它是由U02:%x[0,0]在输入文件的第一行生成的点函数.将输入文件的第一行”代入”到函数中,函数返回1,同时,如果输入文件的某一行在第1列也是“那”,并且它的output（第2列）同样也为B,那么这个函数在这一行也返回1。</p>
+</li>
+<li><p>第二种是Bigram template:第一个字符是B，每一行%x[#,#]生成一个CRFs中的边(Edge)函数:f(s’, s, o), 其中s’为t – 1时刻的标签.也就是说,Bigram类型与Unigram大致机同,只是还要考虑到t – 1时刻的标签.如果只写一个B的话,默认生成f(s’, s)，这意味着前一个output token和current token将组合成bigram features。</p>
+</li>
+</ul>
+<h4 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h4><p>使用下列命令可以得到一个model文件和一个model.txt文件，后者是本文的主要研究对象。</p>
+<p><code>..\..\crf_learn  -f 3 -c 4.0 template pku_training.bmes.txt model -t</code></p>
+<p>参数解释如下：<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">可选参数</span><br><span class="line"></span><br><span class="line">-<span class="ruby">f, –freq=INT使用属性的出现次数不少于INT(默认为<span class="number">1</span>)</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-m, –maxiter=INT设置INT为LBFGS的最大迭代次数 (默认<span class="number">10</span>k)</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-c, –cost=FLOAT      设置FLOAT为代价参数，过大会过度拟合 (默认<span class="number">1.0</span>)</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-e, –eta=FLOAT设置终止标准FLOAT(默认<span class="number">0</span>.<span class="number">0001</span>)</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-C, –convert将文本模式转为二进制模式</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-t, –textmodel为调试建立文本模型文件</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-a, –algorithm=(CRF<span class="params">|MIRA)</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">选择训练算法，默认为CRF-L2</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-p, –thread=INT线程数(默认<span class="number">1</span>)，利用多个CPU减少训练时间</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-H, –shrinking-size=INT</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">设置INT为最适宜的跌代变量次数 (默认<span class="number">20</span>)</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-v, –version显示版本号并退出</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-h, –help显示帮助并退出</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>训练过程中会输出一些信息，其意义如下：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">iter：迭代次数。当迭代次数达到maxiter时，迭代终止</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">terr：标记错误率</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">serr：句子错误率</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">obj：当前对象的值。当这个值收敛到一个确定值的时候，训练完成</span></span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">diff：与上一个对象值之间的相对差。当此值低于eta时，训练完成</span></span><br></pre></td></tr></table></figure></p>
+<p>可见，如果希望训练快速结束，可以在命令行中适当减小maxiter值，增大eta值。</p>
+<h3 id="CRF模型格式"><a href="#CRF模型格式" class="headerlink" title="CRF模型格式"></a>CRF模型格式</h3><h4 id="骨架"><a href="#骨架" class="headerlink" title="骨架"></a>骨架</h4><p>打开model.txt，其基本内容骨架如下：<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">version</span>: 100</span><br><span class="line"><span class="attribute">cost-factor</span>: 1</span><br><span class="line"><span class="attribute">maxid</span>: 2159868</span><br><span class="line"><span class="attribute">xsize</span>: 1</span><br><span class="line"></span><br><span class="line"><span class="attribute">B</span></span><br><span class="line"><span class="attribute">E</span></span><br><span class="line"><span class="attribute">M</span></span><br><span class="line"><span class="attribute">S</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line"><span class="attribute">U00:%x[-2,0]</span></span><br><span class="line"><span class="attribute">U01:%x[-1,0]</span></span><br><span class="line"><span class="attribute">U02:%x[0,0]</span></span><br><span class="line"><span class="attribute">U03:%x[1,0]</span></span><br><span class="line"><span class="attribute">U04:%x[2,0]</span></span><br><span class="line"><span class="attribute">U05:%x[-2,0]/%x[-1,0]/%x[0,0]</span></span><br><span class="line"><span class="attribute">U06:%x[-1,0]/%x[0,0]/%x[1,0]</span></span><br><span class="line"><span class="attribute">U07:%x[0,0]/%x[1,0]/%x[2,0]</span></span><br><span class="line"><span class="attribute">U08:%x[-1,0]/%x[0,0]</span></span><br><span class="line"><span class="attribute">U09:%x[0,0]/%x[1,0]</span></span><br><span class="line"><span class="attribute">B</span></span><br><span class="line"><span class="attribute"></span></span><br><span class="line">0 B</span><br><span class="line">16 U00:-</span><br><span class="line">20 U00:0</span><br><span class="line">24 U00:1</span><br><span class="line">28 U00:2</span><br><span class="line">32 U00:3</span><br><span class="line">36 U00:4</span><br><span class="line">40 U00:5</span><br><span class="line">44 U00:6</span><br><span class="line">48 U00:7</span><br><span class="line">52 U00:8</span><br><span class="line">56 U00:9</span><br><span class="line">60 U00:_B-1</span><br><span class="line">64 U00:_B-2</span><br><span class="line">……</span><br><span class="line">17404 U01:厨</span><br><span class="line">17408 U01:去</span><br><span class="line">17412 U01:县</span><br><span class="line">17416 U01:参</span><br><span class="line">17420 U01:又</span><br><span class="line">17424 U01:叉</span><br><span class="line">17428 U01:及</span><br><span class="line">17432 U01:友</span><br><span class="line">17436 U01:双</span><br><span class="line">17440 U01:反</span><br><span class="line">17444 U01:发</span><br><span class="line">17448 U01:叔</span><br><span class="line">17452 U01:取</span><br><span class="line">17456 U01:受</span><br><span class="line">……</span><br><span class="line">77800 U05:_B-1/一/个</span><br><span class="line">107540 U05:一/方/面</span><br><span class="line">107544 U05:一/无/所</span><br><span class="line">107548 U05:一/日/三</span><br><span class="line">107552 U05:一/日/为</span><br><span class="line">107556 U05:一/日/之</span><br><span class="line">……</span><br><span class="line">566536 U06:万/吨/_B+1</span><br><span class="line">……</span><br><span class="line">2159864 U09:ｖ/ｅ</span><br><span class="line"></span><br><span class="line">-8.5354017525999719</span><br><span class="line"><span class="attribute">9.0491453814148901</span></span><br><span class="line"><span class="attribute">7.0388286231971700</span></span><br><span class="line"><span class="attribute">-7.2545558164093009</span></span><br><span class="line"><span class="attribute">5.2799470769112835</span></span><br><span class="line"><span class="attribute">-8.5333633546653758</span></span><br><span class="line"><span class="attribute">-5.3549190735606933</span></span><br><span class="line"><span class="attribute">5.2575182675282477</span></span><br><span class="line"><span class="attribute">-5.4259109736696054</span></span><br></pre></td></tr></table></figure></p>
+<p>接下来我会把上述骨架分解说明——</p>
+<h4 id="文件头"><a href="#文件头" class="headerlink" title="文件头"></a>文件头</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">version:</span> <span class="number">100</span></span><br><span class="line">cost-<span class="string">factor:</span> <span class="number">1</span></span><br><span class="line"><span class="string">maxid:</span> <span class="number">2159868</span></span><br><span class="line"><span class="string">xsize:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>说明了模型的版本，通过-c参数指定的cost-factor，特征函数的最大id，xsize是特征维数，也就是训练语料列数-1。</p>
+<p>值得注意的是maxid比我们从文本中观察到的最大id大了4，这是为什么呢？且听下文分解。</p>
+<h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B</span><br><span class="line"><span class="built_in">E</span></span><br><span class="line"><span class="built_in">M</span></span><br><span class="line"><span class="built_in">S</span></span><br></pre></td></tr></table></figure>
+<p>也就是最终的输出。</p>
+<h4 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h4><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">U00:%x<span class="string">[-2,0]</span></span><br><span class="line">U01:%x<span class="string">[-1,0]</span></span><br><span class="line">U02:%x<span class="string">[0,0]</span></span><br><span class="line">U03:%x<span class="string">[1,0]</span></span><br><span class="line">U04:%x<span class="string">[2,0]</span></span><br><span class="line">U05:%x<span class="string">[-2,0]</span>/%x<span class="string">[-1,0]</span>/%x<span class="string">[0,0]</span></span><br><span class="line">U06:%x<span class="string">[-1,0]</span>/%x<span class="string">[0,0]</span>/%x<span class="string">[1,0]</span></span><br><span class="line">U07:%x<span class="string">[0,0]</span>/%x<span class="string">[1,0]</span>/%x<span class="string">[2,0]</span></span><br><span class="line">U08:%x<span class="string">[-1,0]</span>/%x<span class="string">[0,0]</span></span><br><span class="line">U09:%x<span class="string">[0,0]</span>/%x<span class="string">[1,0]</span></span><br><span class="line">B</span><br></pre></td></tr></table></figure>
+<p>训练时用到的模板。</p>
+<h4 id="特征函数"><a href="#特征函数" class="headerlink" title="特征函数"></a>特征函数</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> B</span><br><span class="line"><span class="number">16</span> <span class="string">U00:</span>-</span><br><span class="line"><span class="number">20</span> <span class="string">U00:</span><span class="number">0</span></span><br><span class="line"><span class="number">24</span> <span class="string">U00:</span><span class="number">1</span></span><br><span class="line"><span class="number">28</span> <span class="string">U00:</span><span class="number">2</span></span><br><span class="line"><span class="number">32</span> <span class="string">U00:</span><span class="number">3</span></span><br><span class="line"><span class="number">36</span> <span class="string">U00:</span><span class="number">4</span></span><br><span class="line"><span class="number">40</span> <span class="string">U00:</span><span class="number">5</span></span><br><span class="line"><span class="number">44</span> <span class="string">U00:</span><span class="number">6</span></span><br><span class="line"><span class="number">48</span> <span class="string">U00:</span><span class="number">7</span></span><br><span class="line"><span class="number">52</span> <span class="string">U00:</span><span class="number">8</span></span><br><span class="line"><span class="number">56</span> <span class="string">U00:</span><span class="number">9</span></span><br><span class="line"><span class="number">60</span> <span class="string">U00:</span>_B<span class="number">-1</span></span><br><span class="line"><span class="number">64</span> <span class="string">U00:</span>_B<span class="number">-2</span></span><br><span class="line">……</span><br><span class="line"><span class="number">17404</span> <span class="string">U01:</span>厨</span><br><span class="line"><span class="number">17408</span> <span class="string">U01:</span>去</span><br><span class="line"><span class="number">17412</span> <span class="string">U01:</span>县</span><br><span class="line"><span class="number">17416</span> <span class="string">U01:</span>参</span><br><span class="line"><span class="number">17420</span> <span class="string">U01:</span>又</span><br><span class="line"><span class="number">17424</span> <span class="string">U01:</span>叉</span><br><span class="line"><span class="number">17428</span> <span class="string">U01:</span>及</span><br><span class="line"><span class="number">17432</span> <span class="string">U01:</span>友</span><br><span class="line"><span class="number">17436</span> <span class="string">U01:</span>双</span><br><span class="line"><span class="number">17440</span> <span class="string">U01:</span>反</span><br><span class="line"><span class="number">17444</span> <span class="string">U01:</span>发</span><br><span class="line"><span class="number">17448</span> <span class="string">U01:</span>叔</span><br><span class="line"><span class="number">17452</span> <span class="string">U01:</span>取</span><br><span class="line"><span class="number">17456</span> <span class="string">U01:</span>受</span><br><span class="line">……</span><br><span class="line"><span class="number">77800</span> <span class="string">U05:</span>_B<span class="number">-1</span><span class="regexp">/一/</span>个</span><br><span class="line"><span class="number">107540</span> <span class="string">U05:</span>一<span class="regexp">/方/</span>面</span><br><span class="line"><span class="number">107544</span> <span class="string">U05:</span>一<span class="regexp">/无/</span>所</span><br><span class="line"><span class="number">107548</span> <span class="string">U05:</span>一<span class="regexp">/日/</span>三</span><br><span class="line"><span class="number">107552</span> <span class="string">U05:</span>一<span class="regexp">/日/</span>为</span><br><span class="line"><span class="number">107556</span> <span class="string">U05:</span>一<span class="regexp">/日/</span>之</span><br><span class="line">……</span><br><span class="line"><span class="number">566536</span> <span class="string">U06:</span>万<span class="regexp">/吨/</span>_B+<span class="number">1</span></span><br><span class="line">……</span><br><span class="line"><span class="number">2159864</span> <span class="string">U09:</span>ｖ/ｅ</span><br></pre></td></tr></table></figure>
+<p>按照[id] [参数o]的格式排列，你可能会奇怪，f(s, o)应该接受两个参数才对。其实s隐藏起来了，注意到id不是连续的，而是隔了四个，这表示这四个标签（s=b|m|e|s）和公共的参数o组合成了四个特征函数。特别的，0-15为BEMS转移到BEMS的转移函数，也就是f(s’, s, o=null)。</p>
+<p>值得注意的是，<code>_B-1</code>表示句子第一个单词前面的一个单词，<code>_B+1</code>表示末尾后面的一个单词，你可以在最大熵的模型中找到类似的逻辑处理，依次类推。</p>
+<h4 id="特征函数权值"><a href="#特征函数权值" class="headerlink" title="特征函数权值"></a>特征函数权值</h4><p>后面的小数依id顺序对应每个特征函数的权值。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">9<span class="selector-class">.0491453814148901</span></span><br><span class="line">7<span class="selector-class">.0388286231971700</span></span><br><span class="line"><span class="selector-tag">-7</span><span class="selector-class">.2545558164093009</span></span><br><span class="line">5<span class="selector-class">.2799470769112835</span></span><br><span class="line"><span class="selector-tag">-8</span><span class="selector-class">.5333633546653758</span></span><br><span class="line"><span class="selector-tag">-5</span><span class="selector-class">.3549190735606933</span></span><br><span class="line">5<span class="selector-class">.2575182675282477</span></span><br><span class="line"><span class="selector-tag">-5</span><span class="selector-class">.4259109736696054</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="关于解码"><a href="#关于解码" class="headerlink" title="关于解码"></a>关于解码</h3><p>严格来讲，解码并不属于本文的范围，但是不说说解码的话，对特征函数权值的理解就仅仅限于“浮点数”这一表面。所以简要地说说解码，比如说我们有一个句子“商品和服务”，对于每个字都按照上述模板生成一系列U特征函数的参数代入，得到一些类似010101的函数返回值，乘上这些函数的权值求和，就得到了各个标签的分数，由大到小代表输出这些标签的可能性。</p>
+<p>至于B特征函数（这里特指简单的f(s’, s)），在Viterbi后向解码的时候，前一个标签确定了后就可以代入当前的B特征函数，计算出每个输出标签的分数，再次求和排序即可。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/crf/" rel="tag"># crf++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/16/windows下使用crf++/" rel="next" title="windows下使用crf++">
+                <i class="fa fa-chevron-left"></i> windows下使用crf++
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/16/crf++ tutorial/" rel="prev" title="crf++ tutorial">
+                crf++ tutorial <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/pic_avatar.jpg"
+                alt="boredbird" />
+            
+              <p class="site-author-name" itemprop="name">boredbird</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">199</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">246</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/boredbird" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/boredbird" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-number">1.</span> <span class="nav-text">训练</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语料"><span class="nav-number">1.1.</span> <span class="nav-text">语料</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征模板"><span class="nav-number">1.2.</span> <span class="nav-text">特征模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令行"><span class="nav-number">1.3.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出"><span class="nav-number">1.4.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CRF模型格式"><span class="nav-number">2.</span> <span class="nav-text">CRF模型格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#骨架"><span class="nav-number">2.1.</span> <span class="nav-text">骨架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件头"><span class="nav-number">2.2.</span> <span class="nav-text">文件头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签"><span class="nav-number">2.3.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模板"><span class="nav-number">2.4.</span> <span class="nav-text">模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征函数"><span class="nav-number">2.5.</span> <span class="nav-text">特征函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特征函数权值"><span class="nav-number">2.6.</span> <span class="nav-text">特征函数权值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于解码"><span class="nav-number">3.</span> <span class="nav-text">关于解码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">boredbird</span>
+	
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+	
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'MsiMHXmbOdE3GRdsjoFkKyq1-gzGzoHsz',
+        appKey: 'KBnfHQQuodOjv7kpHuwXQayz',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  
+  <!-- custom analytics part create by xiamo -->
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("Qdwnt2WIsDObM1eTLlLD1OI4-gzGzoHsz", "00KjxKaT2mrOLIDcLLj4YXpF");</script>
+<script>
+function showTime(Counter) {
+	var query = new AV.Query(Counter);
+	$(".leancloud_visitors").each(function() {
+		var url = $(this).attr("id").trim();
+		query.equalTo("url", url);
+		query.find({
+			success: function(results) {
+				if (results.length == 0) {
+					var content = '0 ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+					return;
+				}
+				for (var i = 0; i < results.length; i++) {
+					var object = results[i];
+					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+					$(document.getElementById(url)).text(content);
+				}
+			},
+			error: function(object, error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+
+	});
+}
+
+function addCount(Counter) {
+	var Counter = AV.Object.extend("Counter");
+	url = $(".leancloud_visitors").attr('id').trim();
+	title = $(".leancloud_visitors").attr('data-flag-title').trim();
+	var query = new AV.Query(Counter);
+	query.equalTo("url", url);
+	query.find({
+		success: function(results) {
+			if (results.length > 0) {
+				var counter = results[0];
+				counter.fetchWhenSave(true);
+				counter.increment("time");
+				counter.save(null, {
+					success: function(counter) {
+						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(counter, error) {
+						console.log('Failed to save Visitor num, with error message: ' + error.message);
+					}
+				});
+			} else {
+				var newcounter = new Counter();
+				newcounter.set("title", title);
+				newcounter.set("url", url);
+				newcounter.set("time", 1);
+				newcounter.save(null, {
+					success: function(newcounter) {
+					    console.log("newcounter.get('time')="+newcounter.get('time'));
+						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+						$(document.getElementById(url)).text(content);
+					},
+					error: function(newcounter, error) {
+						console.log('Failed to create');
+					}
+				});
+			}
+		},
+		error: function(error) {
+			console.log('Error:' + error.code + " " + error.message);
+		}
+	});
+}
+$(function() {
+	var Counter = AV.Object.extend("Counter");
+	if ($('.leancloud_visitors').length == 1) {
+		addCount(Counter);
+	} else if ($('.post-title-link').length > 1) {
+		showTime(Counter);
+	}
+}); 
+</script>
+  
+</body>
+</html>
