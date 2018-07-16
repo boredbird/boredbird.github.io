@@ -308,6 +308,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.27. Spectral Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" itemprop="url">EDA_1.3.3.27. Spectral Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:36:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.27. Spectral Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.27. Spectral Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.27. Spectral Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Examine-Cyclic-Structure"><a href="#Purpose-Examine-Cyclic-Structure" class="headerlink" title="Purpose: Examine Cyclic Structure"></a>Purpose: Examine Cyclic Structure</h3><p>A spectral plot ( Jenkins and Watts 1968 orBloomfield 1976) is a graphical technique for examining cyclic structure in the frequency domain. It is a smoothed Fourier transform of the autocovariance function.</p>
+<p>The frequency is measured in cycles per unit time where unit time is defined to be the distance between 2 points. A frequency of 0 corresponds to an infinite cycle while a frequency of 0.5 corresponds to a cycle of 2 data points. Equi-spaced time series are inherently limited to detecting frequencies between 0 and 0.5.</p>
+<p>Trends should typically be removed from the time series before applying the spectral plot. Trends can be detected from a run sequence plot. Trends are typically removed by differencing the series or by fitting a straight line (or some other polynomial curve) and applying the spectral analysis to the residuals.</p>
+<p>Spectral plots are often used to find a starting value for the frequency, ω, in the sinusoidal model</p>
+<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
+</code></pre><p>See the beam deflection case study for an example of this.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/spectrum.gif" alt=""></p>
+<p>This spectral plot shows one dominant frequency of approximately 0.3 cycles per observation.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Variance Versus Frequency</p>
+<p>The spectral plot is formed by:</p>
+<pre><code>• Vertical axis: Smoothed variance (power)
+• Horizontal axis: Frequency (cycles per observation)
+</code></pre><p>The computations for generating the smoothed variances can be involved and are not discussed further here. The details can be found in the Jenkins and Bloomfield references and in most texts that discuss the frequency analysis of time series.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The spectral plot can be used to answer the following questions:</p>
+<pre><code>1. How many cyclic components are there?
+2. Is there a dominant cyclic frequency?
+3. If there is a dominant cyclic frequency, what is it?
+</code></pre><h3 id="Importance-Check-Cyclic-Behavior-of-Time-Series"><a href="#Importance-Check-Cyclic-Behavior-of-Time-Series" class="headerlink" title="Importance: Check Cyclic Behavior of Time Series"></a>Importance: Check Cyclic Behavior of Time Series</h3><p>The spectral plot is the primary technique for assessing the cyclic nature of univariate time series in the frequency domain. It is almost always the second plot (after a run sequence plot) generated in a frequency domain analysis of a time series.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. Random (= White Noise)
+2. Strong autocorrelation and autoregressive model 
+3. Sinusoidal model
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Autocorrelation Plot</li>
+<li>Complex Demodulation Amplitude Plot</li>
+<li>Complex Demodulation Phase Plot</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.25 Run-Sequence Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -453,198 +645,6 @@
 <li>Histogram</li>
 <li>Autocorrelation Plot</li>
 <li>Lag Plot</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.27. Spectral Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" itemprop="url">EDA_1.3.3.27. Spectral Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:36:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.27. Spectral Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.27. Spectral Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.27. Spectral Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.27. Spectral Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Examine-Cyclic-Structure"><a href="#Purpose-Examine-Cyclic-Structure" class="headerlink" title="Purpose: Examine Cyclic Structure"></a>Purpose: Examine Cyclic Structure</h3><p>A spectral plot ( Jenkins and Watts 1968 orBloomfield 1976) is a graphical technique for examining cyclic structure in the frequency domain. It is a smoothed Fourier transform of the autocovariance function.</p>
-<p>The frequency is measured in cycles per unit time where unit time is defined to be the distance between 2 points. A frequency of 0 corresponds to an infinite cycle while a frequency of 0.5 corresponds to a cycle of 2 data points. Equi-spaced time series are inherently limited to detecting frequencies between 0 and 0.5.</p>
-<p>Trends should typically be removed from the time series before applying the spectral plot. Trends can be detected from a run sequence plot. Trends are typically removed by differencing the series or by fitting a straight line (or some other polynomial curve) and applying the spectral analysis to the residuals.</p>
-<p>Spectral plots are often used to find a starting value for the frequency, ω, in the sinusoidal model</p>
-<pre><code>Yi=C+αsin(2πωti+ϕ)+Ei
-</code></pre><p>See the beam deflection case study for an example of this.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/spectrum.gif" alt=""></p>
-<p>This spectral plot shows one dominant frequency of approximately 0.3 cycles per observation.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Variance Versus Frequency</p>
-<p>The spectral plot is formed by:</p>
-<pre><code>• Vertical axis: Smoothed variance (power)
-• Horizontal axis: Frequency (cycles per observation)
-</code></pre><p>The computations for generating the smoothed variances can be involved and are not discussed further here. The details can be found in the Jenkins and Bloomfield references and in most texts that discuss the frequency analysis of time series.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The spectral plot can be used to answer the following questions:</p>
-<pre><code>1. How many cyclic components are there?
-2. Is there a dominant cyclic frequency?
-3. If there is a dominant cyclic frequency, what is it?
-</code></pre><h3 id="Importance-Check-Cyclic-Behavior-of-Time-Series"><a href="#Importance-Check-Cyclic-Behavior-of-Time-Series" class="headerlink" title="Importance: Check Cyclic Behavior of Time Series"></a>Importance: Check Cyclic Behavior of Time Series</h3><p>The spectral plot is the primary technique for assessing the cyclic nature of univariate time series in the frequency domain. It is almost always the second plot (after a run sequence plot) generated in a frequency domain analysis of a time series.</p>
-<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code>1. Random (= White Noise)
-2. Strong autocorrelation and autoregressive model 
-3. Sinusoidal model
-</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Autocorrelation Plot</li>
-<li>Complex Demodulation Amplitude Plot</li>
-<li>Complex Demodulation Phase Plot</li>
 </ul>
 
           
@@ -853,6 +853,207 @@ association does NOT imply causality.
 <li>Run Sequence Plot </li>
 <li>Box Plot </li>
 <li>Block Plot </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.22. Probability Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.22. Probability Plot/" itemprop="url">EDA_1.3.3.22. Probability Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.22. Probability Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.22. Probability Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.22. Probability Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.22. Probability Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.22. Probability Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Check-If-Data-Follow-a-Given-Distribution"><a href="#Purpose-Check-If-Data-Follow-a-Given-Distribution" class="headerlink" title="Purpose: Check If Data Follow a Given Distribution"></a>Purpose: Check If Data Follow a Given Distribution</h3><p>The probability plot (Chambers et al., 1983) is a graphical technique for assessing whether or not a data set follows a given distribution such as the normal or Weibull.</p>
+<p>The data are plotted against a theoretical distribution in such a way that the points should form approximately a straight line. Departures from this straight line indicate departures from the specified distribution.</p>
+<p>The correlation coefficient associated with the linear fit to the data in the probability plot is a measure of the goodness of the fit. Estimates of the location and scale parametersof the distribution are given by the intercept and slope. Probability plots can be generated for several competing distributions to see which provides the best fit, and the probability plot generating the highest correlation coefficient is the best choice since it generates the straightest probability plot.</p>
+<p>For distributions with shape parameters (not counting location and scale parameters), the shape parameters must be known in order to generate the probability plot. For distributions with a single shape parameter, the probability plot correlation coefficient(PPCC) plot provides an excellent method for estimating the shape parameter.</p>
+<p>We cover the special case of the normal probability plot separately due to its importance in many statistical applications.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/probplot.gif" alt=""></p>
+<p>This data is a set of 500 Weibull random numbers with a shape parameter = 2, location parameter = 0, and scale parameter = 1. The Weibull probability plot indicates that the Weibull distribution does in fact fit these data well.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Ordered Response Values Versus Order Statistic Medians for the Given Distribution<br>The probability plot is formed by:</p>
+<pre><code>• Vertical axis: Ordered response values
+• Horizontal axis: Order statistic medians for the given distribution
+</code></pre><p>The order statistic medians (see Filliben 1975)can be approximated by:</p>
+<pre><code>Ni = G(Ui)
+</code></pre><p>where Ui are the uniform order statistic medians (defined below) and G is the percent point function for the desired distribution. The percent point function is the inverse of the cumulative distribution function(probability that x is less than or equal to some value). That is, given a probability, we want the corresponding x of the cumulative distribution function.</p>
+<p>The uniform order statistic medians are defined as:</p>
+<pre><code>mi = 1 - mn    for i = 1
+mi = (i - 0.3175)/(n + 0.365)    for i = 2, 3, ..., n-1 
+mi = 0.5(1/n)    for i = n
+</code></pre><p>In addition, a straight line can be fit to the points and added as a reference line. The further the points vary from this line, the greater the indication of a departure from the specified distribution.</p>
+<p>This definition implies that a probability plot can be easily generated for any distribution for which the percent point function can be computed.</p>
+<p>One advantage of this method of computing proability plots is that the intercept and slope estimates of the fitted line are in fact estimates for the location and scale parameters of the distribution. Although this is not too important for the normal distribution (the location and scale are estimated by the mean and standard deviation, respectively), it can be useful for many other distributions.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The probability plot is used to answer the following questions:</p>
+<pre><code>• Does a given distribution, such as the Weibull, provide a good fit to my data?
+• What distribution best fits my data?
+• What are good estimates for the location and scale parameters of the chosen distribution?
+</code></pre><h3 id="Importance-Check-distributional-assumption"><a href="#Importance-Check-distributional-assumption" class="headerlink" title="Importance: Check distributional assumption"></a>Importance: Check distributional assumption</h3><p>The discussion for the normal probability plotcovers the use of probability plots for checking the fixed distribution assumption.</p>
+<p>Some statistical models assume data have come from a population with a specific type of distribution. For example, in reliability applications, the Weibull, lognormal, and exponential are commonly used distributional models. Probability plots can be useful for checking this distributional assumption.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Histogram</li>
+<li>Probability Plot Correlation Coefficient (PPCC) Plot</li>
+<li>Hazard Plot</li>
+<li>Quantile-Quantile Plot</li>
+<li>Anderson-Darling Goodness of Fit</li>
+<li>Chi-Square Goodness of Fit</li>
+<li>Kolmogorov-Smirnov Goodness of Fit</li>
 </ul>
 
           
@@ -1508,207 +1709,6 @@ Ui = 0.5(1/n)    for i = n
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.22. Probability Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.22. Probability Plot/" itemprop="url">EDA_1.3.3.22. Probability Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T15:26:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.22. Probability Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.22. Probability Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.22. Probability Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.22. Probability Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.22. Probability Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Check-If-Data-Follow-a-Given-Distribution"><a href="#Purpose-Check-If-Data-Follow-a-Given-Distribution" class="headerlink" title="Purpose: Check If Data Follow a Given Distribution"></a>Purpose: Check If Data Follow a Given Distribution</h3><p>The probability plot (Chambers et al., 1983) is a graphical technique for assessing whether or not a data set follows a given distribution such as the normal or Weibull.</p>
-<p>The data are plotted against a theoretical distribution in such a way that the points should form approximately a straight line. Departures from this straight line indicate departures from the specified distribution.</p>
-<p>The correlation coefficient associated with the linear fit to the data in the probability plot is a measure of the goodness of the fit. Estimates of the location and scale parametersof the distribution are given by the intercept and slope. Probability plots can be generated for several competing distributions to see which provides the best fit, and the probability plot generating the highest correlation coefficient is the best choice since it generates the straightest probability plot.</p>
-<p>For distributions with shape parameters (not counting location and scale parameters), the shape parameters must be known in order to generate the probability plot. For distributions with a single shape parameter, the probability plot correlation coefficient(PPCC) plot provides an excellent method for estimating the shape parameter.</p>
-<p>We cover the special case of the normal probability plot separately due to its importance in many statistical applications.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/probplot.gif" alt=""></p>
-<p>This data is a set of 500 Weibull random numbers with a shape parameter = 2, location parameter = 0, and scale parameter = 1. The Weibull probability plot indicates that the Weibull distribution does in fact fit these data well.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Ordered Response Values Versus Order Statistic Medians for the Given Distribution<br>The probability plot is formed by:</p>
-<pre><code>• Vertical axis: Ordered response values
-• Horizontal axis: Order statistic medians for the given distribution
-</code></pre><p>The order statistic medians (see Filliben 1975)can be approximated by:</p>
-<pre><code>Ni = G(Ui)
-</code></pre><p>where Ui are the uniform order statistic medians (defined below) and G is the percent point function for the desired distribution. The percent point function is the inverse of the cumulative distribution function(probability that x is less than or equal to some value). That is, given a probability, we want the corresponding x of the cumulative distribution function.</p>
-<p>The uniform order statistic medians are defined as:</p>
-<pre><code>mi = 1 - mn    for i = 1
-mi = (i - 0.3175)/(n + 0.365)    for i = 2, 3, ..., n-1 
-mi = 0.5(1/n)    for i = n
-</code></pre><p>In addition, a straight line can be fit to the points and added as a reference line. The further the points vary from this line, the greater the indication of a departure from the specified distribution.</p>
-<p>This definition implies that a probability plot can be easily generated for any distribution for which the percent point function can be computed.</p>
-<p>One advantage of this method of computing proability plots is that the intercept and slope estimates of the fitted line are in fact estimates for the location and scale parameters of the distribution. Although this is not too important for the normal distribution (the location and scale are estimated by the mean and standard deviation, respectively), it can be useful for many other distributions.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The probability plot is used to answer the following questions:</p>
-<pre><code>• Does a given distribution, such as the Weibull, provide a good fit to my data?
-• What distribution best fits my data?
-• What are good estimates for the location and scale parameters of the chosen distribution?
-</code></pre><h3 id="Importance-Check-distributional-assumption"><a href="#Importance-Check-distributional-assumption" class="headerlink" title="Importance: Check distributional assumption"></a>Importance: Check distributional assumption</h3><p>The discussion for the normal probability plotcovers the use of probability plots for checking the fixed distribution assumption.</p>
-<p>Some statistical models assume data have come from a population with a specific type of distribution. For example, in reliability applications, the Weibull, lognormal, and exponential are commonly used distributional models. Probability plots can be useful for checking this distributional assumption.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Histogram</li>
-<li>Probability Plot Correlation Coefficient (PPCC) Plot</li>
-<li>Hazard Plot</li>
-<li>Quantile-Quantile Plot</li>
-<li>Anderson-Darling Goodness of Fit</li>
-<li>Chi-Square Goodness of Fit</li>
-<li>Kolmogorov-Smirnov Goodness of Fit</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.20. Mean Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1896,6 +1896,192 @@ mi = 0.5(1/n)    for i = n
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/" itemprop="url">EDA_1.3.3.18. Linear Slope Plot</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T13:26:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.18. Linear Slope Plot">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.3.18. Linear Slope Plot
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Detect-changes-in-linear-slopes-between-groups"><a href="#Purpose-Detect-changes-in-linear-slopes-between-groups" class="headerlink" title="Purpose: Detect changes in linear slopes between groups"></a>Purpose: Detect changes in linear slopes between groups</h3><p>Linear slope plots are used to graphically assess whether or not linear fits are consistent across groups. That is, if your data have groups, you may want to know if a single fit can be used across all the groups or whether separate fits are required for each group.</p>
+<p>Linear slope plots are typically used in conjunction with linear intercept and linear residual standard deviation plots.</p>
+<p>In some cases you might not have groups. Instead, you have different data sets and you want to know if the same fit can be adequately applied to each of the data sets. In this case, simply think of each distinct data set as a group and apply the linear slope plot as for groups.</p>
+<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/linslopl.gif" alt=""></p>
+<p>This linear slope plot shows that the slopes are about 0.174 (plus or minus 0.002) for all groups. There does not appear to be a pattern in the variation of the slopes. This implies that a single fit may be adequate.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Slopes Versus Group ID</p>
+<p>Linear slope plots are formed by:</p>
+<pre><code>• Vertical axis: Group slopes from linear fits
+• Horizontal axis: Group identifier
+</code></pre><p>A reference line is plotted at the slope from a linear fit using all the data.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The linear slope plot can be used to answer the following questions.</p>
+<pre><code>1. Do you get the same slope across groups for linear fits?
+2. If the slopes differ, is there a discernible pattern in the slopes?
+</code></pre><h3 id="Importance-Checking-Group-Homogeneity"><a href="#Importance-Checking-Group-Homogeneity" class="headerlink" title="Importance: Checking Group Homogeneity"></a>Importance: Checking Group Homogeneity</h3><p>For grouped data, it may be important to know whether the different groups are homogeneous (i.e., similar) or heterogeneous (i.e., different). Linear slope plots help answer this question in the context of linear fitting.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Linear Intercept Plot</li>
+<li>Linear Correlation Plot</li>
+<li>Linear Residual Standard Deviation Plot </li>
+<li>Linear Fitting</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.19. Linear Residual Standard Deviation Plot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2033,192 +2219,6 @@ mi = 0.5(1/n)    for i = n
 <li>Linear Intercept Plot</li>
 <li>Linear Slope Plot</li>
 <li>Linear Correlation Plot</li>
-<li>Linear Fitting</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/" itemprop="url">EDA_1.3.3.18. Linear Slope Plot</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T13:26:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.3.18. Linear Slope Plot/" class="leancloud_visitors" data-flag-title="EDA_1.3.3.18. Linear Slope Plot">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.3.18. Linear Slope Plot
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Detect-changes-in-linear-slopes-between-groups"><a href="#Purpose-Detect-changes-in-linear-slopes-between-groups" class="headerlink" title="Purpose: Detect changes in linear slopes between groups"></a>Purpose: Detect changes in linear slopes between groups</h3><p>Linear slope plots are used to graphically assess whether or not linear fits are consistent across groups. That is, if your data have groups, you may want to know if a single fit can be used across all the groups or whether separate fits are required for each group.</p>
-<p>Linear slope plots are typically used in conjunction with linear intercept and linear residual standard deviation plots.</p>
-<p>In some cases you might not have groups. Instead, you have different data sets and you want to know if the same fit can be adequately applied to each of the data sets. In this case, simply think of each distinct data set as a group and apply the linear slope plot as for groups.</p>
-<h3 id="Sample-Plot"><a href="#Sample-Plot" class="headerlink" title="Sample Plot"></a>Sample Plot</h3><p><img src="assets/EDA/linslopl.gif" alt=""></p>
-<p>This linear slope plot shows that the slopes are about 0.174 (plus or minus 0.002) for all groups. There does not appear to be a pattern in the variation of the slopes. This implies that a single fit may be adequate.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition:"></a>Definition:</h3><p>Group Slopes Versus Group ID</p>
-<p>Linear slope plots are formed by:</p>
-<pre><code>• Vertical axis: Group slopes from linear fits
-• Horizontal axis: Group identifier
-</code></pre><p>A reference line is plotted at the slope from a linear fit using all the data.</p>
-<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The linear slope plot can be used to answer the following questions.</p>
-<pre><code>1. Do you get the same slope across groups for linear fits?
-2. If the slopes differ, is there a discernible pattern in the slopes?
-</code></pre><h3 id="Importance-Checking-Group-Homogeneity"><a href="#Importance-Checking-Group-Homogeneity" class="headerlink" title="Importance: Checking Group Homogeneity"></a>Importance: Checking Group Homogeneity</h3><p>For grouped data, it may be important to know whether the different groups are homogeneous (i.e., similar) or heterogeneous (i.e., different). Linear slope plots help answer this question in the context of linear fitting.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Linear Intercept Plot</li>
-<li>Linear Correlation Plot</li>
-<li>Linear Residual Standard Deviation Plot </li>
 <li>Linear Fitting</li>
 </ul>
 

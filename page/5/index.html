@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -327,7 +327,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/" itemprop="url">EDA_1.3.5.13. Runs Test for Detecting Non-randomness</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/" itemprop="url">EDA_1.3.5.14. Anderson-Darling Test</a></h2>
         
 
         <div class="post-meta">
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2018/03/12/EDA_1.3.5.13. Runs Test for Detecting Non-randomness/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.13. Runs Test for Detecting Non-randomness">
+             <span id="/2018/03/12/EDA_1.3.5.14. Anderson-Darling Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.14. Anderson-Darling Test">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
 
           
               <div class="post-description">
-                  EDA_1.3.5.13. Runs Test for Detecting Non-randomness
+                  EDA_1.3.5.14. Anderson-Darling Test
               </div>
           
 
@@ -426,28 +426,42 @@
       
         
           
-            <h3 id="Purpose-Detect-Non-Randomness"><a href="#Purpose-Detect-Non-Randomness" class="headerlink" title="Purpose: Detect Non-Randomness"></a>Purpose: Detect Non-Randomness</h3><p>The runs test (Bradley, 1968) can be used to decide if a data set is from a random process.</p>
-<p>A run is defined as a series of increasing values or a series of decreasing values. The number of increasing, or decreasing, values is the length of the run. In a random data set, the probability that the (I+1)th value is larger or smaller than the Ith value follows a binomial distribution, which forms the basis of the runs test.</p>
-<h3 id="Typical-Analysis-and-Test-Statistics"><a href="#Typical-Analysis-and-Test-Statistics" class="headerlink" title="Typical Analysis and Test Statistics"></a>Typical Analysis and Test Statistics</h3><p>The first step in the runs test is to count the number of runs in the data sequence. There are several ways to define runs in the literature, however, in all cases the formulation must produce a dichotomous sequence of values. For example, a series of 20 coin tosses might produce the following sequence of heads (H) and tails (T).</p>
-<pre><code>H H T T H T H H H H T H H T T T T T H H
-</code></pre><p>The number of runs for this series is nine. There are 11 heads and 9 tails in the sequence.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>We will code values above the median as positive and values below the median as negative. A run is defined as a series of consecutive positive (or negative) values. The runs test is defined as:</p>
-<p><img src="assets/EDA/eda35d_1.png" alt=""></p>
-<h3 id="Runs-Test-Example"><a href="#Runs-Test-Example" class="headerlink" title="Runs Test Example"></a>Runs Test Example</h3><p>A runs test was performed for 200 measurements of beam deflection contained in the LEW.DAT data set.</p>
-<p><img src="assets/EDA/eda35d_2.png" alt=""></p>
-<p>Since the test statistic is greater than the critical value, we conclude that the data are not random at the 0.05 significance level.</p>
-<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>The runs test can be used to answer the following question:</p>
-<pre><code>• Were these sample data generated from a random process?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Randomness is one of the key assumptions in determining if a univariate statistical process is in control. If the assumptions of constant location and scale, randomness, and fixed distribution are reasonable, then the univariate process can be modeled as:</p>
-<pre><code>Yi=A0+Ei
-</code></pre><p>where Ei is an error term.</p>
-<p>If the randomness assumption is not valid, then a different model needs to be used. This will typically be either a times series model or a non-linear model (with time as the independent variable).</p>
+            <h3 id="Purpose-Test-for-Distributional-Adequacy"><a href="#Purpose-Test-for-Distributional-Adequacy" class="headerlink" title="Purpose: Test for Distributional Adequacy"></a>Purpose: Test for Distributional Adequacy</h3><p>The Anderson-Darling test (Stephens, 1974) is used to test if a sample of data came from a population with a specific distribution. It is a modification of theKolmogorov-Smirnov (K-S) test and gives more weight to the tails than does the K-S test. The K-S test is distribution free in the sense that the critical values do not depend on the specific distribution being tested (note that this is true only for a fully specified distribution, i.e. the parameters are known). The Anderson-Darling test makes use of the specific distribution in calculating critical values. This has the advantage of allowing a more sensitive test and the disadvantage that critical values must be calculated for each distribution. Currently, tables of critical values are available for the normal, uniform, lognormal,exponential, Weibull, extreme value type I, generalized Pareto, and logistic distributions. We do not provide the tables of critical values in this Handbook (seeStephens 1974, 1976, 1977, and 1979) since this test is usually applied with a statistical software program that will print the relevant critical values.<br>The Anderson-Darling test is an alternative to the chi-square and Kolmogorov-Smirnov goodness-of-fit tests.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p><img src="assets/EDA/eda35e_1.png" alt=""></p>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>We generated 1,000 random numbers for normal, double exponential, Cauchy, and lognormal distributions. In all four cases, the Anderson-Darling test was applied to test for a normal distribution.<br>The normal random numbers were stored in the variable Y1, the double exponential random numbers were stored in the variable Y2, the Cauchy random numbers were stored in the variable Y3, and the lognormal random numbers were stored in the variable Y4.</p>
+<pre><code>Distribution                 Mean       Standard Deviation
+------------               --------     ------------------
+Normal (Y1)                0.004360          1.001816
+Double Exponential (Y2)    0.020349          1.321627
+Cauchy (Y3)                1.503854         35.130590
+Lognormal (Y4)             1.518372          1.719969
+
+H0:  the data are normally distributed
+Ha:  the data are not normally distributed
+Y1 adjusted test statistic:  A2 =   0.2576
+Y2 adjusted test statistic:  A2 =   5.8492
+Y3 adjusted test statistic:  A2 = 288.7863
+Y4 adjusted test statistic:  A2 =  83.3935
+Significance level:  α = 0.05
+Critical value:  0.752   
+Critical region:  Reject H0 if A2 &gt; 0.752
+</code></pre><p>When the data were generated using a normal distribution, the test statistic was small and the hypothesis of normality was not rejected. When the data were generated using the double exponential, Cauchy, and lognormal distributions, the test statistics were large, and the hypothesis of an underlying normal distribution was rejected at the 0.05 significance level.</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The Anderson-Darling test can be used to answer the following questions:</p>
+<pre><code>• Are the data from a normal distribution?
+• Are the data from a log-normal distribution?
+• Are the data from a Weibull distribution?
+• Are the data from an exponential distribution?
+• Are the data from a logistic distribution?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Many statistical tests and procedures are based on specific distributional assumptions. The assumption of normality is particularly common in classical statistical tests. Much reliability modeling is based on the assumption that the data follow a Weibull distribution.</p>
+<p>There are many non-parametric and robust techniques that do not make strong distributional assumptions. However, techniques based on specific distributional assumptions are in general more powerful than non-parametric and robust techniques. Therefore, if the distributional assumptions can be validated, they are generally preferred.</p>
 <h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Autocorrelation</li>
-<li>Run Sequence Plot</li>
-<li>Lag Plot</li>
+<li>Chi-Square goodness-of-fit Test</li>
+<li>Kolmogorov-Smirnov Test</li>
+<li>Shapiro-Wilk Normality Test</li>
+<li>Probability Plot</li>
+<li>Probability Plot Correlation Coefficient Plot</li>
 </ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35d.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35d.htm</a></p>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda35e.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda35e.htm</a></p>
 
           
         
@@ -1263,196 +1277,6 @@ Is the variance less than some pre-determined threshold value?
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.7. Bartlett's Test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="boredbird">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/assets/pic_avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="boredbird">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" itemprop="url">EDA_1.3.5.7. Bartlett's Test</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:59:12+08:00">
-                2018-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/statistics/" itemprop="url" rel="index">
-                    <span itemprop="name">statistics</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.7. Bartlett's Test">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-              <div class="post-description">
-                  EDA_1.3.5.7. Bartlett's Test
-              </div>
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Purpose-Test-for-Homogeneity-of-Variances"><a href="#Purpose-Test-for-Homogeneity-of-Variances" class="headerlink" title="Purpose: Test for Homogeneity of Variances"></a>Purpose: Test for Homogeneity of Variances</h3><p>Bartlett’s test (Snedecor and Cochran, 1983) is used to test if k samples have equal variances. Equal variances across samples is called homogeneity of variances. Some statistical tests, for example the analysis of variance, assume that variances are equal across groups or samples. The Bartlett test can be used to verify that assumption.</p>
-<p>Bartlett’s test is sensitive to departures from normality. That is, if your samples come from non-normal distributions, then Bartlett’s test may simply be testing for non-normality. The Levene test is an alternative to the Bartlett test that is less sensitive to departures from normality.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Bartlett test is defined as:</p>
-<p><img src="assets/EDA/eda357_1.png" alt=""></p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Bartlett’s test was performed for the GEAR.DATdata set. The data set contains 10 measurements of gear diameter for ten different batches for a total of 100 measurements.</p>
-<pre><code>H0:  σ12 = σ22 = ... = σ102
-Ha:  At least one σi2 is not equal to the others.
-Test statistic:  T = 20.78580
-Degrees of freedom:  k - 1 = 9
-Significance level:  α = 0.05
-Critical value:  Χ21-α,k-1 = 16.919
-Critical region: Reject H0 if T &gt; 16.919
-</code></pre><p>We are testing the null hypothesis that the batch variances are all equal. Because the test statistic is larger than the critical value, we reject the null hypotheses at the 0.05 significance level and conclude that at least one batch variance is different from the others.</p>
-<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Bartlett’s test can be used to answer the following question:</p>
-<pre><code>• Is the assumption of equal variances valid?
-</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Bartlett’s test is useful whenever the assumption of equal variances is made. In particular, this assumption is made for the frequently used one-way analysis of variance. In this case, Bartlett’s or Levene’s test should be applied to verify the assumption.</p>
-<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>Standard Deviation Plot</li>
-<li>Box Plot</li>
-<li>Levene Test</li>
-<li>Chi-Square Test</li>
-<li>Analysis of Variance</li>
-</ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda357.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda357.htm</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.6. Measures of Scale/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1659,7 +1483,7 @@ where Y~ is the median of the data and |Y|is the absolute value of Y. This is a 
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.7. Bartlett's Test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="boredbird">
@@ -1678,7 +1502,7 @@ where Y~ is the median of the data and |Y|is the absolute value of Y. This is a 
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" itemprop="url">EDA_1.3.5.5. Multi-factor Analysis of Variance</a></h2>
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" itemprop="url">EDA_1.3.5.7. Bartlett's Test</a></h2>
         
 
         <div class="post-meta">
@@ -1690,7 +1514,7 @@ where Y~ is the median of the data and |Y|is the absolute value of Y. This is a 
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:58:12+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:59:12+08:00">
                 2018-03-12
               </time>
             
@@ -1731,8 +1555,8 @@ where Y~ is the median of the data and |Y|is the absolute value of Y. This is a 
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" itemprop="commentCount"></span>
+                <a href="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1740,7 +1564,7 @@ where Y~ is the median of the data and |Y|is the absolute value of Y. This is a 
 
           
           
-             <span id="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.5. Multi-factor Analysis of Variance">
+             <span id="/2018/03/12/EDA_1.3.5.7. Bartlett's Test/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.7. Bartlett's Test">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1758,7 +1582,7 @@ where Y~ is the median of the data and |Y|is the absolute value of Y. This is a 
 
           
               <div class="post-description">
-                  EDA_1.3.5.5. Multi-factor Analysis of Variance
+                  EDA_1.3.5.7. Bartlett's Test
               </div>
           
 
@@ -1777,67 +1601,30 @@ where Y~ is the median of the data and |Y|is the absolute value of Y. This is a 
       
         
           
-            <h3 id="Purpose-Detect-significant-factors"><a href="#Purpose-Detect-significant-factors" class="headerlink" title="Purpose: Detect significant factors"></a>Purpose: Detect significant factors</h3><p>The analysis of variance (ANOVA) (Neter, Wasserman, and Kutner, 1990) is used to detect significant factors in a multi-factor model. In the multi-factor model, there is a response (dependent) variable and one or more factor (independent) variables. This is a common model in designed experiments where the experimenter sets the values for each of the factor variables and then measures the response variable.</p>
-<p>Each factor can take on a certain number of values. These are referred to as the levels of a factor. The number of levels can vary betweeen factors. For designed experiments, the number of levels for a given factor tends to be small. Each factor and level combination is a cell. Balanced designs are those in which the cells have an equal number of observations and unbalanced designs are those in which the number of observations varies among cells. It is customary to use balanced designs in designed experiments.</p>
-<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Product and Process Comparisons chapter (chapter 7) contains a more extensive discussion of two-factor ANOVA, including the details for the mathematical computations.</p>
-<p>The model for the analysis of variance can be stated in two mathematically equivalent ways. We explain the model for a two-way ANOVA (the concepts are the same for additional factors). In the following discussion, each combination of factors and levels is called a cell. In the following, the subscript i refers to the level of factor 1, j refers to the level of factor 2, and the subscript k refers to thekth observation within the (i,j)th cell. For example, Y235refers to the fifth observation in the second level of factor 1 and the third level of factor 2.</p>
-<p>The first model is</p>
-<pre><code>Yijk=μij+Eijk
-</code></pre><p>This model decomposes the response into a mean for each cell and an error term. The analysis of variance provides estimates for each cell mean. These cell means are the predicted values of the model and the differences between the response variable and the estimated cell means are the residuals. That is</p>
-<pre><code>Y^ijk=μ^ij
-Rijk=Yijk−μ^ij
-</code></pre><p>The second model is</p>
-<pre><code>Yijk=μ+αi+βj+Eijk
-</code></pre><p>This model decomposes the response into an overall (grand) mean, factor effects (α^i and β^j represent the effects of the i-th level of the first factor and the j-th level of the second factor, respectively), and an error term. The analysis of variance provides estimates of the grand mean and the factor effects. The predicted values and the residuals of the model are</p>
-<pre><code>Y^ijk=μ^+α^i+β^j
-Rijk=Yijk−μ^−α^i−β^j
-</code></pre><p>The distinction between these models is that the second model divides the cell mean into an overall mean and factor effects. This second model makes the factor effect more explicit, so we will emphasize this approach.</p>
-<h3 id="Model-Validation"><a href="#Model-Validation" class="headerlink" title="Model Validation"></a>Model Validation</h3><p>Note that the ANOVA model assumes that the error term,Eijk, should follow the assumptions for a univariate measurement process. That is, after performing an analysis of variance, the model should be validated by analyzing the residuals.</p>
-<h3 id="Multi-Factor-ANOVA-Example"><a href="#Multi-Factor-ANOVA-Example" class="headerlink" title="Multi-Factor ANOVA Example"></a>Multi-Factor ANOVA Example</h3><p>An analysis of variance was performed for the JAHANMI2.DATdata set. The data contains four, two-level factors: table speed, down feed rate, wheel grit size, and batch. There are 30 measurements of ceramic strength for each factor combination for a total of 480 measurements.</p>
-<pre><code>SOURCE              DF SUM OF SQUARES    MEAN SQUARE   F STATISTIC
-------------------------------------------------------------------
-TABLE SPEED          1   26672.726562   26672.726562        6.7080
-DOWN FEED RATE       1   11524.053711   11524.053711        2.8982
-WHEEL GRIT SIZE      1   14380.633789   14380.633789        3.6166
-BATCH                1  727143.125000  727143.125000      182.8703
-RESIDUAL           475 1888731.500000    3976.276855
-TOTAL (CORRECTED)  479 2668446.000000    5570.868652
-
-RESIDUAL STANDARD DEVIATION = 63.05772781
-
-FACTOR          LEVEL   N      MEAN     SD(MEAN)
-------------------------------------------------
-TABLE SPEED      -1    240  657.53168    2.87818
-                  1    240  642.62286    2.87818
-DOWN FEED RATE   -1    240  645.17755    2.87818
-                  1    240  654.97723    2.87818
-WHEEL GRIT SIZE  -1    240  655.55084    2.87818
-                  1    240  644.60376    2.87818
-BATCH             1    240  688.99890    2.87818
-                  2    240  611.15594    2.87818
-</code></pre><p>The ANOVA decomposes the variance into the following component sum of squares:</p>
-<pre><code>• Total sum of squares. The degrees of freedom for this entry is the number of observations minus one.
-• Sum of squares for each of the factors. The degrees of freedom for these entries are the number of levels for the factor minus one. The mean square is the sum of squares divided by the number of degrees of freedom.
-• Residual sum of squares. The degrees of freedom is the total degrees of freedom minus the sum of the factor degrees of freedom. The mean square is the sum of squares divided by the number of degrees of freedom.
-</code></pre><p>The analysis of variance summarizes how much of the variance in the data (total sum of squares) is accounted for by the factor effects (factor sum of squares) and how much is due to random error (residual sum of squares). Ideally, we would like most of the variance to be explained by the factor effects. The ANOVA table provides a formal Ftest for the factor effects. To test the overall batch effect in our example we use the following hypotheses.</p>
-<pre><code>H0: All individual batch means are equal. 
-Ha: At least one batch mean is not equal to the others.
-</code></pre><p>The F statistic is the mean square for the factor divided by the residual mean square. This statistic follows an Fdistribution with (k-1) and (N-k) degrees of freedom wherek is the number of levels for the given factor. Here, we see that the size of the “direction” effect dominates the size of the other effects. For our example, the critical Fvalue (upper tail) for α = 0.05, (k-1) = 1, and (N-k) = 475 is 3.86111. Thus, “table speed” and “batch” are significant at the 5 % level while “down feed rate” and “wheel grit size” are not significant at the 5 % level.<br>In addition to the quantitative ANOVA output, it is recommended that any analysis of variance be complemented with model validation. At a minimum, this should include</p>
-<pre><code>1. A run sequence plot of the residuals.
-2. A normal probability plot of the residuals.
-3. A scatter plot of the predicted values against the residuals.
-</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The analysis of variance can be used to answer the following questions:</p>
-<pre><code>1. Do any of the factors have a significant effect?
-2. Which is the most important factor?
-3. Can we account for most of the variability in the data?
-</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
-<li>One-factor analysis of variance</li>
-<li>Two-sample t-test</li>
-<li>Box plot</li>
-<li>Block plot</li>
-<li>DOE mean plot</li>
+            <h3 id="Purpose-Test-for-Homogeneity-of-Variances"><a href="#Purpose-Test-for-Homogeneity-of-Variances" class="headerlink" title="Purpose: Test for Homogeneity of Variances"></a>Purpose: Test for Homogeneity of Variances</h3><p>Bartlett’s test (Snedecor and Cochran, 1983) is used to test if k samples have equal variances. Equal variances across samples is called homogeneity of variances. Some statistical tests, for example the analysis of variance, assume that variances are equal across groups or samples. The Bartlett test can be used to verify that assumption.</p>
+<p>Bartlett’s test is sensitive to departures from normality. That is, if your samples come from non-normal distributions, then Bartlett’s test may simply be testing for non-normality. The Levene test is an alternative to the Bartlett test that is less sensitive to departures from normality.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Bartlett test is defined as:</p>
+<p><img src="assets/EDA/eda357_1.png" alt=""></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Bartlett’s test was performed for the GEAR.DATdata set. The data set contains 10 measurements of gear diameter for ten different batches for a total of 100 measurements.</p>
+<pre><code>H0:  σ12 = σ22 = ... = σ102
+Ha:  At least one σi2 is not equal to the others.
+Test statistic:  T = 20.78580
+Degrees of freedom:  k - 1 = 9
+Significance level:  α = 0.05
+Critical value:  Χ21-α,k-1 = 16.919
+Critical region: Reject H0 if T &gt; 16.919
+</code></pre><p>We are testing the null hypothesis that the batch variances are all equal. Because the test statistic is larger than the critical value, we reject the null hypotheses at the 0.05 significance level and conclude that at least one batch variance is different from the others.</p>
+<h3 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h3><p>Bartlett’s test can be used to answer the following question:</p>
+<pre><code>• Is the assumption of equal variances valid?
+</code></pre><h3 id="Importance"><a href="#Importance" class="headerlink" title="Importance"></a>Importance</h3><p>Bartlett’s test is useful whenever the assumption of equal variances is made. In particular, this assumption is made for the frequently used one-way analysis of variance. In this case, Bartlett’s or Levene’s test should be applied to verify the assumption.</p>
+<h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>Standard Deviation Plot</li>
+<li>Box Plot</li>
+<li>Levene Test</li>
+<li>Chi-Square Test</li>
+<li>Analysis of Variance</li>
 </ul>
-<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda355.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda355.htm</a></p>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda357.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda357.htm</a></p>
 
           
         
@@ -2066,6 +1853,233 @@ Ha: At least one batch mean is not equal to the others.
 <li>Box plot</li>
 </ul>
 <p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda354.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda354.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhangchunhui.cn/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="boredbird">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/pic_avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="boredbird">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" itemprop="url">EDA_1.3.5.5. Multi-factor Analysis of Variance</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T16:58:12+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/statistics/" itemprop="url" rel="index">
+                    <span itemprop="name">statistics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/03/12/EDA_1.3.5.5. Multi-factor Analysis of Variance/" class="leancloud_visitors" data-flag-title="EDA_1.3.5.5. Multi-factor Analysis of Variance">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  EDA_1.3.5.5. Multi-factor Analysis of Variance
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Purpose-Detect-significant-factors"><a href="#Purpose-Detect-significant-factors" class="headerlink" title="Purpose: Detect significant factors"></a>Purpose: Detect significant factors</h3><p>The analysis of variance (ANOVA) (Neter, Wasserman, and Kutner, 1990) is used to detect significant factors in a multi-factor model. In the multi-factor model, there is a response (dependent) variable and one or more factor (independent) variables. This is a common model in designed experiments where the experimenter sets the values for each of the factor variables and then measures the response variable.</p>
+<p>Each factor can take on a certain number of values. These are referred to as the levels of a factor. The number of levels can vary betweeen factors. For designed experiments, the number of levels for a given factor tends to be small. Each factor and level combination is a cell. Balanced designs are those in which the cells have an equal number of observations and unbalanced designs are those in which the number of observations varies among cells. It is customary to use balanced designs in designed experiments.</p>
+<h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>The Product and Process Comparisons chapter (chapter 7) contains a more extensive discussion of two-factor ANOVA, including the details for the mathematical computations.</p>
+<p>The model for the analysis of variance can be stated in two mathematically equivalent ways. We explain the model for a two-way ANOVA (the concepts are the same for additional factors). In the following discussion, each combination of factors and levels is called a cell. In the following, the subscript i refers to the level of factor 1, j refers to the level of factor 2, and the subscript k refers to thekth observation within the (i,j)th cell. For example, Y235refers to the fifth observation in the second level of factor 1 and the third level of factor 2.</p>
+<p>The first model is</p>
+<pre><code>Yijk=μij+Eijk
+</code></pre><p>This model decomposes the response into a mean for each cell and an error term. The analysis of variance provides estimates for each cell mean. These cell means are the predicted values of the model and the differences between the response variable and the estimated cell means are the residuals. That is</p>
+<pre><code>Y^ijk=μ^ij
+Rijk=Yijk−μ^ij
+</code></pre><p>The second model is</p>
+<pre><code>Yijk=μ+αi+βj+Eijk
+</code></pre><p>This model decomposes the response into an overall (grand) mean, factor effects (α^i and β^j represent the effects of the i-th level of the first factor and the j-th level of the second factor, respectively), and an error term. The analysis of variance provides estimates of the grand mean and the factor effects. The predicted values and the residuals of the model are</p>
+<pre><code>Y^ijk=μ^+α^i+β^j
+Rijk=Yijk−μ^−α^i−β^j
+</code></pre><p>The distinction between these models is that the second model divides the cell mean into an overall mean and factor effects. This second model makes the factor effect more explicit, so we will emphasize this approach.</p>
+<h3 id="Model-Validation"><a href="#Model-Validation" class="headerlink" title="Model Validation"></a>Model Validation</h3><p>Note that the ANOVA model assumes that the error term,Eijk, should follow the assumptions for a univariate measurement process. That is, after performing an analysis of variance, the model should be validated by analyzing the residuals.</p>
+<h3 id="Multi-Factor-ANOVA-Example"><a href="#Multi-Factor-ANOVA-Example" class="headerlink" title="Multi-Factor ANOVA Example"></a>Multi-Factor ANOVA Example</h3><p>An analysis of variance was performed for the JAHANMI2.DATdata set. The data contains four, two-level factors: table speed, down feed rate, wheel grit size, and batch. There are 30 measurements of ceramic strength for each factor combination for a total of 480 measurements.</p>
+<pre><code>SOURCE              DF SUM OF SQUARES    MEAN SQUARE   F STATISTIC
+------------------------------------------------------------------
+TABLE SPEED          1   26672.726562   26672.726562        6.7080
+DOWN FEED RATE       1   11524.053711   11524.053711        2.8982
+WHEEL GRIT SIZE      1   14380.633789   14380.633789        3.6166
+BATCH                1  727143.125000  727143.125000      182.8703
+RESIDUAL           475 1888731.500000    3976.276855
+TOTAL (CORRECTED)  479 2668446.000000    5570.868652
+
+RESIDUAL STANDARD DEVIATION = 63.05772781
+
+FACTOR          LEVEL   N      MEAN     SD(MEAN)
+------------------------------------------------
+TABLE SPEED      -1    240  657.53168    2.87818
+                  1    240  642.62286    2.87818
+DOWN FEED RATE   -1    240  645.17755    2.87818
+                  1    240  654.97723    2.87818
+WHEEL GRIT SIZE  -1    240  655.55084    2.87818
+                  1    240  644.60376    2.87818
+BATCH             1    240  688.99890    2.87818
+                  2    240  611.15594    2.87818
+</code></pre><p>The ANOVA decomposes the variance into the following component sum of squares:</p>
+<pre><code>• Total sum of squares. The degrees of freedom for this entry is the number of observations minus one.
+• Sum of squares for each of the factors. The degrees of freedom for these entries are the number of levels for the factor minus one. The mean square is the sum of squares divided by the number of degrees of freedom.
+• Residual sum of squares. The degrees of freedom is the total degrees of freedom minus the sum of the factor degrees of freedom. The mean square is the sum of squares divided by the number of degrees of freedom.
+</code></pre><p>The analysis of variance summarizes how much of the variance in the data (total sum of squares) is accounted for by the factor effects (factor sum of squares) and how much is due to random error (residual sum of squares). Ideally, we would like most of the variance to be explained by the factor effects. The ANOVA table provides a formal Ftest for the factor effects. To test the overall batch effect in our example we use the following hypotheses.</p>
+<pre><code>H0: All individual batch means are equal. 
+Ha: At least one batch mean is not equal to the others.
+</code></pre><p>The F statistic is the mean square for the factor divided by the residual mean square. This statistic follows an Fdistribution with (k-1) and (N-k) degrees of freedom wherek is the number of levels for the given factor. Here, we see that the size of the “direction” effect dominates the size of the other effects. For our example, the critical Fvalue (upper tail) for α = 0.05, (k-1) = 1, and (N-k) = 475 is 3.86111. Thus, “table speed” and “batch” are significant at the 5 % level while “down feed rate” and “wheel grit size” are not significant at the 5 % level.<br>In addition to the quantitative ANOVA output, it is recommended that any analysis of variance be complemented with model validation. At a minimum, this should include</p>
+<pre><code>1. A run sequence plot of the residuals.
+2. A normal probability plot of the residuals.
+3. A scatter plot of the predicted values against the residuals.
+</code></pre><h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p>The analysis of variance can be used to answer the following questions:</p>
+<pre><code>1. Do any of the factors have a significant effect?
+2. Which is the most important factor?
+3. Can we account for most of the variability in the data?
+</code></pre><h3 id="Related-Techniques"><a href="#Related-Techniques" class="headerlink" title="Related Techniques"></a>Related Techniques</h3><ul>
+<li>One-factor analysis of variance</li>
+<li>Two-sample t-test</li>
+<li>Box plot</li>
+<li>Block plot</li>
+<li>DOE mean plot</li>
+</ul>
+<p>via <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda355.htm" target="_blank" rel="noopener">http://www.itl.nist.gov/div898/handbook/eda/section3/eda355.htm</a></p>
 
           
         
